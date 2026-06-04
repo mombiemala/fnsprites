@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import Headshot from './Headshot.jsx';
 import ResumeRequestModal from './ResumeRequestModal.jsx';
 
 export default function Hero() {
@@ -75,36 +76,42 @@ export default function Hero() {
 
   return (
     <section className="hero-section">
-      <div className="hero-content max-w-6xl w-full px-4 py-20">
-        {/* Hero Container: Photo + Text */}
+      <div className="hero-content">
+        {/* UNIFIED HEADER - Photo + All Text */}
         <div className="flex items-start gap-8 mb-12">
-          {/* Headshot */}
           <div className="flex-shrink-0">
-            <div className="relative w-20 h-20">
-              <img
-                src="/images/headshot.jpg"
-                alt="Kamala"
-                className="w-20 h-20 rounded-full object-cover border-2 border-white shadow-lg"
+            <div className="relative h-20 w-20">
+              <Headshot
+                alt="Kamala Espig"
+                className="h-20 w-20"
+                imgClassName="border-2 border-white shadow-lg"
               />
               <span
-                className="absolute top-0 right-0 w-5 h-5 bg-green-500 border-3 border-white rounded-full shadow-md"
+                className="absolute top-0 right-0 z-20 w-5 h-5 bg-green-500 border-3 border-white rounded-full shadow-md"
                 aria-label="Available"
               />
             </div>
           </div>
 
-          {/* Text Content */}
-          <div className="flex-1">
-            <p className="hero-text mb-4">
+          <div className="flex-1 space-y-0">
+            <p className="hero-text">
+              I&apos;m{' '}
+              <span className="border-l-2 border-r-2 border-blue-500 bg-blue-100 px-2 py-0 font-semibold">
+                Kamala Espig
+              </span>
+              {' '}— based in Leesburg, VA.
+            </p>
+
+            <p className="hero-text">
               I design clarity into{' '}
               <span className="hero-text-italic">
                 complex
               </span>
               {' '}systems — and ship them.
             </p>
-            <p className="hero-subtitle">
-              Senior Product Designer bridging AI, cybersecurity, and data-dense enterprise platforms.
-              12+ years turning complexity into confidence.
+
+            <p className="hero-subtitle mt-4">
+              Senior Product Designer bridging AI, cybersecurity, and data-dense enterprise platforms. 12+ years turning complexity into confidence.
             </p>
           </div>
         </div>
@@ -119,17 +126,6 @@ export default function Hero() {
             see my work
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </button>
-
-          {/* Feeling Lucky */}
-          <button
-            onClick={handleLucky}
-            className="hero-button"
-          >
-            feeling lucky?
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </button>
 
@@ -156,10 +152,21 @@ export default function Hero() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </a>
+
+          {/* Feeling Lucky */}
+          <button
+            onClick={handleLucky}
+            className="hero-button"
+          >
+            feeling lucky?
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </button>
         </div>
 
         {/* CHAT SECTION */}
-        <div className="space-y-4 max-w-2xl">
+        <div className="space-y-4 max-w-2xl w-full mx-auto">
           {/* Messages */}
           {messages.length > 0 && (
             <div className="space-y-3 mb-4">

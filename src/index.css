@@ -52,11 +52,12 @@
 
 /* Hero typography styles */
 .hero-text {
-  font-family: 'Overused Grotesk', 'Inter', system-ui, sans-serif;
+  font-family: 'Overused Grotesk', Inter, system-ui, sans-serif;
   font-weight: 500;
   font-size: 48px;
-  line-height: 48px;
+  line-height: 52px;
   color: rgb(20, 20, 20);
+  letter-spacing: -0.3px;
 }
 
 .hero-text-italic {
@@ -64,8 +65,9 @@
   font-weight: 500;
   font-style: italic;
   font-size: 48px;
-  line-height: 48px;
+  line-height: 52px;
   color: rgb(20, 20, 20);
+  letter-spacing: -0.3px;
 }
 
 /* Hero subtitle - supporting text */
@@ -102,7 +104,7 @@
   }
 
   .hero-subtitle {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 24px;
   }
 }
@@ -119,7 +121,7 @@
   }
 
   .hero-subtitle {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 24px;
   }
 }
@@ -135,67 +137,43 @@
 
 /* Hero button styling - EXACT match to leahkim.design */
 .hero-button {
-  /* Background */
   background: rgba(255, 255, 255, 0.8);
-  
-  /* Border */
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 9999px;
-  
-  /* Spacing */
   padding: 12px 20px;
-  
-  /* Typography */
-  font-family: 'Overused Grotesk', Inter, system-ui, sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: rgb(20, 20, 20);
-  
-  /* Interaction */
   cursor: pointer;
   transition: all 200ms ease;
-  text-decoration: none;
-  
-  /* Layout */
+  font-family: 'Overused Grotesk', Inter, system-ui, sans-serif;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  white-space: nowrap;
+  text-decoration: none;
 }
 
-/* Hover state */
 .hero-button:hover {
   background: rgba(255, 255, 255, 1);
   border-color: rgba(0, 0, 0, 0.15);
 }
 
-/* Active state */
 .hero-button:active {
   transform: scale(0.98);
 }
 
-/* Link buttons should look like button buttons */
-.hero-button[href] {
-  cursor: pointer;
-}
-
 /* Hero section with background gradient and orbs */
 .hero-section {
-  /* Background gradient */
   background: linear-gradient(135deg, #f5f5ff 0%, #fff5f8 100%);
-  
-  /* Layout */
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-  
-  /* Flexbox */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Primary orb - top left, purple to pink */
 .hero-section::before {
   content: '';
   position: absolute;
@@ -203,24 +181,12 @@
   left: -10%;
   width: 600px;
   height: 600px;
-  
-  /* Gradient blob */
-  background: radial-gradient(
-    ellipse at center,
-    rgba(220, 200, 255, 0.3),
-    rgba(255, 200, 220, 0.2) 30%,
-    transparent 80%
-  );
-  
-  /* Blur effect */
+  background: radial-gradient(ellipse at center, rgba(220, 200, 255, 0.3), rgba(255, 200, 220, 0.2) 30%, transparent 80%);
   filter: blur(80px);
-  
-  /* Behind content */
   pointer-events: none;
   z-index: 0;
 }
 
-/* Secondary orb - bottom right, blue to pink */
 .hero-section::after {
   content: '';
   position: absolute;
@@ -228,27 +194,20 @@
   right: -20%;
   width: 500px;
   height: 500px;
-  
-  /* Gradient blob */
-  background: radial-gradient(
-    ellipse at center,
-    rgba(200, 220, 255, 0.2),
-    rgba(255, 220, 240, 0.15) 40%,
-    transparent 75%
-  );
-  
-  /* Blur effect */
+  background: radial-gradient(ellipse at center, rgba(200, 220, 255, 0.2), rgba(255, 220, 240, 0.15) 40%, transparent 75%);
   filter: blur(100px);
-  
-  /* Behind content */
   pointer-events: none;
   z-index: 0;
 }
 
-/* Make sure content sits above orbs */
 .hero-content {
   position: relative;
   z-index: 10;
+  max-width: 48rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5rem 1.5rem;
 }
 
 .hero-input {
