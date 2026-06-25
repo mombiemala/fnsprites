@@ -27,7 +27,7 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          VITE_BASE: /hello-portfolio/
+          VITE_BASE: /fnsprites/
       - uses: actions/configure-pages@v5
         with:
           # Auto-enable GitHub Pages on first run (requires repo admin token,
