@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Deployed as a GitHub Pages *project* site at /hello-portfolio/.
-// Override with VITE_BASE='/' for root deployments (e.g. Vercel/custom domain).
+// Defaults to root (works for Vercel / custom domains / local dev).
+// The GitHub Pages workflow sets VITE_BASE=/hello-portfolio/ for project-site
+// deploys.
 // https://vite.dev/config/
 export default defineConfig({
-  base: process.env.VITE_BASE || '/hello-portfolio/',
+  base: process.env.VITE_BASE || '/',
   plugins: [react()],
 })
