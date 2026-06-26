@@ -110,12 +110,9 @@ export function buildSpriteList() {
         dropRate: type.dropRate,
         ability: type.ability,
         themeId,
-        // AI-generated art lives at public/sprites/<id>.png for released
-        // variants; SpriteArt falls back to generated SVG if it's missing.
-        image:
-          type.released && variantReleased
-            ? `${import.meta.env.BASE_URL}sprites/${type.id}_${themeId}.png`
-            : null,
+        // AI-generated art lives at public/sprites/<id>.png; SpriteArt falls
+        // back to generated SVG if the file is missing.
+        image: `${import.meta.env.BASE_URL}sprites/${type.id}_${themeId}.png`,
         released: type.released && variantReleased,
         unreleased: !(type.released && variantReleased),
       })
