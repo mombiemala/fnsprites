@@ -1,26 +1,48 @@
 # FN Sprite Tracker
 
-A fan-made Fortnite **sprite tracker** — track every sprite type across all of
-its themes (Basic, Gold, Gummy, Galaxy, Gem, Holofoil, Rift), see your
-collection and mastery progress, save it to the cloud, and share your collection
-with your gamertag.
+A fan-made Fortnite **sprite tracker** — track every sprite across all of its
+variants (Normal, Gold, Gummy, Galaxy, Gem, Holofoil, plus the special Cube &
+Quack lines), see your collection and mastery progress, save it to the cloud,
+and share your collection with your gamertag. Roster is accurate to the
+**Jun 25, 2026 update**.
 
 > Not affiliated with Epic Games. Support the maker with **Creator Code: MOMBIE**
 > in the Fortnite Item Shop. #EpicPartner
 
 ## Features
 
-- **Browse every sprite** across all theme variants with stylized, theme-accurate
-  art (gold shine, galaxy starfield, holofoil rainbow, gem facets, rift energy…).
+- **Accurate roster** — every released sprite & variant as of Jun 25, 2026
+  (incl. Striker, Fishy, Aura, Boss, Grim Reaper); upcoming/datamined sprites
+  are clearly flagged **unreleased**.
+- **Generated sprite art** — cohesive SVG companion art per sprite, with a real
+  **image slot** (`public/sprites/<id>.png|webp`) that takes over automatically
+  when official/AI art is added.
 - **Track ownership & mastery** with one tap — works instantly as a guest
-  (saved in your browser).
-- **Log in to save** — create an account to sync your collection to the cloud
-  and across devices. Guest progress merges in automatically on first login.
+  (saved in your browser); syncs to the cloud when you log in.
+- **Sprite detail view** — tap any sprite for rarity, drop rate, ability, and
+  every variant with its in-game **bonus** (e.g. Gummy = +10% Sprite Dust).
 - **Share your collection** — set your gamertag and share a read-only public
-  link (`?u=<your-id>`) so others can see what you've collected.
-- **Filter & search** — by theme, rarity, ownership, hide mastered, show
-  unreleased, and group by theme.
+  link (`?u=<your-id>`).
+- **Export images** — generate a shareable **collection mosaic** or a
+  **missing-sprites** image (great for trades).
+- **Filter, search & group** — by theme, rarity, ownership; hide mastered, show
+  unreleased; group by theme / rarity / sprite. Theme chips show owned/total.
 - **Progress bars** for overall Collection % and Mastery %.
+
+## Sprite data & credits
+
+Roster and variant data were cross-referenced from public community resources,
+with thanks:
+
+- [fortnite.gg/sprites](https://fortnite.gg/sprites) and
+  [spritelocker.com](https://spritelocker.com/)
+- [UltronCore/sprite-tracker](https://github.com/UltronCore/sprite-tracker) —
+  Have/Missing/Mastered model and shareable trade-image export inspiration
+- [MRSessions/fn-sprite-checklist](https://github.com/MRSessions/fn-sprite-checklist)
+- [staticvacant/fnsprites](https://staticvacant.github.io/fnsprites/) — original
+  inspiration; [dillyapp.gg/sprites](https://dillyapp.gg/sprites) for UX ideas
+
+All sprite art in this repo is original SVG; no game assets are bundled.
 
 ## Tech
 

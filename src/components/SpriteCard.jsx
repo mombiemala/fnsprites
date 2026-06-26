@@ -1,12 +1,9 @@
 import { THEME_MAP } from '../data/themes'
-import { CUSTOM_THEME, RARITY_COLORS } from '../data/sprites'
+import { RARITY_COLORS } from '../data/sprites'
+import SpriteArt from './SpriteArt'
 
-function themeFor(id) {
-  return THEME_MAP[id] || (id === 'quack' ? CUSTOM_THEME : null)
-}
-
-export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMastered, readOnly }) {
-  const theme = themeFor(sprite.themeId)
+export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMastered, onOpen, readOnly }) {
+  const theme = THEME_MAP[sprite.themeId]
   const owned = !!state?.owned
   const mastered = !!state?.mastered
 
@@ -17,9 +14,14 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
       }`}
       style={{ boxShadow: owned ? `0 0 0 1px ${theme?.accent}55, 0 8px 24px rgba(0,0,0,.35)` : '0 0 0 1px #2c3556' }}
     >
-      {/* Art */}
-      <div className={`sprite-art ${theme?.className || 'theme-basic'}`}>
-        <span className="glyph">{sprite.icon}</span>
+      {/* Art (click to open detail) */}
+      <button
+        type="button"
+        onClick={() => onOpen?.(sprite)}
+        className={`sprite-art block w-full ${theme?.className || 'theme-normal'}`}
+        title={`${sprite.typeName} · ${theme?.name} — details`}
+      >
+        <SpriteArt sprite={sprite} />
         {mastered && (
           <span className="absolute right-1 top-1 z-[3] rounded-full bg-amber-400 px-1.5 py-0.5 text-[10px] font-extrabold text-black shadow">
             ★
@@ -30,7 +32,7 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
             soon
           </span>
         )}
-      </div>
+      </button>
 
       {/* Labels */}
       <div className="mt-2 px-0.5">
@@ -47,14 +49,12 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
       </div>
 
       {/* Controls */}
-      {!readOnly && (
+      {!readOnly ? (
         <div className="mt-2 flex gap-1">
           <button
             onClick={() => onToggleOwned(sprite.id, !owned)}
             className={`flex-1 rounded-lg py-1 text-[11px] font-bold transition-colors ${
-              owned
-                ? 'bg-[var(--brand)] text-black'
-                : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
+              owned ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
             }`}
           >
             {owned ? 'Owned' : 'Have it?'}
@@ -63,16 +63,13 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
             onClick={() => onToggleMastered(sprite.id, !mastered)}
             title="Mastered"
             className={`rounded-lg px-2 py-1 text-[11px] font-bold transition-colors ${
-              mastered
-                ? 'bg-amber-400 text-black'
-                : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
+              mastered ? 'bg-amber-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
             }`}
           >
             ★
           </button>
         </div>
-      )}
-      {readOnly && (
+      ) : (
         <div className="mt-2 flex gap-1 text-[11px] font-bold">
           <span className={`flex-1 rounded-lg py-1 text-center ${owned ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}>
             {owned ? 'Owned' : 'Missing'}

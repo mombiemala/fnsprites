@@ -15,7 +15,7 @@ function Chip({ active, onClick, children, color }) {
   )
 }
 
-export default function Toolbar({ filters, setFilters }) {
+export default function Toolbar({ filters, setFilters, themeStats }) {
   const set = (patch) => setFilters((f) => ({ ...f, ...patch }))
 
   return (
@@ -36,29 +36,23 @@ export default function Toolbar({ filters, setFilters }) {
           <option value="owned">Owned only</option>
           <option value="unowned">Missing only</option>
         </select>
+        <select
+          value={filters.groupBy}
+          onChange={(e) => set({ groupBy: e.target.value })}
+          className="rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-sm text-white outline-none focus:border-[var(--brand)]"
+        >
+          <option value="none">No grouping</option>
+          <option value="theme">Group by theme</option>
+          <option value="rarity">Group by rarity</option>
+          <option value="sprite">Group by sprite</option>
+        </select>
         <label className="flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-semibold text-[var(--muted)]">
-          <input
-            type="checkbox"
-            checked={filters.hideMastered}
-            onChange={(e) => set({ hideMastered: e.target.checked })}
-          />
+          <input type="checkbox" checked={filters.hideMastered} onChange={(e) => set({ hideMastered: e.target.checked })} />
           Hide mastered
         </label>
         <label className="flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-semibold text-[var(--muted)]">
-          <input
-            type="checkbox"
-            checked={filters.showUnreleased}
-            onChange={(e) => set({ showUnreleased: e.target.checked })}
-          />
+          <input type="checkbox" checked={filters.showUnreleased} onChange={(e) => set({ showUnreleased: e.target.checked })} />
           Show unreleased
-        </label>
-        <label className="flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-semibold text-[var(--muted)]">
-          <input
-            type="checkbox"
-            checked={filters.groupByTheme}
-            onChange={(e) => set({ groupByTheme: e.target.checked })}
-          />
-          Group by theme
         </label>
       </div>
 
@@ -66,11 +60,15 @@ export default function Toolbar({ filters, setFilters }) {
         <Chip active={filters.theme === 'all'} onClick={() => set({ theme: 'all' })}>
           All themes
         </Chip>
-        {THEMES.map((t) => (
-          <Chip key={t.id} active={filters.theme === t.id} color={t.accent} onClick={() => set({ theme: t.id })}>
-            {t.name}
-          </Chip>
-        ))}
+        {THEMES.map((t) => {
+          const st = themeStats?.[t.id]
+          return (
+            <Chip key={t.id} active={filters.theme === t.id} color={t.accent} onClick={() => set({ theme: t.id })}>
+              {t.name}
+              {st ? <span className="opacity-70"> {st.owned}/{st.total}</span> : null}
+            </Chip>
+          )
+        })}
       </div>
 
       <div className="flex flex-wrap items-center gap-1.5">

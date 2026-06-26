@@ -1,15 +1,16 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useAuth } from './context/authStore'
 import { fetchSharedCollection } from './lib/sharedCollection'
-import { ALL_SPRITES, TOTAL_COUNT } from './data/sprites'
-import { THEMES } from './data/themes'
-import { CUSTOM_THEME } from './data/sprites'
+import { ALL_SPRITES, TOTAL_COUNT, RELEASED_COUNT, SPRITE_TYPES, RARITY_ORDER } from './data/sprites'
+import { THEMES, THEME_MAP } from './data/themes'
+import { generateCollectionImage, downloadDataUrl } from './lib/exportImage'
 import SpriteCard from './components/SpriteCard'
 import ProgressStats from './components/ProgressStats'
 import Toolbar from './components/Toolbar'
 import AuthModal from './components/AuthModal'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
+import SpriteDetailModal from './components/SpriteDetailModal'
 
 const DEFAULT_FILTERS = {
   search: '',
@@ -18,19 +19,11 @@ const DEFAULT_FILTERS = {
   ownership: 'all',
   hideMastered: false,
   showUnreleased: false,
-  groupByTheme: false,
+  groupBy: 'none',
 }
 
-const THEME_NAME = Object.fromEntries(
-  [...THEMES, CUSTOM_THEME].map((t) => [t.id, t.name])
-)
-
 function useShareTarget() {
-  // Read ?u=<userId> once on mount.
-  return useMemo(() => {
-    const params = new URLSearchParams(window.location.search)
-    return params.get('u')
-  }, [])
+  return useMemo(() => new URLSearchParams(window.location.search).get('u'), [])
 }
 
 export default function App() {
@@ -41,8 +34,8 @@ export default function App() {
   const [showAuth, setShowAuth] = useState(false)
   const [shared, setShared] = useState(null)
   const [shareLoading, setShareLoading] = useState(!!shareTarget)
+  const [detailType, setDetailType] = useState(null)
 
-  // Load a shared collection in read-only view.
   useEffect(() => {
     if (!shareTarget) return
     let cancelled = false
@@ -63,19 +56,28 @@ export default function App() {
     [isShareView, shared, tracking]
   )
 
-  // --- Stats ---
   const stats = useMemo(() => {
     let owned = 0
     let mastered = 0
     for (const s of ALL_SPRITES) {
-      const st = activeTracking[s.id]
-      if (st?.owned) owned++
-      if (st?.mastered) mastered++
+      if (activeTracking[s.id]?.owned) owned++
+      if (activeTracking[s.id]?.mastered) mastered++
     }
     return { owned, mastered, total: TOTAL_COUNT }
   }, [activeTracking])
 
-  // --- Filtered list ---
+  // Owned/total per theme for the toolbar chips.
+  const themeStats = useMemo(() => {
+    const out = {}
+    for (const t of THEMES) out[t.id] = { owned: 0, total: 0 }
+    for (const s of ALL_SPRITES) {
+      if (!out[s.themeId]) continue
+      out[s.themeId].total++
+      if (activeTracking[s.id]?.owned) out[s.themeId].owned++
+    }
+    return out
+  }, [activeTracking])
+
   const visible = useMemo(() => {
     const q = filters.search.trim().toLowerCase()
     return ALL_SPRITES.filter((s) => {
@@ -87,35 +89,43 @@ export default function App() {
       if (filters.ownership === 'unowned' && st?.owned) return false
       if (filters.hideMastered && st?.mastered) return false
       if (q) {
-        const hay = `${s.typeName} ${THEME_NAME[s.themeId]} ${s.rarity}`.toLowerCase()
+        const hay = `${s.typeName} ${THEME_MAP[s.themeId]?.name} ${s.rarity}`.toLowerCase()
         if (!hay.includes(q)) return false
       }
       return true
     })
   }, [filters, activeTracking])
 
-  // Group into sections when "group by theme" is on.
   const groups = useMemo(() => {
-    if (!filters.groupByTheme) return [{ key: 'all', label: null, items: visible }]
-    const byTheme = {}
+    if (filters.groupBy === 'none') return [{ key: 'all', label: null, items: visible }]
+    const buckets = {}
     for (const s of visible) {
-      ;(byTheme[s.themeId] ||= []).push(s)
+      const k = filters.groupBy === 'theme' ? s.themeId : filters.groupBy === 'rarity' ? s.rarity : s.typeId
+      ;(buckets[k] ||= []).push(s)
     }
-    return [...THEMES, CUSTOM_THEME]
-      .filter((t) => byTheme[t.id]?.length)
-      .map((t) => ({ key: t.id, label: t.name, items: byTheme[t.id] }))
-  }, [visible, filters.groupByTheme])
+    let order
+    if (filters.groupBy === 'theme') order = THEMES.map((t) => [t.id, t.name])
+    else if (filters.groupBy === 'rarity') order = RARITY_ORDER.map((r) => [r, r])
+    else order = SPRITE_TYPES.map((t) => [t.id, t.name])
+    return order.filter(([k]) => buckets[k]?.length).map(([k, label]) => ({ key: k, label, items: buckets[k] }))
+  }, [visible, filters.groupBy])
+
+  const gamertag = isShareView ? shared?.profile?.gamertag : profile?.gamertag
+
+  const exportImage = (mode) => {
+    const url = generateCollectionImage({ gamertag, tracking: activeTracking, mode })
+    downloadDataUrl(url, `fn-sprites-${mode}.png`)
+  }
 
   return (
     <div className="mx-auto min-h-screen max-w-6xl px-4 pb-24 pt-6 sm:px-6">
-      {/* Header */}
       <header className="mb-6 flex items-center justify-between gap-3">
         <div>
           <h1 className="font-display text-3xl leading-none text-white sm:text-4xl">
             FN <span className="text-[var(--brand)]">Sprite</span> Tracker
           </h1>
           <p className="mt-1 text-xs text-[var(--muted)] sm:text-sm">
-            Track every sprite across all {THEMES.length} themes.
+            {RELEASED_COUNT} released variants · accurate to the Jun 25, 2026 update.
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -126,57 +136,50 @@ export default function App() {
                 <span className="hidden text-xs font-semibold text-[var(--muted)] sm:inline">
                   {profile?.gamertag || user.email}
                 </span>
-                <button
-                  onClick={signOut}
-                  className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]"
-                >
+                <button onClick={signOut} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
                   Sign out
                 </button>
               </div>
             ) : (
-              <button
-                onClick={() => setShowAuth(true)}
-                className="rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-4 py-2 text-xs font-extrabold text-black"
-              >
+              <button onClick={() => setShowAuth(true)} className="rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-4 py-2 text-xs font-extrabold text-black">
                 Log in to save
               </button>
             ))}
         </div>
       </header>
 
-      {/* Share view banner */}
       {isShareView && (
         <div className="mb-4 rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-4">
           {shareLoading ? (
             <p className="text-sm text-[var(--muted)]">Loading shared collection…</p>
           ) : shared?.profile && (shared.profile.is_public || shared.profile.gamertag) ? (
             <p className="text-sm text-white">
-              Viewing{' '}
-              <span className="font-display text-lg text-[var(--brand)]">
-                {shared.profile.gamertag || 'a player'}
-              </span>
-              ’s collection (read-only).{' '}
-              <a href={window.location.pathname} className="font-bold underline">
-                Track your own →
-              </a>
+              Viewing <span className="font-display text-lg text-[var(--brand)]">{shared.profile.gamertag || 'a player'}</span>’s collection (read-only).{' '}
+              <a href={window.location.pathname} className="font-bold underline">Track your own →</a>
             </p>
           ) : (
             <p className="text-sm text-white">
               This collection is private or doesn’t exist.{' '}
-              <a href={window.location.pathname} className="font-bold underline">
-                Go to your tracker →
-              </a>
+              <a href={window.location.pathname} className="font-bold underline">Go to your tracker →</a>
             </p>
           )}
         </div>
       )}
 
-      {/* Stats */}
       <div className="mb-5">
         <ProgressStats owned={stats.owned} mastered={stats.mastered} total={stats.total} />
       </div>
 
-      {/* Support + Share */}
+      {/* Export buttons */}
+      <div className="mb-5 flex flex-wrap gap-2">
+        <button onClick={() => exportImage('collection')} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
+          📸 Collection image
+        </button>
+        <button onClick={() => exportImage('missing')} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
+          🔍 Missing-sprites image
+        </button>
+      </div>
+
       {!isShareView && (
         <div className="mb-5 grid gap-4 lg:grid-cols-2">
           <SupportBanner />
@@ -185,9 +188,7 @@ export default function App() {
           ) : (
             <div className="grid place-items-center rounded-2xl border border-dashed border-[var(--border)] p-5 text-center">
               <p className="text-sm text-[var(--muted)]">
-                <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">
-                  Log in
-                </button>{' '}
+                <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">Log in</button>{' '}
                 to save your progress to the cloud and get a shareable link with your gamertag.
               </p>
             </div>
@@ -195,12 +196,10 @@ export default function App() {
         </div>
       )}
 
-      {/* Toolbar */}
       <div className="mb-5">
-        <Toolbar filters={filters} setFilters={setFilters} />
+        <Toolbar filters={filters} setFilters={setFilters} themeStats={themeStats} />
       </div>
 
-      {/* Grid */}
       {visible.length === 0 ? (
         <p className="py-16 text-center text-sm text-[var(--muted)]">No sprites match your filters.</p>
       ) : (
@@ -219,6 +218,7 @@ export default function App() {
                   state={activeTracking[s.id]}
                   onToggleOwned={setOwned}
                   onToggleMastered={setMastered}
+                  onOpen={(sp) => setDetailType(sp.typeId)}
                   readOnly={readOnly}
                 />
               ))}
@@ -228,11 +228,30 @@ export default function App() {
       )}
 
       <footer className="mt-12 border-t border-[var(--border)] pt-6 text-center text-xs text-[var(--muted)]">
-        Fan-made sprite tracker · not affiliated with Epic Games · Support with Creator Code{' '}
-        <span className="font-bold text-[var(--brand)]">MOMBIE</span>
+        <p>
+          Fan-made sprite tracker · not affiliated with Epic Games · Support with Creator Code{' '}
+          <span className="font-bold text-[var(--brand)]">MOMBIE</span>
+        </p>
+        <p className="mt-2 opacity-80">
+          Sprite data cross-referenced from{' '}
+          <a className="underline" href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>,{' '}
+          <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>,{' '}
+          <a className="underline" href="https://github.com/MRSessions/fn-sprite-checklist" target="_blank" rel="noreferrer">MRSessions/fn-sprite-checklist</a>{' '}
+          &amp; <a className="underline" href="https://staticvacant.github.io/fnsprites/" target="_blank" rel="noreferrer">staticvacant/fnsprites</a>.
+        </p>
       </footer>
 
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
+      {detailType && (
+        <SpriteDetailModal
+          typeId={detailType}
+          tracking={activeTracking}
+          onClose={() => setDetailType(null)}
+          onToggleOwned={setOwned}
+          onToggleMastered={setMastered}
+          readOnly={readOnly}
+        />
+      )}
     </div>
   )
 }
