@@ -14,12 +14,12 @@ and share your collection with your gamertag. Roster is accurate to the
 - **Accurate roster** — every released sprite & variant as of Jun 25, 2026
   (incl. Striker, Fishy, Aura, Boss, Grim Reaper); upcoming/datamined sprites
   are clearly flagged **unreleased**.
-- **Cute, modern sprite art** — chunky kawaii vector characters with per-type
-  features (beak, horns, crown, fins…) for instant identifiability, and each
-  **variant treatment applied to the sprite itself** (Gold = metallic, Gummy =
-  glossy jelly, Galaxy = starfield, Gem = crystal, Holofoil = iridescent, Cube,
-  Quack). A real **image slot** (`public/sprites/<id>.png|webp`) takes over
-  automatically when official/AI art is added.
+- **AI-generated sprite art** — released variants use cute, modern transparent
+  PNGs generated with Google's Gemini image model (`public/sprites/<id>.png`):
+  each sprite's Normal base is reskinned into its Gold (metallic), Gummy (glossy
+  jelly) and Galaxy (starfield) variants so a type's variants stay the same
+  character with a different finish. Unreleased variants fall back to generated
+  SVG art (chunky kawaii characters with per-type features).
 - **Track ownership & mastery** with one tap — works instantly as a guest
   (saved in your browser); syncs to the cloud when you log in.
 - **Sprite detail view** — tap any sprite for rarity, drop rate, ability, and

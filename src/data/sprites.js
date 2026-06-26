@@ -110,9 +110,12 @@ export function buildSpriteList() {
         dropRate: type.dropRate,
         ability: type.ability,
         themeId,
-        // Real image path if one has been added (public/sprites/<id>.png|webp),
-        // otherwise the UI falls back to generated SVG art.
-        image: type.image || null,
+        // AI-generated art lives at public/sprites/<id>.png for released
+        // variants; SpriteArt falls back to generated SVG if it's missing.
+        image:
+          type.released && variantReleased
+            ? `${import.meta.env.BASE_URL}sprites/${type.id}_${themeId}.png`
+            : null,
         released: type.released && variantReleased,
         unreleased: !(type.released && variantReleased),
       })

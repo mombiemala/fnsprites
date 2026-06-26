@@ -6,6 +6,8 @@
 //
 // A real image (public/sprites/<id>.png|webp) overrides the vector art.
 
+import { useState } from 'react'
+
 const INK = '#1a2138'
 
 // Per-type NORMAL palette [light, base, shadow] + natural feature color.
@@ -155,8 +157,17 @@ function Features({ id, fc, gid }) {
 }
 
 export default function SpriteArt({ sprite, className = '' }) {
-  if (sprite.image) {
-    return <img src={sprite.image} alt={sprite.typeName} loading="lazy" className={`h-full w-full object-contain ${className}`} />
+  const [imgFailed, setImgFailed] = useState(false)
+  if (sprite.image && !imgFailed) {
+    return (
+      <img
+        src={sprite.image}
+        alt={sprite.typeName}
+        loading="lazy"
+        onError={() => setImgFailed(true)}
+        className={`h-[94%] w-[94%] object-contain ${className}`}
+      />
+    )
   }
   const type = TYPES[sprite.typeId] || { c: ['#aab4ff', '#5b6bff', '#2b3147'], feat: '#fff' }
   const uid = sprite.id.replace(/[^a-z0-9]/gi, '')
