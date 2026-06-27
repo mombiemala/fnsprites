@@ -220,6 +220,13 @@ export function AuthProvider({ children }) {
     return data || []
   }, [user])
 
+  // Flex Score leaderboard across public collections (viewable by anyone).
+  const fetchLeaderboard = useCallback(async () => {
+    const { data, error } = await supabase.rpc('leaderboard')
+    if (error) return []
+    return data || []
+  }, [])
+
   const value = {
     session,
     user,
@@ -233,6 +240,7 @@ export function AuthProvider({ children }) {
     setWanted,
     bulkOwn,
     findTradeMatches,
+    fetchLeaderboard,
     signUp,
     signIn,
     signInWithProvider,

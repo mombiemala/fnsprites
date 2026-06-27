@@ -13,6 +13,16 @@ import SupportBanner from './components/SupportBanner'
 import SpriteDetailModal from './components/SpriteDetailModal'
 import TradePanel from './components/TradePanel'
 import StatsBreakdown from './components/StatsBreakdown'
+import Leaderboard from './components/Leaderboard'
+import NewsFeed from './components/NewsFeed'
+import MapView from './components/MapView'
+
+const TABS = [
+  { id: 'collection', label: 'Collection' },
+  { id: 'leaderboard', label: '🏆 Leaderboard' },
+  { id: 'news', label: '📰 News' },
+  { id: 'map', label: '🗺️ Map' },
+]
 
 const DEFAULT_FILTERS = {
   search: '',
@@ -40,6 +50,7 @@ export default function App() {
   const [shared, setShared] = useState(null)
   const [shareLoading, setShareLoading] = useState(!!shareTarget)
   const [detailType, setDetailType] = useState(null)
+  const [view, setView] = useState('collection')
 
   useEffect(() => {
     if (!shareTarget) return
@@ -122,6 +133,7 @@ export default function App() {
   }, [visible, filters.groupBy])
 
   const gamertag = isShareView ? shared?.profile?.gamertag : profile?.gamertag
+  const effectiveView = isShareView ? 'collection' : view
 
   const exportImage = (mode) => {
     const url = generateCollectionImage({ gamertag, tracking: activeTracking, mode })
@@ -159,6 +171,28 @@ export default function App() {
         </div>
       </header>
 
+      {!isShareView && (
+        <nav className="mb-5 flex flex-wrap gap-1.5" aria-label="Sections">
+          {TABS.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setView(t.id)}
+              className={`rounded-xl px-3 py-2 text-xs font-bold transition-colors ${
+                view === t.id ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </nav>
+      )}
+
+      {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
+      {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
+      {effectiveView === 'map' && <div className="mb-5"><MapView /></div>}
+
+      {effectiveView === 'collection' && (
+        <>
       {isShareView && (
         <div className="mb-4 rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-4">
           {shareLoading ? (
@@ -257,6 +291,8 @@ export default function App() {
             </div>
           </section>
         ))
+      )}
+        </>
       )}
 
       <footer className="mt-12 border-t border-[var(--border)] pt-6 text-center text-xs text-[var(--muted)]">
