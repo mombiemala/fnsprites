@@ -2,7 +2,7 @@ import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
 
-export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, readOnly }) {
+export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, onToggleTrade, onToggleWanted, readOnly }) {
   const type = SPRITE_TYPES.find((t) => t.id === typeId)
   if (!type) return null
   const variants = ALL_SPRITES.filter((s) => s.typeId === typeId)
@@ -58,6 +58,8 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
             const st = tracking[v.id]
             const owned = !!st?.owned
             const mastered = !!st?.mastered
+            const forTrade = !!st?.forTrade
+            const wanted = !!st?.wanted
             return (
               <div key={v.id} className="flex items-center gap-3 rounded-xl bg-[var(--bg-2)] p-2">
                 <div className={`sprite-art h-12 w-12 shrink-0 ${theme?.className} ${owned ? '' : 'sprite-locked'}`} style={{ borderRadius: '0.6rem' }}>
@@ -87,11 +89,29 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                     >
                       ★
                     </button>
+                    <button
+                      onClick={() => onToggleTrade(v.id, !forTrade)}
+                      title="Have a duplicate to trade"
+                      className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${forTrade ? 'bg-emerald-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                    >
+                      ⇄
+                    </button>
+                    <button
+                      onClick={() => onToggleWanted(v.id, !wanted)}
+                      title="Want this one"
+                      className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${wanted ? 'bg-pink-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                    >
+                      ♥
+                    </button>
                   </div>
                 ) : (
-                  <span className={`shrink-0 rounded-lg px-2.5 py-1.5 text-[11px] font-bold ${owned ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}>
-                    {owned ? 'Owned' : 'Missing'}
-                  </span>
+                  <div className="flex shrink-0 items-center gap-1">
+                    <span className={`rounded-lg px-2.5 py-1.5 text-[11px] font-bold ${owned ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}>
+                      {owned ? 'Owned' : 'Missing'}
+                    </span>
+                    {forTrade && <span className="rounded-lg bg-emerald-400 px-2 py-1.5 text-[11px] font-bold text-black" title="For trade">⇄</span>}
+                    {wanted && <span className="rounded-lg bg-pink-400 px-2 py-1.5 text-[11px] font-bold text-black" title="Wants">♥</span>}
+                  </div>
                 )}
               </div>
             )

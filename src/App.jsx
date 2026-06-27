@@ -11,6 +11,7 @@ import AuthModal from './components/AuthModal'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
 import SpriteDetailModal from './components/SpriteDetailModal'
+import TradePanel from './components/TradePanel'
 
 const DEFAULT_FILTERS = {
   search: '',
@@ -27,7 +28,7 @@ function useShareTarget() {
 }
 
 export default function App() {
-  const { user, profile, tracking, setOwned, setMastered, signOut, syncing, authLoading } = useAuth()
+  const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, signOut, syncing, authLoading } = useAuth()
   const shareTarget = useShareTarget()
 
   const [filters, setFilters] = useState(DEFAULT_FILTERS)
@@ -196,6 +197,12 @@ export default function App() {
         </div>
       )}
 
+      {!isShareView && user && (
+        <div className="mb-5">
+          <TradePanel />
+        </div>
+      )}
+
       <div className="mb-5">
         <Toolbar filters={filters} setFilters={setFilters} themeStats={themeStats} />
       </div>
@@ -249,6 +256,8 @@ export default function App() {
           onClose={() => setDetailType(null)}
           onToggleOwned={setOwned}
           onToggleMastered={setMastered}
+          onToggleTrade={setForTrade}
+          onToggleWanted={setWanted}
           readOnly={readOnly}
         />
       )}

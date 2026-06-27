@@ -105,6 +105,62 @@ function roundRect(ctx, x, y, w, h, r) {
   ctx.closePath()
 }
 
+// A trade card: "For trade" column + "Looking for" column, with the gamertag
+// and creator code. `haves`/`wants` are arrays of {label, accent}.
+export function generateTradeImage({ gamertag, haves, wants }) {
+  const W = 1000
+  const pad = 50
+  const colW = (W - pad * 3) / 2
+  const rowH = 40
+  const rows = Math.max(haves.length, wants.length, 1)
+  const H = 200 + rows * rowH + 70
+
+  const canvas = document.createElement('canvas')
+  canvas.width = W
+  canvas.height = H
+  const ctx = canvas.getContext('2d')
+  const bg = ctx.createLinearGradient(0, 0, W, H)
+  bg.addColorStop(0, '#0c0f1a')
+  bg.addColorStop(1, '#161b2e')
+  ctx.fillStyle = bg
+  ctx.fillRect(0, 0, W, H)
+
+  ctx.fillStyle = '#fff'
+  ctx.font = '700 44px Inter, sans-serif'
+  ctx.fillText(gamertag ? `${gamertag} — Trades` : 'Sprite Trades', pad, 78)
+
+  const drawCol = (x, title, color, items) => {
+    ctx.fillStyle = color
+    ctx.font = '700 24px Inter, sans-serif'
+    ctx.fillText(title, x, 138)
+    ctx.font = '600 22px Inter, sans-serif'
+    if (!items.length) {
+      ctx.fillStyle = '#95a0c4'
+      ctx.fillText('—', x, 138 + rowH)
+    }
+    items.forEach((it, i) => {
+      const y = 138 + (i + 1) * rowH
+      ctx.fillStyle = it.accent || '#888'
+      roundRect(ctx, x, y - 18, 12, 12, 3)
+      ctx.fill()
+      ctx.fillStyle = '#eaf0ff'
+      ctx.fillText(it.label, x + 22, y - 6)
+    })
+  }
+  drawCol(pad, '⇄ FOR TRADE', '#34d399', haves)
+  drawCol(pad * 2 + colW, '♥ LOOKING FOR', '#f472b6', wants)
+
+  ctx.fillStyle = '#36c5ff'
+  ctx.font = '700 22px Inter, sans-serif'
+  const code = `Creator Code: ${CREATOR_CODE.toUpperCase()}`
+  ctx.fillText(code, pad, H - 26)
+  ctx.fillStyle = '#95a0c4'
+  ctx.font = '600 20px Inter, sans-serif'
+  ctx.fillText('fn sprite tracker', W - pad - ctx.measureText('fn sprite tracker').width, H - 26)
+
+  return canvas.toDataURL('image/png')
+}
+
 export function downloadDataUrl(dataUrl, filename) {
   const a = document.createElement('a')
   a.href = dataUrl

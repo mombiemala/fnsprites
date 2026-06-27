@@ -4,6 +4,7 @@ import { rowsToMap } from '../lib/sharedCollection'
 import { AuthContext } from './authStore'
 
 const LOCAL_KEY = 'fnsprites.tracking'
+const EMPTY = { owned: false, mastered: false, forTrade: false, wanted: false }
 
 function loadLocal() {
   try {
@@ -71,9 +72,14 @@ export function AuthProvider({ children }) {
           const cloud = cloudMap[spriteId]
           const owned = !!v.owned || !!cloud?.owned
           const mastered = !!v.mastered || !!cloud?.mastered
-          if (owned !== !!cloud?.owned || mastered !== !!cloud?.mastered) {
-            cloudMap[spriteId] = { owned, mastered }
-            toUpsert.push({ user_id: user.id, sprite_id: spriteId, owned, mastered })
+          const forTrade = !!v.forTrade || !!cloud?.forTrade
+          const wanted = !!v.wanted || !!cloud?.wanted
+          if (
+            owned !== !!cloud?.owned || mastered !== !!cloud?.mastered ||
+            forTrade !== !!cloud?.forTrade || wanted !== !!cloud?.wanted
+          ) {
+            cloudMap[spriteId] = { owned, mastered, forTrade, wanted }
+            toUpsert.push({ user_id: user.id, sprite_id: spriteId, owned, mastered, for_trade: forTrade, wanted })
           }
         }
         if (toUpsert.length) {
@@ -93,45 +99,42 @@ export function AuthProvider({ children }) {
     }
   }, [user])
 
-  // Persist one sprite's state. Optimistic local update + cloud upsert if signed in.
-  const persistEntry = useCallback(
-    async (spriteId, entry) => {
+  // Merge a patch into a sprite's state, enforce invariants, persist locally,
+  // and upsert to the cloud when signed in.
+  const update = useCallback(
+    (spriteId, patch) => {
+      const cur = tracking[spriteId] || EMPTY
+      let entry = { ...cur, ...patch }
+      // Invariants: mastering/trading a sprite implies you own it; losing
+      // ownership clears mastery and trade-availability.
+      if (entry.mastered) entry.owned = true
+      if (entry.forTrade) entry.owned = true
+      if (!entry.owned) entry = { ...entry, owned: false, mastered: false, forTrade: false }
+
       setTracking((prev) => {
         const next = { ...prev, [spriteId]: entry }
         saveLocal(next)
         return next
       })
       if (user) {
-        await supabase.from('sprite_progress').upsert({
+        supabase.from('sprite_progress').upsert({
           user_id: user.id,
           sprite_id: spriteId,
           owned: entry.owned,
           mastered: entry.mastered,
+          for_trade: entry.forTrade,
+          wanted: entry.wanted,
           updated_at: new Date().toISOString(),
         })
       }
     },
-    [user]
+    [tracking, user]
   )
 
-  const setOwned = useCallback(
-    (spriteId, owned) => {
-      const cur = tracking[spriteId] || { owned: false, mastered: false }
-      const entry = { owned, mastered: owned ? cur.mastered : false }
-      persistEntry(spriteId, entry)
-    },
-    [tracking, persistEntry]
-  )
-
-  const setMastered = useCallback(
-    (spriteId, mastered) => {
-      const cur = tracking[spriteId] || { owned: false, mastered: false }
-      // Mastering implies ownership.
-      const entry = { owned: mastered ? true : cur.owned, mastered }
-      persistEntry(spriteId, entry)
-    },
-    [tracking, persistEntry]
-  )
+  const setOwned = useCallback((id, owned) => update(id, { owned }), [update])
+  const setMastered = useCallback((id, mastered) => update(id, { mastered }), [update])
+  const setForTrade = useCallback((id, forTrade) => update(id, { forTrade }), [update])
+  const setWanted = useCallback((id, wanted) => update(id, { wanted }), [update])
 
   // --- Auth actions ---
   const signUp = useCallback(async (email, password) => {
@@ -167,6 +170,14 @@ export function AuthProvider({ children }) {
     [user]
   )
 
+  // Two-way trade matches among public collections (Postgres RPC).
+  const findTradeMatches = useCallback(async () => {
+    if (!user) return []
+    const { data, error } = await supabase.rpc('find_trade_matches', { target: user.id })
+    if (error) return []
+    return data || []
+  }, [user])
+
   const value = {
     session,
     user,
@@ -176,6 +187,9 @@ export function AuthProvider({ children }) {
     syncing,
     setOwned,
     setMastered,
+    setForTrade,
+    setWanted,
+    findTradeMatches,
     signUp,
     signIn,
     signOut,

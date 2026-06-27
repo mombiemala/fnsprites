@@ -4,7 +4,12 @@ import { supabase } from './supabase'
 export function rowsToMap(rows) {
   const map = {}
   for (const r of rows || []) {
-    map[r.sprite_id] = { owned: !!r.owned, mastered: !!r.mastered }
+    map[r.sprite_id] = {
+      owned: !!r.owned,
+      mastered: !!r.mastered,
+      forTrade: !!r.for_trade,
+      wanted: !!r.wanted,
+    }
   }
   return map
 }
