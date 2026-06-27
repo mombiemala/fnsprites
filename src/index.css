@@ -174,6 +174,26 @@
   }
 }
 
+/* Save-status pill: slide up + hold, then fade away after a save completes */
+@keyframes savePop {
+  0% {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  12%,
+  70% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+.animate-save-pop {
+  animation: savePop 1.6s ease forwards;
+}
+
 /* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,

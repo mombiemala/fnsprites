@@ -20,6 +20,7 @@ import MapView from './components/MapView'
 import OnboardingHint from './components/OnboardingHint'
 import BugReportModal from './components/BugReportModal'
 import AboutModal from './components/AboutModal'
+import SaveStatusPill from './components/SaveStatusPill'
 import { LINKS } from './lib/supabase'
 
 const TABS = [
@@ -372,6 +373,8 @@ export default function App() {
           Drop rates are community estimates. Built with React, Vite &amp; Supabase.
         </p>
       </footer>
+
+      {!isShareView && <SaveStatusPill />}
 
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
       {showBug && <BugReportModal onClose={() => setShowBug(false)} />}
