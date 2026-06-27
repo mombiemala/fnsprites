@@ -3,6 +3,7 @@ import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 import { useEscClose } from '../lib/useEscClose'
 import { submitBugReport } from '../lib/bugReport'
+import { LINKS } from '../lib/supabase'
 
 export default function BugReportModal({ onClose }) {
   useEscClose(onClose)
@@ -16,14 +17,14 @@ export default function BugReportModal({ onClose }) {
     e.preventDefault()
     if (!message.trim()) return
     setBusy(true)
-    const res = await submitBugReport({ message: message.trim(), contact: contact.trim(), userId: user?.id })
+    // Save a backup copy to Supabase (best-effort), then open the user's email
+    // app pre-filled so the report lands in the maker's inbox.
+    submitBugReport({ message: message.trim(), contact: contact.trim(), userId: user?.id }).catch(() => {})
+    const body = `${message.trim()}\n\n---\nFrom: ${contact.trim() || 'anonymous'}\nPage: ${window.location.href}`
+    window.location.href = `mailto:${LINKS.reportEmail}?subject=${encodeURIComponent('FN Sprite Tracker — Bug report')}&body=${encodeURIComponent(body)}`
     setBusy(false)
-    if (res.error) {
-      toast('Could not send report — please try again', 'error')
-    } else {
-      toast('Thanks! Your report was sent 🙏')
-      onClose()
-    }
+    toast('Opening your email app to send the report 🙏')
+    onClose()
   }
 
   return (

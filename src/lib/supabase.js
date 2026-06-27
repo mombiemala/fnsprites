@@ -20,7 +20,8 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
 // Creator code for supporting the maker of this tracker
 export const CREATOR_CODE = 'mombie'
 
-// Maker links. Update BUY_ME_A_COFFEE to your exact Buy Me a Coffee URL.
+// Maker links. `reportEmail` is where bug reports are sent (change anytime).
 export const LINKS = {
-  buyMeACoffee: 'https://buymeacoffee.com/mombie',
+  buyMeACoffee: 'https://buymeacoffee.com/kamalathedesigner',
+  reportEmail: 'dontbemad@gmail.com',
 }
