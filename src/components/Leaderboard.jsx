@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../context/authStore'
 import Tooltip from './Tooltip'
+import CompareModal from './CompareModal'
 
 const MEDALS = ['🥇', '🥈', '🥉']
 
@@ -8,6 +9,7 @@ export default function Leaderboard() {
   const { user, fetchLeaderboard } = useAuth()
   const [rows, setRows] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [compare, setCompare] = useState(null)
 
   const load = async () => {
     setLoading(true)
@@ -61,13 +63,30 @@ export default function Leaderboard() {
                   <a href={`?u=${r.user_id}`} className="flex-1 truncate font-bold text-white hover:text-[var(--brand)]">
                     {r.gamertag || 'Anonymous'}{me && <span className="ml-1 text-[10px] text-[var(--brand)]">you</span>}
                   </a>
-                  <span className="shrink-0 text-[11px] text-[var(--muted)]">{r.owned} owned · {r.mastered}★</span>
+                  {user && !me && (
+                    <button
+                      onClick={() => setCompare({ userId: r.user_id, gamertag: r.gamertag })}
+                      title={`Compare your collection with ${r.gamertag || 'this player'}`}
+                      className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]"
+                    >
+                      ⚖ Compare
+                    </button>
+                  )}
+                  <span className="hidden shrink-0 text-[11px] text-[var(--muted)] sm:inline">{r.owned} owned · {r.mastered}★</span>
                   <span className="w-16 shrink-0 text-right font-display text-base text-[var(--brand)]">{Math.round(r.score)}</span>
                 </div>
               )
             })}
           </div>
         )
+      )}
+
+      {compare && (
+        <CompareModal
+          userId={compare.userId}
+          gamertag={compare.gamertag}
+          onClose={() => setCompare(null)}
+        />
       )}
     </div>
   )
