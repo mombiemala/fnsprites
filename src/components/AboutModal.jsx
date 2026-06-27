@@ -1,16 +1,13 @@
 import { CREATOR_CODE, LINKS } from '../lib/supabase'
 import { useEscClose } from '../lib/useEscClose'
 
-// Edit this blurb anytime — it's just a friendly starter.
-const BIO = `Hey, I'm mombie 👋
-
-I'm a Fortnite player who got *way* too into collecting sprites — chasing every
-Gold, Gummy, Galaxy and Mythic — so I built this tracker to help the community
-keep tabs on their collection, find trades, and flex their score.
-
-It's a free, fan-made labour of love that I keep updated each season. If it
-helps you complete your set, supporting with Creator Code MOMBIE or a coffee
-keeps it free for everyone. Thanks for being here! 🎮💜`
+// Edit this blurb anytime — it's just a friendly starter. Each array item is
+// one paragraph; keep each on a single line so it wraps naturally on screen.
+const BIO = [
+  "Hey, I'm mombie 👋",
+  "I'm a Fortnite player who got way too into collecting sprites — chasing every Gold, Gummy, Galaxy and Mythic — so I built this tracker to help the community keep tabs on their collection, find trades, and flex their score.",
+  "It's a free, fan-made labour of love that I keep updated each season. If it helps you complete your set, supporting with Creator Code MOMBIE or a coffee keeps it free for everyone. Thanks for being here! 🎮💜",
+]
 
 export default function AboutModal({ onClose }) {
   useEscClose(onClose)
@@ -27,7 +24,11 @@ export default function AboutModal({ onClose }) {
           <h2 className="font-display text-2xl text-white">About</h2>
           <button onClick={onClose} aria-label="Close" className="text-[var(--muted)] hover:text-white">✕</button>
         </div>
-        <p className="whitespace-pre-line text-sm leading-relaxed text-[var(--text)]/90">{BIO}</p>
+        <div className="space-y-2 text-sm leading-relaxed text-[var(--text)]/90">
+          {BIO.map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
+        </div>
 
         <div className="mt-4 rounded-xl bg-[var(--bg-2)] p-3 text-sm">
           <p className="text-[var(--text)]/90">

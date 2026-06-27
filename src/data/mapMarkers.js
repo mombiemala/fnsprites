@@ -1,44 +1,38 @@
-// Current Fortnite map (loaded live from a public API at runtime) + overlay
-// marker layers. Marker coords are percentages (0–100) over the square map
-// image. These are COMMUNITY-SOURCED and approximate — POIs and especially
-// sprite-chest/fishing-pond spots shift each update, so treat as a quick
-// reference and use the full interactive map (fortnite.gg/map) for precision.
+// Map configuration. The POI layer is pulled LIVE from the public Fortnite map
+// API at runtime (see lib/livePois.js) so it stays current each season with no
+// manual entry; FALLBACK_POIS below is only used if that fetch fails.
+//
+// Chest / fishing / pond markers are COMMUNITY-SOURCED — players submit and
+// confirm them (stored in Supabase). There is no open dataset for those, so
+// crowd-sourcing is the sustainable, self-updating path.
 export const MAP_IMAGE = 'https://fortnite-api.com/images/map.png'
 export const MAP_LINK = 'https://fortnite.gg/map'
 
-export const LAYERS = [
-  {
-    id: 'pois',
-    label: 'POIs',
-    color: '#ffffff',
-    markers: [
-      { x: 34, y: 28, label: 'Cluster Coast' },
-      { x: 52, y: 50, label: 'The Zero Point' },
-      { x: 68, y: 64, label: 'Heatwave Harbor' },
-    ],
-  },
-  {
-    id: 'chests',
-    label: 'Sprite Chests',
-    color: '#36c5ff',
-    note: 'Sprite Chests are the main source of rare sprites (incl. Grim Reaper).',
-    markers: [
-      { x: 50, y: 48, label: 'Zero Point — central spawns (approx)' },
-      { x: 36, y: 30, label: 'Cluster Coast — coastal chests (approx)' },
-    ],
-  },
-  {
-    id: 'ponds',
-    label: 'Gold Fishing Ponds',
-    color: '#f6c945',
-    note: 'Gold ponds have a higher chance of rare fishing rewards.',
-    markers: [{ x: 66, y: 66, label: 'Heatwave Harbor — harbor pond (approx)' }],
-  },
-  {
-    id: 'paths',
-    label: 'Runner Paths',
-    color: '#a855f7',
-    note: 'Fast loops for sprite hunting between chest clusters.',
-    markers: [],
-  },
+// The community-marker layers. `pois` is handled separately (live).
+export const KINDS = [
+  { id: 'sprite_chest', label: 'Sprite Chests', color: '#36c5ff', emoji: '✨', note: 'Main source of rare sprites (incl. Grim Reaper).' },
+  { id: 'chest', label: 'Chests', color: '#7CFC9B', emoji: '📦', note: 'Regular loot chests.' },
+  { id: 'fishing', label: 'Fishing Spots', color: '#5BB8FF', emoji: '🎣', note: 'Fishing holes.' },
+  { id: 'gold_pond', label: 'Gold Ponds', color: '#f6c945', emoji: '🟡', note: 'Higher chance of rare fishing rewards.' },
+  { id: 'path', label: 'Runner Paths', color: '#a855f7', emoji: '🏃', note: 'Fast loops between chest clusters.' },
+]
+
+export const KIND_MAP = Object.fromEntries(KINDS.map((k) => [k.id, k]))
+
+// Curated current-season POIs (Shattered Coast, Ch7 S3). Approximate positions —
+// only used if the live POI fetch fails. Names are accurate to the season.
+export const FALLBACK_POIS = [
+  { label: 'Wonkeeland', x: 30, y: 30 },
+  { label: 'Latte Landing', x: 44, y: 24 },
+  { label: 'Lifty Lodge', x: 58, y: 22 },
+  { label: 'Battlewoods', x: 70, y: 30 },
+  { label: 'Sinister Strip', x: 50, y: 44 },
+  { label: 'Shaken Sanctuary', x: 34, y: 50 },
+  { label: 'Cluster Coast', x: 22, y: 44 },
+  { label: 'Frosted Flats', x: 64, y: 50 },
+  { label: 'Golden Grove', x: 76, y: 52 },
+  { label: 'Sunken Shores', x: 28, y: 66 },
+  { label: 'Heatwave Harbor', x: 50, y: 70 },
+  { label: 'Calamari Canyon', x: 66, y: 70 },
+  { label: 'Chopped Shop', x: 42, y: 60 },
 ]
