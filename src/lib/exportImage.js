@@ -1,96 +1,129 @@
 import { ALL_SPRITES, RARITY_COLORS } from '../data/sprites'
-import { THEME_MAP } from '../data/themes'
 import { CREATOR_CODE } from './supabase'
 
-// Renders a shareable collection mosaic to a PNG data URL using <canvas>.
-// `mode` = 'collection' (owned highlighted) or 'missing' (missing highlighted).
-export function generateCollectionImage({ gamertag, tracking, mode = 'collection' }) {
+function loadImage(src) {
+  return new Promise((resolve) => {
+    const img = new Image()
+    img.onload = () => resolve(img)
+    img.onerror = () => resolve(null)
+    img.src = src
+  })
+}
+
+// Renders a shareable PNG mosaic of real sprite thumbnails (async — loads the
+// sprite images first). `mode` = 'collection' (whole set; owned bright, missing
+// dimmed) or 'missing' (only the released sprites you don't own yet).
+export async function generateCollectionImage({ gamertag, tracking, mode = 'collection' }) {
+  const released = ALL_SPRITES.filter((s) => s.released)
+  const ownedTotal = released.filter((s) => tracking[s.id]?.owned).length
+  const masteredTotal = released.filter((s) => tracking[s.id]?.mastered).length
+  const total = released.length
+
+  const items =
+    mode === 'missing' ? released.filter((s) => !tracking[s.id]?.owned) : released
+
   const W = 1200
   const pad = 64
-  const cols = 16
+  const cols = 12
   const cell = Math.floor((W - pad * 2) / cols)
-  const rows = Math.ceil(ALL_SPRITES.length / cols)
-  const gridTop = 250
-  const H = gridTop + rows * cell + 90
+  const gridTop = 230
+  const rows = Math.max(1, Math.ceil(items.length / cols))
+  const H = gridTop + rows * cell + 80
 
   const canvas = document.createElement('canvas')
   canvas.width = W
   canvas.height = H
   const ctx = canvas.getContext('2d')
 
-  // Background
   const bg = ctx.createLinearGradient(0, 0, W, H)
   bg.addColorStop(0, '#0c0f1a')
   bg.addColorStop(1, '#161b2e')
   ctx.fillStyle = bg
   ctx.fillRect(0, 0, W, H)
 
-  const owned = ALL_SPRITES.filter((s) => tracking[s.id]?.owned).length
-  const mastered = ALL_SPRITES.filter((s) => tracking[s.id]?.mastered).length
-  const total = ALL_SPRITES.length
-
   // Header
   ctx.fillStyle = '#ffffff'
   ctx.font = '700 52px Inter, sans-serif'
-  ctx.fillText(gamertag ? `${gamertag}'s Sprites` : 'My Sprite Collection', pad, 92)
+  const title = mode === 'missing'
+    ? gamertag ? `${gamertag} — Missing Sprites` : 'Missing Sprites'
+    : gamertag ? `${gamertag}'s Sprites` : 'My Sprite Collection'
+  ctx.fillText(title, pad, 86)
 
   ctx.font = '600 26px Inter, sans-serif'
-  ctx.fillStyle = '#36c5ff'
-  ctx.fillText(`Collection ${owned}/${total} · ${Math.round((owned / total) * 100)}%`, pad, 140)
-  ctx.fillStyle = '#ffd23f'
-  ctx.fillText(`Mastery ${mastered}/${total} · ${Math.round((mastered / total) * 100)}%`, pad + 420, 140)
+  if (mode === 'missing') {
+    ctx.fillStyle = '#f472b6'
+    ctx.fillText(`${items.length} still needed of ${total}`, pad, 134)
+  } else {
+    ctx.fillStyle = '#36c5ff'
+    ctx.fillText(`Collection ${ownedTotal}/${total} · ${Math.round((ownedTotal / total) * 100)}%`, pad, 134)
+    ctx.fillStyle = '#ffd23f'
+    ctx.fillText(`Mastery ${masteredTotal}/${total} · ${Math.round((masteredTotal / total) * 100)}%`, pad + 420, 134)
+  }
 
-  // Progress bar
-  const barY = 168
-  const barW = W - pad * 2
-  ctx.fillStyle = '#222a45'
-  roundRect(ctx, pad, barY, barW, 16, 8)
-  ctx.fill()
-  const grad = ctx.createLinearGradient(pad, 0, pad + barW, 0)
-  grad.addColorStop(0, '#36c5ff')
-  grad.addColorStop(1, '#7b61ff')
-  ctx.fillStyle = grad
-  roundRect(ctx, pad, barY, Math.max(8, (owned / total) * barW), 16, 8)
-  ctx.fill()
+  // Progress bar (collection only)
+  if (mode !== 'missing') {
+    const barY = 162
+    const barW = W - pad * 2
+    ctx.fillStyle = '#222a45'
+    roundRect(ctx, pad, barY, barW, 14, 7)
+    ctx.fill()
+    const grad = ctx.createLinearGradient(pad, 0, pad + barW, 0)
+    grad.addColorStop(0, '#36c5ff')
+    grad.addColorStop(1, '#7b61ff')
+    ctx.fillStyle = grad
+    roundRect(ctx, pad, barY, Math.max(8, (ownedTotal / total) * barW), 14, 7)
+    ctx.fill()
+  }
 
-  // Grid of every variant
-  ALL_SPRITES.forEach((s, i) => {
+  // Preload thumbnails
+  const imgs = await Promise.all(items.map((s) => loadImage(s.image)))
+
+  items.forEach((s, i) => {
     const x = pad + (i % cols) * cell
     const y = gridTop + Math.floor(i / cols) * cell
-    const theme = THEME_MAP[s.themeId]
     const isOwned = !!tracking[s.id]?.owned
     const isMastered = !!tracking[s.id]?.mastered
-    const highlight = mode === 'missing' ? !isOwned && s.released : isOwned
+    const dim = mode === 'collection' && !isOwned
 
+    // cell backdrop
     ctx.save()
-    roundRect(ctx, x + 3, y + 3, cell - 6, cell - 6, 8)
-    if (highlight) {
-      ctx.fillStyle = theme?.accent || '#888'
-    } else {
-      ctx.fillStyle = '#1a2036'
-    }
+    roundRect(ctx, x + 3, y + 3, cell - 6, cell - 6, 10)
+    ctx.fillStyle = '#161b2e'
     ctx.fill()
+    ctx.restore()
+
+    const img = imgs[i]
+    if (img) {
+      ctx.save()
+      if (dim) ctx.filter = 'grayscale(1) brightness(0.5)'
+      ctx.globalAlpha = dim ? 0.55 : 1
+      ctx.drawImage(img, x + 6, y + 6, cell - 12, cell - 12)
+      ctx.restore()
+    }
+    // mastery ring
     if (isMastered) {
+      ctx.save()
+      roundRect(ctx, x + 4, y + 4, cell - 8, cell - 8, 9)
       ctx.lineWidth = 3
       ctx.strokeStyle = '#ffd23f'
       ctx.stroke()
+      ctx.restore()
     }
     // rarity dot
     ctx.beginPath()
-    ctx.arc(x + cell - 12, y + 12, 3.5, 0, Math.PI * 2)
+    ctx.arc(x + cell - 13, y + 14, 4, 0, Math.PI * 2)
     ctx.fillStyle = RARITY_COLORS[s.rarity] || '#888'
     ctx.fill()
-    ctx.restore()
   })
 
   // Footer — creator code
   ctx.fillStyle = '#95a0c4'
   ctx.font = '600 24px Inter, sans-serif'
-  ctx.fillText('fn sprite tracker', pad, H - 32)
+  ctx.fillText('fn sprite tracker', pad, H - 28)
   ctx.fillStyle = '#36c5ff'
   ctx.font = '700 24px Inter, sans-serif'
   const code = `Support Creator Code: ${CREATOR_CODE.toUpperCase()}`
-  ctx.fillText(code, W - pad - ctx.measureText(code).width, H - 32)
+  ctx.fillText(code, W - pad - ctx.measureText(code).width, H - 28)
 
   return canvas.toDataURL('image/png')
 }

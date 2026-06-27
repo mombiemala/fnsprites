@@ -42,7 +42,7 @@ function useShareTarget() {
 }
 
 export default function App() {
-  const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, bulkOwn, signOut, syncing, authLoading } = useAuth()
+  const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, signOut, syncing, authLoading } = useAuth()
   const shareTarget = useShareTarget()
 
   const [filters, setFilters] = useState(DEFAULT_FILTERS)
@@ -135,9 +135,15 @@ export default function App() {
   const gamertag = isShareView ? shared?.profile?.gamertag : profile?.gamertag
   const effectiveView = isShareView ? 'collection' : view
 
-  const exportImage = (mode) => {
-    const url = generateCollectionImage({ gamertag, tracking: activeTracking, mode })
-    downloadDataUrl(url, `fn-sprites-${mode}.png`)
+  const [exporting, setExporting] = useState(false)
+  const exportImage = async (mode) => {
+    setExporting(true)
+    try {
+      const url = await generateCollectionImage({ gamertag, tracking: activeTracking, mode })
+      downloadDataUrl(url, `fn-sprites-${mode}.png`)
+    } finally {
+      setExporting(false)
+    }
   }
 
   return (
@@ -219,25 +225,24 @@ export default function App() {
         <StatsBreakdown tracking={activeTracking} />
       </div>
 
-      {/* Export + bulk actions */}
+      {/* Export images */}
       <div className="mb-5 flex flex-wrap gap-2">
-        <button onClick={() => exportImage('collection')} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
-          📸 Collection image
+        <button
+          onClick={() => exportImage('collection')}
+          disabled={exporting}
+          title="Download a shareable image of your whole collection (owned sprites in full colour, missing dimmed)"
+          className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
+        >
+          {exporting ? 'Rendering…' : '📸 Collection image'}
         </button>
-        <button onClick={() => exportImage('missing')} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
-          🔍 Missing-sprites image
+        <button
+          onClick={() => exportImage('missing')}
+          disabled={exporting}
+          title="Download an image of just the sprites you still need — handy for trades"
+          className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
+        >
+          {exporting ? 'Rendering…' : '🔍 Missing-sprites image'}
         </button>
-        {!isShareView && (
-          <button
-            onClick={() => {
-              const ids = visible.filter((s) => s.released).map((s) => s.id)
-              if (ids.length && window.confirm(`Mark all ${ids.length} shown sprites as owned?`)) bulkOwn(ids, true)
-            }}
-            className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]"
-          >
-            ✓ Own all shown
-          </button>
-        )}
       </div>
 
       {!isShareView && (

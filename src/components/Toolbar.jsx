@@ -25,11 +25,13 @@ export default function Toolbar({ filters, setFilters, themeStats }) {
           value={filters.search}
           onChange={(e) => set({ search: e.target.value })}
           placeholder="Search sprites…"
+          title="Search by sprite name, theme, or rarity"
           className="min-w-[180px] flex-1 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-sm text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)]"
         />
         <select
           value={filters.ownership}
           onChange={(e) => set({ ownership: e.target.value })}
+          title="Filter by ownership"
           className="rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-sm text-white outline-none focus:border-[var(--brand)]"
         >
           <option value="all">All</option>
