@@ -1,16 +1,19 @@
 import { useState } from 'react'
 import { CREATOR_CODE } from '../lib/supabase'
+import { useToast } from '../context/toastStore'
 
 export default function SupportBanner() {
   const [copied, setCopied] = useState(false)
+  const { toast } = useToast()
 
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(CREATOR_CODE)
       setCopied(true)
+      toast(`Creator code ${CREATOR_CODE.toUpperCase()} copied — thank you! 💜`)
       setTimeout(() => setCopied(false), 1500)
     } catch {
-      /* clipboard unavailable */
+      toast('Could not copy — long-press to copy manually', 'error')
     }
   }
 

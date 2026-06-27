@@ -1,8 +1,11 @@
 import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
+import Tooltip from './Tooltip'
+import { useEscClose } from '../lib/useEscClose'
 
 export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, onToggleTrade, onToggleWanted, readOnly }) {
+  useEscClose(onClose)
   const type = SPRITE_TYPES.find((t) => t.id === typeId)
   if (!type) return null
   const variants = ALL_SPRITES.filter((s) => s.typeId === typeId)
@@ -11,6 +14,9 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4 backdrop-blur-sm" onClick={onClose}>
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${type.name} details`}
         className="max-h-[88vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-5 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
@@ -76,33 +82,42 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                 </div>
                 {!readOnly ? (
                   <div className="flex shrink-0 gap-1">
-                    <button
-                      onClick={() => onToggleOwned(v.id, !owned)}
-                      className={`rounded-lg px-2.5 py-1.5 text-[11px] font-bold ${owned ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
-                    >
-                      {owned ? 'Owned' : 'Have'}
-                    </button>
-                    <button
-                      onClick={() => onToggleMastered(v.id, !mastered)}
-                      title="Mastered"
-                      className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${mastered ? 'bg-amber-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
-                    >
-                      ★
-                    </button>
-                    <button
-                      onClick={() => onToggleTrade(v.id, !forTrade)}
-                      title="Have a duplicate to trade"
-                      className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${forTrade ? 'bg-emerald-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
-                    >
-                      ⇄
-                    </button>
-                    <button
-                      onClick={() => onToggleWanted(v.id, !wanted)}
-                      title="Want this one"
-                      className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${wanted ? 'bg-pink-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
-                    >
-                      ♥
-                    </button>
+                    <Tooltip content={owned ? 'You own this — tap to unmark' : 'Mark as owned'}>
+                      <button
+                        onClick={() => onToggleOwned(v.id, !owned)}
+                        aria-label={owned ? 'Owned' : 'Mark owned'}
+                        className={`rounded-lg px-2.5 py-1.5 text-[11px] font-bold ${owned ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                      >
+                        {owned ? 'Owned' : 'Have'}
+                      </button>
+                    </Tooltip>
+                    <Tooltip content="Mastered (max level)">
+                      <button
+                        onClick={() => onToggleMastered(v.id, !mastered)}
+                        aria-label="Mastered"
+                        className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${mastered ? 'bg-amber-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                      >
+                        ★
+                      </button>
+                    </Tooltip>
+                    <Tooltip content="I have a duplicate to trade">
+                      <button
+                        onClick={() => onToggleTrade(v.id, !forTrade)}
+                        aria-label="For trade"
+                        className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${forTrade ? 'bg-emerald-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                      >
+                        ⇄
+                      </button>
+                    </Tooltip>
+                    <Tooltip content="I want this one">
+                      <button
+                        onClick={() => onToggleWanted(v.id, !wanted)}
+                        aria-label="Wanted"
+                        className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${wanted ? 'bg-pink-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                      >
+                        ♥
+                      </button>
+                    </Tooltip>
                   </div>
                 ) : (
                   <div className="flex shrink-0 items-center gap-1">

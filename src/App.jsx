@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from 'react'
 import { useAuth } from './context/authStore'
+import { useToast } from './context/toastStore'
 import { fetchSharedCollection } from './lib/sharedCollection'
 import { ALL_SPRITES, TOTAL_COUNT, RELEASED_COUNT, SPRITE_TYPES, RARITY_ORDER } from './data/sprites'
 import { THEMES, THEME_MAP } from './data/themes'
@@ -16,6 +17,7 @@ import StatsBreakdown from './components/StatsBreakdown'
 import Leaderboard from './components/Leaderboard'
 import NewsFeed from './components/NewsFeed'
 import MapView from './components/MapView'
+import OnboardingHint from './components/OnboardingHint'
 
 const TABS = [
   { id: 'collection', label: 'Collection' },
@@ -43,6 +45,7 @@ function useShareTarget() {
 
 export default function App() {
   const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, signOut, syncing, authLoading } = useAuth()
+  const { toast } = useToast()
   const shareTarget = useShareTarget()
 
   const [filters, setFilters] = useState(DEFAULT_FILTERS)
@@ -134,6 +137,10 @@ export default function App() {
 
   const gamertag = isShareView ? shared?.profile?.gamertag : profile?.gamertag
   const effectiveView = isShareView ? 'collection' : view
+  const hasActiveFilters = useMemo(
+    () => JSON.stringify(filters) !== JSON.stringify(DEFAULT_FILTERS),
+    [filters]
+  )
 
   const [exporting, setExporting] = useState(false)
   const exportImage = async (mode) => {
@@ -141,6 +148,7 @@ export default function App() {
     try {
       const url = await generateCollectionImage({ gamertag, tracking: activeTracking, mode })
       downloadDataUrl(url, `fn-sprites-${mode}.png`)
+      toast(mode === 'missing' ? 'Missing-sprites image downloaded' : 'Collection image downloaded')
     } finally {
       setExporting(false)
     }
@@ -178,10 +186,12 @@ export default function App() {
       </header>
 
       {!isShareView && (
-        <nav className="mb-5 flex flex-wrap gap-1.5" aria-label="Sections">
+        <nav className="mb-5 flex flex-wrap gap-1.5" role="tablist" aria-label="Sections">
           {TABS.map((t) => (
             <button
               key={t.id}
+              role="tab"
+              aria-selected={view === t.id}
               onClick={() => setView(t.id)}
               className={`rounded-xl px-3 py-2 text-xs font-bold transition-colors ${
                 view === t.id ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
@@ -199,6 +209,7 @@ export default function App() {
 
       {effectiveView === 'collection' && (
         <>
+      {!isShareView && <OnboardingHint />}
       {isShareView && (
         <div className="mb-4 rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-4">
           {shareLoading ? (
@@ -267,11 +278,25 @@ export default function App() {
         </div>
       )}
 
-      <div className="mb-5">
-        <Toolbar filters={filters} setFilters={setFilters} themeStats={themeStats} />
+      <div className="sticky top-0 z-30 -mx-4 mb-5 border-b border-[var(--border)] bg-[#0c0f1a]/85 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">
+        <Toolbar
+          filters={filters}
+          setFilters={setFilters}
+          themeStats={themeStats}
+          count={visible.length}
+          total={filters.showUnreleased ? TOTAL_COUNT : RELEASED_COUNT}
+          hasActiveFilters={hasActiveFilters}
+          onClear={() => setFilters(DEFAULT_FILTERS)}
+        />
       </div>
 
-      {visible.length === 0 ? (
+      {isShareView && shareLoading ? (
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {Array.from({ length: 18 }).map((_, i) => (
+            <div key={i} className="h-44 animate-pulse rounded-2xl bg-[var(--panel)]" />
+          ))}
+        </div>
+      ) : visible.length === 0 ? (
         <p className="py-16 text-center text-sm text-[var(--muted)]">No sprites match your filters.</p>
       ) : (
         groups.map((g) => (

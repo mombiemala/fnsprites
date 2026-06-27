@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useAuth } from '../context/authStore'
+import { useToast } from '../context/toastStore'
 import { ALL_SPRITES } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import { generateTradeImage, downloadDataUrl } from '../lib/exportImage'
@@ -29,6 +30,7 @@ function Chips({ ids, empty }) {
 
 export default function TradePanel() {
   const { user, profile, tracking, findTradeMatches } = useAuth()
+  const { toast } = useToast()
   const [matches, setMatches] = useState(null)
   const [loading, setLoading] = useState(false)
 
@@ -50,6 +52,7 @@ export default function TradePanel() {
       wants: wants.map((id) => ({ label: label(id), accent: accent(id) })),
     })
     downloadDataUrl(url, 'fn-sprite-trades.png')
+    toast('Trade card downloaded')
   }
 
   return (

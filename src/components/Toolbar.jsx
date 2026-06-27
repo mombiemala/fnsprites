@@ -1,5 +1,6 @@
 import { THEMES } from '../data/themes'
 import { RARITY_ORDER } from '../data/sprites'
+import Tooltip from './Tooltip'
 
 function Chip({ active, onClick, children, color }) {
   return (
@@ -15,11 +16,21 @@ function Chip({ active, onClick, children, color }) {
   )
 }
 
-export default function Toolbar({ filters, setFilters, themeStats }) {
+export default function Toolbar({ filters, setFilters, themeStats, count, total, onClear, hasActiveFilters }) {
   const set = (patch) => setFilters((f) => ({ ...f, ...patch }))
 
   return (
     <div className="flex flex-col gap-3">
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-xs font-semibold text-[var(--muted)]">
+          Showing <span className="text-white">{count}</span>{typeof total === 'number' ? ` of ${total}` : ''} sprites
+        </span>
+        {hasActiveFilters && (
+          <button onClick={onClear} className="rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">
+            ✕ Clear filters
+          </button>
+        )}
+      </div>
       <div className="flex flex-wrap items-center gap-2">
         <input
           value={filters.search}
@@ -74,10 +85,12 @@ export default function Toolbar({ filters, setFilters, themeStats }) {
         {THEMES.map((t) => {
           const st = themeStats?.[t.id]
           return (
-            <Chip key={t.id} active={filters.theme === t.id} color={t.accent} onClick={() => set({ theme: t.id })}>
-              {t.name}
-              {st ? <span className="opacity-70"> {st.owned}/{st.total}</span> : null}
-            </Chip>
+            <Tooltip key={t.id} content={t.bonus} below>
+              <Chip active={filters.theme === t.id} color={t.accent} onClick={() => set({ theme: t.id })}>
+                {t.name}
+                {st ? <span className="opacity-70"> {st.owned}/{st.total}</span> : null}
+              </Chip>
+            </Tooltip>
           )
         })}
       </div>

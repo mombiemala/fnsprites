@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { useAuth } from '../context/authStore'
+import { useToast } from '../context/toastStore'
 
 export default function ShareBar() {
   const { user, profile, updateProfile } = useAuth()
+  const { toast } = useToast()
   const [gamertag, setGamertag] = useState(profile?.gamertag || '')
   const [isPublic, setIsPublic] = useState(profile?.is_public ?? true)
   const [saved, setSaved] = useState(false)
@@ -25,7 +27,10 @@ export default function ShareBar() {
     const res = await updateProfile({ gamertag: gamertag.trim() || null, is_public: isPublic })
     if (!res.error) {
       setSaved(true)
+      toast('Profile saved')
       setTimeout(() => setSaved(false), 1500)
+    } else {
+      toast(res.error, 'error')
     }
   }
 
@@ -33,9 +38,10 @@ export default function ShareBar() {
     try {
       await navigator.clipboard.writeText(shareUrl)
       setCopied(true)
+      toast('Share link copied!')
       setTimeout(() => setCopied(false), 1500)
     } catch {
-      /* clipboard unavailable */
+      toast('Could not copy link', 'error')
     }
   }
 

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useAuth } from '../context/authStore'
+import Tooltip from './Tooltip'
 
 const MEDALS = ['🥇', '🥈', '🥉']
 
@@ -19,8 +20,11 @@ export default function Leaderboard() {
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
       <div className="mb-3 flex items-center justify-between gap-2">
-        <h3 className="font-display text-lg text-white">
+        <h3 className="flex items-center gap-1.5 font-display text-lg text-white">
           🏆 Flex Score Leaderboard
+          <Tooltip content="Score = rarity-weighted owned sprites (Mythic 20 · Legendary 8 · Epic 3 · Rare 1), +50% for each mastered. Only public collections appear.">
+            <span className="grid h-4 w-4 cursor-help place-items-center rounded-full bg-[var(--panel-2)] text-[10px] text-[var(--muted)]" aria-label="How scoring works">ⓘ</span>
+          </Tooltip>
         </h3>
         {rows === null ? (
           <button onClick={load} disabled={loading} className="rounded-xl bg-[var(--brand)] px-3 py-1.5 text-xs font-extrabold text-black disabled:opacity-60">

@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useAuth } from '../context/authStore'
+import { useEscClose } from '../lib/useEscClose'
 
 export default function AuthModal({ onClose }) {
+  useEscClose(onClose)
   const { signIn, signUp, signInWithProvider } = useAuth()
   const [mode, setMode] = useState('signin')
   const [email, setEmail] = useState('')
@@ -64,13 +66,6 @@ export default function AuthModal({ onClose }) {
         </p>
 
         <div className="mb-4 flex flex-col gap-2">
-          <button
-            onClick={() => oauth('discord')}
-            className="flex items-center justify-center gap-2 rounded-xl bg-[#5865F2] py-2.5 text-sm font-bold text-white hover:opacity-90"
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.5c1.6.4 3 1 4.3 1.8a16.6 16.6 0 0 0-14.9 0c1.3-.8 2.7-1.4 4.3-1.8L8.6 3a19.8 19.8 0 0 0-4.9 1.4C1 8.9.3 13.3.6 17.6A19.9 19.9 0 0 0 6.7 21l.5-.7c-1.1-.4-2.1-.9-3-1.5l.7-.5a14.2 14.2 0 0 0 12.2 0l.7.5c-.9.6-2 1.1-3 1.5l.5.7a19.9 19.9 0 0 0 6-3.4c.4-5-.7-9.4-3.2-13.2zM8.9 15c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2zm6.2 0c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2z"/></svg>
-            Continue with Discord
-          </button>
           <button
             onClick={() => oauth('google')}
             className="flex items-center justify-center gap-2 rounded-xl bg-white py-2.5 text-sm font-bold text-[#1a2138] hover:opacity-90"
