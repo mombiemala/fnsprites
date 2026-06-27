@@ -18,6 +18,9 @@ import Leaderboard from './components/Leaderboard'
 import NewsFeed from './components/NewsFeed'
 import MapView from './components/MapView'
 import OnboardingHint from './components/OnboardingHint'
+import BugReportModal from './components/BugReportModal'
+import AboutModal from './components/AboutModal'
+import { LINKS } from './lib/supabase'
 
 const TABS = [
   { id: 'collection', label: 'Collection' },
@@ -54,6 +57,8 @@ export default function App() {
   const [shareLoading, setShareLoading] = useState(!!shareTarget)
   const [detailType, setDetailType] = useState(null)
   const [view, setView] = useState('collection')
+  const [showBug, setShowBug] = useState(false)
+  const [showAbout, setShowAbout] = useState(false)
 
   useEffect(() => {
     if (!shareTarget) return
@@ -341,26 +346,36 @@ export default function App() {
       )}
 
       <footer className="mt-12 border-t border-[var(--border)] pt-6 text-center text-xs text-[var(--muted)]">
-        <p>
-          Fan-made sprite tracker · not affiliated with Epic Games · Support with Creator Code{' '}
-          <span className="font-bold text-[var(--brand)]">MOMBIE</span>
-        </p>
+        <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-semibold">
+          <button onClick={() => setShowAbout(true)} className="hover:text-white">About</button>
+          <span className="opacity-30">·</span>
+          <button onClick={() => setShowBug(true)} className="hover:text-white">Report a bug</button>
+          <span className="opacity-30">·</span>
+          <a href={LINKS.buyMeACoffee} target="_blank" rel="noreferrer" className="hover:text-white">☕ Buy me a coffee</a>
+          <span className="opacity-30">·</span>
+          <span>Creator Code <span className="font-bold text-[var(--brand)]">MOMBIE</span></span>
+        </div>
+        <p className="opacity-80">Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
         <p className="mt-2 opacity-80">
-          Sprite images are © Epic Games, Inc. — used here for identification only;
-          sourced from{' '}
-          <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>.
+          Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from{' '}
+          <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>;
+          some variant art is AI-generated (Google Gemini) from those base images.
         </p>
         <p className="mt-1 opacity-80">
-          Sprite data &amp; drop rates cross-referenced from{' '}
+          Roster, themes &amp; drop rates cross-referenced from{' '}
           <a className="underline" href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>,{' '}
           <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a>,{' '}
           <a className="underline" href="https://github.com/MRSessions/fn-sprite-checklist" target="_blank" rel="noreferrer">MRSessions</a>{' '}
           &amp; <a className="underline" href="https://staticvacant.github.io/fnsprites/" target="_blank" rel="noreferrer">staticvacant/fnsprites</a>.
-          Drop rates are community estimates.
+          News from official patch notes &amp; <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>;
+          map data via <a className="underline" href="https://github.com/yaelbrinkert/fortnite-archives" target="_blank" rel="noreferrer">fortnite-archives</a>.
+          Drop rates are community estimates. Built with React, Vite &amp; Supabase.
         </p>
       </footer>
 
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
+      {showBug && <BugReportModal onClose={() => setShowBug(false)} />}
+      {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
       {detailType && (
         <SpriteDetailModal
           typeId={detailType}

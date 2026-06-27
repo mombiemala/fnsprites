@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CREATOR_CODE } from '../lib/supabase'
+import { CREATOR_CODE, LINKS } from '../lib/supabase'
 import { useToast } from '../context/toastStore'
 
 export default function SupportBanner() {
@@ -30,12 +30,22 @@ export default function SupportBanner() {
             in the Fortnite Item Shop to support me. #EpicPartner
           </p>
         </div>
-        <button
-          onClick={copy}
-          className="shrink-0 rounded-xl bg-white px-5 py-2.5 text-sm font-extrabold text-black transition-transform hover:scale-105"
-        >
-          {copied ? 'Copied ✓' : `Copy code: ${CREATOR_CODE}`}
-        </button>
+        <div className="flex shrink-0 flex-col gap-2 sm:items-end">
+          <button
+            onClick={copy}
+            className="rounded-xl bg-white px-5 py-2.5 text-sm font-extrabold text-black transition-transform hover:scale-105"
+          >
+            {copied ? 'Copied ✓' : `Copy code: ${CREATOR_CODE}`}
+          </button>
+          <a
+            href={LINKS.buyMeACoffee}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-xl bg-[#FFDD00] px-5 py-2.5 text-center text-sm font-extrabold text-black transition-transform hover:scale-105"
+          >
+            ☕ Buy me a coffee
+          </a>
+        </div>
       </div>
     </div>
   )

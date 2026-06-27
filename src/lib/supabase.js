@@ -19,3 +19,8 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
 
 // Creator code for supporting the maker of this tracker
 export const CREATOR_CODE = 'mombie'
+
+// Maker links. Update BUY_ME_A_COFFEE to your exact Buy Me a Coffee URL.
+export const LINKS = {
+  buyMeACoffee: 'https://buymeacoffee.com/mombie',
+}
