@@ -1,0 +1,13 @@
+{
+  "name": "FN Sprite Tracker",
+  "short_name": "Sprites",
+  "description": "Track your Fortnite sprite collection across every theme. Save, share and trade.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#0c0f1a",
+  "theme_color": "#0c0f1a",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

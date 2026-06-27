@@ -131,6 +131,39 @@ export function AuthProvider({ children }) {
     [tracking, user]
   )
 
+  // Bulk owned toggle for many sprites at once (single local update + one upsert).
+  const bulkOwn = useCallback(
+    (ids, owned = true) => {
+      setTracking((prev) => {
+        const next = { ...prev }
+        for (const id of ids) {
+          const cur = next[id] || EMPTY
+          next[id] = owned
+            ? { ...cur, owned: true }
+            : { ...cur, owned: false, mastered: false, forTrade: false }
+        }
+        saveLocal(next)
+        return next
+      })
+      if (user) {
+        const rows = ids.map((id) => {
+          const cur = tracking[id] || EMPTY
+          return {
+            user_id: user.id,
+            sprite_id: id,
+            owned,
+            mastered: owned ? cur.mastered : false,
+            for_trade: owned ? cur.forTrade : false,
+            wanted: cur.wanted,
+            updated_at: new Date().toISOString(),
+          }
+        })
+        if (rows.length) supabase.from('sprite_progress').upsert(rows)
+      }
+    },
+    [tracking, user]
+  )
+
   const setOwned = useCallback((id, owned) => update(id, { owned }), [update])
   const setMastered = useCallback((id, mastered) => update(id, { mastered }), [update])
   const setForTrade = useCallback((id, forTrade) => update(id, { forTrade }), [update])
@@ -146,6 +179,15 @@ export function AuthProvider({ children }) {
 
   const signIn = useCallback(async (email, password) => {
     const { error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) return { error: error.message }
+    return { ok: true }
+  }, [])
+
+  const signInWithProvider = useCallback(async (provider) => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: { redirectTo: window.location.origin + window.location.pathname },
+    })
     if (error) return { error: error.message }
     return { ok: true }
   }, [])
@@ -189,9 +231,11 @@ export function AuthProvider({ children }) {
     setMastered,
     setForTrade,
     setWanted,
+    bulkOwn,
     findTradeMatches,
     signUp,
     signIn,
+    signInWithProvider,
     signOut,
     updateProfile,
   }

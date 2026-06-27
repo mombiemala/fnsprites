@@ -46,6 +46,15 @@ export default function Toolbar({ filters, setFilters, themeStats }) {
           <option value="rarity">Group by rarity</option>
           <option value="sprite">Group by sprite</option>
         </select>
+        <select
+          value={filters.sort}
+          onChange={(e) => set({ sort: e.target.value })}
+          className="rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-sm text-white outline-none focus:border-[var(--brand)]"
+        >
+          <option value="default">Default order</option>
+          <option value="name">Name A–Z</option>
+          <option value="rarity">Rarity</option>
+        </select>
         <label className="flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-semibold text-[var(--muted)]">
           <input type="checkbox" checked={filters.hideMastered} onChange={(e) => set({ hideMastered: e.target.checked })} />
           Hide mastered

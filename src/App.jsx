@@ -12,6 +12,7 @@ import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
 import SpriteDetailModal from './components/SpriteDetailModal'
 import TradePanel from './components/TradePanel'
+import StatsBreakdown from './components/StatsBreakdown'
 
 const DEFAULT_FILTERS = {
   search: '',
@@ -21,14 +22,17 @@ const DEFAULT_FILTERS = {
   hideMastered: false,
   showUnreleased: false,
   groupBy: 'none',
+  sort: 'default',
 }
+
+const RARITY_RANK = { Rare: 0, Epic: 1, Legendary: 2, Mythic: 3 }
 
 function useShareTarget() {
   return useMemo(() => new URLSearchParams(window.location.search).get('u'), [])
 }
 
 export default function App() {
-  const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, signOut, syncing, authLoading } = useAuth()
+  const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, bulkOwn, signOut, syncing, authLoading } = useAuth()
   const shareTarget = useShareTarget()
 
   const [filters, setFilters] = useState(DEFAULT_FILTERS)
@@ -81,7 +85,7 @@ export default function App() {
 
   const visible = useMemo(() => {
     const q = filters.search.trim().toLowerCase()
-    return ALL_SPRITES.filter((s) => {
+    let list = ALL_SPRITES.filter((s) => {
       if (!filters.showUnreleased && s.unreleased) return false
       if (filters.theme !== 'all' && s.themeId !== filters.theme) return false
       if (filters.rarity !== 'all' && s.rarity !== filters.rarity) return false
@@ -95,6 +99,12 @@ export default function App() {
       }
       return true
     })
+    if (filters.sort === 'name') {
+      list = [...list].sort((a, b) => a.typeName.localeCompare(b.typeName) || a.themeId.localeCompare(b.themeId))
+    } else if (filters.sort === 'rarity') {
+      list = [...list].sort((a, b) => (RARITY_RANK[a.rarity] - RARITY_RANK[b.rarity]) || a.typeName.localeCompare(b.typeName))
+    }
+    return list
   }, [filters, activeTracking])
 
   const groups = useMemo(() => {
@@ -171,7 +181,11 @@ export default function App() {
         <ProgressStats owned={stats.owned} mastered={stats.mastered} total={stats.total} />
       </div>
 
-      {/* Export buttons */}
+      <div className="mb-5">
+        <StatsBreakdown tracking={activeTracking} />
+      </div>
+
+      {/* Export + bulk actions */}
       <div className="mb-5 flex flex-wrap gap-2">
         <button onClick={() => exportImage('collection')} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
           📸 Collection image
@@ -179,6 +193,17 @@ export default function App() {
         <button onClick={() => exportImage('missing')} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
           🔍 Missing-sprites image
         </button>
+        {!isShareView && (
+          <button
+            onClick={() => {
+              const ids = visible.filter((s) => s.released).map((s) => s.id)
+              if (ids.length && window.confirm(`Mark all ${ids.length} shown sprites as owned?`)) bulkOwn(ids, true)
+            }}
+            className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]"
+          >
+            ✓ Own all shown
+          </button>
+        )}
       </div>
 
       {!isShareView && (

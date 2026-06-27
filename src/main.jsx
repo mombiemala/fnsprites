@@ -11,3 +11,10 @@ createRoot(document.getElementById('root')).render(
     </AuthProvider>
   </StrictMode>,
 )
+
+// Register the service worker for installable / offline use.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch(() => {})
+  })
+}
