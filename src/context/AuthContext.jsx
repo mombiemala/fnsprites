@@ -28,6 +28,9 @@ export function AuthProvider({ children }) {
   const [tracking, setTracking] = useState(() => loadLocal())
   const [authLoading, setAuthLoading] = useState(true)
   const [syncing, setSyncing] = useState(false)
+  // 'synced' | 'saving' | 'error' — surfaced in the header so the user can see
+  // their changes persisting to the cloud.
+  const [cloudStatus, setCloudStatus] = useState('synced')
   const mergedOnce = useRef(false)
 
   const user = session?.user || null
@@ -117,15 +120,19 @@ export function AuthProvider({ children }) {
         return next
       })
       if (user) {
-        supabase.from('sprite_progress').upsert({
-          user_id: user.id,
-          sprite_id: spriteId,
-          owned: entry.owned,
-          mastered: entry.mastered,
-          for_trade: entry.forTrade,
-          wanted: entry.wanted,
-          updated_at: new Date().toISOString(),
-        })
+        setCloudStatus('saving')
+        supabase
+          .from('sprite_progress')
+          .upsert({
+            user_id: user.id,
+            sprite_id: spriteId,
+            owned: entry.owned,
+            mastered: entry.mastered,
+            for_trade: entry.forTrade,
+            wanted: entry.wanted,
+            updated_at: new Date().toISOString(),
+          })
+          .then(({ error }) => setCloudStatus(error ? 'error' : 'synced'))
       }
     },
     [tracking, user]
@@ -158,7 +165,10 @@ export function AuthProvider({ children }) {
             updated_at: new Date().toISOString(),
           }
         })
-        if (rows.length) supabase.from('sprite_progress').upsert(rows)
+        if (rows.length) {
+          setCloudStatus('saving')
+          supabase.from('sprite_progress').upsert(rows).then(({ error }) => setCloudStatus(error ? 'error' : 'synced'))
+        }
       }
     },
     [tracking, user]
@@ -234,6 +244,7 @@ export function AuthProvider({ children }) {
     tracking,
     authLoading,
     syncing,
+    cloudStatus,
     setOwned,
     setMastered,
     setForTrade,

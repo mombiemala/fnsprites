@@ -44,7 +44,7 @@ function useShareTarget() {
 }
 
 export default function App() {
-  const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, signOut, syncing, authLoading } = useAuth()
+  const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, signOut, syncing, cloudStatus, authLoading } = useAuth()
   const { toast } = useToast()
   const shareTarget = useShareTarget()
 
@@ -166,10 +166,25 @@ export default function App() {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          {syncing && <span className="text-xs text-[var(--muted)]">syncing…</span>}
           {!authLoading &&
             (user ? (
               <div className="flex items-center gap-2">
+                <span
+                  className={`hidden items-center gap-1 rounded-full px-2 py-1 text-[11px] font-bold sm:inline-flex ${
+                    cloudStatus === 'error'
+                      ? 'bg-red-500/15 text-red-300'
+                      : cloudStatus === 'saving' || syncing
+                        ? 'bg-amber-400/15 text-amber-300'
+                        : 'bg-emerald-400/15 text-emerald-300'
+                  }`}
+                  title={
+                    cloudStatus === 'error'
+                      ? 'Could not save to the cloud — check your connection'
+                      : 'Your collection is saved to the cloud'
+                  }
+                >
+                  {cloudStatus === 'error' ? '⚠ Sync error' : cloudStatus === 'saving' || syncing ? '↻ Saving…' : '✓ Saved'}
+                </span>
                 <span className="hidden text-xs font-semibold text-[var(--muted)] sm:inline">
                   {profile?.gamertag || user.email}
                 </span>
