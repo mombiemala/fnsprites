@@ -14,12 +14,13 @@ and share your collection with your gamertag. Roster is accurate to the
 - **Accurate roster** — every released sprite & variant as of Jun 25, 2026
   (incl. Striker, Fishy, Aura, Boss, Grim Reaper); upcoming/datamined sprites
   are clearly flagged **unreleased**.
-- **AI-generated sprite art** — released variants use cute, modern transparent
-  PNGs generated with Google's Gemini image model (`public/sprites/<id>.png`):
-  each sprite's Normal base is reskinned into its Gold (metallic), Gummy (glossy
-  jelly) and Galaxy (starfield) variants so a type's variants stay the same
-  character with a different finish. Unreleased variants fall back to generated
-  SVG art (chunky kawaii characters with per-type features).
+- **Official sprite art** — each variant uses the real in-game sprite image
+  (`public/sprites/<id>.png`). **Sprite images are © Epic Games, Inc.**, used
+  here for identification only and sourced from
+  [UltronCore/sprite-tracker](https://github.com/UltronCore/sprite-tracker).
+  A generated SVG fallback covers any missing image.
+- **Drop rates** shown per sprite (community-datamined estimates; Epic does not
+  publish official numbers).
 - **Track ownership & mastery** with one tap — works instantly as a guest
   (saved in your browser); syncs to the cloud when you log in.
 - **Sprite detail view** — tap any sprite for rarity, drop rate, ability, and

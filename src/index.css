@@ -127,16 +127,16 @@
     transform: translateX(-120%);
     animation: shine 3s ease-in-out infinite;
   }
-  .theme-cube {
-    background: linear-gradient(160deg, #b14dff, #6a1fb0 55%, #2a0a4d);
+  .theme-rift {
+    background: radial-gradient(circle at 50% 50%, #7af1ff, #1f7fd1 45%, #0a1f4d 100%);
   }
-  .theme-cube::after {
+  .theme-rift::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background:
-      repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0 6px, transparent 6px 12px);
-    mix-blend-mode: screen;
+    inset: -40%;
+    background: conic-gradient(from 0deg, transparent, rgba(122, 241, 255, 0.55), transparent 40%);
+    animation: spin 5s linear infinite;
+    z-index: 1;
   }
   .theme-quack {
     background: radial-gradient(circle at 35% 30%, #fff3b0, #ffd23f 45%, #e08a1e 100%);

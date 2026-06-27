@@ -265,11 +265,17 @@ export default function App() {
           <span className="font-bold text-[var(--brand)]">MOMBIE</span>
         </p>
         <p className="mt-2 opacity-80">
-          Sprite data cross-referenced from{' '}
+          Sprite images are © Epic Games, Inc. — used here for identification only;
+          sourced from{' '}
+          <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>.
+        </p>
+        <p className="mt-1 opacity-80">
+          Sprite data &amp; drop rates cross-referenced from{' '}
           <a className="underline" href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>,{' '}
-          <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>,{' '}
-          <a className="underline" href="https://github.com/MRSessions/fn-sprite-checklist" target="_blank" rel="noreferrer">MRSessions/fn-sprite-checklist</a>{' '}
+          <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a>,{' '}
+          <a className="underline" href="https://github.com/MRSessions/fn-sprite-checklist" target="_blank" rel="noreferrer">MRSessions</a>{' '}
           &amp; <a className="underline" href="https://staticvacant.github.io/fnsprites/" target="_blank" rel="noreferrer">staticvacant/fnsprites</a>.
+          Drop rates are community estimates.
         </p>
       </footer>
 

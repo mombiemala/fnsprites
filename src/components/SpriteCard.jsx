@@ -45,7 +45,12 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
             {sprite.rarity}
           </span>
         </div>
-        <span className="text-[11px] font-medium text-[var(--muted)]">{theme?.name}</span>
+        <div className="flex items-center justify-between gap-1">
+          <span className="text-[11px] font-medium text-[var(--muted)]">{theme?.name}</span>
+          {sprite.dropRate && (
+            <span className="text-[10px] font-bold text-[var(--muted)]" title="Base drop rate">{sprite.dropRate}</span>
+          )}
+        </div>
       </div>
 
       {/* Controls */}
