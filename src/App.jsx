@@ -18,7 +18,6 @@ import Leaderboard from './components/Leaderboard'
 import NewsFeed from './components/NewsFeed'
 import MapView from './components/MapView'
 import OnboardingHint from './components/OnboardingHint'
-import Collapsible from './components/Collapsible'
 import BugReportModal from './components/BugReportModal'
 import AboutModal from './components/AboutModal'
 import SaveStatusPill from './components/SaveStatusPill'
@@ -322,52 +321,31 @@ export default function App() {
         </div>
 
         {/* Sidebar: a static column beside the grid that scrolls with the page */}
-        <aside className="mt-8 flex flex-col gap-3 lg:mt-0 lg:w-80 lg:shrink-0">
-          <Collapsible title="📊 Collection breakdown" hint="by rarity & theme">
-            <StatsBreakdown tracking={activeTracking} />
-          </Collapsible>
+        <aside className="mt-8 flex flex-col gap-4 lg:mt-0 lg:w-80 lg:shrink-0">
+          <StatsBreakdown tracking={activeTracking} />
 
-          {!isShareView && (
-            <Collapsible title="📤 Share & export" hint="links & image downloads" defaultOpen={false}>
-              <div className="flex flex-col gap-4">
-                {user ? (
-                  <ShareBar />
-                ) : (
-                  <p className="text-sm text-[var(--muted)]">
-                    <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">Log in</button>{' '}
-                    to save your progress to the cloud and get a shareable link with your gamertag.
-                  </p>
-                )}
-                <div>
-                  <p className="mb-2 text-xs font-semibold text-[var(--muted)]">Download a shareable PNG of your collection:</p>
-                  <div className="flex flex-wrap gap-2">
-                    <button
-                      onClick={() => exportImage('collection')}
-                      disabled={exporting}
-                      title="Owned sprites in full colour, missing ones dimmed"
-                      className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
-                    >
-                      {exporting ? 'Rendering…' : '⬇️ Export collection image'}
-                    </button>
-                    <button
-                      onClick={() => exportImage('missing')}
-                      disabled={exporting}
-                      title="Just the sprites you still need — handy for trades"
-                      className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
-                    >
-                      {exporting ? 'Rendering…' : '⬇️ Export missing-sprites image'}
-                    </button>
-                  </div>
+          {!isShareView &&
+            (user ? (
+              <ShareBar onExport={exportImage} exporting={exporting} />
+            ) : (
+              <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
+                <h3 className="mb-2 font-display text-lg text-white">Share &amp; export</h3>
+                <p className="mb-3 text-sm text-[var(--muted)]">
+                  <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">Log in</button>{' '}
+                  to save your progress and get a shareable link with your gamertag.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <button onClick={() => exportImage('collection')} disabled={exporting} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60">
+                    {exporting ? 'Rendering…' : '⬇️ Collection image'}
+                  </button>
+                  <button onClick={() => exportImage('missing')} disabled={exporting} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60">
+                    {exporting ? 'Rendering…' : '⬇️ Missing-sprites image'}
+                  </button>
                 </div>
               </div>
-            </Collapsible>
-          )}
+            ))}
 
-          {!isShareView && user && (
-            <Collapsible title="🔁 Trading" hint="find trade matches">
-              <TradePanel />
-            </Collapsible>
-          )}
+          {!isShareView && user && <TradePanel />}
 
           {!isShareView && <SupportBanner />}
         </aside>

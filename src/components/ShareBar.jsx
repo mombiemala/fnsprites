@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 
-export default function ShareBar() {
+export default function ShareBar({ onExport, exporting }) {
   const { user, profile, updateProfile } = useAuth()
   const { toast } = useToast()
   const [gamertag, setGamertag] = useState(profile?.gamertag || '')
@@ -47,7 +47,7 @@ export default function ShareBar() {
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
-      <h3 className="mb-3 font-display text-lg text-white">Share your collection</h3>
+      <h3 className="mb-3 font-display text-lg text-white">Share &amp; export</h3>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
         <label className="flex-1">
           <span className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">
@@ -90,6 +90,30 @@ export default function ShareBar() {
         <p className="mt-2 text-[11px] text-[var(--muted)]">
           Your link is currently private — enable “Public link” and save so others can view it.
         </p>
+      )}
+
+      {onExport && (
+        <div className="mt-4 border-t border-[var(--border)] pt-3">
+          <p className="mb-2 text-xs font-semibold text-[var(--muted)]">Download a shareable PNG:</p>
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => onExport('collection')}
+              disabled={exporting}
+              title="Owned sprites in full colour, missing ones dimmed"
+              className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
+            >
+              {exporting ? 'Rendering…' : '⬇️ Collection image'}
+            </button>
+            <button
+              onClick={() => onExport('missing')}
+              disabled={exporting}
+              title="Just the sprites you still need — handy for trades"
+              className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
+            >
+              {exporting ? 'Rendering…' : '⬇️ Missing-sprites image'}
+            </button>
+          </div>
+        </div>
       )}
     </div>
   )
