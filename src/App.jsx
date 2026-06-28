@@ -269,23 +269,24 @@ export default function App() {
         <ProgressStats owned={stats.owned} mastered={stats.mastered} total={stats.total} />
       </div>
 
-      {/* Collection: sprite grid + a sidebar of secondary cards that sticks
-          alongside as you scroll on desktop, and stacks below on mobile. */}
-      <div className="lg:flex lg:items-start lg:gap-6">
-        {/* Main column: filters + grid */}
-        <div className="min-w-0 lg:flex-1">
-          <div className="sticky top-0 z-30 -mx-4 mb-5 border-b border-[var(--border)] bg-[#0c0f1a]/85 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
-            <Toolbar
-              filters={filters}
-              setFilters={setFilters}
-              themeStats={themeStats}
-              count={visible.length}
-              total={filters.showUnreleased ? TOTAL_COUNT : RELEASED_COUNT}
-              hasActiveFilters={hasActiveFilters}
-              onClear={() => setFilters(DEFAULT_FILTERS)}
-            />
-          </div>
+      {/* Full-width filters bar (sticks to the top on scroll) */}
+      <div className="sticky top-0 z-30 -mx-4 mb-5 border-b border-[var(--border)] bg-[#0c0f1a]/85 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">
+        <Toolbar
+          filters={filters}
+          setFilters={setFilters}
+          themeStats={themeStats}
+          count={visible.length}
+          total={filters.showUnreleased ? TOTAL_COUNT : RELEASED_COUNT}
+          hasActiveFilters={hasActiveFilters}
+          onClear={() => setFilters(DEFAULT_FILTERS)}
+        />
+      </div>
 
+      {/* Collection: sprite grid + a static sidebar of secondary cards on
+          desktop; the sidebar stacks below the grid on mobile. */}
+      <div className="lg:flex lg:items-start lg:gap-6">
+        {/* Main column: grid */}
+        <div className="min-w-0 lg:flex-1">
           {isShareView && shareLoading ? (
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {Array.from({ length: 18 }).map((_, i) => (
@@ -320,8 +321,8 @@ export default function App() {
           )}
         </div>
 
-        {/* Sidebar: scrolls with the page, sticks in view on desktop */}
-        <aside className="mt-8 flex flex-col gap-3 lg:mt-0 lg:sticky lg:top-4 lg:max-h-[calc(100vh-1.5rem)] lg:w-80 lg:shrink-0 lg:overflow-y-auto lg:pb-4">
+        {/* Sidebar: a static column beside the grid that scrolls with the page */}
+        <aside className="mt-8 flex flex-col gap-3 lg:mt-0 lg:w-80 lg:shrink-0">
           <Collapsible title="📊 Collection breakdown" hint="by rarity & theme">
             <StatsBreakdown tracking={activeTracking} />
           </Collapsible>
