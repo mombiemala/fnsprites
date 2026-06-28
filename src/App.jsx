@@ -48,6 +48,15 @@ function useShareTarget() {
   return useMemo(() => new URLSearchParams(window.location.search).get('u'), [])
 }
 
+// Initial tab from a ?view= param so deep links (and tabs tapped from a shared
+// profile) land on the right section.
+function useInitialView() {
+  return useMemo(() => {
+    const v = new URLSearchParams(window.location.search).get('view')
+    return TABS.some((t) => t.id === v) ? v : 'collection'
+  }, [])
+}
+
 export default function App() {
   const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, signOut, syncing, cloudStatus, authLoading } = useAuth()
   const { toast } = useToast()
@@ -58,7 +67,7 @@ export default function App() {
   const [shared, setShared] = useState(null)
   const [shareLoading, setShareLoading] = useState(!!shareTarget)
   const [detailType, setDetailType] = useState(null)
-  const [view, setView] = useState('collection')
+  const [view, setView] = useState(useInitialView())
   const [showBug, setShowBug] = useState(false)
   const [showAbout, setShowAbout] = useState(false)
 
@@ -207,23 +216,29 @@ export default function App() {
         </div>
       </header>
 
-      {!isShareView && (
-        <nav className="mb-5 flex flex-wrap gap-1.5" role="tablist" aria-label="Sections">
-          {TABS.map((t) => (
-            <button
-              key={t.id}
-              role="tab"
-              aria-selected={view === t.id}
-              onClick={() => setView(t.id)}
-              className={`rounded-xl px-3 py-2 text-xs font-bold transition-colors ${
-                view === t.id ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
-              }`}
-            >
+      <nav className="mb-5 flex flex-wrap gap-1.5" role="tablist" aria-label="Sections">
+        {TABS.map((t) => {
+          const active = !isShareView && view === t.id
+          const cls = `rounded-xl px-3 py-2 text-xs font-bold transition-colors ${
+            active ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
+          }`
+          // From a shared profile (?u=…) the tabs are links back into the main
+          // app: Collection → your own tracker, others → that section.
+          if (isShareView) {
+            const href = t.id === 'collection' ? window.location.pathname : `${window.location.pathname}?view=${t.id}`
+            return (
+              <a key={t.id} href={href} className={cls}>
+                {t.label}
+              </a>
+            )
+          }
+          return (
+            <button key={t.id} role="tab" aria-selected={active} onClick={() => setView(t.id)} className={cls}>
               {t.label}
             </button>
-          ))}
-        </nav>
-      )}
+          )
+        })}
+      </nav>
 
       {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
       {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
