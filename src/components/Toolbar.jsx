@@ -1,6 +1,19 @@
+import { useState } from 'react'
 import { THEMES } from '../data/themes'
 import { RARITY_ORDER } from '../data/sprites'
 import Tooltip from './Tooltip'
+
+// Filters that count toward the mobile "active" badge (search is always visible
+// separately, so it's excluded here).
+const FILTER_DEFAULTS = {
+  theme: 'all',
+  rarity: 'all',
+  ownership: 'all',
+  groupBy: 'none',
+  sort: 'default',
+  hideMastered: false,
+  showUnreleased: false,
+}
 
 function Chip({ active, onClick, children, color }) {
   return (
@@ -18,6 +31,9 @@ function Chip({ active, onClick, children, color }) {
 
 export default function Toolbar({ filters, setFilters, themeStats, count, total, onClear, hasActiveFilters }) {
   const set = (patch) => setFilters((f) => ({ ...f, ...patch }))
+  const [open, setOpen] = useState(false)
+
+  const activeCount = Object.entries(FILTER_DEFAULTS).filter(([k, v]) => filters[k] !== v).length
 
   return (
     <div className="flex flex-col gap-3">
@@ -31,6 +47,10 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           </button>
         )}
       </div>
+
+      {/* Search + selects. On desktop everything sits in one wrapping row
+          exactly as before (the inner group uses display:contents); on mobile
+          the selects/checkboxes collapse behind the Filters toggle. */}
       <div className="flex flex-wrap items-center gap-2">
         <input
           value={filters.search}
@@ -39,6 +59,20 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           title="Search by sprite name, theme, or rarity"
           className="min-w-[180px] flex-1 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-sm text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)]"
         />
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          className="flex shrink-0 items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-sm font-bold text-white sm:hidden"
+        >
+          ⚙ Filters
+          {activeCount > 0 && (
+            <span className="grid h-4 min-w-4 place-items-center rounded-full bg-[var(--brand)] px-1 text-[10px] font-extrabold text-black">
+              {activeCount}
+            </span>
+          )}
+          <span className="text-[var(--muted)]">{open ? '▲' : '▼'}</span>
+        </button>
+        <div className={`${open ? 'contents' : 'hidden'} sm:contents`}>
         <select
           value={filters.ownership}
           onChange={(e) => set({ ownership: e.target.value })}
@@ -76,8 +110,11 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           <input type="checkbox" checked={filters.showUnreleased} onChange={(e) => set({ showUnreleased: e.target.checked })} />
           Show unreleased
         </label>
+        </div>
       </div>
 
+      {/* Theme + rarity chips — collapse on mobile, always shown from sm up */}
+      <div className={`${open ? 'flex' : 'hidden'} flex-col gap-3 sm:flex`}>
       <div className="flex flex-wrap items-center gap-1.5">
         <Chip active={filters.theme === 'all'} onClick={() => set({ theme: 'all' })}>
           All themes
@@ -104,6 +141,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
             {r}
           </Chip>
         ))}
+      </div>
       </div>
     </div>
   )
