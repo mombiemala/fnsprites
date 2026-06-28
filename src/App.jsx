@@ -269,102 +269,107 @@ export default function App() {
         <ProgressStats owned={stats.owned} mastered={stats.mastered} total={stats.total} />
       </div>
 
-      {/* Main content: filters + grid sit right under the progress summary */}
-      <div className="sticky top-0 z-30 -mx-4 mb-5 border-b border-[var(--border)] bg-[#0c0f1a]/85 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">
-        <Toolbar
-          filters={filters}
-          setFilters={setFilters}
-          themeStats={themeStats}
-          count={visible.length}
-          total={filters.showUnreleased ? TOTAL_COUNT : RELEASED_COUNT}
-          hasActiveFilters={hasActiveFilters}
-          onClear={() => setFilters(DEFAULT_FILTERS)}
-        />
-      </div>
+      {/* Collection: sprite grid + a sidebar of secondary cards that sticks
+          alongside as you scroll on desktop, and stacks below on mobile. */}
+      <div className="lg:flex lg:items-start lg:gap-6">
+        {/* Main column: filters + grid */}
+        <div className="min-w-0 lg:flex-1">
+          <div className="sticky top-0 z-30 -mx-4 mb-5 border-b border-[var(--border)] bg-[#0c0f1a]/85 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
+            <Toolbar
+              filters={filters}
+              setFilters={setFilters}
+              themeStats={themeStats}
+              count={visible.length}
+              total={filters.showUnreleased ? TOTAL_COUNT : RELEASED_COUNT}
+              hasActiveFilters={hasActiveFilters}
+              onClear={() => setFilters(DEFAULT_FILTERS)}
+            />
+          </div>
 
-      {isShareView && shareLoading ? (
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {Array.from({ length: 18 }).map((_, i) => (
-            <div key={i} className="h-44 animate-pulse rounded-2xl bg-[var(--panel)]" />
-          ))}
-        </div>
-      ) : visible.length === 0 ? (
-        <p className="py-16 text-center text-sm text-[var(--muted)]">No sprites match your filters.</p>
-      ) : (
-        groups.map((g) => (
-          <section key={g.key} className="mb-8">
-            {g.label && (
-              <h2 className="mb-3 font-display text-xl text-white/90">
-                {g.label} <span className="text-sm text-[var(--muted)]">· {g.items.length}</span>
-              </h2>
-            )}
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-              {g.items.map((s) => (
-                <SpriteCard
-                  key={s.id}
-                  sprite={s}
-                  state={activeTracking[s.id]}
-                  onToggleOwned={setOwned}
-                  onToggleMastered={setMastered}
-                  onOpen={(sp) => setDetailType(sp.typeId)}
-                  readOnly={readOnly}
-                />
+          {isShareView && shareLoading ? (
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              {Array.from({ length: 18 }).map((_, i) => (
+                <div key={i} className="h-44 animate-pulse rounded-2xl bg-[var(--panel)]" />
               ))}
             </div>
-          </section>
-        ))
-      )}
+          ) : visible.length === 0 ? (
+            <p className="py-16 text-center text-sm text-[var(--muted)]">No sprites match your filters.</p>
+          ) : (
+            groups.map((g) => (
+              <section key={g.key} className="mb-8">
+                {g.label && (
+                  <h2 className="mb-3 font-display text-xl text-white/90">
+                    {g.label} <span className="text-sm text-[var(--muted)]">· {g.items.length}</span>
+                  </h2>
+                )}
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                  {g.items.map((s) => (
+                    <SpriteCard
+                      key={s.id}
+                      sprite={s}
+                      state={activeTracking[s.id]}
+                      onToggleOwned={setOwned}
+                      onToggleMastered={setMastered}
+                      onOpen={(sp) => setDetailType(sp.typeId)}
+                      readOnly={readOnly}
+                    />
+                  ))}
+                </div>
+              </section>
+            ))
+          )}
+        </div>
 
-      {/* Secondary sections — tucked into collapsibles below the grid so they
-          don't push the sprites down the page. */}
-      <div className="mt-8 flex flex-col gap-3">
-        <Collapsible title="📊 Collection breakdown" hint="by rarity & theme">
-          <StatsBreakdown tracking={activeTracking} />
-        </Collapsible>
+        {/* Sidebar: scrolls with the page, sticks in view on desktop */}
+        <aside className="mt-8 flex flex-col gap-3 lg:mt-0 lg:sticky lg:top-4 lg:max-h-[calc(100vh-1.5rem)] lg:w-80 lg:shrink-0 lg:overflow-y-auto lg:pb-4">
+          <Collapsible title="📊 Collection breakdown" hint="by rarity & theme">
+            <StatsBreakdown tracking={activeTracking} />
+          </Collapsible>
 
-        {!isShareView && (
-          <Collapsible title="📤 Share & export" hint="links and image downloads" defaultOpen={false}>
-            <div className="flex flex-col gap-4">
-              {user ? (
-                <ShareBar />
-              ) : (
-                <p className="text-sm text-[var(--muted)]">
-                  <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">Log in</button>{' '}
-                  to save your progress to the cloud and get a shareable link with your gamertag.
-                </p>
-              )}
-              <div>
-                <p className="mb-2 text-xs font-semibold text-[var(--muted)]">Download a shareable PNG of your collection:</p>
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    onClick={() => exportImage('collection')}
-                    disabled={exporting}
-                    title="Owned sprites in full colour, missing ones dimmed"
-                    className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
-                  >
-                    {exporting ? 'Rendering…' : '⬇️ Export collection image'}
-                  </button>
-                  <button
-                    onClick={() => exportImage('missing')}
-                    disabled={exporting}
-                    title="Just the sprites you still need — handy for trades"
-                    className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
-                  >
-                    {exporting ? 'Rendering…' : '⬇️ Export missing-sprites image'}
-                  </button>
+          {!isShareView && (
+            <Collapsible title="📤 Share & export" hint="links & image downloads" defaultOpen={false}>
+              <div className="flex flex-col gap-4">
+                {user ? (
+                  <ShareBar />
+                ) : (
+                  <p className="text-sm text-[var(--muted)]">
+                    <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">Log in</button>{' '}
+                    to save your progress to the cloud and get a shareable link with your gamertag.
+                  </p>
+                )}
+                <div>
+                  <p className="mb-2 text-xs font-semibold text-[var(--muted)]">Download a shareable PNG of your collection:</p>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => exportImage('collection')}
+                      disabled={exporting}
+                      title="Owned sprites in full colour, missing ones dimmed"
+                      className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
+                    >
+                      {exporting ? 'Rendering…' : '⬇️ Export collection image'}
+                    </button>
+                    <button
+                      onClick={() => exportImage('missing')}
+                      disabled={exporting}
+                      title="Just the sprites you still need — handy for trades"
+                      className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
+                    >
+                      {exporting ? 'Rendering…' : '⬇️ Export missing-sprites image'}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Collapsible>
-        )}
+            </Collapsible>
+          )}
 
-        {!isShareView && user && (
-          <Collapsible title="🔁 Trading" hint="find matches with other players">
-            <TradePanel />
-          </Collapsible>
-        )}
+          {!isShareView && user && (
+            <Collapsible title="🔁 Trading" hint="find trade matches">
+              <TradePanel />
+            </Collapsible>
+          )}
 
-        {!isShareView && <SupportBanner />}
+          {!isShareView && <SupportBanner />}
+        </aside>
       </div>
         </>
       )}
