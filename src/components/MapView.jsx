@@ -210,17 +210,23 @@ export default function MapView() {
         {imgOk && visibleMarkers.map((m) => {
           const k = KIND_MAP[m.kind]
           const c = confidence(m)
+          // Seeded-but-unconfirmed spots render hollow + dashed to signal
+          // "approximate, please confirm"; once confirmed they fill in.
+          const unconfirmedSeed = m.seeded && m.confirms - m.stales < 1
           return (
             <button
               key={m.id}
               onClick={(e) => { e.stopPropagation(); setSelected(m); setDraft(null) }}
               className="absolute -translate-x-1/2 -translate-y-1/2"
               style={{ left: `${m.x}%`, top: `${m.y}%`, opacity: c.opacity }}
-              title={`${k?.label}: ${m.label || '(no label)'} · ${m.confirms} confirmed`}
+              title={`${k?.label}: ${m.label || '(no label)'} · ${m.confirms} confirmed${m.seeded ? ' · from a guide' : ''}`}
             >
               <span
-                className={`block h-3.5 w-3.5 rounded-full border-2 shadow ${selected?.id === m.id ? 'ring-2 ring-white' : ''}`}
-                style={{ background: k?.color || '#888', borderColor: c.ring }}
+                className={`block h-3.5 w-3.5 rounded-full shadow ${selected?.id === m.id ? 'ring-2 ring-white' : ''}`}
+                style={{
+                  background: unconfirmedSeed ? 'transparent' : k?.color || '#888',
+                  border: `2px ${unconfirmedSeed ? 'dashed' : 'solid'} ${unconfirmedSeed ? k?.color || '#888' : c.ring}`,
+                }}
               />
             </button>
           )
@@ -273,9 +279,11 @@ export default function MapView() {
               <p className="text-xs font-bold text-white">
                 {KIND_MAP[selected.kind]?.emoji} {KIND_MAP[selected.kind]?.label.replace(/s$/, '')}
                 {selected.label ? ` · ${selected.label}` : ''}
+                {selected.seeded && <span className="ml-1 rounded bg-[var(--panel-2)] px-1.5 py-0.5 text-[9px] font-bold text-[var(--muted)]">📋 from guide</span>}
               </p>
               <p className="mt-0.5 text-[11px] text-[var(--muted)]">
                 ✓ {selected.confirms} confirmed · ⚠ {selected.stales} say it’s gone
+                {selected.seeded && selected.confirms - selected.stales < 1 ? ' · approximate, please confirm' : ''}
               </p>
               {selected.source && (
                 <p className="mt-0.5 text-[11px] text-[var(--muted)]">
@@ -319,9 +327,9 @@ export default function MapView() {
       )}
 
       <p className="mt-3 text-[10px] text-[var(--muted)]">
-        POIs {poisLive ? 'live from' : 'via'} fortnite-api.com. Chest, fishing &amp; pond spots are
-        community-submitted &amp; confirmed (with sources where given) — approximate, and they shift each update.
-        Use the full interactive map for precision. Not affiliated with Epic Games.
+        POIs {poisLive ? 'live from' : 'via'} fortnite-api.com. Sprite-chest spots are seeded from public guides
+        (📋, dashed = unconfirmed — tap to verify) and refined by the community; other spots are player-submitted.
+        All approximate and they shift each update — use the full interactive map for precision. Not affiliated with Epic Games.
       </p>
     </div>
   )
