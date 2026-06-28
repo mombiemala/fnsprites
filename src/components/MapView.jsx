@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 import { MAP_IMAGE_CANDIDATES, MAP_LINK, KINDS, KIND_MAP, COMMUNITY_MAP_ID } from '../data/mapMarkers'
@@ -43,6 +43,42 @@ export default function MapView() {
   const canAdd = !!user && (currentMap.is_community || currentMap.mine || currentMap.role === 'editor')
   const canManageMarker = (m) => !!user && (m.created_by === user.id || currentMap.mine || currentMap.role === 'editor')
 
+  // --- Zoom & pan (in-app, no out-linking to enlarge) ---
+  const MIN_Z = 1
+  const MAX_Z = 5
+  const boxRef = useRef(null)
+  const drag = useRef(null)
+  const [zoom, setZoom] = useState(1)
+  const [pan, setPan] = useState({ x: 0, y: 0 })
+  const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v))
+  const clampPan = (p, z) => {
+    const r = boxRef.current?.getBoundingClientRect()
+    if (!r) return p
+    return { x: clamp(p.x, -(z - 1) * r.width, 0), y: clamp(p.y, -(z - 1) * r.height, 0) }
+  }
+  // Screen coords → map percentage, accounting for the current zoom/pan.
+  const toPct = (clientX, clientY) => {
+    const r = boxRef.current.getBoundingClientRect()
+    const mx = (clientX - r.left - pan.x) / zoom
+    const my = (clientY - r.top - pan.y) / zoom
+    return {
+      x: clamp(Math.round((mx / r.width) * 1000) / 10, 0, 100),
+      y: clamp(Math.round((my / r.height) * 1000) / 10, 0, 100),
+    }
+  }
+  // Zoom toward a screen point (keeps that point steady).
+  const zoomTo = (nextZoom, clientX, clientY) => {
+    const r = boxRef.current.getBoundingClientRect()
+    const cx = clientX != null ? clientX - r.left : r.width / 2
+    const cy = clientY != null ? clientY - r.top : r.height / 2
+    const z2 = clamp(nextZoom, MIN_Z, MAX_Z)
+    const mapX = (cx - pan.x) / zoom
+    const mapY = (cy - pan.y) / zoom
+    setZoom(z2)
+    setPan(clampPan({ x: cx - mapX * z2, y: cy - mapY * z2 }, z2))
+  }
+  const resetView = () => { setZoom(1); setPan({ x: 0, y: 0 }) }
+
   const reload = useCallback(async () => {
     setMarkers(await fetchMarkers(mapId, showRetired))
   }, [mapId, showRetired])
@@ -70,10 +106,8 @@ export default function MapView() {
     return () => { cancelled = true }
   }, [mapId, showRetired])
 
-  const onMapClick = async (e) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const x = Math.round(((e.clientX - rect.left) / rect.width) * 1000) / 10
-    const y = Math.round(((e.clientY - rect.top) / rect.height) * 1000) / 10
+  // Place a marker / move a marker at a given map %.
+  const placeAt = async ({ x, y }) => {
     if (movingId) {
       const id = movingId
       setMovingId(null)
@@ -85,6 +119,32 @@ export default function MapView() {
     if (!addKind) return
     setSelected(null)
     setDraft({ x, y, kind: addKind, label: '', source: '' })
+  }
+
+  // Pointer handling on the map: drag to pan (when zoomed in), tap to place a
+  // marker when in add/move mode, otherwise a tap on empty map deselects.
+  const placing = !!addKind || !!movingId
+  const onBoxPointerDown = (e) => {
+    if (!imgOk) return
+    drag.current = { sx: e.clientX, sy: e.clientY, px: pan.x, py: pan.y, moved: false }
+    boxRef.current?.setPointerCapture?.(e.pointerId)
+  }
+  const onBoxPointerMove = (e) => {
+    const d = drag.current
+    if (!d) return
+    const dx = e.clientX - d.sx
+    const dy = e.clientY - d.sy
+    if (!d.moved && Math.hypot(dx, dy) > 4) d.moved = true
+    if (d.moved && !placing && zoom > 1) {
+      setPan(clampPan({ x: d.px + dx, y: d.py + dy }, zoom))
+    }
+  }
+  const onBoxPointerUp = (e) => {
+    const d = drag.current
+    drag.current = null
+    if (!d || d.moved) return
+    if (placing) placeAt(toPct(e.clientX, e.clientY))
+    else setSelected(null)
   }
 
   const saveDraft = async () => {
@@ -153,9 +213,7 @@ export default function MapView() {
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
       <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
         <h3 className="font-display text-lg text-white">🗺️ Island Map</h3>
-        <a href={MAP_LINK} target="_blank" rel="noreferrer" className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-white hover:bg-[var(--border)]">
-          fortnite.gg map ↗
-        </a>
+        <span className="text-[11px] text-[var(--muted)]">Pinch / +– to zoom · drag to pan</span>
       </div>
 
       {/* Map switcher */}
@@ -189,7 +247,7 @@ export default function MapView() {
 
       {/* How it works */}
       <p className="mb-3 rounded-lg bg-[var(--bg-2)] px-3 py-2 text-xs text-[var(--text)]/80">
-        💡 Tap any dot to <b className="text-white">confirm</b> it’s still there or flag it gone.
+        💡 Tap a marker to <b className="text-white">confirm</b> it’s still there or flag it gone. Zoom with the ＋/− buttons (or double-tap) and drag to pan.
         {canAdd ? ' To add a spot, pick a type below, then tap the map.' : user ? ' This map is read-only for you.' : ' Log in to add or confirm spots.'}
       </p>
 
@@ -225,10 +283,63 @@ export default function MapView() {
         </div>
       )}
 
-      {/* Map + markers */}
-      <div className={`relative mx-auto aspect-square w-full max-w-xl overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-2)] ${addKind || movingId ? 'cursor-crosshair' : ''}`} onClick={onMapClick}>
+      {/* Map + markers (zoom/pan in-app) */}
+      <div
+        ref={boxRef}
+        onPointerDown={onBoxPointerDown}
+        onPointerMove={onBoxPointerMove}
+        onPointerUp={onBoxPointerUp}
+        onPointerCancel={() => { drag.current = null }}
+        onDoubleClick={(e) => zoomTo(zoom * 1.6, e.clientX, e.clientY)}
+        className={`relative mx-auto aspect-square w-full max-w-xl select-none overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg-2)] ${
+          zoom > 1 || placing ? 'touch-none' : ''
+        } ${placing ? 'cursor-crosshair' : zoom > 1 ? 'cursor-grab' : ''}`}
+      >
         {imgOk ? (
-          <img src={MAP_IMAGE_CANDIDATES[imgIdx]} alt="Fortnite map" onError={() => setImgIdx((i) => i + 1)} className="h-full w-full select-none object-cover" draggable={false} />
+          /* Transformed layer: image + POIs + markers all zoom/pan together */
+          <div className="absolute inset-0 origin-top-left" style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }}>
+            <img src={MAP_IMAGE_CANDIDATES[imgIdx]} alt="Fortnite map" onError={() => setImgIdx((i) => i + 1)} className="h-full w-full select-none object-cover" draggable={false} />
+
+            {on.pois && pois.map((p, i) => (
+              <div key={`poi-${i}`} className="pointer-events-none absolute origin-center" style={{ left: `${p.x}%`, top: `${p.y}%`, transform: `translate(-50%,-50%) scale(${1 / zoom})` }}>
+                <span className="whitespace-nowrap rounded bg-black/60 px-1.5 py-0.5 text-[10px] font-bold text-white/90 backdrop-blur-sm">{p.label}</span>
+              </div>
+            ))}
+
+            {visibleMarkers.map((m) => {
+              const k = KIND_MAP[m.kind]
+              const unconfirmedSeed = m.seeded && m.confirms - m.stales < 1
+              const retired = !!m.retired_at
+              const isSel = selected?.id === m.id
+              return (
+                <button
+                  key={m.id}
+                  onClick={(e) => { e.stopPropagation(); if (!movingId) { setSelected(m); setDraft(null) } }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  className="absolute origin-center"
+                  style={{ left: `${m.x}%`, top: `${m.y}%`, transform: `translate(-50%,-50%) scale(${1 / zoom})`, opacity: retired ? 0.5 : confidence(m), zIndex: isSel ? 5 : 1 }}
+                  title={`${k?.label}: ${m.label || '(no label)'} · ${m.confirms} confirmed${retired ? ' · retired' : ''}`}
+                >
+                  <span
+                    className="grid h-7 w-7 place-items-center rounded-full shadow-md"
+                    style={{
+                      background: 'rgba(10,12,20,0.82)',
+                      border: `2px ${unconfirmedSeed || retired ? 'dashed' : 'solid'} ${k?.color || '#888'}`,
+                      boxShadow: isSel ? '0 0 0 2px #fff, 0 1px 4px #000a' : '0 1px 4px #0008',
+                    }}
+                  >
+                    <span className="text-sm leading-none" style={{ filter: retired ? 'grayscale(1)' : 'none' }}>{k?.emoji}</span>
+                  </span>
+                </button>
+              )
+            })}
+
+            {draft && (
+              <span className="pointer-events-none absolute grid origin-center place-items-center rounded-full border-2 border-white shadow-md" style={{ left: `${draft.x}%`, top: `${draft.y}%`, height: 28, width: 28, transform: `translate(-50%,-50%) scale(${1 / zoom})`, background: KIND_MAP[draft.kind].color }}>
+                <span className="animate-pulse text-sm leading-none">{KIND_MAP[draft.kind].emoji}</span>
+              </span>
+            )}
+          </div>
         ) : (
           <div className="grid h-full place-items-center p-6 text-center text-sm text-[var(--muted)]">
             Couldn’t load the map image.{' '}
@@ -236,51 +347,33 @@ export default function MapView() {
           </div>
         )}
 
+        {/* Overlays (fixed to the viewport box, do not zoom) */}
         {imgOk && movingId && (
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-10 bg-[var(--brand)] px-3 py-2 text-center text-xs font-extrabold text-black">
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-20 bg-[var(--brand)] px-3 py-2 text-center text-xs font-extrabold text-black">
             📍 Tap the map to move this marker
           </div>
         )}
         {imgOk && addKind && !draft && !movingId && (
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-2 bg-[var(--brand)] px-3 py-2 text-xs font-extrabold text-black">
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-center justify-between gap-2 bg-[var(--brand)] px-3 py-2 text-xs font-extrabold text-black">
             <span>👆 Tap the map to place a {KIND_MAP[addKind].emoji} {KIND_MAP[addKind].label.replace(/s$/, '')}</span>
             <button onClick={(e) => { e.stopPropagation(); setAddKind(null) }} className="pointer-events-auto rounded bg-black/20 px-2 py-0.5">Cancel</button>
           </div>
         )}
         {imgOk && markers.length === 0 && !addKind && (
-          <div className="pointer-events-none absolute inset-x-3 bottom-3 z-10 rounded-lg bg-black/70 px-3 py-2 text-center text-[11px] font-semibold text-white backdrop-blur">
+          <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 rounded-lg bg-black/70 px-3 py-2 text-center text-[11px] font-semibold text-white backdrop-blur">
             No spots on this map yet{canAdd ? ' — pick a type above and tap to add one!' : ''}
           </div>
         )}
 
-        {imgOk && on.pois && pois.map((p, i) => (
-          <div key={`poi-${i}`} className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2" style={{ left: `${p.x}%`, top: `${p.y}%` }}>
-            <span className="whitespace-nowrap rounded bg-black/55 px-1.5 py-0.5 text-[9px] font-bold text-white/90 backdrop-blur-sm">{p.label}</span>
+        {/* Zoom controls */}
+        {imgOk && (
+          <div className="absolute right-2 top-2 z-20 flex flex-col overflow-hidden rounded-lg border border-[var(--border)] bg-black/60 backdrop-blur">
+            <button onClick={() => zoomTo(zoom * 1.5)} aria-label="Zoom in" className="grid h-8 w-8 place-items-center text-lg font-bold text-white hover:bg-white/10">＋</button>
+            <button onClick={() => zoomTo(zoom / 1.5)} aria-label="Zoom out" className="grid h-8 w-8 place-items-center border-t border-white/15 text-lg font-bold text-white hover:bg-white/10">−</button>
+            {zoom > 1 && (
+              <button onClick={resetView} aria-label="Reset zoom" className="grid h-8 w-8 place-items-center border-t border-white/15 text-xs font-bold text-white hover:bg-white/10">⤢</button>
+            )}
           </div>
-        ))}
-
-        {imgOk && visibleMarkers.map((m) => {
-          const k = KIND_MAP[m.kind]
-          const unconfirmedSeed = m.seeded && m.confirms - m.stales < 1
-          const retired = !!m.retired_at
-          return (
-            <button key={m.id}
-              onClick={(e) => { e.stopPropagation(); if (!movingId) { setSelected(m); setDraft(null) } }}
-              className="absolute -translate-x-1/2 -translate-y-1/2"
-              style={{ left: `${m.x}%`, top: `${m.y}%`, opacity: retired ? 0.4 : confidence(m) }}
-              title={`${k?.label}: ${m.label || '(no label)'} · ${m.confirms} confirmed${retired ? ' · retired' : ''}`}>
-              <span className={`block h-3.5 w-3.5 rounded-full shadow ${selected?.id === m.id ? 'ring-2 ring-white' : ''}`}
-                style={{
-                  background: retired ? 'transparent' : unconfirmedSeed ? 'transparent' : k?.color || '#888',
-                  border: `2px ${retired || unconfirmedSeed ? 'dashed' : 'solid'} ${k?.color || '#888'}`,
-                }} />
-            </button>
-          )
-        })}
-
-        {imgOk && draft && (
-          <span className="pointer-events-none absolute h-4 w-4 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full border-2 border-white"
-            style={{ left: `${draft.x}%`, top: `${draft.y}%`, background: KIND_MAP[draft.kind].color }} />
         )}
       </div>
 
@@ -363,8 +456,8 @@ export default function MapView() {
       )}
 
       <p className="mt-3 text-[10px] text-[var(--muted)]">
-        POIs {poisLive ? 'live from' : 'via'} fortnite-api.com. Sprite-chest spots are seeded from public guides
-        (📋, dashed = unconfirmed — tap to verify) and refined by the community; other spots are player-submitted.
+        Map image &amp; POIs {poisLive ? 'live from' : 'via'} fortnite-api.com. Sprite-chest spots are seeded from public guides
+        (dashed = unconfirmed — tap to verify) and refined by the community; other spots are player-submitted.
         Retired spots are archived for history. All approximate &amp; shift each update. Not affiliated with Epic Games.
       </p>
     </div>

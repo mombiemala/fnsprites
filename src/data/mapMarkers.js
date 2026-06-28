@@ -22,7 +22,7 @@ export const KINDS = [
   { id: 'sprite_chest', label: 'Sprite Chests', color: '#36c5ff', emoji: '✨', note: 'Main source of rare sprites (incl. Grim Reaper).' },
   { id: 'chest', label: 'Chests', color: '#7CFC9B', emoji: '📦', note: 'Regular loot chests.' },
   { id: 'fishing', label: 'Fishing Spots', color: '#5BB8FF', emoji: '🎣', note: 'Fishing holes.' },
-  { id: 'gold_pond', label: 'Gold Ponds', color: '#f6c945', emoji: '🟡', note: 'Higher chance of rare fishing rewards.' },
+  { id: 'gold_pond', label: 'Gold Ponds', color: '#f6c945', emoji: '🪙', note: 'Higher chance of rare fishing rewards.' },
   { id: 'path', label: 'Runner Paths', color: '#a855f7', emoji: '🏃', note: 'Fast loops between chest clusters.' },
 ]
 
