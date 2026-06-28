@@ -7,14 +7,28 @@
 export const CHANGELOG = [
   {
     date: 'June 28, 2026',
+    title: 'A zoomable map you can actually read',
+    summary:
+      "The map used to send you to a third-party site to see anything in detail, and the spots were tiny coloured dots. Now you zoom and pan right here, and every spot is a clear symbol.",
+    changes: [
+      { tag: 'Added', text: '＋/− and double-tap to zoom (up to 5×) and drag to pan — all in-app. No more out-linking just to enlarge.' },
+      { tag: 'Changed', text: 'Markers are now symbol badges (📦 chest, ✨ sprite chest, 🎣 fishing, 🪙 gold pond, 🏃 path) on a dark pill with a colour-coded ring — legible at a glance and constant-size at any zoom.' },
+      { tag: 'Changed', text: 'Marker state still reads clearly: dashed = unconfirmed, greyed = retired, white halo = selected.' },
+    ],
+    why:
+      "Sending people to another site to see detail is a dead end, and a 3px dot tells you nothing. Owning the zoom and giving each spot a real symbol makes the map useful on its own.",
+  },
+  {
+    date: 'June 28, 2026',
     title: 'A calmer Collection page',
     summary:
       "The Collection tab had grown top-heavy — breakdown, sharing, trading and support cards were pushing the actual sprites way down the page. We rebalanced everything so the sprites come first.",
     changes: [
       { tag: 'Changed', text: 'Sprite grid and a full-width filter bar now sit right under your progress, so you reach the sprites immediately.' },
-      { tag: 'Changed', text: 'Breakdown, Share & export, Trading and Support moved into a sidebar beside the grid (it stacks below on phones).' },
-      { tag: 'Changed', text: 'Sidebar cards are always open now (no more collapsing), and the Support card pairs each ask — Creator Code and Buy Me a Coffee — directly with its button so it reads clearly.' },
+      { tag: 'Changed', text: 'Breakdown, Share & export, Trading and Support moved into a static sidebar beside the grid (it stacks below on phones); the cards are always open — no collapsing.' },
+      { tag: 'Changed', text: 'Reformatted the Support card so the Creator Code and Buy Me a Coffee asks each sit directly above their own button, easy to read.' },
       { tag: 'Fixed', text: 'Shared profile links (?u=…) were a dead end — no nav. The Collection / Leaderboard / News / Map tabs now show there and link you back into the app, plus ?view= deep links.' },
+      { tag: 'Added', text: 'This changelog (footer link) and a refreshed project README.' },
     ],
     why:
       "Vertical space is the scarcest thing on a phone. A tracker’s job is to show you sprites, so secondary tools should be one glance to the side — present, but never in the way.",

@@ -11,17 +11,34 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## June 28, 2026 — A zoomable map you can actually read
+
+- **Added:** In-app zoom (`＋`/`−`, double-tap, up to 5×) and drag-to-pan on the
+  map — replacing the out-link to a third-party site to "enlarge."
+- **Changed:** Markers are now symbol badges (📦 chest, ✨ sprite chest, 🎣
+  fishing, 🪙 gold pond, 🏃 path) on a dark pill with a colour-coded ring —
+  legible at a glance and counter-scaled to stay constant-size at any zoom.
+- **Changed:** Marker state still reads clearly — dashed = unconfirmed, greyed =
+  retired, white halo = selected. `touch-none` only engages while zoomed/placing
+  so the page still scrolls over the map at default zoom.
+
+> **Why:** Sending people to another site to see detail is a dead end, and a 3px
+> dot tells you nothing. Owning the zoom and giving each spot a real symbol makes
+> the map useful on its own — no need to generate a bespoke map (no source
+> geometry, huge effort); zooming the official image covers it.
+
 ## June 28, 2026 — A calmer Collection page
 
 - **Changed:** Sprite grid + a full-width filter bar now sit directly under your
   progress summary, so the sprites are the first thing you reach.
 - **Changed:** Breakdown, Share & export, Trading and Support moved into a
-  static sidebar beside the grid (stacks below on mobile).
-- **Changed:** Sidebar cards are always expanded (dropped the collapsibles), and
-  the Support card pairs each ask — Creator Code and Buy Me a Coffee — directly
-  with its button.
+  static sidebar beside the grid (stacks below on mobile); cards are always
+  expanded (dropped the collapsibles).
+- **Changed:** Reformatted the Support card so Creator Code and Buy Me a Coffee
+  each sit directly above their own button.
 - **Fixed:** Shared profile pages (`?u=…`) had no navigation. The primary tabs
   now render there and link back into the app, backed by `?view=` deep links.
+- **Added:** This changelog (footer link + `CHANGELOG.md`) and a refreshed README.
 
 > **Why:** Vertical space is the scarcest resource on a phone. A tracker should
 > show sprites first; secondary tools belong one glance to the side.
