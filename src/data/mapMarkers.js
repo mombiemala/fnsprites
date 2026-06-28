@@ -14,6 +14,9 @@ export const MAP_IMAGE_CANDIDATES = [
 ]
 export const MAP_LINK = 'https://fortnite.gg/map'
 
+// The single global community map's well-known id (see migration).
+export const COMMUNITY_MAP_ID = '00000000-0000-0000-0000-000000000001'
+
 // The community-marker layers. `pois` is handled separately (live).
 export const KINDS = [
   { id: 'sprite_chest', label: 'Sprite Chests', color: '#36c5ff', emoji: '✨', note: 'Main source of rare sprites (incl. Grim Reaper).' },

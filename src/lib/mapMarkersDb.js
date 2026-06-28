@@ -1,11 +1,14 @@
 import { supabase } from './supabase'
 
-// Community map markers backed by Supabase. Markers are world-readable; writes
-// (create / vote / delete) require a signed-in user and are guarded by RLS.
+// Community map markers backed by Supabase. Markers belong to a map (the global
+// community map or a user's own/shared map). Reads/writes are governed by RLS.
 
-// Fetch all markers with confirm/stale tallies and the caller's own vote.
-export async function fetchMarkers() {
-  const { data, error } = await supabase.rpc('map_markers_list')
+// Fetch markers for a map, with confirm/stale tallies and the caller's vote.
+export async function fetchMarkers(mapId, includeRetired = false) {
+  const { data, error } = await supabase.rpc('map_markers_list', {
+    p_map_id: mapId,
+    p_include_retired: includeRetired,
+  })
   if (error) return []
   return (data || []).map((m) => ({
     ...m,
@@ -16,19 +19,23 @@ export async function fetchMarkers() {
   }))
 }
 
-// Drop a new marker. `source` is optional attribution (e.g. a guide URL).
-// Returns { error } on failure.
-export async function addMarker({ kind, x, y, label, source, userId }) {
+// Drop a new marker on a map. `source` is optional attribution.
+export async function addMarker({ mapId, kind, x, y, label, source, userId }) {
   const { data, error } = await supabase
     .from('map_markers')
-    .insert({ kind, x, y, label: label || '', source: source || '', created_by: userId })
+    .insert({ map_id: mapId, kind, x, y, label: label || '', source: source || '', created_by: userId })
     .select()
     .maybeSingle()
   return { data, error }
 }
 
-// Set (or clear) the caller's vote on a marker. Passing the same vote again
-// clears it (toggle); passing null clears it.
+// Move a marker (drag-to-reposition). Allowed for the creator or a map manager.
+export async function moveMarker({ id, x, y }) {
+  const { error } = await supabase.from('map_markers').update({ x, y }).eq('id', id)
+  return { error }
+}
+
+// Set (or clear) the caller's vote on a marker (toggle).
 export async function voteMarker({ markerId, userId, vote, current }) {
   if (!vote || vote === current) {
     const { error } = await supabase
@@ -44,7 +51,26 @@ export async function voteMarker({ markerId, userId, vote, current }) {
   return { error }
 }
 
-// Delete a marker you created.
+// Retire (archive) a marker — kept for history, hidden from the active map.
+export async function retireMarker({ id, userId }) {
+  const { error } = await supabase
+    .from('map_markers')
+    .update({ retired_at: new Date().toISOString(), retired_by: userId })
+    .eq('id', id)
+  return { error }
+}
+
+// Bring a retired marker back.
+export async function unretireMarker(id) {
+  const { error } = await supabase
+    .from('map_markers')
+    .update({ retired_at: null, retired_by: null })
+    .eq('id', id)
+  return { error }
+}
+
+// Hard-delete a marker. Blocked by a DB trigger for confirmed community spots
+// (retire those instead) — surfaces as an error the UI can show.
 export async function deleteMarker(id) {
   const { error } = await supabase.from('map_markers').delete().eq('id', id)
   return { error }
