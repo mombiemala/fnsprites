@@ -5,7 +5,13 @@
 // Chest / fishing / pond markers are COMMUNITY-SOURCED — players submit and
 // confirm them (stored in Supabase). There is no open dataset for those, so
 // crowd-sourcing is the sustainable, self-updating path.
-export const MAP_IMAGE = 'https://fortnite-api.com/images/map.png'
+// Map image candidates, tried in order. A self-hosted copy at public/map.png
+// avoids hammering (and being rate-limited by) the external API on every load;
+// if it's absent we fall back to the live API image.
+export const MAP_IMAGE_CANDIDATES = [
+  `${import.meta.env.BASE_URL}map.png`,
+  'https://fortnite-api.com/images/map.png',
+]
 export const MAP_LINK = 'https://fortnite.gg/map'
 
 // The community-marker layers. `pois` is handled separately (live).

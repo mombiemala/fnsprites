@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
-import { MAP_IMAGE, MAP_LINK, KINDS, KIND_MAP } from '../data/mapMarkers'
+import { MAP_IMAGE_CANDIDATES, MAP_LINK, KINDS, KIND_MAP } from '../data/mapMarkers'
 import { fetchLivePois } from '../lib/livePois'
 import { fetchMarkers, addMarker, voteMarker, deleteMarker } from '../lib/mapMarkersDb'
 
@@ -22,7 +22,8 @@ export default function MapView() {
   const [pois, setPois] = useState([])
   const [poisLive, setPoisLive] = useState(false)
   const [markers, setMarkers] = useState([])
-  const [imgOk, setImgOk] = useState(true)
+  const [imgIdx, setImgIdx] = useState(0) // which MAP_IMAGE_CANDIDATES src we're on
+  const imgOk = imgIdx < MAP_IMAGE_CANDIDATES.length
 
   // Layer visibility: POIs + each community kind, all on by default.
   const [on, setOn] = useState(() => ({ pois: true, ...Object.fromEntries(KINDS.map((k) => [k.id, true])) }))
@@ -56,13 +57,13 @@ export default function MapView() {
     const x = ((e.clientX - rect.left) / rect.width) * 100
     const y = ((e.clientY - rect.top) / rect.height) * 100
     setSelected(null)
-    setDraft({ x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10, kind: addKind, label: '' })
+    setDraft({ x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10, kind: addKind, label: '', source: '' })
   }
 
   const saveDraft = async () => {
     if (!draft || !user) return
     setBusy(true)
-    const { error } = await addMarker({ kind: draft.kind, x: draft.x, y: draft.y, label: draft.label.trim(), userId: user.id })
+    const { error } = await addMarker({ kind: draft.kind, x: draft.x, y: draft.y, label: draft.label.trim(), source: draft.source.trim(), userId: user.id })
     setBusy(false)
     if (error) {
       toast('Could not save the marker', 'error')
@@ -106,12 +107,18 @@ export default function MapView() {
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
         <h3 className="font-display text-lg text-white">🗺️ Island Map</h3>
         <a href={MAP_LINK} target="_blank" rel="noreferrer" className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-white hover:bg-[var(--border)]">
-          Open full map ↗
+          fortnite.gg map ↗
         </a>
       </div>
+
+      {/* How it works — short and always visible so the interaction is obvious */}
+      <p className="mb-3 rounded-lg bg-[var(--bg-2)] px-3 py-2 text-xs text-[var(--text)]/80">
+        💡 Tap any dot to <b className="text-white">confirm</b> it’s still there or flag it gone.
+        {user ? ' To add a spot, pick a type below, then tap the map.' : ' Log in to add or confirm spots.'}
+      </p>
 
       {/* Layer toggles */}
       <div className="mb-3 flex flex-wrap gap-1.5">
@@ -139,7 +146,7 @@ export default function MapView() {
       </div>
 
       {/* Add controls */}
-      {user ? (
+      {user && (
         <div className="mb-3 flex flex-wrap items-center gap-1.5">
           <span className="text-[11px] font-bold text-[var(--muted)]">Add a spot:</span>
           {KINDS.map((k) => (
@@ -154,10 +161,7 @@ export default function MapView() {
               {k.emoji} {k.label.replace(/s$/, '')}
             </button>
           ))}
-          {addKind && <span className="text-[11px] font-bold text-[var(--brand)]">→ tap the map to place it</span>}
         </div>
-      ) : (
-        <p className="mb-3 text-[11px] text-[var(--muted)]">Log in to add &amp; confirm chest / fishing spots.</p>
       )}
 
       {/* Map + markers */}
@@ -166,11 +170,32 @@ export default function MapView() {
         onClick={onMapClick}
       >
         {imgOk ? (
-          <img src={MAP_IMAGE} alt="Fortnite map" onError={() => setImgOk(false)} className="h-full w-full select-none object-cover" draggable={false} />
+          <img
+            src={MAP_IMAGE_CANDIDATES[imgIdx]}
+            alt="Fortnite map"
+            onError={() => setImgIdx((i) => i + 1)}
+            className="h-full w-full select-none object-cover"
+            draggable={false}
+          />
         ) : (
           <div className="grid h-full place-items-center p-6 text-center text-sm text-[var(--muted)]">
-            Couldn’t load the live map.{' '}
-            <a href={MAP_LINK} target="_blank" rel="noreferrer" className="underline">Open the full interactive map ↗</a>
+            Couldn’t load the map image.{' '}
+            <a href={MAP_LINK} target="_blank" rel="noreferrer" className="underline">Open fortnite.gg map ↗</a>
+          </div>
+        )}
+
+        {/* Prominent add-mode banner so placing a marker is unmistakable */}
+        {imgOk && addKind && !draft && (
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-2 bg-[var(--brand)] px-3 py-2 text-xs font-extrabold text-black">
+            <span>👆 Tap the map to place a {KIND_MAP[addKind].emoji} {KIND_MAP[addKind].label.replace(/s$/, '')}</span>
+            <button onClick={(e) => { e.stopPropagation(); setAddKind(null) }} className="pointer-events-auto rounded bg-black/20 px-2 py-0.5">Cancel</button>
+          </div>
+        )}
+
+        {/* Empty-state hint when there are no markers yet */}
+        {imgOk && markers.length === 0 && !addKind && (
+          <div className="pointer-events-none absolute inset-x-3 bottom-3 z-10 rounded-lg bg-black/70 px-3 py-2 text-center text-[11px] font-semibold text-white backdrop-blur">
+            No community spots yet{user ? ' — pick a type above and tap to add the first!' : ' — log in to add the first!'}
           </div>
         )}
 
@@ -216,18 +241,26 @@ export default function MapView() {
           <p className="mb-2 text-xs font-bold text-white">
             New {KIND_MAP[draft.kind].emoji} {KIND_MAP[draft.kind].label.replace(/s$/, '')} at {draft.x}%, {draft.y}%
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col gap-2">
             <input
               autoFocus
               value={draft.label}
               onChange={(e) => setDraft((d) => ({ ...d, label: e.target.value }))}
               placeholder="Label (optional) — e.g. “north of Sinister Strip”"
-              className="min-w-0 flex-1 rounded-lg border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)]"
+              className="w-full rounded-lg border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)]"
             />
-            <button onClick={saveDraft} disabled={busy} className="rounded-lg bg-[var(--brand)] px-3 py-2 text-xs font-extrabold text-black disabled:opacity-60">
-              {busy ? 'Saving…' : 'Save'}
-            </button>
-            <button onClick={() => setDraft(null)} className="rounded-lg bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white">Cancel</button>
+            <input
+              value={draft.source}
+              onChange={(e) => setDraft((d) => ({ ...d, source: e.target.value }))}
+              placeholder="Source (optional) — a guide URL or where you saw it"
+              className="w-full rounded-lg border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)]"
+            />
+            <div className="flex gap-2">
+              <button onClick={saveDraft} disabled={busy} className="rounded-lg bg-[var(--brand)] px-3 py-2 text-xs font-extrabold text-black disabled:opacity-60">
+                {busy ? 'Saving…' : 'Save spot'}
+              </button>
+              <button onClick={() => setDraft(null)} className="rounded-lg bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white">Cancel</button>
+            </div>
           </div>
         </div>
       )}
@@ -244,6 +277,16 @@ export default function MapView() {
               <p className="mt-0.5 text-[11px] text-[var(--muted)]">
                 ✓ {selected.confirms} confirmed · ⚠ {selected.stales} say it’s gone
               </p>
+              {selected.source && (
+                <p className="mt-0.5 text-[11px] text-[var(--muted)]">
+                  Source:{' '}
+                  {/^https?:\/\//.test(selected.source) ? (
+                    <a href={selected.source} target="_blank" rel="noreferrer" className="underline hover:text-white">{selected.source}</a>
+                  ) : (
+                    <span className="text-[var(--text)]/80">{selected.source}</span>
+                  )}
+                </p>
+              )}
             </div>
             <button onClick={() => setSelected(null)} aria-label="Close" className="text-[var(--muted)] hover:text-white">✕</button>
           </div>
@@ -276,8 +319,9 @@ export default function MapView() {
       )}
 
       <p className="mt-3 text-[10px] text-[var(--muted)]">
-        Map image &amp; POIs via fortnite-api.com{poisLive ? ' (live)' : ''}. Chest, fishing &amp; pond spots are
-        community-submitted &amp; confirmed — approximate, and they shift each update. Use the full interactive map for precision. Not affiliated with Epic Games.
+        POIs {poisLive ? 'live from' : 'via'} fortnite-api.com. Chest, fishing &amp; pond spots are
+        community-submitted &amp; confirmed (with sources where given) — approximate, and they shift each update.
+        Use the full interactive map for precision. Not affiliated with Epic Games.
       </p>
     </div>
   )

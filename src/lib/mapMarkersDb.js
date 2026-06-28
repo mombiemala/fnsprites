@@ -16,11 +16,12 @@ export async function fetchMarkers() {
   }))
 }
 
-// Drop a new marker. Returns { error } on failure.
-export async function addMarker({ kind, x, y, label, userId }) {
+// Drop a new marker. `source` is optional attribution (e.g. a guide URL).
+// Returns { error } on failure.
+export async function addMarker({ kind, x, y, label, source, userId }) {
   const { data, error } = await supabase
     .from('map_markers')
-    .insert({ kind, x, y, label: label || '', created_by: userId })
+    .insert({ kind, x, y, label: label || '', source: source || '', created_by: userId })
     .select()
     .maybeSingle()
   return { data, error }
