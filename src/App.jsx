@@ -20,6 +20,7 @@ import MapView from './components/MapView'
 import OnboardingHint from './components/OnboardingHint'
 import BugReportModal from './components/BugReportModal'
 import AboutModal from './components/AboutModal'
+import ChangelogModal from './components/ChangelogModal'
 import SaveStatusPill from './components/SaveStatusPill'
 import { LINKS } from './lib/supabase'
 
@@ -69,6 +70,7 @@ export default function App() {
   const [view, setView] = useState(useInitialView())
   const [showBug, setShowBug] = useState(false)
   const [showAbout, setShowAbout] = useState(false)
+  const [showChangelog, setShowChangelog] = useState(false)
 
   useEffect(() => {
     if (!shareTarget) return
@@ -357,6 +359,8 @@ export default function App() {
         <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-semibold">
           <button onClick={() => setShowAbout(true)} className="hover:text-white">About</button>
           <span className="opacity-30">·</span>
+          <button onClick={() => setShowChangelog(true)} className="hover:text-white">Changelog</button>
+          <span className="opacity-30">·</span>
           <button onClick={() => setShowBug(true)} className="hover:text-white">Report a bug</button>
           <span className="opacity-30">·</span>
           <a href={LINKS.buyMeACoffee} target="_blank" rel="noreferrer" className="hover:text-white">☕ Buy me a coffee</a>
@@ -388,6 +392,7 @@ export default function App() {
       {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
       {showBug && <BugReportModal onClose={() => setShowBug(false)} />}
       {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
+      {showChangelog && <ChangelogModal onClose={() => setShowChangelog(false)} />}
       {detailType && (
         <SpriteDetailModal
           typeId={detailType}
