@@ -18,6 +18,7 @@ import Leaderboard from './components/Leaderboard'
 import NewsFeed from './components/NewsFeed'
 import MapView from './components/MapView'
 import OnboardingHint from './components/OnboardingHint'
+import Collapsible from './components/Collapsible'
 import BugReportModal from './components/BugReportModal'
 import AboutModal from './components/AboutModal'
 import SaveStatusPill from './components/SaveStatusPill'
@@ -253,52 +254,7 @@ export default function App() {
         <ProgressStats owned={stats.owned} mastered={stats.mastered} total={stats.total} />
       </div>
 
-      <div className="mb-5">
-        <StatsBreakdown tracking={activeTracking} />
-      </div>
-
-      {/* Export images */}
-      <div className="mb-5 flex flex-wrap gap-2">
-        <button
-          onClick={() => exportImage('collection')}
-          disabled={exporting}
-          title="Download a shareable image of your whole collection (owned sprites in full colour, missing dimmed)"
-          className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
-        >
-          {exporting ? 'Rendering…' : '📸 Collection image'}
-        </button>
-        <button
-          onClick={() => exportImage('missing')}
-          disabled={exporting}
-          title="Download an image of just the sprites you still need — handy for trades"
-          className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
-        >
-          {exporting ? 'Rendering…' : '🔍 Missing-sprites image'}
-        </button>
-      </div>
-
-      {!isShareView && (
-        <div className="mb-5 grid gap-4 lg:grid-cols-2">
-          <SupportBanner />
-          {user ? (
-            <ShareBar />
-          ) : (
-            <div className="grid place-items-center rounded-2xl border border-dashed border-[var(--border)] p-5 text-center">
-              <p className="text-sm text-[var(--muted)]">
-                <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">Log in</button>{' '}
-                to save your progress to the cloud and get a shareable link with your gamertag.
-              </p>
-            </div>
-          )}
-        </div>
-      )}
-
-      {!isShareView && user && (
-        <div className="mb-5">
-          <TradePanel />
-        </div>
-      )}
-
+      {/* Main content: filters + grid sit right under the progress summary */}
       <div className="sticky top-0 z-30 -mx-4 mb-5 border-b border-[var(--border)] bg-[#0c0f1a]/85 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">
         <Toolbar
           filters={filters}
@@ -343,6 +299,58 @@ export default function App() {
           </section>
         ))
       )}
+
+      {/* Secondary sections — tucked into collapsibles below the grid so they
+          don't push the sprites down the page. */}
+      <div className="mt-8 flex flex-col gap-3">
+        <Collapsible title="📊 Collection breakdown" hint="by rarity & theme">
+          <StatsBreakdown tracking={activeTracking} />
+        </Collapsible>
+
+        {!isShareView && (
+          <Collapsible title="📤 Share & export" hint="links and image downloads" defaultOpen={false}>
+            <div className="flex flex-col gap-4">
+              {user ? (
+                <ShareBar />
+              ) : (
+                <p className="text-sm text-[var(--muted)]">
+                  <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">Log in</button>{' '}
+                  to save your progress to the cloud and get a shareable link with your gamertag.
+                </p>
+              )}
+              <div>
+                <p className="mb-2 text-xs font-semibold text-[var(--muted)]">Download a shareable PNG of your collection:</p>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={() => exportImage('collection')}
+                    disabled={exporting}
+                    title="Owned sprites in full colour, missing ones dimmed"
+                    className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
+                  >
+                    {exporting ? 'Rendering…' : '⬇️ Export collection image'}
+                  </button>
+                  <button
+                    onClick={() => exportImage('missing')}
+                    disabled={exporting}
+                    title="Just the sprites you still need — handy for trades"
+                    className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
+                  >
+                    {exporting ? 'Rendering…' : '⬇️ Export missing-sprites image'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Collapsible>
+        )}
+
+        {!isShareView && user && (
+          <Collapsible title="🔁 Trading" hint="find matches with other players">
+            <TradePanel />
+          </Collapsible>
+        )}
+
+        {!isShareView && <SupportBanner />}
+      </div>
         </>
       )}
 
@@ -365,12 +373,14 @@ export default function App() {
         <p className="mt-1 opacity-80">
           Roster, themes &amp; drop rates cross-referenced from{' '}
           <a className="underline" href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>,{' '}
-          <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a>,{' '}
-          <a className="underline" href="https://github.com/MRSessions/fn-sprite-checklist" target="_blank" rel="noreferrer">MRSessions</a>{' '}
-          &amp; <a className="underline" href="https://staticvacant.github.io/fnsprites/" target="_blank" rel="noreferrer">staticvacant/fnsprites</a>.
-          News from official patch notes &amp; <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>;
-          map data via <a className="underline" href="https://github.com/yaelbrinkert/fortnite-archives" target="_blank" rel="noreferrer">fortnite-archives</a>.
-          Drop rates are community estimates. Built with React, Vite &amp; Supabase.
+          <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a>{' '}
+          &amp; <a className="underline" href="https://staticvacant.github.io/fnsprites/" target="_blank" rel="noreferrer">staticvacant/fnsprites</a> (the tracker that inspired this).
+          News from official Fortnite patch notes &amp; <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>.
+          Map image &amp; live POIs via <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>;
+          sprite-chest locations seeded from community guides (
+          <a className="underline" href="https://gamingpromax.com/fortnite-sprite-chest-locations/" target="_blank" rel="noreferrer">gamingpromax</a>,{' '}
+          <a className="underline" href="https://beebom.com/fortnite-sprite-chest-locations/" target="_blank" rel="noreferrer">beebom</a>
+          ) and refined by players. Drop rates are community estimates. Built with React, Vite &amp; Supabase.
         </p>
       </footer>
 
