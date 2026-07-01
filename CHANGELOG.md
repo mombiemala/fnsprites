@@ -21,6 +21,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 - **Added:** Estimated Sprite Dust to (re)summon each variant (`dustCost`) in the
   sprite detail — Rare 100/4,000 · Epic 3,000/6,000 · Legendary 5,000/10,000 ·
   Mythic 7,500/15,000 (base/variant). Indexing a trade avoids the cost.
+- **Fixed:** Widened the sprite detail modal (`max-w-lg` → `max-w-xl`,
+  `overflow-x-hidden`) and switched its row tooltips to native `title` so they
+  no longer clip or trigger a horizontal scrollbar.
 
 > **Why:** Collecting is a loop of find → trade → summon, each with friction.
 > Surfacing matches, farming spots, and dust costs where you're already looking

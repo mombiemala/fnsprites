@@ -1,7 +1,6 @@
 import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS, dustCost, spriteSource } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
-import Tooltip from './Tooltip'
 import { useEscClose } from '../lib/useEscClose'
 
 export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, onToggleTrade, onToggleWanted, onOpenMap, readOnly }) {
@@ -17,7 +16,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
         role="dialog"
         aria-modal="true"
         aria-label={`${type.name} details`}
-        className="max-h-[88vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-5 shadow-2xl"
+        className="max-h-[88vh] w-full max-w-xl overflow-y-auto overflow-x-hidden rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-5 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-3">
@@ -91,51 +90,50 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                       <span className="rounded bg-black/40 px-1 py-0.5 text-[9px] font-bold uppercase text-white/60">soon</span>
                     )}
                     {dust != null && (
-                      <Tooltip content="Estimated Sprite Dust to (re)summon this variant. Indexing a trade avoids re-summoning.">
-                        <span className="rounded bg-amber-400/15 px-1.5 py-0.5 text-[9px] font-bold text-amber-300">≈{dust.toLocaleString()} dust</span>
-                      </Tooltip>
+                      <span
+                        title="Estimated Sprite Dust to (re)summon this variant. Indexing a trade avoids re-summoning."
+                        className="rounded bg-amber-400/15 px-1.5 py-0.5 text-[9px] font-bold text-amber-300"
+                      >
+                        ≈{dust.toLocaleString()} dust
+                      </span>
                     )}
                   </div>
                   <span className="block truncate text-[11px] text-[var(--muted)]">{theme?.bonus}</span>
                 </div>
                 {!readOnly ? (
                   <div className="flex shrink-0 gap-1">
-                    <Tooltip content={owned ? 'You own this — tap to unmark' : 'Mark as owned'}>
-                      <button
-                        onClick={() => onToggleOwned(v.id, !owned)}
-                        aria-label={owned ? 'Owned' : 'Mark owned'}
-                        className={`rounded-lg px-2.5 py-1.5 text-[11px] font-bold ${owned ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
-                      >
-                        {owned ? 'Owned' : 'Have'}
-                      </button>
-                    </Tooltip>
-                    <Tooltip content="Mastered (max level)">
-                      <button
-                        onClick={() => onToggleMastered(v.id, !mastered)}
-                        aria-label="Mastered"
-                        className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${mastered ? 'bg-amber-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
-                      >
-                        ★
-                      </button>
-                    </Tooltip>
-                    <Tooltip content="Offer to trade or index — adds it to your Trade Board post">
-                      <button
-                        onClick={() => onToggleTrade(v.id, !forTrade)}
-                        aria-label="Offer to trade or index"
-                        className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${forTrade ? 'bg-emerald-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
-                      >
-                        ⇄
-                      </button>
-                    </Tooltip>
-                    <Tooltip content="Want to index — adds it to your Trade Board post">
-                      <button
-                        onClick={() => onToggleWanted(v.id, !wanted)}
-                        aria-label="Want to index"
-                        className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${wanted ? 'bg-pink-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
-                      >
-                        ♥
-                      </button>
-                    </Tooltip>
+                    <button
+                      onClick={() => onToggleOwned(v.id, !owned)}
+                      aria-label={owned ? 'Owned' : 'Mark owned'}
+                      title={owned ? 'You own this — tap to unmark' : 'Mark as owned'}
+                      className={`rounded-lg px-2.5 py-1.5 text-[11px] font-bold ${owned ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                    >
+                      {owned ? 'Owned' : 'Have'}
+                    </button>
+                    <button
+                      onClick={() => onToggleMastered(v.id, !mastered)}
+                      aria-label="Mastered"
+                      title="Mastered (max level)"
+                      className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${mastered ? 'bg-amber-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                    >
+                      ★
+                    </button>
+                    <button
+                      onClick={() => onToggleTrade(v.id, !forTrade)}
+                      aria-label="Offer to trade or index"
+                      title="Offer to trade or index — adds it to your Trade Board post"
+                      className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${forTrade ? 'bg-emerald-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                    >
+                      ⇄
+                    </button>
+                    <button
+                      onClick={() => onToggleWanted(v.id, !wanted)}
+                      aria-label="Want to index"
+                      title="Want to index — adds it to your Trade Board post"
+                      className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${wanted ? 'bg-pink-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                    >
+                      ♥
+                    </button>
                   </div>
                 ) : (
                   <div className="flex shrink-0 items-center gap-1">
