@@ -30,18 +30,25 @@ accurate to the **Jun 25, 2026 update**.
   collections, plus a **compare** view (what you both have / each are missing).
 - **Trading hub** — mark sprites for-trade / wanted, find matches with other
   players, and export a trade card.
-- **Community loot map** — submit/confirm/flag sprite-chest, fishing and pond
-  spots; sprite-chest locations are **seeded from public guides** (with source
+- **Community loot map** — an **in-app zoomable/pannable** map with legible
+  symbol markers; submit/confirm/flag sprite-chest, fishing and pond spots.
+  Sprite-chest locations are **seeded from public guides** (with source
   attribution) and refined by the community. Make **personal or shared maps**,
   reposition markers, and **retire** spots for history. POIs are pulled live.
-- **News feed** — official patch notes and upcoming/datamined updates.
-- **Share your collection** — set your gamertag and share a read-only public link
-  (`?u=<your-id>`); **export** a collection mosaic or missing-sprites image.
+- **Self-updating news feed** — auto-detects Fortnite's current live build and
+  pulls official in-game news, plus curated editorial "upcoming" items.
+- **Profile page** — manage your gamertag, public/private visibility, sign out,
+  and delete your data.
+- **Share & export** — set your gamertag and share a read-only public link
+  (`?u=<your-id>`); export a **Sprite Locker–style poster** of your collection
+  (or just the sprites you still need).
 - **Filter, search & group** — by theme, rarity, ownership; hide mastered, show
   unreleased; group by theme / rarity / sprite. Filters collapse on mobile.
 - **Progress & breakdown** — overall Collection % and Mastery %, per-rarity and
   per-theme breakdown, and completion badges.
-- **PWA** — installable, works offline. **Google sign-in** + email auth.
+- **Fast & installable** — a **PWA** (works offline), with heavy views
+  code-split for a quick first load and privacy-friendly, cookieless analytics.
+  **Google sign-in** + email auth.
 - **Report a bug**, **About**, **Changelog**, and **Buy Me a Coffee** in the
   footer.
 
