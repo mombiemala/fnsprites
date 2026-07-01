@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 1, 2026',
+    title: 'Link previews & a warmer welcome',
+    summary:
+      "Shared links now unfurl into a proper branded card, and first-time visitors get a quick, friendly rundown.",
+    changes: [
+      { tag: 'Added', text: 'Rich link previews (Open Graph + Twitter cards) with a custom 1200×630 image — share the tracker to Discord, Twitter, etc. and it shows a title, description and artwork instead of a bare URL.' },
+      { tag: 'Added', text: 'A one-time welcome for newcomers explaining how to mark sprites, save your collection, and use the leaderboard, Trade board and map.' },
+      { tag: 'Fixed', text: 'Corrected the site description (it still named the removed Cube/Quack themes) and pointed previews at an absolute image URL crawlers can load.' },
+    ],
+    why:
+      "Word of mouth is how a fan app grows — a link that previews nicely gets clicked far more, and a 10-second orientation helps new players get it instead of bouncing.",
+  },
+  {
+    date: 'July 1, 2026',
     title: 'Trade alerts, farming links & dust costs',
     summary:
       "Three collector quality-of-life adds: know when a trade matches you, see where to farm a sprite, and what it costs in Sprite Dust to summon.",

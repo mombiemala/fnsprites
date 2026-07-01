@@ -12,7 +12,7 @@ import Toolbar from './components/Toolbar'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
 import StatsBreakdown from './components/StatsBreakdown'
-import OnboardingHint from './components/OnboardingHint'
+import WelcomeModal from './components/WelcomeModal'
 import AnnouncementBar from './components/AnnouncementBar'
 import SaveStatusPill from './components/SaveStatusPill'
 
@@ -204,6 +204,7 @@ export default function App() {
 
   return (
     <div className="mx-auto min-h-screen max-w-6xl px-4 pb-24 pt-6 sm:px-6">
+      <WelcomeModal />
       <AnnouncementBar />
       <header className="mb-6 flex items-center justify-between gap-3">
         <div>
@@ -284,7 +285,6 @@ export default function App() {
 
       {effectiveView === 'collection' && (
         <>
-      {!isShareView && <OnboardingHint />}
       {isShareView && (
         <div className="mb-4 rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-4">
           {shareLoading ? (

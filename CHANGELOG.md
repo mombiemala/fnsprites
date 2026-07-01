@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — Link previews & a warmer welcome
+
+- **Added:** Rich social link previews — Open Graph + Twitter card tags in
+  `index.html` with a custom `public/og-image.png` (1200×630, sprites + brand).
+- **Added:** First-visit `WelcomeModal` (shown once, gated on `welcomed` /
+  `onboarded`) orienting new players; replaced the small inline `OnboardingHint`.
+- **Fixed:** Site description no longer names the removed Cube/Quack themes;
+  preview image is now an absolute URL crawlers can load.
+
+> **Why:** Word of mouth grows a fan app — a link that previews nicely gets
+> clicked more, and a quick orientation helps newcomers stick.
+
 ## July 1, 2026 — Trade alerts, farming links & dust costs
 
 - **Added:** Opt-in trade-match alerts (`profiles.notify_trades` +
