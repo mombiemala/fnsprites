@@ -3,6 +3,14 @@
 // `when` is a display date; `ts` (YYYY-MM-DD) is used for sorting only.
 export const NEWS = [
   {
+    ts: '2026-07-16',
+    when: 'Jul 16, 2026',
+    tag: 'upcoming',
+    title: 'v41.20 — Sprite Pod styles (upcoming)',
+    body: 'The v41.10 Sprites (Striker, Fishy, Aura, Boss & Grim Reaper) and their variants are set to arrive as Sprite Pod styles in v41.20, releasing July 16, 2026.',
+    link: 'https://www.fortnite.com/news',
+  },
+  {
     ts: '2026-08-19',
     when: 'Aug 19, 2026',
     tag: 'upcoming',
@@ -15,7 +23,7 @@ export const NEWS = [
     when: 'Jun 25, 2026',
     tag: 'sprites',
     title: 'Gone Wild — 5 new Sprites (v41.10)',
-    body: 'Striker, Fishy, Aura, Boss and the Mythic Grim Reaper join the roster. Grim Reaper spawns almost exclusively from Sprite Chests.',
+    body: 'Striker, Fishy, Aura, Boss and the Mythic Grim Reaper join the roster (Grim Reaper spawns almost exclusively from Sprite Chests). v41.10 also added Shock Rocks & Quack Snacks consumables and the Safe Extraction / Sprite Hunt Rift Anomalies.',
     link: 'https://allthings.how/fortnite-gone-wild-sprites-striker-fishy-aura-boss-and-grim-reaper/',
   },
   {
