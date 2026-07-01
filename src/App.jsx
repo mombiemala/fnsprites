@@ -10,7 +10,6 @@ import ProgressStats from './components/ProgressStats'
 import Toolbar from './components/Toolbar'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
-import TradePanel from './components/TradePanel'
 import StatsBreakdown from './components/StatsBreakdown'
 import OnboardingHint from './components/OnboardingHint'
 import AnnouncementBar from './components/AnnouncementBar'
@@ -21,6 +20,7 @@ import SaveStatusPill from './components/SaveStatusPill'
 const Leaderboard = lazy(() => import('./components/Leaderboard'))
 const NewsFeed = lazy(() => import('./components/NewsFeed'))
 const MapView = lazy(() => import('./components/MapView'))
+const TradeBoard = lazy(() => import('./components/TradeBoard'))
 const AuthModal = lazy(() => import('./components/AuthModal'))
 const SpriteDetailModal = lazy(() => import('./components/SpriteDetailModal'))
 const BugReportModal = lazy(() => import('./components/BugReportModal'))
@@ -32,6 +32,7 @@ import { LINKS } from './lib/supabase'
 const TABS = [
   { id: 'collection', label: 'Collection' },
   { id: 'leaderboard', label: '🏆 Leaderboard' },
+  { id: 'trade', label: '🔁 Trade' },
   { id: 'news', label: '📰 News' },
   { id: 'map', label: '🗺️ Map' },
 ]
@@ -254,9 +255,10 @@ export default function App() {
         })}
       </nav>
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'news' || effectiveView === 'map') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'news' || effectiveView === 'map') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
+          {effectiveView === 'trade' && <div className="mb-5"><TradeBoard /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'map' && <div className="mb-5"><MapView /></div>}
         </Suspense>
@@ -363,8 +365,6 @@ export default function App() {
                 </div>
               </div>
             ))}
-
-          {!isShareView && user && <TradePanel />}
 
           {!isShareView && <SupportBanner />}
         </aside>

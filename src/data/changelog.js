@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'July 1, 2026',
+    title: 'Trade Board — find your trades',
+    summary:
+      "A new Trade tab to post what you're after and browse other collectors — built around how sprite trading actually works.",
+    changes: [
+      { tag: 'Added', text: 'A public trade board: post what you want and can offer, choose your method (⇄ full trade or 🔁 indexing), add a contact, and browse/filter everyone else’s posts.' },
+      { tag: 'Added', text: 'A short “How indexing works” explainer — the two-game give-and-return that adds a sprite to someone’s index without you losing yours (and saves Sprite Dust vs a full trade).' },
+      { tag: 'Added', text: 'A clear safety notice: trades happen in-game between players; the tracker doesn’t facilitate or guarantee them and isn’t responsible for trades or scams. Never share your login or pay real money.' },
+      { tag: 'Changed', text: 'Moved the auto match-finder into the Trade tab (“Suggested matches”) so all trading lives in one place.' },
+    ],
+    why:
+      "Trading is the heart of sprite collecting, but Fortnite has no in-game trade system — people rely on scattered Discords and megathreads. A board that speaks the community’s language (indexing vs full trade) brings that together, honestly framed and safety-first.",
+  },
+  {
+    date: 'July 1, 2026',
     title: 'Live event announcements',
     summary:
       "A dismissible banner up top for live and limited-time events — so you don't miss what's happening in-game right now.",

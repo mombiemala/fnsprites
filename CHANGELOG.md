@@ -11,6 +11,24 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — Trade Board — find your trades
+
+- **Added:** A **Trade tab** with a public board (`trade_posts` table + RLS +
+  `trade_board_list` RPC, capped at 15 posts/user). Post wants + offers, pick a
+  method (⇄ full trade / 🔁 indexing), add a contact, browse/filter posts.
+- **Added:** A "How indexing works" explainer (the two-game give-and-return that
+  indexes a sprite for someone without the giver losing theirs; saves Sprite
+  Dust vs a full trade).
+- **Added:** A safety/liability notice — trades are player-to-player and in-game;
+  the tracker doesn't facilitate, verify, or guarantee them and isn't
+  responsible for trades/scams. Never share login or pay real money.
+- **Changed:** Folded the auto match-finder into the Trade tab ("Suggested
+  matches") and removed it from the Collection sidebar.
+
+> **Why:** Trading is the heart of sprite collecting, but Fortnite has no
+> in-game trade system — a board that speaks the community's language (indexing
+> vs full trade) brings it into one honest, safety-first place.
+
 ## July 1, 2026 — Live event announcements
 
 - **Added:** A dismissible announcement bar (`src/components/AnnouncementBar.jsx`
