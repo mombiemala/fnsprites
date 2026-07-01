@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 1, 2026',
+    title: 'Getting ready for more players',
+    summary:
+      "Some quiet groundwork ahead of sharing the tracker more widely — privacy-friendly analytics and a few guardrails so a bad actor can't spoil the shared map for everyone.",
+    changes: [
+      { tag: 'Added', text: 'Privacy-friendly, cookieless analytics (Vercel Web Analytics + Speed Insights) — no tracking cookies, no consent banner needed.' },
+      { tag: 'Security', text: 'A daily cap of 40 community-map markers per person (your own private maps are unlimited) to blunt flooding, enforced in the database.' },
+      { tag: 'Security', text: 'Size limits on bug reports to stop spam payloads.' },
+    ],
+    why:
+      "Opening the doors to more people means planning for the small number who misbehave. Caps and limits live in the database, not just the app, so they hold no matter how someone pokes at it — and cookieless analytics respect players' privacy while still telling us what's useful.",
+  },
+  {
+    date: 'July 1, 2026',
     title: 'The news feed keeps itself current',
     summary:
       "The news tab used to lean on a hand-written list that quietly went stale between patches. Now it auto-pulls what Fortnite is actually running, so 'Update' items keep themselves fresh.",

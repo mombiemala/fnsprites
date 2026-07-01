@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — Getting ready for more players
+
+- **Added:** Privacy-friendly, cookieless analytics (Vercel Web Analytics +
+  Speed Insights) wired into `src/main.jsx` — no-op until enabled in the Vercel
+  dashboard; no consent banner needed.
+- **Security:** Daily cap of 40 community-map markers per user (personal/shared
+  maps unlimited), enforced by a `BEFORE INSERT` trigger on `map_markers`.
+- **Security:** `char_length` check constraints on `bug_reports` (message
+  1–2000, contact ≤ 320) to stop spam payloads.
+
+> **Why:** More players means planning for the few who misbehave. Rate limits
+> and size caps live in the database, not just the UI, so they hold regardless
+> of how someone pokes at the API — and cookieless analytics respect privacy.
+
 ## July 1, 2026 — The news feed keeps itself current
 
 - **Added:** Auto-detects Fortnite's current live build from the public API
