@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — Trade alerts, farming links & dust costs
+
+- **Added:** Opt-in trade-match alerts (`profiles.notify_trades` +
+  `trades_seen_at`, `trade_matches_for_me` RPC). Matching posts surface in the
+  Trade tab; a count badge appears on the tab when new ones are posted.
+- **Added:** "Where to find" on each sprite (`spriteSource`) with a jump to the
+  community loot map (`onOpenMap`).
+- **Added:** Estimated Sprite Dust to (re)summon each variant (`dustCost`) in the
+  sprite detail — Rare 100/4,000 · Epic 3,000/6,000 · Legendary 5,000/10,000 ·
+  Mythic 7,500/15,000 (base/variant). Indexing a trade avoids the cost.
+
+> **Why:** Collecting is a loop of find → trade → summon, each with friction.
+> Surfacing matches, farming spots, and dust costs where you're already looking
+> cuts the hopping between tabs and wikis.
+
 ## July 1, 2026 — Trade Board — find your trades
 
 - **Added:** A **Trade tab** with a public board (`trade_posts` table + RLS +

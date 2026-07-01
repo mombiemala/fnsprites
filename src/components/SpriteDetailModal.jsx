@@ -1,10 +1,10 @@
-import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS } from '../data/sprites'
+import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS, dustCost, spriteSource } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
 import Tooltip from './Tooltip'
 import { useEscClose } from '../lib/useEscClose'
 
-export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, onToggleTrade, onToggleWanted, readOnly }) {
+export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, onToggleTrade, onToggleWanted, onOpenMap, readOnly }) {
   useEscClose(onClose)
   const type = SPRITE_TYPES.find((t) => t.id === typeId)
   if (!type) return null
@@ -52,6 +52,18 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
           </p>
         )}
 
+        {/* Where to find — ties into the community loot map */}
+        <div className="mt-2 flex items-center justify-between gap-2 rounded-xl bg-[var(--bg-2)] px-3 py-2">
+          <p className="text-sm text-[var(--text)]/90">
+            <span className="font-bold text-[var(--brand)]">🗺️ Where to find:</span> {spriteSource(type.id)}
+          </p>
+          {onOpenMap && (
+            <button onClick={onOpenMap} className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">
+              See the Map →
+            </button>
+          )}
+        </div>
+
         <div className="mt-4 flex items-center justify-between">
           <h3 className="text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">
             Variants ({ownedCount}/{variants.length} owned)
@@ -66,16 +78,22 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
             const mastered = !!st?.mastered
             const forTrade = !!st?.forTrade
             const wanted = !!st?.wanted
+            const dust = dustCost(type.rarity, v.themeId)
             return (
               <div key={v.id} className="flex items-center gap-3 rounded-xl bg-[var(--bg-2)] p-2">
                 <div className={`sprite-art h-12 w-12 shrink-0 ${theme?.className} ${owned ? '' : 'sprite-locked'}`} style={{ borderRadius: '0.6rem' }}>
                   <SpriteArt sprite={v} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-1.5">
                     <span className="text-sm font-bold text-white">{theme?.name}</span>
                     {v.unreleased && (
                       <span className="rounded bg-black/40 px-1 py-0.5 text-[9px] font-bold uppercase text-white/60">soon</span>
+                    )}
+                    {dust != null && (
+                      <Tooltip content="Estimated Sprite Dust to (re)summon this variant. Indexing a trade avoids re-summoning.">
+                        <span className="rounded bg-amber-400/15 px-1.5 py-0.5 text-[9px] font-bold text-amber-300">≈{dust.toLocaleString()} dust</span>
+                      </Tooltip>
                     )}
                   </div>
                   <span className="block truncate text-[11px] text-[var(--muted)]">{theme?.bonus}</span>
@@ -138,7 +156,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
             <b className="text-white">Owned</b> · <span className="text-amber-300">★</span> mastered ·{' '}
             <span className="text-emerald-300">⇄</span> offer to trade/index ·{' '}
             <span className="text-pink-300">♥</span> want to index. The last two prefill your{' '}
-            <b className="text-white">Trade Board</b> post.
+            <b className="text-white">Trade Board</b> post. <span className="text-amber-300">≈dust</span> = Sprite Dust to re-summon (indexing avoids it).
           </p>
         )}
       </div>

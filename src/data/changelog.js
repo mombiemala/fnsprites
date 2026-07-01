@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 1, 2026',
+    title: 'Trade alerts, farming links & dust costs',
+    summary:
+      "Three collector quality-of-life adds: know when a trade matches you, see where to farm a sprite, and what it costs in Sprite Dust to summon.",
+    changes: [
+      { tag: 'Added', text: 'Opt-in trade-match alerts — switch them on in the Trade tab and matching posts (they have what you want / want what you offer) surface for you, with a count badge on the Trade tab when new ones appear.' },
+      { tag: 'Added', text: '“Where to find” on each sprite — how it’s farmed, with a one-tap jump to the community loot map.' },
+      { tag: 'Added', text: 'Estimated Sprite Dust to (re)summon each variant, shown in the sprite detail — a reminder that indexing a trade avoids that cost.' },
+    ],
+    why:
+      "Collecting is a loop of find → trade → summon, each with its own friction. Surfacing your matches, farming spots, and dust costs right where you’re already looking cuts the hopping between tabs and wikis.",
+  },
+  {
+    date: 'July 1, 2026',
     title: 'Trade Board — find your trades',
     summary:
       "A new Trade tab to post what you're after and browse other collectors — built around how sprite trading actually works.",

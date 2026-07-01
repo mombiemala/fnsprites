@@ -32,3 +32,11 @@ export async function deleteTradePost(id) {
   const { error } = await supabase.from('trade_posts').delete().eq('id', id)
   return { error }
 }
+
+// Posts that match the caller's wanted / for-trade sprites. `since` (ISO string)
+// limits to posts newer than that (for the "new matches" badge).
+export async function fetchTradeMatches(since = null) {
+  const { data, error } = await supabase.rpc('trade_matches_for_me', since ? { p_since: since } : {})
+  if (error) return []
+  return (data || []).map((p) => ({ ...p, wants: p.wants || [], offers: p.offers || [], methods: p.methods || [] }))
+}

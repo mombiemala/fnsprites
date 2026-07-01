@@ -118,3 +118,23 @@ export function buildSpriteList() {
 export const ALL_SPRITES = buildSpriteList()
 export const TOTAL_COUNT = ALL_SPRITES.length
 export const RELEASED_COUNT = ALL_SPRITES.filter((s) => s.released).length
+
+// Estimated Sprite Dust to (re)summon a variant, by rarity. Normal = base cost;
+// special variants (Gold/Gummy/Galaxy…) cost more. Community-sourced estimates.
+const DUST_BASE = { Rare: 100, Epic: 3000, Legendary: 5000, Mythic: 7500 }
+const DUST_VARIANT = { Rare: 4000, Epic: 6000, Legendary: 10000, Mythic: 15000 }
+export function dustCost(rarity, themeId) {
+  const table = themeId === 'normal' ? DUST_BASE : DUST_VARIANT
+  return table[rarity] ?? null
+}
+
+// Where a sprite is farmed (they come from Sprite Chests; a few have notes).
+const SPRITE_SOURCE = {
+  grim: 'Sprite Chests — spawns almost exclusively here.',
+  peanut: 'Extremely rare — a lucky Sprite Chest find.',
+  zeropoint: 'Sprite Chests — Mythic, very rare.',
+  fishy: 'Sprite Chests, with better odds near water & fishing spots.',
+}
+export function spriteSource(typeId) {
+  return SPRITE_SOURCE[typeId] || 'Sprite Chests around the island (plus occasional mid-match spawns).'
+}

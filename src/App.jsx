@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, lazy, Suspense } from 'react'
 import { useAuth } from './context/authStore'
 import { useToast } from './context/toastStore'
 import { fetchSharedCollection } from './lib/sharedCollection'
+import { fetchTradeMatches } from './lib/tradeBoard'
 import { ALL_SPRITES, TOTAL_COUNT, RELEASED_COUNT, SPRITE_TYPES, RARITY_ORDER } from './data/sprites'
 import { THEMES, THEME_MAP } from './data/themes'
 import { generateCollectionImage, downloadDataUrl } from './lib/exportImage'
@@ -87,6 +88,7 @@ export default function App() {
   const [showAbout, setShowAbout] = useState(false)
   const [showChangelog, setShowChangelog] = useState(false)
   const [showProfile, setShowProfile] = useState(false)
+  const [newTradeCount, setNewTradeCount] = useState(0)
 
   useEffect(() => {
     if (!shareTarget) return
@@ -101,7 +103,20 @@ export default function App() {
     }
   }, [shareTarget])
 
+  // Trade-match badge: for opted-in users, count trade posts newer than last-seen
+  // that match their wants/offers. Cleared when the Trade tab marks them seen.
+  useEffect(() => {
+    if (!user || !profile?.notify_trades) return
+    let cancelled = false
+    ;(async () => {
+      const m = await fetchTradeMatches(profile.trades_seen_at)
+      if (!cancelled) setNewTradeCount(m.length)
+    })()
+    return () => { cancelled = true }
+  }, [user, profile?.notify_trades, profile?.trades_seen_at])
+
   const isShareView = !!shareTarget
+  const tradeBadge = !!user && !!profile?.notify_trades && newTradeCount > 0
   const readOnly = isShareView
   const activeTracking = useMemo(
     () => (isShareView ? shared?.tracking || {} : tracking),
@@ -248,8 +263,11 @@ export default function App() {
             )
           }
           return (
-            <button key={t.id} role="tab" aria-selected={active} onClick={() => setView(t.id)} className={cls}>
+            <button key={t.id} role="tab" aria-selected={active} onClick={() => setView(t.id)} className={`${cls} relative`}>
               {t.label}
+              {t.id === 'trade' && tradeBadge && (
+                <span className="ml-1 rounded-full bg-pink-500 px-1.5 py-0.5 text-[9px] font-extrabold text-white">{newTradeCount}</span>
+              )}
             </button>
           )
         })}
@@ -421,6 +439,7 @@ export default function App() {
             onToggleMastered={setMastered}
             onToggleTrade={setForTrade}
             onToggleWanted={setWanted}
+            onOpenMap={() => { setDetailType(null); setView('map') }}
             readOnly={readOnly}
           />
         )}
