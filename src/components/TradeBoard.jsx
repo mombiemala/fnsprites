@@ -3,7 +3,7 @@ import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 import { ALL_SPRITES } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
-import { fetchTradePosts, createTradePost, deleteTradePost, fetchTradeMatches } from '../lib/tradeBoard'
+import { fetchTradePosts, createTradePost, deleteTradePost, fetchTradeMatches, vouchForTrader, unvouchTrader } from '../lib/tradeBoard'
 import TradePanel from './TradePanel'
 
 const RELEASED = ALL_SPRITES.filter((s) => s.released)
@@ -38,21 +38,41 @@ function Chips({ ids }) {
   )
 }
 
-function PostCard({ p, why, onDelete }) {
+function PostCard({ p, why, onDelete, onVouch, canVouch }) {
+  const vouches = p.vouches || 0
   return (
     <div className="rounded-xl bg-[var(--bg-2)] p-3">
       <div className="flex items-start justify-between gap-2">
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-sm font-bold text-white">{p.contact || 'A collector'}</span>
+          {vouches > 0 && (
+            <span
+              title={`${vouches} collector${vouches === 1 ? '' : 's'} vouched for this trader`}
+              className="rounded-full bg-emerald-400/15 px-1.5 py-0.5 text-[10px] font-bold text-emerald-300"
+            >
+              👍 {vouches}
+            </span>
+          )}
           {why && <span className="rounded bg-[var(--brand)]/20 px-1.5 py-0.5 text-[10px] font-bold text-[var(--brand)]">{WHY_LABEL[why] || 'Match'}</span>}
           {p.methods.map((m) => (
             <span key={m} className="rounded bg-[var(--panel-2)] px-1.5 py-0.5 text-[10px] font-bold text-[var(--muted)]">{m === 'index' ? '🔁 Index' : '⇄ Full'}</span>
           ))}
           <span className="text-[11px] text-[var(--muted)]">· {timeAgo(p.created_at)}</span>
         </div>
-        {p.mine && onDelete && (
-          <button onClick={() => onDelete(p.id)} className="shrink-0 text-[11px] font-bold text-red-300 hover:text-red-200">Delete</button>
-        )}
+        <div className="flex shrink-0 items-center gap-2">
+          {canVouch && !p.mine && onVouch && (
+            <button
+              onClick={() => onVouch(p)}
+              title={p.i_vouched ? 'You vouched for this trader — tap to undo' : "Vouch for a collector you've traded with successfully"}
+              className={`rounded-lg px-2 py-1 text-[11px] font-bold transition-colors ${p.i_vouched ? 'bg-emerald-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'}`}
+            >
+              {p.i_vouched ? '👍 Vouched' : '👍 Vouch'}
+            </button>
+          )}
+          {p.mine && onDelete && (
+            <button onClick={() => onDelete(p.id)} className="text-[11px] font-bold text-red-300 hover:text-red-200">Delete</button>
+          )}
+        </div>
       </div>
       {p.wants.length > 0 && (
         <div className="mt-2">
@@ -182,6 +202,30 @@ export default function TradeBoard() {
     setMatches((p) => p.filter((x) => x.id !== id))
   }
 
+  // Vouch / un-vouch a trader. Optimistically update every post by that user so
+  // their reputation count moves everywhere they appear on the board at once.
+  const vouch = async (post) => {
+    if (!user) return
+    const next = !post.i_vouched
+    const apply = (list) => list.map((x) =>
+      x.user_id === post.user_id
+        ? { ...x, i_vouched: next, vouches: Math.max(0, (x.vouches || 0) + (next ? 1 : -1)) }
+        : x)
+    setPosts(apply)
+    setMatches(apply)
+    const { error } = next ? await vouchForTrader(post.user_id) : await unvouchTrader(post.user_id)
+    if (error) {
+      // roll back on failure
+      const revert = (list) => list.map((x) =>
+        x.user_id === post.user_id
+          ? { ...x, i_vouched: post.i_vouched, vouches: Math.max(0, (x.vouches || 0) + (next ? -1 : 1)) }
+          : x)
+      setPosts(revert)
+      setMatches(revert)
+      toast(error.message || 'Could not update vouch', 'error')
+    }
+  }
+
   const shown = useMemo(() => {
     const q = filter.trim().toLowerCase()
     if (!q) return posts
@@ -203,6 +247,7 @@ export default function TradeBoard() {
           <div className="mt-2 space-y-2 text-[var(--text)]/85">
             <p><b className="text-white">⇄ Full trade:</b> you give a sprite to another player. To use it again you’ll need to re-summon it, which costs <b>Sprite Dust</b>.</p>
             <p><b className="text-white">🔁 Indexing:</b> a two-game favour. Game 1 you hand the sprite over; game 2 they hand it back. You keep yours (no dust spent) <i>and</i> they now have it indexed to re-summon with their own dust — a friendly way to help someone complete their index.</p>
+            <p><b className="text-white">👍 Vouches:</b> after a trade goes well, tap <b>Vouch</b> on that collector’s post to build their reputation. The count is community trust, not a guarantee — still trade carefully.</p>
           </div>
         </details>
         <p className="mt-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-3 py-2 text-[11px] text-amber-200/90">
@@ -221,7 +266,7 @@ export default function TradeBoard() {
         <div className="rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-4">
           <h4 className="mb-2 font-display text-base text-white">🔔 Matches for you <span className="text-sm text-[var(--muted)]">· {matches.length}</span></h4>
           <div className="flex flex-col gap-2">
-            {matches.map((p) => <PostCard key={p.id} p={p} why={p.why} onDelete={remove} />)}
+            {matches.map((p) => <PostCard key={p.id} p={p} why={p.why} onDelete={remove} onVouch={vouch} canVouch={!!user} />)}
           </div>
         </div>
       )}
@@ -295,7 +340,7 @@ export default function TradeBoard() {
           <p className="py-8 text-center text-sm text-[var(--muted)]">No trades yet{filter ? ' for that sprite' : ''} — be the first to post!</p>
         ) : (
           <div className="flex flex-col gap-2">
-            {shown.map((p) => <PostCard key={p.id} p={p} onDelete={remove} />)}
+            {shown.map((p) => <PostCard key={p.id} p={p} onDelete={remove} onVouch={vouch} canVouch={!!user} />)}
           </div>
         )}
       </div>

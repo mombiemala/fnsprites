@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — Trader reputation (vouches)
+
+- **Added:** `trade_vouches` table + `vouchForTrader`/`unvouchTrader` — a "👍 Vouch"
+  toggle on every Trade Board post; the count rides along on all of that user's
+  posts (optimistic update across board + matches).
+- **Added:** `vouches` / `i_vouched` fields on `trade_board_list` and
+  `trade_matches_for_me`; a short "what vouches mean" note in the explainer.
+- **Security:** One vouch per (voucher, vouchee) pair, `no_self_vouch` check, RLS
+  (`voucher_id = auth.uid()`), and a 30/day rate-limit trigger.
+
+> **Why:** Trading has no in-game escrow; the risk is not knowing who's reliable.
+> A lightweight, hard-to-game reputation surfaces good actors without implying the
+> app guarantees any trade.
+
 ## July 1, 2026 — Sprite levels, real Mastery % & dust-to-complete
 
 - **Added:** Per-sprite `level` (0–5) on `sprite_progress` (owned = level ≥ 1,

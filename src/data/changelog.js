@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 1, 2026',
+    title: 'Trader reputation — vouch for good trades',
+    summary:
+      "Traded with someone and it went smoothly? Vouch for them. A 👍 count now rides along on every Trade Board post so you can tell trusted collectors at a glance.",
+    changes: [
+      { tag: 'Added', text: 'A “👍 Vouch” button on trade posts — one vouch per collector, tap again to undo. Their total shows on every post they’ve made, board-wide.' },
+      { tag: 'Added', text: 'A short “what vouches mean” note in the Trade Board explainer: community trust, not a guarantee — trade carefully either way.' },
+      { tag: 'Security', text: 'Vouches are one-per-pair, can’t be self-given, and are rate-limited (30/day) to keep the signal honest.' },
+    ],
+    why:
+      "Trading is trust with no in-game escrow, so the scariest part is not knowing who’s reliable. A lightweight, hard-to-game reputation lets the community surface its good actors without pretending the app can guarantee anything.",
+  },
+  {
+    date: 'July 1, 2026',
     title: 'Sprite levels, real Mastery % & dust-to-complete',
     summary:
       "Track each sprite's level 1–5 (not just a mastered checkbox), see a true Mastery %, and how much Sprite Dust finishing your collection would cost.",
