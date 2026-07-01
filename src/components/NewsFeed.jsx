@@ -1,51 +1,40 @@
 import { useEffect, useState, useMemo } from 'react'
 import { NEWS, NEWS_TAGS } from '../data/news'
-
-// Best-effort live BR news from a public Fortnite API (runs in the browser;
-// silently ignored if blocked by CORS/network). Curated feed is the base.
-function useLiveNews() {
-  const [live, setLive] = useState([])
-  useEffect(() => {
-    let cancelled = false
-    fetch('https://fortnite-api.com/v2/news/br?language=en')
-      .then((r) => r.json())
-      .then((d) => {
-        const motds = d?.data?.motds || d?.data?.messages || []
-        if (!cancelled && Array.isArray(motds)) {
-          setLive(
-            motds.slice(0, 4).map((m, i) => ({
-              ts: `live-${i}`,
-              when: 'In-game now',
-              tag: 'event',
-              title: m.title || 'In-game news',
-              body: m.body || '',
-              image: m.image,
-              link: 'https://www.fortnite.com/news',
-            }))
-          )
-        }
-      })
-      .catch(() => {})
-    return () => {
-      cancelled = true
-    }
-  }, [])
-  return live
-}
+import { fetchLiveNews } from '../lib/liveNews'
 
 export default function NewsFeed() {
-  const live = useLiveNews()
+  const [live, setLive] = useState([])
   const [filter, setFilter] = useState('all')
 
+  // Auto-pull the current build + official in-game news once on mount.
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      const items = await fetchLiveNews()
+      if (!cancelled) setLive(items)
+    })()
+    return () => { cancelled = true }
+  }, [])
+
   const items = useMemo(() => {
-    const all = [...NEWS, ...live]
-    return filter === 'all' ? all : all.filter((n) => n.tag === filter)
+    // Order: curated "upcoming" (editorial) → auto/live → curated history.
+    // Dedupe by normalized title so a live item can't double a curated one.
+    const upcoming = NEWS.filter((n) => n.tag === 'upcoming')
+    const history = NEWS.filter((n) => n.tag !== 'upcoming')
+    const seen = new Set()
+    const merged = [...upcoming, ...live, ...history].filter((n) => {
+      const k = (n._key || n.title).toLowerCase().trim()
+      if (seen.has(k)) return false
+      seen.add(k)
+      return true
+    })
+    return filter === 'all' ? merged : merged.filter((n) => n.tag === filter)
   }, [live, filter])
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <h3 className="font-display text-lg text-white">📰 Fortnite News & Updates</h3>
+        <h3 className="font-display text-lg text-white">📰 Fortnite News &amp; Updates</h3>
         <div className="flex flex-wrap gap-1.5">
           <button
             onClick={() => setFilter('all')}
@@ -84,13 +73,13 @@ export default function NewsFeed() {
                 <span className="text-[11px] font-semibold text-[var(--muted)]">{n.when}</span>
               </div>
               <p className="text-sm font-bold text-white">{n.title}</p>
-              <p className="mt-0.5 text-xs text-[var(--muted)]">{n.body}</p>
+              {n.body && <p className="mt-0.5 text-xs text-[var(--muted)]">{n.body}</p>}
             </a>
           )
         })}
       </div>
       <p className="mt-3 text-[10px] text-[var(--muted)]">
-        Curated from official patch notes; live in-game news via fortnite-api.com when available. Not affiliated with Epic Games.
+        Live build &amp; in-game news auto-pulled from fortnite-api.com; curated “upcoming” items are editorial. Not affiliated with Epic Games.
       </p>
     </div>
   )

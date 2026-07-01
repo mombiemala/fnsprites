@@ -6,6 +6,19 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 1, 2026',
+    title: 'The news feed keeps itself current',
+    summary:
+      "The news tab used to lean on a hand-written list that quietly went stale between patches. Now it auto-pulls what Fortnite is actually running, so 'Update' items keep themselves fresh.",
+    changes: [
+      { tag: 'Added', text: "Auto-detects Fortnite's current live build (e.g. “Fortnite is live on v41.20”) straight from the public API, updating itself on every patch." },
+      { tag: 'Changed', text: 'Official in-game news tiles are pulled live and smart-tagged as Update vs Event; the curated file is now just for editorial “upcoming” items.' },
+      { tag: 'Changed', text: 'Live and curated items are merged and de-duplicated by title, so nothing shows twice, and it falls back gracefully to the curated feed if offline.' },
+    ],
+    why:
+      "A news feed that needs manual updates is a news feed that goes stale. Automating the parts a machine can know (the live build, official news) means the only thing left to hand-write is the genuinely editorial stuff — like what's coming next.",
+  },
+  {
     date: 'June 28, 2026',
     title: 'A zoomable map you can actually read',
     summary:

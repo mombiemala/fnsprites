@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — The news feed keeps itself current
+
+- **Added:** Auto-detects Fortnite's current live build from the public API
+  (e.g. "Fortnite is live on v41.20"), updating itself on every patch.
+- **Changed:** Official in-game news tiles are pulled live and smart-tagged
+  (Update vs Event); the curated `src/data/news.js` file is now only for
+  editorial "upcoming" items.
+- **Changed:** Live + curated items are merged and de-duplicated by title, with
+  a graceful fallback to the curated feed when offline. Live-news fetch lives in
+  `src/lib/liveNews.js`.
+
+> **Why:** A news feed that needs manual updates goes stale. Automating what a
+> machine can know (live build, official news) leaves only the genuinely
+> editorial parts — like what's coming next — to hand-write.
+
 ## June 28, 2026 — A zoomable map you can actually read
 
 - **Added:** In-app zoom (`＋`/`−`, double-tap, up to 5×) and drag-to-pan on the
