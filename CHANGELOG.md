@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — Screenshot collection importer
+
+- **Added:** `📷 Import from a screenshot` on the collection page — `spriteOcr.js`
+  runs Tesseract.js (lazy-loaded worker) on an uploaded locker image, fuzzy-matches
+  names to the roster (Levenshtein ratio ≥ 0.84), and a review modal lets you
+  confirm/adjust variants before a single `bulkOwn`.
+- **Added:** Search-to-add in the importer for anything OCR misses.
+- **Security/Privacy:** OCR is 100% client-side — the image never leaves the device.
+
+> **Why:** Chosen over Epic auto-import (which requires the ToS-gray private
+> Fortnite API and risks user accounts). On-device OCR delivers most of the
+> low-friction value with zero account or privacy risk.
+
 ## July 1, 2026 — Trader reputation (vouches)
 
 - **Added:** `trade_vouches` table + `vouchForTrader`/`unvouchTrader` — a "👍 Vouch"

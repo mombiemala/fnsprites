@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 1, 2026',
+    title: 'Import your collection from a screenshot',
+    summary:
+      "Skip the tapping — drop in a screenshot of your in-game sprite locker and we’ll pre-check what we recognize, so you only confirm and go.",
+    changes: [
+      { tag: 'Added', text: 'A “📷 Import from a screenshot” tool on the collection page: upload a locker shot, review the sprites it detects (Normal variant pre-selected, add Gold/Gummy/etc. per sprite), then mark them owned in one tap.' },
+      { tag: 'Added', text: 'A search-to-add step for anything the reader misses, so you can top up by hand without leaving the importer.' },
+      { tag: 'Security', text: 'Recognition runs entirely in your browser (on-device OCR) — the screenshot never leaves your device or hits our servers.' },
+    ],
+    why:
+      "We looked hard at auto-importing from Epic and passed on it — the only route reads Fortnite’s private API and risks players’ accounts. On-device OCR gets most of the “don’t make me type it all in” payoff with zero account or privacy risk.",
+  },
+  {
+    date: 'July 1, 2026',
     title: 'Trader reputation — vouch for good trades',
     summary:
       "Traded with someone and it went smoothly? Vouch for them. A 👍 count now rides along on every Trade Board post so you can tell trusted collectors at a glance.",

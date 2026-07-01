@@ -28,6 +28,7 @@ const BugReportModal = lazy(() => import('./components/BugReportModal'))
 const AboutModal = lazy(() => import('./components/AboutModal'))
 const ChangelogModal = lazy(() => import('./components/ChangelogModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
+const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
 import { LINKS } from './lib/supabase'
 
 const TABS = [
@@ -88,6 +89,7 @@ export default function App() {
   const [showAbout, setShowAbout] = useState(false)
   const [showChangelog, setShowChangelog] = useState(false)
   const [showProfile, setShowProfile] = useState(false)
+  const [showImport, setShowImport] = useState(false)
   const [newTradeCount, setNewTradeCount] = useState(0)
 
   useEffect(() => {
@@ -361,6 +363,19 @@ export default function App() {
 
         {/* Sidebar: a static column beside the grid that scrolls with the page */}
         <aside className="mt-8 flex flex-col gap-4 lg:mt-0 lg:w-80 lg:shrink-0">
+          {!isShareView && !readOnly && (
+            <button
+              onClick={() => setShowImport(true)}
+              className="flex items-center gap-3 rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-3 text-left transition-colors hover:bg-[var(--brand)]/15"
+            >
+              <span className="text-2xl">📷</span>
+              <span className="min-w-0">
+                <span className="block text-sm font-bold text-white">Import from a screenshot</span>
+                <span className="block text-[11px] text-[var(--muted)]">Snap your locker — we’ll pre-check what we spot. Runs on your device.</span>
+              </span>
+            </button>
+          )}
+
           <StatsBreakdown tracking={activeTracking} />
 
           {!isShareView &&
@@ -430,6 +445,7 @@ export default function App() {
         {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
         {showChangelog && <ChangelogModal onClose={() => setShowChangelog(false)} />}
         {showProfile && <ProfileModal onClose={() => setShowProfile(false)} />}
+        {showImport && <ScreenshotImportModal onClose={() => setShowImport(false)} />}
         {detailType && (
           <SpriteDetailModal
             typeId={detailType}
