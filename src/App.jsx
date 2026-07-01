@@ -25,6 +25,7 @@ const SpriteDetailModal = lazy(() => import('./components/SpriteDetailModal'))
 const BugReportModal = lazy(() => import('./components/BugReportModal'))
 const AboutModal = lazy(() => import('./components/AboutModal'))
 const ChangelogModal = lazy(() => import('./components/ChangelogModal'))
+const ProfileModal = lazy(() => import('./components/ProfileModal'))
 import { LINKS } from './lib/supabase'
 
 const TABS = [
@@ -70,7 +71,7 @@ function TabLoading() {
 }
 
 export default function App() {
-  const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, signOut, syncing, cloudStatus, authLoading } = useAuth()
+  const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, syncing, cloudStatus, authLoading } = useAuth()
   const { toast } = useToast()
   const shareTarget = useShareTarget()
 
@@ -83,6 +84,7 @@ export default function App() {
   const [showBug, setShowBug] = useState(false)
   const [showAbout, setShowAbout] = useState(false)
   const [showChangelog, setShowChangelog] = useState(false)
+  const [showProfile, setShowProfile] = useState(false)
 
   useEffect(() => {
     if (!shareTarget) return
@@ -214,11 +216,8 @@ export default function App() {
                 >
                   {cloudStatus === 'error' ? '⚠ Sync error' : cloudStatus === 'saving' || syncing ? '↻ Saving…' : '✓ Saved'}
                 </span>
-                <span className="hidden text-xs font-semibold text-[var(--muted)] sm:inline">
-                  {profile?.gamertag || user.email}
-                </span>
-                <button onClick={signOut} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
-                  Sign out
+                <button onClick={() => setShowProfile(true)} title="Profile & connections" className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
+                  ⚙ {profile?.gamertag || 'Profile'}
                 </button>
               </div>
             ) : (
@@ -410,6 +409,7 @@ export default function App() {
         {showBug && <BugReportModal onClose={() => setShowBug(false)} />}
         {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
         {showChangelog && <ChangelogModal onClose={() => setShowChangelog(false)} />}
+        {showProfile && <ProfileModal onClose={() => setShowProfile(false)} />}
         {detailType && (
           <SpriteDetailModal
             typeId={detailType}

@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — A profile of your own
+
+- **Added:** Profile & connections page (⚙ in the header) — edit gamertag,
+  toggle public/private, sign out, view linked logins. New `connections` table
+  (RLS: read/unlink your own; writes only via the OAuth edge function).
+- **Added:** "Connect Epic" groundwork (`src/lib/epicAuth.js`, gated on
+  `VITE_EPIC_CLIENT_ID`) — account *linking*, not primary login. Fortnite does
+  not expose owned sprites, so collections stay manually tracked.
+- **Added:** "Delete my data" — clears progress, owned maps, connections and
+  profile, then signs out.
+
+> **Why:** More players means everyone needs a clear place to manage identity
+> and data. Epic linking is an enhancement (auto-fill display name; friends
+> compare later) — never an auto-import, which would risk users' accounts.
+
 ## July 1, 2026 — Faster first load
 
 - **Changed:** Code-split the heavy tabs (Leaderboard, News, Map) and all modals
