@@ -13,6 +13,7 @@ import SupportBanner from './components/SupportBanner'
 import TradePanel from './components/TradePanel'
 import StatsBreakdown from './components/StatsBreakdown'
 import OnboardingHint from './components/OnboardingHint'
+import AnnouncementBar from './components/AnnouncementBar'
 import SaveStatusPill from './components/SaveStatusPill'
 
 // Lazy-loaded: heavy tabs + on-demand modals are code-split so the initial
@@ -187,6 +188,7 @@ export default function App() {
 
   return (
     <div className="mx-auto min-h-screen max-w-6xl px-4 pb-24 pt-6 sm:px-6">
+      <AnnouncementBar />
       <header className="mb-6 flex items-center justify-between gap-3">
         <div>
           <h1 className="font-display text-3xl leading-none text-white sm:text-4xl">

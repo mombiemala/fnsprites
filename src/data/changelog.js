@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 1, 2026',
+    title: 'Live event announcements',
+    summary:
+      "A dismissible banner up top for live and limited-time events — so you don't miss what's happening in-game right now.",
+    changes: [
+      { tag: 'Added', text: 'A dismissible announcement bar for current events & important info, date-gated so it only shows while relevant. Dismiss it and it stays gone — just for that notice.' },
+    ],
+    why:
+      "Time-limited moments (catch-up days, double XP, the season finale) are easy to miss. One tidy banner surfaces them and then gets out of your way once you've seen it.",
+  },
+  {
+    date: 'July 1, 2026',
     title: 'Cleaner sprites & a proper collection poster',
     summary:
       "Every sprite now sits on the same consistent backdrop, and the exported collection image got a full redesign into a shareable “locker” poster.",

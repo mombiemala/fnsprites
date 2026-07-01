@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — Live event announcements
+
+- **Added:** A dismissible announcement bar (`src/components/AnnouncementBar.jsx`
+  + `src/data/announcements.js`) for live / limited-time events and important
+  info. Date-gated (auto-shows within a start–end window) and dismissal is
+  remembered per-notice in `localStorage`.
+
+> **Why:** Time-limited moments (catch-up days, double XP, the season finale) are
+> easy to miss. One tidy banner surfaces them, then gets out of the way.
+
 ## July 1, 2026 — Cleaner sprites & a proper collection poster
 
 - **Fixed:** Removed baked-in white/black backgrounds from 14 sprite variants
