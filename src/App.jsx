@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, lazy, Suspense } from 'react'
 import { useAuth } from './context/authStore'
 import { useToast } from './context/toastStore'
 import { fetchSharedCollection } from './lib/sharedCollection'
@@ -8,20 +8,23 @@ import { generateCollectionImage, downloadDataUrl } from './lib/exportImage'
 import SpriteCard from './components/SpriteCard'
 import ProgressStats from './components/ProgressStats'
 import Toolbar from './components/Toolbar'
-import AuthModal from './components/AuthModal'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
-import SpriteDetailModal from './components/SpriteDetailModal'
 import TradePanel from './components/TradePanel'
 import StatsBreakdown from './components/StatsBreakdown'
-import Leaderboard from './components/Leaderboard'
-import NewsFeed from './components/NewsFeed'
-import MapView from './components/MapView'
 import OnboardingHint from './components/OnboardingHint'
-import BugReportModal from './components/BugReportModal'
-import AboutModal from './components/AboutModal'
-import ChangelogModal from './components/ChangelogModal'
 import SaveStatusPill from './components/SaveStatusPill'
+
+// Lazy-loaded: heavy tabs + on-demand modals are code-split so the initial
+// (Collection) load stays lean; each is fetched the first time it's opened.
+const Leaderboard = lazy(() => import('./components/Leaderboard'))
+const NewsFeed = lazy(() => import('./components/NewsFeed'))
+const MapView = lazy(() => import('./components/MapView'))
+const AuthModal = lazy(() => import('./components/AuthModal'))
+const SpriteDetailModal = lazy(() => import('./components/SpriteDetailModal'))
+const BugReportModal = lazy(() => import('./components/BugReportModal'))
+const AboutModal = lazy(() => import('./components/AboutModal'))
+const ChangelogModal = lazy(() => import('./components/ChangelogModal'))
 import { LINKS } from './lib/supabase'
 
 const TABS = [
@@ -55,6 +58,15 @@ function useInitialView() {
     const v = new URLSearchParams(window.location.search).get('view')
     return TABS.some((t) => t.id === v) ? v : 'collection'
   }, [])
+}
+
+// Fallback shown while a lazy-loaded tab chunk is fetched.
+function TabLoading() {
+  return (
+    <div className="mb-5 grid place-items-center rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-10 text-sm text-[var(--muted)]">
+      Loading…
+    </div>
+  )
 }
 
 export default function App() {
@@ -241,9 +253,13 @@ export default function App() {
         })}
       </nav>
 
-      {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
-      {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
-      {effectiveView === 'map' && <div className="mb-5"><MapView /></div>}
+      {(effectiveView === 'leaderboard' || effectiveView === 'news' || effectiveView === 'map') && (
+        <Suspense fallback={<TabLoading />}>
+          {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
+          {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
+          {effectiveView === 'map' && <div className="mb-5"><MapView /></div>}
+        </Suspense>
+      )}
 
       {effectiveView === 'collection' && (
         <>
@@ -389,22 +405,24 @@ export default function App() {
 
       {!isShareView && <SaveStatusPill />}
 
-      {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
-      {showBug && <BugReportModal onClose={() => setShowBug(false)} />}
-      {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
-      {showChangelog && <ChangelogModal onClose={() => setShowChangelog(false)} />}
-      {detailType && (
-        <SpriteDetailModal
-          typeId={detailType}
-          tracking={activeTracking}
-          onClose={() => setDetailType(null)}
-          onToggleOwned={setOwned}
-          onToggleMastered={setMastered}
-          onToggleTrade={setForTrade}
-          onToggleWanted={setWanted}
-          readOnly={readOnly}
-        />
-      )}
+      <Suspense fallback={null}>
+        {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
+        {showBug && <BugReportModal onClose={() => setShowBug(false)} />}
+        {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
+        {showChangelog && <ChangelogModal onClose={() => setShowChangelog(false)} />}
+        {detailType && (
+          <SpriteDetailModal
+            typeId={detailType}
+            tracking={activeTracking}
+            onClose={() => setDetailType(null)}
+            onToggleOwned={setOwned}
+            onToggleMastered={setMastered}
+            onToggleTrade={setForTrade}
+            onToggleWanted={setWanted}
+            readOnly={readOnly}
+          />
+        )}
+      </Suspense>
     </div>
   )
 }

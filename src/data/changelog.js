@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 1, 2026',
+    title: 'Faster first load',
+    summary:
+      "The app now only loads what you need to start tracking; the Leaderboard, News, Map and pop-up dialogs are fetched the moment you first open them.",
+    changes: [
+      { tag: 'Changed', text: 'Code-split the heavy tabs (Leaderboard, News, Map) and modals so they no longer weigh down the initial load — the map alone was a big chunk.' },
+      { tag: 'Changed', text: 'A brief “Loading…” placeholder appears the first time you open one of those, then it’s cached.' },
+    ],
+    why:
+      "First impressions are a loading bar. Most visitors land on their collection, so everything else can wait until it's actually needed — the page gets interactive sooner, especially on phones and slower connections.",
+  },
+  {
+    date: 'July 1, 2026',
     title: 'Getting ready for more players',
     summary:
       "Some quiet groundwork ahead of sharing the tracker more widely — privacy-friendly analytics and a few guardrails so a bad actor can't spoil the shared map for everyone.",

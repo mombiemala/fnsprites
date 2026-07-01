@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — Faster first load
+
+- **Changed:** Code-split the heavy tabs (Leaderboard, News, Map) and all modals
+  via `React.lazy` + `Suspense`, so the initial (Collection) bundle stays lean —
+  each is fetched on first open. Main bundle ~139 KB → ~130 KB gzip, with MapView
+  (~7 KB gzip) and others now separate chunks.
+- **Changed:** A brief "Loading…" placeholder shows on first open, then cached.
+
+> **Why:** Most visitors land on their collection; everything else can wait
+> until it's actually needed, so the page gets interactive sooner — especially on
+> phones and slower connections.
+
 ## July 1, 2026 — Getting ready for more players
 
 - **Added:** Privacy-friendly, cookieless analytics (Vercel Web Analytics +
