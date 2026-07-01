@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 1, 2026',
+    title: 'Cleaner sprites & a proper collection poster',
+    summary:
+      "Every sprite now sits on the same consistent backdrop, and the exported collection image got a full redesign into a shareable “locker” poster.",
+    changes: [
+      { tag: 'Fixed', text: 'Removed the baked-in white/black boxes from 14 sprite variants (the AI-made Gold/Gummy/Galaxy forms) so every sprite is transparent and shows the same per-variant backdrop — no more mismatched backgrounds.' },
+      { tag: 'Changed', text: 'Redesigned the exported collection image into a Sprite Locker–style grid: sprite types down the side, variants across the top, each on its own variant colour, with ✓ for owned, 🔒 for unreleased, dashes for N/A, a progress bar and per-row counts.' },
+    ],
+    why:
+      "Consistency is what makes a checklist feel trustworthy and finishable — a uniform backdrop makes every sprite read the same. And a clean, poster-style export is something people actually want to screenshot and share.",
+  },
+  {
+    date: 'July 1, 2026',
     title: 'A profile of your own',
     summary:
       "A proper profile page to manage your identity and data as more players join.",

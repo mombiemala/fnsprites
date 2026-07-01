@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — Cleaner sprites & a proper collection poster
+
+- **Fixed:** Removed baked-in white/black backgrounds from 14 sprite variants
+  (the AI-reskinned Gold/Gummy/Galaxy forms) via edge flood-fill, so all 78
+  sprite PNGs are transparent and render on the same per-variant backdrop.
+- **Changed:** Rebuilt the collection image export (`src/lib/exportImage.js`) as
+  a Sprite Locker–style matrix — types × variants, each cell on a consistent
+  variant gradient, with ✓ owned / 🔒 unreleased / dashed N/A, a progress bar and
+  per-row counts. Verified by headless render.
+
+> **Why:** Consistency makes a checklist feel trustworthy and finishable, and a
+> poster-style export is something people actually want to screenshot and share.
+
 ## July 1, 2026 — A profile of your own
 
 - **Added:** Profile page (⚙ in the header) — edit gamertag, toggle
