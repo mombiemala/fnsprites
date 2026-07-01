@@ -4,7 +4,8 @@ import { rowsToMap } from '../lib/sharedCollection'
 import { AuthContext } from './authStore'
 
 const LOCAL_KEY = 'fnsprites.tracking'
-const EMPTY = { owned: false, mastered: false, forTrade: false, wanted: false }
+const EMPTY = { owned: false, mastered: false, forTrade: false, wanted: false, level: 0 }
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v | 0))
 
 function loadLocal() {
   try {
@@ -107,12 +108,21 @@ export function AuthProvider({ children }) {
   const update = useCallback(
     (spriteId, patch) => {
       const cur = tracking[spriteId] || EMPTY
-      let entry = { ...cur, ...patch }
-      // Invariants: mastering/trading a sprite implies you own it; losing
-      // ownership clears mastery and trade-availability.
-      if (entry.mastered) entry.owned = true
-      if (entry.forTrade) entry.owned = true
-      if (!entry.owned) entry = { ...entry, owned: false, mastered: false, forTrade: false }
+      const entry = { ...cur, ...patch }
+      // Level (0–5) is the source of truth. A patch may set level directly, or
+      // toggle owned/mastered which we translate into a level.
+      if ('level' in patch) {
+        entry.level = clamp(patch.level, 0, 5)
+      } else if ('mastered' in patch) {
+        entry.level = patch.mastered ? 5 : cur.level >= 5 ? 4 : Math.max(cur.owned ? 1 : 0, cur.level)
+      } else if ('owned' in patch) {
+        entry.level = patch.owned ? Math.max(1, cur.level) : 0
+      }
+      // Marking for-trade implies you have it (at least level 1).
+      if (entry.forTrade && entry.level < 1) entry.level = 1
+      entry.owned = entry.level >= 1
+      entry.mastered = entry.level >= 5
+      if (!entry.owned) entry.forTrade = false
 
       setTracking((prev) => {
         const next = { ...prev, [spriteId]: entry }
@@ -128,6 +138,7 @@ export function AuthProvider({ children }) {
             sprite_id: spriteId,
             owned: entry.owned,
             mastered: entry.mastered,
+            level: entry.level,
             for_trade: entry.forTrade,
             wanted: entry.wanted,
             updated_at: new Date().toISOString(),
@@ -146,8 +157,8 @@ export function AuthProvider({ children }) {
         for (const id of ids) {
           const cur = next[id] || EMPTY
           next[id] = owned
-            ? { ...cur, owned: true }
-            : { ...cur, owned: false, mastered: false, forTrade: false }
+            ? { ...cur, owned: true, level: Math.max(1, cur.level || 0) }
+            : { ...cur, owned: false, mastered: false, forTrade: false, level: 0 }
         }
         saveLocal(next)
         return next
@@ -160,6 +171,7 @@ export function AuthProvider({ children }) {
             sprite_id: id,
             owned,
             mastered: owned ? cur.mastered : false,
+            level: owned ? Math.max(1, cur.level || 0) : 0,
             for_trade: owned ? cur.forTrade : false,
             wanted: cur.wanted,
             updated_at: new Date().toISOString(),
@@ -176,6 +188,7 @@ export function AuthProvider({ children }) {
 
   const setOwned = useCallback((id, owned) => update(id, { owned }), [update])
   const setMastered = useCallback((id, mastered) => update(id, { mastered }), [update])
+  const setLevel = useCallback((id, level) => update(id, { level }), [update])
   const setForTrade = useCallback((id, forTrade) => update(id, { forTrade }), [update])
   const setWanted = useCallback((id, wanted) => update(id, { wanted }), [update])
 
@@ -247,6 +260,7 @@ export function AuthProvider({ children }) {
     cloudStatus,
     setOwned,
     setMastered,
+    setLevel,
     setForTrade,
     setWanted,
     bulkOwn,

@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 1, 2026 — Sprite levels, real Mastery % & dust-to-complete
+
+- **Added:** Per-sprite `level` (0–5) on `sprite_progress` (owned = level ≥ 1,
+  mastered = level ≥ 5, kept in sync). Set it via "Lv" dots in the sprite detail.
+- **Added:** Levels-based Mastery % and a "Dust to complete" figure (total summon
+  dust for missing variants) in the Breakdown card, using `dustCost`.
+- **Fixed:** Sprite detail popup clipped its rightmost buttons/tooltips under the
+  vertical scrollbar on desktop — widened to `max-w-2xl` and added
+  `scrollbar-gutter: stable` so content never sits under the scrollbar and there's
+  no stray horizontal scroll.
+
+> **Why:** Finishing a sprite is a 1→5 climb, not a checkbox. Showing level
+> progress + dust-to-complete makes the long game legible and links levels ↔
+> dust — a tie no competitor makes.
+
 ## July 1, 2026 — Link previews & a warmer welcome
 
 - **Added:** Rich social link previews — Open Graph + Twitter card tags in

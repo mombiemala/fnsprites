@@ -3,7 +3,7 @@ import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
 import { useEscClose } from '../lib/useEscClose'
 
-export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, onToggleTrade, onToggleWanted, onOpenMap, readOnly }) {
+export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, onToggleTrade, onToggleWanted, onSetLevel, onOpenMap, readOnly }) {
   useEscClose(onClose)
   const type = SPRITE_TYPES.find((t) => t.id === typeId)
   if (!type) return null
@@ -16,7 +16,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
         role="dialog"
         aria-modal="true"
         aria-label={`${type.name} details`}
-        className="max-h-[88vh] w-full max-w-xl overflow-y-auto overflow-x-hidden rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-5 shadow-2xl"
+        className="max-h-[88vh] w-full max-w-2xl overflow-y-auto overflow-x-hidden rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-5 shadow-2xl [scrollbar-gutter:stable]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-3">
@@ -77,6 +77,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
             const mastered = !!st?.mastered
             const forTrade = !!st?.forTrade
             const wanted = !!st?.wanted
+            const level = st?.level || 0
             const dust = dustCost(type.rarity, v.themeId)
             return (
               <div key={v.id} className="flex items-center gap-3 rounded-xl bg-[var(--bg-2)] p-2">
@@ -99,6 +100,25 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                     )}
                   </div>
                   <span className="block truncate text-[11px] text-[var(--muted)]">{theme?.bonus}</span>
+                  {owned && (
+                    <div className="mt-1 flex items-center gap-1" title={`Level ${level} of 5`}>
+                      <span className="text-[9px] font-bold uppercase text-[var(--muted)]">Lv</span>
+                      {[1, 2, 3, 4, 5].map((n) => {
+                        const on = n <= level
+                        const dot = (
+                          <span
+                            className="block h-2.5 w-2.5 rounded-full"
+                            style={{ background: on ? (level >= 5 ? '#fbbf24' : 'var(--brand)') : 'var(--panel-2)' }}
+                          />
+                        )
+                        return readOnly ? (
+                          <span key={n}>{dot}</span>
+                        ) : (
+                          <button key={n} onClick={() => onSetLevel(v.id, n)} aria-label={`Set level ${n}`}>{dot}</button>
+                        )
+                      })}
+                    </div>
+                  )}
                 </div>
                 {!readOnly ? (
                   <div className="flex shrink-0 gap-1">

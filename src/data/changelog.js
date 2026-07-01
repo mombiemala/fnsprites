@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 1, 2026',
+    title: 'Sprite levels, real Mastery % & dust-to-complete',
+    summary:
+      "Track each sprite's level 1–5 (not just a mastered checkbox), see a true Mastery %, and how much Sprite Dust finishing your collection would cost.",
+    changes: [
+      { tag: 'Added', text: 'Per-sprite level (1–5) in the detail view — set it with the “Lv” dots; level 5 = mastered, and Owned/Mastered stay in sync automatically.' },
+      { tag: 'Added', text: 'A levels-based Mastery % (progress toward maxing every sprite) and a “Dust to complete” estimate — the total Sprite Dust to summon everything you’re still missing.' },
+      { tag: 'Fixed', text: 'The sprite detail popup no longer clips its buttons or tooltips on desktop — it’s a touch wider and reserves room for the scrollbar, so nothing hides under it and there’s no stray horizontal scroll.' },
+    ],
+    why:
+      "Other trackers stop at owned/mastered, but finishing a sprite is really a 1→5 climb. Showing level progress and the dust to complete makes the long game legible — and ties two things nobody else connects: levels ↔ dust.",
+  },
+  {
+    date: 'July 1, 2026',
     title: 'Link previews & a warmer welcome',
     summary:
       "Shared links now unfurl into a proper branded card, and first-time visitors get a quick, friendly rundown.",

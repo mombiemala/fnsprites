@@ -7,6 +7,7 @@ export function rowsToMap(rows) {
     map[r.sprite_id] = {
       owned: !!r.owned,
       mastered: !!r.mastered,
+      level: r.level ?? 0,
       forTrade: !!r.for_trade,
       wanted: !!r.wanted,
     }

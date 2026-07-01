@@ -74,7 +74,7 @@ function TabLoading() {
 }
 
 export default function App() {
-  const { user, profile, tracking, setOwned, setMastered, setForTrade, setWanted, syncing, cloudStatus, authLoading } = useAuth()
+  const { user, profile, tracking, setOwned, setMastered, setLevel, setForTrade, setWanted, syncing, cloudStatus, authLoading } = useAuth()
   const { toast } = useToast()
   const shareTarget = useShareTarget()
 
@@ -439,6 +439,7 @@ export default function App() {
             onToggleMastered={setMastered}
             onToggleTrade={setForTrade}
             onToggleWanted={setWanted}
+            onSetLevel={setLevel}
             onOpenMap={() => { setDetailType(null); setView('map') }}
             readOnly={readOnly}
           />

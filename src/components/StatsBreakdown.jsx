@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { ALL_SPRITES, RARITY_ORDER, RARITY_COLORS } from '../data/sprites'
+import { ALL_SPRITES, RARITY_ORDER, RARITY_COLORS, dustCost } from '../data/sprites'
 import { THEMES } from '../data/themes'
 
 function Ring({ owned, total, color, label }) {
@@ -27,9 +27,17 @@ function Ring({ owned, total, color, label }) {
 }
 
 export default function StatsBreakdown({ tracking }) {
-  const { rarities, themes, closest, badges } = useMemo(() => {
+  const { rarities, themes, closest, badges, masteryPct, dustToComplete } = useMemo(() => {
     const released = ALL_SPRITES.filter((s) => s.released)
     const owned = (s) => !!tracking[s.id]?.owned
+
+    // Mastery % based on levels (each sprite is worth up to 5) + total Sprite
+    // Dust still needed to summon everything you're missing.
+    const totalLevels = released.reduce((sum, s) => sum + (tracking[s.id]?.level || 0), 0)
+    const masteryPct = released.length ? Math.round((totalLevels / (released.length * 5)) * 100) : 0
+    const dustToComplete = released
+      .filter((s) => !owned(s))
+      .reduce((sum, s) => sum + (dustCost(s.rarity, s.themeId) || 0), 0)
 
     const byRarity = RARITY_ORDER.map((r) => {
       const list = released.filter((s) => s.rarity === r)
@@ -48,7 +56,7 @@ export default function StatsBreakdown({ tracking }) {
     const closest = incomplete[0] || null
 
     const badges = groups.filter((g) => g.owned >= g.total).map((g) => ({ label: g.label, color: g.color }))
-    return { rarities: byRarity, themes: byTheme, closest, badges }
+    return { rarities: byRarity, themes: byTheme, closest, badges, masteryPct, dustToComplete }
   }, [tracking])
 
   return (
@@ -63,6 +71,15 @@ export default function StatsBreakdown({ tracking }) {
         ) : (
           <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-bold text-emerald-300">🏆 Everything collected!</span>
         )}
+      </div>
+
+      <div className="mb-3 flex flex-wrap gap-2">
+        <span className="rounded-lg bg-[var(--bg-2)] px-3 py-1.5 text-xs font-bold text-white" title="Total sprite levels earned vs the max (5 each)">
+          🏅 Mastery <span className="text-amber-300">{masteryPct}%</span>
+        </span>
+        <span className="rounded-lg bg-[var(--bg-2)] px-3 py-1.5 text-xs font-bold text-white" title="Sprite Dust to summon everything you're still missing">
+          💨 Dust to complete <span className="text-[var(--brand)]">≈{dustToComplete.toLocaleString()}</span>
+        </span>
       </div>
 
       <div className="mb-1 text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">By rarity</div>
