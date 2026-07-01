@@ -66,7 +66,13 @@ export function matchSpriteTypesFromText(text, threshold = 0.84) {
 // recognizing. Tesseract.js is imported lazily so it never touches the main bundle.
 export async function readSpriteTypesFromImage(file, onProgress) {
   const { createWorker } = await import('tesseract.js')
+  // Self-hosted worker/core/lang assets (public/tesseract) so recognition has no
+  // third-party CDN dependency — works offline and behind strict networks.
+  const base = import.meta.env.BASE_URL
   const worker = await createWorker('eng', 1, {
+    workerPath: `${base}tesseract/worker.min.js`,
+    corePath: `${base}tesseract/core`,
+    langPath: `${base}tesseract/lang`,
     logger: (m) => {
       if (m.status === 'recognizing text' && typeof onProgress === 'function') onProgress(m.progress)
     },

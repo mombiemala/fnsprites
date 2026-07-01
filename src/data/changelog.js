@@ -14,9 +14,10 @@ export const CHANGELOG = [
       { tag: 'Added', text: 'A “📷 Import from a screenshot” tool on the collection page: upload a locker shot, review the sprites it detects (Normal variant pre-selected, add Gold/Gummy/etc. per sprite), then mark them owned in one tap.' },
       { tag: 'Added', text: 'A search-to-add step for anything the reader misses, so you can top up by hand without leaving the importer.' },
       { tag: 'Security', text: 'Recognition runs entirely in your browser (on-device OCR) — the screenshot never leaves your device or hits our servers.' },
+      { tag: 'Changed', text: 'The OCR engine is self-hosted (no third-party CDN) and cached after first use, so the importer works behind strict networks and offline once loaded.' },
     ],
     why:
-      "We looked hard at auto-importing from Epic and passed on it — the only route reads Fortnite’s private API and risks players’ accounts. On-device OCR gets most of the “don’t make me type it all in” payoff with zero account or privacy risk.",
+      "We looked hard at auto-importing from Epic and passed on it — the only route reads Fortnite’s private API and risks players’ accounts. On-device OCR gets most of the “don’t make me type it all in” payoff with zero account or privacy risk — and self-hosting the engine means no reliance on an outside CDN staying up.",
   },
   {
     date: 'July 1, 2026',

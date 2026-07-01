@@ -19,8 +19,13 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(req.url)
   if (url.origin !== self.location.origin) return // let Supabase/network calls pass through
 
+  // OCR engine assets are large and content-stable — once cached, serve from
+  // cache and skip the background revalidation so we don't re-download ~9MB.
+  const immutable = url.pathname.includes('/tesseract/')
+
   e.respondWith(
     caches.match(req).then((cached) => {
+      if (cached && immutable) return cached
       const network = fetch(req)
         .then((res) => {
           if (res && res.status === 200) {

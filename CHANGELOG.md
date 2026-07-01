@@ -19,6 +19,10 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   confirm/adjust variants before a single `bulkOwn`.
 - **Added:** Search-to-add in the importer for anything OCR misses.
 - **Security/Privacy:** OCR is 100% client-side — the image never leaves the device.
+- **Changed:** Self-hosted the OCR engine (`public/tesseract/`: worker + LSTM
+  wasm cores + `eng` best-int data, ~15MB) instead of the jsdelivr CDN. Loaded
+  on demand, runtime-cached by the service worker (immutable, no revalidation),
+  so it works behind strict networks and offline after first use.
 
 > **Why:** Chosen over Epic auto-import (which requires the ToS-gray private
 > Fortnite API and risks user accounts). On-device OCR delivers most of the
