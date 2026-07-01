@@ -100,19 +100,19 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                         ★
                       </button>
                     </Tooltip>
-                    <Tooltip content="I have a duplicate to trade">
+                    <Tooltip content="Offer to trade or index — adds it to your Trade Board post">
                       <button
                         onClick={() => onToggleTrade(v.id, !forTrade)}
-                        aria-label="For trade"
+                        aria-label="Offer to trade or index"
                         className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${forTrade ? 'bg-emerald-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
                       >
                         ⇄
                       </button>
                     </Tooltip>
-                    <Tooltip content="I want this one">
+                    <Tooltip content="Want to index — adds it to your Trade Board post">
                       <button
                         onClick={() => onToggleWanted(v.id, !wanted)}
-                        aria-label="Wanted"
+                        aria-label="Want to index"
                         className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${wanted ? 'bg-pink-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
                       >
                         ♥
@@ -132,6 +132,15 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
             )
           })}
         </div>
+
+        {!readOnly && (
+          <p className="mt-3 text-[11px] leading-relaxed text-[var(--muted)]">
+            <b className="text-white">Owned</b> · <span className="text-amber-300">★</span> mastered ·{' '}
+            <span className="text-emerald-300">⇄</span> offer to trade/index ·{' '}
+            <span className="text-pink-300">♥</span> want to index. The last two prefill your{' '}
+            <b className="text-white">Trade Board</b> post.
+          </p>
+        )}
       </div>
     </div>
   )

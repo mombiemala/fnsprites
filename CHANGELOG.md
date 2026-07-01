@@ -24,6 +24,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   responsible for trades/scams. Never share login or pay real money.
 - **Changed:** Folded the auto match-finder into the Trade tab ("Suggested
   matches") and removed it from the Collection sidebar.
+- **Fixed:** Sprite detail toggles no longer say "duplicate" — ⇄ = offer to
+  trade/index, ♥ = want to index, and both prefill the Trade Board post.
 
 > **Why:** Trading is the heart of sprite collecting, but Fortnite has no
 > in-game trade system — a board that speaks the community's language (indexing

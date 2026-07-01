@@ -15,6 +15,7 @@ export const CHANGELOG = [
       { tag: 'Added', text: 'A short “How indexing works” explainer — the two-game give-and-return that adds a sprite to someone’s index without you losing yours (and saves Sprite Dust vs a full trade).' },
       { tag: 'Added', text: 'A clear safety notice: trades happen in-game between players; the tracker doesn’t facilitate or guarantee them and isn’t responsible for trades or scams. Never share your login or pay real money.' },
       { tag: 'Changed', text: 'Moved the auto match-finder into the Trade tab (“Suggested matches”) so all trading lives in one place.' },
+      { tag: 'Fixed', text: 'The sprite detail toggles no longer mention “duplicates” (there aren’t any) — ⇄ now reads as offer-to-trade/index and ♥ as want-to-index, and both prefill your Trade Board post.' },
     ],
     why:
       "Trading is the heart of sprite collecting, but Fortnite has no in-game trade system — people rely on scattered Discords and megathreads. A board that speaks the community’s language (indexing vs full trade) brings that together, honestly framed and safety-first.",
