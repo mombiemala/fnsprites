@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 import { useEscClose } from '../lib/useEscClose'
 import { supabase } from '../lib/supabase'
-import { isEpicConfigured, startEpicLink } from '../lib/epicAuth'
 
 export default function ProfileModal({ onClose }) {
   useEscClose(onClose)
@@ -13,21 +12,10 @@ export default function ProfileModal({ onClose }) {
   const [gamertag, setGamertag] = useState(profile?.gamertag || '')
   const [isPublic, setIsPublic] = useState(profile?.is_public ?? true)
   const [savingProfile, setSavingProfile] = useState(false)
-  const [connections, setConnections] = useState([])
   const [busy, setBusy] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
 
   const providers = user?.app_metadata?.providers || (user?.app_metadata?.provider ? [user.app_metadata.provider] : [])
-  const epic = connections.find((c) => c.provider === 'epic')
-
-  useEffect(() => {
-    let cancelled = false
-    ;(async () => {
-      const { data } = await supabase.from('connections').select('*').eq('user_id', user.id)
-      if (!cancelled) setConnections(data || [])
-    })()
-    return () => { cancelled = true }
-  }, [user.id])
 
   const saveProfile = async () => {
     setSavingProfile(true)
@@ -36,28 +24,13 @@ export default function ProfileModal({ onClose }) {
     toast(res.error ? res.error : 'Profile saved', res.error ? 'error' : undefined)
   }
 
-  const disconnectEpic = async () => {
-    setBusy(true)
-    const { error } = await supabase.from('connections').delete().eq('user_id', user.id).eq('provider', 'epic')
-    setBusy(false)
-    if (error) { toast('Could not disconnect', 'error'); return }
-    setConnections((c) => c.filter((x) => x.provider !== 'epic'))
-    toast('Epic account disconnected')
-  }
-
-  const connectEpic = () => {
-    if (!isEpicConfigured) { toast('Epic connect isn’t set up yet — coming soon 🙌'); return }
-    startEpicLink()
-  }
-
-  // Delete personal data (progress, own maps, connections, profile) then sign
-  // out. Community-map markers you contributed stay as shared data.
+  // Delete personal data (progress, own maps, profile) then sign out. Community
+  // markers you contributed stay as shared data.
   const deleteData = async () => {
     setBusy(true)
     try {
       await supabase.from('sprite_progress').delete().eq('user_id', user.id)
       await supabase.from('maps').delete().eq('owner_id', user.id)
-      await supabase.from('connections').delete().eq('user_id', user.id)
       await supabase.from('profiles').delete().eq('id', user.id)
       try { localStorage.removeItem('fnsprites.tracking') } catch { /* ignore */ }
       toast('Your data was deleted. Signing you out…')
@@ -101,40 +74,20 @@ export default function ProfileModal({ onClose }) {
             maxLength={32}
             className="w-full rounded-xl border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-sm text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)]"
           />
-          <div className="mt-2 flex items-center justify-between">
+          <div className="mt-2 flex items-center justify-between gap-2">
             <label className="flex items-center gap-2 text-xs font-semibold text-[var(--muted)]">
               <input type="checkbox" checked={isPublic} onChange={(e) => setIsPublic(e.target.checked)} />
               Public — appears on the leaderboard &amp; shareable link
             </label>
-            <button onClick={saveProfile} disabled={savingProfile} className="rounded-lg bg-[var(--brand)] px-3 py-1.5 text-xs font-extrabold text-black disabled:opacity-60">
+            <button onClick={saveProfile} disabled={savingProfile} className="shrink-0 rounded-lg bg-[var(--brand)] px-3 py-1.5 text-xs font-extrabold text-black disabled:opacity-60">
               {savingProfile ? 'Saving…' : 'Save'}
             </button>
           </div>
         </div>
 
-        {/* Connections */}
-        <div className="mt-5">
-          <h3 className="mb-2 font-display text-sm text-white">Connections</h3>
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between rounded-xl bg-[var(--bg-2)] px-3 py-2 text-sm">
-              <span className="text-white">🔑 Google</span>
-              <span className="text-[11px] font-bold text-emerald-300">{providers.includes('google') ? 'Connected' : 'Not linked'}</span>
-            </div>
-            <div className="flex items-center justify-between rounded-xl bg-[var(--bg-2)] px-3 py-2 text-sm">
-              <span className="text-white">🎮 Epic Games{epic?.display_name ? ` · ${epic.display_name}` : ''}</span>
-              {epic ? (
-                <button onClick={disconnectEpic} disabled={busy} className="text-[11px] font-bold text-[var(--muted)] hover:text-white">Disconnect</button>
-              ) : (
-                <button onClick={connectEpic} disabled={busy} className="rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">
-                  {isEpicConfigured ? 'Connect' : 'Coming soon'}
-                </button>
-              )}
-            </div>
-          </div>
-          <p className="mt-2 text-[11px] text-[var(--muted)]">
-            Linking Epic will auto-fill your display name. Note: Fortnite doesn’t expose owned sprites, so your collection is always tracked manually.
-          </p>
-        </div>
+        <p className="mt-4 rounded-lg bg-[var(--bg-2)] px-3 py-2 text-[11px] text-[var(--muted)]">
+          Your collection is tracked manually — Fortnite doesn’t provide a way for apps to read your owned sprites.
+        </p>
 
         {/* Actions */}
         <div className="mt-5 flex items-center justify-between border-t border-[var(--border)] pt-4">

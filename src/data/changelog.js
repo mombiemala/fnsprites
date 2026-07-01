@@ -9,14 +9,13 @@ export const CHANGELOG = [
     date: 'July 1, 2026',
     title: 'A profile of your own',
     summary:
-      "A proper profile page: manage your gamertag and privacy, see your linked logins, and control your data — with a spot ready for connecting your Epic account.",
+      "A proper profile page to manage your identity and data as more players join.",
     changes: [
-      { tag: 'Added', text: 'Profile & connections page (⚙ in the header) — edit your gamertag, toggle public/private, sign out, and see which logins are linked.' },
-      { tag: 'Added', text: '“Connect Epic” groundwork so you can link your Epic account (to auto-fill your display name). Heads-up: Fortnite doesn’t expose owned sprites, so collections stay manually tracked.' },
+      { tag: 'Added', text: 'Profile page (⚙ in the header) — edit your gamertag, toggle public/private, see how you signed in, and sign out.' },
       { tag: 'Added', text: 'A “Delete my data” option that clears your progress, maps and profile — your call, any time.' },
     ],
     why:
-      "As more people join, everyone deserves a clear place to manage their identity and data. Epic linking is coming as an enhancement — but we’re upfront that it can’t auto-import sprites, because doing that would mean risking your account.",
+      "Everyone deserves a clear place to manage their identity and data. We looked hard at linking Epic accounts to auto-import your sprites, but Fortnite doesn’t expose that data to apps in any safe, allowed way — so we chose not to risk anyone’s account, and collections stay tracked manually.",
   },
   {
     date: 'July 1, 2026',
