@@ -1,11 +1,16 @@
 // Curated Fortnite update feed (sprites + general). Newest first. Edit/extend as
 // new updates land. `tag`: 'sprites' | 'update' | 'event' | 'upcoming'.
 // `when` is a display date; `ts` (YYYY-MM-DD) is used for sorting only.
+// Optional `start`/`end` ('YYYY-MM-DD'): while today is inside the window the
+// item is treated as "live now" and pinned to the top of the feed; afterwards
+// it falls back to its normal spot — no cleanup needed.
 export const NEWS = [
   {
     ts: '2026-07-02',
     when: 'Jul 2–3, 2026',
     tag: 'event',
+    start: '2026-07-02',
+    end: '2026-07-03',
     title: 'Catch-Up Day — 4× rate-up on Legendary Sprites',
     body: 'Catch-Up Day is live: Legendary Sprites drop at a 4× increased rate from now through Friday, July 3 at 9 AM ET. A prime window to chase the Legendaries you’re still missing for your collection.',
     link: 'https://communities.epicgames.com/thread/catch-up-day-legendary-sprites-4x-rate-up/oM9D',

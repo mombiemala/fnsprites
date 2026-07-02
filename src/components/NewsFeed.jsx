@@ -17,12 +17,24 @@ export default function NewsFeed() {
   }, [])
 
   const items = useMemo(() => {
-    // Order: curated "upcoming" (editorial) → auto/live → curated history.
-    // Dedupe by normalized title so a live item can't double a curated one.
-    const upcoming = NEWS.filter((n) => n.tag === 'upcoming')
-    const history = NEWS.filter((n) => n.tag !== 'upcoming')
+    // A curated item with a start/end window is "live now" while today falls
+    // inside it — those get pinned to the very top so a currently-running event
+    // leads the feed. After the window passes it drops back to its normal group.
+    const today = new Date().toISOString().slice(0, 10)
+    const isLiveNow = (n) => {
+      if (!n.start && !n.end) return false
+      if (n.start && today < n.start) return false
+      if (n.end && today > n.end) return false
+      return true
+    }
+    // Order: live-now (pinned) → curated "upcoming" (editorial) → auto/live →
+    // curated history. Dedupe by normalized title so a live item can't double a
+    // curated one.
+    const liveNow = NEWS.filter(isLiveNow)
+    const upcoming = NEWS.filter((n) => n.tag === 'upcoming' && !isLiveNow(n))
+    const history = NEWS.filter((n) => n.tag !== 'upcoming' && !isLiveNow(n))
     const seen = new Set()
-    const merged = [...upcoming, ...live, ...history].filter((n) => {
+    const merged = [...liveNow, ...upcoming, ...live, ...history].filter((n) => {
       const k = (n._key || n.title).toLowerCase().trim()
       if (seen.has(k)) return false
       seen.add(k)
