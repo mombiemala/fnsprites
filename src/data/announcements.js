@@ -16,6 +16,16 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'catch-up-day-2026-07-02',
+    emoji: '⚡',
+    message: 'Catch-Up Day is live — 4× rate-up on Legendary Sprites through Fri, Jul 3 @ 9 AM ET!',
+    link: 'https://communities.epicgames.com/thread/catch-up-day-legendary-sprites-4x-rate-up/oM9D',
+    linkLabel: 'Details',
+    start: '2026-07-02',
+    end: '2026-07-03',
+    tone: 'event',
+  },
+  {
     id: 'c7s3-season-end',
     emoji: '⏳',
     message: 'Chapter 7 Season 3 ends Aug 19 — finish your sprite collection before the next chapter!',
