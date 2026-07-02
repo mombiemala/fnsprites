@@ -33,7 +33,7 @@ export default function WelcomeModal() {
     }
     setOpen(false)
   }
-  useEscClose(close)
+  useEscClose(close, open)
 
   if (!open) return null
 

@@ -11,6 +11,28 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 2, 2026 — Fix: leaked scroll-lock froze the page
+
+- **Fixed:** `useEscClose` locks `document.body` scroll while a modal is open, but
+  `WelcomeModal` is always mounted and calls the hook *before* its `if (!open)
+  return null`. So for returning visitors (welcome already dismissed) the hook
+  still ran and left `body { overflow: hidden }` set with no dialog on screen —
+  the whole page became unscrollable, and if the browser restored a prior scroll
+  position on reload, the frozen viewport hid the header/nav entirely.
+- **Fixed:** the same effect only cleaned up on unmount, so even a fresh visitor
+  who *closed* the welcome stayed locked until a reload.
+- **How:** `useEscClose(onClose, active = true)` now gates the listener + lock on
+  `active`, and `WelcomeModal` passes its `open` state. The effect re-runs when
+  `open` flips false, restoring scroll immediately. All other modals are mounted
+  only while open, so the `true` default leaves them unchanged.
+
+*Why:* the "don't scroll the background behind a dialog" behaviour is correct —
+it just must be scoped to when a dialog is actually visible. Tying the lock to
+the popup's open state keeps that guarantee without ever bleeding into the
+normal page.
+
+---
+
 ## July 1, 2026 — Screenshot collection importer
 
 - **Added:** `📷 Import from a screenshot` on the collection page — `spriteOcr.js`

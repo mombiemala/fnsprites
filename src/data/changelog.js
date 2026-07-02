@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 2, 2026',
+    title: 'Fix: page scroll and navigation stuck',
+    summary:
+      'Squashed a regression where the whole page could become unscrollable — and the header/tabs would seem to vanish — for returning visitors.',
+    changes: [
+      { tag: 'Fixed', text: 'The first-visit welcome popup was leaking its “lock the background from scrolling” behaviour onto every later visit, even though the popup itself was no longer showing. The page is scrollable again, and the header/nav are reachable.' },
+      { tag: 'Fixed', text: 'Closing the welcome popup now reliably restores scrolling in the same session (it previously only restored on a full reload).' },
+    ],
+    why:
+      'The scroll-lock hook that keeps the background still while a dialog is open was running unconditionally inside the always-mounted welcome popup, so it stayed engaged after the popup closed. Scoping the lock to the popup’s open state keeps “no background scroll behind a modal” working while making sure it never bleeds into the normal page — and if you’d reloaded mid-scroll, the frozen viewport could hide the header entirely.',
+  },
+  {
     date: 'July 1, 2026',
     title: 'Import your collection from a screenshot',
     summary:
