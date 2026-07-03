@@ -2,10 +2,11 @@ import { THEME_MAP } from '../data/themes'
 import { RARITY_COLORS } from '../data/sprites'
 import SpriteArt from './SpriteArt'
 
-export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMastered, onOpen, readOnly }) {
+export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMastered, onSetLevel, onOpen, readOnly }) {
   const theme = THEME_MAP[sprite.themeId]
   const owned = !!state?.owned
   const mastered = !!state?.mastered
+  const level = state?.level || 0
 
   return (
     <div
@@ -52,6 +53,36 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
           )}
         </div>
       </div>
+
+      {/* Level (1–5) — appears once owned; taps set the level, matching the modal */}
+      {owned && (
+        <div
+          className="mt-1.5 flex items-center gap-1 px-0.5"
+          title={readOnly ? `Level ${level} of 5` : `Level ${level} of 5 — tap a dot to set`}
+        >
+          <div className="flex items-center gap-0.5">
+            {[1, 2, 3, 4, 5].map((n) => {
+              const on = n <= level
+              const dot = (
+                <span
+                  className="block h-2 w-2 rounded-full"
+                  style={{ background: on ? (level >= 5 ? '#fbbf24' : 'var(--brand)') : 'var(--panel-2)' }}
+                />
+              )
+              return readOnly ? (
+                <span key={n}>{dot}</span>
+              ) : (
+                <button key={n} onClick={() => onSetLevel?.(sprite.id, n)} aria-label={`Set level ${n} of 5`} className="leading-none">
+                  {dot}
+                </button>
+              )
+            })}
+          </div>
+          <span className={`ml-auto text-[9px] font-bold ${level >= 5 ? 'text-amber-300' : 'text-[var(--muted)]'}`}>
+            Lv {level}/5
+          </span>
+        </div>
+      )}
 
       {/* Controls */}
       {!readOnly ? (

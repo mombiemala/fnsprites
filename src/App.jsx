@@ -351,6 +351,7 @@ export default function App() {
                       state={activeTracking[s.id]}
                       onToggleOwned={setOwned}
                       onToggleMastered={setMastered}
+                      onSetLevel={setLevel}
                       onOpen={(sp) => setDetailType(sp.typeId)}
                       readOnly={readOnly}
                     />

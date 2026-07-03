@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 3, 2026 — Set sprite levels from the grid
+
+- **Added:** owned sprite cards in the collection grid now carry the same 1–5
+  level control as the detail modal — the dot meter plus a `Lv 3/5` readout
+  (gold at 5). Tapping a dot calls `setLevel`, so it stays in sync with the
+  modal, Mastery %, and the cloud. `SpriteCard` takes a new `onSetLevel` prop
+  (threaded from `App.jsx`).
+
+*Why:* levels were only settable inside the sprite modal. Surfacing the control
+on the card lets you level a whole page of sprites without opening each one.
+
+---
+
 ## July 3, 2026 — Clearer sprite levels
 
 - **Changed:** the per-variant 1–5 level dots in the sprite detail modal now show

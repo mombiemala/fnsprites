@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 3, 2026',
+    title: 'Set sprite levels right from the grid',
+    summary:
+      'The 1–5 level control now lives on each owned sprite card too — no need to open the detail view just to level up.',
+    changes: [
+      { tag: 'Added', text: 'Owned sprite cards show the level dots + a “Lv 3/5” readout (gold at 5). Tap a dot to set the level right there; it stays in sync with the detail modal and your Mastery %.' },
+    ],
+    why:
+      'Levels were only settable inside the sprite modal. Putting the same control on the card lets you level a whole page of sprites at a glance without the extra tap in and out.',
+  },
+  {
+    date: 'July 3, 2026',
     title: 'Clearer sprite levels',
     summary:
       'The 1–5 level dots on each owned variant now spell out the level next to them, so it’s obvious they’re a level control.',
