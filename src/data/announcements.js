@@ -16,6 +16,16 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'gold-gummy-hours-2026-07-04',
+    emoji: '✨',
+    message: 'Gold & Gummy Hours — Sat, Jul 4: boosted Gold & Gummy Sprite spawns + faster Sprite XP (2–4 PM & 9–11 PM ET).',
+    link: 'https://www.vice.com/en/article/fortnite-gold-gummy-hours/',
+    linkLabel: 'Schedule',
+    start: '2026-07-03',
+    end: '2026-07-04',
+    tone: 'event',
+  },
+  {
     id: 'catch-up-day-2026-07-02',
     emoji: '⚡',
     message: 'Catch-Up Day is live — 4× rate-up on Legendary Sprites through Fri, Jul 3 @ 9 AM ET!',

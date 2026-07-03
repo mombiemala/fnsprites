@@ -6,6 +6,16 @@
 // it falls back to its normal spot — no cleanup needed.
 export const NEWS = [
   {
+    ts: '2026-07-04',
+    when: 'Jul 4, 2026',
+    tag: 'event',
+    start: '2026-07-03',
+    end: '2026-07-04',
+    title: 'Gold & Gummy Hours — boosted Gold & Gummy spawns',
+    body: 'Saturday, July 4: two 2-hour Power Hour sessions (2–4 PM & 9–11 PM ET) boost Gold and Gummy Sprite spawn rates and speed up Sprite XP so you level faster. Event art teases the unreleased Seven Sprite.',
+    link: 'https://www.vice.com/en/article/fortnite-gold-gummy-hours/',
+  },
+  {
     ts: '2026-07-02',
     when: 'Jul 2–3, 2026',
     tag: 'event',
