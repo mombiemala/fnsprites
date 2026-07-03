@@ -101,22 +101,29 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                   </div>
                   <span className="block truncate text-[11px] text-[var(--muted)]">{theme?.bonus}</span>
                   {owned && (
-                    <div className="mt-1 flex items-center gap-1" title={`Level ${level} of 5`}>
-                      <span className="text-[9px] font-bold uppercase text-[var(--muted)]">Lv</span>
-                      {[1, 2, 3, 4, 5].map((n) => {
-                        const on = n <= level
-                        const dot = (
-                          <span
-                            className="block h-2.5 w-2.5 rounded-full"
-                            style={{ background: on ? (level >= 5 ? '#fbbf24' : 'var(--brand)') : 'var(--panel-2)' }}
-                          />
-                        )
-                        return readOnly ? (
-                          <span key={n}>{dot}</span>
-                        ) : (
-                          <button key={n} onClick={() => onSetLevel(v.id, n)} aria-label={`Set level ${n}`}>{dot}</button>
-                        )
-                      })}
+                    <div
+                      className="mt-1 flex items-center gap-1.5"
+                      title={readOnly ? `Level ${level} of 5` : `Level ${level} of 5 — tap a dot to set`}
+                    >
+                      <div className="flex items-center gap-1">
+                        {[1, 2, 3, 4, 5].map((n) => {
+                          const on = n <= level
+                          const dot = (
+                            <span
+                              className="block h-2.5 w-2.5 rounded-full"
+                              style={{ background: on ? (level >= 5 ? '#fbbf24' : 'var(--brand)') : 'var(--panel-2)' }}
+                            />
+                          )
+                          return readOnly ? (
+                            <span key={n}>{dot}</span>
+                          ) : (
+                            <button key={n} onClick={() => onSetLevel(v.id, n)} aria-label={`Set level ${n} of 5`}>{dot}</button>
+                          )
+                        })}
+                      </div>
+                      <span className={`text-[10px] font-bold ${level >= 5 ? 'text-amber-300' : 'text-[var(--muted)]'}`}>
+                        Lv {level}/5{level >= 5 ? ' · Mastered' : ''}
+                      </span>
                     </div>
                   )}
                 </div>

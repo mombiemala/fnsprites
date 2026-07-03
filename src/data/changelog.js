@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 3, 2026',
+    title: 'Clearer sprite levels',
+    summary:
+      'The 1–5 level dots on each owned variant now spell out the level next to them, so it’s obvious they’re a level control.',
+    changes: [
+      { tag: 'Changed', text: 'Each owned variant’s level shows a plain “Lv 3/5” readout beside the dots (turning gold as “Lv 5/5 · Mastered” at max) — the clever dot meter stays, now with an unmistakable label.' },
+      { tag: 'Changed', text: 'Tapping hint + clearer labels on the dots (“Level 3 of 5 — tap a dot to set”) for discoverability and screen readers.' },
+    ],
+    why:
+      'Levels were fully there, but the bare row of dots didn’t read as a 1–5 control at a glance. A tiny numeric readout makes it self-explanatory without losing the compact dot meter people liked.',
+  },
+  {
     date: 'July 2, 2026',
     title: 'Fix: page scroll and navigation stuck',
     summary:

@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 3, 2026 — Clearer sprite levels
+
+- **Changed:** the per-variant 1–5 level dots in the sprite detail modal now show
+  a numeric readout beside them — `Lv 3/5`, turning gold as `Lv 5/5 · Mastered`
+  at max. The dot meter is unchanged; it just has a self-explanatory label now.
+- **Changed:** dot tooltip now hints tappability (`Level 3 of 5 — tap a dot to
+  set`) and per-dot `aria-label`s read `Set level N of 5`.
+
+*Why:* levels already worked, but a bare row of dots didn't read as a level
+control at a glance. A tiny label makes it obvious without enlarging the row or
+dropping the compact dot meter.
+
+---
+
 ## July 2, 2026 — Fix: leaked scroll-lock froze the page
 
 - **Fixed:** `useEscClose` locks `document.body` scroll while a modal is open, but
