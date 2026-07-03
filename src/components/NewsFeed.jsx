@@ -78,14 +78,30 @@ export default function NewsFeed() {
               rel="noreferrer"
               className="block rounded-xl bg-[var(--bg-2)] p-3 transition-colors hover:bg-[var(--panel-2)]"
             >
-              <div className="mb-1 flex items-center gap-2">
+              <div className="mb-1 flex flex-wrap items-center gap-2">
                 <span className="rounded px-1.5 py-0.5 text-[10px] font-extrabold uppercase text-black" style={{ background: tag.color }}>
                   {tag.label}
                 </span>
+                {n.tentative && (
+                  <span className="rounded bg-amber-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-amber-300" title="Date/details not yet confirmed by Epic">
+                    Tentative
+                  </span>
+                )}
                 <span className="text-[11px] font-semibold text-[var(--muted)]">{n.when}</span>
               </div>
               <p className="text-sm font-bold text-white">{n.title}</p>
               {n.body && <p className="mt-0.5 text-xs text-[var(--muted)]">{n.body}</p>}
+              {n.source && (
+                <p className="mt-1.5 flex items-center gap-1 text-[10px] font-semibold text-[var(--muted)]">
+                  <span>
+                    Source: {n.source}
+                    <span className={n.official ? 'text-emerald-300' : 'text-amber-300'}>
+                      {n.official ? ' · official' : ' · unofficial'}
+                    </span>
+                  </span>
+                  <span aria-hidden="true">· opens in a new tab ↗</span>
+                </p>
+              )}
             </a>
           )
         })}

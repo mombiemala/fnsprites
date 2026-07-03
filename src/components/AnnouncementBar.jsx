@@ -48,9 +48,21 @@ export default function AnnouncementBar() {
       <p className="flex-1 text-sm font-semibold text-white">
         {note.message}
         {note.link && (
-          <a href={note.link} target="_blank" rel="noreferrer" className="ml-2 whitespace-nowrap underline hover:opacity-80">
+          <a
+            href={note.link}
+            target="_blank"
+            rel="noreferrer"
+            className="ml-2 whitespace-nowrap underline hover:opacity-80"
+            title={`Opens ${note.source || 'an external site'} in a new tab`}
+          >
             {note.linkLabel || 'Learn more'} ↗
           </a>
+        )}
+        {note.source && (
+          <span className="ml-1.5 text-[11px] font-medium text-white/60">
+            (source: {note.source}
+            {note.official === false ? ', unofficial' : ''})
+          </span>
         )}
       </p>
       <button

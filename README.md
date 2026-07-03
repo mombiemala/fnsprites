@@ -20,9 +20,11 @@ accurate to the **Jun 25, 2026 update**.
   [UltronCore/sprite-tracker](https://github.com/UltronCore/sprite-tracker);
   variant forms UltronCore lacks were AI-reskinned (Google Gemini) from those
   base images. A generated SVG fallback covers any missing image.
-- **Track ownership & mastery** with one tap — works instantly as a guest
-  (saved in your browser) and syncs to the cloud when you log in, with a live
-  save-status indicator.
+- **Track ownership, levels & mastery** — mark a variant owned, then set its
+  **level 1–5** (level 5 = mastered) right on the grid card or in the detail
+  view, with a `Lv 3/5` readout. Works instantly as a guest (saved in your
+  browser) and syncs to the cloud when you log in, with a live save-status
+  indicator.
 - **Drop rates** per sprite (community-datamined estimates; Epic publishes none).
 - **Sprite detail view** — rarity, drop rate, ability, and every variant with its
   in-game **bonus** (e.g. Gummy = +10% Sprite Dust).
@@ -35,8 +37,12 @@ accurate to the **Jun 25, 2026 update**.
   Sprite-chest locations are **seeded from public guides** (with source
   attribution) and refined by the community. Make **personal or shared maps**,
   reposition markers, and **retire** spots for history. POIs are pulled live.
-- **Self-updating news feed** — auto-detects Fortnite's current live build and
-  pulls official in-game news, plus curated editorial "upcoming" items.
+- **News & events** — a self-updating feed that auto-detects Fortnite's current
+  live build and pulls official in-game news, plus curated events (Catch-Up Day,
+  Gold & Gummy Hours, and weekly Mastery Mondays / Power Hours). Every item shows
+  its **source** and whether it's **official** (Epic) or **unofficial** (with a
+  **Tentative** badge for unconfirmed dates), and live events pin to the top. A
+  dismissible **announcement bar** highlights the current featured event.
 - **Profile page** — manage your gamertag, public/private visibility, sign out,
   and delete your data.
 - **Share & export** — set your gamertag and share a read-only public link
@@ -69,8 +75,13 @@ Sprite art is © Epic Games, Inc., used for identification only. With thanks to:
   cross-reference, and the interactive map
 - [staticvacant/fnsprites](https://staticvacant.github.io/fnsprites/) — the
   original tracker that inspired this
-- News via official patch notes & [fortnite-api.com](https://fortnite-api.com)
-  (also the map image & live POIs)
+- News & events via official Fortnite patch notes,
+  [Epic communities](https://communities.epicgames.com) &
+  [fortnite-api.com](https://fortnite-api.com) (also the map image & live POIs);
+  some event details cross-referenced from community trackers
+  ([Vice](https://www.vice.com), [Beebom](https://beebom.com),
+  [AllThings.How](https://allthings.how)) — each event links to and labels its
+  source (official vs unofficial)
 - Sprite-chest map locations seeded from community guides
   ([gamingpromax](https://gamingpromax.com/fortnite-sprite-chest-locations/),
   [beebom](https://beebom.com/fortnite-sprite-chest-locations/))

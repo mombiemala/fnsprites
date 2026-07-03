@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 3, 2026',
+    title: 'Events refresh + clear source links',
+    summary:
+      'The events are current, and every event now shows where its link goes — and whether it’s official — before you leave the app.',
+    changes: [
+      { tag: 'Added', text: 'Gold & Gummy Hours (Sat, Jul 4): boosted Gold & Gummy Sprite spawns + faster Sprite XP (2–4 PM & 9–11 PM ET). It’s the featured banner and leads the News feed.' },
+      { tag: 'Added', text: 'Holofoil Hours (~Jul 11, flagged Tentative) and a Weekly Sprite events entry — Mastery Mondays plus Saturday Power Hours (3:30 & 9:30 PM ET).' },
+      { tag: 'Added', text: 'Every news item and announcement now shows its Source, whether it’s official (Epic) or unofficial, and an “opens in a new tab ↗” hint — so you know when a link takes you off-site.' },
+    ],
+    why:
+      'Trust comes from knowing where info comes from. Labeling each event’s source (and flagging unofficial or tentative ones) is more honest than a bare link, and keeps community-sourced items clearly separate from Epic’s own announcements.',
+  },
+  {
+    date: 'July 3, 2026',
     title: 'Set sprite levels right from the grid',
     summary:
       'The 1–5 level control now lives on each owned sprite card too — no need to open the detail view just to level up.',

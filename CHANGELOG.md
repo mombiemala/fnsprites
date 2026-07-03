@@ -11,6 +11,25 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 3, 2026 — Events refresh + clear source links
+
+- **Added:** Gold & Gummy Hours (Sat, Jul 4) — boosted Gold & Gummy Sprite spawns
+  + faster Sprite XP (2–4 PM & 9–11 PM ET). Now the featured announcement and the
+  lead item in the News feed.
+- **Added:** Holofoil Hours (~Jul 11, flagged **Tentative**) and a **Weekly Sprite
+  events** entry — Mastery Mondays plus Saturday Power Hours (3:30 & 9:30 PM ET).
+- **Added:** source attribution on every news item and announcement — a `source`
+  name, an **official** (Epic) vs **unofficial** marker, an optional `tentative`
+  badge, and an "opens in a new tab ↗" hint so it's clear when a link leaves the
+  app. New `source` / `official` / `tentative` fields in `news.js` and
+  `announcements.js`, rendered by `NewsFeed` and `AnnouncementBar`.
+
+*Why:* trust comes from knowing where info comes from. Labeling each event's
+source (and flagging unofficial/tentative ones) is more honest than a bare link,
+and keeps community-sourced items clearly separate from Epic's own announcements.
+
+---
+
 ## July 3, 2026 — Set sprite levels from the grid
 
 - **Added:** owned sprite cards in the collection grid now carry the same 1–5

@@ -23,6 +23,8 @@ export const ANNOUNCEMENTS = [
     linkLabel: 'Schedule',
     start: '2026-07-03',
     end: '2026-07-04',
+    source: 'Vice',
+    official: false,
     tone: 'event',
   },
   {
@@ -33,6 +35,8 @@ export const ANNOUNCEMENTS = [
     linkLabel: 'Details',
     start: '2026-07-02',
     end: '2026-07-03',
+    source: 'Epic Games',
+    official: true,
     tone: 'event',
   },
   {
@@ -43,6 +47,8 @@ export const ANNOUNCEMENTS = [
     linkLabel: 'Details',
     start: '2026-07-01',
     end: '2026-08-19',
+    source: 'Epic Games',
+    official: true,
     tone: 'info',
   },
 

@@ -4,6 +4,10 @@
 // Optional `start`/`end` ('YYYY-MM-DD'): while today is inside the window the
 // item is treated as "live now" and pinned to the top of the feed; afterwards
 // it falls back to its normal spot — no cleanup needed.
+// Attribution (shown on each card so people know they're leaving the app):
+//   `source`     where the info/link goes (e.g. 'Epic Games', 'Vice').
+//   `official`   true = straight from Epic; false renders an "unofficial" note.
+//   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
     ts: '2026-07-04',
@@ -14,6 +18,8 @@ export const NEWS = [
     title: 'Gold & Gummy Hours — boosted Gold & Gummy spawns',
     body: 'Saturday, July 4: two 2-hour Power Hour sessions (2–4 PM & 9–11 PM ET) boost Gold and Gummy Sprite spawn rates and speed up Sprite XP so you level faster. Event art teases the unreleased Seven Sprite.',
     link: 'https://www.vice.com/en/article/fortnite-gold-gummy-hours/',
+    source: 'Vice',
+    official: false,
   },
   {
     ts: '2026-07-02',
@@ -24,6 +30,19 @@ export const NEWS = [
     title: 'Catch-Up Day — 4× rate-up on Legendary Sprites',
     body: 'Catch-Up Day is live: Legendary Sprites drop at a 4× increased rate from now through Friday, July 3 at 9 AM ET. A prime window to chase the Legendaries you’re still missing for your collection.',
     link: 'https://communities.epicgames.com/thread/catch-up-day-legendary-sprites-4x-rate-up/oM9D',
+    source: 'Epic Games',
+    official: true,
+  },
+  {
+    ts: '2026-07-11',
+    when: 'Jul 11, 2026 (expected)',
+    tag: 'upcoming',
+    tentative: true,
+    title: 'Holofoil Hours',
+    body: 'A Holofoil Hours Power Hour is expected around July 11, alongside the Holofoil variant release — boosting Holofoil Sprite spawns. Date not yet confirmed by Epic; treat as tentative.',
+    link: 'https://beebom.com/fortnite-sprite-events-schedule/',
+    source: 'Beebom',
+    official: false,
   },
   {
     ts: '2026-07-16',
@@ -32,6 +51,8 @@ export const NEWS = [
     title: 'v41.20 — Sprite Pod styles (upcoming)',
     body: 'The v41.10 Sprites (Striker, Fishy, Aura, Boss & Grim Reaper) and their variants are set to arrive as Sprite Pod styles in v41.20, releasing July 16, 2026.',
     link: 'https://www.fortnite.com/news',
+    source: 'Epic Games',
+    official: true,
   },
   {
     ts: '2026-08-19',
@@ -40,6 +61,18 @@ export const NEWS = [
     title: 'Chapter 7 Season 3 ends',
     body: 'Season "Runners" is scheduled to end Aug 19, 2026 — last call to finish your sprite collection and Battle Pass before the next chapter.',
     link: 'https://www.fortnite.com/news',
+    source: 'Epic Games',
+    official: true,
+  },
+  {
+    ts: 'weekly-sprite-events',
+    when: 'Weekly',
+    tag: 'event',
+    title: 'Weekly Sprite events — Mastery Mondays & Power Hours',
+    body: 'Mastery Mondays (every Monday): boosted Sprite spawns, 2× Sprite Dust, 2× Sprite XP and extra Portable Extractors. Saturday Power Hours (every Saturday, 3:30 PM & 9:30 PM ET): refreshed gameplay modifiers and a shot at the variant you’ve been missing.',
+    link: 'https://www.epicgames.com/help/c-202300000001636/c-202300000001721/what-are-the-weekly-events-for-sprites-in-fortnite-a202300000086256',
+    source: 'Epic Games',
+    official: true,
   },
   {
     ts: '2026-06-25',
@@ -48,6 +81,8 @@ export const NEWS = [
     title: 'Gone Wild — 5 new Sprites (v41.10)',
     body: 'Striker, Fishy, Aura, Boss and the Mythic Grim Reaper join the roster (Grim Reaper spawns almost exclusively from Sprite Chests). v41.10 also added Shock Rocks & Quack Snacks consumables and the Safe Extraction / Sprite Hunt Rift Anomalies.',
     link: 'https://allthings.how/fortnite-gone-wild-sprites-striker-fishy-aura-boss-and-grim-reaper/',
+    source: 'AllThings.How',
+    official: false,
   },
   {
     ts: '2026-06-25b',
@@ -56,6 +91,8 @@ export const NEWS = [
     title: 'Fortnite OG Season 9 + Final Showdown',
     body: 'The busiest content day of the season: Fortnite OG Season 9 goes live (NeoTilted & Mega Mall return) alongside the Final Showdown live event.',
     link: 'https://www.fortnite.com/news',
+    source: 'Epic Games',
+    official: true,
   },
   {
     ts: '2026-06-06',
@@ -64,6 +101,8 @@ export const NEWS = [
     title: 'Chapter 7 Season 3: Runners launches (v41.00)',
     body: 'New areas Cluster Coast, The Zero Point and Heatwave Harbor; the Sprites system; "power boots" slide mobility; and the John Wick — Pen & Ink Battle Pass.',
     link: 'https://www.fortnite.com/news',
+    source: 'Epic Games',
+    official: true,
   },
 ]
 
