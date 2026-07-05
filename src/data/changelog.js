@@ -11,7 +11,7 @@ export const CHANGELOG = [
     summary:
       'Followed the leaks to firmer dates and honest labels: anything Epic hasn’t confirmed now wears a “Rumored” tag, Holofoil is dated for every Sprite, and the news feed has the Holofoil and DC Summer drops.',
     changes: [
-      { tag: 'Added', text: 'A “Rumored” badge on unconfirmed sprites (Air, Seven, Batman, and the datamined Wick/Drifter/Ice) and a “· rumored” note on unconfirmed variant bonuses (Cube, Quack). The detail view now reads “Ability (rumored):” so leaked powers aren’t mistaken for confirmed ones.' },
+      { tag: 'Added', text: 'A “Rumored” badge on unconfirmed sprites (Air, Seven, Batman, and the datamined Wick/Drifter/Ice), and the detail view now reads “Ability (rumored):” so leaked powers aren’t mistaken for confirmed ones. The Cube & Quack forms simply read “Bonus not yet revealed” (in amber) rather than a guessed perk — we don’t invent a bonus Epic hasn’t announced.' },
       { tag: 'Added', text: 'Two upcoming events in the news feed, both Tentative: Holofoil Sprites (Jul 9 — a Holofoil for every Sprite, reported +5% squad chance to find rare Sprites) and the leaked DC Summer event (Jul 16 — Batman plus the Air & Seven Sprites).' },
       { tag: 'Changed', text: 'Rolled Holofoil out as a variant of every Sprite (still unreleased) to match the leaked Jul-9 rollout, and gave Air, Seven & Batman their reported abilities/variant lines. Holofoil’s bonus updated to the reported “+5% squad chance to find rare Sprites”.' },
       { tag: 'Added', text: 'Added the Fortnite Wiki as a roster/leak cross-reference source in the footer credits.' },

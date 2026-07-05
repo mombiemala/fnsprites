@@ -16,10 +16,11 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 Made leaked content look different from confirmed content, and caught the feed up.
 
 - **Added:** a **Rumored** badge on unconfirmed sprites (`type.rumored` — Air,
-  Seven, Batman, Wick, Drifter, Ice) in `SpriteDetailModal`, plus a **· rumored**
-  note on unconfirmed variant bonuses (`theme.rumored` — Cube, Quack) and an
-  **"Ability (rumored):"** label. `buildSpriteList` now carries a `rumored` flag
-  (sprite-level or variant-form-level).
+  Seven, Batman, Wick, Drifter, Ice) in `SpriteDetailModal`, and an
+  **"Ability (rumored):"** label. Unconfirmed variant forms (`theme.rumored` —
+  Cube, Quack) read **"Bonus not yet revealed"** in amber rather than a guessed
+  perk. `buildSpriteList` now carries a `rumored` flag (sprite- or
+  variant-form-level).
 - **Added:** two Tentative upcoming events in `news.js` — **Holofoil Sprites**
   (Jul 9; a Holofoil for every Sprite, reported +5% squad chance to find rare
   Sprites) and the leaked **DC Summer event** (Jul 16; Batman + Air & Seven).

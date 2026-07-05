@@ -107,11 +107,11 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                       </span>
                     )}
                   </div>
-                  <span className="block truncate text-[11px] text-[var(--muted)]">
+                  <span
+                    className={`block truncate text-[11px] ${theme?.rumored ? 'text-amber-300/90' : 'text-[var(--muted)]'}`}
+                    title={theme?.rumored ? 'Not yet confirmed by Epic' : undefined}
+                  >
                     {theme?.bonus}
-                    {theme?.rumored && (
-                      <span className="text-amber-300/90" title="Bonus not yet confirmed by Epic"> · rumored</span>
-                    )}
                   </span>
                   {owned && (
                     <div
