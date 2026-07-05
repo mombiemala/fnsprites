@@ -11,6 +11,30 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 5, 2026 — Groundwork: room to track more than sprites (Phase 0)
+
+Invisible seam so the app can track collectibles beyond sprites later, with zero
+user-facing change today.
+
+- **Added:** a **collection sets** registry (`src/data/collections.js`) —
+  `COLLECTIONS`, `ACTIVE_COLLECTION_ID`, `getActiveCollection()`. Sprites is set
+  #1; a future collectible becomes a data entry, not new machinery.
+- **Added (schema):** `sprite_progress.collection` — `text NOT NULL DEFAULT
+  'sprites'`, plus a `(user_id, collection)` index. Additive and
+  backward-compatible; all existing rows backfill to `'sprites'`. The primary key
+  stays `(user_id, sprite_id)` until a second set lands.
+- **Changed:** `AuthContext` reads progress filtered by the active collection and
+  tags every write with it, so a future set lives alongside sprites without
+  touching sprite data.
+
+*Why:* Fortnite rotates the headline collectible every season. This is the
+low-risk insurance from the roadmap's Phase 0 — it makes "add a new collectible"
+a data change rather than a rewrite, and leaves every tracked sprite untouched.
+Trade Board, leaderboard and the rest become collection-aware in Phase 1, when a
+second set actually exists.
+
+---
+
 ## July 3, 2026 — Events refresh + clear source links
 
 - **Added:** Gold & Gummy Hours (Sat, Jul 4) — boosted Gold & Gummy Sprite spawns

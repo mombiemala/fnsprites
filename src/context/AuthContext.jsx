@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { supabase } from '../lib/supabase'
 import { rowsToMap } from '../lib/sharedCollection'
+import { ACTIVE_COLLECTION_ID } from '../data/collections'
 import { AuthContext } from './authStore'
 
 const LOCAL_KEY = 'fnsprites.tracking'
@@ -61,7 +62,7 @@ export function AuthProvider({ children }) {
       setSyncing(true)
       const [{ data: prof }, { data: rows }] = await Promise.all([
         supabase.from('profiles').select('*').eq('id', user.id).maybeSingle(),
-        supabase.from('sprite_progress').select('*').eq('user_id', user.id),
+        supabase.from('sprite_progress').select('*').eq('user_id', user.id).eq('collection', ACTIVE_COLLECTION_ID),
       ])
       if (cancelled) return
 
@@ -83,7 +84,7 @@ export function AuthProvider({ children }) {
             forTrade !== !!cloud?.forTrade || wanted !== !!cloud?.wanted
           ) {
             cloudMap[spriteId] = { owned, mastered, forTrade, wanted }
-            toUpsert.push({ user_id: user.id, sprite_id: spriteId, owned, mastered, for_trade: forTrade, wanted })
+            toUpsert.push({ user_id: user.id, sprite_id: spriteId, collection: ACTIVE_COLLECTION_ID, owned, mastered, for_trade: forTrade, wanted })
           }
         }
         if (toUpsert.length) {
@@ -136,6 +137,7 @@ export function AuthProvider({ children }) {
           .upsert({
             user_id: user.id,
             sprite_id: spriteId,
+            collection: ACTIVE_COLLECTION_ID,
             owned: entry.owned,
             mastered: entry.mastered,
             level: entry.level,

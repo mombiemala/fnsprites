@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 5, 2026',
+    title: 'Groundwork: room to track more than sprites',
+    summary:
+      'Quiet plumbing so the tracker can grow beyond sprites whenever Fortnite’s next season brings something new to collect.',
+    changes: [
+      { tag: 'Added', text: 'Introduced “collection sets” under the hood — Sprites is now the first set, and your saved progress is tagged to it. Nothing changes on screen today.' },
+      { tag: 'Changed', text: 'Cloud saves now read and write your progress per collection, so a future collectible can live alongside sprites without touching your sprite data.' },
+    ],
+    why:
+      'Fortnite rotates what you collect every season — sprites are the star now but won’t be forever. This is invisible insurance: it lets us add a new collectible as a simple update instead of a rebuild, while keeping every sprite you’ve already tracked exactly as-is.',
+  },
+  {
     date: 'July 3, 2026',
     title: 'Events refresh + clear source links',
     summary:
