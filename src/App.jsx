@@ -75,7 +75,7 @@ function TabLoading() {
 }
 
 export default function App() {
-  const { user, profile, tracking, setOwned, setMastered, setLevel, setForTrade, setWanted, syncing, cloudStatus, authLoading } = useAuth()
+  const { user, profile, tracking, setOwned, setMastered, setLevel, setForTrade, setWanted, bulkOwn, syncing, cloudStatus, authLoading } = useAuth()
   const { toast } = useToast()
   const shareTarget = useShareTarget()
 
@@ -196,6 +196,27 @@ export default function App() {
     () => JSON.stringify(filters) !== JSON.stringify(DEFAULT_FILTERS),
     [filters]
   )
+
+  // Bulk quick-add: acts on the released sprites currently shown, so filtering to
+  // a theme or rarity (or searching) then hitting the button claims the whole set
+  // in one go. Unreleased sprites are never bulk-owned.
+  const bulkTargets = useMemo(() => visible.filter((s) => !s.unreleased), [visible])
+  const bulkOwnedCount = useMemo(
+    () => bulkTargets.reduce((n, s) => n + (activeTracking[s.id]?.owned ? 1 : 0), 0),
+    [bulkTargets, activeTracking]
+  )
+  const bulkAllOwned = bulkTargets.length > 0 && bulkOwnedCount === bulkTargets.length
+  const markAllShown = () => {
+    const toAdd = bulkTargets.length - bulkOwnedCount
+    if (!toAdd) return
+    bulkOwn(bulkTargets.map((s) => s.id), true)
+    toast(`Marked ${toAdd} sprite${toAdd === 1 ? '' : 's'} owned 🎉`)
+  }
+  const unmarkAllShown = () => {
+    if (!window.confirm(`Unmark all ${bulkTargets.length} shown sprites as not owned? This won't touch sprites hidden by your filters.`)) return
+    bulkOwn(bulkTargets.map((s) => s.id), false)
+    toast(`Unmarked ${bulkTargets.length} sprite${bulkTargets.length === 1 ? '' : 's'}`)
+  }
 
   const [exporting, setExporting] = useState(false)
   const exportImage = async (mode) => {
@@ -334,6 +355,30 @@ export default function App() {
       <div className="lg:flex lg:items-start lg:gap-6">
         {/* Main column: grid */}
         <div className="min-w-0 lg:flex-1">
+          {!readOnly && bulkTargets.length > 0 && (
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2">
+              <span className="text-xs text-[var(--muted)]">
+                <b className="text-white">{bulkOwnedCount}</b> of <b className="text-white">{bulkTargets.length}</b> shown owned
+                {hasActiveFilters && <span className="ml-1 text-[var(--brand)]">· filtered</span>}
+              </span>
+              {bulkAllOwned ? (
+                <button
+                  onClick={unmarkAllShown}
+                  className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
+                >
+                  Unmark all shown
+                </button>
+              ) : (
+                <button
+                  onClick={markAllShown}
+                  title="Marks every released sprite currently shown as owned"
+                  className="rounded-lg bg-[var(--brand)] px-3 py-1.5 text-xs font-extrabold text-black transition-opacity hover:opacity-90"
+                >
+                  ✓ Mark all {bulkTargets.length} shown owned
+                </button>
+              )}
+            </div>
+          )}
           {isShareView && shareLoading ? (
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {Array.from({ length: 18 }).map((_, i) => (

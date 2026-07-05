@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 5, 2026 — Mark a whole theme or rarity owned in one tap
+
+- **Added:** a **“✓ Mark all shown owned”** bar above the collection grid. It acts
+  on the **released sprites currently shown**, so filtering to a theme (e.g. Gold)
+  or a rarity (e.g. Legendary) — or a search — and clicking it claims the whole
+  set via the existing `bulkOwn`. A live “N of M shown owned” count sits beside it.
+- **Added:** when all shown are owned, the button flips to **“Unmark all shown”**
+  (with a confirm). Unreleased sprites are never bulk-owned, and the action only
+  ever touches sprites visible under the current filters.
+
+*Why:* one-variant-at-a-time marking is the most tedious part of setup. Reusing
+the filters already in place makes a single control cover "a whole theme", "a
+whole rarity", or any search — no new UI to learn.
+
+---
+
 ## July 5, 2026 — Groundwork: room to track more than sprites (Phase 0)
 
 Invisible seam so the app can track collectibles beyond sprites later, with zero

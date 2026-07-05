@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 5, 2026',
+    title: 'Mark a whole theme or rarity owned in one tap',
+    summary:
+      'Filter to a variant line or a rarity, then claim the whole set at once — no more tapping every card.',
+    changes: [
+      { tag: 'Added', text: 'A “✓ Mark all shown owned” button above the collection grid marks every released sprite currently shown as owned. Filter to Gold (or Legendary, or a search) and grab the lot; a running “N of M shown owned” count sits beside it.' },
+      { tag: 'Added', text: 'When everything shown is already owned, the button flips to “Unmark all shown” (with a confirm). It only ever touches sprites visible under your current filters — never the ones hidden by them.' },
+    ],
+    why:
+      'Marking a big collection one variant at a time is the most tedious part of setup. Reusing the filters you already have means one control covers “a whole theme”, “a whole rarity”, or any search result — with no new UI to learn.',
+  },
+  {
+    date: 'July 5, 2026',
     title: 'Groundwork: room to track more than sprites',
     summary:
       'Quiet plumbing so the tracker can grow beyond sprites whenever Fortnite’s next season brings something new to collect.',
