@@ -11,6 +11,8 @@ export const THEMES = [
   { id: 'galaxy', name: 'Galaxy', short: 'Gx', className: 'theme-galaxy', accent: '#7b61ff', bonus: '+20% ammo when looting' },
   { id: 'gem', name: 'Gem', short: 'Ge', className: 'theme-gem', accent: '#27e0c4', bonus: '−30% fall damage' },
   { id: 'holofoil', name: 'Holofoil', short: 'H', className: 'theme-holofoil', accent: '#c44dff', bonus: 'Better odds to find rare sprites' },
+  { id: 'cube', name: 'Cube', short: 'Cu', className: 'theme-cube', accent: '#8a2be2', bonus: 'Zero Point pulse — chance to reroll loot rarity' },
+  { id: 'quack', name: 'Quack', short: 'Qk', className: 'theme-quack', accent: '#ffcf4d', bonus: 'Quacks at nearby chests & lures loot' },
   { id: 'rift', name: 'Rift', short: 'R', className: 'theme-rift', accent: '#36c5ff', bonus: 'Special Rift variant' },
 ]
 

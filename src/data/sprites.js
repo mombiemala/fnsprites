@@ -3,8 +3,10 @@ import { THEME_MAP } from './themes'
 // Fortnite sprite roster. Variant sets, themes (incl. the Rift line) and
 // released/unreleased flags are aligned with the community tracker
 // UltronCore/sprite-tracker; the Striker/Fishy/Aura/Boss/Grim Reaper sprites
-// went live in the Jun 25, 2026 update. Wick/Drifter/Ice/Seven are datamined and
-// not yet released.
+// went live in the Jun 25, 2026 update. Wick/Drifter/Ice/Seven/Air/Batman are
+// datamined and not yet released; Seven & Air ship with the full variant line,
+// and the new Cube & Quack forms roll out across the whole roster (all flagged
+// unreleased until they go live).
 //
 // `dropRate` is the published/datamined base drop chance where known (Epic does
 // not officially publish these — values are community estimates, and exact
@@ -17,54 +19,54 @@ const U = false  // unreleased
 export const SPRITE_TYPES = [
   { id: 'water', name: 'Water', icon: '💧', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Replenishes shields while in or near water.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
   { id: 'earth', name: 'Earth', icon: '🪨', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Better chance of rare rewards when opening chests.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, cube: U, quack: U } },
   { id: 'fire', name: 'Fire', icon: '🔥', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Ignites enemies and deals bonus fire damage.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
   { id: 'duck', name: 'Duck', icon: '🦆', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Drops helpful items and quacks at nearby loot.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, cube: U, quack: U } },
   { id: 'ghost', name: 'Ghost', icon: '👻', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Briefly phases you out of danger.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
   { id: 'dream', name: 'Dream', icon: '🌙', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Grants temporary shield regeneration.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, rift: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, rift: U, cube: U, quack: U } },
   { id: 'demon', name: 'Demon', icon: '😈', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Lifesteal — heal a portion of damage dealt.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, cube: U, quack: U } },
   { id: 'punk', name: 'Punk', icon: '🎸', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Boosts movement and reboot speed.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, rift: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, rift: U, cube: U, quack: U } },
   { id: 'king', name: 'King', icon: '👑', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Boosted XP and rewards.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
   { id: 'zeropoint', name: 'Zero Point', icon: '🔷', rarity: 'Mythic', dropRate: '0.00034%', released: true,
     ability: 'Reality-warping mobility and teleports.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
   { id: 'peanut', name: 'Burnt Peanut', icon: '🥜', rarity: 'Mythic', dropRate: '1.01%', released: true,
     ability: 'A rare snack that grants a powerful random buff.',
-    variants: { normal: R } },
+    variants: { normal: R, cube: U, quack: U } },
 
   // ---- Added in the Jun 25, 2026 update ----
   { id: 'striker', name: 'Striker', icon: '⚡', rarity: 'Rare', dropRate: null, released: true,
     ability: 'Charges a burst of bonus damage on your next hit.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, cube: U, quack: U } },
   { id: 'fishy', name: 'Fishy', icon: '🐟', rarity: 'Rare', dropRate: null, released: true,
     ability: 'Finds fish and aquatic loot more often.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, cube: U, quack: U } },
   { id: 'aura', name: 'Aura', icon: '✨', rarity: 'Epic', dropRate: null, released: true,
     ability: 'Emits a healing aura for you and teammates.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, cube: U, quack: U } },
   { id: 'boss', name: 'Boss', icon: '🤵', rarity: 'Legendary', dropRate: null, released: true,
     ability: 'Hires AI henchmen to fight alongside you.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, cube: U, quack: U } },
   { id: 'grim', name: 'Grim Reaper', icon: '💀', rarity: 'Mythic', dropRate: null, released: true,
     ability: 'Spawns almost exclusively from Sprite Chests; harvests bonus souls/XP.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, cube: U, quack: U } },
 
   // ---- Datamined / upcoming (NOT yet released) ----
   { id: 'wick', name: 'John Wick', icon: '🔫', rarity: 'Rare', dropRate: null, released: false,
@@ -76,8 +78,14 @@ export const SPRITE_TYPES = [
   { id: 'ice', name: 'Ice', icon: '❄️', rarity: 'Rare', dropRate: null, released: false,
     ability: 'Datamined sprite — not yet released.',
     variants: { normal: U } },
-  { id: 'seven', name: 'Seven', icon: '7️⃣', rarity: 'Rare', dropRate: null, released: false,
-    ability: 'Datamined sprite — not yet released.',
+  { id: 'seven', name: 'Seven', icon: '7️⃣', rarity: 'Epic', dropRate: null, released: false,
+    ability: 'Datamined sprite — reveals nearby enemy footstep trails. Ships with the full variant line.',
+    variants: { normal: U, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U, quack: U } },
+  { id: 'air', name: 'Air', icon: '🌬️', rarity: 'Epic', dropRate: null, released: false,
+    ability: 'Datamined sprite — boosts sprint speed & jump height and negates fall damage. Ships with the full variant line.',
+    variants: { normal: U, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U, quack: U } },
+  { id: 'batman', name: 'Batman', icon: '🦇', rarity: 'Legendary', dropRate: null, released: false,
+    ability: 'Datamined DC collab sprite (~Jul 16) — not yet released.',
     variants: { normal: U } },
 ]
 

@@ -1,10 +1,11 @@
 # FN Sprite Tracker
 
 A fan-made Fortnite **sprite tracker** — track every sprite across all of its
-variants (Normal, Gold, Gummy, Galaxy, Gem, Holofoil, and the special **Rift**
-line), see your collection and mastery progress, save it to the cloud, compare
-with other players, trade, and explore a community-built loot map. Roster is
-accurate to the **Jun 25, 2026 update**.
+variants (Normal, Gold, Gummy, Galaxy, Gem, Holofoil, the new **Cube** & **Quack**
+forms, and the special **Rift** line), see your collection and mastery progress,
+save it to the cloud, compare with other players, trade, and explore a
+community-built loot map. Roster is accurate to the **Jun 25, 2026 update**, with
+upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased**.
 
 > Not affiliated with Epic Games. Support the maker with **Creator Code: MOMBIE**
 > in the Fortnite Item Shop. #EpicPartner

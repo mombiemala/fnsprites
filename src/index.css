@@ -138,6 +138,12 @@
     animation: spin 5s linear infinite;
     z-index: 1;
   }
+  .theme-cube {
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px) 0 0 / 13px 13px,
+      linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px) 0 0 / 13px 13px,
+      radial-gradient(circle at 50% 38%, #a24dff, #6a1bc2 45%, #2a0a55 100%);
+  }
   .theme-quack {
     background: radial-gradient(circle at 35% 30%, #fff3b0, #ffd23f 45%, #e08a1e 100%);
   }

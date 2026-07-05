@@ -11,6 +11,33 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 5, 2026 — New sprites & forms: Air, Seven, Cube, Quack (+ Batman)
+
+Getting ahead of the next drop — all additions flagged **Unreleased**.
+
+- **Added:** two new sprites — **🌬️ Air** (sprint/jump boost, no fall damage) and
+  **7️⃣ Seven** (reveals nearby footstep trails), each carrying the full variant
+  line from Normal through the new Cube & Quack forms (`sprites.js`).
+- **Added:** two new variant forms — **Cube** (purple Zero-Point grid) and
+  **Quack** (duck-gold) — rolled out across the whole roster, with `bonus` copy
+  and card treatments (`themes.js`, `.theme-cube` in `index.css`; `treatment()`
+  cases already existed in `SpriteArt.jsx`).
+- **Added:** a datamined **🦇 Batman** sprite (DC collab, ~Jul 16) with its own
+  palette + bat-ears/emblem feature in `SpriteArt.jsx`.
+- **Added:** procedural art for every new sprite/form — the SVG generator draws
+  them from a palette + variant treatment, so no PNGs are needed and the house
+  style stays consistent.
+- **Changed:** all new entries are `released: false` / variant `U`, so
+  `RELEASED_COUNT` and completion math are unaffected until they go live.
+
+*Why:* several sprites and forms are leaking ahead of release. Adding them now,
+visibly flagged as upcoming, lets players plan the hunt without polluting the
+real collection math. Procedural art means a new sprite/form is a few lines of
+data plus a palette — not a pile of hand-drawn images — so the tracker can be
+accurate the day a drop lands, with no Gemini/API step required.
+
+---
+
 ## July 5, 2026 — One-tap Discord/Reddit caption
 
 - **Added:** a **"📋 Copy caption for Discord / Reddit"** button in Share & export

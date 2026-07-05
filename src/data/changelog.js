@@ -7,6 +7,21 @@
 export const CHANGELOG = [
   {
     date: 'July 5, 2026',
+    title: 'New sprites & forms on the horizon — Air, Seven, Cube, Quack (and a Bat)',
+    summary:
+      'Getting ahead of the next drop: two new sprites (Air & Seven), two new variant forms (Cube & Quack) rolling out across the whole roster, and a datamined Batman collab — all flagged Unreleased so you can see what’s coming.',
+    changes: [
+      { tag: 'Added', text: 'Two new sprites — 🌬️ Air (sprint/jump boost, no fall damage) and 7️⃣ Seven (reveals nearby footstep trails) — each ships with the full variant line, from Normal all the way to the new Cube & Quack forms.' },
+      { tag: 'Added', text: 'Two new variant forms — Cube (a purple Zero-Point grid) and Quack (duck-gold) — added to every sprite in the roster, each with its in-game bonus listed.' },
+      { tag: 'Added', text: 'A datamined 🦇 Batman sprite (DC collab, ~Jul 16) added to the roster.' },
+      { tag: 'Added', text: 'Art for all of the above is drawn on the fly by the built-in sprite generator, so every new sprite and form stays perfectly consistent with the existing house style — no missing images.' },
+      { tag: 'Changed', text: 'Everything here is clearly marked Unreleased until it goes live, so your “collectible now” counts and completion % are unaffected.' },
+    ],
+    why:
+      'Several sprites and forms are leaking ahead of release. Adding them now — visibly flagged as upcoming — lets players plan their hunt without polluting the real collection math. Because the sprite art is procedural, a new sprite or form is a few lines of data plus a palette, not a pile of hand-drawn images — so the tracker can stay accurate the day a drop lands.',
+  },
+  {
+    date: 'July 5, 2026',
     title: 'One-tap caption for Discord & Reddit',
     summary:
       'A “Copy caption” button that hands you a ready-to-paste brag: your count, percentage, and link — no typing.',

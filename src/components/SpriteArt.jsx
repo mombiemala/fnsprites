@@ -32,6 +32,8 @@ const TYPES = {
   drifter: { c: ['#f2e0bd', '#e0bd8a', '#a06b3c'], feat: '#a06b3c' },
   ice: { c: ['#e6f9ff', '#a6e8ff', '#5fbfe0'], feat: '#ffffff' },
   seven: { c: ['#dfe4ff', '#8a97ff', '#5b6bff'], feat: '#ffffff' },
+  air: { c: ['#f2fbff', '#c4e8ff', '#87c3ec'], feat: '#ffffff' },
+  batman: { c: ['#4a5878', '#28324e', '#0d1220'], feat: '#f6c945' },
 }
 
 const BODY =
@@ -149,6 +151,10 @@ function Features({ id, fc, gid }) {
       return <g stroke={fc} strokeWidth="3" strokeLinecap="round"><path d="M42 16 l4-8 M50 14 l0-9 M58 16 l-4-8" /></g>
     case 'seven':
       return <text x="50" y="64" textAnchor="middle" fontSize="30" fontWeight="900" fill={fc} opacity="0.9" fontFamily="Inter, sans-serif">7</text>
+    case 'air':
+      return <g fill="none" stroke={fc} strokeWidth="3" strokeLinecap="round" opacity="0.85"><path d="M34 42 h20 a5 5 0 1 0-5-5" /><path d="M32 54 h26 a5 5 0 1 1-5 5" /><path d="M36 66 h14 a4 4 0 1 0-4-4" /></g>
+    case 'batman':
+      return <><path d="M33 22 L37 4 L44 20 Z" fill={INK} stroke="rgba(0,0,0,.3)" strokeWidth="1.2" strokeLinejoin="round" /><path d="M67 22 L63 4 L56 20 Z" fill={INK} stroke="rgba(0,0,0,.3)" strokeWidth="1.2" strokeLinejoin="round" /><ellipse cx="50" cy="66" rx="11" ry="6.5" fill={fc} /><path d="M50 63 C48 61 45.5 61.5 44.5 63.5 C43.5 62 41.5 62.5 42 64.5 L45 64.5 L46.5 67 L50 64.5 L53.5 67 L55 64.5 L58 64.5 C58.5 62.5 56.5 62 55.5 63.5 C54.5 61.5 52 61 50 63 Z" fill={INK} /></>
     case 'dream':
       return <><path d="M58 30 a11 11 0 1 0 0.5 21 9 9 0 1 1-0.5-21 Z" fill="#fff" opacity="0.85" /><path d="M40 28 l1.5 4 4 1.5 -4 1.5 L40 41 l-1.5-4 -4-1.5 4-1.5 Z" fill="#fff" opacity="0.8" /></>
     default:
