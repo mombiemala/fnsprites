@@ -39,6 +39,14 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                     Unreleased
                   </span>
                 )}
+                {type.rumored && (
+                  <span
+                    title="Leaked / not yet confirmed by Epic — details can change before launch"
+                    className="rounded bg-amber-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-amber-300"
+                  >
+                    Rumored
+                  </span>
+                )}
               </div>
             </div>
           </div>
@@ -47,7 +55,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
 
         {type.ability && (
           <p className="mt-3 rounded-xl bg-[var(--bg-2)] px-3 py-2 text-sm text-[var(--text)]/90">
-            <span className="font-bold text-[var(--brand)]">Ability:</span> {type.ability}
+            <span className="font-bold text-[var(--brand)]">Ability{type.rumored ? ' (rumored)' : ''}:</span> {type.ability}
           </p>
         )}
 
@@ -99,7 +107,12 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                       </span>
                     )}
                   </div>
-                  <span className="block truncate text-[11px] text-[var(--muted)]">{theme?.bonus}</span>
+                  <span className="block truncate text-[11px] text-[var(--muted)]">
+                    {theme?.bonus}
+                    {theme?.rumored && (
+                      <span className="text-amber-300/90" title="Bonus not yet confirmed by Epic"> · rumored</span>
+                    )}
+                  </span>
                   {owned && (
                     <div
                       className="mt-1 flex items-center gap-1.5"

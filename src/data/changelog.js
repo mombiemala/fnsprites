@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'July 5, 2026',
+    title: 'Rumored, not promised — leaked sprites now labelled, with fresh news',
+    summary:
+      'Followed the leaks to firmer dates and honest labels: anything Epic hasn’t confirmed now wears a “Rumored” tag, Holofoil is dated for every Sprite, and the news feed has the Holofoil and DC Summer drops.',
+    changes: [
+      { tag: 'Added', text: 'A “Rumored” badge on unconfirmed sprites (Air, Seven, Batman, and the datamined Wick/Drifter/Ice) and a “· rumored” note on unconfirmed variant bonuses (Cube, Quack). The detail view now reads “Ability (rumored):” so leaked powers aren’t mistaken for confirmed ones.' },
+      { tag: 'Added', text: 'Two upcoming events in the news feed, both Tentative: Holofoil Sprites (Jul 9 — a Holofoil for every Sprite, reported +5% squad chance to find rare Sprites) and the leaked DC Summer event (Jul 16 — Batman plus the Air & Seven Sprites).' },
+      { tag: 'Changed', text: 'Rolled Holofoil out as a variant of every Sprite (still unreleased) to match the leaked Jul-9 rollout, and gave Air, Seven & Batman their reported abilities/variant lines. Holofoil’s bonus updated to the reported “+5% squad chance to find rare Sprites”.' },
+      { tag: 'Added', text: 'Added the Fortnite Wiki as a roster/leak cross-reference source in the footer credits.' },
+    ],
+    why:
+      'The tracker’s whole value is being accurate, so leaked content has to look different from confirmed content — a visible “Rumored” label lets us surface what’s coming (great for planning a hunt) without implying Epic has locked it in. Dates and powers here come from community leaks (an early Nintendo eShop listing for the DC event), which explicitly can change before launch; labelling beats leaving them out.',
+  },
+  {
+    date: 'July 5, 2026',
     title: 'New sprites & forms on the horizon — Air, Seven, Cube, Quack (and a Bat)',
     summary:
       'Getting ahead of the next drop: two new sprites (Air & Seven), two new variant forms (Cube & Quack) rolling out across the whole roster, and a datamined Batman collab — all flagged Unreleased so you can see what’s coming.',

@@ -481,8 +481,10 @@ export default function App() {
         </p>
         <p className="mt-1 opacity-80">
           Roster, themes &amp; drop rates cross-referenced from{' '}
-          <a className="underline" href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>{' '}
-          &amp; <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a>.
+          <a className="underline" href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>,{' '}
+          <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a>{' '}
+          &amp; the <a className="underline" href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>.
+          Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms.
           News &amp; events from official Fortnite patch notes, <a className="underline" href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>,
           with some event details cross-referenced from community trackers (<a className="underline" href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a className="underline" href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a className="underline" href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>) — each event shows its source and whether it&apos;s official.
           Map image &amp; live POIs via <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>;

@@ -11,6 +11,33 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 5, 2026 — "Rumored" labels for leaks + fresh news
+
+Made leaked content look different from confirmed content, and caught the feed up.
+
+- **Added:** a **Rumored** badge on unconfirmed sprites (`type.rumored` — Air,
+  Seven, Batman, Wick, Drifter, Ice) in `SpriteDetailModal`, plus a **· rumored**
+  note on unconfirmed variant bonuses (`theme.rumored` — Cube, Quack) and an
+  **"Ability (rumored):"** label. `buildSpriteList` now carries a `rumored` flag
+  (sprite-level or variant-form-level).
+- **Added:** two Tentative upcoming events in `news.js` — **Holofoil Sprites**
+  (Jul 9; a Holofoil for every Sprite, reported +5% squad chance to find rare
+  Sprites) and the leaked **DC Summer event** (Jul 16; Batman + Air & Seven).
+- **Changed:** rolled **Holofoil** out as an (unreleased) variant of every Sprite
+  to match the leaked Jul-9 rollout; gave Air/Seven/Batman their reported
+  abilities and variant lines; updated Holofoil's `bonus` to the reported "+5%
+  squad chance to find rare Sprites".
+- **Added:** **Fortnite Wiki** as a roster/leak cross-reference in the footer
+  credits (`App.jsx`).
+
+*Why:* accuracy is the product. A visible **Rumored** label lets us surface
+what's coming — useful for planning a hunt — without implying Epic has confirmed
+it. These dates/powers come from community leaks (incl. an early Nintendo eShop
+listing for the DC event) that can change before launch, so labelling beats
+either omitting them or presenting them as fact.
+
+---
+
 ## July 5, 2026 — New sprites & forms: Air, Seven, Cube, Quack (+ Batman)
 
 Getting ahead of the next drop — all additions flagged **Unreleased**.

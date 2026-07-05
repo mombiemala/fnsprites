@@ -13,8 +13,10 @@ upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased*
 ## Features
 
 - **Accurate roster** — every released sprite & variant as of Jun 25, 2026
-  (incl. Striker, Fishy, Aura, Boss, Grim Reaper); upcoming/datamined sprites are
-  clearly flagged **unreleased**.
+  (incl. Striker, Fishy, Aura, Boss, Grim Reaper); upcoming sprites & forms are
+  clearly flagged **unreleased**, and anything Epic hasn't confirmed (leaked
+  sprites like Air/Seven/Batman, and the Cube/Quack bonuses) wears a **Rumored**
+  label so leaks never read as fact.
 - **Real sprite art** — each variant uses the real in-game image
   (`public/sprites/<id>.png`). **Sprite images are © Epic Games, Inc.**, used for
   identification only and sourced from
@@ -85,6 +87,8 @@ Sprite art is © Epic Games, Inc., used for identification only. With thanks to:
   official base sprite images & the Have/Missing/Mastered model
 - [fortnite.gg/sprites](https://fortnite.gg/sprites) — roster, themes & drop-rate
   cross-reference, and the interactive map
+- [Fortnite Wiki (Fandom)](https://fortnite.fandom.com/wiki/Sprites) — roster &
+  upcoming/leaked sprite cross-reference
 - [staticvacant/fnsprites](https://staticvacant.github.io/fnsprites/) — the
   original tracker that inspired this
 - News & events via official Fortnite patch notes,
