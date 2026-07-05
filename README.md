@@ -24,7 +24,15 @@ accurate to the **Jun 25, 2026 update**.
   **level 1–5** (level 5 = mastered) right on the grid card or in the detail
   view, with a `Lv 3/5` readout. Works instantly as a guest (saved in your
   browser) and syncs to the cloud when you log in, with a live save-status
-  indicator.
+  indicator. **Bulk quick-add:** filter to a theme or rarity and mark the whole
+  shown set owned in one tap.
+- **Import from a screenshot** — snap your in-game sprite locker and on-device
+  OCR (Tesseract.js, running entirely in your browser) pre-checks what it
+  recognizes; review and mark them owned in one go. The image never leaves your
+  device.
+- **Next to chase** — a guide that reads your own collection and points you at
+  your **rarest missing** sprite, the set you're **closest to finishing**, and an
+  **easy one to grab** — each a tap away.
 - **Drop rates** per sprite (community-datamined estimates; Epic publishes none).
 - **Sprite detail view** — rarity, drop rate, ability, and every variant with its
   in-game **bonus** (e.g. Gummy = +10% Sprite Dust).
@@ -48,8 +56,9 @@ accurate to the **Jun 25, 2026 update**.
 - **Profile page** — manage your gamertag, public/private visibility, sign out,
   and delete your data.
 - **Share & export** — set your gamertag and share a read-only public link
-  (`?u=<your-id>`); export a **Sprite Locker–style poster** of your collection
-  (or just the sprites you still need).
+  (`?u=<your-id>`); **copy a ready-to-paste Discord/Reddit caption** of your
+  progress; or export a **Sprite Locker–style poster** of your collection (or just
+  the sprites you still need).
 - **Filter, search & group** — by theme, rarity, ownership; hide mastered, show
   unreleased; group by theme / rarity / sprite. Filters collapse on mobile.
 - **Progress & breakdown** — overall Collection % and Mastery %, per-rarity and
