@@ -12,6 +12,7 @@ import Toolbar from './components/Toolbar'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
 import StatsBreakdown from './components/StatsBreakdown'
+import NextToChase from './components/NextToChase'
 import WelcomeModal from './components/WelcomeModal'
 import AnnouncementBar from './components/AnnouncementBar'
 import SaveStatusPill from './components/SaveStatusPill'
@@ -428,6 +429,8 @@ export default function App() {
               </span>
             </button>
           )}
+
+          {!isShareView && <NextToChase tracking={activeTracking} onOpen={setDetailType} />}
 
           <StatsBreakdown tracking={activeTracking} />
 

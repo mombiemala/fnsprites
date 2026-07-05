@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 5, 2026 — "Next to chase" collection guide
+
+- **Added:** a **🎯 Next to chase** sidebar card (`NextToChase.jsx`) that reads your
+  own tracking and recommends three targets — **Rarest missing** (lowest drop
+  rate unowned), **Finish a set** (the sprite type you're closest to completing,
+  with the count of variants left), and **Easiest to grab** (highest drop rate
+  unowned). Each row opens that sprite's detail; a "caught them all" state shows
+  at 100%. Owner view only. All computed client-side from rarity/drop-rate/theme
+  data already on hand.
+
+*Why:* a checklist tells you what you have — the engaging part is deciding what to
+hunt next. It's the one thing rival trackers lead with that we didn't have, and
+we already had every ingredient to do it well.
+
+---
+
 ## July 5, 2026 — Backend tuning for scale (performance advisor)
 
 Ran Supabase's performance advisors and applied the standard fixes. No

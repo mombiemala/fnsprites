@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 5, 2026',
+    title: '“Next to chase” — your collection tells you what to grab next',
+    summary:
+      'A little guide in the sidebar that turns your progress into a to-do list: the rarest sprite you’re missing, the set you’re closest to finishing, and an easy one to grab.',
+    changes: [
+      { tag: 'Added', text: 'A “🎯 Next to chase” card that reads your own collection and surfaces three targets — Rarest missing (lowest drop rate you don’t own), Finish a set (the sprite you’re one or two variants from completing), and Easiest to grab (the most common miss). Tap any to open it. Shows a “caught them all” note when you’re done.' },
+    ],
+    why:
+      'A checklist tells you what you have; the fun part is deciding what to hunt next. Since we already know every sprite’s rarity, drop rate and which you own, the app can just tell you — no more scrolling the grid to figure out your best next pickup.',
+  },
+  {
+    date: 'July 5, 2026',
     title: 'Backend tuning for scale',
     summary:
       'Behind-the-scenes database optimizations so the app stays fast as more players pile in — nothing changes on your end.',
