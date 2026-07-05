@@ -3,9 +3,9 @@ import { useAuth } from './context/authStore'
 import { useToast } from './context/toastStore'
 import { fetchSharedCollection } from './lib/sharedCollection'
 import { fetchTradeMatches } from './lib/tradeBoard'
-import { ALL_SPRITES, TOTAL_COUNT, RELEASED_COUNT, SPRITE_TYPES, RARITY_ORDER } from './data/sprites'
-import { THEMES, THEME_MAP } from './data/themes'
+import { getCollection, ACTIVE_COLLECTION_ID } from './data/collections'
 import { generateCollectionImage, downloadDataUrl } from './lib/exportImage'
+import CollectionSwitcher from './components/CollectionSwitcher'
 import SpriteCard from './components/SpriteCard'
 import ProgressStats from './components/ProgressStats'
 import Toolbar from './components/Toolbar'
@@ -79,6 +79,11 @@ export default function App() {
   const { toast } = useToast()
   const shareTarget = useShareTarget()
 
+  // Active collection ("set"). Only Sprites exists today, so the switcher stays
+  // hidden and this never changes — the seam is here for when a second set lands.
+  const [collectionId, setCollectionId] = useState(ACTIVE_COLLECTION_ID)
+  const set = useMemo(() => getCollection(collectionId), [collectionId])
+
   const [filters, setFilters] = useState(DEFAULT_FILTERS)
   const [showAuth, setShowAuth] = useState(false)
   const [shared, setShared] = useState(null)
@@ -128,28 +133,28 @@ export default function App() {
   const stats = useMemo(() => {
     let owned = 0
     let mastered = 0
-    for (const s of ALL_SPRITES) {
+    for (const s of set.items) {
       if (activeTracking[s.id]?.owned) owned++
       if (activeTracking[s.id]?.mastered) mastered++
     }
-    return { owned, mastered, total: TOTAL_COUNT }
-  }, [activeTracking])
+    return { owned, mastered, total: set.total }
+  }, [activeTracking, set])
 
   // Owned/total per theme for the toolbar chips.
   const themeStats = useMemo(() => {
     const out = {}
-    for (const t of THEMES) out[t.id] = { owned: 0, total: 0 }
-    for (const s of ALL_SPRITES) {
+    for (const t of set.variants) out[t.id] = { owned: 0, total: 0 }
+    for (const s of set.items) {
       if (!out[s.themeId]) continue
       out[s.themeId].total++
       if (activeTracking[s.id]?.owned) out[s.themeId].owned++
     }
     return out
-  }, [activeTracking])
+  }, [activeTracking, set])
 
   const visible = useMemo(() => {
     const q = filters.search.trim().toLowerCase()
-    let list = ALL_SPRITES.filter((s) => {
+    let list = set.items.filter((s) => {
       if (!filters.showUnreleased && s.unreleased) return false
       if (filters.theme !== 'all' && s.themeId !== filters.theme) return false
       if (filters.rarity !== 'all' && s.rarity !== filters.rarity) return false
@@ -158,7 +163,7 @@ export default function App() {
       if (filters.ownership === 'unowned' && st?.owned) return false
       if (filters.hideMastered && st?.mastered) return false
       if (q) {
-        const hay = `${s.typeName} ${THEME_MAP[s.themeId]?.name} ${s.rarity}`.toLowerCase()
+        const hay = `${s.typeName} ${set.variantMap[s.themeId]?.name} ${s.rarity}`.toLowerCase()
         if (!hay.includes(q)) return false
       }
       return true
@@ -169,7 +174,7 @@ export default function App() {
       list = [...list].sort((a, b) => (RARITY_RANK[a.rarity] - RARITY_RANK[b.rarity]) || a.typeName.localeCompare(b.typeName))
     }
     return list
-  }, [filters, activeTracking])
+  }, [filters, activeTracking, set])
 
   const groups = useMemo(() => {
     if (filters.groupBy === 'none') return [{ key: 'all', label: null, items: visible }]
@@ -179,11 +184,11 @@ export default function App() {
       ;(buckets[k] ||= []).push(s)
     }
     let order
-    if (filters.groupBy === 'theme') order = THEMES.map((t) => [t.id, t.name])
-    else if (filters.groupBy === 'rarity') order = RARITY_ORDER.map((r) => [r, r])
-    else order = SPRITE_TYPES.map((t) => [t.id, t.name])
+    if (filters.groupBy === 'theme') order = set.variants.map((t) => [t.id, t.name])
+    else if (filters.groupBy === 'rarity') order = set.rarityOrder.map((r) => [r, r])
+    else order = set.types.map((t) => [t.id, t.name])
     return order.filter(([k]) => buckets[k]?.length).map(([k, label]) => ({ key: k, label, items: buckets[k] }))
-  }, [visible, filters.groupBy])
+  }, [visible, filters.groupBy, set])
 
   const gamertag = isShareView ? shared?.profile?.gamertag : profile?.gamertag
   const effectiveView = isShareView ? 'collection' : view
@@ -214,7 +219,7 @@ export default function App() {
             FN <span className="text-[var(--brand)]">Sprite</span> Tracker
           </h1>
           <p className="mt-1 text-xs text-[var(--muted)] sm:text-sm">
-            {RELEASED_COUNT} released variants · accurate to the Jun 25, 2026 update.
+            {set.released} released variants · accurate to the Jun 25, 2026 update.
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -248,6 +253,8 @@ export default function App() {
             ))}
         </div>
       </header>
+
+      {!isShareView && <CollectionSwitcher value={collectionId} onChange={setCollectionId} />}
 
       <nav className="mb-5 flex flex-wrap gap-1.5" role="tablist" aria-label="Sections">
         {TABS.map((t) => {
@@ -316,7 +323,7 @@ export default function App() {
           setFilters={setFilters}
           themeStats={themeStats}
           count={visible.length}
-          total={filters.showUnreleased ? TOTAL_COUNT : RELEASED_COUNT}
+          total={filters.showUnreleased ? set.total : set.released}
           hasActiveFilters={hasActiveFilters}
           onClear={() => setFilters(DEFAULT_FILTERS)}
         />

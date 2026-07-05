@@ -9,8 +9,8 @@
 // Phase 0 (groundwork): the registry exists and the cloud progress layer tags
 // every row with its collection id. Screens still read the Sprites data directly
 // — wiring them through here happens when a second set is actually added.
-import { ALL_SPRITES, SPRITE_TYPES, TOTAL_COUNT, RELEASED_COUNT } from './sprites'
-import { THEMES } from './themes'
+import { ALL_SPRITES, SPRITE_TYPES, TOTAL_COUNT, RELEASED_COUNT, RARITY_ORDER } from './sprites'
+import { THEMES, THEME_MAP } from './themes'
 
 export const COLLECTIONS = [
   {
@@ -20,6 +20,8 @@ export const COLLECTIONS = [
     items: ALL_SPRITES, // flat list of every variant (what progress is keyed on)
     types: SPRITE_TYPES, // items grouped by type
     variants: THEMES, // variant / finish lines (Normal, Gold, Gummy, …)
+    variantMap: THEME_MAP, // id → variant lookup
+    rarityOrder: RARITY_ORDER, // rarity ordering for grouping
     total: TOTAL_COUNT,
     released: RELEASED_COUNT,
   },
