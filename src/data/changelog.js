@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 5, 2026',
+    title: 'Backend tuning for scale',
+    summary:
+      'Behind-the-scenes database optimizations so the app stays fast as more players pile in — nothing changes on your end.',
+    changes: [
+      { tag: 'Changed', text: 'Optimized how the database checks permissions on every read/write (it now resolves who you are once per query instead of once per row) — a real speedup at scale, with identical access rules.' },
+      { tag: 'Changed', text: 'Added covering indexes on the maps, trades, votes and bug-report tables so lookups and cleanups stay quick as data grows.' },
+    ],
+    why:
+      'Speed and correctness both matter as the community grows. These are the standard Postgres/Supabase optimizations, applied with zero change to who can see or do what — pure headroom.',
+  },
+  {
+    date: 'July 5, 2026',
     title: 'Security pass on the community backend',
     summary:
       'A tune-up of the database rules ahead of more players — tightened who can see what, with no change to how the app works for you.',

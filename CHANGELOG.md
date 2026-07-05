@@ -11,6 +11,30 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 5, 2026 — Backend tuning for scale (performance advisor)
+
+Ran Supabase's performance advisors and applied the standard fixes. No
+user-facing or behavioral change — pure scale headroom.
+
+- **Changed:** wrapped `auth.uid()` as `(select auth.uid())` in all 24 RLS
+  policies (profiles, sprite_progress, maps, map_shares, map_markers,
+  map_marker_votes, trade_posts, trade_vouches) so it's evaluated once per query
+  instead of per row (`auth_rls_initplan`). Applied via `ALTER POLICY`, preserving
+  every expression exactly — verified the access logic is unchanged.
+- **Changed:** added covering indexes on the 7 unindexed foreign keys
+  (`maps.owner_id`, `map_shares.user_id`, `map_markers.created_by/map_id`,
+  `map_marker_votes.user_id`, `trade_posts.user_id`, `bug_reports.user_id`).
+- **Left as-is:** the two `unused_index` INFO hints on `sprite_progress`
+  (`trade_idx`/`want_idx`) — they back the trade queries and just haven't seen
+  traffic yet; their write cost is trivial. (The 7 new FK indexes also show as
+  "unused" for now simply because they're brand new.)
+
+*Why:* the RLS re-evaluation and unindexed FKs only bite at scale, but they're the
+cheap, standard hardening to do before growth — semantically identical rules,
+just faster.
+
+---
+
 ## July 5, 2026 — Security pass on the community backend
 
 Ran Supabase's security advisors + a manual RLS/RPC review ahead of growth.
