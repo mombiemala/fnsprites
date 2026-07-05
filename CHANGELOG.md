@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 5, 2026 — One-tap Discord/Reddit caption
+
+- **Added:** a **"📋 Copy caption for Discord / Reddit"** button in Share & export
+  (`ShareBar`). Copies a ready-to-paste text summary — count, %, mastered count,
+  and the compare link (personal `?u=` link when public, else the main site).
+  Counts against the released roster (`RELEASED_COUNT`).
+
+*Why:* collections get shared as text in Discord/Reddit, not just as images.
+A formatted one-liner with the compare link baked in is how the tracker spreads.
+
+---
+
 ## July 5, 2026 — "Next to chase" collection guide
 
 - **Added:** a **🎯 Next to chase** sidebar card (`NextToChase.jsx`) that reads your

@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 5, 2026',
+    title: 'One-tap caption for Discord & Reddit',
+    summary:
+      'A “Copy caption” button that hands you a ready-to-paste brag: your count, percentage, and link — no typing.',
+    changes: [
+      { tag: 'Added', text: 'In Share & export: “📋 Copy caption for Discord / Reddit” copies a clean summary — e.g. “🧩 My Fortnite sprite collection: 45/61 (74%) · 12 mastered ⭐ … Track & compare yours → <your link>”. Uses your gamertag and share link, and drops to the main site link if your profile is private.' },
+    ],
+    why:
+      'People share collections as text in Discord and on Reddit, not just images. Handing over a formatted one-liner (with your compare link baked in) is how the tracker spreads by word of mouth.',
+  },
+  {
+    date: 'July 5, 2026',
     title: '“Next to chase” — your collection tells you what to grab next',
     summary:
       'A little guide in the sidebar that turns your progress into a to-do list: the rarest sprite you’re missing, the set you’re closest to finishing, and an easy one to grab.',

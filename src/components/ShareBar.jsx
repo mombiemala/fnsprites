@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
+import { ALL_SPRITES, RELEASED_COUNT } from '../data/sprites'
 
 export default function ShareBar({ onExport, exporting }) {
-  const { user, profile, updateProfile } = useAuth()
+  const { user, profile, updateProfile, tracking } = useAuth()
   const { toast } = useToast()
   const [gamertag, setGamertag] = useState(profile?.gamertag || '')
   const [isPublic, setIsPublic] = useState(profile?.is_public ?? true)
   const [saved, setSaved] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [copiedCap, setCopiedCap] = useState(false)
 
   // Re-seed the form fields when the loaded profile changes (React's
   // recommended "adjust state during render" pattern — avoids an effect).
@@ -42,6 +44,31 @@ export default function ShareBar({ onExport, exporting }) {
       setTimeout(() => setCopied(false), 1500)
     } catch {
       toast('Could not copy link', 'error')
+    }
+  }
+
+  // A ready-to-paste text summary for Discord/Reddit — counts against the
+  // released roster (what you can actually collect right now).
+  const owned = ALL_SPRITES.filter((s) => !s.unreleased && tracking[s.id]?.owned).length
+  const mastered = ALL_SPRITES.filter((s) => !s.unreleased && tracking[s.id]?.mastered).length
+  const pctOwned = RELEASED_COUNT ? Math.round((owned / RELEASED_COUNT) * 100) : 0
+  const missing = RELEASED_COUNT - owned
+  const who = gamertag.trim() ? `${gamertag.trim()}'s` : 'My'
+  const captionUrl = isPublic ? shareUrl : `${window.location.origin}${window.location.pathname}`
+  const caption = [
+    `🧩 ${who} Fortnite sprite collection: ${owned}/${RELEASED_COUNT} (${pctOwned}%)${mastered ? ` · ${mastered} mastered ⭐` : ''}`,
+    missing > 0 ? `Still chasing ${missing} more sprite${missing === 1 ? '' : 's'}.` : `Full set — gotta catch ’em all! 🏆`,
+    `Track & compare yours → ${captionUrl}`,
+  ].join('\n')
+
+  const copyCaption = async () => {
+    try {
+      await navigator.clipboard.writeText(caption)
+      setCopiedCap(true)
+      toast('Caption copied — paste into Discord/Reddit!')
+      setTimeout(() => setCopiedCap(false), 1600)
+    } catch {
+      toast('Could not copy caption', 'error')
     }
   }
 
@@ -86,6 +113,13 @@ export default function ShareBar({ onExport, exporting }) {
           {copied ? 'Copied ✓' : 'Copy link'}
         </button>
       </div>
+      <button
+        onClick={copyCaption}
+        title="Copies a ready-to-paste summary of your collection for Discord or Reddit"
+        className="mt-2 w-full rounded-xl bg-[var(--panel-2)] px-4 py-2 text-sm font-bold text-white hover:bg-[var(--border)]"
+      >
+        {copiedCap ? 'Caption copied ✓' : '📋 Copy caption for Discord / Reddit'}
+      </button>
       {!isPublic && (
         <p className="mt-2 text-[11px] text-[var(--muted)]">
           Your link is currently private — enable “Public link” and save so others can view it.
