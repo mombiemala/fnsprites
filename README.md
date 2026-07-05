@@ -82,9 +82,8 @@ Sprite art is © Epic Games, Inc., used for identification only. With thanks to:
   ([Vice](https://www.vice.com), [Beebom](https://beebom.com),
   [AllThings.How](https://allthings.how)) — each event links to and labels its
   source (official vs unofficial)
-- Sprite-chest map locations seeded from community guides
-  ([gamingpromax](https://gamingpromax.com/fortnite-sprite-chest-locations/),
-  [beebom](https://beebom.com/fortnite-sprite-chest-locations/))
+- Community loot-map spots (sprite chests, fishing, ponds) are submitted &
+  confirmed by players
 
 No game assets beyond the identification sprite images are bundled.
 
