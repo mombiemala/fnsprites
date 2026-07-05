@@ -37,9 +37,11 @@ accurate to the **Jun 25, 2026 update**.
   Sprite-chest locations are **seeded from public guides** (with source
   attribution) and refined by the community. Make **personal or shared maps**,
   reposition markers, and **retire** spots for history. POIs are pulled live.
-- **News & events** — a self-updating feed that auto-detects Fortnite's current
-  live build and pulls official in-game news, plus curated events (Catch-Up Day,
-  Gold & Gummy Hours, and weekly Mastery Mondays / Power Hours). Every item shows
+- **News & events** — a feed that auto-detects Fortnite's current live build,
+  alongside a curated events layer (Catch-Up Day, Gold & Gummy Hours, and weekly
+  Mastery Mondays / Power Hours). (Epic's in-game news is pulled in when they post
+  any, but that panel is mostly retired, so the events are the real content.)
+  Every item shows
   its **source** and whether it's **official** (Epic) or **unofficial** (with a
   **Tentative** badge for unconfirmed dates), and live events pin to the top. A
   dismissible **announcement bar** highlights the current featured event.

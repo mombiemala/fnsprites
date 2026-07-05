@@ -107,7 +107,7 @@ export default function NewsFeed() {
         })}
       </div>
       <p className="mt-3 text-[10px] text-[var(--muted)]">
-        Live build &amp; in-game news auto-pulled from fortnite-api.com; curated “upcoming” items are editorial. Not affiliated with Epic Games.
+        Live build auto-detected from fortnite-api.com; news &amp; events are curated, each with its source shown. Not affiliated with Epic Games.
       </p>
     </div>
   )
