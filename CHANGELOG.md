@@ -11,6 +11,32 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 5, 2026 — Security pass on the community backend
+
+Ran Supabase's security advisors + a manual RLS/RPC review ahead of growth.
+
+- **Security:** `find_trade_matches` trusted a client-supplied `target` uuid while
+  running as `SECURITY DEFINER`, so anyone could pass another player's id (exposed
+  via `?u=` share links) and enumerate that player's two-way trade matches. It now
+  scopes to `auth.uid()` — the app only ever called it with the caller's own id,
+  so behavior is unchanged for legitimate use.
+- **Security:** revoked `EXECUTE` (from `PUBLIC`) on the trigger function
+  `enforce_vouch_rate_limit()`, removing it from the callable REST surface. The
+  `trg_vouch_rate` trigger still fires, so the 30/day vouch cap is unchanged.
+- **Reviewed / accepted:** the `can_read/edit/manage_map` helpers are used inside
+  RLS policies (must stay executable); `map_shares_list` is owner-gated;
+  `find_user_by_gamertag` returns only a uuid and the shared view still enforces
+  `is_public`; `bug_reports`/`trade_posts` have DB-level size caps, so the open
+  bug-report INSERT is bounded.
+- **Recommendation (dashboard):** enable Auth → leaked-password protection
+  (HaveIBeenPwned) — it's currently off and can't be toggled from SQL.
+
+*Why:* as the tracker opens up, the backend rules matter more than the UI. This
+closes a real (if modest) way to peek at another player's trade preferences and
+trims the public API surface, without touching any working feature.
+
+---
+
 ## July 5, 2026 — Mark a whole theme or rarity owned in one tap
 
 - **Added:** a **“✓ Mark all shown owned”** bar above the collection grid. It acts

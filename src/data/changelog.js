@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 5, 2026',
+    title: 'Security pass on the community backend',
+    summary:
+      'A tune-up of the database rules ahead of more players — tightened who can see what, with no change to how the app works for you.',
+    changes: [
+      { tag: 'Security', text: 'Trade-match suggestions are now scoped strictly to your own account on the server — they can no longer be requested for someone else’s profile.' },
+      { tag: 'Security', text: 'Removed an internal rate-limit routine from the public API surface (it only ever ran automatically behind the scenes; the vouch cap is unchanged).' },
+      { tag: 'Security', text: 'Audited row-level security across profiles, progress, trades, vouches and maps — confirmed writes stay owner-scoped and the size/rate caps are enforced in the database, not just the app.' },
+    ],
+    why:
+      'As the tracker opens up to more people, the data rules matter more than the UI. This closes a way someone could have peeked at another player’s trade preferences and trims the public surface — while leaving every legitimate feature untouched.',
+  },
+  {
+    date: 'July 5, 2026',
     title: 'Mark a whole theme or rarity owned in one tap',
     summary:
       'Filter to a variant line or a rarity, then claim the whole set at once — no more tapping every card.',
