@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 6, 2026',
+    title: 'News & banner refreshed — Holofoil is on the schedule',
+    summary:
+      'Caught the events up: the Holofoil drop and Holofoil Hours firmed up from leaks into dated events, and the announcement banner now features the imminent Holofoil release instead of the far-off season end.',
+    changes: [
+      { tag: 'Changed', text: 'Holofoil Sprites (Jul 9) and Holofoil Hours (Jul 11, 2 PM & 9 PM ET) are no longer marked Tentative — both are now widely reported / Epic-announced, so their dates read as scheduled.' },
+      { tag: 'Added', text: 'The dismissible announcement bar now leads with the Holofoil Sprites drop (Jul 6–10) and then Holofoil Hours (Jul 11), so the most timely event is front-and-centre.' },
+      { tag: 'Added', text: 'Added the new Duck Mansion POI to the map’s offline fallback list (the live map layer already refreshes each season automatically).' },
+    ],
+    why:
+      'A tracker people check for “what’s on right now” has to reflect the current week. As leaked events get confirmed we drop the Tentative badge, and the banner should surface what’s happening in days — not an end-of-season note two months out.',
+  },
+  {
+    date: 'July 6, 2026',
     title: 'Sprite tier list — how strong each one actually is',
     summary:
       'Rarity tells you how *hard* a sprite is to find; the new gameplay tier tells you how *good* it is. Every sprite now shows an S/A/B/C tier, and you can group the grid into a full tier list.',

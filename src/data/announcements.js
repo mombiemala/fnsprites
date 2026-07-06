@@ -16,6 +16,30 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'holofoil-sprites-2026-07-09',
+    emoji: '🌈',
+    message: 'Holofoil Sprites arrive Thu, Jul 9 — a shiny Holofoil variant of every Sprite (+5% squad chance to find rare Sprites).',
+    link: 'https://www.vice.com/en/article/fortnite-holofoil-sprite-release-time/',
+    linkLabel: 'Details',
+    start: '2026-07-06',
+    end: '2026-07-10',
+    source: 'Vice',
+    official: false,
+    tone: 'event',
+  },
+  {
+    id: 'holofoil-hours-2026-07-11',
+    emoji: '✨',
+    message: 'Holofoil Hours — Sat, Jul 11 (2 PM & 9 PM ET): boosted Holofoil Sprite spawns.',
+    link: 'https://beebom.com/fortnite-sprite-events-schedule/',
+    linkLabel: 'Schedule',
+    start: '2026-07-11',
+    end: '2026-07-11',
+    source: 'Beebom',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'gold-gummy-hours-2026-07-04',
     emoji: '✨',
     message: 'Gold & Gummy Hours — Sat, Jul 4: boosted Gold & Gummy Sprite spawns + faster Sprite XP (2–4 PM & 9–11 PM ET).',

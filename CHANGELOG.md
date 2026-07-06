@@ -11,6 +11,26 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 6, 2026 — News & banner refresh (Holofoil confirmed)
+
+Keep the events current for the week of Jul 6.
+
+- **Changed:** dropped the `tentative` flag on **Holofoil Sprites** (Jul 9) and
+  **Holofoil Hours** (Jul 11, 2 PM & 9 PM ET) in `news.js` — both are now widely
+  reported / Epic-announced, so they read as scheduled rather than leaked.
+- **Added:** two `announcements.js` banner entries — Holofoil Sprites (Jul 6–10
+  window) and Holofoil Hours (Jul 11) — so the bar leads with the imminent event
+  instead of the Aug 19 season-end note.
+- **Added:** the new **Duck Mansion** POI to `mapMarkers.js` `FALLBACK_POIS`
+  (the live POI layer already self-updates each season; the fallback is the
+  offline safety net).
+
+*Why:* a "what's on now" tracker has to match the current week — confirmed
+events shed the Tentative badge, and the banner should surface what's days away,
+not two months out.
+
+---
+
 ## July 6, 2026 — Gameplay tier list (S/A/B/C)
 
 Rarity = how hard to find; tier = how good. Now both.

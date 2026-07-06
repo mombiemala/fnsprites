@@ -36,6 +36,7 @@ export const FALLBACK_POIS = [
   { label: 'Lifty Lodge', x: 58, y: 22 },
   { label: 'Battlewoods', x: 70, y: 30 },
   { label: 'Sinister Strip', x: 50, y: 44 },
+  { label: 'Duck Mansion', x: 60, y: 40 },
   { label: 'Shaken Sanctuary', x: 34, y: 50 },
   { label: 'Cluster Coast', x: 22, y: 44 },
   { label: 'Frosted Flats', x: 64, y: 50 },
