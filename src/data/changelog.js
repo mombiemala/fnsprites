@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 6, 2026',
+    title: 'What your level actually buys you — per-level ability scaling',
+    summary:
+      'Your Lv 1–5 dots now mean something concrete: each sprite’s detail view shows how its ability grows toward Lv 5, and highlights the level you’re actually at.',
+    changes: [
+      { tag: 'Added', text: 'A “⬆ Scales to Lv 5” line on each sprite that spells out how the ability strengthens — e.g. Demon lifesteal ≈10 → ≈30 HP, Ghost cloak ≈3s → ≈5s, Boss up to +25 HP/Shield at Lv 5, and Fishy’s full swim/move-speed curve (25%/10% → 200%/50%). If you own the sprite, it notes “you’re at Lv N/5”.' },
+      { tag: 'Added', text: 'A short honesty note that these are community-reported values (Epic doesn’t publish exact per-level numbers).' },
+    ],
+    why:
+      'Competitors list per-level ability values but in a static table; we already track your level 1–5, so tying the two together is the natural win — the tracker can tell you what mastering a sprite actually gets you and how far along you are, in one place. Where exact numbers aren’t public we describe the trend rather than invent figures, keeping with how we treat drop rates.',
+  },
+  {
     date: 'July 5, 2026',
     title: 'Rumored, not promised — leaked sprites now labelled, with fresh news',
     summary:

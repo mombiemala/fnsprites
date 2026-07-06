@@ -11,6 +11,27 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 6, 2026 — Per-level ability scaling in the detail view
+
+Make the Lv 1–5 tracker mean something concrete.
+
+- **Added:** a **"⬆ Scales to Lv 5"** row in `SpriteDetailModal`, backed by a
+  `SPRITE_SCALING` map + `spriteScaling()` in `sprites.js`. Describes how each
+  ability grows — e.g. Demon lifesteal ≈10→≈30 HP, Ghost cloak ≈3→≈5s, Boss up
+  to +25 HP/Shield at Lv 5, Fishy's full swim/move curve (25%/10% → 200%/50%).
+  When you own the sprite it appends **"you're at Lv N/5"** (max level across the
+  owned variants).
+- **Added:** a caveat that values are community-reported (Epic doesn't publish
+  exact per-level numbers), consistent with how drop rates are framed.
+
+*Why:* rival trackers show per-level values in a static table; we already track
+your level 1–5, so tying the two together is the differentiated win — the app
+tells you what mastering a sprite actually gets you and how far along you are, in
+one place. Where exact figures aren't public we describe the trend rather than
+fabricate numbers.
+
+---
+
 ## July 5, 2026 — "Rumored" labels for leaks + fresh news
 
 Made leaked content look different from confirmed content, and caught the feed up.

@@ -152,3 +152,29 @@ const SPRITE_SOURCE = {
 export function spriteSource(typeId) {
   return SPRITE_SOURCE[typeId] || 'Sprite Chests around the island (plus occasional mid-match spawns).'
 }
+
+// How a sprite's ability grows as you level it 1 → 5 (Lv 5 = Mastered).
+// Epic doesn't publish exact numbers, so these are community-reported values
+// (cross-referenced from fortnite.gg, the Fortnite Wiki, Beebom & AccountShark);
+// treat the numbers as estimates. Kept as short strings so the detail view can
+// show what you're actually leveling toward. `null`/absent = no reliable data.
+const SPRITE_SCALING = {
+  water: 'Bigger shield regen in/near water, and it extends further to nearby squadmates at higher levels.',
+  earth: 'Stronger boost to Epic/Legendary chest loot odds as you level.',
+  fire: 'The fiery burst on hit hits harder and wider at higher levels.',
+  duck: 'Replenishes more shield while emoting/jamming the higher the level.',
+  ghost: 'Reload cloak lasts ≈3s at Lv 1, up to ≈5s at Lv 5.',
+  dream: 'Shield regen kicks in faster and lasts longer as you level.',
+  demon: 'Lifesteal heals ≈10 effective HP per elim at Lv 1, up to ≈30 at Lv 5.',
+  punk: 'Bigger movement & reboot-speed boost the higher the level.',
+  king: 'Pickaxe deals progressively more damage to enemies as you level.',
+  zeropoint: 'Shield Bubble Jr. lasts longer each level — up to ≈10s at Lv 5.',
+  striker: 'Overdrive damage buff on every mantle/hurdle/wall-scramble; the buff grows with level.',
+  fishy: 'Swim / move speed: 25% / 10% (Lv 1) → 50 / 20 → 100 / 30 → 150 / 40 → 200% / 50% (Lv 5).',
+  aura: 'Earns Shock Rock charges faster (more damage-per-charge) at higher levels.',
+  boss: 'Tougher AI henchmen, plus up to +25 HP & Shield over your base stats at Lv 5.',
+  grim: 'Harvests progressively more bonus souls / XP as you level.',
+}
+export function spriteScaling(typeId) {
+  return SPRITE_SCALING[typeId] || null
+}

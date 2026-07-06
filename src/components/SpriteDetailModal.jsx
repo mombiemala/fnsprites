@@ -1,4 +1,4 @@
-import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS, dustCost, spriteSource } from '../data/sprites'
+import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS, dustCost, spriteSource, spriteScaling } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
 import { useEscClose } from '../lib/useEscClose'
@@ -9,6 +9,10 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
   if (!type) return null
   const variants = ALL_SPRITES.filter((s) => s.typeId === typeId)
   const ownedCount = variants.filter((v) => tracking[v.id]?.owned).length
+  const scaling = spriteScaling(type.id)
+  // Highest level among the variants you actually own — so we can show progress
+  // against the ability's Lv-5 scaling.
+  const bestLevel = variants.reduce((m, v) => (tracking[v.id]?.owned ? Math.max(m, tracking[v.id]?.level || 0) : m), 0)
 
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4 backdrop-blur-sm" onClick={onClose}>
@@ -57,6 +61,22 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
           <p className="mt-3 rounded-xl bg-[var(--bg-2)] px-3 py-2 text-sm text-[var(--text)]/90">
             <span className="font-bold text-[var(--brand)]">Ability{type.rumored ? ' (rumored)' : ''}:</span> {type.ability}
           </p>
+        )}
+
+        {scaling && (
+          <div className="mt-2 rounded-xl bg-[var(--bg-2)] px-3 py-2 text-xs text-[var(--muted)]">
+            <p>
+              <span className="font-bold text-[var(--brand)]">⬆ Scales to Lv 5:</span> {scaling}
+              {bestLevel > 0 && (
+                <span className="font-semibold text-white/85">
+                  {' '}· you’re at Lv {bestLevel}/5{bestLevel >= 5 ? ' — maxed ⭐' : ''}
+                </span>
+              )}
+            </p>
+            <p className="mt-0.5 text-[10px] opacity-70">
+              Community-reported — Epic doesn’t publish exact per-level numbers.
+            </p>
+          </div>
         )}
 
         {/* Where to find — ties into the community loot map */}

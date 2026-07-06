@@ -37,8 +37,9 @@ upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased*
   your **rarest missing** sprite, the set you're **closest to finishing**, and an
   **easy one to grab** — each a tap away.
 - **Drop rates** per sprite (community-datamined estimates; Epic publishes none).
-- **Sprite detail view** — rarity, drop rate, ability, and every variant with its
-  in-game **bonus** (e.g. Gummy = +10% Sprite Dust).
+- **Sprite detail view** — rarity, drop rate, ability, **how the ability scales
+  to Lv 5** (e.g. Demon lifesteal ≈10→≈30 HP; it highlights the level you own),
+  and every variant with its in-game **bonus** (e.g. Gummy = +10% Sprite Dust).
 - **Leaderboard & Flex Score** — a rarity-weighted ranking of public
   collections, plus a **compare** view (what you both have / each are missing).
 - **Trading hub** — mark sprites for-trade / wanted, find matches with other
