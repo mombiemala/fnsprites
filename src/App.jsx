@@ -181,12 +181,16 @@ export default function App() {
     if (filters.groupBy === 'none') return [{ key: 'all', label: null, items: visible }]
     const buckets = {}
     for (const s of visible) {
-      const k = filters.groupBy === 'theme' ? s.themeId : filters.groupBy === 'rarity' ? s.rarity : s.typeId
+      const k = filters.groupBy === 'theme' ? s.themeId
+        : filters.groupBy === 'rarity' ? s.rarity
+        : filters.groupBy === 'tier' ? (s.tier || 'Unranked')
+        : s.typeId
       ;(buckets[k] ||= []).push(s)
     }
     let order
     if (filters.groupBy === 'theme') order = set.variants.map((t) => [t.id, t.name])
     else if (filters.groupBy === 'rarity') order = set.rarityOrder.map((r) => [r, r])
+    else if (filters.groupBy === 'tier') order = [...(set.tierOrder || []), ['Unranked', 'Unranked']]
     else order = set.types.map((t) => [t.id, t.name])
     return order.filter(([k]) => buckets[k]?.length).map(([k, label]) => ({ key: k, label, items: buckets[k] }))
   }, [visible, filters.groupBy, set])

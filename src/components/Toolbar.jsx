@@ -91,6 +91,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           <option value="none">No grouping</option>
           <option value="theme">Group by theme</option>
           <option value="rarity">Group by rarity</option>
+          <option value="tier">Group by tier</option>
           <option value="sprite">Group by sprite</option>
         </select>
         <select

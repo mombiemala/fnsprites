@@ -11,6 +11,28 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 6, 2026 — Gameplay tier list (S/A/B/C)
+
+Rarity = how hard to find; tier = how good. Now both.
+
+- **Added:** a `TIER_META` / `TIER_ORDER` / `SPRITE_TIER` map + `spriteTier()` in
+  `sprites.js`, and a `tier` field on each flattened sprite. S: Striker, Demon,
+  Ghost, Zero Point · A: Earth, Fishy · B: Boss, Duck, Dream, King, Aura, Grim ·
+  C: Water, Fire, Punk. Unreleased/leaked sprites + Peanut stay unranked.
+- **Added:** a tier badge in `SpriteDetailModal` (next to rarity, with a
+  meta-ranking tooltip), and a **"Group by tier"** option (`Toolbar` +
+  `App.jsx` grouping + `collections.tierOrder`) that renders the grid as a tier
+  list (S-Tier · N, …).
+- **Changed:** tiers are a community/meta snapshot (GAMES.GG, Beebom,
+  PlayerAuctions, Destructoid), deliberately separate from rarity.
+
+*Why:* rival tier lists live on a separate static page; we already know your
+collection + levels, so folding tier into the tracker lets it prioritise what to
+chase and master first. Keeping tier apart from rarity avoids implying Mythic =
+best (Grim Reaper is Mythic but mid-tier).
+
+---
+
 ## July 6, 2026 — Per-level ability scaling in the detail view
 
 Make the Lv 1–5 tracker mean something concrete.

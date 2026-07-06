@@ -1,4 +1,4 @@
-import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS, dustCost, spriteSource, spriteScaling } from '../data/sprites'
+import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS, dustCost, spriteSource, spriteScaling, spriteTier, TIER_META } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
 import { useEscClose } from '../lib/useEscClose'
@@ -10,6 +10,8 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
   const variants = ALL_SPRITES.filter((s) => s.typeId === typeId)
   const ownedCount = variants.filter((v) => tracking[v.id]?.owned).length
   const scaling = spriteScaling(type.id)
+  const tier = spriteTier(type.id)
+  const tierMeta = tier ? TIER_META[tier] : null
   // Highest level among the variants you actually own — so we can show progress
   // against the ability's Lv-5 scaling.
   const bestLevel = variants.reduce((m, v) => (tracking[v.id]?.owned ? Math.max(m, tracking[v.id]?.level || 0) : m), 0)
@@ -37,6 +39,15 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                 >
                   {type.rarity}
                 </span>
+                {tierMeta && (
+                  <span
+                    title={`Gameplay tier: ${tierMeta.blurb} (community/meta ranking)`}
+                    className="rounded px-1.5 py-0.5 text-[10px] font-extrabold uppercase"
+                    style={{ color: tierMeta.color, background: `${tierMeta.color}22` }}
+                  >
+                    {tierMeta.label}
+                  </span>
+                )}
                 {type.dropRate && <span className="text-xs text-[var(--muted)]">Drop rate {type.dropRate}</span>}
                 {!type.released && (
                   <span className="rounded bg-black/50 px-1.5 py-0.5 text-[10px] font-bold uppercase text-white/70">

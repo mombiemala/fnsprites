@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 6, 2026',
+    title: 'Sprite tier list — how strong each one actually is',
+    summary:
+      'Rarity tells you how *hard* a sprite is to find; the new gameplay tier tells you how *good* it is. Every sprite now shows an S/A/B/C tier, and you can group the grid into a full tier list.',
+    changes: [
+      { tag: 'Added', text: 'A gameplay tier badge (S / A / B / C) on each sprite in the detail view — e.g. Striker, Demon, Ghost & Zero Point are S-Tier; Water/Fire/Punk are C-Tier.' },
+      { tag: 'Added', text: 'A “Group by tier” option that turns the collection grid into a tier list (S-Tier, A-Tier, …), so you can see the meta at a glance and prioritise what to level.' },
+      { tag: 'Changed', text: 'Tiers are a community/meta snapshot (cross-referenced from GAMES.GG, Beebom, PlayerAuctions & Destructoid), kept separate from rarity; unreleased/leaked sprites stay Unranked until they settle.' },
+    ],
+    why:
+      'Competitors publish static tier lists as a separate page; because we already know your collection and levels, folding a tier into the tracker is more useful — the app can tell you not just what you’re missing but what’s worth chasing and mastering first. Keeping tier distinct from rarity avoids implying a Mythic is automatically “better,” which often isn’t true (Grim Reaper is Mythic but mid-tier).',
+  },
+  {
+    date: 'July 6, 2026',
     title: 'What your level actually buys you — per-level ability scaling',
     summary:
       'Your Lv 1–5 dots now mean something concrete: each sprite’s detail view shows how its ability grows toward Lv 5, and highlights the level you’re actually at.',

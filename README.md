@@ -37,7 +37,8 @@ upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased*
   your **rarest missing** sprite, the set you're **closest to finishing**, and an
   **easy one to grab** — each a tap away.
 - **Drop rates** per sprite (community-datamined estimates; Epic publishes none).
-- **Sprite detail view** — rarity, drop rate, ability, **how the ability scales
+- **Sprite detail view** — rarity, drop rate, ability, a **gameplay tier**
+  (S/A/B/C — how strong it is, not just how rare), **how the ability scales
   to Lv 5** (e.g. Demon lifesteal ≈10→≈30 HP; it highlights the level you own),
   and every variant with its in-game **bonus** (e.g. Gummy = +10% Sprite Dust).
 - **Leaderboard & Flex Score** — a rarity-weighted ranking of public
@@ -64,7 +65,8 @@ upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased*
   progress; or export a **Sprite Locker–style poster** of your collection (or just
   the sprites you still need).
 - **Filter, search & group** — by theme, rarity, ownership; hide mastered, show
-  unreleased; group by theme / rarity / sprite. Filters collapse on mobile.
+  unreleased; group by theme / rarity / **tier** (a built-in tier list) / sprite.
+  Filters collapse on mobile.
 - **Progress & breakdown** — overall Collection % and Mastery %, per-rarity and
   per-theme breakdown, and completion badges.
 - **Fast & installable** — a **PWA** (works offline), with heavy views

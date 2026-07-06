@@ -101,6 +101,28 @@ export const RARITY_COLORS = {
   Mythic: '#ef4444',
 }
 
+// Community gameplay tier — how strong a sprite's ability is in the current meta
+// (distinct from rarity, which is how hard it is to find). A snapshot
+// cross-referenced from the GAMES.GG, Beebom, PlayerAuctions & Destructoid
+// Chapter 7 Season 3 tier lists. Opinion-based and meta-dependent; unreleased /
+// leaked sprites and one-off snacks (Peanut) stay unranked until they settle.
+export const TIER_META = {
+  S: { label: 'S-Tier', blurb: 'Meta-defining — take it almost any match.', color: '#f6c945' },
+  A: { label: 'A-Tier', blurb: 'Strong and widely useful.', color: '#34d399' },
+  B: { label: 'B-Tier', blurb: 'Situational — good in the right spot.', color: '#3da9fc' },
+  C: { label: 'C-Tier', blurb: 'Niche or hard to get value from.', color: '#8b93a7' },
+}
+export const TIER_ORDER = ['S', 'A', 'B', 'C']
+const SPRITE_TIER = {
+  striker: 'S', demon: 'S', ghost: 'S', zeropoint: 'S',
+  earth: 'A', fishy: 'A',
+  boss: 'B', duck: 'B', dream: 'B', king: 'B', aura: 'B', grim: 'B',
+  water: 'C', fire: 'C', punk: 'C',
+}
+export function spriteTier(typeId) {
+  return SPRITE_TIER[typeId] || null
+}
+
 export function buildSpriteList() {
   const items = []
   for (const type of SPRITE_TYPES) {
@@ -121,6 +143,7 @@ export function buildSpriteList() {
         // Leaked/unconfirmed: either the whole sprite is rumored, or it's a
         // rumored variant form (e.g. Cube/Quack) whose bonus isn't confirmed.
         rumored: !!(type.rumored || THEME_MAP[themeId]?.rumored),
+        tier: SPRITE_TIER[type.id] || null,
         released: type.released && variantReleased,
         unreleased: !(type.released && variantReleased),
       })
