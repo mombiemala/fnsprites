@@ -11,6 +11,26 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 8, 2026 — Rendered art for Air & Seven
+
+Real 3D-style images instead of vector placeholders for the upcoming Sprites.
+
+- **Added:** `public/sprites/air_*.png` and `seven_*.png` for every variant
+  (Normal→Quack). Generated with Gemini (image-to-image reskins from a matched
+  base / the existing `seven_normal`), background-removed to true alpha, and
+  downscaled to the app's 320² format. No code change — `SpriteArt` already
+  prefers a real PNG and only falls back to the SVG when one is missing.
+- **Changed:** Batman stays on the vector cowl (DC character — swap in the
+  official render on release rather than generate one).
+
+*Why:* these Sprites have no official image yet and aren't in the community image
+sets, so they were rendering as obvious vector placeholders. On-style renders make
+the roster look finished; they stay flagged Unreleased/Rumored, and official art
+can drop straight in later. Generation workflow is documented in
+`docs/SPRITE-ART-PROMPTS.md`.
+
+---
+
 ## July 6, 2026 — Sharper art for the upcoming Sprites
 
 Make the leaked Sprites recognisable, not placeholder-y.

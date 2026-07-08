@@ -22,7 +22,9 @@ upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased*
   identification only and sourced from
   [UltronCore/sprite-tracker](https://github.com/UltronCore/sprite-tracker);
   variant forms UltronCore lacks were AI-reskinned (Google Gemini) from those
-  base images. A generated SVG fallback covers any missing image.
+  base images, and upcoming leaked sprites with no official render yet (Air,
+  Seven) use on-style Gemini renders until Epic ships the real art. A generated
+  SVG fallback covers any missing image.
 - **Track ownership, levels & mastery** — mark a variant owned, then set its
   **level 1–5** (level 5 = mastered) right on the grid card or in the detail
   view, with a `Lv 3/5` readout. Works instantly as a guest (saved in your

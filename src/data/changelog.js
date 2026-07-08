@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 8, 2026',
+    title: 'Real renders for the upcoming Air & Seven Sprites',
+    summary:
+      'Air and Seven (and every one of their variants) now use real 3D-rendered images instead of the vector placeholder, so the upcoming Sprites look just like the released ones.',
+    changes: [
+      { tag: 'Added', text: 'Rendered art for Air and Seven across all forms — Normal, Gold, Gummy, Galaxy, Gem, Holofoil, Cube and Quack — generated to match the existing sprite style, cut to a transparent background and sized to the app’s 320px art. They replace the generated vector art automatically.' },
+      { tag: 'Changed', text: 'Batman keeps its vector cowl art for now — it’s a DC character, so we’ll swap in the official render when it releases rather than generate one.' },
+    ],
+    why:
+      'There’s no official image for these Sprites yet (they haven’t launched), and the open community sets don’t have them either — so rather than leave them as obvious vector placeholders, we rendered on-style art so the roster looks finished. They’re still clearly flagged Unreleased/Rumored, and when Epic ships the real renders we can drop those straight in.',
+  },
+  {
     date: 'July 6, 2026',
     title: 'Better art for the upcoming Sprites (Batman, Seven, Air)',
     summary:
