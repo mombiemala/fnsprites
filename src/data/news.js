@@ -38,7 +38,7 @@ export const NEWS = [
     when: 'Jul 9, 2026',
     tag: 'upcoming',
     title: 'Holofoil Sprites — a Holofoil variant for every Sprite',
-    body: 'Holofoil arrives Thursday, July 9 as a shiny new variant of every existing Sprite. Its power: a higher chance to find rare Sprite variants from chests (reported +5% for your squad). Date widely reported across trackers ahead of Epic’s patch notes.',
+    body: 'Holofoil arrives Thursday, July 9 (~9 AM ET / 6 AM PT) as a shiny new variant of every existing Sprite. Its power: a higher chance to find rare Sprite variants from chests (reported +5% for your squad). Date widely reported across trackers ahead of Epic’s patch notes.',
     link: 'https://www.vice.com/en/article/fortnite-holofoil-sprite-release-time/',
     source: 'Vice',
     official: false,

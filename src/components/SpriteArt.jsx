@@ -150,11 +150,22 @@ function Features({ id, fc, gid }) {
     case 'ice':
       return <g stroke={fc} strokeWidth="3" strokeLinecap="round"><path d="M42 16 l4-8 M50 14 l0-9 M58 16 l-4-8" /></g>
     case 'seven':
-      return <text x="50" y="64" textAnchor="middle" fontSize="30" fontWeight="900" fill={fc} opacity="0.9" fontFamily="Inter, sans-serif">7</text>
+      // Stylized "7" agent emblem on a subtle chest plate.
+      return <><rect x="37" y="45" width="26" height="26" rx="7" fill="#ffffff" opacity="0.12" /><text x="50" y="67" textAnchor="middle" fontSize="27" fontWeight="900" fill={fc} opacity="0.95" fontFamily="Inter, sans-serif">7</text><path d="M43 58 h11" stroke={fc} strokeWidth="2.6" strokeLinecap="round" opacity="0.95" /></>
     case 'air':
-      return <g fill="none" stroke={fc} strokeWidth="3" strokeLinecap="round" opacity="0.85"><path d="M34 42 h20 a5 5 0 1 0-5-5" /><path d="M32 54 h26 a5 5 0 1 1-5 5" /><path d="M36 66 h14 a4 4 0 1 0-4-4" /></g>
+      return <g fill="none" stroke={fc} strokeWidth="3.2" strokeLinecap="round" opacity="0.92"><path d="M32 43 h19 a5 5 0 1 0-5-5" /><path d="M30 55 h25 a5.5 5.5 0 1 1-5.5 5.5" /><path d="M34 67 h13 a4 4 0 1 0-4-4" /></g>
     case 'batman':
-      return <><path d="M33 22 L37 4 L44 20 Z" fill={INK} stroke="rgba(0,0,0,.3)" strokeWidth="1.2" strokeLinejoin="round" /><path d="M67 22 L63 4 L56 20 Z" fill={INK} stroke="rgba(0,0,0,.3)" strokeWidth="1.2" strokeLinejoin="round" /><ellipse cx="50" cy="66" rx="11" ry="6.5" fill={fc} /><path d="M50 63 C48 61 45.5 61.5 44.5 63.5 C43.5 62 41.5 62.5 42 64.5 L45 64.5 L46.5 67 L50 64.5 L53.5 67 L55 64.5 L58 64.5 C58.5 62.5 56.5 62 55.5 63.5 C54.5 61.5 52 61 50 63 Z" fill={INK} /></>
+      // Cowl over the upper face (with pointed ears + white eye-slits) and a
+      // gold bat chest emblem — reads as Batman while keeping the kawaii mouth.
+      return <g>
+        <path d="M34 16 L38 2 L45 18 Z" fill={INK} stroke="rgba(0,0,0,.35)" strokeWidth="1" strokeLinejoin="round" />
+        <path d="M66 16 L62 2 L55 18 Z" fill={INK} stroke="rgba(0,0,0,.35)" strokeWidth="1" strokeLinejoin="round" />
+        <path d="M23 40 C23 20 34 12 50 12 C66 12 77 20 77 40 L77 45 C69 44 62 44 58 47 L53 54 L50 47 L47 54 L42 47 C38 44 31 44 23 45 Z" fill={INK} />
+        <path d="M35 45 L45 43 L44 50 L36 49 Z" fill="#e6ecff" />
+        <path d="M65 45 L55 43 L56 50 L64 49 Z" fill="#e6ecff" />
+        <ellipse cx="50" cy="73" rx="10" ry="5.5" fill={fc} />
+        <path d="M50 70 C48.5 68.5 46 69 45 71 C44 69.5 42 70 42.5 72 L45 72 L46.5 74.5 L50 72 L53.5 74.5 L55 72 L57.5 72 C58 70 56 69.5 55 71 C54 69 51.5 68.5 50 70 Z" fill={INK} />
+      </g>
     case 'dream':
       return <><path d="M58 30 a11 11 0 1 0 0.5 21 9 9 0 1 1-0.5-21 Z" fill="#fff" opacity="0.85" /><path d="M40 28 l1.5 4 4 1.5 -4 1.5 L40 41 l-1.5-4 -4-1.5 4-1.5 Z" fill="#fff" opacity="0.8" /></>
     default:
@@ -180,6 +191,7 @@ export default function SpriteArt({ sprite, className = '' }) {
   const gid = `g-${uid}`, cid = `c-${uid}`, hgid = `h-${uid}`
   const tr = treatment(sprite.themeId, type, gid, hgid)
   const isBoss = sprite.typeId === 'boss'
+  const isBatman = sprite.typeId === 'batman'
   const glow = sprite.typeId === 'grim' ? type.feat : sprite.themeId === 'galaxy' ? '#bdbcff' : null
 
   return (
@@ -212,10 +224,11 @@ export default function SpriteArt({ sprite, className = '' }) {
 
       {sprite.typeId !== 'grim' && <Features id={sprite.typeId} fc={tr.feat} gid={gid} />}
 
-      {/* Boss wears sunglasses (drawn in Features) instead of eyes */}
+      {/* Boss wears sunglasses & Batman wears a cowl (drawn in Features) instead
+          of the default eyes; Batman keeps the kawaii mouth + blush. */}
       {!isBoss && (
         <>
-          <Eyes glow={glow} />
+          {!isBatman && <Eyes glow={glow} />}
           <Blush />
           <Smile />
         </>

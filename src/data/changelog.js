@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 6, 2026',
+    title: 'Better art for the upcoming Sprites (Batman, Seven, Air)',
+    summary:
+      'Sharpened the generated art for the leaked Sprites so they’re instantly recognisable and sit better next to the real ones — Batman now actually looks like Batman.',
+    changes: [
+      { tag: 'Changed', text: 'Batman gets a proper cowl (pointed ears + white eye-slits) and a gold bat chest emblem instead of a plain face; Seven has a bolder agent-style “7” on a chest plate; Air’s wind swirls are crisper. All render consistently across every variant (Gold, Gummy, Galaxy, Holofoil, Cube, Quack…).' },
+      { tag: 'Changed', text: 'Small news precision: Holofoil’s Jul 9 release now notes the reported ~9 AM ET / 6 AM PT time.' },
+    ],
+    why:
+      'These Sprites aren’t out yet, so there’s no official image — they’re drawn on the fly by the built-in generator. Making them more on-model keeps the roster looking intentional (not like placeholders) without any external art. True photo-real art to match the released Sprites would need generated raster images; this is the best no-cost, always-consistent version until then.',
+  },
+  {
+    date: 'July 6, 2026',
     title: 'News & banner refreshed — Holofoil is on the schedule',
     summary:
       'Caught the events up: the Holofoil drop and Holofoil Hours firmed up from leaks into dated events, and the announcement banner now features the imminent Holofoil release instead of the far-off season end.',

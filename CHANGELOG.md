@@ -11,6 +11,26 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 6, 2026 — Sharper art for the upcoming Sprites
+
+Make the leaked Sprites recognisable, not placeholder-y.
+
+- **Changed:** in `SpriteArt.jsx`, **Batman** now wears a cowl (pointed ears +
+  white eye-slits, default kawaii eyes suppressed like Boss) with a gold bat
+  chest emblem; **Seven** has a bolder agent "7" on a subtle chest plate;
+  **Air**'s wind swirls are crisper. All still render across every variant
+  treatment (Gold/Gummy/Galaxy/Holofoil/Cube/Quack).
+- **Changed:** `news.js` — Holofoil's Jul 9 release notes the reported
+  ~9 AM ET / 6 AM PT time.
+
+*Why:* these Sprites have no official image yet (unreleased), so they're drawn by
+the procedural generator. On-model art keeps the roster looking intentional
+without any external assets. Matching the *photo-real* released renders would
+require generated raster images (an image model) — this is the best no-cost,
+always-consistent version until then.
+
+---
+
 ## July 6, 2026 — News & banner refresh (Holofoil confirmed)
 
 Keep the events current for the week of Jul 6.
