@@ -75,6 +75,17 @@ export const NEWS = [
     official: true,
   },
   {
+    ts: '2026-07-30',
+    when: 'Jul 30, 2026 (leaked)',
+    tag: 'upcoming',
+    tentative: true,
+    title: 'Spider-Man Sprite + Power Hour (leaked)',
+    body: 'Datamined gameplay tags point to a Spider-Man Sprite arriving with v41.30 around July 30 (timed with the Spider-Man: Brand New Day film) — granting web-swinging mobility — plus a “Spider-Man Power Hour” to boost its spawn odds. It would be Fortnite’s first Marvel + DC Sprite overlap (alongside the Jul 16 Batman collab). Leaked and unconfirmed — treat as rumor until Epic announces it.',
+    link: 'https://insider-gaming.com/a-new-spider-man-collab-is-coming-to-fortnite-its-claimed/',
+    source: 'Insider Gaming',
+    official: false,
+  },
+  {
     ts: '2026-08-19',
     when: 'Aug 19, 2026',
     tag: 'upcoming',

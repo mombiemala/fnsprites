@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 8, 2026',
+    title: 'News: Spider-Man Sprite leak added',
+    summary:
+      'Added the datamined Spider-Man Sprite to the news feed — a web-swinging Sprite reportedly landing ~July 30, flagged Tentative.',
+    changes: [
+      { tag: 'Added', text: 'News entry for the leaked Spider-Man Sprite + “Spider-Man Power Hour” (~Jul 30 / v41.30, timed with the Spider-Man: Brand New Day film). Marked Tentative/unofficial — it would be Fortnite’s first Marvel + DC Sprite overlap (with the Jul 16 Batman collab).' },
+    ],
+    why:
+      'The feed should reflect what collectors are hearing about, but leaks must look like leaks — so it carries the same Tentative badge and source link as the other unconfirmed items rather than being presented as fact.',
+  },
+  {
+    date: 'July 8, 2026',
     title: 'Real renders for the upcoming Air & Seven Sprites',
     summary:
       'Air and Seven (and every one of their variants) now use real 3D-rendered images instead of the vector placeholder, so the upcoming Sprites look just like the released ones.',

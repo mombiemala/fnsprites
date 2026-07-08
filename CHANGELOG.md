@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 8, 2026 — News: Spider-Man Sprite leak
+
+- **Added:** a Tentative `news.js` entry for the datamined **Spider-Man Sprite**
+  (web-swinging) + **Spider-Man Power Hour**, reportedly landing ~Jul 30 with
+  v41.30 (timed with *Spider-Man: Brand New Day*). Source: Insider Gaming;
+  flagged unofficial. Would be Fortnite's first Marvel + DC Sprite overlap.
+
+*Why:* keep the feed current with what collectors are hearing, but leaks wear the
+Tentative badge + source link so they never read as confirmed.
+
+---
+
 ## July 8, 2026 — Rendered art for Air & Seven
 
 Real 3D-style images instead of vector placeholders for the upcoming Sprites.
