@@ -188,6 +188,49 @@ export function AuthProvider({ children }) {
     [tracking, user]
   )
 
+  // Restore from a backup code (guest device transfer). Non-destructive merge:
+  // takes the higher level per sprite and OR-s the flags, so importing never
+  // wipes existing progress. Persists locally and, if signed in, to the cloud.
+  const importTracking = useCallback(
+    (incoming) => {
+      const merged = { ...tracking }
+      let changed = 0
+      const rows = []
+      for (const [id, e] of Object.entries(incoming || {})) {
+        if (!e || typeof e !== 'object') continue
+        const inLevel = clamp(e.level ?? (e.mastered ? 5 : e.owned ? 1 : 0), 0, 5)
+        const cur = merged[id] || EMPTY
+        const level = Math.max(cur.level || 0, inLevel)
+        if (level < 1 && !e.wanted && !cur.wanted) continue
+        const entry = {
+          level,
+          owned: level >= 1,
+          mastered: level >= 5,
+          forTrade: (cur.forTrade || !!e.forTrade) && level >= 1,
+          wanted: cur.wanted || !!e.wanted,
+        }
+        merged[id] = entry
+        changed++
+        rows.push({
+          user_id: user?.id,
+          sprite_id: id,
+          collection: ACTIVE_COLLECTION_ID,
+          owned: entry.owned, mastered: entry.mastered, level: entry.level,
+          for_trade: entry.forTrade, wanted: entry.wanted,
+          updated_at: new Date().toISOString(),
+        })
+      }
+      setTracking(merged)
+      saveLocal(merged)
+      if (user && rows.length) {
+        setCloudStatus('saving')
+        supabase.from('sprite_progress').upsert(rows).then(({ error }) => setCloudStatus(error ? 'error' : 'synced'))
+      }
+      return changed
+    },
+    [tracking, user]
+  )
+
   const setOwned = useCallback((id, owned) => update(id, { owned }), [update])
   const setMastered = useCallback((id, mastered) => update(id, { mastered }), [update])
   const setLevel = useCallback((id, level) => update(id, { level }), [update])
@@ -266,6 +309,7 @@ export function AuthProvider({ children }) {
     setForTrade,
     setWanted,
     bulkOwn,
+    importTracking,
     findTradeMatches,
     fetchLeaderboard,
     signUp,

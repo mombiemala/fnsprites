@@ -74,11 +74,16 @@ upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased*
   Filters collapse on mobile.
 - **Progress & breakdown** — overall Collection % and Mastery %, per-rarity and
   per-theme breakdown, and completion badges.
+- **How Sprites work** — an in-app guide to the parts players get caught out by:
+  extraction (extract or lose it), leveling & Mastery Mondays, mastery, variants,
+  and safe trading. Trade-safety steps also live on the Trade Board.
+- **Backup & restore** — guests can copy a backup code to move progress between
+  devices; restoring **merges** (never wipes). Logged-in progress auto-syncs.
 - **Fast & installable** — a **PWA** (works offline), with heavy views
   code-split for a quick first load and privacy-friendly, cookieless analytics.
   **Google sign-in** + email auth.
-- **Report a bug**, **About**, **Changelog**, and **Buy Me a Coffee** in the
-  footer.
+- **How Sprites work**, **Backup**, **About**, **Changelog**, **Report a bug**,
+  and **Buy Me a Coffee** in the footer.
 
 ## Changelog
 

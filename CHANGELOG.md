@@ -11,6 +11,29 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 8, 2026 — Guidance layer: guide, trade safety, first-run, backup
+
+Research-driven UX: the app tracked everything but taught none of the confusing
+mechanics. Fix that.
+
+- **Added:** `HowItWorksModal.jsx` (footer → **How Sprites work**) — extract-or-
+  lose-it, leveling points (+ Mastery Mondays), Mastery = extract at Lv 5,
+  variants, and trading. Plain language, community-sourced caveats.
+- **Added:** Trade Board explainer now includes the in-game trade steps
+  (drop → co-extract) and **grab-and-run** scam avoidance (`TradeBoard.jsx`).
+- **Added:** a dismissible **first-run hint** on the collection grid for guests
+  with nothing owned (tap to mark / import screenshot / how it works).
+- **Added:** **Backup & restore codes** — `BackupModal.jsx` (footer → **Backup**)
+  encodes local progress to a copyable `FNS1:` code; `importTracking()` in
+  `AuthContext` restores via a non-destructive **merge** (higher level per
+  sprite, OR-ed flags) and upserts to the cloud when signed in.
+
+*Why:* what Sprite players search for most is *how the systems work* (extraction
+& mastery confusion) and *how to trade safely* — so a guidance layer is the
+highest-value UX add and differentiates us from bare-checklist competitors.
+
+---
+
 ## July 8, 2026 — "Upcoming & leaked" sprites section
 
 Turn the leak-tracking into a feature.

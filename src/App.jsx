@@ -29,6 +29,8 @@ const SpriteDetailModal = lazy(() => import('./components/SpriteDetailModal'))
 const BugReportModal = lazy(() => import('./components/BugReportModal'))
 const AboutModal = lazy(() => import('./components/AboutModal'))
 const ChangelogModal = lazy(() => import('./components/ChangelogModal'))
+const HowItWorksModal = lazy(() => import('./components/HowItWorksModal'))
+const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
 import { LINKS } from './lib/supabase'
@@ -95,6 +97,15 @@ export default function App() {
   const [showBug, setShowBug] = useState(false)
   const [showAbout, setShowAbout] = useState(false)
   const [showChangelog, setShowChangelog] = useState(false)
+  const [showHelp, setShowHelp] = useState(false)
+  const [showBackup, setShowBackup] = useState(false)
+  const [hintDismissed, setHintDismissed] = useState(() => {
+    try { return localStorage.getItem('fnsprites.hint') === '1' } catch { return false }
+  })
+  const dismissHint = () => {
+    try { localStorage.setItem('fnsprites.hint', '1') } catch { /* ignore */ }
+    setHintDismissed(true)
+  }
   const [showProfile, setShowProfile] = useState(false)
   const [showImport, setShowImport] = useState(false)
   const [newTradeCount, setNewTradeCount] = useState(0)
@@ -361,6 +372,18 @@ export default function App() {
       <div className="lg:flex lg:items-start lg:gap-6">
         {/* Main column: grid */}
         <div className="min-w-0 lg:flex-1">
+          {!isShareView && !readOnly && !hintDismissed && !Object.values(activeTracking).some((v) => v?.owned) && (
+            <div className="mb-4 flex items-start gap-3 rounded-xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 px-3 py-2.5">
+              <span className="text-lg leading-none">👋</span>
+              <div className="min-w-0 flex-1 text-sm text-[var(--text)]/90">
+                <b className="text-white">New here?</b> Tap any sprite to mark it <b>Have</b>, or{' '}
+                <button onClick={() => setShowImport(true)} className="font-bold text-[var(--brand)] underline">import your locker screenshot</button>{' '}
+                to fill it in fast. Progress saves in this browser — new to Sprites?{' '}
+                <button onClick={() => setShowHelp(true)} className="font-bold text-[var(--brand)] underline">how they work</button>.
+              </div>
+              <button onClick={dismissHint} aria-label="Dismiss" className="shrink-0 text-[var(--muted)] hover:text-white">✕</button>
+            </div>
+          )}
           {!readOnly && bulkTargets.length > 0 && (
             <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2">
               <span className="text-xs text-[var(--muted)]">
@@ -470,9 +493,13 @@ export default function App() {
 
       <footer className="mt-12 border-t border-[var(--border)] pt-6 text-center text-xs text-[var(--muted)]">
         <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-semibold">
+          <button onClick={() => setShowHelp(true)} className="hover:text-white">How Sprites work</button>
+          <span className="opacity-30">·</span>
           <button onClick={() => setShowAbout(true)} className="hover:text-white">About</button>
           <span className="opacity-30">·</span>
           <button onClick={() => setShowChangelog(true)} className="hover:text-white">Changelog</button>
+          <span className="opacity-30">·</span>
+          <button onClick={() => setShowBackup(true)} className="hover:text-white">Backup</button>
           <span className="opacity-30">·</span>
           <button onClick={() => setShowBug(true)} className="hover:text-white">Report a bug</button>
           <span className="opacity-30">·</span>
@@ -506,6 +533,8 @@ export default function App() {
         {showBug && <BugReportModal onClose={() => setShowBug(false)} />}
         {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
         {showChangelog && <ChangelogModal onClose={() => setShowChangelog(false)} />}
+        {showHelp && <HowItWorksModal onClose={() => setShowHelp(false)} />}
+        {showBackup && <BackupModal onClose={() => setShowBackup(false)} />}
         {showProfile && <ProfileModal onClose={() => setShowProfile(false)} />}
         {showImport && <ScreenshotImportModal onClose={() => setShowImport(false)} />}
         {detailType && (

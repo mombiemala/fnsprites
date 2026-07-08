@@ -250,6 +250,14 @@ export default function TradeBoard() {
             <p><b className="text-white">👍 Vouches:</b> after a trade goes well, tap <b>Vouch</b> on that collector’s post to build their reputation. The count is community trust, not a guarantee — still trade carefully.</p>
           </div>
         </details>
+        <details className="mt-2 rounded-xl bg-[var(--bg-2)] p-3 text-sm">
+          <summary className="cursor-pointer font-bold text-white">How a trade works in-game &amp; staying safe</summary>
+          <div className="mt-2 space-y-2 text-[var(--text)]/85">
+            <p>There’s no official trade menu — you trade by <b className="text-white">dropping</b> a Sprite for the other player to <b className="text-white">pick up and extract</b>:</p>
+            <p>1. Both land together in a quiet spot (a <b>bot lobby</b> is safest).<br />2. Equip the Sprite, drop it, they pick it up.<br />3. They <b className="text-white">extract while carrying it</b> to lock it in — then repeat for your side.</p>
+            <p className="text-amber-200/90">⚠️ <b>Watch for the “grab-and-run”</b> — someone grabs your dropped Sprite and extracts without giving anything back. <b className="text-white">Don’t drop first</b>, go one item at a time, and stick to <b>vouched</b> partners.</p>
+          </div>
+        </details>
         <p className="mt-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-3 py-2 text-[11px] text-amber-200/90">
           ⚠️ <b>Trade at your own risk.</b> This tracker doesn’t facilitate, verify, or guarantee any trade and isn’t responsible for trades, scams, or lost items. Never share your account login or pay real money — use bot lobbies and trusted partners.
         </p>

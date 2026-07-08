@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'July 8, 2026',
+    title: 'Beginner-friendly: a Sprite guide, trade-safety steps & backup codes',
+    summary:
+      'Four UX upgrades based on what players actually search for — an in-app guide to the confusing bits, clearer trade-safety, a friendlier first-run, and progress backup codes for guests.',
+    changes: [
+      { tag: 'Added', text: 'A “How Sprites work” guide (footer) covering the things people get caught out by: extract-or-lose-it, how leveling points work (+ Mastery Mondays), that Mastery needs an extract at Lv 5, variants, and how trading works.' },
+      { tag: 'Added', text: 'Trade Board now spells out the in-game trade steps (drop → co-extract) and how to dodge the “grab-and-run” scam — don’t drop first, go one at a time, trade vouched partners.' },
+      { tag: 'Added', text: 'A friendly first-run hint for new visitors (tap to mark, import a screenshot, or read how Sprites work) — dismissible.' },
+      { tag: 'Added', text: 'Backup & restore codes (footer → Backup): copy a code to move your guest progress to another device; restoring merges (it never wipes what you have). Logged-in collections still auto-sync to the cloud.' },
+    ],
+    why:
+      'Research into what Sprite players want kept pointing at the same thing: the systems confuse people (extraction and mastery most of all) and trading is scam-prone — but the app tracked everything without teaching any of it. Adding a guidance layer meets the top real need, helps beginners, and sets the tracker apart from bare checklists.',
+  },
+  {
+    date: 'July 8, 2026',
     title: '“Upcoming & leaked” section — see what’s coming, with countdowns',
     summary:
       'A new sidebar card that turns all the leak-tracking into a feature: every unreleased sprite, sorted by its leaked release date, with a live countdown. Spider-Man is now in the roster too.',
