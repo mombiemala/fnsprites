@@ -3,8 +3,9 @@ import { THEME_MAP } from './themes'
 // Fortnite sprite roster. Variant sets, themes (incl. the Rift line) and
 // released/unreleased flags are aligned with the community tracker
 // UltronCore/sprite-tracker; the Striker/Fishy/Aura/Boss/Grim Reaper sprites
-// went live in the Jun 25, 2026 update. Wick/Drifter/Ice/Seven/Air/Batman are
-// datamined and not yet released (flagged `rumored` — leaked, unconfirmed).
+// went live in the Jun 25, 2026 update. Wick/Drifter/Ice/Seven/Air/Batman/
+// Spider-Man are datamined and not yet released (flagged `rumored` — leaked,
+// unconfirmed; several carry a leaked `releaseDate`).
 // Holofoil rolls out to every sprite (~Jul 9); Seven, Air & Batman are part of
 // the ~Jul 16 DC Summer update; the new Cube & Quack forms are on the whole
 // roster. All new variants are flagged unreleased until they go live, and their
@@ -81,15 +82,18 @@ export const SPRITE_TYPES = [
   { id: 'ice', name: 'Ice', icon: '❄️', rarity: 'Rare', dropRate: null, released: false, rumored: true,
     ability: 'Datamined sprite — not yet released.',
     variants: { normal: U } },
-  { id: 'seven', name: 'Seven', icon: '7️⃣', rarity: 'Epic', dropRate: null, released: false, rumored: true,
+  { id: 'seven', name: 'Seven', icon: '7️⃣', rarity: 'Epic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
     ability: 'Tracks nearby players — lets you follow their footstep trails. Leaked for the Jul 16 DC Summer update; power not yet confirmed by Epic.',
     variants: { normal: U, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U, quack: U } },
-  { id: 'air', name: 'Air', icon: '🌬️', rarity: 'Epic', dropRate: null, released: false, rumored: true,
+  { id: 'air', name: 'Air', icon: '🌬️', rarity: 'Epic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
     ability: 'A movement Sprite — increases sprint speed & jump height and removes fall damage. Leaked for the Jul 16 DC Summer update; power not yet confirmed by Epic.',
     variants: { normal: U, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U, quack: U } },
-  { id: 'batman', name: 'Batman', icon: '🦇', rarity: 'Legendary', dropRate: null, released: false, rumored: true,
+  { id: 'batman', name: 'Batman', icon: '🦇', rarity: 'Legendary', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
     ability: 'DC Summer collab Sprite, leaked for Jul 16 (Holofoil variant teased for Jul 9). Its power hasn’t been revealed yet.',
     variants: { normal: U, gummy: U, galaxy: U, holofoil: U } },
+  { id: 'spiderman', name: 'Spider-Man', icon: '🕷️', rarity: 'Legendary', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-30',
+    ability: 'Datamined Marvel collab Sprite — reportedly grants web-swinging mobility. Leaked for ~Jul 30 (v41.30); not yet confirmed by Epic.',
+    variants: { normal: U } },
 ]
 
 export const RARITY_ORDER = ['Rare', 'Epic', 'Legendary', 'Mythic']

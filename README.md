@@ -15,8 +15,11 @@ upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased*
 - **Accurate roster** — every released sprite & variant as of Jun 25, 2026
   (incl. Striker, Fishy, Aura, Boss, Grim Reaper); upcoming sprites & forms are
   clearly flagged **unreleased**, and anything Epic hasn't confirmed (leaked
-  sprites like Air/Seven/Batman, and the Cube/Quack bonuses) wears a **Rumored**
-  label so leaks never read as fact.
+  sprites like Air/Seven/Batman/Spider-Man, and the Cube/Quack bonuses) wears a
+  **Rumored** label so leaks never read as fact.
+- **Upcoming & leaked** — a card that lists every unreleased/datamined sprite
+  sorted by its leaked release date, with a live **countdown** (“in 8 days”),
+  tap-to-open. All clearly badged **Rumored**.
 - **Real sprite art** — each variant uses the real in-game image
   (`public/sprites/<id>.png`). **Sprite images are © Epic Games, Inc.**, used for
   identification only and sourced from

@@ -13,6 +13,7 @@ import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
 import StatsBreakdown from './components/StatsBreakdown'
 import NextToChase from './components/NextToChase'
+import UpcomingSprites from './components/UpcomingSprites'
 import WelcomeModal from './components/WelcomeModal'
 import AnnouncementBar from './components/AnnouncementBar'
 import SaveStatusPill from './components/SaveStatusPill'
@@ -435,6 +436,8 @@ export default function App() {
           )}
 
           {!isShareView && <NextToChase tracking={activeTracking} onOpen={setDetailType} />}
+
+          {!isShareView && <UpcomingSprites onOpen={setDetailType} />}
 
           <StatsBreakdown tracking={activeTracking} />
 

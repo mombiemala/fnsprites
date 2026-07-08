@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 8, 2026',
+    title: '“Upcoming & leaked” section — see what’s coming, with countdowns',
+    summary:
+      'A new sidebar card that turns all the leak-tracking into a feature: every unreleased sprite, sorted by its leaked release date, with a live countdown. Spider-Man is now in the roster too.',
+    changes: [
+      { tag: 'Added', text: 'A “🔮 Upcoming & leaked” card listing every unreleased sprite — Seven, Air, Batman (Jul 16), Spider-Man (~Jul 30), and the datamined Wick / Drifter / Ice (TBA) — soonest first, each with a countdown (“in 8 days”) and tap-to-open. Clearly badged Rumored.' },
+      { tag: 'Added', text: 'Spider-Man added to the roster — a leaked Marvel collab Sprite (web-swinging, ~Jul 30 / v41.30) with generated art; the official render will swap in on release.' },
+      { tag: 'Added', text: 'Leaked release dates on the upcoming sprites (Seven/Air/Batman = Jul 16, Spider-Man = Jul 30) power the countdowns.' },
+    ],
+    why:
+      'We’d been quietly tracking a growing pile of leaked sprites; surfacing them as a dated “what’s next” list is genuinely useful for collectors planning their hunt — and doing it in one place, all flagged Rumored with countdowns, keeps the leaks clearly separate from the confirmed roster.',
+  },
+  {
+    date: 'July 8, 2026',
     title: 'News: Spider-Man Sprite leak added',
     summary:
       'Added the datamined Spider-Man Sprite to the news feed — a web-swinging Sprite reportedly landing ~July 30, flagged Tentative.',

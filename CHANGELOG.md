@@ -11,6 +11,27 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 8, 2026 — "Upcoming & leaked" sprites section
+
+Turn the leak-tracking into a feature.
+
+- **Added:** `UpcomingSprites.jsx` sidebar card — every unreleased sprite sorted
+  by leaked `releaseDate`, with a live countdown ("in 8 days" / "Today" /
+  "Any day now" / "Datamined · TBA") and tap-to-open. Badged Rumored. Wired into
+  the collection sidebar under "Next to chase".
+- **Added:** **Spider-Man** to the roster (`sprites.js`) — leaked Marvel collab
+  Sprite (web-swinging, ~Jul 30 / v41.30), with a palette + mask/web/spider-
+  emblem feature in `SpriteArt.jsx` (default eyes suppressed, like Batman).
+  Vector for now; official render swaps in on release.
+- **Added:** `releaseDate` on the upcoming sprites (Seven/Air/Batman = 2026-07-16,
+  Spider-Man = 2026-07-30) driving the countdowns.
+
+*Why:* a growing set of leaked sprites is more useful shown as a dated "what's
+next" list than scattered across the grid — and consolidating them, all flagged
+Rumored, keeps leaks clearly separate from the confirmed roster.
+
+---
+
 ## July 8, 2026 — News: Spider-Man Sprite leak
 
 - **Added:** a Tentative `news.js` entry for the datamined **Spider-Man Sprite**
