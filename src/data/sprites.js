@@ -137,6 +137,22 @@ export const FORM_RELEASE = { holofoil: '2026-07-09' }
 const _todayStr = (() => { try { return new Date().toISOString().slice(0, 10) } catch { return '9999-12-31' } })()
 const formLive = (themeId) => !!(FORM_RELEASE[themeId] && _todayStr >= FORM_RELEASE[themeId])
 
+// Date-gate the leaked SPRITES too: a not-yet-released type with a `releaseDate`
+// auto-flips to released once its date arrives (Air/Seven/Batman ~Jul 16,
+// Spider-Man ~Jul 30). On release it stops being `rumored`, and its variants
+// become collectible (except any whose form has a still-future release date).
+// These dates are LEAKED — recheck them before each drop; a wrong date releases
+// content early, and it's a one-line fix (edit or remove the `releaseDate`).
+for (const t of SPRITE_TYPES) {
+  if (!t.released && t.releaseDate && _todayStr >= t.releaseDate) {
+    t.released = true
+    t.rumored = false
+    for (const k of Object.keys(t.variants)) {
+      if (!t.variants[k] && !(FORM_RELEASE[k] && _todayStr < FORM_RELEASE[k])) t.variants[k] = true
+    }
+  }
+}
+
 export function buildSpriteList() {
   const items = []
   for (const type of SPRITE_TYPES) {
@@ -183,14 +199,15 @@ export function dustCost(rarity, themeId) {
 }
 
 // Where a sprite is farmed (they come from Sprite Chests; a few have notes).
+// Every Sprite comes from Sprite Chests (RNG weighted by drop rate) — no Sprite
+// is tied to a specific location, so the notes are about rarity/odds, not spots.
 const SPRITE_SOURCE = {
-  grim: 'Sprite Chests — spawns almost exclusively here.',
+  grim: 'Sprite Chests — spawns almost exclusively here (no mid-match spawns).',
   peanut: 'Extremely rare — a lucky Sprite Chest find.',
-  zeropoint: 'Sprite Chests — Mythic, very rare.',
-  fishy: 'Sprite Chests, with better odds near water & fishing spots.',
+  zeropoint: 'Sprite Chests — Mythic, so very rare from any single chest.',
 }
 export function spriteSource(typeId) {
-  return SPRITE_SOURCE[typeId] || 'Sprite Chests around the island (plus occasional mid-match spawns).'
+  return SPRITE_SOURCE[typeId] || 'Sprite Chests around the island — any chest can drop any Sprite (rarer ones less often), plus occasional mid-match spawns.'
 }
 
 // How a sprite's ability grows as you level it 1 → 5 (Lv 5 = Mastered).

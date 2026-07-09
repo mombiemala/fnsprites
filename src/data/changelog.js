@@ -7,12 +7,25 @@
 export const CHANGELOG = [
   {
     date: 'July 9, 2026',
+    title: 'Guide one tap away + accurate Sprite locations',
+    summary:
+      'The “How Sprites work” guide is now a button in the header (not just the footer), and the “where to find” info is corrected — Sprites aren’t location-locked.',
+    changes: [
+      { tag: 'Added', text: 'A ❔ Guide button in the header opens “How Sprites work” from anywhere.' },
+      { tag: 'Fixed', text: 'Corrected the “where to find” notes: every Sprite comes from Sprite Chests island-wide (any chest can drop any Sprite — rarity sets the odds, not location), so the old “Fishy: better near water” hint (which implied location-based drops) is gone.' },
+      { tag: 'Added', text: 'The guide now includes real farming tips — chests glow blue with a pink crystal, turn on Visualized Sounds to spot them, and Sinister Strip (4 chests) is the busiest spot.' },
+    ],
+    why:
+      'The guide answers the questions new players actually have, so it shouldn’t be buried at the bottom of the page. And accuracy is the brand — implying a Sprite drops more in one spot when drops are pure RNG from chests is exactly the kind of thing to get right.',
+  },
+  {
+    date: 'July 9, 2026',
     title: 'Holofoil Sprites are live — auto-released across the roster',
     summary:
       'Holofoil variants unlocked for every Sprite today. They flipped from Unreleased to collectible automatically — the tracker now date-gates known form drops so it’s accurate the moment they land.',
     changes: [
       { tag: 'Added', text: 'Holofoil is now a collectible variant on every released Sprite (+16 to the released count) — mark, level and master them like any other. Holofoil’s bonus: a better squad chance to find rare Sprites.' },
-      { tag: 'Added', text: 'A date-gated release mechanism: firmly-dated variant forms auto-flip from Unreleased to released on their date (evaluated each visit), so the roster stays correct on drop day with no manual edit. Leaked/uncertain content stays manual so nothing releases early by mistake.' },
+      { tag: 'Added', text: 'A date-gated release mechanism: variant forms and upcoming sprites auto-flip from Unreleased to collectible on their expected date (evaluated each visit), so the roster stays correct on drop day with no manual edit. Set up now: Holofoil (today), Air/Seven/Batman (~Jul 16) and Spider-Man (~Jul 30) — the latter dates are leaked, so we’ll recheck them before each drop; a wrong date is a one-line fix.' },
       { tag: 'Changed', text: 'Roster now reads “accurate to the Jul 9, 2026 update (Holofoil).”' },
     ],
     why:

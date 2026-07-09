@@ -261,6 +261,13 @@ export default function App() {
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => setShowHelp(true)}
+            title="How Sprites work — extraction, leveling, mastery & trading"
+            className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]"
+          >
+            ❔ <span className="hidden sm:inline">Guide</span>
+          </button>
           {!authLoading &&
             (user ? (
               <div className="flex items-center gap-2">

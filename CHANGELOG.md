@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 9, 2026 — Guide in the header + accurate Sprite locations
+
+- **Added:** a **❔ Guide** button in the header (`App.jsx`) opening "How Sprites
+  work" — no longer footer-only.
+- **Fixed:** `spriteSource()` (`sprites.js`) — every Sprite is RNG from Sprite
+  Chests island-wide (any chest, any Sprite; rarity = odds, not location). Removed
+  the misleading "Fishy: better near water" note and clarified the default.
+- **Added:** guide "Getting Sprites" now has real farming tips (Visualized Sounds,
+  chests glow blue w/ pink crystal, Sinister Strip = 4 chests).
+
+*Why:* the guide answers new-player questions, so it shouldn't be buried; and
+"where to find" implying location-based drops was inaccurate (drops are pure RNG).
+
+---
+
 ## July 9, 2026 — Holofoil live (date-gated auto-release)
 
 - **Added:** Holofoil is now collectible on every released Sprite (+16 to
@@ -21,6 +36,12 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   (browser-local, evaluated per load), but only while the sprite type is
   released. Only firmly-dated forms are listed (`holofoil: 2026-07-09`); leaked
   forms stay out so nothing releases early.
+- **Added:** the same date-gate applied to upcoming **sprites** via their
+  `releaseDate` — a leaked type auto-flips to released (and un-`rumored`, variants
+  collectible) on its date and drops off the "Upcoming & leaked" card. Wired up:
+  Air/Seven/Batman `2026-07-16`, Spider-Man `2026-07-30`. Verified by clock mock:
+  Jul 9 = 77 released, Jul 16 = 97, Jul 30 = 98. Dates are leaked — recheck before
+  each drop.
 - **Changed:** roster subtitle + README → "accurate to the Jul 9, 2026 update
   (Holofoil)."
 
