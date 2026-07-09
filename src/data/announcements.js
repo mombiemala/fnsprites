@@ -16,15 +16,15 @@
 
 export const ANNOUNCEMENTS = [
   {
-    id: 'holofoil-sprites-2026-07-09',
+    id: 'holofoil-sprites-live-2026-07-09',
     emoji: '🌈',
-    message: 'Holofoil Sprites arrive Thu, Jul 9 — a shiny Holofoil variant of every Sprite (+5% squad chance to find rare Sprites).',
-    link: 'https://www.vice.com/en/article/fortnite-holofoil-sprite-release-time/',
+    message: 'Holofoil Sprites are live! A shiny Holofoil for 15 Sprites — +5% squad chance to find rare Gold/Gummy/Galaxy. Holofoil Hours: Sat, Jul 11.',
+    link: 'https://communities.epicgames.com/thread/new-holofoil-sprite-variant-arrives-thursday-july-9/kqQk',
     linkLabel: 'Details',
-    start: '2026-07-06',
-    end: '2026-07-10',
-    source: 'Vice',
-    official: false,
+    start: '2026-07-09',
+    end: '2026-07-11',
+    source: 'Epic Games',
+    official: true,
     tone: 'event',
   },
   {

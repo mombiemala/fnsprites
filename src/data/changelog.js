@@ -25,7 +25,8 @@ export const CHANGELOG = [
     summary:
       'Holofoil variants unlocked for every Sprite today. They flipped from Unreleased to collectible automatically — the tracker now date-gates known form drops so it’s accurate the moment they land.',
     changes: [
-      { tag: 'Added', text: 'Holofoil is now a collectible variant on every released Sprite (+16 to the released count) — mark, level and master them like any other. Holofoil’s bonus: a better squad chance to find rare Sprites.' },
+      { tag: 'Added', text: 'Holofoil is now a collectible variant on 15 Sprites — every released Sprite except the Normal-only Burnt Peanut — mark, level and master them like any other. Bonus: +5% squad chance to find rare Gold/Gummy/Galaxy Sprites from chests, and they’re easier to spot on the map.' },
+      { tag: 'Changed', text: 'Confirmed live: Epic announced Holofoil on the community site, so the news item and announcement bar now read “live” and official (not a leak). Reverted Burnt Peanut to Normal-only to match Epic’s 15-variant rollout.' },
       { tag: 'Added', text: 'A date-gated release mechanism: variant forms and upcoming sprites auto-flip from Unreleased to collectible on their expected date (evaluated each visit), so the roster stays correct on drop day with no manual edit. Set up now: Holofoil (today), Air/Seven/Batman (~Jul 16) and Spider-Man (~Jul 30) — the latter dates are leaked, so we’ll recheck them before each drop; a wrong date is a one-line fix.' },
       { tag: 'Changed', text: 'Roster now reads “accurate to the Jul 9, 2026 update (Holofoil).”' },
     ],

@@ -31,9 +31,10 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ## July 9, 2026 — Holofoil live (date-gated auto-release)
 
-- **Added:** Holofoil is now collectible on every released Sprite (+16 to
-  `RELEASED_COUNT`, 61 → 77). Verified via clock mock: Jul 8 = 61 released, Jul 9
-  = 77.
+- **Added:** Holofoil is now collectible on 15 Sprites (every released Sprite
+  except the Normal-only Burnt Peanut; +15 to `RELEASED_COUNT`, 61 → 76). Confirmed
+  live/official via Epic Communities; news item + announcement bar updated to
+  "live", and Peanut reverted to Normal-only to match Epic's 15-variant rollout.
 - **Added:** `FORM_RELEASE` + a date-gate in `buildSpriteList` (`sprites.js`) —
   an unreleased variant form auto-flips to released once its date arrives
   (browser-local, evaluated per load), but only while the sprite type is
@@ -43,7 +44,7 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   `releaseDate` — a leaked type auto-flips to released (and un-`rumored`, variants
   collectible) on its date and drops off the "Upcoming & leaked" card. Wired up:
   Air/Seven/Batman `2026-07-16`, Spider-Man `2026-07-30`. Verified by clock mock:
-  Jul 9 = 77 released, Jul 16 = 97, Jul 30 = 98. Dates are leaked — recheck before
+  Jul 9 = 76 released, Jul 16 = 96, Jul 30 = 97. Dates are leaked — recheck before
   each drop.
 - **Changed:** roster subtitle + README → "accurate to the Jul 9, 2026 update
   (Holofoil)."

@@ -52,7 +52,9 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
   { id: 'peanut', name: 'Burnt Peanut', icon: '🥜', rarity: 'Mythic', dropRate: '1.01%', released: true,
     ability: 'A rare snack that grants a powerful random buff.',
-    variants: { normal: R, holofoil: U, cube: U, quack: U } },
+    // Normal-only special — no variant line (Holofoil ships for the other 15
+    // Sprites, not Peanut), so it stays out of the Cube/Quack rollout too.
+    variants: { normal: R } },
 
   // ---- Added in the Jun 25, 2026 update ----
   { id: 'striker', name: 'Striker', icon: '⚡', rarity: 'Rare', dropRate: null, released: true,
