@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 9, 2026',
+    title: 'Real Holofoil artwork across the whole roster',
+    summary:
+      'Every live Holofoil Sprite now shows a real rendered image with the iridescent Holofoil sheen — the last 10 that were still falling back to the placeholder art are done, so the shelf looks consistent.',
+    changes: [
+      { tag: 'Added', text: 'Rendered Holofoil artwork for the remaining 10 Sprites (Earth, Duck, Dream, Demon, Punk, Striker, Fishy, Aura, Boss, Grim), matching the look of the first five so all 15 live Holofoils are consistent.' },
+      { tag: 'Fixed', text: 'Cleaned up the render backgrounds so they’re fully transparent — no stray checkerboard patches behind any Sprite.' },
+    ],
+    why:
+      'A collection tracker lives or dies on its shelf looking right. Half the Holofoils showing real art and half showing the generated placeholder read as unfinished, so bringing every live Holofoil up to the same rendered quality was worth doing before moving on.',
+  },
+  {
+    date: 'July 9, 2026',
     title: 'Guide one tap away + accurate Sprite locations',
     summary:
       'The “How Sprites work” guide is now a button in the header (not just the footer), and the “where to find” info is corrected — Sprites aren’t location-locked.',

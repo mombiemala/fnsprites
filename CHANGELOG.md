@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 9, 2026 — Real Holofoil artwork across the whole roster
+
+- **Added:** rendered Holofoil artwork for the remaining 10 Sprites (Earth, Duck,
+  Dream, Demon, Punk, Striker, Fishy, Aura, Boss, Grim) in `public/sprites/` —
+  `SpriteArt` already prefers the PNG over the generated fallback, so all 15 live
+  Holofoils now show consistent real art with the iridescent sheen.
+- **Fixed:** transparent-background cleanup on the renders (neutral-light mask +
+  interior hole-fill) so no checkerboard patches remain behind any Sprite.
+
+*Why:* a collection tracker's shelf has to look right — half real art, half
+placeholder read as unfinished, so every live Holofoil was brought up to the same
+rendered quality.
+
+---
+
 ## July 9, 2026 — Guide in the header + accurate Sprite locations
 
 - **Added:** a **❔ Guide** button in the header (`App.jsx`) opening "How Sprites
