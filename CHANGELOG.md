@@ -20,6 +20,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   the misleading "Fishy: better near water" note and clarified the default.
 - **Added:** guide "Getting Sprites" now has real farming tips (Visualized Sounds,
   chests glow blue w/ pink crystal, Sinister Strip = 4 chests).
+- **Changed:** footer credits + README updated — Air/Seven Gemini renders,
+  tier-list sources (GAMES.GG, PlayerAuctions, Destructoid) and Hotspawn /
+  Insider Gaming news sources now attributed.
 
 *Why:* the guide answers new-player questions, so it shouldn't be buried; and
 "where to find" implying location-based drops was inaccurate (drops are pure RNG).

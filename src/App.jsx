@@ -518,16 +518,16 @@ export default function App() {
         <p className="mt-2 opacity-80">
           Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from{' '}
           <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>;
-          some variant art is AI-generated (Google Gemini) from those base images.
+          some variant art — and the upcoming Air &amp; Seven sprites — is AI-generated (Google Gemini), with a built-in generator covering anything still missing an image.
         </p>
         <p className="mt-1 opacity-80">
           Roster, themes &amp; drop rates cross-referenced from{' '}
           <a className="underline" href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>,{' '}
           <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a>{' '}
           &amp; the <a className="underline" href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>.
-          Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms.
+          Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a className="underline" href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a className="underline" href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a className="underline" href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>).
           News &amp; events from official Fortnite patch notes, <a className="underline" href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>,
-          with some event details cross-referenced from community trackers (<a className="underline" href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a className="underline" href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a className="underline" href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>) — each event shows its source and whether it&apos;s official.
+          with some event details cross-referenced from community trackers (<a className="underline" href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a className="underline" href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a className="underline" href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a className="underline" href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a className="underline" href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it&apos;s official.
           Map image &amp; live POIs via <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>;
           community loot-map spots (sprite chests, fishing, ponds) are submitted &amp; confirmed by players. Drop rates are community estimates. Built with React, Vite &amp; Supabase.
         </p>

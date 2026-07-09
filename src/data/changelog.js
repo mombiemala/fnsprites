@@ -14,6 +14,7 @@ export const CHANGELOG = [
       { tag: 'Added', text: 'A ❔ Guide button in the header opens “How Sprites work” from anywhere.' },
       { tag: 'Fixed', text: 'Corrected the “where to find” notes: every Sprite comes from Sprite Chests island-wide (any chest can drop any Sprite — rarity sets the odds, not location), so the old “Fishy: better near water” hint (which implied location-based drops) is gone.' },
       { tag: 'Added', text: 'The guide now includes real farming tips — chests glow blue with a pink crystal, turn on Visualized Sounds to spot them, and Sinister Strip (4 chests) is the busiest spot.' },
+      { tag: 'Changed', text: 'Footer credits caught up: the Air/Seven Gemini renders, the tier-list sources (GAMES.GG, PlayerAuctions, Destructoid), and the Hotspawn / Insider Gaming news sources are now attributed.' },
     ],
     why:
       'The guide answers the questions new players actually have, so it shouldn’t be buried at the bottom of the page. And accuracy is the brand — implying a Sprite drops more in one spot when drops are pure RNG from chests is exactly the kind of thing to get right.',

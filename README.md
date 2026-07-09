@@ -102,6 +102,11 @@ Sprite art is © Epic Games, Inc., used for identification only. With thanks to:
   cross-reference, and the interactive map
 - [Fortnite Wiki (Fandom)](https://fortnite.fandom.com/wiki/Sprites) — roster &
   upcoming/leaked sprite cross-reference
+- Gameplay **tier list** — a community/meta snapshot from
+  [GAMES.GG](https://games.gg), [PlayerAuctions](https://www.playerauctions.com)
+  & [Destructoid](https://www.destructoid.com)
+- Upcoming leaked sprites **Air & Seven** use AI (Google Gemini) renders until
+  official art ships; other missing images fall back to a built-in SVG generator
 - [staticvacant/fnsprites](https://staticvacant.github.io/fnsprites/) — the
   original tracker that inspired this
 - News & events via official Fortnite patch notes,
@@ -109,8 +114,9 @@ Sprite art is © Epic Games, Inc., used for identification only. With thanks to:
   [fortnite-api.com](https://fortnite-api.com) (also the map image & live POIs);
   some event details cross-referenced from community trackers
   ([Vice](https://www.vice.com), [Beebom](https://beebom.com),
-  [AllThings.How](https://allthings.how)) — each event links to and labels its
-  source (official vs unofficial)
+  [AllThings.How](https://allthings.how), [Hotspawn](https://www.hotspawn.com),
+  [Insider Gaming](https://insider-gaming.com)) — each event links to and labels
+  its source (official vs unofficial)
 - Community loot-map spots (sprite chests, fishing, ponds) are submitted &
   confirmed by players
 
