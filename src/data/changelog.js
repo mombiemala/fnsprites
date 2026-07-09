@@ -6,6 +6,19 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 9, 2026',
+    title: 'Holofoil Sprites are live — auto-released across the roster',
+    summary:
+      'Holofoil variants unlocked for every Sprite today. They flipped from Unreleased to collectible automatically — the tracker now date-gates known form drops so it’s accurate the moment they land.',
+    changes: [
+      { tag: 'Added', text: 'Holofoil is now a collectible variant on every released Sprite (+16 to the released count) — mark, level and master them like any other. Holofoil’s bonus: a better squad chance to find rare Sprites.' },
+      { tag: 'Added', text: 'A date-gated release mechanism: firmly-dated variant forms auto-flip from Unreleased to released on their date (evaluated each visit), so the roster stays correct on drop day with no manual edit. Leaked/uncertain content stays manual so nothing releases early by mistake.' },
+      { tag: 'Changed', text: 'Roster now reads “accurate to the Jul 9, 2026 update (Holofoil).”' },
+    ],
+    why:
+      'Accuracy is the whole point, and a form that rolls out across the entire roster on a known date shouldn’t need someone hand-editing 16 entries on release morning. Auto-gating firmly-dated drops keeps the tracker right the instant they go live, while leaving leaked dates under human control.',
+  },
+  {
     date: 'July 8, 2026',
     title: 'Beginner-friendly: a Sprite guide, trade-safety steps & backup codes',
     summary:

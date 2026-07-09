@@ -127,6 +127,16 @@ export function spriteTier(typeId) {
   return SPRITE_TIER[typeId] || null
 }
 
+// Some variant FORMS roll out on a known date across the whole roster. Rather
+// than hand-flip every sprite on release day, gate those variants on the date:
+// an unreleased form auto-flips to released once its date arrives (evaluated on
+// each app load, browser-local). Only list FIRMLY-dated forms here — leave
+// leaked/uncertain ones out so nothing releases early by mistake. To adjust a
+// slipped date, just edit the string; to release manually, set it to a past date.
+export const FORM_RELEASE = { holofoil: '2026-07-09' }
+const _todayStr = (() => { try { return new Date().toISOString().slice(0, 10) } catch { return '9999-12-31' } })()
+const formLive = (themeId) => !!(FORM_RELEASE[themeId] && _todayStr >= FORM_RELEASE[themeId])
+
 export function buildSpriteList() {
   const items = []
   for (const type of SPRITE_TYPES) {
@@ -148,8 +158,11 @@ export function buildSpriteList() {
         // rumored variant form (e.g. Cube/Quack) whose bonus isn't confirmed.
         rumored: !!(type.rumored || THEME_MAP[themeId]?.rumored),
         tier: SPRITE_TIER[type.id] || null,
-        released: type.released && variantReleased,
-        unreleased: !(type.released && variantReleased),
+        // A variant is live if it's flagged R, or its form's release date has
+        // arrived (e.g. Holofoil auto-releases across the roster on Jul 9) — but
+        // only when the sprite type itself is released.
+        released: type.released && (variantReleased || formLive(themeId)),
+        unreleased: !(type.released && (variantReleased || formLive(themeId))),
       })
     }
   }

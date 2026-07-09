@@ -4,7 +4,7 @@ A fan-made Fortnite **sprite tracker** — track every sprite across all of its
 variants (Normal, Gold, Gummy, Galaxy, Gem, Holofoil, the new **Cube** & **Quack**
 forms, and the special **Rift** line), see your collection and mastery progress,
 save it to the cloud, compare with other players, trade, and explore a
-community-built loot map. Roster is accurate to the **Jun 25, 2026 update**, with
+community-built loot map. Roster is accurate to the **Jul 9, 2026 update** (Holofoil), with
 upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased**.
 
 > Not affiliated with Epic Games. Support the maker with **Creator Code: MOMBIE**
@@ -12,7 +12,7 @@ upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased*
 
 ## Features
 
-- **Accurate roster** — every released sprite & variant as of Jun 25, 2026
+- **Accurate roster** — every released sprite & variant as of Jul 9, 2026 (Holofoil)
   (incl. Striker, Fishy, Aura, Boss, Grim Reaper); upcoming sprites & forms are
   clearly flagged **unreleased**, and anything Epic hasn't confirmed (leaked
   sprites like Air/Seven/Batman/Spider-Man, and the Cube/Quack bonuses) wears a

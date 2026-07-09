@@ -11,6 +11,25 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 9, 2026 — Holofoil live (date-gated auto-release)
+
+- **Added:** Holofoil is now collectible on every released Sprite (+16 to
+  `RELEASED_COUNT`, 61 → 77). Verified via clock mock: Jul 8 = 61 released, Jul 9
+  = 77.
+- **Added:** `FORM_RELEASE` + a date-gate in `buildSpriteList` (`sprites.js`) —
+  an unreleased variant form auto-flips to released once its date arrives
+  (browser-local, evaluated per load), but only while the sprite type is
+  released. Only firmly-dated forms are listed (`holofoil: 2026-07-09`); leaked
+  forms stay out so nothing releases early.
+- **Changed:** roster subtitle + README → "accurate to the Jul 9, 2026 update
+  (Holofoil)."
+
+*Why:* a roster-wide form drop on a known date shouldn't need 16 hand-edits on
+release morning — date-gating keeps the "accurate" promise automatically, while
+leaked/uncertain content stays manual.
+
+---
+
 ## July 8, 2026 — Guidance layer: guide, trade safety, first-run, backup
 
 Research-driven UX: the app tracked everything but taught none of the confusing
