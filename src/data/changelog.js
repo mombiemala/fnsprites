@@ -6,6 +6,17 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 10, 2026',
+    title: 'Holofoil Hours details filled in',
+    summary:
+      'Ahead of Saturday’s Holofoil Hours, the news item and announcement now spell out the full event details, not just “boosted spawns.”',
+    changes: [
+      { tag: 'Changed', text: 'Holofoil Hours (Sat, Jul 11) now notes the two extended 2-hour sessions (2 PM & 9 PM ET) and that every player starts the match with a Self-Revive Device and Shock Rocks, on top of the boosted Holofoil spawns.' },
+    ],
+    why:
+      'The extra loadout and the longer sessions change how you’d plan the grind, so it’s worth stating plainly rather than making players cross-reference an outside schedule.',
+  },
+  {
     date: 'July 9, 2026',
     title: 'Real Holofoil artwork across the whole roster',
     summary:

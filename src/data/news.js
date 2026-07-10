@@ -50,7 +50,7 @@ export const NEWS = [
     when: 'Jul 11, 2026',
     tag: 'upcoming',
     title: 'Holofoil Hours — boosted Holofoil spawns',
-    body: 'Epic has announced Holofoil Hours for Saturday, July 11 (2 PM & 9 PM ET), boosting Holofoil Sprite spawn rates the weekend of the Holofoil release — a prime window to grab the new foil variants.',
+    body: 'Epic has announced Holofoil Hours for Saturday, July 11 — two extended 2-hour sessions (2 PM & 9 PM ET) that boost Holofoil Sprite spawn rates the weekend of the release. During the windows every player also starts with a Self-Revive Device and Shock Rocks, so it’s a prime window to grab the new foil variants.',
     link: 'https://beebom.com/fortnite-sprite-events-schedule/',
     source: 'Beebom',
     official: false,

@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 10, 2026 — Holofoil Hours details filled in
+
+- **Changed:** the Holofoil Hours entry (news + announcement bar) for Sat, Jul 11
+  now spells out the two extended 2-hour sessions (2 PM & 9 PM ET) and that every
+  player starts with a Self-Revive Device and Shock Rocks, not just "boosted
+  spawns."
+
+*Why:* the loadout and longer sessions change how you'd plan the grind, so it's
+worth stating plainly instead of making players cross-reference an outside schedule.
+
+---
+
 ## July 9, 2026 — Real Holofoil artwork across the whole roster
 
 - **Added:** rendered Holofoil artwork for the remaining 10 Sprites (Earth, Duck,

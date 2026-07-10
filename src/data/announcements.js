@@ -30,7 +30,7 @@ export const ANNOUNCEMENTS = [
   {
     id: 'holofoil-hours-2026-07-11',
     emoji: '✨',
-    message: 'Holofoil Hours — Sat, Jul 11 (2 PM & 9 PM ET): boosted Holofoil Sprite spawns.',
+    message: 'Holofoil Hours — Sat, Jul 11 (2 PM & 9 PM ET, 2 hrs each): boosted Holofoil Sprite spawns + everyone starts with a Self-Revive Device & Shock Rocks.',
     link: 'https://beebom.com/fortnite-sprite-events-schedule/',
     linkLabel: 'Schedule',
     start: '2026-07-11',
