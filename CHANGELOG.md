@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 10, 2026 — Consistent navigation (header ⇄ footer parity)
+
+- **Added:** a footer **Sections** row mirroring the top tabs (Collection,
+  Leaderboard, Trade, News, Farming) — every section is reachable from the footer.
+- **Added:** a header **⋯ More** menu (About, Changelog, Backup, Report a bug,
+  Buy me a coffee) — the footer's utility links, now surfaced up top next to ❔ Guide.
+- **Changed:** header + footer links are driven by one shared `utilityLinks` list
+  (and `TABS`) so they can't drift out of sync; renamed the "Map" tab to "Farming".
+
+*Why:* links that lived in only one place read as inconsistent. One source of truth
+guarantees the same set appears in both spots — add a link once, it shows everywhere.
+
+---
+
 ## July 10, 2026 — Map → a focused "Where to farm Sprites" guide
 
 - **Changed:** the Map tab is now **Farming** (`SpriteFarming.jsx` + `data/farming.js`):

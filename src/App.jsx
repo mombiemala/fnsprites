@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, lazy, Suspense } from 'react'
+import { useState, useMemo, useEffect, lazy, Suspense, Fragment } from 'react'
 import { useAuth } from './context/authStore'
 import { useToast } from './context/toastStore'
 import { fetchSharedCollection } from './lib/sharedCollection'
@@ -99,6 +99,26 @@ export default function App() {
   const [showChangelog, setShowChangelog] = useState(false)
   const [showHelp, setShowHelp] = useState(false)
   const [showBackup, setShowBackup] = useState(false)
+  const [showMore, setShowMore] = useState(false)
+
+  // Single source of truth for the utility/support links, so the header "More"
+  // menu and the footer show the exact same set. "How Sprites work" also has the
+  // standalone ❔ Guide button up top, so it's filtered out of the header menu to
+  // avoid a duplicate — but it stays in this list for the footer.
+  const utilityLinks = [
+    { id: 'help', label: 'How Sprites work', onClick: () => setShowHelp(true) },
+    { id: 'about', label: 'About', onClick: () => setShowAbout(true) },
+    { id: 'changelog', label: 'Changelog', onClick: () => setShowChangelog(true) },
+    { id: 'backup', label: 'Backup', onClick: () => setShowBackup(true) },
+    { id: 'bug', label: 'Report a bug', onClick: () => setShowBug(true) },
+    { id: 'coffee', label: '☕ Buy me a coffee', href: LINKS.buyMeACoffee },
+  ]
+
+  // Jump to a primary section from the footer, mirroring the top nav.
+  const goToSection = (id) => {
+    setView(id)
+    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
   const [hintDismissed, setHintDismissed] = useState(() => {
     try { return localStorage.getItem('fnsprites.hint') === '1' } catch { return false }
   })
@@ -268,6 +288,37 @@ export default function App() {
           >
             ❔ <span className="hidden sm:inline">Guide</span>
           </button>
+          <div className="relative">
+            <button
+              onClick={() => setShowMore((v) => !v)}
+              aria-haspopup="menu"
+              aria-expanded={showMore}
+              title="More — About, Changelog, Backup, Report a bug, Support"
+              className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]"
+            >
+              ⋯ <span className="hidden sm:inline">More</span>
+            </button>
+            {showMore && (
+              <>
+                <button aria-hidden="true" tabIndex={-1} onClick={() => setShowMore(false)} className="fixed inset-0 z-30 cursor-default" />
+                <div role="menu" className="absolute right-0 z-40 mt-1 min-w-[11rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--panel)] py-1 text-left shadow-xl">
+                  {utilityLinks
+                    .filter((l) => l.id !== 'help')
+                    .map((l) =>
+                      l.href ? (
+                        <a key={l.id} href={l.href} target="_blank" rel="noreferrer" role="menuitem" onClick={() => setShowMore(false)} className="block px-3 py-2 text-xs font-bold text-[var(--muted)] hover:bg-[var(--panel-2)] hover:text-white">
+                          {l.label}
+                        </a>
+                      ) : (
+                        <button key={l.id} role="menuitem" onClick={() => { l.onClick(); setShowMore(false) }} className="block w-full px-3 py-2 text-left text-xs font-bold text-[var(--muted)] hover:bg-[var(--panel-2)] hover:text-white">
+                          {l.label}
+                        </button>
+                      ),
+                    )}
+                </div>
+              </>
+            )}
+          </div>
           {!authLoading &&
             (user ? (
               <div className="flex items-center gap-2">
@@ -499,18 +550,32 @@ export default function App() {
       )}
 
       <footer className="mt-12 border-t border-[var(--border)] pt-6 text-center text-xs text-[var(--muted)]">
+        {/* Sections — mirrors the primary top nav so every section is reachable
+            from the footer too. */}
+        <nav className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-semibold" aria-label="Sections">
+          {TABS.map((t, i) => (
+            <Fragment key={t.id}>
+              {i > 0 && <span className="opacity-30">·</span>}
+              {isShareView ? (
+                <a href={t.id === 'collection' ? window.location.pathname : `${window.location.pathname}?view=${t.id}`} className="hover:text-white">{t.label}</a>
+              ) : (
+                <button onClick={() => goToSection(t.id)} className={`hover:text-white ${view === t.id ? 'text-white' : ''}`}>{t.label}</button>
+              )}
+            </Fragment>
+          ))}
+        </nav>
+        {/* Utility & support — same set as the header ❔ Guide + ⋯ More menu. */}
         <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-semibold">
-          <button onClick={() => setShowHelp(true)} className="hover:text-white">How Sprites work</button>
-          <span className="opacity-30">·</span>
-          <button onClick={() => setShowAbout(true)} className="hover:text-white">About</button>
-          <span className="opacity-30">·</span>
-          <button onClick={() => setShowChangelog(true)} className="hover:text-white">Changelog</button>
-          <span className="opacity-30">·</span>
-          <button onClick={() => setShowBackup(true)} className="hover:text-white">Backup</button>
-          <span className="opacity-30">·</span>
-          <button onClick={() => setShowBug(true)} className="hover:text-white">Report a bug</button>
-          <span className="opacity-30">·</span>
-          <a href={LINKS.buyMeACoffee} target="_blank" rel="noreferrer" className="hover:text-white">☕ Buy me a coffee</a>
+          {utilityLinks.map((l, i) => (
+            <Fragment key={l.id}>
+              {i > 0 && <span className="opacity-30">·</span>}
+              {l.href ? (
+                <a href={l.href} target="_blank" rel="noreferrer" className="hover:text-white">{l.label}</a>
+              ) : (
+                <button onClick={l.onClick} className="hover:text-white">{l.label}</button>
+              )}
+            </Fragment>
+          ))}
           <span className="opacity-30">·</span>
           <span>Creator Code <span className="font-bold text-[var(--brand)]">MOMBIE</span></span>
         </div>

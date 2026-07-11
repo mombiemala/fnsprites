@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 10, 2026',
+    title: 'Consistent navigation — everything reachable top and bottom',
+    summary:
+      'The header and footer now expose the same links, so you never have to hunt for a section or page depending on where you are on the screen.',
+    changes: [
+      { tag: 'Added', text: 'A footer “Sections” row that mirrors the top tabs (Collection, Leaderboard, Trade, News, Farming) — every section is now reachable from the bottom of the page too.' },
+      { tag: 'Added', text: 'A “⋯ More” menu in the header with About, Changelog, Backup, Report a bug and Buy me a coffee — the same utility links that live in the footer, now available up top alongside the ❔ Guide button.' },
+      { tag: 'Changed', text: 'The links are driven by a single shared list, so the header and footer stay in sync automatically. Also renamed the old “Map” tab to “Farming” to match its new content.' },
+    ],
+    why:
+      'Links that appeared in only one place made the app feel inconsistent — a section on the top bar but nowhere in the footer, or a page in the footer but not up top. Sharing one source of truth guarantees parity and means adding a link once shows it everywhere.',
+  },
+  {
+    date: 'July 10, 2026',
     title: 'Map → a focused “Where to farm Sprites” guide',
     summary:
       'Replaced the crowd-sourced community map with a lightweight, curated farming guide — the chest hotspots that actually matter, plus links to the best interactive maps. No login, no clutter.',
