@@ -1,0 +1,72 @@
+name: Known issues draft
+
+# Weekly (and on-demand) research aid: pulls Epic's official Live Issues page,
+# fortnite.com/news and fortnite-api.com, distills anything that looks like a
+# current bug / sprite issue, and opens a PR with docs/known-issues-draft.md.
+# It NEVER edits the live site — a human reviews the draft and folds real,
+# still-open issues into src/data/news.js (tag: 'bug'). See
+# scripts/fetch-known-issues.mjs.
+#
+# NOTE: scheduled workflows only run from a repo's DEFAULT branch, so this is
+# effective in the deploy repo (mombiemala/fnsprites, default `main`). It also
+# rides along on hello-portfolio's sprite-tracker branch harmlessly (it just
+# won't be scheduled there, since that isn't that repo's default branch).
+
+on:
+  schedule:
+    - cron: '0 15 * * 1' # Mondays 15:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: known-issues-draft
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build the draft
+        run: node scripts/fetch-known-issues.mjs
+
+      - name: Open or refresh the draft PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          git add -A docs/known-issues-draft.md
+          if git diff --cached --quiet; then
+            echo "Draft unchanged — no PR needed."
+            exit 0
+          fi
+          BRANCH=bot/known-issues-draft
+          git config user.name "known-issues-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git commit -m "chore(news): refresh known-issues draft"
+          git push -f origin "$BRANCH"
+          open_count="$(gh pr list --head "$BRANCH" --state open --json number --jq 'length')"
+          if [ "$open_count" != "0" ]; then
+            echo "Draft PR already open — force-pushed the refresh onto it."
+            exit 0
+          fi
+          printf '%s\n' \
+            "Automated weekly draft from Epic's Live Issues page, fortnite.com/news and fortnite-api.com. See \`docs/known-issues-draft.md\`." \
+            "" \
+            "**This does not touch the live site.** Review the candidates, then copy any real, still-open issues into \`src/data/news.js\` as \`tag: 'bug'\` entries (official source + link), and delete ones Epic has fixed. Update the changelog to match." \
+            "" \
+            "This branch is reused each week; close the PR to dismiss a batch." \
+            > /tmp/pr-body.md
+          gh pr create --base "$BASE" --head "$BRANCH" \
+            --title "Known issues draft — review & fold into news.js" \
+            --body-file /tmp/pr-body.md

@@ -1,0 +1,154 @@
+// Auto-draft helper for the "Known Issue" news entries.
+//
+// Run in CI (see .github/workflows/known-issues-draft.yml) on a schedule. It
+// pulls a few PUBLIC, reliable sources, distills anything that looks like a
+// current bug / sprite issue / live build, and writes docs/known-issues-draft.md.
+// The workflow then opens (or refreshes) a PR with that file so a human can
+// review and fold real, still-open issues into src/data/news.js as
+// `tag: 'bug'` entries — deleting ones Epic has since fixed.
+//
+// This is deliberately a *research aid*, not a scraper that edits the site:
+// we curate from official sources, we never auto-publish, and the output is
+// deterministic (no wall-clock timestamps) so the PR only changes when the
+// underlying facts do.
+
+import { writeFile, mkdir } from 'node:fs/promises'
+
+const OUT = 'docs/known-issues-draft.md'
+
+// Keywords that make a line worth surfacing to the curator.
+const KEYWORDS = /(known issue|bug|glitch|not working|disabled|broken|unable|fix|hotfix|sprite)/i
+
+const SOURCES = {
+  liveIssues:
+    'https://www.epicgames.com/help/en-US/fortnite-c75/trending-topics-c140/fortnite-live-issues-and-bugs-a3923',
+  patchNotes: 'https://www.fortnite.com/news',
+  apiAes: 'https://fortnite-api.com/v1/aes',
+  apiNews: 'https://fortnite-api.com/v2/news/br?language=en',
+}
+
+async function getJson(url, ms = 15000) {
+  const ctrl = new AbortController()
+  const t = setTimeout(() => ctrl.abort(), ms)
+  try {
+    const res = await fetch(url, { signal: ctrl.signal, headers: { 'user-agent': 'fnsprites-known-issues-bot' } })
+    if (!res.ok) return { error: `HTTP ${res.status}` }
+    return { data: await res.json() }
+  } catch (e) {
+    return { error: String(e?.message || e) }
+  } finally {
+    clearTimeout(t)
+  }
+}
+
+async function getText(url, ms = 15000) {
+  const ctrl = new AbortController()
+  const t = setTimeout(() => ctrl.abort(), ms)
+  try {
+    const res = await fetch(url, { signal: ctrl.signal, headers: { 'user-agent': 'fnsprites-known-issues-bot' } })
+    if (!res.ok) return { error: `HTTP ${res.status}` }
+    return { data: await res.text() }
+  } catch (e) {
+    return { error: String(e?.message || e) }
+  } finally {
+    clearTimeout(t)
+  }
+}
+
+// Crude HTML → text, then keep de-duplicated lines that match KEYWORDS.
+function extractIssueLines(html, cap = 25) {
+  const text = html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, '\n')
+    .replace(/&amp;/g, '&').replace(/&#39;/g, '’').replace(/&quot;/g, '"').replace(/&nbsp;/g, ' ')
+  const seen = new Set()
+  const out = []
+  for (const raw of text.split('\n')) {
+    const line = raw.trim()
+    if (line.length < 12 || line.length > 240) continue
+    if (!KEYWORDS.test(line)) continue
+    const key = line.toLowerCase()
+    if (seen.has(key)) continue
+    seen.add(key)
+    out.push(line)
+    if (out.length >= cap) break
+  }
+  return out
+}
+
+function section(title, body) {
+  return `## ${title}\n\n${body}\n`
+}
+
+async function main() {
+  const parts = []
+
+  // 1) Live build (very reliable JSON).
+  const aes = await getJson(SOURCES.apiAes)
+  const build = aes.data?.build || aes.data?.version
+  parts.push(
+    section(
+      'Live build',
+      build ? `- Fortnite is live on **${build}** _(fortnite-api.com)_` : `- ⚠️ Could not read build (${aes.error || 'no data'}).`,
+    ),
+  )
+
+  // 2) In-game news (MOTD) — sometimes carries "we're aware of…" notes.
+  const news = await getJson(SOURCES.apiNews)
+  const motds = news.data?.data?.motds || news.data?.data?.messages || []
+  const newsHits = motds
+    .map((m) => `${m.title || m.tabTitle || ''} — ${m.body || ''}`.trim())
+    .filter((s) => KEYWORDS.test(s))
+    .slice(0, 10)
+  parts.push(
+    section(
+      'In-game news mentioning issues / sprites',
+      news.error
+        ? `- ⚠️ Could not read in-game news (${news.error}).`
+        : newsHits.length
+          ? newsHits.map((s) => `- ${s}`).join('\n')
+          : '- _(nothing matched right now)_',
+    ),
+  )
+
+  // 3) Epic Live Issues page — best-effort text extraction (it's an SPA, so
+  //    this may come back thin; treat a low hit count as "check manually").
+  const live = await getText(SOURCES.liveIssues)
+  const liveLines = live.data ? extractIssueLines(live.data) : []
+  parts.push(
+    section(
+      'Epic Live Issues page — candidate lines',
+      live.error
+        ? `- ⚠️ Could not fetch the Live Issues page (${live.error}). Check it manually: ${SOURCES.liveIssues}`
+        : liveLines.length
+          ? liveLines.map((s) => `- ${s}`).join('\n') +
+            `\n\n_Extraction is crude — open the page to confirm before trusting any line:_ ${SOURCES.liveIssues}`
+          : `- _(no lines extracted — the page is JS-rendered; check it manually)_ ${SOURCES.liveIssues}`,
+    ),
+  )
+
+  const header =
+    `# Known-issues draft\n\n` +
+    `> Auto-generated by \`.github/workflows/known-issues-draft.yml\` from official\n` +
+    `> sources. **Not a source of truth** — review, then fold real, still-open\n` +
+    `> issues into \`src/data/news.js\` as \`tag: 'bug'\` entries, and delete any\n` +
+    `> Epic has since fixed. (The commit date is when this ran.)\n\n` +
+    `## Curator checklist\n\n` +
+    `- [ ] Cross-check each candidate on Epic's page before adding it\n` +
+    `- [ ] Add new open issues to \`src/data/news.js\` (\`tag: 'bug'\`, official source + link)\n` +
+    `- [ ] Remove entries Epic has fixed (or move the note into that update item)\n` +
+    `- [ ] Update the changelog (both \`src/data/changelog.js\` and \`CHANGELOG.md\`)\n\n` +
+    `## Sources\n\n` +
+    Object.values(SOURCES).map((u) => `- ${u}`).join('\n') +
+    `\n\n---\n\n`
+
+  await mkdir('docs', { recursive: true })
+  await writeFile(OUT, header + parts.join('\n'), 'utf8')
+  console.log(`Wrote ${OUT}`)
+}
+
+main().catch((e) => {
+  console.error(e)
+  process.exit(1)
+})
