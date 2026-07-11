@@ -22,7 +22,7 @@ import SaveStatusPill from './components/SaveStatusPill'
 // (Collection) load stays lean; each is fetched the first time it's opened.
 const Leaderboard = lazy(() => import('./components/Leaderboard'))
 const NewsFeed = lazy(() => import('./components/NewsFeed'))
-const MapView = lazy(() => import('./components/MapView'))
+const SpriteFarming = lazy(() => import('./components/SpriteFarming'))
 const TradeBoard = lazy(() => import('./components/TradeBoard'))
 const AuthModal = lazy(() => import('./components/AuthModal'))
 const SpriteDetailModal = lazy(() => import('./components/SpriteDetailModal'))
@@ -40,7 +40,7 @@ const TABS = [
   { id: 'leaderboard', label: '🏆 Leaderboard' },
   { id: 'trade', label: '🔁 Trade' },
   { id: 'news', label: '📰 News' },
-  { id: 'map', label: '🗺️ Map' },
+  { id: 'map', label: '🗺️ Farming' },
 ]
 
 const DEFAULT_FILTERS = {
@@ -333,7 +333,7 @@ export default function App() {
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
           {effectiveView === 'trade' && <div className="mb-5"><TradeBoard /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
-          {effectiveView === 'map' && <div className="mb-5"><MapView /></div>}
+          {effectiveView === 'map' && <div className="mb-5"><SpriteFarming /></div>}
         </Suspense>
       )}
 
@@ -528,8 +528,7 @@ export default function App() {
           Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a className="underline" href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a className="underline" href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a className="underline" href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>).
           News &amp; events from official Fortnite patch notes, <a className="underline" href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>,
           with some event details cross-referenced from community trackers (<a className="underline" href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a className="underline" href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a className="underline" href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a className="underline" href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a className="underline" href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it&apos;s official.
-          Map image &amp; live POIs via <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>;
-          community loot-map spots (sprite chests, fishing, ponds) are submitted &amp; confirmed by players. Drop rates are community estimates. Built with React, Vite &amp; Supabase.
+          Sprite-farming spots are a curated season snapshot; the interactive maps link out to <a className="underline" href="https://spritesanctuary.gg/sprite-chests.html" target="_blank" rel="noreferrer">Sprite Sanctuary</a> &amp; <a className="underline" href="https://fortnite.gg/map" target="_blank" rel="noreferrer">Fortnite.GG</a>. Drop rates are community estimates. Built with React, Vite &amp; Supabase.
         </p>
       </footer>
 

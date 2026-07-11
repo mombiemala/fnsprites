@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 10, 2026',
+    title: 'Map → a focused “Where to farm Sprites” guide',
+    summary:
+      'Replaced the crowd-sourced community map with a lightweight, curated farming guide — the chest hotspots that actually matter, plus links to the best interactive maps. No login, no clutter.',
+    changes: [
+      { tag: 'Changed', text: 'The Map tab is now “Farming”: what a Sprite Chest looks like (blue glow + pink crystal), the top chest hotspots (Sinister Strip = 4, Wonkeeland / Calamari Canyon / Heatwave Harbor / Shaken Sanctuary = 3 each), farming tips, and links out to the full Sprite Sanctuary and Fortnite.GG interactive maps.' },
+      { tag: 'Removed', text: 'The crowd-sourced loot map (add / move / confirm-vote markers, personal maps, gamertag sharing). It required a login to contribute and had seen zero player-added markers, while dedicated tools already map every Sprite Chest from the game’s fixed spawn data.' },
+    ],
+    why:
+      'Sprite Chests spawn from a known, fixed set of points — so asking players to log in and hand-place approximate markers recreated data that’s already published and mapped better elsewhere, and it never got adoption. A short curated hotspot list that points at the authoritative maps is more useful to a new player and near-zero to maintain, and it lets the app focus on what it does best: tracking your collection.',
+  },
+  {
+    date: 'July 10, 2026',
     title: 'Accuracy pass: corrected Sprite abilities + a Known Issues feed',
     summary:
       'A full re-check of every Sprite’s ability and each variant’s bonus against current sources turned up a lot of drift — many abilities were early guesses, not what actually shipped. Fixed all of them, corrected two variant percentages, and added a Known Issues section to the news feed.',

@@ -11,6 +11,26 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 10, 2026 — Map → a focused "Where to farm Sprites" guide
+
+- **Changed:** the Map tab is now **Farming** (`SpriteFarming.jsx` + `data/farming.js`):
+  what a Sprite Chest looks like, the top chest hotspots (Sinister Strip = 4,
+  Wonkeeland / Calamari Canyon / Heatwave Harbor / Shaken Sanctuary = 3 each),
+  farming tips, and links to the Sprite Sanctuary and Fortnite.GG interactive maps.
+- **Removed:** the crowd-sourced loot map — `MapView.jsx`, `data/mapMarkers.js`,
+  `lib/mapMarkersDb.js`, `lib/maps.js`, `lib/livePois.js` (add/move/vote markers,
+  personal maps, gamertag sharing). It needed a login to contribute and had zero
+  player-added markers; the Supabase `map_markers` / `maps` tables are now unused
+  (left in place, safe to drop later).
+
+*Why:* Sprite Chests spawn from a fixed, published set of points, so crowd-sourcing
+approximate markers duplicated better free tools (fortnite.gg, spritesanctuary.gg)
+and never got adoption. A curated hotspot list + links to the authoritative maps is
+more useful to new players and near-zero maintenance, and keeps the app focused on
+collection tracking.
+
+---
+
 ## July 10, 2026 — Accuracy pass: corrected Sprite abilities + a Known Issues feed
 
 - **Fixed:** re-checked every Sprite ability against current sources (Fandom wiki,

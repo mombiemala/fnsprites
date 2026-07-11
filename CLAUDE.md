@@ -31,7 +31,7 @@ update, that turn isn't done.
 ## Where things live
 
 - Sprites & themes: `src/data/sprites.js`, `src/data/themes.js`, `src/index.css`
-- Map layers / community map config: `src/data/mapMarkers.js`
+- Sprite farming spots (chest hotspots + map links): `src/data/farming.js`
 - Changelog data: `src/data/changelog.js`
 - Supabase client + maker links (Creator Code, Buy Me a Coffee, report email):
   `src/lib/supabase.js`

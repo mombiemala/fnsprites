@@ -97,7 +97,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
           </p>
           {onOpenMap && (
             <button onClick={onOpenMap} className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">
-              See the Map →
+              Where to farm →
             </button>
           )}
         </div>
