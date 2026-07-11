@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 10, 2026',
+    title: 'Accuracy pass: corrected Sprite abilities + a Known Issues feed',
+    summary:
+      'A full re-check of every Sprite’s ability and each variant’s bonus against current sources turned up a lot of drift — many abilities were early guesses, not what actually shipped. Fixed all of them, corrected two variant percentages, and added a Known Issues section to the news feed.',
+    changes: [
+      { tag: 'Fixed', text: 'Rewrote the abilities that were wrong to match the live game: Zero Point (spawns a Shield Bubble Jr. on self-heal, not “teleports”), Boss (max HP/Shield boost, not “hires henchmen”), Ghost (cloak on reload), Dream (random loot, Legendary at max level), Demon (siphon health+shields on elim), Punk (random buff; infinite-ammo chance at max), King (pickaxe damage), Fishy (swim speed), Aura (Shock Rock charge on damage), Grim Reaper (marks whoever damages you), Striker (Overdrive on Mantle/Hurdle), plus small clarifications to Water, Fire and Duck.' },
+      { tag: 'Fixed', text: 'Variant bonuses corrected: Gummy is +20% Sprite Dust (was +10%) and Galaxy is +30% ammo (was +20%). Gem is now flagged datamined/unconfirmed — it was disabled on Jun 25 and isn’t currently obtainable. Gold and Holofoil were already correct.' },
+      { tag: 'Added', text: 'A “Known Issue” tag and section in the news feed, seeded from Epic’s official Live Issues page and patch notes — currently the Aura/Fire shield-damage bug and the Ranked Slap stamina-bar visual bug, plus a note on the Sprite bugs fixed in v41.10. Filter the feed to “Known Issue” to see just these.' },
+    ],
+    why:
+      'A tracker’s whole value is being right — an ability that reads well but describes the wrong power is worse than no text. These are now sourced from the community wiki, Fortnite.GG, GameSpot and Epic’s own notes. For bugs specifically, the durable move is curating from Epic’s official issues list and patch notes rather than scraping Reddit/Twitter: it’s authoritative, safe to show, and low-maintenance (remove an entry when Epic ships the fix).',
+  },
+  {
+    date: 'July 10, 2026',
     title: 'DC Summer (Jul 16) leak firmed up',
     summary:
       'Rechecked the events and rumors against current reporting. Everything still lines up; the July 16 DC Summer leak has strengthened, so its news entry now carries the fuller, better-sourced details.',

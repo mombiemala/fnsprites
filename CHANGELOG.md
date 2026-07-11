@@ -11,6 +11,30 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 10, 2026 — Accuracy pass: corrected Sprite abilities + a Known Issues feed
+
+- **Fixed:** re-checked every Sprite ability against current sources (Fandom wiki,
+  Fortnite.GG, GameSpot, GAMES.GG, Epic notes) and corrected the ones that had
+  drifted from what shipped — Zero Point (Shield Bubble Jr. on self-heal, not
+  "teleports"), Boss (max HP/Shield boost, not "henchmen"), Ghost (cloak on
+  reload), Dream (random loot → Legendary at max), Demon (siphon health+shields on
+  elim), Punk (random buff; infinite-ammo chance at max), King (pickaxe damage),
+  Fishy (swim speed), Aura (Shock Rock charge), Grim Reaper (marks whoever damages
+  you), Striker (Overdrive on Mantle/Hurdle), plus Water/Fire/Duck clarifications.
+- **Fixed:** variant bonuses — Gummy +20% Sprite Dust (was +10%), Galaxy +30% ammo
+  (was +20%). Gem flagged datamined/unconfirmed (disabled Jun 25, not obtainable).
+- **Added:** a `bug` / "Known Issue" news tag + section, curated from Epic's
+  official Live Issues page and patch notes (Aura/Fire shield-damage bug, Ranked
+  Slap stamina visual bug, and the v41.10 Sprite fixes). Feed filters by tag.
+
+*Why:* a tracker's value is accuracy — an ability that reads well but names the
+wrong power is worse than nothing. For bugs, curating from Epic's official issues
+list + patch notes is the durable, safe choice over scraping Reddit/Twitter:
+authoritative, moderation-safe to display, and low-maintenance (drop an entry when
+Epic ships the fix).
+
+---
+
 ## July 10, 2026 — DC Summer (Jul 16) leak firmed up
 
 - **Changed:** DC Summer news item (`news.js`) — dataminer HYPEX now corroborates

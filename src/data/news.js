@@ -45,6 +45,39 @@ export const NEWS = [
     source: 'Epic Games',
     official: true,
   },
+  // ── Known issues (curated from Epic's official Live Issues page + patch-note
+  //    "Known Issues" sections). Keep only OPEN issues here; when Epic ships a
+  //    fix in a patch, remove the entry (or move the note into that update item). ──
+  {
+    ts: 'ki-aura-fire-shield',
+    when: 'Known issue',
+    tag: 'bug',
+    title: 'Aura & Fire Sprites: shield damage may not register',
+    body: 'Epic is tracking a bug where damage dealt to an enemy’s shields may not count toward the Aura Sprite’s Shock Rock charge or trigger the Fire Sprite’s burst damage. Body/health damage still works. Fix pending.',
+    link: 'https://www.epicgames.com/help/en-US/fortnite-c75/trending-topics-c140/fortnite-live-issues-and-bugs-a3923',
+    source: 'Epic Games',
+    official: true,
+  },
+  {
+    ts: 'ki-slap-stamina',
+    when: 'Known issue',
+    tag: 'bug',
+    title: 'Ranked: stamina bar stuck white during Slap',
+    body: 'A visual bug in Ranked can leave the stamina bar white instead of turning orange while the Slap effect is active. Cosmetic only — it doesn’t affect actual stamina. Fix pending.',
+    link: 'https://www.epicgames.com/help/en-US/fortnite-c75/trending-topics-c140/fortnite-live-issues-and-bugs-a3923',
+    source: 'Epic Games',
+    official: true,
+  },
+  {
+    ts: 'ki-fixed-v41-10',
+    when: 'Fixed in v41.10',
+    tag: 'bug',
+    title: 'Recently fixed: Dream loot & Fire vs. airborne targets',
+    body: 'Two Sprite bugs Epic fixed in v41.10: Level 5 Dream Sprites not dropping their Legendary loot, and Fire Sprites not triggering reliably against airborne targets or via splash damage. King Sprite’s pickaxe damage was also toned down in the same patch.',
+    link: 'https://communities.epicgames.com/thread/v41-10-fortnite-runners-battle-royale-update-notes/yZMQ',
+    source: 'Epic Games',
+    official: true,
+  },
   {
     ts: '2026-07-11',
     when: 'Jul 11, 2026',
@@ -144,4 +177,5 @@ export const NEWS_TAGS = {
   update: { label: 'Update', color: '#a855f7' },
   event: { label: 'Event', color: '#f59e0b' },
   upcoming: { label: 'Upcoming', color: '#34d399' },
+  bug: { label: 'Known Issue', color: '#ef4444' },
 }
