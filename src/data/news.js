@@ -61,9 +61,9 @@ export const NEWS = [
     tag: 'upcoming',
     tentative: true,
     title: 'DC Summer event — Batman, Air & Seven Sprites',
-    body: 'A leaked DC Summer collab (surfaced via an early Nintendo eShop listing) points to a Batman Sprite plus two new collectible Sprites on July 16: Seven (follow nearby players’ footstep trails) and Air (sprint/jump boost, no fall damage). Powers and names aren’t final — treat as rumor until Epic confirms.',
-    link: 'https://www.vice.com/en/article/fortnite-batman-sprite-leaked-alongside-dc-summer-skins-and-release-date/',
-    source: 'Vice',
+    body: 'The leaked DC Summer collab has firmed up — dataminer HYPEX now corroborates the early Nintendo eShop listing, pointing to a July 16 update (~7 AM ET) with a Batman Sprite plus two new collectible Sprites: Seven (follows nearby players’ footstep trails, up to ~30s at max level) and Air (sprint speed + jump height, no fall damage). The wider event also teases summer Harley Quinn, Poison Ivy & Catwoman skins, a Batmobile and an “Ace” dog sidekick. Still leaked, not officially confirmed by Epic — treat as a strong lead until patch notes land.',
+    link: 'https://beebom.com/fortnite-leak-reveals-dc-summer-event-with-new-skins-and-a-batman-sprite-to-terrify-your-enemies/',
+    source: 'Beebom',
     official: false,
   },
   {

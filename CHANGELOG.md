@@ -11,6 +11,25 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 10, 2026 — DC Summer (Jul 16) leak firmed up
+
+- **Changed:** DC Summer news item (`news.js`) — dataminer HYPEX now corroborates
+  the earlier Nintendo eShop listing, so the entry adds the ~7 AM ET go-live,
+  Seven's "~30s at max level" trail-tracking, and the wider collab (summer Harley
+  Quinn / Poison Ivy / Catwoman skins, Batmobile, "Ace" dog sidekick). Source
+  swapped to Beebom's write-up. Still flagged tentative/unofficial until Epic
+  posts patch notes.
+
+*Why:* two independent leak sources agreeing is a meaningful step up from a lone
+retailer listing, so the entry should reflect that — while still making clear it
+isn't official, since the date traces to leaks, not Epic.
+
+*(Rechecked all other events/rumors — Holofoil Hours, Mastery Mondays, v41.20
+Sprite Pod styles, and the Spider-Man Jul 30 rumor — against current reporting;
+all still accurate, no other changes needed.)*
+
+---
+
 ## July 10, 2026 — Holofoil Hours details filled in
 
 - **Changed:** the Holofoil Hours entry (news + announcement bar) for Sat, Jul 11

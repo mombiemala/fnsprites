@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 10, 2026',
+    title: 'DC Summer (Jul 16) leak firmed up',
+    summary:
+      'Rechecked the events and rumors against current reporting. Everything still lines up; the July 16 DC Summer leak has strengthened, so its news entry now carries the fuller, better-sourced details.',
+    changes: [
+      { tag: 'Changed', text: 'DC Summer news item: dataminer HYPEX now corroborates the earlier Nintendo eShop listing, so the entry adds the ~7 AM ET go-live, Seven’s “~30s at max level” trail-tracking, and the wider collab (summer Harley Quinn / Poison Ivy / Catwoman skins, Batmobile, “Ace” dog sidekick). Still flagged tentative/unofficial until Epic posts patch notes.' },
+    ],
+    why:
+      'Two independent leak sources agreeing is a meaningful step up from a lone retailer listing, so the entry should reflect that — while still making clear it isn’t official, since the date traces to leaks, not Epic.',
+  },
+  {
+    date: 'July 10, 2026',
     title: 'Holofoil Hours details filled in',
     summary:
       'Ahead of Saturday’s Holofoil Hours, the news item and announcement now spell out the full event details, not just “boosted spawns.”',
