@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 10, 2026 — News: chronological order + search
+
+- **Fixed:** `NewsFeed` now sorts each group by the item's real date (`ts`/`start`)
+  — live pinned, upcoming soonest-first, history newest-first — instead of relying
+  on hand-maintained array order. Undated/evergreen items (weekly events, known
+  issues) count as "today" so they stay near current news.
+- **Added:** a search box filtering by title/body/source/tag, with an empty state.
+- **Changed:** footer AI-art credit now notes the Holofoil renders (not just Air/Seven).
+
+*Why:* hand-ordering meant a misplaced entry broke the timeline; sorting on the
+real date is self-correcting, and search keeps the growing feed usable.
+
+---
+
 ## July 10, 2026 — Consistent navigation (header ⇄ footer parity)
 
 - **Added:** a footer **Sections** row mirroring the top tabs (Collection,

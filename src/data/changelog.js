@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 10, 2026',
+    title: 'News: proper chronological order + search',
+    summary:
+      'The News feed now sorts by real dates instead of hand-kept order, and you can search it.',
+    changes: [
+      { tag: 'Fixed', text: 'News is now genuinely chronological: a live event stays pinned at top, upcoming items list soonest-first, and past updates run newest-first — sorted by each item’s actual date rather than its position in the list.' },
+      { tag: 'Added', text: 'A search box in the News tab that filters by title, body, source or tag, with a clear “no matches” state. Current/evergreen entries (weekly events, known issues) sort in with today’s news so they stay visible.' },
+    ],
+    why:
+      'The feed had been ordered by hand, so adding an item in the wrong spot could make the timeline read out of order; sorting on the real date makes it self-correcting. Search keeps the growing feed usable without scrolling.',
+  },
+  {
+    date: 'July 10, 2026',
     title: 'Consistent navigation — everything reachable top and bottom',
     summary:
       'The header and footer now expose the same links, so you never have to hunt for a section or page depending on where you are on the screen.',

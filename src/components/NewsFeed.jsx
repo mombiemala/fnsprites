@@ -5,6 +5,7 @@ import { fetchLiveNews } from '../lib/liveNews'
 export default function NewsFeed() {
   const [live, setLive] = useState([])
   const [filter, setFilter] = useState('all')
+  const [query, setQuery] = useState('')
 
   // Auto-pull the current build + official in-game news once on mount.
   useEffect(() => {
@@ -21,27 +22,45 @@ export default function NewsFeed() {
     // inside it — those get pinned to the very top so a currently-running event
     // leads the feed. After the window passes it drops back to its normal group.
     const today = new Date().toISOString().slice(0, 10)
+    const todayNum = Number(today.replace(/-/g, ''))
     const isLiveNow = (n) => {
       if (!n.start && !n.end) return false
       if (n.start && today < n.start) return false
       if (n.end && today > n.end) return false
       return true
     }
-    // Order: live-now (pinned) → curated "upcoming" (editorial) → auto/live →
-    // curated history. Dedupe by normalized title so a live item can't double a
-    // curated one.
-    const liveNow = NEWS.filter(isLiveNow)
-    const upcoming = NEWS.filter((n) => n.tag === 'upcoming' && !isLiveNow(n))
-    const history = NEWS.filter((n) => n.tag !== 'upcoming' && !isLiveNow(n))
+    // Sortable YYYYMMDD from the item's date. Undated/evergreen items (weekly
+    // events, known issues) count as "today" so they sit with current news
+    // rather than sinking to the bottom of the timeline.
+    const dateNum = (n) => {
+      const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(n.ts || '')
+      if (m) return Number(m[1] + m[2] + m[3])
+      if (n.start && /^\d{4}-\d{2}-\d{2}$/.test(n.start)) return Number(n.start.replace(/-/g, ''))
+      return todayNum
+    }
+    // Order: live-now (pinned) → upcoming (soonest first) → auto/live → history
+    // (newest first). Each group is sorted by real date so the feed reads
+    // chronologically within it. Dedupe by normalized title so a live item can't
+    // double a curated one.
+    const liveNow = NEWS.filter(isLiveNow).sort((a, b) => dateNum(b) - dateNum(a))
+    const upcoming = NEWS.filter((n) => n.tag === 'upcoming' && !isLiveNow(n)).sort((a, b) => dateNum(a) - dateNum(b))
+    const history = NEWS.filter((n) => n.tag !== 'upcoming' && !isLiveNow(n)).sort((a, b) => dateNum(b) - dateNum(a))
     const seen = new Set()
-    const merged = [...liveNow, ...upcoming, ...live, ...history].filter((n) => {
+    let merged = [...liveNow, ...upcoming, ...live, ...history].filter((n) => {
       const k = (n._key || n.title).toLowerCase().trim()
       if (seen.has(k)) return false
       seen.add(k)
       return true
     })
-    return filter === 'all' ? merged : merged.filter((n) => n.tag === filter)
-  }, [live, filter])
+    if (filter !== 'all') merged = merged.filter((n) => n.tag === filter)
+    const q = query.trim().toLowerCase()
+    if (q) {
+      merged = merged.filter((n) =>
+        `${n.title} ${n.body || ''} ${n.source || ''} ${NEWS_TAGS[n.tag]?.label || ''}`.toLowerCase().includes(q),
+      )
+    }
+    return merged
+  }, [live, filter, query])
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
@@ -67,7 +86,21 @@ export default function NewsFeed() {
         </div>
       </div>
 
+      <input
+        type="search"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search news & events…"
+        aria-label="Search news and events"
+        className="mb-3 w-full rounded-lg border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-sm text-white placeholder:text-[var(--muted)] focus:border-[var(--brand)] focus:outline-none"
+      />
+
       <div className="space-y-2">
+        {items.length === 0 && (
+          <p className="rounded-xl bg-[var(--bg-2)] p-4 text-center text-xs text-[var(--muted)]">
+            No news matches {query.trim() ? `“${query.trim()}”` : 'this filter'}.
+          </p>
+        )}
         {items.map((n) => {
           const tag = NEWS_TAGS[n.tag] || NEWS_TAGS.update
           return (
