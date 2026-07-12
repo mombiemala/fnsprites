@@ -16,14 +16,17 @@ import { writeFile, mkdir } from 'node:fs/promises'
 
 const OUT = 'docs/known-issues-draft.md'
 
-// Keywords that make a line worth surfacing to the curator.
-const KEYWORDS = /(known issue|bug|glitch|not working|disabled|broken|unable|fix|hotfix|sprite)/i
+// Keywords that make a line worth surfacing to the curator. Deliberately
+// bug-focused: bare "sprite"/"fix" matched promotional MOTD copy ("New Sprites
+// are here!") and drowned the signal, so they're out — we want lines that
+// actually describe a problem or an acknowledgement of one.
+const KEYWORDS = /(known issue|bug|glitch|not working|not functioning|unavailable|temporarily disabled|disabled|degraded|outage|hotfix|aware of|investigating|broken|unable to)/i
 
 const SOURCES = {
   liveIssues:
     'https://www.epicgames.com/help/en-US/fortnite-c75/trending-topics-c140/fortnite-live-issues-and-bugs-a3923',
   patchNotes: 'https://www.fortnite.com/news',
-  apiAes: 'https://fortnite-api.com/v1/aes',
+  apiAes: 'https://fortnite-api.com/v2/aes',
   apiNews: 'https://fortnite-api.com/v2/news/br?language=en',
 }
 
