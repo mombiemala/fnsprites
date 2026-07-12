@@ -81,9 +81,9 @@ export const NEWS = [
   {
     ts: '2026-07-11',
     when: 'Jul 11, 2026',
-    tag: 'upcoming',
+    tag: 'event',
     title: 'Holofoil Hours — boosted Holofoil spawns',
-    body: 'Epic has announced Holofoil Hours for Saturday, July 11 — two extended 2-hour sessions (2 PM & 9 PM ET) that boost Holofoil Sprite spawn rates the weekend of the release. During the windows every player also starts with a Self-Revive Device and Shock Rocks, so it’s a prime window to grab the new foil variants.',
+    body: 'Holofoil Hours ran Saturday, July 11 — two extended 2-hour sessions (2 PM & 9 PM ET) that boosted Holofoil Sprite spawn rates over the launch weekend, with every player starting the match with a Self-Revive Device and Shock Rocks. Weekend Power Hours continue every Saturday (see the Weekly events entry below).',
     link: 'https://beebom.com/fortnite-sprite-events-schedule/',
     source: 'Beebom',
     official: false,

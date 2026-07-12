@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 12, 2026 — Event tidy-up + retired map tables removed
+
+- **Changed:** Holofoil Hours (Jul 11) retagged `upcoming` → `event` now that it's
+  passed, so it no longer leads the upcoming list; body reworded to past tense.
+- **Removed:** dropped the unused Supabase map tables (`map_markers`,
+  `map_marker_votes`, `maps`, `map_shares`) + their RLS policies via migration
+  `drop_retired_map_tables`. Seed data only — no player data affected.
+
+*Why:* a past event tagged "upcoming" is noise, and orphaned tables are avoidable
+attack surface.
+
+---
+
 ## July 10, 2026 — News: chronological order + search
 
 - **Fixed:** `NewsFeed` now sorts each group by the item's real date (`ts`/`start`)

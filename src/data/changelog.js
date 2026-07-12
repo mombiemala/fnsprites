@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 12, 2026',
+    title: 'Event tidy-up + retired map tables removed',
+    summary:
+      'Freshened the events feed now that Holofoil Hours has passed, and finished cleaning up after the old community map.',
+    changes: [
+      { tag: 'Changed', text: 'Holofoil Hours (Jul 11) moved from “upcoming” to a past event now that it’s run — so it no longer sits at the top of the upcoming list. Weekend Power Hours continue every Saturday (covered by the Weekly events entry).' },
+      { tag: 'Removed', text: 'Dropped the now-unused Supabase tables from the retired community map (map_markers, map_marker_votes, maps, map_shares) and their access policies. No player data was affected — they only held seed markers.' },
+    ],
+    why:
+      'A dated “upcoming” event that’s already happened is just noise, and leaving orphaned tables around is avoidable attack surface — cleaning both keeps the app honest and tidy.',
+  },
+  {
     date: 'July 10, 2026',
     title: 'News: proper chronological order + search',
     summary:
