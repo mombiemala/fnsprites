@@ -141,6 +141,16 @@ export const NEWS = [
     official: true,
   },
   {
+    ts: '2026-07-01',
+    when: 'Jun 17 – Jul 1, 2026',
+    tag: 'event',
+    title: 'Design A Sprite contest — winners still to come',
+    body: 'Epic ran a “Design A Sprite” Concept Royale (Jun 17 – Jul 1): submit an original Sprite concept for a shot at $2,500 and having your design built into Fortnite. Three winners will be picked — results hadn’t been announced as of this update.',
+    link: 'https://beebom.com/fortnite-wants-you-to-design-its-next-sprite-and-winner-takes-a-home-cash-prize/',
+    source: 'Beebom',
+    official: false,
+  },
+  {
     ts: '2026-06-25',
     when: 'Jun 25, 2026',
     tag: 'sprites',

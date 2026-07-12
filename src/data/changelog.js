@@ -12,6 +12,7 @@ export const CHANGELOG = [
       'Freshened the events feed now that Holofoil Hours has passed, and finished cleaning up after the old community map.',
     changes: [
       { tag: 'Changed', text: 'Holofoil Hours (Jul 11) moved from “upcoming” to a past event now that it’s run — so it no longer sits at the top of the upcoming list. Weekend Power Hours continue every Saturday (covered by the Weekly events entry).' },
+      { tag: 'Added', text: 'A News entry for Epic’s “Design A Sprite” contest (ran Jun 17 – Jul 1) — a notable community event we’d missed; winners are still to be announced.' },
       { tag: 'Removed', text: 'Dropped the now-unused Supabase tables from the retired community map (map_markers, map_marker_votes, maps, map_shares) and their access policies. No player data was affected — they only held seed markers.' },
     ],
     why:

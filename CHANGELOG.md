@@ -15,6 +15,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 - **Changed:** Holofoil Hours (Jul 11) retagged `upcoming` → `event` now that it's
   passed, so it no longer leads the upcoming list; body reworded to past tense.
+- **Added:** a News entry for Epic's "Design A Sprite" contest (Jun 17 – Jul 1);
+  winners still to be announced.
 - **Removed:** dropped the unused Supabase map tables (`map_markers`,
   `map_marker_votes`, `maps`, `map_shares`) + their RLS policies via migration
   `drop_retired_map_tables`. Seed data only — no player data affected.
