@@ -89,7 +89,7 @@ async function main() {
 
   // 1) Live build (very reliable JSON).
   const aes = await getJson(SOURCES.apiAes)
-  const build = aes.data?.build || aes.data?.version
+  const build = aes.data?.data?.build || aes.data?.data?.version
   parts.push(
     section(
       'Live build',
