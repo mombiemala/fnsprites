@@ -84,15 +84,17 @@ export const SPRITE_TYPES = [
   { id: 'ice', name: 'Ice', icon: '❄️', rarity: 'Rare', dropRate: null, released: false, rumored: true,
     ability: 'Datamined sprite — not yet released.',
     variants: { normal: U } },
-  { id: 'seven', name: 'Seven', icon: '7️⃣', rarity: 'Epic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
-    ability: 'Tracks nearby players — lets you follow their footstep trails. Leaked for the Jul 16 DC Summer update; power not yet confirmed by Epic.',
+  // Seven was expected Jul 16, but Epic's weekly schedule shows only Batman & Air
+  // on New Sprite Day — so no firm date-gate (some leaks say ~Jul 23, unconfirmed).
+  { id: 'seven', name: 'Seven', icon: '7️⃣', rarity: 'Epic', dropRate: null, released: false, rumored: true,
+    ability: 'Tracks nearby players — follow their footstep trails (up to ~30s at max level). Expected around the DC Summer window but not on Epic’s Jul 16 schedule; some leaks point to ~Jul 23. Unconfirmed.',
     variants: { normal: U, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U, quack: U } },
   { id: 'air', name: 'Air', icon: '🌬️', rarity: 'Epic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
-    ability: 'A movement Sprite — increases sprint speed & jump height and removes fall damage. Leaked for the Jul 16 DC Summer update; power not yet confirmed by Epic.',
+    ability: 'A movement Sprite — increases sprint speed & jump height and removes fall damage. On Epic’s Jul 16 New Sprite Day schedule (DC Summer); power not fully confirmed by Epic.',
     variants: { normal: U, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U, quack: U } },
-  { id: 'batman', name: 'Batman', icon: '🦇', rarity: 'Legendary', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
-    ability: 'DC Summer collab Sprite, leaked for Jul 16 (Holofoil variant teased for Jul 9). Its power hasn’t been revealed yet.',
-    variants: { normal: U, gummy: U, galaxy: U, holofoil: U } },
+  { id: 'batman', name: 'Batman', icon: '🦇', rarity: 'Mythic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
+    ability: 'DC Summer collab Sprite on Epic’s Jul 16 New Sprite Day schedule. Comes in Gold, Gummy, Galaxy & Holofoil per Epic’s marketing; its gameplay power hasn’t been revealed yet.',
+    variants: { normal: U, gold: U, gummy: U, galaxy: U, holofoil: U } },
   { id: 'spiderman', name: 'Spider-Man', icon: '🕷️', rarity: 'Legendary', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-30',
     ability: 'Datamined Marvel collab Sprite — reportedly grants web-swinging mobility. Leaked for ~Jul 30 (v41.30); not yet confirmed by Epic.',
     variants: { normal: U } },
@@ -150,7 +152,11 @@ for (const t of SPRITE_TYPES) {
     t.released = true
     t.rumored = false
     for (const k of Object.keys(t.variants)) {
-      if (!t.variants[k] && !(FORM_RELEASE[k] && _todayStr < FORM_RELEASE[k])) t.variants[k] = true
+      // Don't auto-release a variant whose FORM hasn't dropped yet (future
+      // FORM_RELEASE date) or whose theme is itself still rumored/unconfirmed
+      // (Gem is disabled, Cube/Quack bonuses unrevealed) — those stay U so a
+      // newly-released Sprite matches how the rest of the roster treats them.
+      if (!t.variants[k] && !THEME_MAP[k]?.rumored && !(FORM_RELEASE[k] && _todayStr < FORM_RELEASE[k])) t.variants[k] = true
     }
   }
 }

@@ -6,6 +6,19 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 13, 2026',
+    title: 'Jul 16 New Sprite Day lined up — Batman & Air (Seven held back)',
+    summary:
+      'Rechecked the upcoming drop against Epic’s weekly schedule and corrected who’s actually coming Jul 16 and with which variants.',
+    changes: [
+      { tag: 'Fixed', text: 'Batman is Mythic (was Legendary) and gains its Gold variant — Epic’s marketing shows Gold, Gummy, Galaxy & Holofoil. It’s on Epic’s Jul 16 New Sprite Day schedule and will auto-release then.' },
+      { tag: 'Changed', text: 'Seven is no longer date-gated to Jul 16 — Epic’s weekly schedule shows only Batman & Air on New Sprite Day, so Seven stays “rumored/unreleased” (some leaks say ~Jul 23, unconfirmed) instead of auto-releasing on the 16th.' },
+      { tag: 'Fixed', text: 'When a leaked Sprite auto-releases, its still-rumored variant forms (Gem — disabled; Cube/Quack — bonuses unrevealed) no longer flip to “collectible” with it. So Batman/Air will release with their real variant lines, matching how the rest of the roster treats those forms.' },
+    ],
+    why:
+      'A tracker that says a Sprite dropped when it didn’t — or lists variants that aren’t obtainable — is worse than silence, especially the day of a release. Following Epic’s own posted schedule (Batman + Air, not Seven) keeps drop day accurate, and the variant-gate fix prevents phantom “collectible” forms.',
+  },
+  {
     date: 'July 12, 2026',
     title: 'Event tidy-up + retired map tables removed',
     summary:

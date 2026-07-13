@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 13, 2026 — Jul 16 New Sprite Day: Batman & Air (Seven held back)
+
+- **Fixed:** Batman is **Mythic** (was Legendary) and gains its **Gold** variant
+  (Epic marketing: Gold, Gummy, Galaxy & Holofoil). Stays date-gated to Jul 16.
+- **Changed:** **Seven un-gated from Jul 16** — Epic's weekly schedule shows only
+  Batman & Air on New Sprite Day, so Seven stays rumored/unreleased (leaks say
+  ~Jul 23, unconfirmed). News item + roster updated to match.
+- **Fixed:** the date-gate no longer auto-releases still-rumored variant forms
+  (Gem/Cube/Quack via `THEME_MAP[k]?.rumored`) when a leaked Sprite goes live, so
+  Batman/Air release with their real variant lines.
+
+*Why:* on drop day, saying a Sprite released when it didn't — or listing
+non-obtainable variants — is worse than silence. Following Epic's posted schedule
+keeps it accurate.
+
+---
+
 ## July 12, 2026 — Event tidy-up + retired map tables removed
 
 - **Changed:** Holofoil Hours (Jul 11) retagged `upcoming` → `event` now that it's

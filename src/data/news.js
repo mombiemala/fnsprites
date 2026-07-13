@@ -90,13 +90,13 @@ export const NEWS = [
   },
   {
     ts: '2026-07-16b',
-    when: 'Jul 16, 2026 (leaked)',
+    when: 'Jul 16, 2026',
     tag: 'upcoming',
     tentative: true,
-    title: 'DC Summer event — Batman, Air & Seven Sprites',
-    body: 'The leaked DC Summer collab has firmed up — dataminer HYPEX now corroborates the early Nintendo eShop listing, pointing to a July 16 update (~7 AM ET) with a Batman Sprite plus two new collectible Sprites: Seven (follows nearby players’ footstep trails, up to ~30s at max level) and Air (sprint speed + jump height, no fall damage). The wider event also teases summer Harley Quinn, Poison Ivy & Catwoman skins, a Batmobile and an “Ace” dog sidekick. Still leaked, not officially confirmed by Epic — treat as a strong lead until patch notes land.',
-    link: 'https://beebom.com/fortnite-leak-reveals-dc-summer-event-with-new-skins-and-a-batman-sprite-to-terrify-your-enemies/',
-    source: 'Beebom',
+    title: 'DC Summer — Batman & Air Sprites (Jul 16 New Sprite Day)',
+    body: 'Epic’s schedule-for-the-week puts New Sprite Day on Thursday, July 16 (~7 AM ET) with two Sprites: Batman (Mythic — Gold, Gummy, Galaxy & Holofoil variants; gameplay power not yet revealed) and Air (sprint speed + jump height, no fall damage). Note: Seven was expected too, but it’s NOT on Epic’s Jul 16 schedule — some leaks point to ~Jul 23, unconfirmed. The wider DC Summer event also teases summer Harley Quinn, Poison Ivy & Catwoman skins, a Batmobile and an “Ace” dog sidekick. Details firm but pre-patch-notes — treat as a strong lead.',
+    link: 'https://www.vice.com/en/article/fortnite-sprites-july-16-update/',
+    source: 'Vice',
     official: false,
   },
   {
