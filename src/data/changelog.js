@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 14, 2026',
+    title: 'Known Issues can now be marked “Resolved”',
+    summary:
+      'Bugs Epic fixes no longer just vanish from the feed — they get a green “✓ Resolved” badge and stick around a while so you can see what was fixed and when.',
+    changes: [
+      { tag: 'Added', text: 'A “Resolved” state for Known Issue entries — set `resolved: true` (+ the patch it was fixed in) and the red “Known Issue” badge becomes a green “✓ Resolved · vXX.XX”. Resolved items sort below the still-open ones by their fix date.' },
+      { tag: 'Changed', text: 'Marked the v41.10 Sprite fixes (Dream Legendary loot, Fire vs. airborne targets) as Resolved. Rechecked the open ones — the Aura/Fire shield-damage bug is still unfixed, so it stays a live Known Issue.' },
+    ],
+    why:
+      'Deleting a bug the moment it’s fixed loses useful history — players wondering “did they ever fix X?” get a clear answer. Keeping resolved items briefly, clearly marked and sorted below current issues, is more informative than silence.',
+  },
+  {
     date: 'July 13, 2026',
     title: 'Drop rates filled in & reconciled',
     summary:

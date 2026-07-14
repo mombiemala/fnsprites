@@ -46,8 +46,11 @@ export const NEWS = [
     official: true,
   },
   // ── Known issues (curated from Epic's official Live Issues page + patch-note
-  //    "Known Issues" sections). Keep only OPEN issues here; when Epic ships a
-  //    fix in a patch, remove the entry (or move the note into that update item). ──
+  //    "Known Issues" sections). OPEN issues show a red "Known Issue" badge.
+  //    When Epic ships a fix, DON'T delete it right away — set `resolved: true`
+  //    (and `resolvedOn: 'vXX.XX'`) and give `ts` the fix date, so it shows a
+  //    green "✓ Resolved" badge and sinks below the current issues. Prune fully
+  //    resolved entries after a few weeks. ──
   {
     ts: 'ki-aura-fire-shield',
     when: 'Known issue',
@@ -69,11 +72,13 @@ export const NEWS = [
     official: true,
   },
   {
-    ts: 'ki-fixed-v41-10',
-    when: 'Fixed in v41.10',
+    ts: '2026-06-25',
+    when: 'Fixed Jun 25, 2026',
     tag: 'bug',
-    title: 'Recently fixed: Dream loot & Fire vs. airborne targets',
-    body: 'Two Sprite bugs Epic fixed in v41.10: Level 5 Dream Sprites not dropping their Legendary loot, and Fire Sprites not triggering reliably against airborne targets or via splash damage. King Sprite’s pickaxe damage was also toned down in the same patch.',
+    resolved: true,
+    resolvedOn: 'v41.10',
+    title: 'Dream Legendary loot & Fire vs. airborne targets',
+    body: 'Two Sprite bugs Epic fixed in v41.10: Level 5 Dream Sprites not dropping their Legendary loot, and Fire Sprites not triggering reliably against airborne targets or via splash damage. (King Sprite’s pickaxe damage was also toned down in the same patch.)',
     link: 'https://communities.epicgames.com/thread/v41-10-fortnite-runners-battle-royale-update-notes/yZMQ',
     source: 'Epic Games',
     official: true,

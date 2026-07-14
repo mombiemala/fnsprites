@@ -103,6 +103,9 @@ export default function NewsFeed() {
         )}
         {items.map((n) => {
           const tag = NEWS_TAGS[n.tag] || NEWS_TAGS.update
+          // A known issue Epic has fixed: show a green "Resolved" badge instead
+          // of the red "Known Issue" one (set `resolved: true` on the item).
+          const resolved = n.tag === 'bug' && n.resolved
           return (
             <a
               key={n.ts}
@@ -112,9 +115,15 @@ export default function NewsFeed() {
               className="block rounded-xl bg-[var(--bg-2)] p-3 transition-colors hover:bg-[var(--panel-2)]"
             >
               <div className="mb-1 flex flex-wrap items-center gap-2">
-                <span className="rounded px-1.5 py-0.5 text-[10px] font-extrabold uppercase text-black" style={{ background: tag.color }}>
-                  {tag.label}
-                </span>
+                {resolved ? (
+                  <span className="rounded bg-emerald-400/20 px-1.5 py-0.5 text-[10px] font-extrabold uppercase text-emerald-300" title={n.resolvedOn ? `Fixed in ${n.resolvedOn}` : 'Fixed by Epic'}>
+                    ✓ Resolved{n.resolvedOn ? ` · ${n.resolvedOn}` : ''}
+                  </span>
+                ) : (
+                  <span className="rounded px-1.5 py-0.5 text-[10px] font-extrabold uppercase text-black" style={{ background: tag.color }}>
+                    {tag.label}
+                  </span>
+                )}
                 {n.tentative && (
                   <span className="rounded bg-amber-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-amber-300" title="Date/details not yet confirmed by Epic">
                     Tentative

@@ -140,7 +140,7 @@ async function main() {
     `## Curator checklist\n\n` +
     `- [ ] Cross-check each candidate on Epic's page before adding it\n` +
     `- [ ] Add new open issues to \`src/data/news.js\` (\`tag: 'bug'\`, official source + link)\n` +
-    `- [ ] Remove entries Epic has fixed (or move the note into that update item)\n` +
+    `- [ ] Mark fixed issues resolved (\`resolved: true\` + \`resolvedOn\`), prune old ones\n` +
     `- [ ] Update the changelog (both \`src/data/changelog.js\` and \`CHANGELOG.md\`)\n\n` +
     `## Sources\n\n` +
     Object.values(SOURCES).map((u) => `- ${u}`).join('\n') +

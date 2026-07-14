@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 14, 2026 — Known Issues can be marked "Resolved"
+
+- **Added:** a `resolved` state for `tag: 'bug'` news entries — set `resolved: true`
+  (+ `resolvedOn: 'vXX.XX'`) and the red "Known Issue" badge renders as a green
+  "✓ Resolved · vXX.XX". Give `ts` the fix date so it sorts below current issues.
+- **Changed:** marked the v41.10 Sprite fixes (Dream Legendary loot, Fire vs.
+  airborne) Resolved. Aura/Fire shield-damage bug rechecked — still open.
+
+*Why:* deleting a bug the instant it's fixed loses useful history; a briefly-kept,
+clearly-marked resolved entry answers "did they fix X?" better than silence.
+
+---
+
 ## July 13, 2026 — Drop rates filled in & reconciled
 
 - **Added:** drop rates for the five blank Sprites — Striker & Fishy (8.73%),
