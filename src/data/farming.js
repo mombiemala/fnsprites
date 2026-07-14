@@ -8,7 +8,7 @@
 export const CHEST_FACTS = [
   'Sprite Chests are ancient-looking chests with a **blue glow and a pink crystal** on top — easy to tell apart from normal chests.',
   'Each one drops a **guaranteed Sprite** plus a regular loot item.',
-  'There are ~**61 potential Sprite Chest spawns** island-wide, but only a **random subset is active each match** — so a spot may or may not have one on any given drop.',
+  'There are **dozens of potential Sprite Chest spawn points** island-wide, but only a **random subset is active each match** — so a spot may or may not have one on any given drop.',
   'Sprites are pure RNG from the Sprite you get — rarer Sprites (and the Grim Reaper) just come up less often. Location sets *how many chests*, not *which Sprite*.',
 ]
 
