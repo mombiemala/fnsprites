@@ -11,10 +11,13 @@ import { THEME_MAP } from './themes'
 // roster. All new variants are flagged unreleased until they go live, and their
 // abilities/bonuses can change before launch.
 //
-// `dropRate` is the published/datamined base drop chance where known (Epic does
-// not officially publish these — values are community estimates, and exact
-// per-sprite numbers on fortnite.gg/sprites could not be fetched from this
-// environment). null = unknown.
+// `dropRate` is the base (Normal) chance from a Sprite Chest. Epic does NOT
+// publish official rates — these are COMMUNITY ESTIMATES cross-referenced from
+// accountshark, fortnite.gg & community wikis, and they vary a bit by source.
+// Most follow the rarity-tier base (Rare 8.73% · Epic 5.22% · Legendary 2.436%);
+// the Mythics carry their own widely-cited figures (Zero Point 0.00034%, Grim
+// Reaper ~0.000098% as the rarest, Burnt Peanut ~2.97% — far higher than the
+// other Mythics because it has no variant slots). Treat all as approximate.
 
 const R = true   // released
 const U = false  // unreleased
@@ -50,26 +53,26 @@ export const SPRITE_TYPES = [
   { id: 'zeropoint', name: 'Zero Point', icon: '🔷', rarity: 'Mythic', dropRate: '0.00034%', released: true,
     ability: 'Spawns a Shield Bubble Jr. when you use a healing item on yourself (not splashes or grenades).',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
-  { id: 'peanut', name: 'Burnt Peanut', icon: '🥜', rarity: 'Mythic', dropRate: '1.01%', released: true,
+  { id: 'peanut', name: 'Burnt Peanut', icon: '🥜', rarity: 'Mythic', dropRate: '2.97%', released: true,
     ability: 'A rare snack that grants a powerful random buff.',
     // Normal-only special — no variant line (Holofoil ships for the other 15
     // Sprites, not Peanut), so it stays out of the Cube/Quack rollout too.
     variants: { normal: R } },
 
   // ---- Added in the Jun 25, 2026 update ----
-  { id: 'striker', name: 'Striker', icon: '⚡', rarity: 'Rare', dropRate: null, released: true,
+  { id: 'striker', name: 'Striker', icon: '⚡', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Grants Overdrive (faster firing, reload & movement) when you Mantle, Hurdle or Wall Scramble.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
-  { id: 'fishy', name: 'Fishy', icon: '🐟', rarity: 'Rare', dropRate: null, released: true,
+  { id: 'fishy', name: 'Fishy', icon: '🐟', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Boosts your swim speed.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
-  { id: 'aura', name: 'Aura', icon: '✨', rarity: 'Epic', dropRate: null, released: true,
+  { id: 'aura', name: 'Aura', icon: '✨', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Builds a Shock Rock charge as you deal damage.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
-  { id: 'boss', name: 'Boss', icon: '🤵', rarity: 'Legendary', dropRate: null, released: true,
+  { id: 'boss', name: 'Boss', icon: '🤵', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Boosts your max HP and Shield, growing each level (up to +25).',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
-  { id: 'grim', name: 'Grim Reaper', icon: '💀', rarity: 'Mythic', dropRate: null, released: true,
+  { id: 'grim', name: 'Grim Reaper', icon: '💀', rarity: 'Mythic', dropRate: '0.000098%', released: true,
     ability: 'Marks the location of any enemy who damages you. Spawns almost exclusively from Sprite Chests.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
 

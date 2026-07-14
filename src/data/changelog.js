@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 13, 2026',
+    title: 'Drop rates filled in & reconciled',
+    summary:
+      'Cross-checked every Sprite’s drop rate against community sources, filled the blanks, and made clear these are estimates (Epic doesn’t publish official rates).',
+    changes: [
+      { tag: 'Added', text: 'Drop rates for the five Sprites that were blank — Striker & Fishy (8.73%, Rare), Aura (5.22%, Epic), Boss (2.436%, Legendary), and Grim Reaper (~0.000098%, the rarest Sprite in the game).' },
+      { tag: 'Changed', text: 'Burnt Peanut updated to ~2.97% (was 1.01%) — multiple sources agree it drops far more often than other Mythics because it has no variant slots. Water/Earth/Fire (8.73%) and Zero Point (0.00034%) were already in line with community data.' },
+      { tag: 'Changed', text: 'Reworded the note so it’s explicit these are cross-referenced community estimates (accountshark, fortnite.gg, wikis) that vary by source — Epic never publishes official rates.' },
+    ],
+    why:
+      'Blank drop rates left obvious gaps, and precise-looking numbers with no caveat overstate certainty. Filling them from the tier bases + widely-cited Mythic figures, while labeling the whole thing an estimate, is the honest middle ground.',
+  },
+  {
+    date: 'July 13, 2026',
     title: 'Jul 16 New Sprite Day lined up — Batman & Air (Seven held back)',
     summary:
       'Rechecked the upcoming drop against Epic’s weekly schedule and corrected who’s actually coming Jul 16 and with which variants.',
