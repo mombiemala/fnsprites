@@ -90,7 +90,7 @@ export const SPRITE_TYPES = [
   // Seven was expected Jul 16, but Epic's weekly schedule shows only Batman & Air
   // on New Sprite Day — so no firm date-gate (some leaks say ~Jul 23, unconfirmed).
   { id: 'seven', name: 'Seven', icon: '7️⃣', rarity: 'Epic', dropRate: null, released: false, rumored: true,
-    ability: 'Tracks nearby players — follow their footstep trails (up to ~30s at max level). Expected around the DC Summer window but not on Epic’s Jul 16 schedule; some leaks point to ~Jul 23. Unconfirmed.',
+    ability: 'Reveals enemy foot trails on the map for your whole squad — duration ramps by level (10 → 15 → 20 → 25 → 30s at max). Timing unconfirmed: some sources list it for the Jul 16 DC Summer update, but Epic’s weekly schedule shows only Batman & Air on New Sprite Day (leaks point to ~Jul 23).',
     variants: { normal: U, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U, quack: U } },
   { id: 'air', name: 'Air', icon: '🌬️', rarity: 'Epic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
     ability: 'A movement Sprite — increases sprint speed & jump height and removes fall damage. On Epic’s Jul 16 New Sprite Day schedule (DC Summer); power not fully confirmed by Epic.',
