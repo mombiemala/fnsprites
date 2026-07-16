@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 16, 2026',
+    title: 'Seven Sprite is now live',
+    summary:
+      'Seven released with v41.20 after all — flipped it to collectible with its variant line.',
+    changes: [
+      { tag: 'Changed', text: 'Seven Sprite (reveals enemy foot trails for your squad, 10→30s by level) is now released, with Normal, Gold, Gummy, Galaxy & Holofoil. News entry updated to match.' },
+    ],
+    why:
+      'Despite Epic’s earlier schedule showing only Batman & Air, Seven shipped in the Jul 16 update — so it’s now marked collectible rather than held back.',
+  },
+  {
+    date: 'July 16, 2026',
     title: 'Official art for Pollo & Vini Jr. (Normal-only)',
     summary:
       'Both new Mythics now use their real in-game artwork, and are correctly set to Normal-only for now (like Burnt Peanut).',

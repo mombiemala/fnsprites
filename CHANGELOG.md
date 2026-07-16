@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 16, 2026 — Seven Sprite is now live
+
+- **Changed:** Seven (reveals enemy foot trails for your squad, 10→30s by level)
+  is now released with Normal/Gold/Gummy/Galaxy/Holofoil; news entry updated.
+
+*Why:* despite Epic's earlier schedule (Batman & Air only), Seven shipped in v41.20.
+
+---
+
 ## July 16, 2026 — Official art for Pollo & Vini Jr. (Normal-only)
 
 - **Added:** official in-game art for **Pollo** (gamer character — headset, esports

@@ -100,7 +100,7 @@ export const NEWS = [
     start: '2026-07-16',
     end: '2026-07-20',
     title: 'DC “Hot Bat Summer” is live — Batman & Air Sprites! 🦇',
-    body: 'The v41.20 update landed today (July 16). Two new Sprites are live: Batman (Mythic — deploy the Bat Cape midair for a glide; comes in Gold, Gummy, Galaxy & Holofoil) and Air (sprint speed + jump height, no fall damage). Grab them from Sprite Chests, with boosted New Sprite Day spawns at 2 PM & 9 PM ET. The event also adds the Bat Cave landmark (under Wonkeeland, via ascender), DC beach skins (Harley Quinn, Poison Ivy, Catwoman) and the returning Batman Grapnel Gun. Note: the Seven Sprite was expected around now but isn’t on Epic’s official New Sprite Day list yet — still unconfirmed.',
+    body: 'The v41.20 update landed today (July 16). Two new Sprites are live: Batman (Mythic — deploy the Bat Cape midair for a glide; comes in Gold, Gummy, Galaxy & Holofoil) and Air (sprint speed + jump height, no fall damage). Grab them from Sprite Chests, with boosted New Sprite Day spawns at 2 PM & 9 PM ET. The event also adds the Bat Cave landmark (under Wonkeeland, via ascender), DC beach skins (Harley Quinn, Poison Ivy, Catwoman) and the returning Batman Grapnel Gun. The Seven Sprite is also now live — it reveals enemy foot trails for your whole squad.',
     link: 'https://beebom.com/fortnite-41-20-update-patch-notes/',
     source: 'Beebom',
     official: false,
