@@ -11,6 +11,28 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 16, 2026 — UX polish (first-impression fixes & guest sharing)
+
+- **Fixed:** the welcome modal no longer points new visitors at the retired
+  community loot map — it now describes the Farming guide that replaced it.
+- **Changed:** the Leaderboard loads automatically on open (with a loading
+  skeleton) instead of sitting empty behind a "Load" button.
+- **Added:** logged-out players can copy a ready-to-paste Discord/Reddit caption
+  of their progress (with a link back), not just export images — sharing no
+  longer requires an account.
+- **Changed:** bulk "Mark all shown owned" now confirms on a big sweep (15+), so
+  a curious first tap can't mark the whole roster owned by accident. Filtered
+  handfuls still mark instantly.
+- **Changed:** trimmed the live-event announcement headline so it doesn't swallow
+  the top of the screen on mobile.
+
+*Why:* competitor trackers are lean and lead with the "copy your collection to
+Discord" loop; our depth already beats them, but the first-run experience had
+rough edges (empty leaderboard, share gated behind login, stale map copy) that
+cost us at exactly the moments that decide whether a new visitor stays.
+
+---
+
 ## July 16, 2026 — Source refresh (data re-verified, credits & README current)
 
 - **Changed:** re-verified the v41.20 roster against Beebom, Vice, GAMES.GG,

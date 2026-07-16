@@ -18,7 +18,7 @@ const POINTS = [
   { icon: '☁️', text: 'Log in to save to the cloud and get a shareable link with your gamertag.' },
   { icon: '🏆', text: 'Climb the Flex Score leaderboard and compare collections with other players.' },
   { icon: '🔁', text: 'Post and find trades on the Trade board — full trades or indexing.' },
-  { icon: '🗺️', text: 'Explore the community loot map for sprite-chest and fishing spots.' },
+  { icon: '🗺️', text: 'Check the Farming guide for the best sprite-chest hotspots and map links.' },
 ]
 
 export default function WelcomeModal() {

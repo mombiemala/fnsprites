@@ -18,7 +18,7 @@ export const ANNOUNCEMENTS = [
   {
     id: 'dc-hot-bat-summer-2026-07-16',
     emoji: '🦇',
-    message: 'DC “Hot Bat Summer” is live! New Batman Sprite (Mythic — deploy the Bat Cape midair) & Air Sprite. Boosted New Sprite Day spawns 2 PM & 9 PM ET.',
+    message: 'DC “Hot Bat Summer” is live — Batman, Air & Seven Sprites in v41.20. Boosted New Sprite Day spawns 2 PM & 9 PM ET.',
     link: 'https://beebom.com/fortnite-41-20-update-patch-notes/',
     linkLabel: 'Patch notes',
     start: '2026-07-16',

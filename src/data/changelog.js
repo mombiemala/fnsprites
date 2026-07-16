@@ -7,6 +7,21 @@
 export const CHANGELOG = [
   {
     date: 'July 16, 2026',
+    title: 'UX polish — first-impression fixes & guest sharing',
+    summary:
+      'A pass over the workflows a new visitor hits first: fixed stale onboarding copy, made the leaderboard actually show on open, guarded the bulk “mark all owned” button, and let logged-out players copy a share caption.',
+    changes: [
+      { tag: 'Fixed', text: 'The welcome modal no longer points new visitors at the retired community loot map — it now describes the Farming guide that replaced it.' },
+      { tag: 'Changed', text: 'The Leaderboard now loads automatically when you open the tab (with a loading skeleton) instead of sitting empty behind a “Load” button — a leaderboard you have to click to see undercuts the point of it.' },
+      { tag: 'Added', text: 'Logged-out players can now copy a ready-to-paste Discord/Reddit caption of their progress (with a link back), not just export images — sharing no longer requires an account.' },
+      { tag: 'Changed', text: 'Bulk “Mark all shown owned” now asks for confirmation on a big sweep (15+), so a curious first tap can’t mark the whole roster owned by accident. Filtered handfuls still mark instantly.' },
+      { tag: 'Changed', text: 'Trimmed the live-event announcement bar headline so it doesn’t swallow the top of the screen on mobile.' },
+    ],
+    why:
+      'Competitor trackers are lean and lead hard with the “copy your collection to Discord” loop; our depth already beats them, but the first-run experience had rough edges (an empty leaderboard, share gated behind login, stale map copy) that cost us on exactly the moments that decide whether a new visitor stays.',
+  },
+  {
+    date: 'July 16, 2026',
     title: 'Source refresh — data re-verified, credits & README brought current',
     summary:
       'Did a full pass over every open source we cite to confirm the roster, abilities and events are still accurate after v41.20, added a couple of new drop-rate sources, and cleaned the stale bits out of the footer and README.',

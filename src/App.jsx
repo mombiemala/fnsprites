@@ -250,6 +250,10 @@ export default function App() {
   const markAllShown = () => {
     const toAdd = bulkTargets.length - bulkOwnedCount
     if (!toAdd) return
+    // Confirm when it's a big sweep (e.g. the whole unfiltered roster) so a
+    // curious first-time tap can't wipe out the "mark what you own" flow. When
+    // you've filtered down to a handful, skip the prompt — it'd just be noise.
+    if (toAdd >= 15 && !window.confirm(`Mark all ${toAdd} shown sprites as owned? You can undo with “Unmark all shown”.`)) return
     bulkOwn(bulkTargets.map((s) => s.id), true)
     toast(`Marked ${toAdd} sprite${toAdd === 1 ? '' : 's'} owned 🎉`)
   }
@@ -257,6 +261,28 @@ export default function App() {
     if (!window.confirm(`Unmark all ${bulkTargets.length} shown sprites as not owned? This won't touch sprites hidden by your filters.`)) return
     bulkOwn(bulkTargets.map((s) => s.id), false)
     toast(`Unmarked ${bulkTargets.length} sprite${bulkTargets.length === 1 ? '' : 's'}`)
+  }
+
+  // Guest share caption — the Discord/Reddit copy loop is the cheapest growth
+  // lever, so don't gate it behind login. Logged-in users get the richer
+  // ShareBar version (with their gamertag + public link); guests get a plain
+  // caption pointing back at the app.
+  const copyGuestCaption = async () => {
+    const total = set.released
+    const pct = total ? Math.round((stats.owned / total) * 100) : 0
+    const missing = total - stats.owned
+    const url = `${window.location.origin}${window.location.pathname}`
+    const caption = [
+      `🧩 My Fortnite sprite collection: ${stats.owned}/${total} (${pct}%)${stats.mastered ? ` · ${stats.mastered} mastered ⭐` : ''}`,
+      missing > 0 ? `Still chasing ${missing} more sprite${missing === 1 ? '' : 's'}.` : `Full set — gotta catch ’em all! 🏆`,
+      `Track yours → ${url}`,
+    ].join('\n')
+    try {
+      await navigator.clipboard.writeText(caption)
+      toast('Caption copied — paste into Discord/Reddit!')
+    } catch {
+      toast('Could not copy caption', 'error')
+    }
   }
 
   const [exporting, setExporting] = useState(false)
@@ -538,9 +564,13 @@ export default function App() {
               <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
                 <h3 className="mb-2 font-display text-lg text-white">Share &amp; export</h3>
                 <p className="mb-3 text-sm text-[var(--muted)]">
-                  <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">Log in</button>{' '}
-                  to save your progress and get a shareable link with your gamertag.
+                  Share your progress now — or{' '}
+                  <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">log in</button>{' '}
+                  to save it and get a link with your gamertag.
                 </p>
+                <button onClick={copyGuestCaption} className="mb-2 w-full rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
+                  📋 Copy caption for Discord / Reddit
+                </button>
                 <div className="flex flex-wrap gap-2">
                   <button onClick={() => exportImage('collection')} disabled={exporting} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60">
                     {exporting ? 'Rendering…' : '⬇️ Collection image'}

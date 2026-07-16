@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '../context/authStore'
 import Tooltip from './Tooltip'
 import CompareModal from './CompareModal'
@@ -8,7 +8,10 @@ const MEDALS = ['🥇', '🥈', '🥉']
 export default function Leaderboard() {
   const { user, fetchLeaderboard } = useAuth()
   const [rows, setRows] = useState(null)
-  const [loading, setLoading] = useState(false)
+  // Start in the loading state so the auto-load effect never has to call
+  // setState synchronously on mount — a leaderboard behind a "Load" click reads
+  // as empty and undercuts the social proof it exists to show.
+  const [loading, setLoading] = useState(true)
   const [compare, setCompare] = useState(null)
 
   const load = async () => {
@@ -16,6 +19,19 @@ export default function Leaderboard() {
     setRows(await fetchLeaderboard())
     setLoading(false)
   }
+
+  // Auto-load once when the tab mounts. State is only set after the await
+  // resolves (asynchronously), so it doesn't trigger cascading renders.
+  useEffect(() => {
+    let alive = true
+    fetchLeaderboard().then((r) => {
+      if (!alive) return
+      setRows(r)
+      setLoading(false)
+    })
+    return () => { alive = false }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const myRank = rows ? rows.findIndex((r) => r.user_id === user?.id) : -1
 
@@ -39,6 +55,14 @@ export default function Leaderboard() {
       <p className="mb-3 text-xs text-[var(--muted)]">
         Public collections ranked by a rarity-weighted score (Mythic 20 · Legendary 8 · Epic 3 · Rare 1, +50% for mastered).
       </p>
+
+      {rows === null && loading && (
+        <div className="space-y-1">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="h-10 animate-pulse rounded-xl bg-[var(--bg-2)]" />
+          ))}
+        </div>
+      )}
 
       {rows !== null && (
         rows.length === 0 ? (
