@@ -163,14 +163,18 @@ export default function App() {
     [isShareView, shared, tracking]
   )
 
+  // Progress is measured against what's obtainable right now (released), so both
+  // the numerator and denominator exclude unreleased/rumored forms unless the
+  // user opts to show them — keeping the bar from ever reading past 100%.
   const stats = useMemo(() => {
     let owned = 0
     let mastered = 0
     for (const s of set.items) {
+      if (s.unreleased) continue
       if (activeTracking[s.id]?.owned) owned++
       if (activeTracking[s.id]?.mastered) mastered++
     }
-    return { owned, mastered, total: set.total }
+    return { owned, mastered, total: set.released }
   }, [activeTracking, set])
 
   // Owned/total per theme for the toolbar chips.
@@ -409,7 +413,12 @@ export default function App() {
       )}
 
       <div className="mb-5">
-        <ProgressStats owned={stats.owned} mastered={stats.mastered} total={stats.total} />
+        <ProgressStats
+          owned={stats.owned}
+          mastered={stats.mastered}
+          total={filters.showUnreleased ? set.total : set.released}
+          upcoming={set.total - set.released}
+        />
       </div>
 
       {/* Full-width filters bar (sticks to the top on scroll) */}

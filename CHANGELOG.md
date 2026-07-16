@@ -11,6 +11,38 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 16, 2026 — Progress counts what you can actually collect (redesign, part 2)
+
+- **Changed:** Collection & Mastery progress now measure against the
+  released/obtainable count (e.g. `/93`) instead of the full roster including
+  unreleased forms (`/141`). Owned counts exclude unreleased forms to match, so
+  the bar can never read past 100%.
+- **Added:** a caption under the bars — “*N* variants obtainable now · *M* more
+  rumored/upcoming (toggle **Show unreleased** in Filters to include them).”
+
+*Why:* a fresh player seeing “0/141” had no way to know 48 of those aren't in the
+game yet — it made the collection feel unfinishable. Measuring against what's live
+(and naming the upcoming remainder) makes progress honest and the goal reachable,
+while power users can still opt leaked forms in.
+
+---
+
+## July 16, 2026 — Cleaner collection filters (redesign, part 1)
+
+- **Changed:** on desktop, the theme/rarity chips, ownership, grouping and toggles
+  now collapse behind a single **“⚙ Filters”** button (with an active-count badge) —
+  just like mobile already did. Search and Sort stay out for quick access, so the
+  sprite grid shows immediately instead of after two rows of chips.
+- **Changed:** inside the panel, controls are grouped under clear **Variant** and
+  **Rarity** headings.
+
+*Why:* the old desktop layout dumped a search box, three dropdowns, two checkboxes
+and ~15 filter chips above the grid — you had to scroll past all of it to see a
+sprite. Collapsing it keeps power-user filtering one tap away while letting the
+collection lead. First step of a larger top-of-page tidy-up.
+
+---
+
 ## July 16, 2026 — Seven Sprite is now live
 
 - **Changed:** Seven (reveals enemy foot trails for your squad, 10→30s by level)

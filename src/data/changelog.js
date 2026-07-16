@@ -7,6 +7,30 @@
 export const CHANGELOG = [
   {
     date: 'July 16, 2026',
+    title: 'Progress that counts what you can actually collect (redesign, part 2)',
+    summary:
+      'The progress bars now measure against the variants that are obtainable right now, so 100% means “done with everything live” — and the leftover rumored/upcoming forms are called out instead of quietly inflating the total.',
+    changes: [
+      { tag: 'Changed', text: 'Collection & Mastery progress now use the released/obtainable count as the denominator (e.g. /93) instead of the full roster including unreleased forms (/141). Owned counts exclude unreleased forms to match, so the bar can never read past 100%.' },
+      { tag: 'Added', text: 'A caption under the bars spells it out: “N variants obtainable now · M more rumored/upcoming (toggle Show unreleased in Filters to include them).”' },
+    ],
+    why:
+      'A fresh player seeing “0/141” had no way to know 48 of those aren’t even in the game yet — it made the collection feel unfinishable. Measuring against what’s live (and naming the upcoming remainder) makes progress honest and the goal reachable, while power users can still opt the leaked forms in.',
+  },
+  {
+    date: 'July 16, 2026',
+    title: 'Cleaner collection filters (redesign, part 1)',
+    summary:
+      'The collection page no longer buries the sprites under a wall of controls — the filters now tuck behind a single button on every screen size.',
+    changes: [
+      { tag: 'Changed', text: 'On desktop, the theme/rarity chips, ownership, grouping and toggles now collapse behind a single “⚙ Filters” button (with an active-count badge) — just like mobile already did. Search and Sort stay out for quick access, so the sprite grid shows immediately instead of after two rows of chips.' },
+      { tag: 'Changed', text: 'Inside the panel, controls are grouped under clear “Variant” and “Rarity” headings.' },
+    ],
+    why:
+      'The old desktop layout dumped a search box, three dropdowns, two checkboxes and ~15 filter chips above the grid — you had to scroll past all of it to see a sprite. Collapsing it keeps power-user filtering one tap away while letting the collection lead. (First step of a larger top-of-page tidy-up.)',
+  },
+  {
+    date: 'July 16, 2026',
     title: 'Seven Sprite is now live',
     summary:
       'Seven released with v41.20 after all — flipped it to collectible with its variant line.',
