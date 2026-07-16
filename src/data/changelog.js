@@ -7,15 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'July 16, 2026',
-    title: 'Added datamined Pollo & Vini Jr. Mythic Sprites',
+    title: 'Pollo & Vini Jr. Mythic Sprites added — now live',
     summary:
-      'The v41.20 files turned up two Mythic football-collab Sprites — added them to the roster as leaked/unconfirmed with their datamined abilities.',
+      'Two Mythic football-collab Sprites went live in v41.20 — added to the roster as collectible, with their abilities and full variant lines.',
     changes: [
       { tag: 'Added', text: 'Pollo (Mythic) — on an elimination, slowly replenish shield for you and nearby squad (scales per level).' },
-      { tag: 'Added', text: 'Vini Jr. / Vinícius Júnior (Mythic) — sprint briefly to make your slide destructive; slide-kicking enemies boosts fire rate & reload. Both are flagged Rumored (datamined in v41.20, not officially announced), and appear in the News feed too.' },
+      { tag: 'Added', text: 'Vini Jr. / Vinícius Júnior (Mythic) — sprint briefly to make your slide destructive; slide-kicking enemies boosts fire rate & reload. Both are live (found in Sprite Chests) with Gold, Gummy, Galaxy & Holofoil, and appear in the News feed.' },
     ],
     why:
-      'They surfaced in the v41.20 datamine alongside the Batman drop, so tracking them early (clearly marked as leaks) is useful — the Rumored flag keeps it honest until Epic confirms.',
+      'They shipped in v41.20 alongside the Batman drop and are confirmed obtainable, so they’re marked collectible like the rest of the roster. (Art comes from the official sprites at first chance — Vini Jr. is a real player, so no AI-generated likeness.)',
   },
   {
     date: 'July 16, 2026',

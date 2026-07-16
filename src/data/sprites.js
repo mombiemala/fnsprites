@@ -101,14 +101,13 @@ export const SPRITE_TYPES = [
   { id: 'spiderman', name: 'Spider-Man', icon: '🕷️', rarity: 'Legendary', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-30',
     ability: 'Datamined Marvel collab Sprite — reportedly grants web-swinging mobility. Leaked for ~Jul 30 (v41.30); not yet confirmed by Epic.',
     variants: { normal: U } },
-  // Football-collab Mythics datamined in the v41.20 files (Jul 16). Abilities per
-  // FNBRintel; not yet officially announced/released by Epic.
-  { id: 'pollo', name: 'Pollo', icon: '🐔', rarity: 'Mythic', dropRate: null, released: false, rumored: true,
-    ability: 'On an elimination, slowly replenish shield for you and nearby squad (duration grows per level). Mythic football-collab Sprite datamined in v41.20 — not yet confirmed by Epic.',
-    variants: { normal: U } },
-  { id: 'vinijr', name: 'Vini Jr.', icon: '⚽', rarity: 'Mythic', dropRate: null, released: false, rumored: true,
-    ability: 'Sprint briefly to make your slide destructive; slide-kicking enemies boosts your fire rate & reload speed. Mythic football-collab Sprite datamined in v41.20 — not yet confirmed by Epic.',
-    variants: { normal: U } },
+  // Football-collab Mythics — live in v41.20 (Jul 16), found in Sprite Chests.
+  { id: 'pollo', name: 'Pollo', icon: '🐔', rarity: 'Mythic', dropRate: null, released: true,
+    ability: 'On an elimination, slowly replenish shield for you and nearby squad (duration grows per level). Mythic football-collab Sprite, live in the Jul 16 (v41.20) update.',
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
+  { id: 'vinijr', name: 'Vini Jr.', icon: '⚽', rarity: 'Mythic', dropRate: null, released: true,
+    ability: 'Sprint briefly to make your slide destructive; slide-kicking enemies boosts your fire rate & reload speed. Mythic football-collab Sprite (Vinícius Júnior), live in the Jul 16 (v41.20) update.',
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
 ]
 
 export const RARITY_ORDER = ['Rare', 'Epic', 'Legendary', 'Mythic']

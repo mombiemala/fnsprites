@@ -11,16 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## July 16, 2026 — Datamined Pollo & Vini Jr. Mythic Sprites
+## July 16, 2026 — Pollo & Vini Jr. Mythic Sprites (live)
 
 - **Added:** **Pollo** (Mythic) — on an elimination, slowly replenish shield for
   you and nearby squad (scales per level).
 - **Added:** **Vini Jr.** / Vinícius Júnior (Mythic) — sprint briefly to make your
   slide destructive; slide-kicking enemies boosts fire rate & reload.
-- Both flagged **Rumored** (datamined in v41.20 per FNBRintel/Vice, not officially
-  announced) and added to the News feed.
+- Both **live** in v41.20 (found in Sprite Chests) with Gold/Gummy/Galaxy/Holofoil,
+  and added to the News feed. Official art at first chance (Vini Jr. is a real
+  player — no AI-generated likeness).
 
-*Why:* they surfaced in the v41.20 datamine; tracking early with a clear leak flag.
+*Why:* confirmed obtainable in v41.20, so marked collectible like the rest.
 
 ---
 
