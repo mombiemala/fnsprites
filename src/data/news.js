@@ -122,7 +122,7 @@ export const NEWS = [
     start: '2026-07-16',
     end: '2026-07-20',
     title: 'Pollo & Vini Jr. Mythic Sprites are live! ⚽',
-    body: 'Two Mythic football-collab Sprites are live in v41.20, found in Sprite Chests. Pollo: on an elimination, slowly replenish shield for you and nearby squad (scales per level). Vini Jr. (Vinícius Júnior): sprint briefly to make your slide destructive, and slide-kicking enemies boosts your fire rate & reload. Both come in Gold, Gummy, Galaxy & Holofoil like the rest of the roster.',
+    body: 'Two Mythic football-collab Sprites are live in v41.20, found in Sprite Chests. Pollo: on an elimination, slowly replenish shield for you and nearby squad (scales per level). Vini Jr. (Vinícius Júnior): sprint briefly to make your slide destructive, and slide-kicking enemies boosts your fire rate & reload. Both are Normal-only for now — no Gold/Gummy/Galaxy/Holofoil line yet, like Burnt Peanut.',
     link: 'https://www.vice.com/en/article/fortnite-v41-20-new-sprites-leak/',
     source: 'Vice',
     official: false,

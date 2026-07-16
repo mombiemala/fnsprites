@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 16, 2026',
+    title: 'Official art for Pollo & Vini Jr. (Normal-only)',
+    summary:
+      'Both new Mythics now use their real in-game artwork, and are correctly set to Normal-only for now (like Burnt Peanut).',
+    changes: [
+      { tag: 'Added', text: 'Official sprite art for Pollo (a gamer character — headset, esports jersey, red beak) and Vini Jr. (Vinícius Júnior in the Brazil kit), background-removed and matched to the roster’s transparent format. These are the official in-game renders used for identification — not AI-generated likenesses.' },
+      { tag: 'Fixed', text: 'Set both to Normal-only (no Gold/Gummy/Galaxy/Holofoil line yet), like Burnt Peanut, and corrected the News entry to match.' },
+    ],
+    why:
+      'A real footballer’s sprite should be the official art, never an AI-fabricated likeness — so these use Epic’s own renders (background removed), consistent with how the rest of the roster uses official art.',
+  },
+  {
+    date: 'July 16, 2026',
     title: 'Pollo & Vini Jr. Mythic Sprites added — now live',
     summary:
       'Two Mythic football-collab Sprites went live in v41.20 — added to the roster as collectible, with their abilities and full variant lines.',

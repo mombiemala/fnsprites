@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 16, 2026 — Official art for Pollo & Vini Jr. (Normal-only)
+
+- **Added:** official in-game art for **Pollo** (gamer character — headset, esports
+  jersey, red beak) and **Vini Jr.** (Vinícius Júnior, Brazil kit), background-removed
+  to the roster's transparent format. Official renders for identification — **not
+  AI-generated likenesses**.
+- **Fixed:** set both to **Normal-only** (no Gold/Gummy/Galaxy/Holofoil yet, like
+  Burnt Peanut) and corrected the News entry.
+
+*Why:* a real footballer's sprite should be the official art, never an AI likeness.
+
+---
+
 ## July 16, 2026 — Pollo & Vini Jr. Mythic Sprites (live)
 
 - **Added:** **Pollo** (Mythic) — on an elimination, slowly replenish shield for
