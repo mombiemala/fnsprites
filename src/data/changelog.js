@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 16, 2026',
+    title: 'Cleaner header & one-row navigation',
+    summary:
+      'Reorganised the top of the app so everything lives in one predictable place: the title takes you home, every section and utility sits in a single nav row, and the save status moved somewhere it actually reads.',
+    changes: [
+      { tag: 'Added', text: 'The “FN Sprite Tracker” title is now clickable — it takes you back to your Collection (home). From a shared profile it takes you to your own tracker.' },
+      { tag: 'Changed', text: 'Collection, Leaderboard, Trade, News, Farming, Guide and More now sit together in one navigation row (Guide & More set off by a divider), instead of Guide/More floating in the header separate from the section tabs.' },
+      { tag: 'Changed', text: 'The “✓ Saved” cloud-sync status moved out of the crowded header row to sit directly under your profile name, where it clearly refers to your account.' },
+    ],
+    why:
+      'The header had two competing clusters — section tabs in one place, Guide/More/account controls in another — so “where do I click for X?” wasn’t obvious. One nav row for everything, a clickable title as the universal “home,” and status text anchored to the thing it describes make the app easier to move around. Home stays the Collection itself (not a separate landing page) so returning players reach the tool in zero clicks.',
+  },
+  {
+    date: 'July 16, 2026',
     title: 'Trade examples, one-card onboarding & SEO groundwork',
     summary:
       'Three follow-ups from the UX review: the Trade board now teaches its format instead of looking dead when empty, the new-visitor prompts collapse into a single card, and the app finally gives search engines and slow connections real content on first paint.',

@@ -11,6 +11,26 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 16, 2026 — Cleaner header & one-row navigation
+
+- **Added:** the "FN Sprite Tracker" title is now clickable — it takes you back
+  to your Collection (home); from a shared profile it goes to your own tracker.
+- **Changed:** Collection, Leaderboard, Trade, News, Farming, Guide and More now
+  sit together in one navigation row (Guide & More set off by a divider) instead
+  of Guide/More floating in the header separate from the section tabs.
+- **Changed:** the "✓ Saved" cloud-sync status moved out of the crowded header
+  row to sit directly under your profile name, where it clearly refers to your
+  account.
+
+*Why:* the header had two competing clusters — section tabs in one place,
+Guide/More/account controls in another — so "where do I click for X?" wasn't
+obvious. One nav row for everything, a clickable title as the universal "home,"
+and status anchored to the thing it describes make the app easier to move around.
+Home stays the Collection itself (not a separate landing page) so returning
+players reach the tool in zero clicks.
+
+---
+
 ## July 16, 2026 — Trade examples, one-card onboarding & SEO groundwork
 
 - **Added:** when the Trade board has no live posts it shows a few clearly-labelled

@@ -119,6 +119,15 @@ export default function App() {
     setView(id)
     if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+  // The app title is "home" → the Collection. From a shared profile (?u=…),
+  // home means leaving the shared view for your own tracker.
+  const goHome = () => {
+    if (isShareView) {
+      window.location.href = window.location.pathname
+      return
+    }
+    goToSection('collection')
+  }
   const [hintDismissed, setHintDismissed] = useState(() => {
     try { return localStorage.getItem('fnsprites.hint') === '1' } catch { return false }
   })
@@ -307,88 +316,56 @@ export default function App() {
     <div className="mx-auto min-h-screen max-w-6xl px-4 pb-24 pt-6 sm:px-6">
       <WelcomeModal />
       <AnnouncementBar />
-      <header className="mb-6 flex items-center justify-between gap-3">
-        <div>
-          <h1 className="font-display text-3xl leading-none text-white sm:text-4xl">
-            FN <span className="text-[var(--brand)]">Sprite</span> Tracker
+      <header className="mb-4 flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <h1 className="font-display text-3xl leading-none sm:text-4xl">
+            <button
+              onClick={goHome}
+              title={isShareView ? 'FN Sprite Tracker — go to your own tracker' : 'FN Sprite Tracker — back to your collection'}
+              className="rounded-lg text-left text-white outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--brand)]"
+            >
+              FN <span className="text-[var(--brand)]">Sprite</span> Tracker
+            </button>
           </h1>
           <p className="mt-1 text-xs text-[var(--muted)] sm:text-sm">
             {set.released} released variants · accurate to the Jul 16, 2026 update (v41.20 · DC Hot Bat Summer).
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setShowHelp(true)}
-            title="How Sprites work — extraction, leveling, mastery & trading"
-            className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]"
-          >
-            ❔ <span className="hidden sm:inline">Guide</span>
-          </button>
-          <div className="relative">
-            <button
-              onClick={() => setShowMore((v) => !v)}
-              aria-haspopup="menu"
-              aria-expanded={showMore}
-              title="More — About, Changelog, Backup, Report a bug, Support"
-              className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]"
-            >
-              ⋯ <span className="hidden sm:inline">More</span>
-            </button>
-            {showMore && (
-              <>
-                <button aria-hidden="true" tabIndex={-1} onClick={() => setShowMore(false)} className="fixed inset-0 z-30 cursor-default" />
-                <div role="menu" className="absolute right-0 z-40 mt-1 min-w-[11rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--panel)] py-1 text-left shadow-xl">
-                  {utilityLinks
-                    .filter((l) => l.id !== 'help')
-                    .map((l) =>
-                      l.href ? (
-                        <a key={l.id} href={l.href} target="_blank" rel="noreferrer" role="menuitem" onClick={() => setShowMore(false)} className="block px-3 py-2 text-xs font-bold text-[var(--muted)] hover:bg-[var(--panel-2)] hover:text-white">
-                          {l.label}
-                        </a>
-                      ) : (
-                        <button key={l.id} role="menuitem" onClick={() => { l.onClick(); setShowMore(false) }} className="block w-full px-3 py-2 text-left text-xs font-bold text-[var(--muted)] hover:bg-[var(--panel-2)] hover:text-white">
-                          {l.label}
-                        </button>
-                      ),
-                    )}
-                </div>
-              </>
-            )}
-          </div>
-          {!authLoading &&
-            (user ? (
-              <div className="flex items-center gap-2">
-                <span
-                  className={`hidden items-center gap-1 rounded-full px-2 py-1 text-[11px] font-bold sm:inline-flex ${
-                    cloudStatus === 'error'
-                      ? 'bg-red-500/15 text-red-300'
-                      : cloudStatus === 'saving' || syncing
-                        ? 'bg-amber-400/15 text-amber-300'
-                        : 'bg-emerald-400/15 text-emerald-300'
-                  }`}
-                  title={
-                    cloudStatus === 'error'
-                      ? 'Could not save to the cloud — check your connection'
-                      : 'Your collection is saved to the cloud'
-                  }
-                >
-                  {cloudStatus === 'error' ? '⚠ Sync error' : cloudStatus === 'saving' || syncing ? '↻ Saving…' : '✓ Saved'}
-                </span>
-                <button onClick={() => setShowProfile(true)} title="Profile & connections" className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
-                  ⚙ {profile?.gamertag || 'Profile'}
-                </button>
-              </div>
-            ) : (
-              <button onClick={() => setShowAuth(true)} className="rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-4 py-2 text-xs font-extrabold text-black">
-                Log in to save
+        {!authLoading &&
+          (user ? (
+            <div className="flex flex-col items-end gap-1">
+              <button onClick={() => setShowProfile(true)} title="Profile & connections" className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
+                ⚙ {profile?.gamertag || 'Profile'}
               </button>
-            ))}
-        </div>
+              <span
+                className={`inline-flex items-center gap-1 text-[11px] font-bold ${
+                  cloudStatus === 'error'
+                    ? 'text-red-300'
+                    : cloudStatus === 'saving' || syncing
+                      ? 'text-amber-300'
+                      : 'text-emerald-300'
+                }`}
+                title={
+                  cloudStatus === 'error'
+                    ? 'Could not save to the cloud — check your connection'
+                    : 'Your collection is saved to the cloud'
+                }
+              >
+                {cloudStatus === 'error' ? '⚠ Sync error' : cloudStatus === 'saving' || syncing ? '↻ Saving…' : '✓ Saved'}
+              </span>
+            </div>
+          ) : (
+            <button onClick={() => setShowAuth(true)} className="shrink-0 rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-4 py-2 text-xs font-extrabold text-black">
+              Log in to save
+            </button>
+          ))}
       </header>
 
       {!isShareView && <CollectionSwitcher value={collectionId} onChange={setCollectionId} />}
 
-      <nav className="mb-5 flex flex-wrap gap-1.5" role="tablist" aria-label="Sections">
+      {/* Primary navigation — every section plus the Guide & More utilities live
+          in one row, so the whole app is reachable from a single place. */}
+      <nav className="mb-5 flex flex-wrap items-center gap-1.5" aria-label="Sections">
         {TABS.map((t) => {
           const active = !isShareView && view === t.id
           const cls = `rounded-xl px-3 py-2 text-xs font-bold transition-colors ${
@@ -405,7 +382,7 @@ export default function App() {
             )
           }
           return (
-            <button key={t.id} role="tab" aria-selected={active} onClick={() => setView(t.id)} className={`${cls} relative`}>
+            <button key={t.id} aria-current={active ? 'page' : undefined} onClick={() => setView(t.id)} className={`${cls} relative`}>
               {t.label}
               {t.id === 'trade' && tradeBadge && (
                 <span className="ml-1 rounded-full bg-pink-500 px-1.5 py-0.5 text-[9px] font-extrabold text-white">{newTradeCount}</span>
@@ -413,6 +390,48 @@ export default function App() {
             </button>
           )
         })}
+
+        {/* Divider between sections (views) and utilities (modals/menu). */}
+        <span aria-hidden="true" className="mx-1 hidden h-5 w-px bg-[var(--border)] sm:block" />
+
+        <button
+          onClick={() => setShowHelp(true)}
+          title="How Sprites work — extraction, leveling, mastery & trading"
+          className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
+        >
+          ❔ Guide
+        </button>
+        <div className="relative">
+          <button
+            onClick={() => setShowMore((v) => !v)}
+            aria-haspopup="menu"
+            aria-expanded={showMore}
+            title="More — About, Changelog, Backup, Report a bug, Support"
+            className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
+          >
+            ⋯ More
+          </button>
+          {showMore && (
+            <>
+              <button aria-hidden="true" tabIndex={-1} onClick={() => setShowMore(false)} className="fixed inset-0 z-30 cursor-default" />
+              <div role="menu" className="absolute left-0 z-40 mt-1 min-w-[11rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--panel)] py-1 text-left shadow-xl">
+                {utilityLinks
+                  .filter((l) => l.id !== 'help')
+                  .map((l) =>
+                    l.href ? (
+                      <a key={l.id} href={l.href} target="_blank" rel="noreferrer" role="menuitem" onClick={() => setShowMore(false)} className="block px-3 py-2 text-xs font-bold text-[var(--muted)] hover:bg-[var(--panel-2)] hover:text-white">
+                        {l.label}
+                      </a>
+                    ) : (
+                      <button key={l.id} role="menuitem" onClick={() => { l.onClick(); setShowMore(false) }} className="block w-full px-3 py-2 text-left text-xs font-bold text-[var(--muted)] hover:bg-[var(--panel-2)] hover:text-white">
+                        {l.label}
+                      </button>
+                    ),
+                  )}
+              </div>
+            </>
+          )}
+        </div>
       </nav>
 
       {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'news' || effectiveView === 'map') && (
