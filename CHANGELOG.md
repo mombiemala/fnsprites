@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 14, 2026 — Removed a broken Seven Sprite image
+
+- **Fixed:** deleted `public/sprites/seven_normal.png` — a mismatched render with
+  an uncut background (off-style vs the roster). Seven (unreleased) now falls back
+  to the clean generated art; its other variants were already correct, and Air's
+  full set checks out. Batman & Spider-Man still render via SVG and need real art
+  (image generation, pending an API key).
+
+*Why:* a half-finished image looks worse than the clean fallback.
+
+---
+
 ## July 14, 2026 — Known Issues can be marked "Resolved"
 
 - **Added:** a `resolved` state for `tag: 'bug'` news entries — set `resolved: true`

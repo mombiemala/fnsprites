@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 14, 2026',
+    title: 'Removed a broken Seven Sprite image',
+    summary:
+      'The Seven Sprite’s Normal art was a mismatched render with an uncut background — pulled it so it falls back to the clean in-app art until a proper render replaces it.',
+    changes: [
+      { tag: 'Fixed', text: 'Removed the broken Normal render for the (unreleased) Seven Sprite — its background was never cut and the style didn’t match the rest of the roster. It now uses the consistent generated art. Seven’s other variants were already correct, and the Air Sprite’s full set checks out.' },
+    ],
+    why:
+      'A half-finished image looks worse than the clean fallback. Batman and Spider-Man still need real renders to match the roster — that needs image generation, which is queued for when an API key is available.',
+  },
+  {
+    date: 'July 14, 2026',
     title: 'Known Issues can now be marked “Resolved”',
     summary:
       'Bugs Epic fixes no longer just vanish from the feed — they get a green “✓ Resolved” badge and stick around a while so you can see what was fixed and when.',
