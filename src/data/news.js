@@ -99,7 +99,7 @@ export const NEWS = [
     tag: 'upcoming',
     tentative: true,
     title: 'DC Summer — Batman & Air Sprites (Jul 16 New Sprite Day)',
-    body: 'Epic’s schedule-for-the-week puts New Sprite Day on Thursday, July 16 (~7 AM ET) with two Sprites: Batman (Mythic — Gold, Gummy, Galaxy & Holofoil variants; gameplay power not yet revealed) and Air (sprint speed + jump height, no fall damage). Note: Seven was expected too, but it’s NOT on Epic’s Jul 16 schedule — some leaks point to ~Jul 23, unconfirmed. The wider DC Summer event also teases summer Harley Quinn, Poison Ivy & Catwoman skins, a Batmobile and an “Ace” dog sidekick. Details firm but pre-patch-notes — treat as a strong lead.',
+    body: 'Epic’s schedule-for-the-week puts New Sprite Day on Thursday, July 16 — the update lands ~7 AM ET, with boosted new-Sprite spawn sessions at 2 PM & 9 PM ET. Two Sprites: Batman (Mythic — Gold, Gummy, Galaxy & Holofoil variants; gameplay power not yet revealed) and Air (sprint speed + jump height, no fall damage). Note: Seven was expected too, but it’s NOT on Epic’s Jul 16 schedule — some leaks point to ~Jul 23, unconfirmed. The wider DC Summer event also teases summer Harley Quinn, Poison Ivy & Catwoman skins, a Batmobile and an “Ace” dog sidekick. Details firm but pre-patch-notes — treat as a strong lead.',
     link: 'https://www.vice.com/en/article/fortnite-sprites-july-16-update/',
     source: 'Vice',
     official: false,
