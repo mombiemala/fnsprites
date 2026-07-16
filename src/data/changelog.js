@@ -6,6 +6,19 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 16, 2026',
+    title: 'Batman Sprite art — real renders for launch day',
+    summary:
+      'Batman drops today, so it now has real rendered artwork for all its forms, matching the rest of the collection. Also gave the Seven Sprite a proper Normal render.',
+    changes: [
+      { tag: 'Added', text: 'Rendered artwork for the Batman Sprite across all its released forms — Normal, Gold, Gummy, Galaxy and Holofoil — in the same 3D chibi collectible style as the rest of the roster, so it no longer falls back to placeholder art on launch day.' },
+      { tag: 'Fixed', text: 'Replaced the Seven Sprite’s Normal render (the old one had an uncut background and off-style look) with a clean one that matches its other variants.' },
+      { tag: 'Changed', text: 'Audited every released Sprite × form — all of them now have consistent real art (no more SVG fallbacks for released sprites).' },
+    ],
+    why:
+      'A collection tracker should look complete the day a Sprite launches — half the shelf as real renders and Batman as a flat placeholder would read as unfinished. Now every released form is covered.',
+  },
+  {
     date: 'July 14, 2026',
     title: 'Removed a broken Seven Sprite image',
     summary:

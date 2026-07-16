@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 16, 2026 — Batman Sprite art (launch day)
+
+- **Added:** rendered artwork for the **Batman Sprite** across all released forms —
+  Normal, Gold, Gummy, Galaxy, Holofoil — in the roster's 3D chibi collectible
+  style (generated + background-cut), so it doesn't fall back to placeholder art
+  on launch day.
+- **Fixed:** replaced the **Seven** Sprite's Normal render (uncut background /
+  off-style) with a clean one matching its variants.
+- **Changed:** audited every released Sprite × form — all now have consistent real
+  art; no SVG fallbacks remain for released sprites.
+
+*Why:* the shelf should look complete the day a Sprite launches.
+
+---
+
 ## July 14, 2026 — Removed a broken Seven Sprite image
 
 - **Fixed:** deleted `public/sprites/seven_normal.png` — a mismatched render with
