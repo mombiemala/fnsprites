@@ -277,7 +277,7 @@ export default function App() {
             FN <span className="text-[var(--brand)]">Sprite</span> Tracker
           </h1>
           <p className="mt-1 text-xs text-[var(--muted)] sm:text-sm">
-            {set.released} released variants · accurate to the Jul 9, 2026 update (Holofoil).
+            {set.released} released variants · accurate to the Jul 16, 2026 update (v41.20 · DC Hot Bat Summer).
           </p>
         </div>
         <div className="flex items-center gap-2">
