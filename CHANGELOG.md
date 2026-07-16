@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 16, 2026 — Datamined Pollo & Vini Jr. Mythic Sprites
+
+- **Added:** **Pollo** (Mythic) — on an elimination, slowly replenish shield for
+  you and nearby squad (scales per level).
+- **Added:** **Vini Jr.** / Vinícius Júnior (Mythic) — sprint briefly to make your
+  slide destructive; slide-kicking enemies boosts fire rate & reload.
+- Both flagged **Rumored** (datamined in v41.20 per FNBRintel/Vice, not officially
+  announced) and added to the News feed.
+
+*Why:* they surfaced in the v41.20 datamine; tracking early with a clear leak flag.
+
+---
+
 ## July 16, 2026 — DC "Hot Bat Summer" live (v41.20)
 
 - **Added:** Batman's revealed power — deploy the **Bat Cape midair** (glide).

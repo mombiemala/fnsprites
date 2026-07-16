@@ -116,6 +116,17 @@ export const NEWS = [
     official: true,
   },
   {
+    ts: '2026-07-16c',
+    when: 'Jul 16, 2026 (leaked)',
+    tag: 'upcoming',
+    tentative: true,
+    title: 'Datamined: Pollo & Vini Jr. Mythic football Sprites',
+    body: 'The v41.20 files revealed two Mythic football-collab Sprites. Pollo: on an elimination, slowly replenish shield for you and nearby squad (scales per level). Vini Jr. (Vinícius Júnior): sprint briefly to make your slide destructive, and slide-kicking enemies boosts your fire rate & reload. Datamined only — abilities per FNBRintel, not yet officially announced by Epic.',
+    link: 'https://www.vice.com/en/article/fortnite-v41-20-new-sprites-leak/',
+    source: 'Vice',
+    official: false,
+  },
+  {
     ts: '2026-07-30',
     when: 'Jul 30, 2026 (leaked)',
     tag: 'upcoming',

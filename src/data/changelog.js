@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 16, 2026',
+    title: 'Added datamined Pollo & Vini Jr. Mythic Sprites',
+    summary:
+      'The v41.20 files turned up two Mythic football-collab Sprites — added them to the roster as leaked/unconfirmed with their datamined abilities.',
+    changes: [
+      { tag: 'Added', text: 'Pollo (Mythic) — on an elimination, slowly replenish shield for you and nearby squad (scales per level).' },
+      { tag: 'Added', text: 'Vini Jr. / Vinícius Júnior (Mythic) — sprint briefly to make your slide destructive; slide-kicking enemies boosts fire rate & reload. Both are flagged Rumored (datamined in v41.20, not officially announced), and appear in the News feed too.' },
+    ],
+    why:
+      'They surfaced in the v41.20 datamine alongside the Batman drop, so tracking them early (clearly marked as leaks) is useful — the Rumored flag keeps it honest until Epic confirms.',
+  },
+  {
+    date: 'July 16, 2026',
     title: 'DC “Hot Bat Summer” is live — roster caught up to v41.20',
     summary:
       'The July 16 update landed, so the tracker now reflects what actually shipped: Batman & Air are collectible, Batman’s power is filled in, and the news/announcement/farming notes are updated.',
