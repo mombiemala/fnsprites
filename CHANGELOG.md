@@ -15,9 +15,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 - **Added:** the "FN Sprite Tracker" title is now clickable — it takes you back
   to your Collection (home); from a shared profile it goes to your own tracker.
-- **Changed:** Collection, Leaderboard, Trade, News, Farming, Guide and More now
-  sit together in one navigation row (Guide & More set off by a divider) instead
-  of Guide/More floating in the header separate from the section tabs.
+- **Changed:** Collection, Leaderboard, Trade, News, Farming and Guide now sit
+  together in one navigation row, with only the More menu set off by a divider,
+  instead of Guide/More floating in the header separate from the section tabs.
 - **Changed:** the "✓ Saved" cloud-sync status moved out of the crowded header
   row to sit directly under your profile name, where it clearly refers to your
   account.

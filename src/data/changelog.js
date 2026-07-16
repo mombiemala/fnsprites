@@ -12,7 +12,7 @@ export const CHANGELOG = [
       'Reorganised the top of the app so everything lives in one predictable place: the title takes you home, every section and utility sits in a single nav row, and the save status moved somewhere it actually reads.',
     changes: [
       { tag: 'Added', text: 'The “FN Sprite Tracker” title is now clickable — it takes you back to your Collection (home). From a shared profile it takes you to your own tracker.' },
-      { tag: 'Changed', text: 'Collection, Leaderboard, Trade, News, Farming, Guide and More now sit together in one navigation row (Guide & More set off by a divider), instead of Guide/More floating in the header separate from the section tabs.' },
+      { tag: 'Changed', text: 'Collection, Leaderboard, Trade, News, Farming and Guide now sit together in one navigation row, with only the More menu set off by a divider, instead of Guide/More floating in the header separate from the section tabs.' },
       { tag: 'Changed', text: 'The “✓ Saved” cloud-sync status moved out of the crowded header row to sit directly under your profile name, where it clearly refers to your account.' },
     ],
     why:

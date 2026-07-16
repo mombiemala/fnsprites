@@ -391,9 +391,8 @@ export default function App() {
           )
         })}
 
-        {/* Divider between sections (views) and utilities (modals/menu). */}
-        <span aria-hidden="true" className="mx-1 hidden h-5 w-px bg-[var(--border)] sm:block" />
-
+        {/* Guide sits with the sections (it's a place people go to read), next to
+            Farming; the divider sets off only the More utility menu. */}
         <button
           onClick={() => setShowHelp(true)}
           title="How Sprites work — extraction, leveling, mastery & trading"
@@ -401,6 +400,10 @@ export default function App() {
         >
           ❔ Guide
         </button>
+
+        {/* Divider between sections and the More utility menu. */}
+        <span aria-hidden="true" className="mx-1 hidden h-5 w-px bg-[var(--border)] sm:block" />
+
         <div className="relative">
           <button
             onClick={() => setShowMore((v) => !v)}
