@@ -11,6 +11,30 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 16, 2026 — Trade examples, one-card onboarding & SEO groundwork
+
+- **Added:** when the Trade board has no live posts it shows a few clearly-labelled
+  **Example** trades (what a good want/offer post looks like) with a "be the first
+  to post a real one" nudge — inert, badged, and gone the instant a real trade
+  exists, so nothing is faked as activity.
+- **Changed:** onboarding consolidated from three stacked prompts (hint +
+  screenshot-import card + bulk "mark all" bar) into **one card** with all the
+  shortcuts inside; the standalone import card/bulk bar only appear once you've
+  started, so there's exactly one import entry point at any time.
+- **Added:** SEO & first-paint — the page serves a real, crawlable hero (title +
+  tagline) and a loading state instantly instead of a blank screen while the app
+  boots, plus JSON-LD structured data, a canonical URL, `robots.txt` and a
+  `sitemap.xml`.
+
+*Why:* empty social surfaces are what make a tool feel dead — showing the *format*
+teaches newcomers and invites the first real post without deceiving anyone.
+Consolidating onboarding removes the "wall of prompts" competing for a new user's
+first tap. And a client-only SPA hands crawlers and link-unfurlers a blank div;
+static first-paint content + structured data make the app discoverable and its
+shared links rich — compounding the guest-sharing loop.
+
+---
+
 ## July 16, 2026 — UX polish (first-impression fixes & guest sharing)
 
 - **Fixed:** the welcome modal no longer points new visitors at the retired

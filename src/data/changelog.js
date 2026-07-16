@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 16, 2026',
+    title: 'Trade examples, one-card onboarding & SEO groundwork',
+    summary:
+      'Three follow-ups from the UX review: the Trade board now teaches its format instead of looking dead when empty, the new-visitor prompts collapse into a single card, and the app finally gives search engines and slow connections real content on first paint.',
+    changes: [
+      { tag: 'Added', text: 'When the Trade board has no live posts, it now shows a few clearly-labelled “Example” trades (what a good want/offer post looks like) with a “be the first to post a real one” nudge — they’re inert, badged, and vanish the instant a real trade exists, so nothing is ever faked as activity.' },
+      { tag: 'Changed', text: 'Onboarding consolidated: new visitors used to see three stacked prompts (a hint, a screenshot-import card, and a bulk “mark all” bar). Now it’s one card with all the shortcuts inside — Import a screenshot, Mark all owned, How Sprites work — and the standalone import card/bulk bar only appear once you’ve started, so there’s exactly one import entry point at any time.' },
+      { tag: 'Added', text: 'SEO & first-paint: the page now serves a real, crawlable hero (title + tagline) and a loading state instantly instead of a blank screen while the app boots, plus JSON-LD structured data, a canonical URL, robots.txt and a sitemap.' },
+    ],
+    why:
+      'Empty social surfaces (the map, and nearly the Trade board) are what make a tool feel dead — showing the *format* teaches newcomers and invites the first real post without deceiving anyone. Consolidating onboarding removes the “wall of prompts” that competed for a new user’s first tap. And a client-only SPA hands crawlers and link-unfurlers a blank div; static first-paint content + structured data make the app discoverable and its shared links rich — which compounds the guest-sharing loop we just added.',
+  },
+  {
+    date: 'July 16, 2026',
     title: 'UX polish — first-impression fixes & guest sharing',
     summary:
       'A pass over the workflows a new visitor hits first: fixed stale onboarding copy, made the leaderboard actually show on open, guarded the bulk “mark all owned” button, and let logged-out players copy a share caption.',

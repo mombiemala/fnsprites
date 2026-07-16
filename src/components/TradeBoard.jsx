@@ -4,6 +4,7 @@ import { useToast } from '../context/toastStore'
 import { ALL_SPRITES } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import { fetchTradePosts, createTradePost, deleteTradePost, fetchTradeMatches, vouchForTrader, unvouchTrader } from '../lib/tradeBoard'
+import { EXAMPLE_TRADES } from '../data/tradeExamples'
 import TradePanel from './TradePanel'
 
 const RELEASED = ALL_SPRITES.filter((s) => s.released)
@@ -41,10 +42,13 @@ function Chips({ ids }) {
 function PostCard({ p, why, onDelete, onVouch, canVouch }) {
   const vouches = p.vouches || 0
   return (
-    <div className="rounded-xl bg-[var(--bg-2)] p-3">
+    <div className={`rounded-xl p-3 ${p.example ? 'border border-dashed border-[var(--border)] bg-[var(--bg-2)]/50' : 'bg-[var(--bg-2)]'}`}>
       <div className="flex items-start justify-between gap-2">
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-sm font-bold text-white">{p.contact || 'A collector'}</span>
+          {p.example && (
+            <span className="rounded-full bg-amber-400/15 px-1.5 py-0.5 text-[10px] font-bold text-amber-300">Example</span>
+          )}
           {vouches > 0 && (
             <span
               title={`${vouches} collector${vouches === 1 ? '' : 's'} vouched for this trader`}
@@ -57,7 +61,7 @@ function PostCard({ p, why, onDelete, onVouch, canVouch }) {
           {p.methods.map((m) => (
             <span key={m} className="rounded bg-[var(--panel-2)] px-1.5 py-0.5 text-[10px] font-bold text-[var(--muted)]">{m === 'index' ? '🔁 Index' : '⇄ Full'}</span>
           ))}
-          <span className="text-[11px] text-[var(--muted)]">· {timeAgo(p.created_at)}</span>
+          {!p.example && <span className="text-[11px] text-[var(--muted)]">· {timeAgo(p.created_at)}</span>}
         </div>
         <div className="flex shrink-0 items-center gap-2">
           {canVouch && !p.mine && onVouch && (
@@ -345,7 +349,20 @@ export default function TradeBoard() {
         {loading ? (
           <p className="py-8 text-center text-sm text-[var(--muted)]">Loading trades…</p>
         ) : shown.length === 0 ? (
-          <p className="py-8 text-center text-sm text-[var(--muted)]">No trades yet{filter ? ' for that sprite' : ''} — be the first to post!</p>
+          filter ? (
+            <p className="py-8 text-center text-sm text-[var(--muted)]">No open trades for that sprite yet.</p>
+          ) : (
+            // No live trades yet: show clearly-labelled examples so newcomers see
+            // the format and post the first real one — never faked as activity.
+            <div>
+              <p className="mb-3 rounded-xl border border-dashed border-[var(--border)] bg-[var(--bg-2)]/40 px-3 py-2 text-center text-xs text-[var(--muted)]">
+                No live trades yet — here’s what a good post looks like. <b className="text-white">Be the first to post a real one!</b>
+              </p>
+              <div className="flex flex-col gap-2">
+                {EXAMPLE_TRADES.map((p) => <PostCard key={p.id} p={p} canVouch={false} />)}
+              </div>
+            </div>
+          )
         ) : (
           <div className="flex flex-col gap-2">
             {shown.map((p) => <PostCard key={p.id} p={p} onDelete={remove} onVouch={vouch} canVouch={!!user} />)}

@@ -263,6 +263,12 @@ export default function App() {
     toast(`Unmarked ${bulkTargets.length} sprite${bulkTargets.length === 1 ? '' : 's'}`)
   }
 
+  // First-run onboarding gate. While it's showing we suppress the standalone
+  // bulk bar and the sidebar import card, so a new visitor sees ONE clear card
+  // (with both shortcuts inside it) instead of three stacked prompts.
+  const hasAnyOwned = useMemo(() => Object.values(activeTracking).some((v) => v?.owned), [activeTracking])
+  const showOnboarding = !isShareView && !readOnly && !hintDismissed && !hasAnyOwned
+
   // Guest share caption — the Discord/Reddit copy loop is the cheapest growth
   // lever, so don't gate it behind login. Logged-in users get the richer
   // ShareBar version (with their gamertag + public link); guests get a plain
@@ -465,19 +471,34 @@ export default function App() {
       <div className="lg:flex lg:items-start lg:gap-6">
         {/* Main column: grid */}
         <div className="min-w-0 lg:flex-1">
-          {!isShareView && !readOnly && !hintDismissed && !Object.values(activeTracking).some((v) => v?.owned) && (
-            <div className="mb-4 flex items-start gap-3 rounded-xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 px-3 py-2.5">
-              <span className="text-lg leading-none">👋</span>
-              <div className="min-w-0 flex-1 text-sm text-[var(--text)]/90">
-                <b className="text-white">New here?</b> Tap any sprite to mark it <b>Have</b>, or{' '}
-                <button onClick={() => setShowImport(true)} className="font-bold text-[var(--brand)] underline">import your locker screenshot</button>{' '}
-                to fill it in fast. Progress saves in this browser — new to Sprites?{' '}
-                <button onClick={() => setShowHelp(true)} className="font-bold text-[var(--brand)] underline">how they work</button>.
+          {showOnboarding && (
+            <div className="mb-4 rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-4">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <h2 className="font-display text-lg text-white">👋 New here? Build your collection</h2>
+                  <p className="mt-1 text-sm text-[var(--text)]/90">
+                    Tap any sprite to mark it <b>Have</b> — or use a shortcut to fill it in fast:
+                  </p>
+                </div>
+                <button onClick={dismissHint} aria-label="Dismiss" className="shrink-0 text-[var(--muted)] hover:text-white">✕</button>
               </div>
-              <button onClick={dismissHint} aria-label="Dismiss" className="shrink-0 text-[var(--muted)] hover:text-white">✕</button>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <button onClick={() => setShowImport(true)} className="rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-3 py-2 text-xs font-extrabold text-black">
+                  📷 Import a locker screenshot
+                </button>
+                {bulkTargets.length > 0 && !bulkAllOwned && (
+                  <button onClick={markAllShown} title="Marks every released sprite currently shown as owned" className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
+                    ✓ Mark all {bulkTargets.length} owned
+                  </button>
+                )}
+                <button onClick={() => setShowHelp(true)} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
+                  ❔ How Sprites work
+                </button>
+              </div>
+              <p className="mt-2 text-[11px] text-[var(--muted)]">Progress saves in this browser — log in to sync &amp; share it.</p>
             </div>
           )}
-          {!readOnly && bulkTargets.length > 0 && (
+          {!readOnly && bulkTargets.length > 0 && !showOnboarding && (
             <div className="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2">
               <span className="text-xs text-[var(--muted)]">
                 <b className="text-white">{bulkOwnedCount}</b> of <b className="text-white">{bulkTargets.length}</b> shown owned
@@ -538,7 +559,7 @@ export default function App() {
 
         {/* Sidebar: a static column beside the grid that scrolls with the page */}
         <aside className="mt-8 flex flex-col gap-4 lg:mt-0 lg:w-80 lg:shrink-0">
-          {!isShareView && !readOnly && (
+          {!isShareView && !readOnly && !showOnboarding && (
             <button
               onClick={() => setShowImport(true)}
               className="flex items-center gap-3 rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-3 text-left transition-colors hover:bg-[var(--brand)]/15"
