@@ -25,6 +25,7 @@ export const FARMING_TIPS = [
   'Turn on **Visualized Sounds** — Sprite Chests have a distinct hum, and the setting draws it on-screen so you can spot one through a wall.',
   'Since only some spawns are live each match, **rotate between two nearby POIs** rather than expecting every chest to be there.',
   'Farm during **Mastery Mondays** and **Power Hours** for boosted spawns and 2× Sprite XP/Dust — see the News tab for the current schedule.',
+  'New in v41.20: the **Bat Cave** under **Wonkeeland** (NE corner, drop in via the ascender) is a fresh spot to sweep — Wonkeeland is already one of the busier chest POIs.',
 ]
 
 // The authoritative interactive maps — better than anything we could crowd-source.

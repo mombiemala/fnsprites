@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 16, 2026 — DC "Hot Bat Summer" live (v41.20)
+
+- **Added:** Batman's revealed power — deploy the **Bat Cape midair** (glide).
+  Batman & Air are now collectible (auto-released on the Jul 16 date); Batman is
+  Mythic with Gold/Gummy/Galaxy/Holofoil.
+- **Changed:** DC news item flipped from tentative leak → live "Hot Bat Summer"
+  event (v41.20 patch-notes link) + a live announcement banner through Jul 20;
+  farming note added for the new **Bat Cave** landmark under Wonkeeland.
+- **Changed:** kept **Seven** unreleased — Epic's official New Sprite Day list
+  still shows only Batman & Air, so it stays unconfirmed rather than auto-releasing.
+
+*Why:* drop day is when accuracy matters most — follow Epic's confirmed notes,
+don't over-claim Seven.
+
+---
+
 ## July 16, 2026 — Batman Sprite art (launch day)
 
 - **Added:** rendered artwork for the **Batman Sprite** across all released forms —

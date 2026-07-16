@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 16, 2026',
+    title: 'DC “Hot Bat Summer” is live — roster caught up to v41.20',
+    summary:
+      'The July 16 update landed, so the tracker now reflects what actually shipped: Batman & Air are collectible, Batman’s power is filled in, and the news/announcement/farming notes are updated.',
+    changes: [
+      { tag: 'Added', text: 'Batman’s revealed power: deploy the Bat Cape midair for a glide. Batman & Air Sprites are now live (auto-released with the Jul 16 date) — Batman is Mythic with Gold, Gummy, Galaxy & Holofoil.' },
+      { tag: 'Changed', text: 'The DC news item flipped from a tentative leak to a live “Hot Bat Summer” event (with the v41.20 patch-notes link), and a live announcement banner runs through Jul 20. Added a farming note for the new Bat Cave landmark under Wonkeeland.' },
+      { tag: 'Changed', text: 'Held Seven back: despite the launch, Epic’s official New Sprite Day list still shows only Batman & Air, so Seven stays unreleased/unconfirmed rather than auto-releasing.' },
+    ],
+    why:
+      'Drop day is exactly when accuracy matters most — following Epic’s confirmed patch notes (Batman + Air, Batman’s Bat Cape power, the Bat Cave POI) keeps the tracker honest, while not over-claiming Seven until Epic lists it.',
+  },
+  {
+    date: 'July 16, 2026',
     title: 'Batman Sprite art — real renders for launch day',
     summary:
       'Batman drops today, so it now has real rendered artwork for all its forms, matching the rest of the collection. Also gave the Seven Sprite a proper Normal render.',

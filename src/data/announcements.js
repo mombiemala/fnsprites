@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'dc-hot-bat-summer-2026-07-16',
+    emoji: '🦇',
+    message: 'DC “Hot Bat Summer” is live! New Batman Sprite (Mythic — deploy the Bat Cape midair) & Air Sprite. Boosted New Sprite Day spawns 2 PM & 9 PM ET.',
+    link: 'https://beebom.com/fortnite-41-20-update-patch-notes/',
+    linkLabel: 'Patch notes',
+    start: '2026-07-16',
+    end: '2026-07-20',
+    source: 'Beebom',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'holofoil-sprites-live-2026-07-09',
     emoji: '🌈',
     message: 'Holofoil Sprites are live! A shiny Holofoil for 15 Sprites — +5% squad chance to find rare Gold/Gummy/Galaxy. Holofoil Hours: Sat, Jul 11.',

@@ -96,7 +96,7 @@ export const SPRITE_TYPES = [
     ability: 'A movement Sprite — increases sprint speed & jump height and removes fall damage. On Epic’s Jul 16 New Sprite Day schedule (DC Summer); power not fully confirmed by Epic.',
     variants: { normal: U, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U, quack: U } },
   { id: 'batman', name: 'Batman', icon: '🦇', rarity: 'Mythic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
-    ability: 'DC Summer collab Sprite on Epic’s Jul 16 New Sprite Day schedule. Comes in Gold, Gummy, Galaxy & Holofoil per Epic’s marketing; its gameplay power hasn’t been revealed yet.',
+    ability: 'Deploy the Bat Cape midair for a glide / slow descent. DC “Hot Bat Summer” collab Sprite (Mythic), in Gold, Gummy, Galaxy & Holofoil. Live in the Jul 16 (v41.20) update.',
     variants: { normal: U, gold: U, gummy: U, galaxy: U, holofoil: U } },
   { id: 'spiderman', name: 'Spider-Man', icon: '🕷️', rarity: 'Legendary', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-30',
     ability: 'Datamined Marvel collab Sprite — reportedly grants web-swinging mobility. Leaked for ~Jul 30 (v41.30); not yet confirmed by Epic.',
