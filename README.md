@@ -3,20 +3,23 @@
 A fan-made Fortnite **sprite tracker** — track every sprite across all of its
 variants (Normal, Gold, Gummy, Galaxy, Gem, Holofoil, the new **Cube** & **Quack**
 forms, and the special **Rift** line), see your collection and mastery progress,
-save it to the cloud, compare with other players, trade, and explore a
-community-built loot map. Roster is accurate to the **Jul 9, 2026 update** (Holofoil), with
-upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased**.
+save it to the cloud, compare with other players, trade, and find the best
+sprite-chest farming spots. Roster is accurate to the **Jul 16, 2026 update**
+(v41.20 · DC Hot Bat Summer): Batman, Air & Seven are live, plus the football
+Mythics **Pollo** & **Vini Jr.** (Normal-only for now, like Burnt Peanut).
+Anything Epic hasn't confirmed — e.g. the leaked **Spider-Man** sprite (~Jul 30,
+v41.30) — is flagged **Rumored**.
 
 > Not affiliated with Epic Games. Support the maker with **Creator Code: MOMBIE**
 > in the Fortnite Item Shop. #EpicPartner
 
 ## Features
 
-- **Accurate roster** — every released sprite & variant as of Jul 9, 2026 (Holofoil)
-  (incl. Striker, Fishy, Aura, Boss, Grim Reaper); upcoming sprites & forms are
-  clearly flagged **unreleased**, and anything Epic hasn't confirmed (leaked
-  sprites like Air/Seven/Batman/Spider-Man, and the Cube/Quack bonuses) wears a
-  **Rumored** label so leaks never read as fact.
+- **Accurate roster** — every released sprite & variant as of Jul 16, 2026
+  (v41.20: Batman, Air, Seven, Pollo, Vini Jr.; incl. Striker, Fishy, Aura, Boss,
+  Grim Reaper and the Holofoil line); upcoming sprites & forms are clearly flagged
+  **unreleased**, and anything Epic hasn't confirmed (the leaked Spider-Man sprite,
+  the Cube/Quack bonuses) wears a **Rumored** label so leaks never read as fact.
 - **Upcoming & leaked** — a card that lists every unreleased/datamined sprite
   sorted by its leaked release date, with a live **countdown** (“in 8 days”),
   tap-to-open. All clearly badged **Rumored**.
@@ -25,9 +28,10 @@ upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased*
   identification only and sourced from
   [UltronCore/sprite-tracker](https://github.com/UltronCore/sprite-tracker);
   variant forms UltronCore lacks were AI-reskinned (Google Gemini) from those
-  base images, and upcoming leaked sprites with no official render yet (Air,
-  Seven) use on-style Gemini renders until Epic ships the real art. A generated
-  SVG fallback covers any missing image.
+  base images. Real-person and licensed collab sprites (e.g. **Vini Jr.** /
+  Vinícius Júnior, **Pollo**) use Epic's **official in-game art** with the
+  background removed — never an AI-fabricated likeness. A generated SVG fallback
+  covers any still-missing image.
 - **Track ownership, levels & mastery** — mark a variant owned, then set its
   **level 1–5** (level 5 = mastered) right on the grid card or in the detail
   view, with a `Lv 3/5` readout. Works instantly as a guest (saved in your
@@ -50,11 +54,12 @@ upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased*
   collections, plus a **compare** view (what you both have / each are missing).
 - **Trading hub** — mark sprites for-trade / wanted, find matches with other
   players, and export a trade card.
-- **Community loot map** — an **in-app zoomable/pannable** map with legible
-  symbol markers; submit/confirm/flag sprite-chest, fishing and pond spots.
-  Sprite-chest locations are **seeded from public guides** (with source
-  attribution) and refined by the community. Make **personal or shared maps**,
-  reposition markers, and **retire** spots for history. POIs are pulled live.
+- **Sprite farming guide** — a curated list of the best sprite-chest hotspots
+  this season (with a per-spot tip and a deep link to the interactive
+  [Sprite Sanctuary](https://spritesanctuary.gg/sprite-chests.html) &
+  [Fortnite.GG](https://fortnite.gg/map) maps). Replaced the old crowd-sourced
+  map, which drew no community submissions — a maintained guide is more useful
+  than an empty canvas.
 - **News & events** — a feed that auto-detects Fortnite's current live build,
   alongside a curated events layer (Catch-Up Day, Gold & Gummy Hours, and weekly
   Mastery Mondays / Power Hours). (Epic's in-game news is pulled in when they post
@@ -71,7 +76,8 @@ upcoming sprites & forms (Air, Seven, Cube, Quack, Batman) flagged **unreleased*
   the sprites you still need).
 - **Filter, search & group** — by theme, rarity, ownership; hide mastered, show
   unreleased; group by theme / rarity / **tier** (a built-in tier list) / sprite.
-  Filters collapse on mobile.
+  On every screen the filters tuck behind a single **Filters** button (search &
+  sort stay out for quick access), so the sprite grid leads.
 - **Progress & breakdown** — overall Collection % and Mastery %, per-rarity and
   per-theme breakdown, and completion badges.
 - **How Sprites work** — an in-app guide to the parts players get caught out by:
@@ -98,27 +104,32 @@ Sprite art is © Epic Games, Inc., used for identification only. With thanks to:
 
 - [UltronCore/sprite-tracker](https://github.com/UltronCore/sprite-tracker) —
   official base sprite images & the Have/Missing/Mastered model
-- [fortnite.gg/sprites](https://fortnite.gg/sprites) — roster, themes & drop-rate
-  cross-reference, and the interactive map
+- [fortnite.gg/sprites](https://fortnite.gg/sprites) — roster, themes & variant
+  cross-reference
+- [AccountShark](https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites)
+  & [GAMES.GG](https://games.gg/fortnite) — community drop-rate estimates and
+  ability/rarity cross-reference (Epic publishes no official rates)
 - [Fortnite Wiki (Fandom)](https://fortnite.fandom.com/wiki/Sprites) — roster &
   upcoming/leaked sprite cross-reference
 - Gameplay **tier list** — a community/meta snapshot from
   [GAMES.GG](https://games.gg), [PlayerAuctions](https://www.playerauctions.com)
   & [Destructoid](https://www.destructoid.com)
-- Upcoming leaked sprites **Air & Seven** use AI (Google Gemini) renders until
-  official art ships; other missing images fall back to a built-in SVG generator
+- Some variant art (Holofoil, Air & Seven) uses AI (Google Gemini) renders where
+  no official image was available; real-person collab sprites (Vini Jr., Pollo)
+  use Epic's official art with the background removed — never an AI likeness.
+  Other missing images fall back to a built-in SVG generator
 - [staticvacant/fnsprites](https://staticvacant.github.io/fnsprites/) — the
   original tracker that inspired this
 - News & events via official Fortnite patch notes,
   [Epic communities](https://communities.epicgames.com) &
-  [fortnite-api.com](https://fortnite-api.com) (also the map image & live POIs);
-  some event details cross-referenced from community trackers
+  [fortnite-api.com](https://fortnite-api.com); some event details
+  cross-referenced from community trackers
   ([Vice](https://www.vice.com), [Beebom](https://beebom.com),
   [AllThings.How](https://allthings.how), [Hotspawn](https://www.hotspawn.com),
   [Insider Gaming](https://insider-gaming.com)) — each event links to and labels
   its source (official vs unofficial)
-- Community loot-map spots (sprite chests, fishing, ponds) are submitted &
-  confirmed by players
+- Farming hotspots link out to [Sprite Sanctuary](https://spritesanctuary.gg/sprite-chests.html)
+  & [Fortnite.GG](https://fortnite.gg/map) for the full interactive maps
 
 No game assets beyond the identification sprite images are bundled.
 
@@ -154,19 +165,20 @@ Database schema (applied via migrations):
   `for_trade` / `wanted` flags. Readable when the owning profile is public (or
   it's your own); owner-writable.
 - `bug_reports` — insert-only feedback backup.
-- `maps` / `map_shares` — map containers (community / private / shared) and
-  per-user sharing (viewer / editor).
-- `map_markers` / `map_marker_votes` — community loot markers and confirm/flag
-  votes. Confirmed community spots can be retired but not hard-deleted (enforced
-  by a trigger); access via RPCs and RLS helper functions.
+- `trade_posts` / `trade_vouches` — for-trade / wanted listings that power the
+  Trade board and match-finding, plus per-user trade vouches.
 
-Key RPCs: `leaderboard`, `find_trade_matches`, `maps_list`, `map_markers_list`,
-`map_shares_list`.
+Key RPCs: `leaderboard`, `find_trade_matches`.
+
+(The old crowd-sourced map tables — `maps`, `map_shares`, `map_markers`,
+`map_marker_votes` — were dropped when the map was retired in favour of the
+curated farming guide.)
 
 ## Customizing
 
 - Sprite types and which themes each one has: `src/data/sprites.js`
   (`sprite_id`s are derived as `${typeId}_${themeId}`).
 - Theme styles & bonuses: `src/data/themes.js` + `src/index.css`.
-- Map layers & the seeded-from-guides community map: `src/data/mapMarkers.js`.
+- Sprite-chest farming hotspots (tips + map deep links): `src/data/farming.js`.
+- News & events feed: `src/data/news.js`.
 - Changelog entries: `src/data/changelog.js`.

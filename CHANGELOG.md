@@ -11,6 +11,27 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 16, 2026 — Source refresh (data re-verified, credits & README current)
+
+- **Changed:** re-verified the v41.20 roster against Beebom, Vice, GAMES.GG,
+  AllThings.How and Epic patch notes — Batman/Air/Seven abilities, Seven's variant
+  line (Normal/Gold/Gummy/Galaxy/Holofoil) and Pollo/Vini Jr. (Normal-only) all
+  confirmed; the leaked Spider-Man sprite (~Jul 30, v41.30) stays **Rumored**.
+- **Added:** credited two community drop-rate trackers — **AccountShark** and
+  **GAMES.GG** — on the drop-rate line (Epic publishes no official rates).
+- **Fixed:** footer art credit no longer calls Air & Seven "upcoming" (they're
+  live) and now notes real-person collab sprites (Vini Jr., Pollo) use official
+  art with the background removed — never an AI likeness.
+- **Changed:** README refreshed — roster date → Jul 16 (v41.20), the retired
+  crowd-sourced map is now described as the curated farming guide, and the filter
+  behaviour + DB-schema/customizing notes were corrected.
+
+*Why:* the tracker's credibility rests on the data being right and the sourcing
+transparent — a periodic sweep of the open sources (and pruning docs that still
+described nixed features) is worth doing even when nothing player-facing changed.
+
+---
+
 ## July 16, 2026 — Progress counts what you can actually collect (redesign, part 2)
 
 - **Changed:** Collection & Mastery progress now measure against the

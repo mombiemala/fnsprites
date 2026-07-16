@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'July 16, 2026',
+    title: 'Source refresh — data re-verified, credits & README brought current',
+    summary:
+      'Did a full pass over every open source we cite to confirm the roster, abilities and events are still accurate after v41.20, added a couple of new drop-rate sources, and cleaned the stale bits out of the footer and README.',
+    changes: [
+      { tag: 'Changed', text: 'Re-verified the v41.20 roster against Beebom, Vice, GAMES.GG, AllThings.How and Epic patch notes — Batman/Air/Seven abilities, Seven’s variant line (Normal/Gold/Gummy/Galaxy/Holofoil) and Pollo/Vini Jr. (Normal-only) all confirmed accurate; the leaked Spider-Man sprite (~Jul 30, v41.30) stays labelled Rumored.' },
+      { tag: 'Added', text: 'Credited two community drop-rate trackers — AccountShark and GAMES.GG — on the drop-rate line (Epic still publishes no official rates).' },
+      { tag: 'Fixed', text: 'Footer art credit no longer calls Air & Seven “upcoming” (they’re live), and now notes that real-person collab sprites (Vini Jr., Pollo) use official art with the background removed — never an AI likeness.' },
+      { tag: 'Changed', text: 'README refreshed: roster date moved to Jul 16 (v41.20), the retired crowd-sourced map is described as the curated farming guide it became, filter behaviour and the DB-schema/customizing notes were corrected.' },
+    ],
+    why:
+      'The tracker’s credibility rests on the data being right and the sourcing being transparent — so a periodic sweep of the open sources (and pruning docs that still described nixed features like the community map) is worth doing even when nothing player-facing changed.',
+  },
+  {
+    date: 'July 16, 2026',
     title: 'Progress that counts what you can actually collect (redesign, part 2)',
     summary:
       'The progress bars now measure against the variants that are obtainable right now, so 100% means “done with everything live” — and the leftover rumored/upcoming forms are called out instead of quietly inflating the total.',
