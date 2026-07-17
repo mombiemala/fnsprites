@@ -12,6 +12,7 @@ export const CHANGELOG = [
       'Prepped the app for tomorrow’s Power Hour so it surfaces automatically on the day.',
     changes: [
       { tag: 'Added', text: 'Shiny Hours event (Sat, Jul 18 · 2 PM & 9 PM ET) — boosted Batman Sprite & Special-variant (Gold/Gummy/Galaxy/Holofoil) spawns, everyone starts with a Batman Grapnel Gun & Self-Revive, and new Quests unlock the Batman Sprite. Added to both the announcement bar and the News feed.' },
+      { tag: 'Fixed', text: 'Corrected the recurring “Weekly Sprite events” note — Saturday Power Hours run 2 PM & 9 PM ET (not 3:30 & 9:30), matching every dated Power Hour this season.' },
     ],
     why:
       'Both entries are date-gated to Jul 18, so the announcement bar leads with Shiny Hours (and it pins to the top of News) only on the day, then falls back to the general DC “Hot Bat Summer” notice — no manual toggling needed.',

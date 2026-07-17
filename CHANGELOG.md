@@ -17,6 +17,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   Sprite & Special-variant (Gold/Gummy/Galaxy/Holofoil) spawns, everyone starts
   with a Batman Grapnel Gun & Self-Revive, and new Quests unlock the Batman
   Sprite. Added to both the announcement bar and the News feed.
+- **Fixed:** corrected the recurring "Weekly Sprite events" note — Saturday Power
+  Hours run 2 PM & 9 PM ET (not 3:30 & 9:30), matching every dated Power Hour
+  this season.
 
 *Why:* both entries are date-gated to Jul 18, so the announcement bar leads with
 Shiny Hours (and it pins to the top of News) only on the day, then falls back to

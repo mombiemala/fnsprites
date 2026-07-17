@@ -165,7 +165,7 @@ export const NEWS = [
     when: 'Weekly',
     tag: 'event',
     title: 'Weekly Sprite events — Mastery Mondays & Power Hours',
-    body: 'Mastery Mondays (every Monday): boosted Sprite spawns, 2× Sprite Dust, 2× Sprite XP and extra Portable Extractors. Saturday Power Hours (every Saturday, 3:30 PM & 9:30 PM ET): refreshed gameplay modifiers and a shot at the variant you’ve been missing.',
+    body: 'Mastery Mondays (every Monday): boosted Sprite spawns, 2× Sprite Dust, 2× Sprite XP and extra Portable Extractors. Saturday Power Hours (every Saturday, 2 PM & 9 PM ET, 2 hrs each): refreshed gameplay modifiers and a shot at the variant you’ve been missing.',
     link: 'https://www.epicgames.com/help/c-202300000001636/c-202300000001721/what-are-the-weekly-events-for-sprites-in-fortnite-a202300000086256',
     source: 'Epic Games',
     official: true,
