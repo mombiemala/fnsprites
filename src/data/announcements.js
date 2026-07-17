@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'shiny-hours-2026-07-18',
+    emoji: '✨',
+    message: 'Shiny Hours — Sat, Jul 18 (2 PM & 9 PM ET, 2 hrs each): boosted Batman Sprite spawns + more Gold/Gummy/Galaxy/Holofoil, and everyone starts with a Batman Grapnel Gun & Self-Revive.',
+    link: 'https://beebom.com/fortnite-sprite-events-schedule/',
+    linkLabel: 'Schedule',
+    start: '2026-07-18',
+    end: '2026-07-18',
+    source: 'Beebom',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'dc-hot-bat-summer-2026-07-16',
     emoji: '🦇',
     message: 'DC “Hot Bat Summer” is live — Batman, Air & Seven Sprites in v41.20. Boosted New Sprite Day spawns 2 PM & 9 PM ET.',

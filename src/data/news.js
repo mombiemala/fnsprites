@@ -106,6 +106,18 @@ export const NEWS = [
     official: false,
   },
   {
+    ts: '2026-07-18',
+    when: 'Jul 18, 2026',
+    tag: 'event',
+    start: '2026-07-18',
+    end: '2026-07-18',
+    title: 'Shiny Hours — boosted Batman & Special Sprite spawns ✨',
+    body: 'Saturday, July 18: two Shiny Hours Power Hour sessions (2–4 PM & 9–11 PM ET) as DC “Hot Bat Summer” continues. Batman Sprite (and Beach Buggy) spawns are boosted and Gold, Gummy, Galaxy & Holofoil variants appear more often, with everyone starting the match holding a Batman Grapnel Gun & Self-Revive Device. New Quests also unlock to add the Batman Sprite to your collection.',
+    link: 'https://beebom.com/fortnite-sprite-events-schedule/',
+    source: 'Beebom',
+    official: false,
+  },
+  {
     ts: '2026-07-16',
     when: 'Jul 16, 2026',
     tag: 'upcoming',

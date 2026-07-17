@@ -6,6 +6,17 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 17, 2026',
+    title: 'Shiny Hours (Jul 18) added to the events feed',
+    summary:
+      'Prepped the app for tomorrow’s Power Hour so it surfaces automatically on the day.',
+    changes: [
+      { tag: 'Added', text: 'Shiny Hours event (Sat, Jul 18 · 2 PM & 9 PM ET) — boosted Batman Sprite & Special-variant (Gold/Gummy/Galaxy/Holofoil) spawns, everyone starts with a Batman Grapnel Gun & Self-Revive, and new Quests unlock the Batman Sprite. Added to both the announcement bar and the News feed.' },
+    ],
+    why:
+      'Both entries are date-gated to Jul 18, so the announcement bar leads with Shiny Hours (and it pins to the top of News) only on the day, then falls back to the general DC “Hot Bat Summer” notice — no manual toggling needed.',
+  },
+  {
     date: 'July 16, 2026',
     title: 'Cleaner header & one-row navigation',
     summary:
