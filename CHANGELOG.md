@@ -11,6 +11,26 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 17, 2026 — Release-state audit + Cube & Lucky Locator on the radar
+
+- **Changed:** verified the released roster against multiple sources — Air, Seven
+  & Batman are correctly live with their full Gold/Gummy/Galaxy/Holofoil lines
+  (Batman's specials ramp during Jul 18 Shiny Hours), and Pollo, Vini Jr. & Burnt
+  Peanut are correctly Normal-only. Nothing is marked live before it actually is.
+- **Added:** News — a teased **Cube Sprite variant** (new special finish expected
+  late July, ~Jul 23–30); Cube already shows as a Rumored form on each sprite, so
+  nothing flips live until it's confirmed.
+- **Added:** News — the leaked **Lucky Locator** item (v41.30, ~Jul 30) that
+  reportedly guarantees a Sprite you don't own yet.
+
+*Why:* the tracker's value is being trustworthy about what's actually obtainable,
+so "is everything that says live really live?" is worth auditing whenever a wave
+of Sprites drops. The leaked Cube/Lucky-Locator dates are deliberately kept out of
+the auto-release date-gate (predictions, not firm) — they live in News as
+tentative so nothing releases early by mistake.
+
+---
+
 ## July 17, 2026 — Shiny Hours (Jul 18) added to the events feed
 
 - **Added:** Shiny Hours event (Sat, Jul 18 · 2 PM & 9 PM ET) — boosted Batman
