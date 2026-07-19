@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 19, 2026 — Next week's events (Mastery Monday, Cube New Sprite Day, Shiny Hours)
+
+- **Added:** Mastery Monday (Mon, Jul 20) — boosted spawns, 2× Sprite Dust, 2×
+  Sprite XP & extra Portable Extractors.
+- **Added:** New Sprite Day (Thu, Jul 23) — the **Cube** Sprite variant (Kevin the
+  Cube–styled, 18 total) starts rolling out a handful at a time, like Holofoil did.
+- **Added:** Shiny Hours (Sat, Jul 25) — boosted Gold/Gummy/Galaxy/Holofoil spawns.
+- **Changed:** Cube is no longer labelled leaked/tentative — Epic's official events
+  calendar confirms it for the Jul 23 New Sprite Day. (It stays an upcoming form in
+  the roster until it drops, since it rolls out in waves.)
+
+*Why:* straight from Epic's official "next week" post, so confirmed, not rumours.
+Each event is date-gated to its day — banner and News feed switch automatically,
+then fall back — keeping the tracker current without manual flipping.
+
+---
+
 ## July 17, 2026 — Fix: blank/broken page after an update (service worker)
 
 - **Fixed:** the service worker now fetches the page document **network-first**

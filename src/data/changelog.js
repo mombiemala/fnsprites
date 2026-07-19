@@ -6,6 +6,20 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 19, 2026',
+    title: 'Next week’s events added — Mastery Monday, Cube New Sprite Day & Shiny Hours',
+    summary:
+      'Epic posted next week’s Sprite calendar, so the tracker now has it: three dated events that surface automatically on the day, and the Cube variant is upgraded from “leaked” to officially confirmed.',
+    changes: [
+      { tag: 'Added', text: 'Mastery Monday (Mon, Jul 20) — boosted spawns, 2× Sprite Dust, 2× Sprite XP & extra Portable Extractors.' },
+      { tag: 'Added', text: 'New Sprite Day (Thu, Jul 23) — the Cube Sprite variant (Kevin the Cube–styled, 18 total) starts rolling out a handful at a time, like Holofoil did.' },
+      { tag: 'Added', text: 'Shiny Hours (Sat, Jul 25) — boosted Gold/Gummy/Galaxy/Holofoil spawns.' },
+      { tag: 'Changed', text: 'Cube is no longer labelled leaked/tentative — Epic’s official events calendar confirms it for the Jul 23 New Sprite Day. (It stays an upcoming form in the roster until it actually drops, since it rolls out in waves.)' },
+    ],
+    why:
+      'Straight from Epic’s official “next week” post, so these are confirmed, not rumours. Each is date-gated to its day — the banner and News feed switch to the right event automatically, then fall back — so the tracker stays current with the in-game calendar without manual flipping.',
+  },
+  {
     date: 'July 17, 2026',
     title: 'Fix: blank/broken page after an update (service worker)',
     summary:
