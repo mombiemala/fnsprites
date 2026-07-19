@@ -6,10 +6,12 @@ import { THEME_MAP } from './themes'
 // went live in the Jun 25, 2026 update. Wick/Drifter/Ice/Seven/Air/Batman/
 // Spider-Man are datamined and not yet released (flagged `rumored` — leaked,
 // unconfirmed; several carry a leaked `releaseDate`).
-// Holofoil rolls out to every sprite (~Jul 9); Seven, Air & Batman are part of
-// the ~Jul 16 DC Summer update; the new Cube & Quack forms are on the whole
-// roster. All new variants are flagged unreleased until they go live, and their
-// abilities/bonuses can change before launch.
+// Holofoil rolls out in WAVES, not all at once: Water/Fire/Ghost/King/Striker
+// (Jul 9) and Air/Seven/Batman (Jul 16) have it; Earth, Duck, Dream, Demon, Punk,
+// Zero Point, Fishy, Aura, Boss & Grim are still to come (their holofoil stays U).
+// Seven, Air & Batman are part of the ~Jul 16 DC Summer update; the new Cube &
+// Quack forms are on the whole roster. All new variants are flagged unreleased
+// until they go live, and their abilities/bonuses can change before launch.
 //
 // `dropRate` is the base (Normal) chance from a Sprite Chest. Epic does NOT
 // publish official rates — these are COMMUNITY ESTIMATES cross-referenced from
@@ -25,19 +27,19 @@ const U = false  // unreleased
 export const SPRITE_TYPES = [
   { id: 'water', name: 'Water', icon: '💧', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Replenishes shields for you and nearby squad while you’re in water.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: R, cube: U, quack: U } },
   { id: 'earth', name: 'Earth', icon: '🪨', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Better chance of rare rewards when opening chests.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
   { id: 'fire', name: 'Fire', icon: '🔥', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Unleashes a fiery burst once you deal enough damage to an enemy.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: U, quack: U } },
   { id: 'duck', name: 'Duck', icon: '🦆', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Emoting or Jamming replenishes your shields.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
   { id: 'ghost', name: 'Ghost', icon: '👻', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Reloading cloaks you (near-invisible) for a few seconds — longer as it levels.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: U, quack: U } },
   { id: 'dream', name: 'Dream', icon: '🌙', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Drops a random item each level-up, showering Legendary loot at max level.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, rift: U, cube: U, quack: U } },
@@ -49,7 +51,7 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, rift: U, cube: U, quack: U } },
   { id: 'king', name: 'King', icon: '👑', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Your pickaxe deals extra damage.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: U, quack: U } },
   { id: 'zeropoint', name: 'Zero Point', icon: '🔷', rarity: 'Mythic', dropRate: '0.00034%', released: true,
     ability: 'Spawns a Shield Bubble Jr. when you use a healing item on yourself (not splashes or grenades).',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
@@ -62,7 +64,7 @@ export const SPRITE_TYPES = [
   // ---- Added in the Jun 25, 2026 update ----
   { id: 'striker', name: 'Striker', icon: '⚡', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Grants Overdrive (faster firing, reload & movement) when you Mantle, Hurdle or Wall Scramble.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: U, quack: U } },
   { id: 'fishy', name: 'Fishy', icon: '🐟', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Boosts your swim speed.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
@@ -146,7 +148,12 @@ export function spriteTier(typeId) {
 // each app load, browser-local). Only list FIRMLY-dated forms here — leave
 // leaked/uncertain ones out so nothing releases early by mistake. To adjust a
 // slipped date, just edit the string; to release manually, set it to a past date.
-export const FORM_RELEASE = { holofoil: '2026-07-09' }
+// Holofoil did NOT roll out to the whole roster at once — it's shipping in waves
+// (Water/Fire/Ghost/King/Striker on Jul 9; Air/Seven/Batman on Jul 16; Earth,
+// Duck, Dream, Demon, Punk, Zero Point, Fishy, Aura, Boss & Grim still to come).
+// So Holofoil is set per-sprite in `variants` above rather than date-gated here.
+// Keep this map for any FUTURE form that genuinely drops roster-wide on one date.
+export const FORM_RELEASE = {}
 const _todayStr = (() => { try { return new Date().toISOString().slice(0, 10) } catch { return '9999-12-31' } })()
 const formLive = (themeId) => !!(FORM_RELEASE[themeId] && _todayStr >= FORM_RELEASE[themeId])
 

@@ -7,6 +7,30 @@
 export const CHANGELOG = [
   {
     date: 'July 17, 2026',
+    title: 'Holofoil accuracy fix + event callout brought up to date',
+    summary:
+      'Holofoil isn’t on the whole roster yet — it’s rolling out in waves — so the tracker now only marks the ones that are actually live. Also corrected the DC event banner, which was ending early and showing a stale launch-day line.',
+    changes: [
+      { tag: 'Fixed', text: 'Holofoil is only live for Water, Fire, Ghost, King & Striker (Jul 9) and Air, Seven & Batman (Jul 16). Earth, Duck, Dream, Demon, Punk, Zero Point, Fishy, Aura, Boss & Grim don’t have their Holofoil yet, so those are no longer shown as collectible (they were wrongly flagged live by a blanket date-gate). Released-variant count drops from 93 to the accurate 83.' },
+      { tag: 'Fixed', text: 'The top event banner said “Boosted New Sprite Day spawns” (a Jul 16 launch-only thing) and was set to disappear Jul 20 — but DC “Hot Bat Summer” runs all season (to ~Aug 20). Reworded to the ongoing event and extended so it stays accurate through the season.' },
+      { tag: 'Fixed', text: 'The Jul 9 Holofoil news/announcement no longer claims “15 Sprites” — it now describes the wave rollout.' },
+    ],
+    why:
+      'A tracker lives or dies on “does what it says match the game,” and marking Duck/Dream Holofoil (and eight others) as collectible when they aren’t is exactly the kind of thing that erodes trust. Holofoil turned out NOT to be a one-date roster-wide drop, so it’s now set per-sprite; the date-gate mechanism stays for forms that really do land all at once.',
+  },
+  {
+    date: 'July 17, 2026',
+    title: 'Scannable link on the export image',
+    summary:
+      'The shareable collection image now carries a QR code and the site URL, so anyone who sees it can get straight to the app (and to your collection if you’re logged in).',
+    changes: [
+      { tag: 'Added', text: 'The export card footer now shows a QR code (“Scan to track yours”) plus the readable site URL alongside the Creator Code. The QR encodes your public share link when you’re logged in, or the app’s home when you’re a guest.' },
+    ],
+    why:
+      'A collection image posted to Discord/Reddit is a great advert, but only if people can act on it — a scannable QR and a visible URL turn every shared image into a one-tap way back into the app.',
+  },
+  {
+    date: 'July 17, 2026',
     title: 'Quick-check list, Dust-to-complete & export backgrounds',
     summary:
       'Three collector tools: a fast list view for ticking off lots of variants, a running estimate of the Sprite Dust left to finish your set, and pick-a-background styling for the share image.',

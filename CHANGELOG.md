@@ -11,6 +11,38 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 17, 2026 — Holofoil accuracy fix + event callout up to date
+
+- **Fixed:** Holofoil is only live for Water, Fire, Ghost, King & Striker (Jul 9)
+  and Air, Seven & Batman (Jul 16). Earth, Duck, Dream, Demon, Punk, Zero Point,
+  Fishy, Aura, Boss & Grim don't have their Holofoil yet, so they're no longer
+  shown as collectible (a blanket date-gate had wrongly flagged them live).
+  Released-variant count drops from 93 to the accurate **83**.
+- **Fixed:** the top event banner said "Boosted New Sprite Day spawns" (a Jul 16
+  launch-only line) and was set to vanish Jul 20 — but DC "Hot Bat Summer" runs
+  all season (to ~Aug 20). Reworded to the ongoing event and extended.
+- **Fixed:** the Jul 9 Holofoil news/announcement no longer claims "15 Sprites"; it
+  describes the wave rollout.
+
+*Why:* a tracker lives or dies on matching the game — marking Duck/Dream Holofoil
+(and eight others) collectible when they aren't erodes trust. Holofoil isn't a
+one-date roster-wide drop, so it's now set per-sprite; the date-gate stays for
+forms that really do land all at once.
+
+---
+
+## July 17, 2026 — Scannable link on the export image
+
+- **Added:** the export card footer now shows a QR code ("Scan to track yours")
+  plus the readable site URL alongside the Creator Code. The QR encodes your
+  public share link when logged in, or the app's home as a guest.
+
+*Why:* a collection image posted to Discord/Reddit is a great advert, but only if
+people can act on it — a scannable QR and visible URL turn every shared image into
+a one-tap way back into the app.
+
+---
+
 ## July 17, 2026 — Quick-check list, Dust-to-complete & export backgrounds
 
 - **Added:** Quick-check list view — a ▦ / ☰ toggle by the Sort control switches

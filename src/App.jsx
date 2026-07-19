@@ -287,7 +287,9 @@ export default function App() {
   const exportImage = async (mode) => {
     setExporting(true)
     try {
-      const url = await generateCollectionImage({ gamertag, tracking: activeTracking, mode })
+      const base = `${window.location.origin}${window.location.pathname}`
+      const shareUrl = user ? `${base}?u=${user.id}` : base
+      const url = await generateCollectionImage({ gamertag, tracking: activeTracking, mode, shareUrl })
       downloadDataUrl(url, `fn-sprites-${mode}.png`)
       toast(mode === 'missing' ? 'Missing-sprites image downloaded' : 'Collection image downloaded')
     } finally {

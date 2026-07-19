@@ -1,3 +1,4 @@
+import QRCode from 'qrcode'
 import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS } from '../data/sprites'
 import { CREATOR_CODE } from './supabase'
 
@@ -91,8 +92,9 @@ function drawLock(ctx, cx, cy, s) {
 // Sprite Locker–style matrix: rows = sprite types, columns = the four variants,
 // every cell on a consistent per-variant gradient. `mode` = 'collection' (owned
 // bright + ✓, missing dimmed) or 'missing' (the ones you still need highlighted).
-export async function generateCollectionImage({ gamertag, tracking, mode = 'collection', theme = 'midnight' }) {
+export async function generateCollectionImage({ gamertag, tracking, mode = 'collection', theme = 'midnight', shareUrl }) {
   const missing = mode === 'missing'
+  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.vercel.app/')
   const rows = SPRITE_TYPES.filter((t) => t.released)
 
   // Build the grid + counts, and collect images to preload.
@@ -122,7 +124,7 @@ export async function generateCollectionImage({ gamertag, tracking, mode = 'coll
   const gridX0 = pad + labelW
   const W = gridX0 + COLS.length * cell + (COLS.length - 1) * gap + pad
   const gridTop = 250
-  const H = gridTop + rows.length * rowH + 74
+  const H = gridTop + rows.length * rowH + 150 // extra room for the QR + link footer
 
   const canvas = document.createElement('canvas')
   canvas.width = W
@@ -232,14 +234,40 @@ export async function generateCollectionImage({ gamertag, tracking, mode = 'coll
     })
   })
 
-  // Footer
-  ctx.fillStyle = '#7f8ab0'
-  ctx.font = '600 20px Inter, sans-serif'
-  ctx.fillText('fn sprite tracker', pad, H - 26)
+  // Footer — a scannable QR (encodes the share link) on the right, and the app
+  // name + readable URL + creator code on the left, so anyone who sees the image
+  // can get straight back to the app.
+  let host = 'fnsprites.vercel.app'
+  try { host = new URL(url).host } catch { /* keep default */ }
+
+  let qrImg = null
+  try {
+    const qrData = await QRCode.toDataURL(url, { margin: 1, width: 240, color: { dark: '#0a0f1eff', light: '#ffffffff' } })
+    qrImg = await loadImage(qrData)
+  } catch { /* QR is a nicety — skip if it fails */ }
+
+  if (qrImg) {
+    const qs = 96
+    const qx = W - pad - qs
+    const qy = H - qs - 30
+    ctx.fillStyle = '#ffffff'
+    roundRect(ctx, qx - 7, qy - 7, qs + 14, qs + 14, 12); ctx.fill()
+    ctx.drawImage(qrImg, qx, qy, qs, qs)
+    ctx.fillStyle = '#95a0c4'
+    ctx.font = '700 14px Inter, sans-serif'
+    const lbl = 'Scan to track yours'
+    ctx.fillText(lbl, qx + qs - ctx.measureText(lbl).width, qy - 16)
+  }
+
+  ctx.fillStyle = '#ffffff'
+  ctx.font = '800 24px Inter, sans-serif'
+  ctx.fillText('FN Sprite Tracker', pad, H - 78)
   ctx.fillStyle = '#36c5ff'
-  ctx.font = '800 20px Inter, sans-serif'
-  const code = `Creator Code: ${CREATOR_CODE.toUpperCase()}`
-  ctx.fillText(code, W - pad - ctx.measureText(code).width, H - 26)
+  ctx.font = '700 21px Inter, sans-serif'
+  ctx.fillText(host, pad, H - 50)
+  ctx.fillStyle = '#7f8ab0'
+  ctx.font = '700 19px Inter, sans-serif'
+  ctx.fillText(`Creator Code: ${CREATOR_CODE.toUpperCase()}`, pad, H - 24)
 
   return canvas.toDataURL('image/png')
 }

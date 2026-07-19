@@ -34,11 +34,13 @@ export default function ShareExportModal({ onClose }) {
   // async render resolves — no synchronous setState in the effect.
   useEffect(() => {
     let alive = true
-    generateCollectionImage({ gamertag, tracking, mode, theme }).then((u) => {
+    const base = `${window.location.origin}${window.location.pathname}`
+    const link = user ? `${base}?u=${user.id}` : base
+    generateCollectionImage({ gamertag, tracking, mode, theme, shareUrl: link }).then((u) => {
       if (alive) { setUrl(u); setRendering(false) }
     })
     return () => { alive = false }
-  }, [mode, theme, gamertag, tracking])
+  }, [mode, theme, gamertag, tracking, user])
 
   const pick = (m) => { if (m !== mode) { setRendering(true); setMode(m) } }
   const pickTheme = (t) => { if (t !== theme) { setRendering(true); setTheme(t) } }

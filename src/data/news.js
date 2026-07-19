@@ -40,7 +40,7 @@ export const NEWS = [
     start: '2026-07-09',
     end: '2026-07-13',
     title: 'Holofoil Sprites are live! 🌈',
-    body: 'Holofoil went live today (July 9) via hotfix — a shiny new variant for 15 Sprites (all but Burnt Peanut). Each keeps its base ability and adds a +5% squad chance to find rare Gold/Gummy/Galaxy Sprites from chests, and their reflective look makes them easier to spot. Holofoil Hours (boosted spawns) follows Saturday, Jul 11.',
+    body: 'Holofoil went live today (July 9) via hotfix — a shiny new variant rolling out in waves, not all at once. First up: Water, Fire, Ghost, King & Striker. Each keeps its base ability and adds a +5% squad chance to find rare Gold/Gummy/Galaxy Sprites from chests, and their reflective look makes them easier to spot. More Sprites get their Holofoil over the following weeks (Air, Seven & Batman joined Jul 16; Earth, Duck, Dream and the rest are still to come). Holofoil Hours (boosted spawns) follows Saturday, Jul 11.',
     link: 'https://communities.epicgames.com/thread/new-holofoil-sprite-variant-arrives-thursday-july-9/kqQk',
     source: 'Epic Games',
     official: true,
