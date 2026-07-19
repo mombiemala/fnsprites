@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 17, 2026',
+    title: 'Fix: blank/broken page after an update (service worker)',
+    summary:
+      'Some returning players could hit a blank or half-loaded page after we shipped updates. The offline cache was serving a stale page that pointed at files a newer build had already replaced.',
+    changes: [
+      { tag: 'Fixed', text: 'The service worker now fetches the page itself network-first (falling back to cache only when offline), so it always references the current app files. Previously it served the cached page first, which — after a few quick updates — could point at script files that no longer existed, breaking the load with an “Unexpected token ‘<’” error.' },
+      { tag: 'Fixed', text: 'It also refuses to cache or return an HTML fallback in place of a missing script/style, and the cache version was bumped so any bad cached state is cleared automatically on the next visit.' },
+    ],
+    why:
+      'Cache-first on the HTML document is fast but fragile across frequent deploys: the page and its hashed asset files can drift out of sync. Network-first for the document (and cache-first only for the immutable, content-hashed assets) keeps offline support while guaranteeing a good load after every update. If you’re still stuck, one hard refresh clears it.',
+  },
+  {
+    date: 'July 17, 2026',
     title: 'Friendlier filters — key ones inline on desktop',
     summary:
       'On desktop the collection filters no longer all hide behind one button: a trimmer search sits next to the most-used filters, with the rest in a “More filters” menu. Small screens keep the single Filters menu.',

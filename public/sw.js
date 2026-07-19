@@ -1,6 +1,12 @@
-// Lightweight offline cache: cache-first for same-origin GET requests
-// (app shell, JS/CSS, sprite images); always go to network for Supabase/API.
-const CACHE = 'fnsprites-v1'
+// Offline cache with a safe update story.
+//
+// The document (navigations) is fetched NETWORK-FIRST so the page always
+// references the current, existing asset hashes — a stale cached index.html
+// pointing at chunk hashes from an old deploy is what causes "Unexpected token
+// '<'" (the server returns the SPA fallback HTML for a missing .js). Hashed
+// assets stay cache-first (they're immutable). Bump CACHE to invalidate old
+// caches for everyone on activate.
+const CACHE = 'fnsprites-v2'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
@@ -8,9 +14,11 @@ self.addEventListener('install', () => {
 
 self.addEventListener('activate', (e) => {
   e.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+    caches
+      .keys()
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
   )
-  self.clients.claim()
 })
 
 self.addEventListener('fetch', (e) => {
@@ -19,15 +27,36 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(req.url)
   if (url.origin !== self.location.origin) return // let Supabase/network calls pass through
 
+  // Navigations: network-first, fall back to cache only when offline. Keeps the
+  // HTML (and therefore its asset references) fresh after every deploy.
+  if (req.mode === 'navigate') {
+    e.respondWith(
+      fetch(req)
+        .then((res) => {
+          const copy = res.clone()
+          caches.open(CACHE).then((c) => c.put(req, copy))
+          return res
+        })
+        .catch(() => caches.match(req).then((c) => c || caches.match('/')))
+    )
+    return
+  }
+
   // OCR engine assets are large and content-stable — once cached, serve from
-  // cache and skip the background revalidation so we don't re-download ~9MB.
+  // cache and skip revalidation so we don't re-download ~9MB.
   const immutable = url.pathname.includes('/tesseract/')
+  const isAsset = /\.(js|css)$/i.test(url.pathname)
 
   e.respondWith(
     caches.match(req).then((cached) => {
       if (cached && immutable) return cached
       const network = fetch(req)
         .then((res) => {
+          // Never treat/keep an HTML SPA-fallback as if it were JS/CSS — that's
+          // the "Unexpected token '<'" crash. Fall back to any cached copy.
+          if (isAsset && (res.headers.get('content-type') || '').includes('text/html')) {
+            return cached || res
+          }
           if (res && res.status === 200) {
             const copy = res.clone()
             caches.open(CACHE).then((c) => c.put(req, copy))

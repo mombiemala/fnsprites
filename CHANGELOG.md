@@ -11,6 +11,25 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 17, 2026 — Fix: blank/broken page after an update (service worker)
+
+- **Fixed:** the service worker now fetches the page document **network-first**
+  (cache only as an offline fallback), so it always references the current app
+  files. Previously it served the cached page first, which — after a few quick
+  deploys — could point at hashed script files a newer build had replaced,
+  breaking the load with an "Unexpected token '<'" error (the server returns the
+  SPA fallback HTML for the missing `.js`).
+- **Fixed:** it no longer caches or returns an HTML fallback in place of a missing
+  `.js`/`.css`, and the cache name was bumped (`fnsprites-v2`) so any bad cached
+  state clears automatically on the next visit.
+
+*Why:* cache-first on the HTML document is fast but fragile across frequent
+deploys — the document and its content-hashed assets can drift out of sync.
+Network-first for the document (cache-first only for immutable assets) keeps
+offline support while guaranteeing a good load after every update.
+
+---
+
 ## July 17, 2026 — Friendlier filters (key ones inline on desktop)
 
 - **Changed:** desktop toolbar — the search box is narrower, with **Ownership**,
