@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'July 17, 2026',
+    title: 'Share & export, front and center (with a live preview + Holofoil)',
+    summary:
+      'Sharing your collection is no longer tucked in the sidebar — a prominent button by the progress bars opens a proper Share & Export dialog with a live image preview, and the export card finally includes the Holofoil column.',
+    changes: [
+      { tag: 'Added', text: 'A “📤 Share & export” button right under the progress bars (for everyone, guest or logged-in) opens a dialog with a live preview of your collection image, a Collection/“Sprites I need” toggle, PNG download, the Discord/Reddit caption, and your share link.' },
+      { tag: 'Added', text: 'The exported Sprite-Locker image now includes a Holofoil column (iridescent styling), alongside Normal/Gold/Gummy/Galaxy — so shared cards reflect the full live roster.' },
+      { tag: 'Fixed', text: 'The export now reads release state from the live sprite list, so date-gated forms (Holofoil) show as collectible instead of drawing a lock on every cell.' },
+      { tag: 'Changed', text: 'Tidied the sidebar share card down to a single button that opens the new dialog, removing the duplicated export/caption buttons.' },
+    ],
+    why:
+      'Export was genuinely hard to find (buried in a sidebar card) and its output was already a strong share asset that competitors lean on hard — so putting it one obvious click from the progress you’re proud of, with a preview so you see what you’re posting before you download, turns it into the growth loop it should be. Holofoil’s been live since Jul 9, so leaving it off the card made shares look out of date.',
+  },
+  {
+    date: 'July 17, 2026',
     title: 'Release-state audit + Cube & Lucky Locator on the radar',
     summary:
       'Double-checked every “live” variant against the current game state, and added the freshly-teased/leaked items that are on the way.',

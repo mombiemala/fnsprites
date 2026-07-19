@@ -11,6 +11,27 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 17, 2026 — Share & export front and center (live preview + Holofoil)
+
+- **Added:** a "📤 Share & export" button under the progress bars (guest or
+  logged-in) opens a dialog with a live preview of your collection image, a
+  Collection / "Sprites I need" toggle, PNG download, the Discord/Reddit caption,
+  and your share link.
+- **Added:** the exported Sprite-Locker image now includes a **Holofoil** column
+  (iridescent) alongside Normal/Gold/Gummy/Galaxy.
+- **Fixed:** the export reads release state from the live sprite list, so
+  date-gated forms (Holofoil) show as collectible instead of drawing a lock on
+  every cell.
+- **Changed:** tidied the sidebar share card to a single button that opens the
+  new dialog, removing the duplicated export/caption buttons.
+
+*Why:* export was hard to find and its output is a strong share asset competitors
+lean on — putting it one obvious click from your progress, with a preview so you
+see what you're posting, turns it into the growth loop it should be. Holofoil's
+been live since Jul 9, so leaving it off the card made shares look out of date.
+
+---
+
 ## July 17, 2026 — Release-state audit + Cube & Lucky Locator on the radar
 
 - **Changed:** verified the released roster against multiple sources — Air, Seven

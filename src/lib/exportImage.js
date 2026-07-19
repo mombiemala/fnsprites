@@ -1,5 +1,11 @@
-import { SPRITE_TYPES, RARITY_COLORS } from '../data/sprites'
+import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS } from '../data/sprites'
 import { CREATOR_CODE } from './supabase'
+
+// Whether a given `<type>_<variant>` is actually live — sourced from the built
+// sprite list so it respects date-gated forms (e.g. Holofoil auto-releases via
+// FORM_RELEASE without flipping the raw `variants` flag). Without this the export
+// would draw a lock on every Holofoil cell even though it's collectible.
+const RELEASED_BY_ID = Object.fromEntries(ALL_SPRITES.map((s) => [s.id, s.released]))
 
 function loadImage(src) {
   return new Promise((resolve) => {
@@ -10,13 +16,15 @@ function loadImage(src) {
   })
 }
 
-// The four main variant columns — these cover every released sprite (gem /
-// holofoil / rift are all unreleased), matching the community "sprite locker".
+// The main variant columns — Normal/Gold/Gummy/Galaxy plus Holofoil (live since
+// Jul 9). Gem / Rift stay off the card until they release. Any sprite lacking a
+// column (e.g. Peanut = Normal-only) renders that cell as a dashed N/A.
 const COLS = [
   { id: 'normal', label: 'NORMAL', accent: '#aeb6cc' },
   { id: 'gold', label: 'GOLD', accent: '#f6c945' },
   { id: 'gummy', label: 'GUMMY', accent: '#ff5d8f' },
   { id: 'galaxy', label: 'GALAXY', accent: '#9a7bff' },
+  { id: 'holofoil', label: 'HOLOFOIL', accent: '#7fe3ff' },
 ]
 
 // Per-variant gradient background (same palette as the in-app cards) so the
@@ -32,6 +40,10 @@ function variantBg(ctx, theme, x, y, w, h, dim) {
   } else if (theme === 'galaxy') {
     g = ctx.createLinearGradient(x, y, x, y + h)
     g.addColorStop(0, '#3b1d77'); g.addColorStop(0.6, '#1b1140'); g.addColorStop(1, '#0a0820')
+  } else if (theme === 'holofoil') {
+    // Iridescent foil sweep — cyan → magenta → gold across the diagonal.
+    g = ctx.createLinearGradient(x, y, x + w, y + h)
+    g.addColorStop(0, '#8ef0ff'); g.addColorStop(0.4, '#c77dff'); g.addColorStop(0.7, '#ff8ac2'); g.addColorStop(1, '#ffd86b')
   } else {
     g = ctx.createLinearGradient(x, y, x, y + h)
     g.addColorStop(0, '#4b5470'); g.addColorStop(1, '#2b3147')
@@ -79,9 +91,9 @@ export async function generateCollectionImage({ gamertag, tracking, mode = 'coll
   const toLoad = []
   const grid = rows.map((t) =>
     COLS.map((c) => {
-      const exists = c.id in t.variants
-      const released = exists && t.variants[c.id] === true
       const id = `${t.id}_${c.id}`
+      const exists = c.id in t.variants
+      const released = exists && RELEASED_BY_ID[id] === true
       const owned = released && !!tracking[id]?.owned
       if (released) { releasedTotal++; if (owned) ownedTotal++ }
       const image = released ? `${import.meta.env.BASE_URL}sprites/${id}.png` : null

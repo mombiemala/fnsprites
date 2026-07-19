@@ -33,6 +33,7 @@ const HowItWorksModal = lazy(() => import('./components/HowItWorksModal'))
 const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
+const ShareExportModal = lazy(() => import('./components/ShareExportModal'))
 import { LINKS } from './lib/supabase'
 
 const TABS = [
@@ -137,6 +138,7 @@ export default function App() {
   }
   const [showProfile, setShowProfile] = useState(false)
   const [showImport, setShowImport] = useState(false)
+  const [showShare, setShowShare] = useState(false)
   const [newTradeCount, setNewTradeCount] = useState(0)
 
   useEffect(() => {
@@ -277,28 +279,6 @@ export default function App() {
   // (with both shortcuts inside it) instead of three stacked prompts.
   const hasAnyOwned = useMemo(() => Object.values(activeTracking).some((v) => v?.owned), [activeTracking])
   const showOnboarding = !isShareView && !readOnly && !hintDismissed && !hasAnyOwned
-
-  // Guest share caption — the Discord/Reddit copy loop is the cheapest growth
-  // lever, so don't gate it behind login. Logged-in users get the richer
-  // ShareBar version (with their gamertag + public link); guests get a plain
-  // caption pointing back at the app.
-  const copyGuestCaption = async () => {
-    const total = set.released
-    const pct = total ? Math.round((stats.owned / total) * 100) : 0
-    const missing = total - stats.owned
-    const url = `${window.location.origin}${window.location.pathname}`
-    const caption = [
-      `🧩 My Fortnite sprite collection: ${stats.owned}/${total} (${pct}%)${stats.mastered ? ` · ${stats.mastered} mastered ⭐` : ''}`,
-      missing > 0 ? `Still chasing ${missing} more sprite${missing === 1 ? '' : 's'}.` : `Full set — gotta catch ’em all! 🏆`,
-      `Track yours → ${url}`,
-    ].join('\n')
-    try {
-      await navigator.clipboard.writeText(caption)
-      toast('Caption copied — paste into Discord/Reddit!')
-    } catch {
-      toast('Could not copy caption', 'error')
-    }
-  }
 
   const [exporting, setExporting] = useState(false)
   const exportImage = async (mode) => {
@@ -466,13 +446,22 @@ export default function App() {
         </div>
       )}
 
-      <div className="mb-5">
+      <div className="mb-5 flex flex-col gap-2">
         <ProgressStats
           owned={stats.owned}
           mastered={stats.mastered}
           total={filters.showUnreleased ? set.total : set.released}
           upcoming={set.total - set.released}
         />
+        <div className="flex justify-end">
+          <button
+            onClick={() => setShowShare(true)}
+            title="Preview & download a shareable image of your collection, or copy a Discord/Reddit caption"
+            className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-3.5 py-2 text-xs font-extrabold text-black transition-opacity hover:opacity-90"
+          >
+            📤 Share &amp; export
+          </button>
+        </div>
       </div>
 
       {/* Full-width filters bar (sticks to the top on scroll) */}
@@ -607,21 +596,13 @@ export default function App() {
               <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
                 <h3 className="mb-2 font-display text-lg text-white">Share &amp; export</h3>
                 <p className="mb-3 text-sm text-[var(--muted)]">
-                  Share your progress now — or{' '}
+                  Preview &amp; download a collection image or copy a Discord/Reddit caption — or{' '}
                   <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">log in</button>{' '}
                   to save it and get a link with your gamertag.
                 </p>
-                <button onClick={copyGuestCaption} className="mb-2 w-full rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
-                  📋 Copy caption for Discord / Reddit
+                <button onClick={() => setShowShare(true)} className="w-full rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-3 py-2 text-xs font-extrabold text-black hover:opacity-90">
+                  📤 Share &amp; export
                 </button>
-                <div className="flex flex-wrap gap-2">
-                  <button onClick={() => exportImage('collection')} disabled={exporting} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60">
-                    {exporting ? 'Rendering…' : '⬇️ Collection image'}
-                  </button>
-                  <button onClick={() => exportImage('missing')} disabled={exporting} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60">
-                    {exporting ? 'Rendering…' : '⬇️ Missing-sprites image'}
-                  </button>
-                </div>
               </div>
             ))}
 
@@ -690,6 +671,7 @@ export default function App() {
         {showBackup && <BackupModal onClose={() => setShowBackup(false)} />}
         {showProfile && <ProfileModal onClose={() => setShowProfile(false)} />}
         {showImport && <ScreenshotImportModal onClose={() => setShowImport(false)} />}
+        {showShare && <ShareExportModal onClose={() => setShowShare(false)} />}
         {detailType && (
           <SpriteDetailModal
             typeId={detailType}
