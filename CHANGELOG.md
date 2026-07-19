@@ -19,8 +19,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   shown as collectible (a blanket date-gate had wrongly flagged them live).
   Released-variant count drops from 93 to the accurate **83**.
 - **Fixed:** the top event banner said "Boosted New Sprite Day spawns" (a Jul 16
-  launch-only line) and was set to vanish Jul 20 — but DC "Hot Bat Summer" runs
-  all season (to ~Aug 20). Reworded to the ongoing event and extended.
+  launch-only line). Reworded it, and scoped it to headline for launch week — the
+  ongoing DC "Hot Bat Summer" event (all season, to ~Aug 20) now lives in the News
+  feed, pinned through the season.
 - **Fixed:** the Jul 9 Holofoil news/announcement no longer claims "15 Sprites"; it
   describes the wave rollout.
 

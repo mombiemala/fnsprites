@@ -12,7 +12,7 @@ export const CHANGELOG = [
       'Holofoil isn’t on the whole roster yet — it’s rolling out in waves — so the tracker now only marks the ones that are actually live. Also corrected the DC event banner, which was ending early and showing a stale launch-day line.',
     changes: [
       { tag: 'Fixed', text: 'Holofoil is only live for Water, Fire, Ghost, King & Striker (Jul 9) and Air, Seven & Batman (Jul 16). Earth, Duck, Dream, Demon, Punk, Zero Point, Fishy, Aura, Boss & Grim don’t have their Holofoil yet, so those are no longer shown as collectible (they were wrongly flagged live by a blanket date-gate). Released-variant count drops from 93 to the accurate 83.' },
-      { tag: 'Fixed', text: 'The top event banner said “Boosted New Sprite Day spawns” (a Jul 16 launch-only thing) and was set to disappear Jul 20 — but DC “Hot Bat Summer” runs all season (to ~Aug 20). Reworded to the ongoing event and extended so it stays accurate through the season.' },
+      { tag: 'Fixed', text: 'The top event banner said “Boosted New Sprite Day spawns” (a Jul 16 launch-only thing). Reworded it, and scoped it to headline for launch week — the ongoing DC “Hot Bat Summer” event (which runs all season, to ~Aug 20) now lives in the News feed, pinned through the season.' },
       { tag: 'Fixed', text: 'The Jul 9 Holofoil news/announcement no longer claims “15 Sprites” — it now describes the wave rollout.' },
     ],
     why:

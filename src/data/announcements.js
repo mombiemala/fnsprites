@@ -30,11 +30,12 @@ export const ANNOUNCEMENTS = [
   {
     id: 'dc-hot-bat-summer-2026-07-16',
     emoji: '🦇',
-    message: 'DC “Hot Bat Summer” is live all season — Batman, Air & Seven Sprites, DC beach skins & event Quests. Weekend Shiny Hours boost Sprite spawns.',
+    message: 'DC “Hot Bat Summer” is here — Batman, Air & Seven Sprites, DC beach skins & event Quests, running all season. Weekend Shiny Hours boost Sprite spawns.',
     link: 'https://beebom.com/fortnite-dc-hot-bat-summer-event-roundup-2/',
     linkLabel: 'Event guide',
     start: '2026-07-16',
-    end: '2026-08-19',
+    // Headline for launch week only; the ongoing event lives in the News feed.
+    end: '2026-07-22',
     source: 'Beebom',
     official: false,
     tone: 'event',
