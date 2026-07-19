@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 17, 2026',
+    title: 'Friendlier filters — key ones inline on desktop',
+    summary:
+      'On desktop the collection filters no longer all hide behind one button: a trimmer search sits next to the most-used filters, with the rest in a “More filters” menu. Small screens keep the single Filters menu.',
+    changes: [
+      { tag: 'Changed', text: 'Desktop toolbar: the search box is narrower, with Ownership, Rarity and Sort surfaced inline next to it. Grouping, the variant chips and the Hide-mastered/Show-unreleased toggles live in a “More filters” overflow menu.' },
+      { tag: 'Changed', text: 'Small screens are unchanged in spirit — search + view toggle + a single Filters button that holds everything, since inline controls would crowd a narrow screen.' },
+    ],
+    why:
+      'Collapsing every filter behind one button was great for decluttering, but on a wide screen it hid the one-tap filters people reach for most (owned/missing, rarity) behind an extra click. Surfacing a few key ones inline — while keeping the long tail (variant chips, grouping) in the menu — is the best of both, and the mobile menu still keeps the grid front-and-center where space is tight.',
+  },
+  {
+    date: 'July 17, 2026',
     title: 'Holofoil accuracy fix + event callout brought up to date',
     summary:
       'Holofoil isn’t on the whole roster yet — it’s rolling out in waves — so the tracker now only marks the ones that are actually live. Also corrected the DC event banner, which was ending early and showing a stale launch-day line.',

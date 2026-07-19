@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 17, 2026 — Friendlier filters (key ones inline on desktop)
+
+- **Changed:** desktop toolbar — the search box is narrower, with **Ownership**,
+  **Rarity** and **Sort** inline next to it. Grouping, the variant chips and the
+  Hide-mastered/Show-unreleased toggles live in a **More filters** overflow menu.
+- **Changed:** small screens keep search + view toggle + a single **Filters**
+  button that holds everything, since inline controls would crowd a narrow screen.
+
+*Why:* collapsing every filter behind one button decluttered nicely, but on a
+wide screen it hid the one-tap filters people reach for most (owned/missing,
+rarity) behind an extra click. A few key ones inline — with the long tail in the
+menu — is the best of both, and the mobile menu keeps the grid front-and-center.
+
+---
+
 ## July 17, 2026 — Holofoil accuracy fix + event callout up to date
 
 - **Fixed:** Holofoil is only live for Water, Fire, Ghost, King & Striker (Jul 9)
