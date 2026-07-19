@@ -13,6 +13,8 @@ import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
 import StatsBreakdown from './components/StatsBreakdown'
 import NextToChase from './components/NextToChase'
+import QuickCheckList from './components/QuickCheckList'
+import DustToComplete from './components/DustToComplete'
 import UpcomingSprites from './components/UpcomingSprites'
 import WelcomeModal from './components/WelcomeModal'
 import AnnouncementBar from './components/AnnouncementBar'
@@ -53,6 +55,7 @@ const DEFAULT_FILTERS = {
   showUnreleased: false,
   groupBy: 'none',
   sort: 'default',
+  view: 'grid',
 }
 
 const RARITY_RANK = { Rare: 0, Epic: 1, Legendary: 2, Mythic: 3 }
@@ -541,6 +544,8 @@ export default function App() {
             </div>
           ) : visible.length === 0 ? (
             <p className="py-16 text-center text-sm text-[var(--muted)]">No sprites match your filters.</p>
+          ) : filters.view === 'list' ? (
+            <QuickCheckList groups={groups} tracking={activeTracking} onToggleOwned={setOwned} readOnly={readOnly} />
           ) : (
             groups.map((g) => (
               <section key={g.key} className="mb-8">
@@ -588,6 +593,8 @@ export default function App() {
           {!isShareView && <UpcomingSprites onOpen={setDetailType} />}
 
           <StatsBreakdown tracking={activeTracking} />
+
+          {!isShareView && <DustToComplete tracking={activeTracking} />}
 
           {!isShareView &&
             (user ? (

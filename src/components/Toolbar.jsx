@@ -59,6 +59,24 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           <option value="name">Name A–Z</option>
           <option value="rarity">Rarity</option>
         </select>
+        {/* Grid ↔ Quick-check list view. The list is a fast way to tick many
+            variants at once. */}
+        <div className="flex shrink-0 overflow-hidden rounded-xl border border-[var(--border)]">
+          {[['grid', '▦', 'Grid view'], ['list', '☰', 'Quick-check list — tick variants fast']].map(([v, icon, title]) => (
+            <button
+              key={v}
+              onClick={() => set({ view: v })}
+              title={title}
+              aria-label={title}
+              aria-pressed={filters.view === v}
+              className={`px-3 py-2 text-sm font-bold transition-colors ${
+                filters.view === v ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel)] text-[var(--muted)] hover:text-white'
+              }`}
+            >
+              {icon}
+            </button>
+          ))}
+        </div>
         <button
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}

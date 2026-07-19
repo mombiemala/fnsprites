@@ -11,6 +11,26 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 17, 2026 — Quick-check list, Dust-to-complete & export backgrounds
+
+- **Added:** Quick-check list view — a ▦ / ☰ toggle by the Sort control switches
+  the collection to a dense one-row-per-sprite list where each variant is a
+  tappable chip. Faster than opening cards for bulk entry; respects all current
+  filters and grouping.
+- **Added:** "Dust to complete" sidebar card — a running estimate of the Sprite
+  Dust needed to summon every released variant you're still missing, broken down
+  by rarity (clearly labelled an estimate; most Sprites come from Chests).
+- **Added:** Export backgrounds — the Share & Export dialog has a row of
+  background themes (Midnight, Galaxy, Ember, Slate, Forest) that restyle your
+  collection image, previewed live before download.
+
+*Why:* these fill gaps competitors cover — bulk manual entry (their checklists
+are list-first), a summon-cost number collectors chase, and customisable share
+cards — each self-contained and reusing existing data/logic (the filtered list,
+the dust-cost table, the export renderer).
+
+---
+
 ## July 17, 2026 — Share & export front and center (live preview + Holofoil)
 
 - **Added:** a "📤 Share & export" button under the progress bars (guest or

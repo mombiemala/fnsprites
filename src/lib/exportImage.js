@@ -56,6 +56,16 @@ function variantBg(ctx, theme, x, y, w, h, dim) {
   ctx.restore()
 }
 
+// Background themes for the export card. Kept dark so the white text/stat layer
+// stays legible; each is a two-stop vertical gradient.
+export const CARD_THEMES = {
+  midnight: { label: 'Midnight', bg: ['#141a30', '#0a0f1e'] },
+  galaxy: { label: 'Galaxy', bg: ['#241546', '#0a0820'] },
+  ember: { label: 'Ember', bg: ['#2a1710', '#120a08'] },
+  slate: { label: 'Slate', bg: ['#222839', '#0c0f18'] },
+  forest: { label: 'Forest', bg: ['#12291f', '#08120d'] },
+}
+
 function drawCheck(ctx, cx, cy, r) {
   ctx.save()
   ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2)
@@ -81,7 +91,7 @@ function drawLock(ctx, cx, cy, s) {
 // Sprite Locker–style matrix: rows = sprite types, columns = the four variants,
 // every cell on a consistent per-variant gradient. `mode` = 'collection' (owned
 // bright + ✓, missing dimmed) or 'missing' (the ones you still need highlighted).
-export async function generateCollectionImage({ gamertag, tracking, mode = 'collection' }) {
+export async function generateCollectionImage({ gamertag, tracking, mode = 'collection', theme = 'midnight' }) {
   const missing = mode === 'missing'
   const rows = SPRITE_TYPES.filter((t) => t.released)
 
@@ -120,9 +130,10 @@ export async function generateCollectionImage({ gamertag, tracking, mode = 'coll
   const ctx = canvas.getContext('2d')
   ctx.textBaseline = 'alphabetic'
 
-  // Background
+  // Background (per chosen theme)
+  const themeBg = (CARD_THEMES[theme] || CARD_THEMES.midnight).bg
   const bg = ctx.createLinearGradient(0, 0, 0, H)
-  bg.addColorStop(0, '#141a30'); bg.addColorStop(1, '#0a0f1e')
+  bg.addColorStop(0, themeBg[0]); bg.addColorStop(1, themeBg[1])
   ctx.fillStyle = bg
   ctx.fillRect(0, 0, W, H)
 

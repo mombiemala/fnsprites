@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 17, 2026',
+    title: 'Quick-check list, Dust-to-complete & export backgrounds',
+    summary:
+      'Three collector tools: a fast list view for ticking off lots of variants, a running estimate of the Sprite Dust left to finish your set, and pick-a-background styling for the share image.',
+    changes: [
+      { tag: 'Added', text: 'Quick-check list view — a new ▦ / ☰ toggle by the Sort control switches the collection to a dense one-row-per-sprite list where each variant is a tappable chip. Much faster than opening cards when you’re entering a lot at once; it respects all your current filters and grouping.' },
+      { tag: 'Added', text: '“Dust to complete” card in the sidebar — a running estimate of how much Sprite Dust it’d take to summon every released variant you’re still missing, broken down by rarity. Clearly labelled an estimate (most Sprites come from Chests).' },
+      { tag: 'Added', text: 'Export backgrounds — the Share & Export dialog now has a row of background themes (Midnight, Galaxy, Ember, Slate, Forest) that restyle your collection image, previewed live before you download.' },
+    ],
+    why:
+      'These fill the gaps competitors cover: bulk manual entry (their checklists are list-first), a summon-cost/“value” number collectors like to chase, and customisable share cards. Each is self-contained and reuses data/logic already in the app (the filtered list, the dust-cost table, the export renderer), so they add utility without new dependencies.',
+  },
+  {
+    date: 'July 17, 2026',
     title: 'Share & export, front and center (with a live preview + Holofoil)',
     summary:
       'Sharing your collection is no longer tucked in the sidebar — a prominent button by the progress bars opens a proper Share & Export dialog with a live image preview, and the export card finally includes the Holofoil column.',

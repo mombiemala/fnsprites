@@ -2,8 +2,16 @@ import { useEffect, useState } from 'react'
 import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 import { ALL_SPRITES, RELEASED_COUNT } from '../data/sprites'
-import { generateCollectionImage, downloadDataUrl } from '../lib/exportImage'
+import { generateCollectionImage, downloadDataUrl, CARD_THEMES } from '../lib/exportImage'
 import { useEscClose } from '../lib/useEscClose'
+
+const THEME_SWATCH = {
+  midnight: 'linear-gradient(135deg,#141a30,#0a0f1e)',
+  galaxy: 'linear-gradient(135deg,#241546,#0a0820)',
+  ember: 'linear-gradient(135deg,#2a1710,#120a08)',
+  slate: 'linear-gradient(135deg,#222839,#0c0f18)',
+  forest: 'linear-gradient(135deg,#12291f,#08120d)',
+}
 
 // One home for everything "show off / share your collection": a live preview of
 // the export image (Sprite-Locker matrix, incl. Holofoil), a Collection/Missing
@@ -17,21 +25,23 @@ export default function ShareExportModal({ onClose }) {
 
   const gamertag = profile?.gamertag || ''
   const [mode, setMode] = useState('collection')
+  const [theme, setTheme] = useState('midnight')
   const [url, setUrl] = useState(null)
   const [rendering, setRendering] = useState(true)
 
-  // Regenerate whenever the mode changes. `rendering` is flipped on in the mode
-  // click handler (and starts true), so the effect only sets state after the
+  // Regenerate whenever the mode/theme changes. `rendering` is flipped on in the
+  // click handlers (and starts true), so the effect only sets state after the
   // async render resolves — no synchronous setState in the effect.
   useEffect(() => {
     let alive = true
-    generateCollectionImage({ gamertag, tracking, mode }).then((u) => {
+    generateCollectionImage({ gamertag, tracking, mode, theme }).then((u) => {
       if (alive) { setUrl(u); setRendering(false) }
     })
     return () => { alive = false }
-  }, [mode, gamertag, tracking])
+  }, [mode, theme, gamertag, tracking])
 
   const pick = (m) => { if (m !== mode) { setRendering(true); setMode(m) } }
+  const pickTheme = (t) => { if (t !== theme) { setRendering(true); setTheme(t) } }
 
   const owned = ALL_SPRITES.filter((s) => !s.unreleased && tracking[s.id]?.owned).length
   const mastered = ALL_SPRITES.filter((s) => !s.unreleased && tracking[s.id]?.mastered).length
@@ -79,6 +89,22 @@ export default function ShareExportModal({ onClose }) {
               >
                 {label}
               </button>
+            ))}
+          </div>
+
+          {/* Background theme swatches */}
+          <div className="mb-3 flex flex-wrap items-center gap-2">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">Background</span>
+            {Object.keys(CARD_THEMES).map((t) => (
+              <button
+                key={t}
+                onClick={() => pickTheme(t)}
+                title={CARD_THEMES[t].label}
+                aria-label={CARD_THEMES[t].label}
+                aria-pressed={theme === t}
+                className={`h-7 w-7 rounded-lg border-2 transition-transform hover:scale-105 ${theme === t ? 'border-[var(--brand)]' : 'border-[var(--border)]'}`}
+                style={{ background: THEME_SWATCH[t] }}
+              />
             ))}
           </div>
 
