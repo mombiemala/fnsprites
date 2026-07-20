@@ -247,10 +247,16 @@ export default function App() {
 
   const gamertag = isShareView ? shared?.profile?.gamertag : profile?.gamertag
   const effectiveView = isShareView ? 'collection' : view
+  // View + sort are quick-access layout controls, not filters — so switching to
+  // list view (or changing sort) must NOT light up "Clear filters", and clearing
+  // must preserve them.
+  const FILTER_KEYS = ['search', 'theme', 'rarity', 'ownership', 'hideMastered', 'showUnreleased', 'groupBy']
   const hasActiveFilters = useMemo(
-    () => JSON.stringify(filters) !== JSON.stringify(DEFAULT_FILTERS),
+    () => FILTER_KEYS.some((k) => filters[k] !== DEFAULT_FILTERS[k]),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [filters]
   )
+  const clearFilters = () => setFilters((f) => ({ ...DEFAULT_FILTERS, sort: f.sort, view: f.view }))
 
   // Bulk quick-add: acts on the released sprites currently shown, so filtering to
   // a theme or rarity (or searching) then hitting the button claims the whole set
@@ -451,22 +457,14 @@ export default function App() {
         </div>
       )}
 
-      <div className="mb-5 flex flex-col gap-2">
+      <div className="mb-5">
         <ProgressStats
           owned={stats.owned}
           mastered={stats.mastered}
           total={filters.showUnreleased ? set.total : set.released}
           upcoming={set.total - set.released}
+          onShare={() => setShowShare(true)}
         />
-        <div className="flex justify-end">
-          <button
-            onClick={() => setShowShare(true)}
-            title="Preview & download a shareable image of your collection, or copy a Discord/Reddit caption"
-            className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-3.5 py-2 text-xs font-extrabold text-black transition-opacity hover:opacity-90"
-          >
-            📤 Share &amp; export
-          </button>
-        </div>
       </div>
 
       {/* Full-width filters bar (sticks to the top on scroll) */}
@@ -478,7 +476,7 @@ export default function App() {
           count={visible.length}
           total={filters.showUnreleased ? set.total : set.released}
           hasActiveFilters={hasActiveFilters}
-          onClear={() => setFilters(DEFAULT_FILTERS)}
+          onClear={clearFilters}
         />
       </div>
 

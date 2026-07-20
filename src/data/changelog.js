@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'July 19, 2026',
+    title: 'Toolbar tidy-up + Share button moved onto the stats card',
+    summary:
+      'A few layout fixes around the collection controls, and the Share & Export button now lives on the progress card where it belongs.',
+    changes: [
+      { tag: 'Changed', text: '“More filters” now sits right after the Sort dropdown, and the grid/list view toggle moved to the end of the bar.' },
+      { tag: 'Changed', text: 'The “Share & export” button moved inside the Collection/Mastery stats card (top-right), instead of floating in its own row underneath.' },
+      { tag: 'Changed', text: '“Clear filters” now sits right next to the “Showing X of Y” count instead of being pushed off to the far right.' },
+      { tag: 'Fixed', text: 'Switching to the list view no longer lights up “Clear filters” — view and sort are layout preferences, not filters, so they no longer count as an active filter (and clearing filters keeps your chosen view/sort).' },
+    ],
+    why:
+      'Small friction points: the view toggle sat between two filter controls, the share button was orphaned in its own row, and the list-view/“Clear filters” confusion made it look like a filter was applied when it wasn’t. Treating view/sort as preferences (not filters) fixes the last one cleanly.',
+  },
+  {
+    date: 'July 19, 2026',
     title: 'Fix: app wouldn’t load for near-complete collections',
     summary:
       'If the only Sprites you were missing had no published drop rate (the collab Mythics — Air, Batman, Seven, Pollo, Vini Jr.), the app crashed to a blank screen on load. Fixed.',

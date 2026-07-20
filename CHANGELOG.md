@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 19, 2026 — Toolbar tidy-up + Share button on the stats card
+
+- **Changed:** "More filters" now sits right after the Sort dropdown; the
+  grid/list view toggle moved to the end of the bar.
+- **Changed:** the "Share & export" button moved inside the Collection/Mastery
+  stats card (top-right) instead of floating in its own row.
+- **Changed:** "Clear filters" now sits next to the "Showing X of Y" count.
+- **Fixed:** switching to list view no longer lights up "Clear filters" — view and
+  sort are layout preferences, not filters, so they don't count as an active
+  filter (and clearing filters keeps your chosen view/sort).
+
+*Why:* small friction points — the view toggle sat between filter controls, the
+share button was orphaned, and the list-view/"Clear filters" confusion implied a
+filter was applied when it wasn't. Treating view/sort as preferences fixes it.
+
+---
+
 ## July 19, 2026 — Fix: app wouldn't load for near-complete collections
 
 - **Fixed:** the "Next to chase" panel ranked missing Sprites by drop rate and

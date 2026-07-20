@@ -87,7 +87,28 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           <option value="rarity">Rarity</option>
         </select>
 
-        {/* Grid ↔ Quick-check list view. */}
+        {/* More filters — sits right after Sort. On desktop the key filters are
+            already inline, so it reads "More filters"; on mobile it's the home
+            for everything. */}
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          className={`flex shrink-0 items-center gap-1.5 rounded-xl border px-3 py-2 text-sm font-bold transition-colors ${
+            open || activeCount > 0
+              ? 'border-[var(--brand)] bg-[var(--brand)]/10 text-white'
+              : 'border-[var(--border)] bg-[var(--panel)] text-white hover:border-[var(--brand)]'
+          }`}
+        >
+          ⚙ <span className="hidden sm:inline">More filters</span><span className="sm:hidden">Filters</span>
+          {activeCount > 0 && (
+            <span className="grid h-4 min-w-4 place-items-center rounded-full bg-[var(--brand)] px-1 text-[10px] font-extrabold text-black">
+              {activeCount}
+            </span>
+          )}
+          <span className="text-[var(--muted)]">{open ? '▲' : '▼'}</span>
+        </button>
+
+        {/* Grid ↔ Quick-check list view — at the end. */}
         <div className="flex shrink-0 overflow-hidden rounded-xl border border-[var(--border)]">
           {[['grid', '▦', 'Grid view'], ['list', '☰', 'Quick-check list — tick variants fast']].map(([v, icon, title]) => (
             <button
@@ -104,30 +125,10 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
             </button>
           ))}
         </div>
-
-        <button
-          onClick={() => setOpen((o) => !o)}
-          aria-expanded={open}
-          className={`flex shrink-0 items-center gap-1.5 rounded-xl border px-3 py-2 text-sm font-bold transition-colors ${
-            open || activeCount > 0
-              ? 'border-[var(--brand)] bg-[var(--brand)]/10 text-white'
-              : 'border-[var(--border)] bg-[var(--panel)] text-white hover:border-[var(--brand)]'
-          }`}
-        >
-          {/* On desktop the key filters are already out, so the button reads
-              "More filters"; on mobile it's the home for everything. */}
-          ⚙ <span className="hidden sm:inline">More filters</span><span className="sm:hidden">Filters</span>
-          {activeCount > 0 && (
-            <span className="grid h-4 min-w-4 place-items-center rounded-full bg-[var(--brand)] px-1 text-[10px] font-extrabold text-black">
-              {activeCount}
-            </span>
-          )}
-          <span className="text-[var(--muted)]">{open ? '▲' : '▼'}</span>
-        </button>
       </div>
 
-      {/* Result count + clear, always visible so you know what you're looking at. */}
-      <div className="flex items-center justify-between gap-2">
+      {/* Result count + clear, side by side so the action reads against the count. */}
+      <div className="flex flex-wrap items-center gap-3">
         <span className="text-xs font-semibold text-[var(--muted)]">
           Showing <span className="text-white">{count}</span>
           {typeof total === 'number' ? ` of ${total}` : ''} sprites
