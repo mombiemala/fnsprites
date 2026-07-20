@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 19, 2026 — No more blank screen (crash recovery & load watchdog)
+
+- **Added:** an app-wide error boundary — any unexpected error renders a recovery
+  screen showing what went wrong, with **Reload** and **Clear cache & reload**
+  buttons. Saved progress is untouched.
+- **Added:** a boot watchdog — if the page hasn't finished loading in ~8s (usually
+  a stale cached build after an update), it reveals the same recovery panel
+  instead of a blank screen, even before the app itself starts.
+
+*Why:* a single render error used to blank the whole page with no way out.
+Catching it — and covering the "never even loaded" case with a pre-app watchdog —
+means a bad state is recoverable in one tap, and the on-screen error text makes
+real bugs far easier to pin down and report.
+
+---
+
 ## July 19, 2026 — Next week's events (Mastery Monday, Cube New Sprite Day, Shiny Hours)
 
 - **Added:** Mastery Monday (Mon, Jul 20) — boosted spawns, 2× Sprite Dust, 2×

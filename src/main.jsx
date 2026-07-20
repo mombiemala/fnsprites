@@ -6,17 +6,20 @@ import './index.css'
 import App from './App.jsx'
 import { AuthProvider } from './context/AuthContext'
 import { ToastProvider } from './components/ToastProvider'
+import ErrorBoundary from './components/ErrorBoundary'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ToastProvider>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </ToastProvider>
-    {/* Privacy-friendly, cookieless — no-op until enabled in the Vercel dashboard */}
-    <Analytics />
-    <SpeedInsights />
+    <ErrorBoundary>
+      <ToastProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </ToastProvider>
+      {/* Privacy-friendly, cookieless — no-op until enabled in the Vercel dashboard */}
+      <Analytics />
+      <SpeedInsights />
+    </ErrorBoundary>
   </StrictMode>,
 )
 

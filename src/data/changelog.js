@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 19, 2026',
+    title: 'No more blank screen — crash recovery & load watchdog',
+    summary:
+      'If the app ever hits an error or a stale cached file, it now shows a recovery screen (with a “Clear cache & reload” button) instead of a blank page.',
+    changes: [
+      { tag: 'Added', text: 'An app-wide error boundary: any unexpected error now renders a recovery screen showing what went wrong, with Reload and “Clear cache & reload” buttons — your saved progress is untouched.' },
+      { tag: 'Added', text: 'A boot watchdog: if the page hasn’t finished loading in ~8s (usually a stale cached build after an update), it reveals the same recovery panel instead of a blank screen, even before the app itself starts.' },
+    ],
+    why:
+      'A single render error used to blank the whole page with no way out. Catching it — and covering the “never even loaded” case with a pre-app watchdog — means a bad state is always recoverable in one tap, and the on-screen error text makes real bugs far easier to pin down and report.',
+  },
+  {
+    date: 'July 19, 2026',
     title: 'Next week’s events added — Mastery Monday, Cube New Sprite Day & Shiny Hours',
     summary:
       'Epic posted next week’s Sprite calendar, so the tracker now has it: three dated events that surface automatically on the day, and the Cube variant is upgraded from “leaked” to officially confirmed.',

@@ -58,6 +58,7 @@
       #boot p { margin: 0; max-width: 34rem; color: #9aa4bf; font-size: .95rem; line-height: 1.5; }
       #boot .spin { margin-top: 20px; width: 26px; height: 26px; border: 3px solid #26304a; border-top-color: #36c5ff; border-radius: 50%; animation: bs .8s linear infinite; }
       @keyframes bs { to { transform: rotate(360deg); } }
+      #boot .btn { border: 0; border-radius: 12px; padding: 10px 16px; font-weight: 700; cursor: pointer; font-size: 14px; }
     </style>
   </head>
   <body>
@@ -66,11 +67,52 @@
         <div>
           <h1>FN <b>Sprite</b> Tracker</h1>
           <p>Track every Fortnite sprite &amp; variant — Normal, Gold, Gummy, Galaxy, Gem &amp; Holofoil. Save your collection, compare with friends, trade, and find the best sprite-farming spots. Free &amp; fan-made.</p>
-          <div class="spin" role="status" aria-label="Loading"></div>
+          <div class="spin" id="boot-spin" role="status" aria-label="Loading"></div>
+          <div id="boot-recovery" style="display:none; margin-top:18px">
+            <p style="color:#e8ecf8">Taking longer than usual to load — a cached file from a previous update may be stuck.</p>
+            <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:10px">
+              <button class="btn" style="background:#232a41;color:#fff" onclick="location.reload()">Reload</button>
+              <button class="btn" style="background:linear-gradient(90deg,#36c5ff,#7b61ff);color:#000" onclick="fnsprReset()">Clear cache &amp; reload</button>
+            </div>
+          </div>
           <noscript><p style="margin-top:16px;color:#e8ecf8">This app needs JavaScript enabled to track your collection.</p></noscript>
         </div>
       </div>
     </div>
+    <script>
+      // Recovery escape hatch: unregister service workers + drop caches, reload.
+      function fnsprReset() {
+        (async function () {
+          try {
+            if ('serviceWorker' in navigator) {
+              var rs = await navigator.serviceWorker.getRegistrations();
+              await Promise.all(rs.map(function (r) { return r.unregister(); }));
+            }
+            if (window.caches) {
+              var ks = await caches.keys();
+              await Promise.all(ks.map(function (k) { return caches.delete(k); }));
+            }
+          } catch (e) { /* best effort */ }
+          location.reload();
+        })();
+      }
+      // Watchdog: if React hasn't replaced #boot within 8s (e.g. a stale cached
+      // build that fails to load), reveal the recovery panel instead of a blank page.
+      (function () {
+        function showRecovery() {
+          if (!document.getElementById('boot')) return; // app mounted — nothing to do
+          var spin = document.getElementById('boot-spin');
+          var rec = document.getElementById('boot-recovery');
+          if (spin) spin.style.display = 'none';
+          if (rec) rec.style.display = 'block';
+        }
+        setTimeout(showRecovery, 8000);
+        window.addEventListener('error', function (e) {
+          var t = e && e.target;
+          if (t && (t.tagName === 'SCRIPT' || t.tagName === 'LINK')) showRecovery();
+        }, true);
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
