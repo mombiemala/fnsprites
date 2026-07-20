@@ -94,6 +94,7 @@ export default function ShareBar({ onExport, exporting }) {
         </label>
         <button
           onClick={save}
+          title="Save your gamertag & public-link setting"
           className="rounded-xl bg-[var(--brand)] px-4 py-2 text-sm font-extrabold text-black"
         >
           {saved ? 'Saved ✓' : 'Save'}
@@ -108,6 +109,7 @@ export default function ShareBar({ onExport, exporting }) {
         />
         <button
           onClick={copy}
+          title="Copy your shareable collection link"
           className="rounded-xl bg-[var(--panel-2)] px-4 py-2 text-sm font-bold text-white hover:bg-[var(--border)]"
         >
           {copied ? 'Copied ✓' : 'Copy link'}

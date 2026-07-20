@@ -49,10 +49,10 @@ export default class ErrorBoundary extends Component {
             after an update — clearing it usually fixes it. Your saved progress isn’t affected.
           </p>
           <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button onClick={() => window.location.reload()} style={{ background: '#232a41', color: '#fff', border: 0, borderRadius: 12, padding: '10px 16px', fontWeight: 700, cursor: 'pointer' }}>
+            <button onClick={() => window.location.reload()} title="Reload the page" style={{ background: '#232a41', color: '#fff', border: 0, borderRadius: 12, padding: '10px 16px', fontWeight: 700, cursor: 'pointer' }}>
               Reload
             </button>
-            <button onClick={clearAndReload} style={{ background: 'linear-gradient(90deg,#36c5ff,#7b61ff)', color: '#000', border: 0, borderRadius: 12, padding: '10px 16px', fontWeight: 800, cursor: 'pointer' }}>
+            <button onClick={clearAndReload} title="Unregister the service worker, clear cached files, and reload" style={{ background: 'linear-gradient(90deg,#36c5ff,#7b61ff)', color: '#000', border: 0, borderRadius: 12, padding: '10px 16px', fontWeight: 800, cursor: 'pointer' }}>
               Clear cache &amp; reload
             </button>
           </div>

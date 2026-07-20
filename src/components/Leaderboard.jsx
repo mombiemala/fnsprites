@@ -45,11 +45,11 @@ export default function Leaderboard() {
           </Tooltip>
         </h3>
         {rows === null ? (
-          <button onClick={load} disabled={loading} className="rounded-xl bg-[var(--brand)] px-3 py-1.5 text-xs font-extrabold text-black disabled:opacity-60">
+          <button onClick={load} disabled={loading} title="Load the Flex Score leaderboard" className="rounded-xl bg-[var(--brand)] px-3 py-1.5 text-xs font-extrabold text-black disabled:opacity-60">
             {loading ? 'Loading…' : 'Load'}
           </button>
         ) : (
-          <button onClick={load} className="text-xs font-bold text-[var(--muted)] hover:text-white">↻ Refresh</button>
+          <button onClick={load} title="Reload the leaderboard" className="text-xs font-bold text-[var(--muted)] hover:text-white">↻ Refresh</button>
         )}
       </div>
       <p className="mb-3 text-xs text-[var(--muted)]">

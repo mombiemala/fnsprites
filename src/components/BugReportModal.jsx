@@ -62,6 +62,7 @@ export default function BugReportModal({ onClose }) {
           <button
             type="submit"
             disabled={busy}
+            title="Send your bug report"
             className="rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] py-2.5 text-sm font-extrabold text-black disabled:opacity-60"
           >
             {busy ? 'Sending…' : 'Send report'}

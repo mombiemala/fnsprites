@@ -6,6 +6,19 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 20, 2026',
+    title: 'Nav that adapts to your screen + a full tooltip pass',
+    summary:
+      'The top navigation now flexes to fit any width — fitting as many sections inline as your screen allows and tucking the rest into “⋯ More” — and just about every button in the app now explains itself on hover.',
+    changes: [
+      { tag: 'Changed', text: 'The section nav is now a “priority-plus” bar: it measures the available width and shows as many tabs inline as fit, moving the overflow into the ⋯ More menu. On a wide desktop everything sits inline; on a phone only a few tabs show and the rest live under More — no fixed breakpoints, it just adapts.' },
+      { tag: 'Changed', text: 'Cosmetics (beta) is now a first-class tab rather than living permanently inside More. More is purely an overflow bucket now — it only holds what doesn’t fit, plus the utility links (Guide-style extras).' },
+      { tag: 'Added', text: 'Hover tooltips across the app: every button and action now has a title/label that explains what it does — the nav tabs, toolbar controls, share/export, trade toggles, modal actions, and more.' },
+    ],
+    why:
+      'The old nav could crowd or wrap on smaller screens, and promoting Cosmetics to a real tab (instead of burying it in More) matches the plan to lean the app toward the wider game. Measuring width instead of hard-coding breakpoints keeps it correct at every size and as we add more tabs. The tooltip sweep is an accessibility + discoverability win — icon-only buttons in particular were doing a lot of unlabelled work.',
+  },
+  {
     date: 'July 19, 2026',
     title: 'New: Item Shop tab (with filters) + a Cosmetics preview',
     summary:

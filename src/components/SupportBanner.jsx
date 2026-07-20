@@ -34,6 +34,7 @@ export default function SupportBanner() {
           </p>
           <button
             onClick={copy}
+            title="Copy the Creator Code to your clipboard"
             className="mt-2.5 w-full rounded-xl bg-white px-4 py-2.5 text-sm font-extrabold text-black transition-transform hover:scale-[1.02]"
           >
             {copied ? 'Copied ✓' : `Copy code: ${CREATOR_CODE.toUpperCase()}`}

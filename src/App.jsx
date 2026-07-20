@@ -15,6 +15,7 @@ import StatsBreakdown from './components/StatsBreakdown'
 import NextToChase from './components/NextToChase'
 import QuickCheckList from './components/QuickCheckList'
 import DustToComplete from './components/DustToComplete'
+import OverflowNav from './components/OverflowNav'
 import UpcomingSprites from './components/UpcomingSprites'
 import WelcomeModal from './components/WelcomeModal'
 import AnnouncementBar from './components/AnnouncementBar'
@@ -106,7 +107,6 @@ export default function App() {
   const [showChangelog, setShowChangelog] = useState(false)
   const [showHelp, setShowHelp] = useState(false)
   const [showBackup, setShowBackup] = useState(false)
-  const [showMore, setShowMore] = useState(false)
 
   // Single source of truth for the utility/support links, so the header "More"
   // menu and the footer show the exact same set. "How Sprites work" also has the
@@ -177,15 +177,13 @@ export default function App() {
   const isShareView = !!shareTarget
   const tradeBadge = !!user && !!profile?.notify_trades && newTradeCount > 0
   const readOnly = isShareView
-  const activeTracking = useMemo(
-    () => (isShareView ? shared?.tracking || {} : tracking),
-    [isShareView, shared, tracking]
-  )
+  // With the React Compiler on, these are auto-memoized — no manual useMemo needed.
+  const activeTracking = isShareView ? shared?.tracking || {} : tracking
 
   // Progress is measured against what's obtainable right now (released), so both
   // the numerator and denominator exclude unreleased/rumored forms unless the
   // user opts to show them — keeping the bar from ever reading past 100%.
-  const stats = useMemo(() => {
+  const stats = (() => {
     let owned = 0
     let mastered = 0
     for (const s of set.items) {
@@ -194,10 +192,10 @@ export default function App() {
       if (activeTracking[s.id]?.mastered) mastered++
     }
     return { owned, mastered, total: set.released }
-  }, [activeTracking, set])
+  })()
 
   // Owned/total per theme for the toolbar chips.
-  const themeStats = useMemo(() => {
+  const themeStats = (() => {
     const out = {}
     for (const t of set.variants) out[t.id] = { owned: 0, total: 0 }
     for (const s of set.items) {
@@ -206,9 +204,9 @@ export default function App() {
       if (activeTracking[s.id]?.owned) out[s.themeId].owned++
     }
     return out
-  }, [activeTracking, set])
+  })()
 
-  const visible = useMemo(() => {
+  const visible = (() => {
     const q = filters.search.trim().toLowerCase()
     let list = set.items.filter((s) => {
       if (!filters.showUnreleased && s.unreleased) return false
@@ -230,9 +228,9 @@ export default function App() {
       list = [...list].sort((a, b) => (RARITY_RANK[a.rarity] - RARITY_RANK[b.rarity]) || a.typeName.localeCompare(b.typeName))
     }
     return list
-  }, [filters, activeTracking, set])
+  })()
 
-  const groups = useMemo(() => {
+  const groups = (() => {
     if (filters.groupBy === 'none') return [{ key: 'all', label: null, items: visible }]
     const buckets = {}
     for (const s of visible) {
@@ -248,7 +246,7 @@ export default function App() {
     else if (filters.groupBy === 'tier') order = [...(set.tierOrder || []), ['Unranked', 'Unranked']]
     else order = set.types.map((t) => [t.id, t.name])
     return order.filter(([k]) => buckets[k]?.length).map(([k, label]) => ({ key: k, label, items: buckets[k] }))
-  }, [visible, filters.groupBy, set])
+  })()
 
   const gamertag = isShareView ? shared?.profile?.gamertag : profile?.gamertag
   const effectiveView = isShareView ? 'collection' : view
@@ -263,14 +261,12 @@ export default function App() {
   )
   const clearFilters = () => setFilters((f) => ({ ...DEFAULT_FILTERS, sort: f.sort, view: f.view }))
 
+
   // Bulk quick-add: acts on the released sprites currently shown, so filtering to
   // a theme or rarity (or searching) then hitting the button claims the whole set
   // in one go. Unreleased sprites are never bulk-owned.
-  const bulkTargets = useMemo(() => visible.filter((s) => !s.unreleased), [visible])
-  const bulkOwnedCount = useMemo(
-    () => bulkTargets.reduce((n, s) => n + (activeTracking[s.id]?.owned ? 1 : 0), 0),
-    [bulkTargets, activeTracking]
-  )
+  const bulkTargets = visible.filter((s) => !s.unreleased)
+  const bulkOwnedCount = bulkTargets.reduce((n, s) => n + (activeTracking[s.id]?.owned ? 1 : 0), 0)
   const bulkAllOwned = bulkTargets.length > 0 && bulkOwnedCount === bulkTargets.length
   const markAllShown = () => {
     const toAdd = bulkTargets.length - bulkOwnedCount
@@ -291,7 +287,7 @@ export default function App() {
   // First-run onboarding gate. While it's showing we suppress the standalone
   // bulk bar and the sidebar import card, so a new visitor sees ONE clear card
   // (with both shortcuts inside it) instead of three stacked prompts.
-  const hasAnyOwned = useMemo(() => Object.values(activeTracking).some((v) => v?.owned), [activeTracking])
+  const hasAnyOwned = Object.values(activeTracking).some((v) => v?.owned)
   const showOnboarding = !isShareView && !readOnly && !hintDismissed && !hasAnyOwned
 
   const [exporting, setExporting] = useState(false)
@@ -351,7 +347,7 @@ export default function App() {
               </span>
             </div>
           ) : (
-            <button onClick={() => setShowAuth(true)} className="shrink-0 rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-4 py-2 text-xs font-extrabold text-black">
+            <button onClick={() => setShowAuth(true)} title="Log in or sign up to save your collection to the cloud & sync across devices" className="shrink-0 rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-4 py-2 text-xs font-extrabold text-black">
               Log in to save
             </button>
           ))}
@@ -359,79 +355,23 @@ export default function App() {
 
       {!isShareView && <CollectionSwitcher value={collectionId} onChange={setCollectionId} />}
 
-      {/* Primary navigation — every section plus the Guide & More utilities live
-          in one row, so the whole app is reachable from a single place. */}
-      <nav className="mb-5 flex flex-wrap items-center gap-1.5" aria-label="Sections">
-        {TABS.map((t) => {
-          const active = !isShareView && view === t.id
-          const cls = `rounded-xl px-3 py-2 text-xs font-bold transition-colors ${
-            active ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
-          }`
-          // From a shared profile (?u=…) the tabs are links back into the main
-          // app: Collection → your own tracker, others → that section.
-          if (isShareView) {
-            const href = t.id === 'collection' ? window.location.pathname : `${window.location.pathname}?view=${t.id}`
-            return (
-              <a key={t.id} href={href} className={cls}>
-                {t.label}
-              </a>
-            )
-          }
-          return (
-            <button key={t.id} aria-current={active ? 'page' : undefined} onClick={() => setView(t.id)} className={`${cls} relative`}>
-              {t.label}
-              {t.id === 'trade' && tradeBadge && (
-                <span className="ml-1 rounded-full bg-pink-500 px-1.5 py-0.5 text-[9px] font-extrabold text-white">{newTradeCount}</span>
-              )}
-            </button>
-          )
-        })}
-
-        {/* Guide sits with the sections (it's a place people go to read), next to
-            Farming; the divider sets off only the More utility menu. */}
-        <button
-          onClick={() => setShowHelp(true)}
-          title="How Sprites work — extraction, leveling, mastery & trading"
-          className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
-        >
-          ❔ Guide
-        </button>
-
-        {/* Divider between sections and the More utility menu. */}
-        <span aria-hidden="true" className="mx-1 hidden h-5 w-px bg-[var(--border)] sm:block" />
-
-        <div className="relative">
-          <button
-            onClick={() => setShowMore((v) => !v)}
-            aria-haspopup="menu"
-            aria-expanded={showMore}
-            title="More — About, Changelog, Backup, Report a bug, Support"
-            className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
-          >
-            ⋯ More
-          </button>
-          {showMore && (
-            <>
-              <button aria-hidden="true" tabIndex={-1} onClick={() => setShowMore(false)} className="fixed inset-0 z-30 cursor-default" />
-              <div role="menu" className="absolute left-0 z-40 mt-1 min-w-[11rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--panel)] py-1 text-left shadow-xl">
-                {utilityLinks
-                  .filter((l) => l.id !== 'help')
-                  .map((l) =>
-                    l.href ? (
-                      <a key={l.id} href={l.href} target="_blank" rel="noreferrer" role="menuitem" onClick={() => setShowMore(false)} className="block px-3 py-2 text-xs font-bold text-[var(--muted)] hover:bg-[var(--panel-2)] hover:text-white">
-                        {l.label}
-                      </a>
-                    ) : (
-                      <button key={l.id} role="menuitem" onClick={() => { l.onClick(); setShowMore(false) }} className="block w-full px-3 py-2 text-left text-xs font-bold text-[var(--muted)] hover:bg-[var(--panel-2)] hover:text-white">
-                        {l.label}
-                      </button>
-                    ),
-                  )}
-              </div>
-            </>
-          )}
-        </div>
-      </nav>
+      {/* Primary navigation — sections + Guide + Cosmetics inline, with anything
+          that doesn't fit (and the utility links) flowing into the ⋯ More overflow
+          menu. Adapts to the width, so it's tidy on desktop and mobile alike. */}
+      <OverflowNav
+        views={TABS}
+        view={view}
+        isShareView={isShareView}
+        onSelectView={setView}
+        tradeBadge={tradeBadge}
+        newTradeCount={newTradeCount}
+        actions={[
+          { key: 'guide', label: '❔ Guide', onClick: () => setShowHelp(true), title: 'How Sprites work — extraction, leveling, mastery & trading' },
+          { key: 'cosmetics', label: '🧢 Cosmetics', onClick: () => setShowCosmetics(true), title: 'Browse the newest Fortnite cosmetics (beta)' },
+        ]}
+        extras={utilityLinks.filter((l) => l.id !== 'help' && l.id !== 'cosmetics')}
+        ariaLabel="Sections"
+      />
 
       {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'news' || effectiveView === 'map' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
@@ -503,7 +443,7 @@ export default function App() {
                 <button onClick={dismissHint} aria-label="Dismiss" className="shrink-0 text-[var(--muted)] hover:text-white">✕</button>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
-                <button onClick={() => setShowImport(true)} className="rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-3 py-2 text-xs font-extrabold text-black">
+                <button onClick={() => setShowImport(true)} title="Import your sprite locker from a screenshot — reads it on your device" className="rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-3 py-2 text-xs font-extrabold text-black">
                   📷 Import a locker screenshot
                 </button>
                 {bulkTargets.length > 0 && !bulkAllOwned && (
@@ -511,7 +451,7 @@ export default function App() {
                     ✓ Mark all {bulkTargets.length} owned
                   </button>
                 )}
-                <button onClick={() => setShowHelp(true)} className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
+                <button onClick={() => setShowHelp(true)} title="Learn how Sprites work — extraction, leveling, mastery & trading" className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
                   ❔ How Sprites work
                 </button>
               </div>
@@ -527,6 +467,7 @@ export default function App() {
               {bulkAllOwned ? (
                 <button
                   onClick={unmarkAllShown}
+                  title="Unmark every sprite currently shown as not owned"
                   className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
                 >
                   Unmark all shown
@@ -584,6 +525,7 @@ export default function App() {
           {!isShareView && !readOnly && !showOnboarding && (
             <button
               onClick={() => setShowImport(true)}
+              title="Import from a screenshot — on-device OCR pre-checks what it spots"
               className="flex items-center gap-3 rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-3 text-left transition-colors hover:bg-[var(--brand)]/15"
             >
               <span className="text-2xl">📷</span>
@@ -610,10 +552,10 @@ export default function App() {
                 <h3 className="mb-2 font-display text-lg text-white">Share &amp; export</h3>
                 <p className="mb-3 text-sm text-[var(--muted)]">
                   Preview &amp; download a collection image or copy a Discord/Reddit caption — or{' '}
-                  <button onClick={() => setShowAuth(true)} className="font-bold text-[var(--brand)] underline">log in</button>{' '}
+                  <button onClick={() => setShowAuth(true)} title="Log in to save & sync your collection and get a shareable link" className="font-bold text-[var(--brand)] underline">log in</button>{' '}
                   to save it and get a link with your gamertag.
                 </p>
-                <button onClick={() => setShowShare(true)} className="w-full rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-3 py-2 text-xs font-extrabold text-black hover:opacity-90">
+                <button onClick={() => setShowShare(true)} title="Preview & download a collection image, or copy a Discord/Reddit caption" className="w-full rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-3 py-2 text-xs font-extrabold text-black hover:opacity-90">
                   📤 Share &amp; export
                 </button>
               </div>
@@ -635,7 +577,7 @@ export default function App() {
               {isShareView ? (
                 <a href={t.id === 'collection' ? window.location.pathname : `${window.location.pathname}?view=${t.id}`} className="hover:text-white">{t.label}</a>
               ) : (
-                <button onClick={() => goToSection(t.id)} className={`hover:text-white ${view === t.id ? 'text-white' : ''}`}>{t.label}</button>
+                <button onClick={() => goToSection(t.id)} title={`Go to ${t.label.replace(/^[^\w]+\s*/, '')}`} className={`hover:text-white ${view === t.id ? 'text-white' : ''}`}>{t.label}</button>
               )}
             </Fragment>
           ))}
@@ -648,7 +590,7 @@ export default function App() {
               {l.href ? (
                 <a href={l.href} target="_blank" rel="noreferrer" className="hover:text-white">{l.label}</a>
               ) : (
-                <button onClick={l.onClick} className="hover:text-white">{l.label}</button>
+                <button onClick={l.onClick} title={`Open ${l.label.replace(/^[^\w]+\s*/, '')}`} className="hover:text-white">{l.label}</button>
               )}
             </Fragment>
           ))}

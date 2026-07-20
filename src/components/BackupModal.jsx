@@ -83,7 +83,7 @@ export default function BackupModal({ onClose }) {
         <div className="rounded-xl bg-[var(--bg-2)] p-3">
           <div className="mb-1 flex items-center justify-between">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">Your backup code ({ownedCount} owned)</span>
-            <button onClick={copy} className="rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">
+            <button onClick={copy} title="Copy your backup code to the clipboard" className="rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">
               {copied ? 'Copied ✓' : 'Copy'}
             </button>
           </div>
@@ -95,7 +95,7 @@ export default function BackupModal({ onClose }) {
           <span className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">Restore from a code</span>
           <textarea value={paste} onChange={(e) => setPaste(e.target.value)} rows={3} placeholder="Paste a backup code…"
             className="w-full resize-none break-all rounded-lg border border-[var(--border)] bg-[var(--bg)] p-2 font-mono text-[10px] text-white outline-none focus:border-[var(--brand)]" />
-          <button onClick={restore} disabled={!paste.trim()}
+          <button onClick={restore} disabled={!paste.trim()} title="Restore progress from a backup code (merges with your current progress, never wipes)"
             className="mt-2 w-full rounded-xl bg-[var(--brand)] py-2 text-sm font-extrabold text-black disabled:opacity-50">
             Restore &amp; merge
           </button>

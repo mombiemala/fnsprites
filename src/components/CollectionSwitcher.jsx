@@ -15,6 +15,7 @@ export default function CollectionSwitcher({ value, onChange }) {
             role="tab"
             aria-selected={active}
             onClick={() => onChange(c.id)}
+            title={`Switch to the ${c.label} collection`}
             className={`rounded-xl px-3 py-1.5 text-xs font-bold transition-colors ${
               active ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
             }`}

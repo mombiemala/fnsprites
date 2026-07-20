@@ -130,7 +130,7 @@ export default function ScreenshotImportModal({ onClose }) {
               <h3 className="text-sm font-bold text-white">
                 Recognized {rows.length} sprite{rows.length === 1 ? '' : 's'} — double-check before importing
               </h3>
-              <button onClick={() => { setStep('idle'); setRows([]) }} className="text-[11px] font-bold text-[var(--brand)] hover:underline">
+              <button onClick={() => { setStep('idle'); setRows([]) }} title="Start over with a different screenshot" className="text-[11px] font-bold text-[var(--brand)] hover:underline">
                 ↻ Try another image
               </button>
             </div>
@@ -187,7 +187,7 @@ export default function ScreenshotImportModal({ onClose }) {
               {addResults.length > 0 && (
                 <div className="absolute z-10 mt-1 w-full overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--panel-2)] shadow-xl">
                   {addResults.map((t) => (
-                    <button key={t.id} onClick={() => addType(t.id)} className="block w-full px-3 py-1.5 text-left text-xs text-white hover:bg-[var(--brand)]/20">
+                    <button key={t.id} onClick={() => addType(t.id)} title={`Add ${t.name} to the import list`} className="block w-full px-3 py-1.5 text-left text-xs text-white hover:bg-[var(--brand)]/20">
                       {t.icon} {t.name}
                     </button>
                   ))}
@@ -200,6 +200,7 @@ export default function ScreenshotImportModal({ onClose }) {
               <button
                 onClick={apply}
                 disabled={!selectedIds.length}
+                title="Mark the selected variants as owned in your collection"
                 className="rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-4 py-2 text-sm font-extrabold text-black disabled:opacity-60"
               >
                 Mark {selectedIds.length} owned

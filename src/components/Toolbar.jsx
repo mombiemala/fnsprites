@@ -14,10 +14,11 @@ const FILTER_DEFAULTS = {
   showUnreleased: false,
 }
 
-function Chip({ active, onClick, children, color }) {
+function Chip({ active, onClick, children, color, title }) {
   return (
     <button
       onClick={onClick}
+      title={title}
       className={`rounded-full px-3 py-1 text-xs font-bold transition-colors ${
         active ? 'text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
       }`}
@@ -93,6 +94,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
         <button
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
+          title="More filters — grouping, variant chips and toggles"
           className={`flex shrink-0 items-center gap-1.5 rounded-xl border px-3 py-2 text-sm font-bold transition-colors ${
             open || activeCount > 0
               ? 'border-[var(--brand)] bg-[var(--brand)]/10 text-white'
@@ -134,7 +136,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           {typeof total === 'number' ? ` of ${total}` : ''} sprites
         </span>
         {hasActiveFilters && (
-          <button onClick={onClear} className="rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">
+          <button onClick={onClear} title="Reset all filters (keeps your view & sort)" className="rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">
             ✕ Clear filters
           </button>
         )}
@@ -179,7 +181,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           <div>
             <p className="mb-1.5 text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">Variant</p>
             <div className="flex flex-wrap items-center gap-1.5">
-              <Chip active={filters.theme === 'all'} onClick={() => set({ theme: 'all' })}>All</Chip>
+              <Chip active={filters.theme === 'all'} onClick={() => set({ theme: 'all' })} title="Show all variant themes">All</Chip>
               {THEMES.map((t) => {
                 const st = themeStats?.[t.id]
                 return (

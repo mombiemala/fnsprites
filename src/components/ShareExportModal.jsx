@@ -87,6 +87,7 @@ export default function ShareExportModal({ onClose }) {
               <button
                 key={m}
                 onClick={() => pick(m)}
+                title={m === 'collection' ? 'Preview an image of your full collection' : 'Preview an image of the sprites you still need'}
                 className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${mode === m ? 'bg-[var(--brand)] text-black' : 'text-[var(--muted)] hover:text-white'}`}
               >
                 {label}
@@ -125,6 +126,7 @@ export default function ShareExportModal({ onClose }) {
           <button
             onClick={download}
             disabled={rendering || !url}
+            title="Download this image as a PNG"
             className="mb-4 w-full rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-4 py-2.5 text-sm font-extrabold text-black disabled:opacity-60"
           >
             ⬇️ Download PNG {mode === 'missing' ? '(sprites I need)' : '(my collection)'}
@@ -134,7 +136,7 @@ export default function ShareExportModal({ onClose }) {
           <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-2)] p-3">
             <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">Caption for Discord / Reddit</p>
             <pre className="mb-2 whitespace-pre-wrap break-words rounded-lg bg-[var(--panel)] p-2.5 text-xs text-[var(--text)]/90">{caption}</pre>
-            <button onClick={() => copy(caption, 'Caption copied — paste into Discord/Reddit!')} className="w-full rounded-xl bg-[var(--panel-2)] px-4 py-2 text-sm font-bold text-white hover:bg-[var(--border)]">
+            <button onClick={() => copy(caption, 'Caption copied — paste into Discord/Reddit!')} title="Copy the caption text to paste into Discord or Reddit" className="w-full rounded-xl bg-[var(--panel-2)] px-4 py-2 text-sm font-bold text-white hover:bg-[var(--border)]">
               📋 Copy caption
             </button>
           </div>
@@ -146,7 +148,7 @@ export default function ShareExportModal({ onClose }) {
                 <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">Your shareable link</p>
                 <div className="flex items-center gap-2">
                   <input readOnly value={shareUrl} className="flex-1 truncate rounded-lg border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs text-[var(--muted)] outline-none" />
-                  <button onClick={() => copy(shareUrl, 'Share link copied!')} className="rounded-xl bg-[var(--panel-2)] px-4 py-2 text-sm font-bold text-white hover:bg-[var(--border)]">Copy</button>
+                  <button onClick={() => copy(shareUrl, 'Share link copied!')} title="Copy your shareable link" className="rounded-xl bg-[var(--panel-2)] px-4 py-2 text-sm font-bold text-white hover:bg-[var(--border)]">Copy</button>
                 </div>
                 {!profile?.is_public && (
                   <p className="mt-2 text-[11px] text-[var(--muted)]">Your profile is private — turn on “Public link” in Profile so others can open it.</p>

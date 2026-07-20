@@ -11,6 +11,30 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 20, 2026 — Adaptive nav + full tooltip pass
+
+- **Changed:** the section nav is now a **priority-plus** bar — it measures the
+  available width (hidden measurement row + `ResizeObserver`) and shows as many
+  tabs inline as fit, tucking the overflow into the **⋯ More** menu. No fixed
+  breakpoints; it adapts from wide desktop (all inline) down to phone (a few
+  inline, rest under More). New `OverflowNav` component.
+- **Changed:** **Cosmetics (beta)** is now a first-class tab rather than living
+  permanently inside More. More is purely an overflow bucket — it holds only what
+  doesn't fit plus the utility links.
+- **Added:** hover tooltips across the app — every button/action now has a
+  `title`/`aria-label` explaining it (nav tabs, toolbar controls, share/export,
+  trade toggles, modal actions). Audit confirms 0 buttons without a label.
+
+*Why:* the old nav could crowd/wrap on smaller screens, and promoting Cosmetics
+to a real tab matches the plan to lean toward the wider game. Measuring width
+instead of hard-coding breakpoints keeps it correct at every size and as more
+tabs are added. The tooltip sweep is an accessibility + discoverability win —
+icon-only buttons were doing a lot of unlabelled work. (Also converted App's
+`activeTracking`-derived memos to plain consts so the React Compiler
+auto-memoizes them — clears a `preserve-manual-memoization` lint error.)
+
+---
+
 ## July 19, 2026 — New: Item Shop tab (with filters) + Cosmetics preview
 
 - **Added:** a 🛒 **Item Shop** tab showing today's rotating Fortnite shop —

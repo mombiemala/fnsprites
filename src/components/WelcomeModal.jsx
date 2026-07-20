@@ -64,6 +64,7 @@ export default function WelcomeModal() {
 
         <button
           onClick={close}
+          title="Start using the tracker"
           className="mt-5 w-full rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] py-2.5 text-sm font-extrabold text-black"
         >
           Let’s go →

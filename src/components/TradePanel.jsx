@@ -59,7 +59,7 @@ export default function TradePanel() {
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
       <div className="mb-3 flex items-center justify-between">
         <h3 className="font-display text-lg text-white">Trading</h3>
-        <button onClick={exportCard} className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-white hover:bg-[var(--border)]">
+        <button onClick={exportCard} title="Export a shareable trade-card image (for trade / looking for)" className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-white hover:bg-[var(--border)]">
           📸 Trade card
         </button>
       </div>
@@ -83,6 +83,7 @@ export default function TradePanel() {
         <button
           onClick={runMatch}
           disabled={loading || (!haves.length && !wants.length)}
+          title="Find players whose wants/offers match yours"
           className="rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-4 py-2 text-sm font-extrabold text-black disabled:opacity-50"
         >
           {loading ? 'Finding matches…' : 'Find trade matches'}

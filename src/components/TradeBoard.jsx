@@ -74,7 +74,7 @@ function PostCard({ p, why, onDelete, onVouch, canVouch }) {
             </button>
           )}
           {p.mine && onDelete && (
-            <button onClick={() => onDelete(p.id)} className="text-[11px] font-bold text-red-300 hover:text-red-200">Delete</button>
+            <button onClick={() => onDelete(p.id)} title="Delete this trade post" className="text-[11px] font-bold text-red-300 hover:text-red-200">Delete</button>
           )}
         </div>
       </div>
@@ -111,7 +111,7 @@ function SpritePicker({ value, onChange, placeholder }) {
           {value.map((id) => (
             <span key={id} className="flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-bold text-black" style={{ background: ACCENT[id] }}>
               {LABEL[id]}
-              <button onClick={() => onChange(value.filter((v) => v !== id))} className="opacity-70 hover:opacity-100">✕</button>
+              <button onClick={() => onChange(value.filter((v) => v !== id))} title={`Remove ${LABEL[id] || id}`} aria-label="Remove" className="opacity-70 hover:opacity-100">✕</button>
             </span>
           ))}
         </div>
@@ -126,7 +126,7 @@ function SpritePicker({ value, onChange, placeholder }) {
         {opts.length > 0 && (
           <div className="absolute z-10 mt-1 w-full overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--panel-2)] shadow-xl">
             {opts.map((s) => (
-              <button key={s.id} onClick={() => { onChange([...value, s.id]); setQ('') }} className="block w-full px-3 py-1.5 text-left text-xs text-white hover:bg-[var(--brand)]/20">
+              <button key={s.id} onClick={() => { onChange([...value, s.id]); setQ('') }} title={`Add ${LABEL[s.id]}`} className="block w-full px-3 py-1.5 text-left text-xs text-white hover:bg-[var(--brand)]/20">
                 {LABEL[s.id]}
               </button>
             ))}
@@ -303,6 +303,7 @@ export default function TradeBoard() {
               <button
                 key={m.id}
                 onClick={() => toggleMethod(m.id)}
+                title={`Toggle whether you're open to ${m.label}`}
                 className={`rounded-full px-3 py-1 text-[11px] font-bold transition-colors ${methods.includes(m.id) ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'}`}
               >
                 {m.label}
@@ -324,7 +325,7 @@ export default function TradeBoard() {
             placeholder="Optional note — timezone, availability, specifics…"
             className="mt-2 w-full rounded-lg border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-xs text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)]"
           />
-          <button onClick={submit} disabled={busy} className="mt-3 rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-4 py-2 text-sm font-extrabold text-black disabled:opacity-60">
+          <button onClick={submit} disabled={busy} title="Post your trade to the board" className="mt-3 rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] px-4 py-2 text-sm font-extrabold text-black disabled:opacity-60">
             {busy ? 'Posting…' : 'Post to board'}
           </button>
         </div>

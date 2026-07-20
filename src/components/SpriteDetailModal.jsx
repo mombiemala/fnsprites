@@ -96,7 +96,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
             <span className="font-bold text-[var(--brand)]">🗺️ Where to find:</span> {spriteSource(type.id)}
           </p>
           {onOpenMap && (
-            <button onClick={onOpenMap} className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">
+            <button onClick={onOpenMap} title="Open the Farming guide — best sprite-chest hotspots" className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">
               Where to farm →
             </button>
           )}

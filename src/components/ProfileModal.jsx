@@ -79,7 +79,7 @@ export default function ProfileModal({ onClose }) {
               <input type="checkbox" checked={isPublic} onChange={(e) => setIsPublic(e.target.checked)} />
               Public — appears on the leaderboard &amp; shareable link
             </label>
-            <button onClick={saveProfile} disabled={savingProfile} className="shrink-0 rounded-lg bg-[var(--brand)] px-3 py-1.5 text-xs font-extrabold text-black disabled:opacity-60">
+            <button onClick={saveProfile} disabled={savingProfile} title="Save your gamertag & visibility" className="shrink-0 rounded-lg bg-[var(--brand)] px-3 py-1.5 text-xs font-extrabold text-black disabled:opacity-60">
               {savingProfile ? 'Saving…' : 'Save'}
             </button>
           </div>
@@ -91,19 +91,19 @@ export default function ProfileModal({ onClose }) {
 
         {/* Actions */}
         <div className="mt-5 flex items-center justify-between border-t border-[var(--border)] pt-4">
-          <button onClick={async () => { await signOut(); onClose() }} className="rounded-xl bg-[var(--panel-2)] px-4 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
+          <button onClick={async () => { await signOut(); onClose() }} title="Sign out of your account" className="rounded-xl bg-[var(--panel-2)] px-4 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
             Sign out
           </button>
           {confirmDelete ? (
             <div className="flex items-center gap-2">
               <span className="text-[11px] text-[var(--muted)]">Sure?</span>
-              <button onClick={deleteData} disabled={busy} className="rounded-xl bg-red-500 px-3 py-2 text-xs font-bold text-white disabled:opacity-60">
+              <button onClick={deleteData} disabled={busy} title="Permanently delete your profile & cloud collection — this can't be undone" className="rounded-xl bg-red-500 px-3 py-2 text-xs font-bold text-white disabled:opacity-60">
                 {busy ? 'Deleting…' : 'Delete everything'}
               </button>
-              <button onClick={() => setConfirmDelete(false)} className="text-[11px] text-[var(--muted)] hover:text-white">Cancel</button>
+              <button onClick={() => setConfirmDelete(false)} title="Cancel — keep my data" className="text-[11px] text-[var(--muted)] hover:text-white">Cancel</button>
             </div>
           ) : (
-            <button onClick={() => setConfirmDelete(true)} className="text-[11px] font-bold text-red-300 hover:text-red-200">
+            <button onClick={() => setConfirmDelete(true)} title="Permanently delete your account data" className="text-[11px] font-bold text-red-300 hover:text-red-200">
               Delete my data
             </button>
           )}

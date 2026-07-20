@@ -69,6 +69,7 @@ export default function NewsFeed() {
         <div className="flex flex-wrap gap-1.5">
           <button
             onClick={() => setFilter('all')}
+            title="Show all news & events"
             className={`rounded-full px-2.5 py-1 text-[11px] font-bold ${filter === 'all' ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
           >
             All
@@ -77,6 +78,7 @@ export default function NewsFeed() {
             <button
               key={k}
               onClick={() => setFilter(k)}
+              title={`Show only ${t.label} items`}
               className="rounded-full px-2.5 py-1 text-[11px] font-bold"
               style={filter === k ? { background: t.color, color: '#000' } : { background: 'var(--panel-2)', color: 'var(--muted)' }}
             >
