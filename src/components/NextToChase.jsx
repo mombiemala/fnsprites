@@ -16,10 +16,15 @@ export default function NextToChase({ tracking, onOpen }) {
     const missing = released.filter((s) => !tracking[s.id]?.owned)
     if (!missing.length) return null
 
+    // Only sprites with a known drop rate can be ranked by rarity. Some (the
+    // collab Mythics — Air/Batman/Seven/Pollo/Vini) have no published rate, so
+    // `rated` can be empty even when `missing` isn't. Never reduce an empty array
+    // without a seed — pickBy returns null instead of throwing.
     const rated = missing.filter((s) => !Number.isNaN(rate(s)))
-    const rarest = (rated.length ? rated : missing).reduce((a, b) => (rate(b) < rate(a) ? b : a))
+    const pickBy = (arr, better) => (arr.length ? arr.reduce((a, b) => (better(b, a) ? b : a)) : null)
+    const rarest = pickBy(rated, (b, a) => rate(b) < rate(a)) || missing[0]
     const easiestPool = rated.filter((s) => s.typeId !== rarest.typeId)
-    const easiest = (easiestPool.length ? easiestPool : rated).reduce((a, b) => (rate(b) > rate(a) ? b : a))
+    const easiest = pickBy(easiestPool.length ? easiestPool : rated, (b, a) => rate(b) > rate(a))
 
     // Sprite type closest to having every variant owned (started but unfinished).
     const byType = {}
@@ -34,7 +39,7 @@ export default function NextToChase({ tracking, onOpen }) {
       .sort((a, b) => a.total - a.owned - (b.total - b.owned))[0]
 
     const rows = [
-      { key: 'rarest', tag: 'Rarest missing', sprite: rarest, note: `${rarest.rarity} · ${rarest.dropRate} drop` },
+      { key: 'rarest', tag: 'Rarest missing', sprite: rarest, note: rarest.dropRate ? `${rarest.rarity} · ${rarest.dropRate} drop` : rarest.rarity },
     ]
     if (closest && closest.missing[0].id !== rarest.id) {
       rows.push({
@@ -44,7 +49,7 @@ export default function NextToChase({ tracking, onOpen }) {
         note: `${closest.typeName}: ${closest.total - closest.owned} variant${closest.total - closest.owned === 1 ? '' : 's'} to go`,
       })
     }
-    if (easiest.id !== rarest.id && !rows.some((r) => r.sprite.id === easiest.id)) {
+    if (easiest && easiest.id !== rarest.id && !rows.some((r) => r.sprite.id === easiest.id)) {
       rows.push({ key: 'easiest', tag: 'Easiest to grab', sprite: easiest, note: `Most common · ${easiest.dropRate} drop` })
     }
     return rows

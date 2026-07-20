@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 19, 2026 — Fix: app wouldn't load for near-complete collections
+
+- **Fixed:** the "Next to chase" panel ranked missing Sprites by drop rate and
+  could reduce an empty list — when every missing Sprite lacked a published rate
+  (the collab Mythics: Air, Batman, Seven, Pollo, Vini Jr.) — throwing "Reduce of
+  empty array with no initial value" and blanking the whole page on load. It now
+  still shows your rarest missing Sprite (without a drop-rate line) and skips the
+  "easiest to grab" pick when there's nothing to rank.
+
+*Why:* the crash only hit players whose remaining misses were all no-drop-rate
+collabs — i.e. people close to 100%, which includes most logged-in regulars — so
+a nearly-complete collection was effectively locking people out. (The error
+boundary shipped alongside turned the blank screen into a readable error, which
+made this quick to pin down.)
+
+---
+
 ## July 19, 2026 — No more blank screen (crash recovery & load watchdog)
 
 - **Added:** an app-wide error boundary — any unexpected error renders a recovery

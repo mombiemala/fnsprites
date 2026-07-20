@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 19, 2026',
+    title: 'Fix: app wouldn’t load for near-complete collections',
+    summary:
+      'If the only Sprites you were missing had no published drop rate (the collab Mythics — Air, Batman, Seven, Pollo, Vini Jr.), the app crashed to a blank screen on load. Fixed.',
+    changes: [
+      { tag: 'Fixed', text: 'The “Next to chase” panel ranked missing Sprites by drop rate and could end up reducing an empty list (when every missing Sprite lacked a rate) — throwing “Reduce of empty array with no initial value” and taking the whole page down. It now handles that case: it still shows your rarest missing Sprite, just without a drop-rate line, and skips the “easiest to grab” pick when there’s nothing to rank.' },
+    ],
+    why:
+      'The crash only hit players whose remaining misses were all no-drop-rate collabs — i.e. people close to 100%, which includes most logged-in regulars — so a full collection was effectively locking people out. (The error boundary shipped alongside is what turned the blank screen into a readable error and made this quick to pin down.)',
+  },
+  {
+    date: 'July 19, 2026',
     title: 'No more blank screen — crash recovery & load watchdog',
     summary:
       'If the app ever hits an error or a stale cached file, it now shows a recovery screen (with a “Clear cache & reload” button) instead of a blank page.',
