@@ -65,7 +65,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
               </div>
             </div>
           </div>
-          <button onClick={onClose} className="text-[var(--muted)] hover:text-white">✕</button>
+          <button onClick={onClose} title="Close" aria-label="Close" className="text-[var(--muted)] hover:text-white">✕</button>
         </div>
 
         {type.ability && (

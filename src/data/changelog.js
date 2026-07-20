@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 19, 2026',
+    title: 'New: Item Shop tab',
+    summary:
+      'A new 🛒 Shop tab shows today’s live Fortnite Item Shop — the first feature that isn’t tied to Sprites, and a step toward the tracker being a broader Fortnite companion.',
+    changes: [
+      { tag: 'Added', text: 'Item Shop tab — today’s rotating shop, grouped by section, with item art, rarity, and V-Bucks prices (original price struck through when discounted). Pulls live from the free, public fortnite-api.com (the same data ecosystem sites like fortnite.gg use), with loading/refresh/error states.' },
+      { tag: 'Changed', text: 'Added hover tooltips to the most-used buttons that were missing them (the sprite card’s Have/Mastered toggles and a few modal close buttons), for clearer at-a-glance actions.' },
+    ],
+    why:
+      'Sprites aren’t confirmed to continue into Chapter 8 (late Nov), so leaning the app toward the wider game — starting with the Item Shop, which is high-traffic and completely independent of Sprites — is deliberate future-proofing. It also just adds daily-return value now. Sprite data stays our own curated set; these public APIs cover the rest of the game, not Sprites.',
+  },
+  {
+    date: 'July 19, 2026',
     title: 'Toolbar tidy-up + Share button moved onto the stats card',
     summary:
       'A few layout fixes around the collection controls, and the Share & Export button now lives on the progress card where it belongs.',

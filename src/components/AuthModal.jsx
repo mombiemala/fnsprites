@@ -57,7 +57,7 @@ export default function AuthModal({ onClose }) {
           <h2 className="font-display text-2xl text-white">
             {mode === 'signin' ? 'Sign in' : 'Create account'}
           </h2>
-          <button onClick={onClose} className="text-[var(--muted)] hover:text-white">
+          <button onClick={onClose} title="Close" aria-label="Close" className="text-[var(--muted)] hover:text-white">
             ✕
           </button>
         </div>

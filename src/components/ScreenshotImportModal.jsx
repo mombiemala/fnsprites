@@ -97,7 +97,7 @@ export default function ScreenshotImportModal({ onClose }) {
               <span className="font-semibold text-emerald-300">Runs in your browser — the image never leaves your device.</span>
             </p>
           </div>
-          <button onClick={onClose} className="text-[var(--muted)] hover:text-white">✕</button>
+          <button onClick={onClose} title="Close" aria-label="Close" className="text-[var(--muted)] hover:text-white">✕</button>
         </div>
 
         {step === 'idle' && (

@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 19, 2026 — New: Item Shop tab
+
+- **Added:** a 🛒 **Shop** tab showing today's rotating Fortnite Item Shop —
+  grouped by section, with item art, rarity, and V-Bucks prices (original price
+  struck through when discounted). Pulls live from the free public
+  [fortnite-api.com](https://fortnite-api.com) (the same ecosystem sites like
+  fortnite.gg use), with loading/refresh/error states.
+- **Changed:** added hover tooltips to the most-used buttons that were missing
+  them (the sprite card's Have/Mastered toggles and several modal close buttons).
+
+*Why:* Sprites aren't confirmed to continue into Chapter 8 (~late Nov), so leaning
+the app toward the wider game — starting with the high-traffic, Sprite-independent
+Item Shop — is deliberate future-proofing, and adds daily-return value now. Sprite
+data stays our own curated set; these public APIs cover the rest of the game.
+
+---
+
 ## July 19, 2026 — Toolbar tidy-up + Share button on the stats card
 
 - **Changed:** "More filters" now sits right after the Sort dropdown; the

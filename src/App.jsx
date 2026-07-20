@@ -24,6 +24,7 @@ import SaveStatusPill from './components/SaveStatusPill'
 // (Collection) load stays lean; each is fetched the first time it's opened.
 const Leaderboard = lazy(() => import('./components/Leaderboard'))
 const NewsFeed = lazy(() => import('./components/NewsFeed'))
+const ShopTab = lazy(() => import('./components/ShopTab'))
 const SpriteFarming = lazy(() => import('./components/SpriteFarming'))
 const TradeBoard = lazy(() => import('./components/TradeBoard'))
 const AuthModal = lazy(() => import('./components/AuthModal'))
@@ -44,6 +45,7 @@ const TABS = [
   { id: 'trade', label: '🔁 Trade' },
   { id: 'news', label: '📰 News' },
   { id: 'map', label: '🗺️ Farming' },
+  { id: 'shop', label: '🛒 Shop' },
 ]
 
 const DEFAULT_FILTERS = {
@@ -428,12 +430,13 @@ export default function App() {
         </div>
       </nav>
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'news' || effectiveView === 'map') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'news' || effectiveView === 'map' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
           {effectiveView === 'trade' && <div className="mb-5"><TradeBoard /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'map' && <div className="mb-5"><SpriteFarming /></div>}
+          {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}
         </Suspense>
       )}
 

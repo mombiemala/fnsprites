@@ -89,6 +89,7 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
         <div className="mt-2 flex gap-1">
           <button
             onClick={() => onToggleOwned(sprite.id, !owned)}
+            title={owned ? `Owned — tap to unmark ${sprite.typeName} · ${theme?.name}` : `Mark ${sprite.typeName} · ${theme?.name} as owned`}
             className={`flex-1 rounded-lg py-1 text-[11px] font-bold transition-colors ${
               owned ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
             }`}
@@ -97,7 +98,7 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
           </button>
           <button
             onClick={() => onToggleMastered(sprite.id, !mastered)}
-            title="Mastered"
+            title={mastered ? 'Mastered (Level 5) — tap to unmark' : 'Mark as mastered (Level 5)'}
             className={`rounded-lg px-2 py-1 text-[11px] font-bold transition-colors ${
               mastered ? 'bg-amber-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'
             }`}
