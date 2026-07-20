@@ -7,15 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 19, 2026',
-    title: 'New: Item Shop tab',
+    title: 'New: Item Shop tab (with filters) + a Cosmetics preview',
     summary:
-      'A new 🛒 Shop tab shows today’s live Fortnite Item Shop — the first feature that isn’t tied to Sprites, and a step toward the tracker being a broader Fortnite companion.',
+      'A new 🛒 Item Shop tab shows today’s live Fortnite shop with filters, and a small Cosmetics preview experiments with a wider cosmetic wishlist — the first features that aren’t tied to Sprites.',
     changes: [
-      { tag: 'Added', text: 'Item Shop tab — today’s rotating shop, grouped by section, with item art, rarity, and V-Bucks prices (original price struck through when discounted). Pulls live from the free, public fortnite-api.com (the same data ecosystem sites like fortnite.gg use), with loading/refresh/error states.' },
-      { tag: 'Changed', text: 'Added hover tooltips to the most-used buttons that were missing them (the sprite card’s Have/Mastered toggles and a few modal close buttons), for clearer at-a-glance actions.' },
+      { tag: 'Added', text: 'Item Shop tab — today’s rotating shop grouped by section, with item art, rarity, and V-Bucks prices (original price struck through when discounted). Filters like the competitor sites: search by name, filter by rarity or item type, and sort by price. Pulls live from the free public fortnite-api.com, with loading/refresh/error states.' },
+      { tag: 'Changed', text: 'Named it clearly the “Item Shop” (Fortnite’s in-game store where cosmetics are sold for V-Bucks) with a note that it’s a read-only view — so nobody mistakes it for a store built into this app.' },
+      { tag: 'Added', text: 'Cosmetics (beta) — a proof-of-concept under the ⋯ More menu that browses the newest Fortnite cosmetics with a local-only “♥ Want” wishlist, to try out the idea of tracking cosmetics alongside Sprites. Deliberately doesn’t touch your account yet; a full version would sync like your sprite collection.' },
+      { tag: 'Changed', text: 'Added hover tooltips to more of the most-used buttons (the sprite card’s Have/Mastered toggles and modal close buttons).' },
     ],
     why:
-      'Sprites aren’t confirmed to continue into Chapter 8 (late Nov), so leaning the app toward the wider game — starting with the Item Shop, which is high-traffic and completely independent of Sprites — is deliberate future-proofing. It also just adds daily-return value now. Sprite data stays our own curated set; these public APIs cover the rest of the game, not Sprites.',
+      'Sprites aren’t confirmed to continue into Chapter 8 (late Nov), so leaning the app toward the wider game — the Item Shop and cosmetics are high-traffic and completely independent of Sprites — is deliberate future-proofing, and adds daily-return value now. The cosmetics piece is a POC on purpose: real cosmetic collections need account/profile work, so we prove the idea before committing. Sprite data stays our own curated set; these public APIs cover the rest of the game.',
   },
   {
     date: 'July 19, 2026',

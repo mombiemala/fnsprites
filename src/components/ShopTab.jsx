@@ -52,11 +52,19 @@ function ShopCard({ entry }) {
   )
 }
 
+const selectCls =
+  'rounded-xl border border-[var(--border)] bg-[var(--panel-2)] px-3 py-2 text-sm text-white outline-none focus:border-[var(--brand)]'
+
 export default function ShopTab() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [reloadKey, setReloadKey] = useState(0)
+  // Filters (competitor-style): search by name, plus rarity / type / sort.
+  const [query, setQuery] = useState('')
+  const [rarity, setRarity] = useState('all')
+  const [type, setType] = useState('all')
+  const [sort, setSort] = useState('shop')
 
   useEffect(() => {
     let alive = true
@@ -68,15 +76,44 @@ export default function ShopTab() {
 
   const retry = () => { setLoading(true); setError(null); setReloadKey((k) => k + 1) }
 
-  // Group entries by their shop section (layout name), preserving sort priority.
-  const sections = []
-  if (data?.entries) {
+  const allEntries = data?.entries || []
+
+  // Build filter option lists from what's actually in the shop today.
+  const rarityOpts = new Map()
+  const typeOpts = new Map()
+  for (const e of allEntries) {
+    const rep = entryItems(e)[0]
+    if (rep?.rarity?.value) rarityOpts.set(rep.rarity.value, rep.rarity.displayValue || rep.rarity.value)
+    if (rep?.type?.value) typeOpts.set(rep.type.value, rep.type.displayValue || rep.type.value)
+  }
+
+  const q = query.trim().toLowerCase()
+  const matches = (e) => {
+    const items = entryItems(e)
+    const rep = items[0]
+    if (rarity !== 'all' && rep?.rarity?.value !== rarity) return false
+    if (type !== 'all' && rep?.type?.value !== type) return false
+    if (q && !items.some((it) => (it.name || it.title || '').toLowerCase().includes(q))) return false
+    return true
+  }
+  const filtered = allEntries.filter(matches)
+  const anyFilter = q || rarity !== 'all' || type !== 'all'
+
+  // Group by shop section (default), or produce a single flat, sorted list when a
+  // price sort is chosen (sorting across sections only makes sense flat).
+  let sections = []
+  if (sort === 'shop') {
     const byName = new Map()
-    for (const e of [...data.entries].sort((a, b) => (a.sortPriority ?? 0) - (b.sortPriority ?? 0))) {
+    for (const e of [...filtered].sort((a, b) => (a.sortPriority ?? 0) - (b.sortPriority ?? 0))) {
       const key = e.layout?.name || 'Featured'
       if (!byName.has(key)) { byName.set(key, []); sections.push({ name: key, items: byName.get(key) }) }
       byName.get(key).push(e)
     }
+  } else {
+    const sorted = [...filtered].sort((a, b) =>
+      sort === 'price-asc' ? (a.finalPrice ?? 0) - (b.finalPrice ?? 0) : (b.finalPrice ?? 0) - (a.finalPrice ?? 0)
+    )
+    sections = [{ name: null, items: sorted }]
   }
 
   return (
@@ -86,9 +123,43 @@ export default function ShopTab() {
         <button onClick={retry} title="Reload today's Item Shop" className="text-xs font-bold text-[var(--muted)] hover:text-white">↻ Refresh</button>
       </div>
       <p className="mb-3 text-xs text-[var(--muted)]">
-        Today’s rotating Fortnite Item Shop{data?.date ? ` · ${new Date(data.date).toLocaleDateString()}` : ''}. Prices in V-Bucks.
+        Today’s rotating Fortnite Item Shop{data?.date ? ` · ${new Date(data.date).toLocaleDateString()}` : ''} — the in-game store where cosmetics are sold for V-Bucks (this is a read-only view; nothing is purchasable here).
         Live from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer" className="underline">fortnite-api.com</a>.
       </p>
+
+      {/* Filters — name search + rarity / type / sort, like the competitor sites. */}
+      {!loading && !error && allEntries.length > 0 && (
+        <div className="mb-4 flex flex-col gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search the shop…"
+              title="Search shop items by name"
+              className="min-w-[150px] flex-1 rounded-xl border border-[var(--border)] bg-[var(--panel-2)] px-3 py-2 text-sm text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)] sm:max-w-xs"
+            />
+            <select value={rarity} onChange={(e) => setRarity(e.target.value)} title="Filter by rarity" className={selectCls}>
+              <option value="all">Any rarity</option>
+              {[...rarityOpts].map(([v, label]) => <option key={v} value={v}>{label}</option>)}
+            </select>
+            <select value={type} onChange={(e) => setType(e.target.value)} title="Filter by item type" className={selectCls}>
+              <option value="all">Any type</option>
+              {[...typeOpts].map(([v, label]) => <option key={v} value={v}>{label}</option>)}
+            </select>
+            <select value={sort} onChange={(e) => setSort(e.target.value)} title="Sort order" className={selectCls}>
+              <option value="shop">Shop order</option>
+              <option value="price-asc">Price: low → high</option>
+              <option value="price-desc">Price: high → low</option>
+            </select>
+          </div>
+          <div className="flex items-center gap-3 text-xs font-semibold text-[var(--muted)]">
+            <span>Showing <span className="text-white">{filtered.length}</span> of {allEntries.length} offers</span>
+            {anyFilter && (
+              <button onClick={() => { setQuery(''); setRarity('all'); setType('all') }} title="Clear shop filters" className="rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">✕ Clear filters</button>
+            )}
+          </div>
+        </div>
+      )}
 
       {loading ? (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
@@ -99,13 +170,15 @@ export default function ShopTab() {
           <p className="text-sm text-[var(--muted)]">Couldn’t load the shop — {error}</p>
           <button onClick={retry} title="Try loading the shop again" className="mt-3 rounded-xl bg-[var(--panel-2)] px-4 py-2 text-sm font-bold text-white hover:bg-[var(--border)]">Try again</button>
         </div>
-      ) : !sections.length ? (
+      ) : !allEntries.length ? (
         <p className="py-10 text-center text-sm text-[var(--muted)]">The shop looks empty right now — check back after the daily reset.</p>
+      ) : !filtered.length ? (
+        <p className="py-10 text-center text-sm text-[var(--muted)]">No shop items match your filters.</p>
       ) : (
         <div className="flex flex-col gap-6">
-          {sections.map((sec) => (
-            <section key={sec.name}>
-              <h4 className="mb-2 font-display text-base text-white/90">{sec.name} <span className="text-sm text-[var(--muted)]">· {sec.items.length}</span></h4>
+          {sections.map((sec, si) => (
+            <section key={sec.name ?? `s${si}`}>
+              {sec.name && <h4 className="mb-2 font-display text-base text-white/90">{sec.name} <span className="text-sm text-[var(--muted)]">· {sec.items.length}</span></h4>}
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                 {sec.items.map((e, i) => <ShopCard key={e.offerId || i} entry={e} />)}
               </div>

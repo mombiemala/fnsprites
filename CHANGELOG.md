@@ -11,20 +11,25 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## July 19, 2026 — New: Item Shop tab
+## July 19, 2026 — New: Item Shop tab (with filters) + Cosmetics preview
 
-- **Added:** a 🛒 **Shop** tab showing today's rotating Fortnite Item Shop —
+- **Added:** a 🛒 **Item Shop** tab showing today's rotating Fortnite shop —
   grouped by section, with item art, rarity, and V-Bucks prices (original price
-  struck through when discounted). Pulls live from the free public
-  [fortnite-api.com](https://fortnite-api.com) (the same ecosystem sites like
-  fortnite.gg use), with loading/refresh/error states.
-- **Changed:** added hover tooltips to the most-used buttons that were missing
-  them (the sprite card's Have/Mastered toggles and several modal close buttons).
+  struck through when discounted). **Filters** like the competitor sites: search
+  by name, filter by rarity or item type, sort by price. Pulls live from the free
+  public [fortnite-api.com](https://fortnite-api.com), with loading/refresh/error.
+- **Changed:** named it clearly the **Item Shop** (Fortnite's in-game store, sold
+  for V-Bucks) with a read-only note, so nobody mistakes it for a store built into
+  this app.
+- **Added:** **Cosmetics (beta)** — a proof-of-concept under ⋯ More that browses
+  the newest Fortnite cosmetics with a local-only "♥ Want" wishlist, to try the
+  idea of tracking cosmetics alongside Sprites. Doesn't touch your account yet.
+- **Changed:** more hover tooltips on the most-used buttons.
 
-*Why:* Sprites aren't confirmed to continue into Chapter 8 (~late Nov), so leaning
-the app toward the wider game — starting with the high-traffic, Sprite-independent
-Item Shop — is deliberate future-proofing, and adds daily-return value now. Sprite
-data stays our own curated set; these public APIs cover the rest of the game.
+*Why:* Sprites aren't confirmed for Chapter 8 (~late Nov), so leaning toward the
+wider game — the Item Shop and cosmetics are high-traffic and Sprite-independent —
+is deliberate future-proofing. The cosmetics piece is a POC on purpose: real
+cosmetic collections need profile work, so we prove the idea first.
 
 ---
 

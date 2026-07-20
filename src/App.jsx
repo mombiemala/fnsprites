@@ -37,6 +37,7 @@ const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
 const ShareExportModal = lazy(() => import('./components/ShareExportModal'))
+const CosmeticsModal = lazy(() => import('./components/CosmeticsModal'))
 import { LINKS } from './lib/supabase'
 
 const TABS = [
@@ -45,7 +46,7 @@ const TABS = [
   { id: 'trade', label: '🔁 Trade' },
   { id: 'news', label: '📰 News' },
   { id: 'map', label: '🗺️ Farming' },
-  { id: 'shop', label: '🛒 Shop' },
+  { id: 'shop', label: '🛒 Item Shop' },
 ]
 
 const DEFAULT_FILTERS = {
@@ -113,6 +114,7 @@ export default function App() {
   // avoid a duplicate — but it stays in this list for the footer.
   const utilityLinks = [
     { id: 'help', label: 'How Sprites work', onClick: () => setShowHelp(true) },
+    { id: 'cosmetics', label: '🧢 Cosmetics (beta)', onClick: () => setShowCosmetics(true) },
     { id: 'about', label: 'About', onClick: () => setShowAbout(true) },
     { id: 'changelog', label: 'Changelog', onClick: () => setShowChangelog(true) },
     { id: 'backup', label: 'Backup', onClick: () => setShowBackup(true) },
@@ -144,6 +146,7 @@ export default function App() {
   const [showProfile, setShowProfile] = useState(false)
   const [showImport, setShowImport] = useState(false)
   const [showShare, setShowShare] = useState(false)
+  const [showCosmetics, setShowCosmetics] = useState(false)
   const [newTradeCount, setNewTradeCount] = useState(0)
 
   useEffect(() => {
@@ -682,6 +685,7 @@ export default function App() {
         {showProfile && <ProfileModal onClose={() => setShowProfile(false)} />}
         {showImport && <ScreenshotImportModal onClose={() => setShowImport(false)} />}
         {showShare && <ShareExportModal onClose={() => setShowShare(false)} />}
+        {showCosmetics && <CosmeticsModal onClose={() => setShowCosmetics(false)} />}
         {detailType && (
           <SpriteDetailModal
             typeId={detailType}
