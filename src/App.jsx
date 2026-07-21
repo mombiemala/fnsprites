@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect, lazy, Suspense, Fragment } from 'react'
 import { useAuth } from './context/authStore'
 import { useToast } from './context/toastStore'
 import { fetchSharedCollection } from './lib/sharedCollection'
-import { fetchTradeMatches } from './lib/tradeBoard'
 import { getCollection, ACTIVE_COLLECTION_ID } from './data/collections'
 import { generateCollectionImage, downloadDataUrl } from './lib/exportImage'
 import CollectionSwitcher from './components/CollectionSwitcher'
@@ -26,8 +25,7 @@ import SaveStatusPill from './components/SaveStatusPill'
 const Leaderboard = lazy(() => import('./components/Leaderboard'))
 const NewsFeed = lazy(() => import('./components/NewsFeed'))
 const ShopTab = lazy(() => import('./components/ShopTab'))
-const SpriteFarming = lazy(() => import('./components/SpriteFarming'))
-const TradeBoard = lazy(() => import('./components/TradeBoard'))
+const StatsTab = lazy(() => import('./components/StatsTab'))
 const AuthModal = lazy(() => import('./components/AuthModal'))
 const SpriteDetailModal = lazy(() => import('./components/SpriteDetailModal'))
 const BugReportModal = lazy(() => import('./components/BugReportModal'))
@@ -44,9 +42,8 @@ import { LINKS } from './lib/supabase'
 const TABS = [
   { id: 'collection', label: 'Collection' },
   { id: 'leaderboard', label: '🏆 Leaderboard' },
-  { id: 'trade', label: '🔁 Trade' },
+  { id: 'stats', label: '📊 Stats' },
   { id: 'news', label: '📰 News' },
-  { id: 'map', label: '🗺️ Farming' },
   { id: 'shop', label: '🛒 Item Shop' },
 ]
 
@@ -87,7 +84,7 @@ function TabLoading() {
 }
 
 export default function App() {
-  const { user, profile, tracking, setOwned, setMastered, setLevel, setForTrade, setWanted, bulkOwn, syncing, cloudStatus, authLoading } = useAuth()
+  const { user, profile, tracking, setOwned, setMastered, setLevel, bulkOwn, syncing, cloudStatus, authLoading } = useAuth()
   const { toast } = useToast()
   const shareTarget = useShareTarget()
 
@@ -147,7 +144,6 @@ export default function App() {
   const [showImport, setShowImport] = useState(false)
   const [showShare, setShowShare] = useState(false)
   const [showCosmetics, setShowCosmetics] = useState(false)
-  const [newTradeCount, setNewTradeCount] = useState(0)
 
   useEffect(() => {
     if (!shareTarget) return
@@ -162,20 +158,7 @@ export default function App() {
     }
   }, [shareTarget])
 
-  // Trade-match badge: for opted-in users, count trade posts newer than last-seen
-  // that match their wants/offers. Cleared when the Trade tab marks them seen.
-  useEffect(() => {
-    if (!user || !profile?.notify_trades) return
-    let cancelled = false
-    ;(async () => {
-      const m = await fetchTradeMatches(profile.trades_seen_at)
-      if (!cancelled) setNewTradeCount(m.length)
-    })()
-    return () => { cancelled = true }
-  }, [user, profile?.notify_trades, profile?.trades_seen_at])
-
   const isShareView = !!shareTarget
-  const tradeBadge = !!user && !!profile?.notify_trades && newTradeCount > 0
   const readOnly = isShareView
   // With the React Compiler on, these are auto-memoized — no manual useMemo needed.
   const activeTracking = isShareView ? shared?.tracking || {} : tracking
@@ -363,8 +346,6 @@ export default function App() {
         view={view}
         isShareView={isShareView}
         onSelectView={setView}
-        tradeBadge={tradeBadge}
-        newTradeCount={newTradeCount}
         actions={[
           { key: 'guide', label: '❔ Guide', onClick: () => setShowHelp(true), title: 'How Sprites work — extraction, leveling, mastery & trading' },
           { key: 'cosmetics', label: '🧢 Cosmetics', onClick: () => setShowCosmetics(true), title: 'Browse the newest Fortnite cosmetics (beta)' },
@@ -373,12 +354,11 @@ export default function App() {
         ariaLabel="Sections"
       />
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'news' || effectiveView === 'map' || effectiveView === 'shop') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
-          {effectiveView === 'trade' && <div className="mb-5"><TradeBoard /></div>}
+          {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
-          {effectiveView === 'map' && <div className="mb-5"><SpriteFarming /></div>}
           {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}
         </Suspense>
       )}
@@ -635,10 +615,7 @@ export default function App() {
             onClose={() => setDetailType(null)}
             onToggleOwned={setOwned}
             onToggleMastered={setMastered}
-            onToggleTrade={setForTrade}
-            onToggleWanted={setWanted}
             onSetLevel={setLevel}
-            onOpenMap={() => { setDetailType(null); setView('map') }}
             readOnly={readOnly}
           />
         )}

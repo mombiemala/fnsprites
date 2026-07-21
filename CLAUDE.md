@@ -31,10 +31,11 @@ update, that turn isn't done.
 ## Where things live
 
 - Sprites & themes: `src/data/sprites.js`, `src/data/themes.js`, `src/index.css`
-- Sprite farming spots (chest hotspots + map links): `src/data/farming.js`
 - Changelog data: `src/data/changelog.js`
 - Supabase client + maker links (Creator Code, Buy Me a Coffee, report email):
   `src/lib/supabase.js`
+- Player stats: client `src/lib/statsApi.js` + `src/components/StatsTab.jsx`,
+  server-side key proxy `api/stats.js` (needs `FORTNITE_API_KEY` env in Vercel).
 
 ## Before pushing
 

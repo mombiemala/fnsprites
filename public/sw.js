@@ -6,7 +6,7 @@
 // '<'" (the server returns the SPA fallback HTML for a missing .js). Hashed
 // assets stay cache-first (they're immutable). Bump CACHE to invalidate old
 // caches for everyone on activate.
-const CACHE = 'fnsprites-v2'
+const CACHE = 'fnsprites-v3'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
@@ -26,6 +26,10 @@ self.addEventListener('fetch', (e) => {
   if (req.method !== 'GET') return
   const url = new URL(req.url)
   if (url.origin !== self.location.origin) return // let Supabase/network calls pass through
+
+  // Our serverless API (e.g. the stats proxy) must ALWAYS hit the network —
+  // never cache it or risk serving a stale result or the SPA HTML fallback.
+  if (url.pathname.startsWith('/api/')) return
 
   // Navigations: network-first, fall back to cache only when offline. Keeps the
   // HTML (and therefore its asset references) fresh after every deploy.

@@ -3,7 +3,7 @@ import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
 import { useEscClose } from '../lib/useEscClose'
 
-export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, onToggleTrade, onToggleWanted, onSetLevel, onOpenMap, readOnly }) {
+export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, onSetLevel, readOnly }) {
   useEscClose(onClose)
   const type = SPRITE_TYPES.find((t) => t.id === typeId)
   if (!type) return null
@@ -90,16 +90,11 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
           </div>
         )}
 
-        {/* Where to find — ties into the community loot map */}
-        <div className="mt-2 flex items-center justify-between gap-2 rounded-xl bg-[var(--bg-2)] px-3 py-2">
+        {/* Where to find — descriptive source hint */}
+        <div className="mt-2 rounded-xl bg-[var(--bg-2)] px-3 py-2">
           <p className="text-sm text-[var(--text)]/90">
             <span className="font-bold text-[var(--brand)]">🗺️ Where to find:</span> {spriteSource(type.id)}
           </p>
-          {onOpenMap && (
-            <button onClick={onOpenMap} title="Open the Farming guide — best sprite-chest hotspots" className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">
-              Where to farm →
-            </button>
-          )}
         </div>
 
         <div className="mt-4 flex items-center justify-between">
@@ -114,8 +109,6 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
             const st = tracking[v.id]
             const owned = !!st?.owned
             const mastered = !!st?.mastered
-            const forTrade = !!st?.forTrade
-            const wanted = !!st?.wanted
             const level = st?.level || 0
             const dust = dustCost(type.rarity, v.themeId)
             return (
@@ -189,30 +182,12 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                     >
                       ★
                     </button>
-                    <button
-                      onClick={() => onToggleTrade(v.id, !forTrade)}
-                      aria-label="Offer to trade or index"
-                      title="Offer to trade or index — adds it to your Trade Board post"
-                      className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${forTrade ? 'bg-emerald-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
-                    >
-                      ⇄
-                    </button>
-                    <button
-                      onClick={() => onToggleWanted(v.id, !wanted)}
-                      aria-label="Want to index"
-                      title="Want to index — adds it to your Trade Board post"
-                      className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${wanted ? 'bg-pink-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
-                    >
-                      ♥
-                    </button>
                   </div>
                 ) : (
                   <div className="flex shrink-0 items-center gap-1">
                     <span className={`rounded-lg px-2.5 py-1.5 text-[11px] font-bold ${owned ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}>
                       {owned ? 'Owned' : 'Missing'}
                     </span>
-                    {forTrade && <span className="rounded-lg bg-emerald-400 px-2 py-1.5 text-[11px] font-bold text-black" title="For trade">⇄</span>}
-                    {wanted && <span className="rounded-lg bg-pink-400 px-2 py-1.5 text-[11px] font-bold text-black" title="Wants">♥</span>}
                   </div>
                 )}
               </div>
@@ -222,10 +197,8 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
 
         {!readOnly && (
           <p className="mt-3 text-[11px] leading-relaxed text-[var(--muted)]">
-            <b className="text-white">Owned</b> · <span className="text-amber-300">★</span> mastered ·{' '}
-            <span className="text-emerald-300">⇄</span> offer to trade/index ·{' '}
-            <span className="text-pink-300">♥</span> want to index. The last two prefill your{' '}
-            <b className="text-white">Trade Board</b> post. <span className="text-amber-300">≈dust</span> = Sprite Dust to re-summon (indexing avoids it).
+            <b className="text-white">Owned</b> · <span className="text-amber-300">★</span> mastered.{' '}
+            <span className="text-amber-300">≈dust</span> = Sprite Dust to re-summon this variant.
           </p>
         )}
       </div>

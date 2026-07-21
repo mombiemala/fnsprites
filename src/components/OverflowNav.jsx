@@ -5,7 +5,8 @@ import { useRef, useState, useLayoutEffect, useCallback } from 'react'
 // `extras`, e.g. utility links). No fixed breakpoints — it measures and adapts,
 // so it degrades gracefully from desktop down to a phone.
 //
-// `items`: [{ key, label, active?, onClick?, href?, badge?, title? }]
+// `views`:  the primary tabs [{ id, label }]
+// `actions`: inline buttons after the tabs [{ key, label, onClick, title }]
 // `extras`: [{ id, label, onClick?, href?, title? }] — always in the menu.
 
 const pillCls = (active) =>
@@ -19,9 +20,8 @@ function Pill({ d }) {
   const cls = pillCls(d.active)
   if (d.href) return <a href={d.href} title={d.title} className={cls}>{d.label}</a>
   return (
-    <button aria-current={d.active ? 'page' : undefined} onClick={d.onClick} title={d.title} className={`relative ${cls}`}>
+    <button aria-current={d.active ? 'page' : undefined} onClick={d.onClick} title={d.title} className={cls}>
       {d.label}
-      {d.badge ? <span className="ml-1 rounded-full bg-pink-500 px-1.5 py-0.5 text-[9px] font-extrabold text-white">{d.badge}</span> : null}
     </button>
   )
 }
@@ -30,12 +30,12 @@ function MenuRow({ d, onPick }) {
   if (d.href) return <a href={d.href} target={d.external ? '_blank' : undefined} rel={d.external ? 'noreferrer' : undefined} role="menuitem" title={d.title} onClick={onPick} className={menuCls}>{d.label}</a>
   return (
     <button role="menuitem" title={d.title} onClick={() => { d.onClick?.(); onPick() }} className={menuCls}>
-      {d.label}{d.badge ? ` (${d.badge})` : ''}
+      {d.label}
     </button>
   )
 }
 
-export default function OverflowNav({ views = [], view, isShareView, onSelectView, tradeBadge, newTradeCount, actions = [], extras = [], ariaLabel = 'Sections' }) {
+export default function OverflowNav({ views = [], view, isShareView, onSelectView, actions = [], extras = [], ariaLabel = 'Sections' }) {
   // Build the inline items here (not in the parent) so the parent's memoized data
   // pipeline stays clean for the React Compiler.
   const base = typeof window !== 'undefined' ? window.location.pathname : '/'
@@ -46,7 +46,6 @@ export default function OverflowNav({ views = [], view, isShareView, onSelectVie
       active: !isShareView && view === t.id,
       onClick: isShareView ? undefined : () => onSelectView?.(t.id),
       href: isShareView ? (t.id === 'collection' ? base : `${base}?view=${t.id}`) : undefined,
-      badge: t.id === 'trade' && tradeBadge ? newTradeCount : undefined,
       title: `View ${t.label.replace(/^[^\w]+\s*/, '')}`,
     })),
     ...actions,
@@ -70,8 +69,8 @@ export default function OverflowNav({ views = [], view, isShareView, onSelectVie
     let count = 0
     for (let i = 0; i < kids.length; i++) {
       used += kids[i].offsetWidth + gap
-      // The "More" button is always present (it holds the utility extras), so
-      // always leave room for it.
+      // The "More" button is (almost) always present (it holds the utility
+      // extras), so always leave room for it.
       if (used + moreW <= avail) count++
       else break
     }
@@ -87,6 +86,7 @@ export default function OverflowNav({ views = [], view, isShareView, onSelectVie
   }, [recompute, items.length])
 
   const overflow = items.slice(visible)
+  const showMore = overflow.length > 0 || extras.length > 0
   const close = () => setOpen(false)
 
   return (
@@ -100,29 +100,34 @@ export default function OverflowNav({ views = [], view, isShareView, onSelectVie
       <div ref={wrapRef} className="flex items-center gap-1.5 overflow-hidden">
         {items.slice(0, visible).map((d) => <Pill key={d.key} d={d} />)}
 
-        <div className="relative shrink-0">
+        {showMore && (
           <button
             ref={moreRef}
             onClick={() => setOpen((o) => !o)}
             aria-haspopup="menu"
             aria-expanded={open}
             title="More sections & options"
-            className="flex items-center gap-1 whitespace-nowrap rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
+            className="flex shrink-0 items-center gap-1 whitespace-nowrap rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
           >
             ⋯ More <span className="text-[var(--muted)]">{open ? '▲' : '▼'}</span>
           </button>
-          {open && (
-            <>
-              <button aria-hidden="true" tabIndex={-1} onClick={close} title="Close menu" className="fixed inset-0 z-30 cursor-default" />
-              <div role="menu" className="absolute right-0 z-40 mt-1 min-w-[12rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--panel)] py-1 text-left shadow-xl">
-                {overflow.map((d) => <MenuRow key={d.key} d={d} onPick={close} />)}
-                {overflow.length > 0 && extras.length > 0 && <div className="my-1 h-px bg-[var(--border)]" />}
-                {extras.map((d) => <MenuRow key={d.id} d={{ ...d, external: !!d.href }} onPick={close} />)}
-              </div>
-            </>
-          )}
-        </div>
+        )}
       </div>
+
+      {/* The dropdown is rendered here — a child of the (relative, NON-clipping)
+          <nav> — rather than inside the overflow-hidden measuring row above, which
+          would clip it (that was the "menu doesn't show" bug). Anchored to the
+          nav's right edge, dropping just below it. */}
+      {showMore && open && (
+        <>
+          <button aria-hidden="true" tabIndex={-1} onClick={close} title="Close menu" className="fixed inset-0 z-30 cursor-default" />
+          <div role="menu" className="absolute right-0 top-full z-40 mt-1 min-w-[12rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--panel)] py-1 text-left shadow-xl">
+            {overflow.map((d) => <MenuRow key={d.key} d={d} onPick={close} />)}
+            {overflow.length > 0 && extras.length > 0 && <div className="my-1 h-px bg-[var(--border)]" />}
+            {extras.map((d) => <MenuRow key={d.id} d={{ ...d, external: !!d.href }} onPick={close} />)}
+          </div>
+        </>
+      )}
     </nav>
   )
 }

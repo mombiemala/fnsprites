@@ -6,6 +6,21 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 21, 2026',
+    title: 'New: Player Stats lookup — plus a leaner, more focused app',
+    summary:
+      'A new 📊 Stats tab looks up any player’s Battle Royale stats by Epic name. We also retired the Farming and Trade tabs, and fixed the ⋯ More menu that wasn’t opening.',
+    changes: [
+      { tag: 'Added', text: 'Player Stats tab — type an Epic display name (or a PlayStation/Xbox account) and see wins, win rate, K/D, kills, matches, top-10/25 finishes, hours played, and a solo/duo/squad breakdown. Their match history has to be public for stats to show.' },
+      { tag: 'Security', text: 'Stats go through a small server-side proxy so the stats API key stays on the server and never ships to your browser — the same principle we hold for every key. The Item Shop and Cosmetics keep using the free, no-auth public endpoints directly.' },
+      { tag: 'Fixed', text: 'The ⋯ More menu wasn’t opening — its dropdown was being clipped by the nav’s overflow. It now renders above the nav and shows every option again.' },
+      { tag: 'Changed', text: 'Removed the 🗺️ Farming tab. The best chest hotspots move around every patch, so a static map wasn’t staying useful — a sprite’s “Where to find” hint still lives in its detail view.' },
+      { tag: 'Changed', text: 'Removed the 🔁 Trade tab and the per-sprite ⇄/♥ trade markers. Cross-player trade matching wasn’t getting enough use to be worth the upkeep, and the tracker’s core job — knowing what you own and what’s left — stands on its own.' },
+    ],
+    why:
+      'Two moves in one: add and subtract. Player stats is a high-traffic, Sprite-independent feature (the same future-proofing behind the Item Shop) and one competitors lean on heavily — done the safe way, with the key server-side. At the same time, Farming and Trade were the two weakest surfaces: farming data goes stale every patch, and trade never reached the critical mass that peer-to-peer matching needs to be useful. Cutting them keeps the app focused and faster to maintain rather than spread thin. (Your owned/mastered data is untouched — the underlying fields just sit dormant.)',
+  },
+  {
     date: 'July 20, 2026',
     title: 'Nav that adapts to your screen + a full tooltip pass',
     summary:

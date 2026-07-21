@@ -11,6 +11,38 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 21, 2026 — New: Player Stats lookup + leaner app (Farming & Trade removed)
+
+- **Added:** a 📊 **Player Stats** tab — look up any player's Battle Royale stats
+  by Epic display name (or PSN/Xbox account): wins, win rate, K/D, kills, matches,
+  top-10/25, hours played, and a solo/duo/squad breakdown. Requires the target's
+  match history to be public.
+- **Security:** stats route through a **server-side proxy** (`api/stats.js`, a
+  Vercel serverless function) so the stats API key stays on the server and never
+  ships in the client bundle. Set `FORTNITE_API_KEY` in the Vercel project env —
+  it is **not** committed. (Item Shop & Cosmetics still use the free, no-auth
+  public endpoints directly from the client.)
+- **Fixed:** the **⋯ More** menu wasn't opening — its dropdown was clipped by the
+  nav's `overflow-hidden`. It now renders as a child of the (non-clipping) `<nav>`
+  and shows every option again. The More button also hides itself when empty.
+- **Changed:** removed the 🗺️ **Farming** tab (`SpriteFarming` + `data/farming.js`).
+  Chest hotspots move every patch, so a static map wasn't staying useful — a
+  sprite's "Where to find" hint still lives in its detail modal.
+- **Changed:** removed the 🔁 **Trade** tab, `TradeBoard`/`TradePanel`,
+  `lib/tradeBoard.js`, and the per-sprite ⇄/♥ markers in the detail modal.
+  Peer-to-peer matching never reached the critical mass it needs to be useful.
+  The `forTrade`/`wanted` tracking fields and the Supabase tables are left intact
+  (dormant, non-destructive) so nothing is lost.
+
+*Why:* add and subtract in one pass. Player stats is a high-traffic,
+Sprite-independent feature (same future-proofing as the Item Shop) and one the
+competitors lean on — shipped the safe way with the key server-side. Meanwhile
+Farming and Trade were the two weakest surfaces (stale-by-patch data; a social
+feature without the network effect), so cutting them keeps the app focused and
+cheaper to maintain rather than spread thin.
+
+---
+
 ## July 20, 2026 — Adaptive nav + full tooltip pass
 
 - **Changed:** the section nav is now a **priority-plus** bar — it measures the
