@@ -153,6 +153,12 @@ export function spriteTier(typeId) {
 // Duck, Dream, Demon, Punk, Zero Point, Fishy, Aura, Boss & Grim still to come).
 // So Holofoil is set per-sprite in `variants` above rather than date-gated here.
 // Keep this map for any FUTURE form that genuinely drops roster-wide on one date.
+//
+// Cube ("New Sprite Day", first wave Thu Jul 23, 2026 @ 9 AM ET) rolls out in
+// WEEKLY BATCHES like Holofoil — ~6-8 Sprites first, the full ~18 over the coming
+// New Sprite Days — NOT all at once. So DON'T blanket date-gate it here (that
+// would over-claim on day one). Flip `cube: R` per-sprite as each wave is
+// confirmed live, exactly as Holofoil is handled above.
 export const FORM_RELEASE = {}
 const _todayStr = (() => { try { return new Date().toISOString().slice(0, 10) } catch { return '9999-12-31' } })()
 const formLive = (themeId) => !!(FORM_RELEASE[themeId] && _todayStr >= FORM_RELEASE[themeId])

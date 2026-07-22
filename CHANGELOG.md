@@ -11,6 +11,36 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 22, 2026 — New Sprite Day (Cube) prep + fixes
+
+- **Fixed:** the **⋯ More** menu now opens directly under its button. The Jul 21
+  clip fix over-corrected — the dropdown was anchored to the full-width `<nav>`
+  (`right-0`), so it floated to the far right. It's now anchored to the More
+  button's own `relative` container; only the inline pills are clipped.
+- **Changed:** removed the **❔ Guide** button from the primary nav. It now lives
+  in the ⋯ More menu + footer (`utilityLinks` `help` is no longer filtered out of
+  the More overflow), plus a small "New to Sprites?" card renders above
+  `NextToChase` for signed-in users.
+- **Changed:** **New Sprite Day (Cube)** callout confirmed & corrected — Thu,
+  Jul 23 @ 9 AM ET, the Cube variant debuts (Kevin-the-Cube style; grants
+  Overdrive/speed in the Storm). It rolls out in **weekly waves like Holofoil**
+  (first ~6–8, full ~18 over coming weeks), **not all at once**. Announcement now
+  shows a day early; News entry pinned around the event.
+- **Changed:** filled in the **Cube** theme's power (`themes.js`) but kept it
+  `rumored: true` and every `cube` variant `U` in the roster — we flip `cube: R`
+  per-sprite as each wave goes live (same discipline as Holofoil). Kept `rumored`
+  on purpose: it's what stops the leaked-Sprite auto-release loop from flipping
+  Cube early for Air/Batman. Explicitly did **not** set
+  `FORM_RELEASE = { cube: '2026-07-23' }`, which would have wrongly flipped all
+  ~18 on day one.
+
+*Why:* the Cube rollout is the exact wave pattern that over-claimed on the
+Holofoil launch. Keeping individual Cube variants un-collectible until each wave
+is confirmed live is the deliberate call — accurate-but-incomplete beats showing
+18 collectibles the day only ~6–8 exist.
+
+---
+
 ## July 21, 2026 — New: Player Stats lookup + leaner app (Farming & Trade removed)
 
 - **Added:** a 📊 **Player Stats** tab — look up any player's Battle Royale stats

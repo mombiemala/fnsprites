@@ -97,37 +97,41 @@ export default function OverflowNav({ views = [], view, isShareView, onSelectVie
         {items.map((d) => <span key={d.key} className={pillCls(false)}>{d.label}</span>)}
       </div>
 
-      <div ref={wrapRef} className="flex items-center gap-1.5 overflow-hidden">
-        {items.slice(0, visible).map((d) => <Pill key={d.key} d={d} />)}
+      <div ref={wrapRef} className="flex items-center gap-1.5">
+        {/* Inline pills live in their own clipped track so a pre-measure flash
+            can't spill; the More button + its dropdown sit OUTSIDE this clip. */}
+        <div className="flex min-w-0 items-center gap-1.5 overflow-hidden">
+          {items.slice(0, visible).map((d) => <Pill key={d.key} d={d} />)}
+        </div>
 
         {showMore && (
-          <button
-            ref={moreRef}
-            onClick={() => setOpen((o) => !o)}
-            aria-haspopup="menu"
-            aria-expanded={open}
-            title="More sections & options"
-            className="flex shrink-0 items-center gap-1 whitespace-nowrap rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
-          >
-            ⋯ More <span className="text-[var(--muted)]">{open ? '▲' : '▼'}</span>
-          </button>
+          <div className="relative shrink-0">
+            <button
+              ref={moreRef}
+              onClick={() => setOpen((o) => !o)}
+              aria-haspopup="menu"
+              aria-expanded={open}
+              title="More sections & options"
+              className="flex items-center gap-1 whitespace-nowrap rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
+            >
+              ⋯ More <span className="text-[var(--muted)]">{open ? '▲' : '▼'}</span>
+            </button>
+
+            {/* Anchored to THIS button's container (relative + non-clipping), so
+                it hangs directly off the button — right-aligned, dropping below. */}
+            {open && (
+              <>
+                <button aria-hidden="true" tabIndex={-1} onClick={close} title="Close menu" className="fixed inset-0 z-30 cursor-default" />
+                <div role="menu" className="absolute right-0 top-full z-40 mt-1 min-w-[12rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--panel)] py-1 text-left shadow-xl">
+                  {overflow.map((d) => <MenuRow key={d.key} d={d} onPick={close} />)}
+                  {overflow.length > 0 && extras.length > 0 && <div className="my-1 h-px bg-[var(--border)]" />}
+                  {extras.map((d) => <MenuRow key={d.id} d={{ ...d, external: !!d.href }} onPick={close} />)}
+                </div>
+              </>
+            )}
+          </div>
         )}
       </div>
-
-      {/* The dropdown is rendered here — a child of the (relative, NON-clipping)
-          <nav> — rather than inside the overflow-hidden measuring row above, which
-          would clip it (that was the "menu doesn't show" bug). Anchored to the
-          nav's right edge, dropping just below it. */}
-      {showMore && open && (
-        <>
-          <button aria-hidden="true" tabIndex={-1} onClick={close} title="Close menu" className="fixed inset-0 z-30 cursor-default" />
-          <div role="menu" className="absolute right-0 top-full z-40 mt-1 min-w-[12rem] overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--panel)] py-1 text-left shadow-xl">
-            {overflow.map((d) => <MenuRow key={d.key} d={d} onPick={close} />)}
-            {overflow.length > 0 && extras.length > 0 && <div className="my-1 h-px bg-[var(--border)]" />}
-            {extras.map((d) => <MenuRow key={d.id} d={{ ...d, external: !!d.href }} onPick={close} />)}
-          </div>
-        </>
-      )}
     </nav>
   )
 }

@@ -11,7 +11,10 @@ export const THEMES = [
   { id: 'galaxy', name: 'Galaxy', short: 'Gx', className: 'theme-galaxy', accent: '#7b61ff', bonus: '+30% ammo when looting' },
   { id: 'gem', name: 'Gem', short: 'Ge', className: 'theme-gem', accent: '#27e0c4', bonus: '−30% fall damage (datamined — Gem was disabled Jun 25, not currently obtainable)', rumored: true },
   { id: 'holofoil', name: 'Holofoil', short: 'H', className: 'theme-holofoil', accent: '#c44dff', bonus: '+5% squad chance to find rare (Gold/Gummy/Galaxy) Sprites from chests' },
-  { id: 'cube', name: 'Cube', short: 'Cu', className: 'theme-cube', accent: '#8a2be2', bonus: 'Bonus not yet revealed', rumored: true },
+  // Event date is Epic-confirmed (Jul 23), but which Sprites get Cube each wave is
+  // still unconfirmed AND `rumored: true` is what keeps the leaked-Sprite loop from
+  // auto-releasing Cube early — so it stays true until each wave actually lands.
+  { id: 'cube', name: 'Cube', short: 'Cu', className: 'theme-cube', accent: '#8a2be2', bonus: 'Overdrive (speed boost) while you’re in the Storm.', rumored: true },
   { id: 'quack', name: 'Quack', short: 'Qk', className: 'theme-quack', accent: '#ffcf4d', bonus: 'Bonus not yet revealed', rumored: true },
   { id: 'rift', name: 'Rift', short: 'R', className: 'theme-rift', accent: '#36c5ff', bonus: 'Special Rift variant' },
 ]

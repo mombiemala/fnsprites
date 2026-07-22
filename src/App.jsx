@@ -106,11 +106,13 @@ export default function App() {
   const [showBackup, setShowBackup] = useState(false)
 
   // Single source of truth for the utility/support links, so the header "More"
-  // menu and the footer show the exact same set. "How Sprites work" also has the
-  // standalone ❔ Guide button up top, so it's filtered out of the header menu to
-  // avoid a duplicate — but it stays in this list for the footer.
+  // menu and the footer show the exact same set. Cosmetics has its own inline nav
+  // action, so it's filtered out of the header ⋯ More menu to avoid a duplicate —
+  // but it stays in this list for the footer. The Guide ("How Sprites work") lives
+  // in the ⋯ More menu + footer, plus a small card above "Next to chase" once you
+  // sign in.
   const utilityLinks = [
-    { id: 'help', label: 'How Sprites work', onClick: () => setShowHelp(true) },
+    { id: 'help', label: '❔ How Sprites work', onClick: () => setShowHelp(true) },
     { id: 'cosmetics', label: '🧢 Cosmetics (beta)', onClick: () => setShowCosmetics(true) },
     { id: 'about', label: 'About', onClick: () => setShowAbout(true) },
     { id: 'changelog', label: 'Changelog', onClick: () => setShowChangelog(true) },
@@ -338,19 +340,18 @@ export default function App() {
 
       {!isShareView && <CollectionSwitcher value={collectionId} onChange={setCollectionId} />}
 
-      {/* Primary navigation — sections + Guide + Cosmetics inline, with anything
-          that doesn't fit (and the utility links) flowing into the ⋯ More overflow
-          menu. Adapts to the width, so it's tidy on desktop and mobile alike. */}
+      {/* Primary navigation — sections + Cosmetics inline, with anything that
+          doesn't fit (and the utility links, incl. the Guide) flowing into the
+          ⋯ More overflow menu. Adapts to the width, tidy on desktop and mobile. */}
       <OverflowNav
         views={TABS}
         view={view}
         isShareView={isShareView}
         onSelectView={setView}
         actions={[
-          { key: 'guide', label: '❔ Guide', onClick: () => setShowHelp(true), title: 'How Sprites work — extraction, leveling, mastery & trading' },
           { key: 'cosmetics', label: '🧢 Cosmetics', onClick: () => setShowCosmetics(true), title: 'Browse the newest Fortnite cosmetics (beta)' },
         ]}
-        extras={utilityLinks.filter((l) => l.id !== 'help' && l.id !== 'cosmetics')}
+        extras={utilityLinks.filter((l) => l.id !== 'cosmetics')}
         ariaLabel="Sections"
       />
 
@@ -516,6 +517,18 @@ export default function App() {
             </button>
           )}
 
+          {/* Small guide nudge for signed-in players (the Guide left the top nav). */}
+          {user && !isShareView && (
+            <button
+              onClick={() => setShowHelp(true)}
+              title="How Sprites work — extraction, leveling, mastery & variants"
+              className="flex items-center gap-2 rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-left text-xs font-bold text-[var(--muted)] transition-colors hover:border-[var(--brand)] hover:text-white"
+            >
+              <span className="text-base">❔</span>
+              New to Sprites? <span className="text-[var(--brand)]">Read the quick guide →</span>
+            </button>
+          )}
+
           {!isShareView && <NextToChase tracking={activeTracking} onOpen={setDetailType} />}
 
           {!isShareView && <UpcomingSprites onOpen={setDetailType} />}
@@ -562,7 +575,7 @@ export default function App() {
             </Fragment>
           ))}
         </nav>
-        {/* Utility & support — same set as the header ❔ Guide + ⋯ More menu. */}
+        {/* Utility & support — same set as the header ⋯ More menu. */}
         <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-semibold">
           {utilityLinks.map((l, i) => (
             <Fragment key={l.id}>
@@ -591,7 +604,7 @@ export default function App() {
           Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a className="underline" href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a className="underline" href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a className="underline" href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>).
           News &amp; events from official Fortnite patch notes, <a className="underline" href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>,
           with some event details cross-referenced from community trackers (<a className="underline" href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a className="underline" href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a className="underline" href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a className="underline" href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a className="underline" href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it&apos;s official.
-          Sprite-farming spots are a curated season snapshot; the interactive maps link out to <a className="underline" href="https://spritesanctuary.gg/sprite-chests.html" target="_blank" rel="noreferrer">Sprite Sanctuary</a> &amp; <a className="underline" href="https://fortnite.gg/map" target="_blank" rel="noreferrer">Fortnite.GG</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a className="underline" href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a className="underline" href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn&apos;t published official rates. Built with React, Vite &amp; Supabase.
+          Item Shop, cosmetics &amp; player stats come from <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a className="underline" href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a className="underline" href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn&apos;t published official rates. Built with React, Vite &amp; Supabase.
         </p>
       </footer>
 

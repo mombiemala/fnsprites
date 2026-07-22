@@ -6,6 +6,20 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 22, 2026',
+    title: 'New Sprite Day (Cube) prep + a couple of fixes',
+    summary:
+      'Got the app ready for Thursday’s New Sprite Day, confirmed the Cube Sprites’ details, and fixed the ⋯ More menu so it opens attached to its button.',
+    changes: [
+      { tag: 'Fixed', text: 'The ⋯ More menu now opens directly under its button. Yesterday’s fix over-corrected and the dropdown floated off to the far right, disconnected from the button — it’s now anchored to the button again.' },
+      { tag: 'Changed', text: 'Tidied the top nav: the ❔ Guide button moved out of the primary navigation. It now lives in the ⋯ More menu and the footer, plus a small “New to Sprites?” card appears above “Next to chase” once you’re signed in — so the guide is a gentle nudge rather than a permanent tab.' },
+      { tag: 'Changed', text: 'New Sprite Day (Cube) callout is accurate and confirmed: Thursday, Jul 23 at 9 AM ET, the Cube Sprite variant debuts — a Kevin-the-Cube style that grants Overdrive (a speed boost) in the Storm. It rolls out in weekly waves like Holofoil (first wave ~6–8, full ~18 over the coming New Sprite Days), NOT all at once — so we haven’t pre-marked them all as collectible. The heads-up now shows a day early, and the Cube power is filled in.' },
+      { tag: 'Changed', text: 'Each Cube variant stays “upcoming” until its wave actually goes live — we’ll flip them to collectible as they land, exactly like Holofoil, rather than showing all ~18 the day only a handful exist.' },
+    ],
+    why:
+      'The Cube rollout is the same wave pattern that tripped up the Holofoil launch, so the deliberate call is to keep the individual Cube variants un-collectible until each wave is confirmed live — accurate-but-incomplete beats showing 18 collectibles the day only ~6–8 exist. The event callouts carry the confirmed dates/power in the meantime.',
+  },
+  {
     date: 'July 21, 2026',
     title: 'New: Player Stats lookup — plus a leaner, more focused app',
     summary:

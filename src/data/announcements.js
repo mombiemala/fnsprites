@@ -30,10 +30,11 @@ export const ANNOUNCEMENTS = [
   {
     id: 'new-sprite-day-cube-2026-07-23',
     emoji: '🟪',
-    message: 'New Sprite Day — Thu, Jul 23: the Cube Sprite variant (Kevin the Cube–styled) starts rolling out. Boosted new-Sprite spawns 2 PM & 9 PM ET.',
-    link: 'https://games.gg/fortnite/guides/fortnite-cube-sprites-release-date/',
+    message: 'New Sprite Day — Thu, Jul 23 (9 AM ET): the Cube Sprites debut (a new Kevin-the-Cube variant, grants Overdrive in the Storm). First wave of ~6–8, more each week; boosted new-Sprite spawns during Power Hours, 2 PM & 9 PM ET.',
+    link: 'https://beebom.com/fortnite-cube-sprites-release-date/',
     linkLabel: 'Details',
-    start: '2026-07-23',
+    // Show a day early (Jul 22) as a heads-up, through the event day (Jul 23).
+    start: '2026-07-22',
     end: '2026-07-23',
     source: 'Epic Games',
     official: true,
