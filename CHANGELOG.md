@@ -26,6 +26,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   Overdrive/speed in the Storm). It rolls out in **weekly waves like Holofoil**
   (first ~6–8, full ~18 over coming weeks), **not all at once**. Announcement now
   shows a day early; News entry pinned around the event.
+- **Added:** News — the **Jul 21 Sprite Locator gizmo hotfix** (now favors rare
+  variants over base; Epic granted 3 free Locators to gizmo users). Re-confirmed
+  the Spider-Man (~Jul 30, web-swinging) and Lucky Locator (~v41.30) leaks.
 - **Changed:** filled in the **Cube** theme's power (`themes.js`) but kept it
   `rumored: true` and every `cube` variant `U` in the roster — we flip `cube: R`
   per-sprite as each wave goes live (same discipline as Holofoil). Kept `rumored`

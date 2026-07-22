@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-07-21',
+    when: 'Jul 21, 2026',
+    tag: 'update',
+    start: '2026-07-21',
+    end: '2026-07-24',
+    title: 'Hotfix: Sprite Locator gizmo now favors rare variants ✨',
+    body: 'A July 21 hotfix buffs the Sprite Locator gizmo: it now has a much higher chance to spawn a rare Sprite variant (Gold, Gummy, Galaxy…) and only a very low chance of a base Sprite — a big help for chasing the variants you still need. To make up for the gizmo underperforming the past few days, Epic also granted three free Sprite Locators to everyone who used any extraction gizmo in a match.',
+    link: 'https://beebom.com/fortnite-hotfix-buffs-sprite-locator-gizmo/',
+    source: 'Epic Games',
+    official: true,
+  },
+  {
     ts: '2026-07-04',
     when: 'Jul 4, 2026',
     tag: 'event',
