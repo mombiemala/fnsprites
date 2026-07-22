@@ -202,7 +202,11 @@ export function buildSpriteList() {
         image: `${import.meta.env.BASE_URL}sprites/${type.id}_${themeId}.png`,
         // Leaked/unconfirmed: either the whole sprite is rumored, or it's a
         // rumored variant form (e.g. Cube/Quack) whose bonus isn't confirmed.
-        rumored: !!(type.rumored || THEME_MAP[themeId]?.rumored),
+        // BUT a variant explicitly flagged R is confirmed live, so it never wears
+        // the "rumored" badge even while its FORM is still rolling out in waves
+        // (e.g. the wave-1 Cube Sprites once we flip them). Unreleased Cube
+        // variants keep the badge until their own wave lands.
+        rumored: !!(type.rumored || (THEME_MAP[themeId]?.rumored && !variantReleased)),
         tier: SPRITE_TIER[type.id] || null,
         // A variant is live if it's flagged R, or its form's release date has
         // arrived (e.g. Holofoil auto-releases across the roster on Jul 9) — but
