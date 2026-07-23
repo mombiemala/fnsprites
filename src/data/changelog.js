@@ -12,6 +12,7 @@ export const CHANGELOG = [
       'The first wave of Cube Sprites went live this morning (New Sprite Day, 9 AM ET). The eight that dropped are now marked collectible; the rest of the Cube line follows on the coming New Sprite Days.',
     changes: [
       { tag: 'Added', text: 'Wave-1 Cube Sprites are now collectible: Batman, Boss, Dream, Earth, Fire, Fishstick, Grim Reaper & Punk — the Kevin-the-Cube variant that grants Overdrive (a speed boost) in the Storm. Cube Batman & Cube Boss come from NPC encounters; the rest from Sprite Chests. Released-variant count updated accordingly.' },
+      { tag: 'Added', text: 'Cube variant art for all eight so they match the rest of the collection (purple Cube-energy body with the cyan grid) instead of falling back to the placeholder illustration.' },
       { tag: 'Changed', text: 'The remaining Cube variants stay “upcoming” and will flip to collectible as each future New Sprite Day wave lands (the full Cube line is ~18). The top announcement and News entry now read as live.' },
       { tag: 'Fixed', text: 'Known issue noted: Gem Sprites were briefly obtainable early through the Sprite Hunt rift anomaly; Epic disabled those items and the anomaly, so Gem stays flagged unreleased here — nothing to do on your end.' },
     ],

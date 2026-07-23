@@ -18,6 +18,11 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   the Kevin-the-Cube variant granting Overdrive (speed) in the Storm. Cube Batman
   & Cube Boss are NPC-encounter pulls; the rest come from Sprite Chests. (Batman
   had no `cube` slot in the roster, so one was added.)
+- **Added:** `public/sprites/<id>_cube.png` art for all eight (Batman, Boss,
+  Dream, Earth, Fire, Fishstick, Grim, Punk) — derived from each sprite's real
+  `_normal.png` with the Cube treatment (purple ramp + cyan grid, à la
+  `air_cube`) so they're consistent with sibling variants instead of dropping to
+  the SVG fallback.
 - **Changed:** the remaining Cube variants stay `cube: U` (upcoming) and flip per
   future New Sprite Day wave — full Cube line is ~18. Announcement + News entry +
   the header "accurate to…" subtitle now read as live (Jul 23 New Sprite Day).
