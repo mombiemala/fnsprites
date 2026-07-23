@@ -4,22 +4,26 @@ A fan-made Fortnite **sprite tracker** — track every sprite across all of its
 variants (Normal, Gold, Gummy, Galaxy, Gem, Holofoil, the new **Cube** & **Quack**
 forms, and the special **Rift** line), see your collection and mastery progress,
 save it to the cloud, compare with other players, browse the live **Item Shop**,
-and look up any player's **Battle Royale stats**. Roster is accurate to the **Jul 16, 2026 update**
-(v41.20 · DC Hot Bat Summer): Batman, Air & Seven are live, plus the football
-Mythics **Pollo** & **Vini Jr.** (Normal-only for now, like Burnt Peanut).
-Anything Epic hasn't confirmed — e.g. the leaked **Spider-Man** sprite (~Jul 30,
-v41.30) — is flagged **Rumored**.
+and look up any player's **Battle Royale stats**. Roster is current through the
+**Jul 23, 2026 New Sprite Day**: the first wave of **Cube** Sprites (Batman, Boss,
+Dream, Earth, Fire, Fishstick, Grim Reaper & Punk — Overdrive in the Storm) is
+live, on top of the Jul 16 v41.20 DC "Hot Bat Summer" drop (Batman, Air, Seven,
+plus the Mythics **Pollo** & **Vini Jr.**). Remaining Cube variants roll out on
+future New Sprite Days; anything Epic hasn't confirmed — e.g. the leaked
+**Spider-Man** sprite (~Jul 30, v41.30) and the **Quack** form — is flagged
+**Rumored**.
 
 > Not affiliated with Epic Games. Support the maker with **Creator Code: MOMBIE**
 > in the Fortnite Item Shop. #EpicPartner
 
 ## Features
 
-- **Accurate roster** — every released sprite & variant as of Jul 16, 2026
-  (v41.20: Batman, Air, Seven, Pollo, Vini Jr.; incl. Striker, Fishy, Aura, Boss,
-  Grim Reaper and the Holofoil line); upcoming sprites & forms are clearly flagged
-  **unreleased**, and anything Epic hasn't confirmed (the leaked Spider-Man sprite,
-  the Cube/Quack bonuses) wears a **Rumored** label so leaks never read as fact.
+- **Accurate roster** — every released sprite & variant through the Jul 23, 2026
+  New Sprite Day (wave-1 Cube line + the v41.20 Batman/Air/Seven/Pollo/Vini Jr.
+  drop, the Holofoil line, Striker/Fishy/Aura/Boss/Grim, etc.); upcoming sprites &
+  forms roll out in waves and are clearly flagged **unreleased**, and anything
+  Epic hasn't confirmed (the leaked Spider-Man sprite, the Quack form, later Cube
+  waves) wears a **Rumored**/upcoming label so leaks never read as fact.
 - **Upcoming & leaked** — a card that lists every unreleased/datamined sprite
   sorted by its leaked release date, with a live **countdown** (“in 8 days”),
   tap-to-open. All clearly badged **Rumored**.
