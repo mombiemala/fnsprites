@@ -28,6 +28,11 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   the header "accurate to…" subtitle now read as live (Jul 23 New Sprite Day).
 - **Fixed / known issue:** noted Epic's Gem-Sprites-via-Sprite-Hunt-rift early
   availability bug (items + anomaly disabled); Gem stays flagged unreleased.
+- **Fixed:** the Air Sprite's `air_normal` / `air_gummy` / `air_holofoil` art was
+  washed-out and near-identical — regenerated from the base with proper per-variant
+  treatments (more defined Normal, glossy Gummy, iridescent Holofoil). Note: Air's
+  base render is a wispy cloud, so it still reads softer than the solid sprites — a
+  bespoke regen is the way to fully match.
 
 *Why:* only Sprites a source confirms live get marked collectible — flip per-wave,
 never pre-release the whole ~18 (the Holofoil discipline). Epic's own thread was
