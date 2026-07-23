@@ -305,7 +305,7 @@ export default function App() {
             </button>
           </h1>
           <p className="mt-1 text-xs text-[var(--muted)] sm:text-sm">
-            {set.released} released variants · accurate to the Jul 16, 2026 update (v41.20 · DC Hot Bat Summer).
+            {set.released} released variants · accurate to the Jul 23, 2026 New Sprite Day (Cube variant, wave 1).
           </p>
         </div>
         {!authLoading &&

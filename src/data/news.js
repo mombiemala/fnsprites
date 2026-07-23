@@ -64,6 +64,16 @@ export const NEWS = [
   //    green "✓ Resolved" badge and sinks below the current issues. Prune fully
   //    resolved entries after a few weeks. ──
   {
+    ts: 'ki-gem-sprite-hunt-early',
+    when: 'Known issue',
+    tag: 'bug',
+    title: 'Gem Sprites appeared early via the Sprite Hunt rift — now disabled',
+    body: 'Around the July 23 New Sprite Day, Gem Sprites were incorrectly obtainable through the Sprite Hunt rift anomaly before their intended release. Epic has temporarily disabled those early Gem items and turned off the anomaly while they sort it out — so Gem stays flagged unreleased here. No action needed on your end.',
+    link: 'https://www.epicgames.com/help/en-US/fortnite-c75/trending-topics-c140/fortnite-live-issues-and-bugs-a3923',
+    source: 'Epic Games',
+    official: true,
+  },
+  {
     ts: 'ki-aura-fire-shield',
     when: 'Known issue',
     tag: 'bug',
@@ -180,9 +190,9 @@ export const NEWS = [
     tag: 'sprites',
     start: '2026-07-22',
     end: '2026-07-24',
-    title: 'New Sprite Day — Cube Sprites debut 🟪',
-    body: 'Thursday, July 23 at 9 AM ET (New Sprite Day): the Cube Sprite variant arrives — styled after Kevin the Cube, granting Overdrive (a speed boost) while you’re in the Storm. It rolls out in weekly batches like Holofoil, NOT all at once: the first wave is ~6–8 Sprites, with the full ~18 Cube variants landing over the coming New Sprite Days. Boosted new-Sprite spawns during Power Hours (2 PM & 9 PM ET). Confirmed on Epic’s official events calendar. We’ll flip each Cube variant to collectible here as its wave goes live.',
-    link: 'https://beebom.com/fortnite-cube-sprites-release-date/',
+    title: 'New Sprite Day — Cube Sprites are live 🟪',
+    body: 'Live now (July 23, New Sprite Day): the first wave of Cube Sprites — styled after Kevin the Cube, granting Overdrive (a speed boost) while you’re in the Storm. Wave 1 is 8 Sprites: Batman, Boss, Dream, Earth, Fire, Fishstick, Grim Reaper & Punk (Cube Batman and Cube Boss come from NPC encounters; the rest from chests). The full ~18 Cube variants roll out over the coming New Sprite Days (like Holofoil), not all at once — we’ll flip each here as its wave lands. Boosted new-Sprite spawns during Power Hours (2 PM & 9 PM ET).',
+    link: 'https://www.vice.com/en/article/fortnite-cube-sprites-release-date-locations-powers/',
     source: 'Epic Games',
     official: true,
   },

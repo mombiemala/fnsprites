@@ -11,6 +11,25 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 23, 2026 — New Sprite Day live: wave-1 Cube Sprites collectible
+
+- **Added:** wave-1 **Cube Sprites** flipped to collectible (`cube: R`): **Batman,
+  Boss, Dream, Earth, Fire, Fishstick (`fishy`), Grim Reaper (`grim`) & Punk** —
+  the Kevin-the-Cube variant granting Overdrive (speed) in the Storm. Cube Batman
+  & Cube Boss are NPC-encounter pulls; the rest come from Sprite Chests. (Batman
+  had no `cube` slot in the roster, so one was added.)
+- **Changed:** the remaining Cube variants stay `cube: U` (upcoming) and flip per
+  future New Sprite Day wave — full Cube line is ~18. Announcement + News entry +
+  the header "accurate to…" subtitle now read as live (Jul 23 New Sprite Day).
+- **Fixed / known issue:** noted Epic's Gem-Sprites-via-Sprite-Hunt-rift early
+  availability bug (items + anomaly disabled); Gem stays flagged unreleased.
+
+*Why:* only Sprites a source confirms live get marked collectible — flip per-wave,
+never pre-release the whole ~18 (the Holofoil discipline). Epic's own thread was
+403 to the fetcher, so wave 1 is from press coverage; any miss is a one-line fix.
+
+---
+
 ## July 22, 2026 — New Sprite Day (Cube) prep + fixes
 
 - **Fixed:** the **⋯ More** menu now opens directly under its button. The Jul 21
