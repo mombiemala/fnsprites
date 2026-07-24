@@ -6,6 +6,20 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 24, 2026',
+    title: 'Every sprite redrawn — consistent variant finishes across the board',
+    summary:
+      'A full art pass: every variant is now rendered so the same finish looks identical on every sprite — Gold is the same Gold everywhere, Gummy the same jelly, Holofoil the same iridescence — while each sprite stays clearly itself.',
+    changes: [
+      { tag: 'Changed', text: 'Regenerated all 100+ variant images through one consistent pipeline, so each finish (Gold, Gummy, Galaxy, Gem, Holofoil, Cube, Quack, Rift) is the same material on every sprite. Previously the variants were made from mixed sources and drifted sprite-to-sprite; now they match.' },
+      { tag: 'Changed', text: 'Cleaned up every render: uniform glossy figurine style, crisp transparent cutouts, and a consistent size/framing (512×512) so the grid reads evenly.' },
+      { tag: 'Fixed', text: 'The Air, Drifter and Ice sprites were vague, washed-out blobs (two even had a leftover background baked in) — redrawn as clean, well-defined figurines so they’re identifiable like the rest.' },
+      { tag: 'Changed', text: 'The Share/Export locker image uses the same art, so exported cards get the new visuals automatically.' },
+    ],
+    why:
+      'The variant finish should be a property of the finish, not of the individual sprite — a collection reads as a set only when Gold means the same thing everywhere. The old art came from several different sources over time, which is why it looked inconsistent; rebuilding it all through one pipeline fixes that at the root.',
+  },
+  {
     date: 'July 23, 2026',
     title: 'New Sprite Day is live — wave-1 Cube Sprites now collectible',
     summary:

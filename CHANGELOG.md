@@ -11,6 +11,24 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 24, 2026 — Full sprite-art pass: consistent variant finishes
+
+- **Changed:** regenerated all ~118 variant images (`public/sprites/<id>_<v>.png`)
+  through **one shared pipeline** — official Normal → image-to-image with a fixed
+  per-material prompt → flat chroma background → clean cutout → autocrop/center to
+  512². Result: each finish (Gold, Gummy, Galaxy, Gem, Holofoil, Cube, Quack,
+  Rift) is the **same material on every sprite**, while each sprite stays
+  identifiable. The old art was mixed-source and drifted sprite-to-sprite.
+- **Fixed:** Air/Drifter/Ice Normals were vague/washed-out (two had baked-in
+  backgrounds) — regenerated as clean, defined figurines.
+- **Changed:** the export/locker image (`exportImage.js`) references the same
+  per-variant PNGs, so it picks up the new art with no code change.
+- **Note:** Dream/Punk **Rift** kept their existing images this pass (the image
+  API rate-limited the last 2 calls); they'll be swapped to the regenerated
+  versions when the quota resets.
+
+---
+
 ## July 23, 2026 — New Sprite Day live: wave-1 Cube Sprites collectible
 
 - **Added:** wave-1 **Cube Sprites** flipped to collectible (`cube: R`): **Batman,

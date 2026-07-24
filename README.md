@@ -27,15 +27,17 @@ future New Sprite Days; anything Epic hasn't confirmed — e.g. the leaked
 - **Upcoming & leaked** — a card that lists every unreleased/datamined sprite
   sorted by its leaked release date, with a live **countdown** (“in 8 days”),
   tap-to-open. All clearly badged **Rumored**.
-- **Real sprite art** — each variant uses the real in-game image
-  (`public/sprites/<id>.png`). **Sprite images are © Epic Games, Inc.**, used for
-  identification only and sourced from
-  [UltronCore/sprite-tracker](https://github.com/UltronCore/sprite-tracker);
-  variant forms UltronCore lacks were AI-reskinned (Google Gemini) from those
-  base images. Real-person and licensed collab sprites (e.g. **Vini Jr.** /
-  Vinícius Júnior, **Pollo**) use Epic's **official in-game art** with the
-  background removed — never an AI-fabricated likeness. A generated SVG fallback
-  covers any still-missing image.
+- **Consistent sprite art** — each variant is a per-variant image
+  (`public/sprites/<id>_<variant>.png`, 512×512, transparent). **Sprite images are
+  © Epic Games, Inc.**, used for identification only; base identities are sourced
+  from [UltronCore/sprite-tracker](https://github.com/UltronCore/sprite-tracker).
+  Because official art doesn't exist for every finish, the variant renders are
+  produced through **one shared image-to-image pipeline** (Google Gemini) from
+  each sprite's Normal, so a given finish (Gold, Gummy, Holofoil, Cube…) looks the
+  **same material on every sprite** rather than drifting per-sprite. Real-person
+  and licensed collab sprites (e.g. **Vini Jr.** / Vinícius Júnior, **Pollo**) use
+  Epic's **official in-game art** with the background removed — never an
+  AI-fabricated likeness. A generated SVG fallback covers any missing image.
 - **Track ownership, levels & mastery** — mark a variant owned, then set its
   **level 1–5** (level 5 = mastered) right on the grid card or in the detail
   view, with a `Lv 3/5` readout. Works instantly as a guest (saved in your
