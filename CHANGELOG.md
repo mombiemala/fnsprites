@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 24, 2026 — Shiny Hours (Jul 25) details filled in
+
+- **Changed:** enriched the Jul 25 **Shiny Hours** callout (banner + News): exact
+  windows (2–4 PM & 9–11 PM ET), boosted Gold/Gummy/Galaxy/Holofoil, Batman/Pollo/
+  Seven/Air made more common, 2× Sprites from regular chests, and Big Heads +
+  Self-Revive for everyone.
+
+---
+
 ## July 24, 2026 — News: next-season (“Gaming Legends”) leak
 
 - **Added:** News entry on the leaked **Chapter 7 Season 4** (“Gaming Legends”,

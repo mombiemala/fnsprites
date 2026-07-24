@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 24, 2026',
+    title: 'Shiny Hours (Jul 25) details filled in',
+    summary:
+      'Fleshed out tomorrow’s Shiny Hours callout with the full details so you can plan around it.',
+    changes: [
+      { tag: 'Changed', text: 'Shiny Hours (Sat, Jul 25) now shows the exact windows (2–4 PM & 9–11 PM ET) and everything it does: boosted Gold/Gummy/Galaxy/Holofoil spawns, Batman/Pollo/Seven/Air made more common, 2× Sprites from regular chests, and Big Heads + a Self-Revive for everyone.' },
+    ],
+    why:
+      'The event was already scheduled but only listed the shiny variants — adding the featured collab Mythics and the 2×-chest boost makes it actually useful for deciding when to grind.',
+  },
+  {
+    date: 'July 24, 2026',
     title: 'News: next-season (“Gaming Legends”) leak added',
     summary:
       'Added a forward-looking News entry on the leaked next season and what it means for Sprite collectors.',

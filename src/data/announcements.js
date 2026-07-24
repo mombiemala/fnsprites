@@ -18,7 +18,7 @@ export const ANNOUNCEMENTS = [
   {
     id: 'shiny-hours-2026-07-25',
     emoji: '✨',
-    message: 'Shiny Hours — Sat, Jul 25 (2 PM & 9 PM ET): boosted Gold, Gummy, Galaxy & Holofoil Sprite spawns.',
+    message: 'Shiny Hours — Sat, Jul 25 (2–4 PM & 9–11 PM ET): boosted Gold/Gummy/Galaxy/Holofoil spawns, Batman/Pollo/Seven/Air more common, and 2× Sprites from regular chests — plus Big Heads & a Self-Revive for everyone.',
     link: 'https://beebom.com/fortnite-sprite-events-schedule/',
     linkLabel: 'Schedule',
     start: '2026-07-25',

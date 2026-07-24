@@ -203,7 +203,7 @@ export const NEWS = [
     start: '2026-07-25',
     end: '2026-07-25',
     title: 'Shiny Hours — boosted Special variant spawns ✨',
-    body: 'Saturday, July 25 (2 PM & 9 PM ET): Shiny Hours boosts the spawn rates of all Special Sprite variants — Gold, Gummy, Galaxy & Holofoil — the best window to chase the shiny finishes you’re missing.',
+    body: 'Saturday, July 25 — two 2-hour Power Hour sessions (2–4 PM & 9–11 PM ET): Shiny Hours boosts the spawn rates of all Special Sprite variants (Gold, Gummy, Galaxy & Holofoil) and makes the Batman, Pollo, Seven & Air Sprites more common, plus you’re 2× as likely to find Sprites in regular Chests — the best window to chase the shinies (and those collab Mythics) you’re missing. Everyone also starts with Big Heads and a Self-Revive Device.',
     link: 'https://beebom.com/fortnite-sprite-events-schedule/',
     source: 'Epic Games',
     official: true,
