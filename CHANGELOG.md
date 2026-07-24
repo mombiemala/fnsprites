@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 24, 2026 — News: next-season (“Gaming Legends”) leak
+
+- **Added:** News entry on the leaked **Chapter 7 Season 4** (“Gaming Legends”,
+  ~Sept 4) with rumored gaming crossovers (Sonic, Mega Man, Persona 5, Kingdom
+  Hearts, Crash) and the collector-relevant signal that Mastery Mondays are
+  scheduled through mid-September — hinting Sprites continue into the new season.
+  Flagged leaked/unconfirmed.
+
+---
+
 ## July 24, 2026 — Full sprite-art pass: consistent variant finishes
 
 - **Changed:** regenerated all ~118 variant images (`public/sprites/<id>_<v>.png`)

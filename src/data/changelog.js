@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 24, 2026',
+    title: 'News: next-season (“Gaming Legends”) leak added',
+    summary:
+      'Added a forward-looking News entry on the leaked next season and what it means for Sprite collectors.',
+    changes: [
+      { tag: 'Added', text: 'News: Chapter 7 Season 4 is leaked as “Gaming Legends” (~Sept 4) with rumored crossovers (Sonic, Mega Man, Persona 5, Kingdom Hearts, Crash). The encouraging bit for collectors — Mastery Mondays are on the calendar through mid-September, hinting Sprites carry into the new season. Clearly flagged leaked/unconfirmed.' },
+    ],
+    why:
+      'People are already asking whether their collections survive the season rollover, so surfacing the (tentative) signal that Sprites continue is worth having in the feed — with a clear “unconfirmed” label so a leak never reads as fact.',
+  },
+  {
+    date: 'July 24, 2026',
     title: 'Every sprite redrawn — consistent variant finishes across the board',
     summary:
       'A full art pass: every variant is now rendered so the same finish looks identical on every sprite — Gold is the same Gold everywhere, Gummy the same jelly, Holofoil the same iridescence — while each sprite stays clearly itself.',
