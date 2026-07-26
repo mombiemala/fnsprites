@@ -6,6 +6,20 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 26, 2026',
+    title: 'Trainer Cards — show off your collection',
+    summary:
+      'Your shared link (?u=…) now opens a proper player profile: an avatar, headline stats, earned badges, and a showcase of your favorite sprites.',
+    changes: [
+      { tag: 'Added', text: 'A ⭐ Showcase picker in your Profile — feature up to 6 owned sprites on your public Trainer Card. The first one becomes your avatar.' },
+      { tag: 'Added', text: 'Earned badges, computed from your progress: Completionist / Elite Collector, Shiny Hunter / Perfectionist, Mythic Owner, rarity-set completion and Variant Hunter. They appear on your Trainer Card and next to your name on the leaderboard.' },
+      { tag: 'Changed', text: 'The shared collection view now leads with the Trainer Card (avatar, gamertag, owned %, mastered count) instead of a plain “viewing X’s collection” line.' },
+      { tag: 'Security', text: 'Showcase sprite ids are public display data; the shared-link query still selects only public fields (no Epic username or private data exposed).' },
+    ],
+    why:
+      'The share link already existed but landed on a bare grid. Turning it into an identity card — favorites, badges, stats — gives people a reason to share it and a reason to click each other’s. Badges are derived on the fly (no new storage) so they’re always in sync with your real progress.',
+  },
+  {
     date: 'July 24, 2026',
     title: 'Connect your Epic account — Stats load automatically',
     summary:

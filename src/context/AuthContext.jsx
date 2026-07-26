@@ -93,7 +93,7 @@ export function AuthProvider({ children }) {
       }
 
       if (cancelled) return
-      setProfile(prof || { id: user.id, gamertag: null, is_public: true, epic_username: null, epic_platform: 'epic' })
+      setProfile(prof || { id: user.id, gamertag: null, is_public: true, epic_username: null, epic_platform: 'epic', showcase_sprite_ids: null })
       setTracking(cloudMap)
       saveLocal(cloudMap)
       setSyncing(false)

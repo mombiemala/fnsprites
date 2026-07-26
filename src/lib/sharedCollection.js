@@ -19,8 +19,9 @@ export function rowsToMap(rows) {
 export async function fetchSharedCollection(userId) {
   const [{ data: prof }, { data: rows }] = await Promise.all([
     // Only the public display fields — never expose private profile data (e.g.
-    // the saved Epic username) through a shared link.
-    supabase.from('profiles').select('id, gamertag, display_name, is_public').eq('id', userId).maybeSingle(),
+    // the saved Epic username) through a shared link. showcase_sprite_ids is
+    // public display data (the Trainer Card's featured sprites).
+    supabase.from('profiles').select('id, gamertag, display_name, is_public, showcase_sprite_ids').eq('id', userId).maybeSingle(),
     supabase.from('sprite_progress').select('*').eq('user_id', userId),
   ])
   return { profile: prof, tracking: rowsToMap(rows) }

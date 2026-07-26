@@ -223,6 +223,9 @@ export const ALL_SPRITES = buildSpriteList()
 export const TOTAL_COUNT = ALL_SPRITES.length
 export const RELEASED_COUNT = ALL_SPRITES.filter((s) => s.released).length
 
+// id → sprite lookup, for resolving stored ids (e.g. a profile's showcase list).
+export const SPRITE_BY_ID = Object.fromEntries(ALL_SPRITES.map((s) => [s.id, s]))
+
 // Estimated Sprite Dust to (re)summon a variant, by rarity. Normal = base cost;
 // special variants (Gold/Gummy/Galaxy…) cost more. Community-sourced estimates.
 const DUST_BASE = { Rare: 100, Epic: 3000, Legendary: 5000, Mythic: 7500 }

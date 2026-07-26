@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 26, 2026 — Trainer Cards (showcase + badges)
+
+- **Added:** ⭐ **Showcase** picker in Profile — feature up to 6 owned sprites on
+  your public Trainer Card (`profiles.showcase_sprite_ids text[]`, added via
+  migration; first entry = avatar). Enforced client-side to `SHOWCASE_MAX = 6`.
+- **Added:** derived **badges** (`src/lib/badges.js`) — Completionist/Elite,
+  Shiny Hunter/Perfectionist, Mythic Owner, rarity-set completion, Variant
+  Hunter. Computed from progress (no storage). Shown on the Trainer Card and
+  Leaderboard rows (`deriveBadges({ owned, mastered, tracking? })`).
+- **Changed:** the `?u=` shared view now leads with `<TrainerCard>` (avatar,
+  gamertag, owned %, mastered, badges, showcase) instead of a plain text banner.
+- **Security:** `fetchSharedCollection` selects `id, gamertag, display_name,
+  is_public, showcase_sprite_ids` — public display fields only; no private data.
+
+---
+
 ## July 24, 2026 — Connect your Epic account (Stats auto-load)
 
 - **Added:** a 🎮 **Epic account** field in Profile (`profiles.epic_username` +

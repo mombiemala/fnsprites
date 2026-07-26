@@ -82,10 +82,14 @@ future New Sprite Days; anything Epic hasn't confirmed — e.g. the leaked
   dismissible **announcement bar** highlights the current featured event.
 - **Profile page** — manage your gamertag, public/private visibility, sign out,
   and delete your data.
-- **Share & export** — set your gamertag and share a read-only public link
-  (`?u=<your-id>`); **copy a ready-to-paste Discord/Reddit caption** of your
-  progress; or export a **Sprite Locker–style poster** of your collection (or just
-  the sprites you still need).
+- **Trainer Card** — your shared link (`?u=<your-id>`) opens a player profile:
+  an avatar and up to 6 hand-picked **showcase** sprites, headline stats, and
+  **earned badges** (Completionist, Shiny Hunter, Mythic Owner, Variant Hunter…)
+  derived on the fly from your progress. Badges also appear on the leaderboard.
+- **Share & export** — set your gamertag and share the read-only public link
+  above; **copy a ready-to-paste Discord/Reddit caption** of your progress; or
+  export a **Sprite Locker–style poster** of your collection (or just the sprites
+  you still need).
 - **Filter, search & group** — by theme, rarity, ownership; hide mastered, show
   unreleased; group by theme / rarity / **tier** (a built-in tier list) / sprite.
   On every screen the filters tuck behind a single **Filters** button (search &
@@ -182,8 +186,10 @@ directly and need no key.
 Database schema (applied via migrations):
 
 - `profiles` — one row per user (`gamertag`, `is_public`, `epic_username`,
-  `epic_platform`, …). Public-readable for sharing; owner-writable. Shared-link
-  reads select only the display fields, so `epic_username` isn't exposed to others.
+  `epic_platform`, `showcase_sprite_ids`, …). Public-readable for sharing;
+  owner-writable. Shared-link reads select only the display fields
+  (`gamertag`, `display_name`, `is_public`, `showcase_sprite_ids`), so
+  `epic_username` isn't exposed to others.
 - `sprite_progress` — `(user_id, sprite_id)` with `owned` / `mastered` flags
   (plus dormant `for_trade` / `wanted` columns from the retired trading feature).
   Readable when the owning profile is public (or it's your own); owner-writable.

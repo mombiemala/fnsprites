@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '../context/authStore'
 import Tooltip from './Tooltip'
 import CompareModal from './CompareModal'
+import { deriveBadges } from '../lib/badges'
 
 const MEDALS = ['🥇', '🥈', '🥉']
 
@@ -84,8 +85,14 @@ export default function Leaderboard() {
                   <span className="w-7 shrink-0 text-center text-sm font-extrabold text-[var(--muted)]">
                     {MEDALS[i] || i + 1}
                   </span>
-                  <a href={`?u=${r.user_id}`} className="flex-1 truncate font-bold text-white hover:text-[var(--brand)]">
-                    {r.gamertag || 'Anonymous'}{me && <span className="ml-1 text-[10px] text-[var(--brand)]">you</span>}
+                  <a href={`?u=${r.user_id}`} className="flex min-w-0 flex-1 items-center gap-1.5 font-bold text-white hover:text-[var(--brand)]">
+                    <span className="truncate">{r.gamertag || 'Anonymous'}</span>
+                    {me && <span className="shrink-0 text-[10px] text-[var(--brand)]">you</span>}
+                    {deriveBadges({ owned: r.owned, mastered: r.mastered }).slice(0, 2).map((b) => (
+                      <Tooltip key={b.id} content={`${b.label} — ${b.desc}`}>
+                        <span className="shrink-0 cursor-help text-xs" aria-label={b.label}>{b.icon}</span>
+                      </Tooltip>
+                    ))}
                   </a>
                   {user && !me && (
                     <button

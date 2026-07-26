@@ -7,6 +7,7 @@ import { generateCollectionImage, downloadDataUrl } from './lib/exportImage'
 import CollectionSwitcher from './components/CollectionSwitcher'
 import SpriteCard from './components/SpriteCard'
 import ProgressStats from './components/ProgressStats'
+import TrainerCard from './components/TrainerCard'
 import Toolbar from './components/Toolbar'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
@@ -367,19 +368,32 @@ export default function App() {
       {effectiveView === 'collection' && (
         <>
       {isShareView && (
-        <div className="mb-4 rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-4">
+        <div className="mb-4">
           {shareLoading ? (
-            <p className="text-sm text-[var(--muted)]">Loading shared collection…</p>
+            <div className="rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-4">
+              <p className="text-sm text-[var(--muted)]">Loading shared collection…</p>
+            </div>
           ) : shared?.profile && (shared.profile.is_public || shared.profile.gamertag) ? (
-            <p className="text-sm text-white">
-              Viewing <span className="font-display text-lg text-[var(--brand)]">{shared.profile.gamertag || 'a player'}</span>’s collection (read-only).{' '}
-              <a href={window.location.pathname} className="font-bold underline">Track your own →</a>
-            </p>
+            <>
+              <TrainerCard
+                gamertag={shared.profile.gamertag}
+                owned={stats.owned}
+                mastered={stats.mastered}
+                total={set.released}
+                tracking={activeTracking}
+                showcaseIds={shared.profile.showcase_sprite_ids}
+              />
+              <p className="mt-2 px-1 text-xs text-[var(--muted)]">
+                Read-only view. <a href={window.location.pathname} className="font-bold text-[var(--brand)] underline">Track your own →</a>
+              </p>
+            </>
           ) : (
-            <p className="text-sm text-white">
-              This collection is private or doesn’t exist.{' '}
-              <a href={window.location.pathname} className="font-bold underline">Go to your tracker →</a>
-            </p>
+            <div className="rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-4">
+              <p className="text-sm text-white">
+                This collection is private or doesn’t exist.{' '}
+                <a href={window.location.pathname} className="font-bold underline">Go to your tracker →</a>
+              </p>
+            </div>
           )}
         </div>
       )}

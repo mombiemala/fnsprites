@@ -3,21 +3,40 @@ import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 import { useEscClose } from '../lib/useEscClose'
 import { supabase } from '../lib/supabase'
+import { ALL_SPRITES } from '../data/sprites'
+import SpriteArt from './SpriteArt'
+
+const SHOWCASE_MAX = 6
 
 export default function ProfileModal({ onClose }) {
   useEscClose(onClose)
-  const { user, profile, updateProfile, signOut } = useAuth()
+  const { user, profile, updateProfile, signOut, tracking } = useAuth()
   const { toast } = useToast()
 
   const [gamertag, setGamertag] = useState(profile?.gamertag || '')
   const [isPublic, setIsPublic] = useState(profile?.is_public ?? true)
   const [epicName, setEpicName] = useState(profile?.epic_username || '')
   const [epicPlatform, setEpicPlatform] = useState(profile?.epic_platform || 'epic')
+  const [showcase, setShowcase] = useState(() => (profile?.showcase_sprite_ids || []).slice(0, SHOWCASE_MAX))
   const [savingProfile, setSavingProfile] = useState(false)
   const [busy, setBusy] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
 
   const providers = user?.app_metadata?.providers || (user?.app_metadata?.provider ? [user.app_metadata.provider] : [])
+
+  // You can only showcase sprites you actually own.
+  const ownedSprites = ALL_SPRITES.filter((s) => !s.unreleased && tracking?.[s.id]?.owned)
+
+  const toggleShowcase = (id) => {
+    setShowcase((cur) => {
+      if (cur.includes(id)) return cur.filter((x) => x !== id)
+      if (cur.length >= SHOWCASE_MAX) {
+        toast(`Showcase holds up to ${SHOWCASE_MAX} sprites`, 'error')
+        return cur
+      }
+      return [...cur, id]
+    })
+  }
 
   const saveProfile = async () => {
     setSavingProfile(true)
@@ -26,6 +45,7 @@ export default function ProfileModal({ onClose }) {
       is_public: isPublic,
       epic_username: epicName.trim() || null,
       epic_platform: epicPlatform,
+      showcase_sprite_ids: showcase.length ? showcase : null,
     })
     setSavingProfile(false)
     toast(res.error ? res.error : 'Profile saved', res.error ? 'error' : undefined)
@@ -120,6 +140,46 @@ export default function ProfileModal({ onClose }) {
           <p className="mt-1.5 text-[11px] text-[var(--muted)]">
             Connect it once and the <b className="text-white">📊 Stats</b> tab auto‑loads your Battle Royale stats. Your match history must be <b className="text-white">public</b> (Epic → Settings → Account &amp; Privacy). Saved with the button above.
           </p>
+        </div>
+
+        {/* Showcase — featured sprites on your public Trainer Card (?u= share view) */}
+        <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] p-3">
+          <label className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">
+            ⭐ Showcase <span className="font-semibold normal-case text-[var(--muted)]/80">— featured on your shared profile ({showcase.length}/{SHOWCASE_MAX})</span>
+          </label>
+          <p className="mb-2 text-[11px] text-[var(--muted)]">
+            Pick up to {SHOWCASE_MAX} favorites to feature at the top of your Trainer Card. The first becomes your avatar.
+          </p>
+          {ownedSprites.length === 0 ? (
+            <p className="rounded-lg bg-[var(--panel)] px-3 py-2 text-[11px] text-[var(--muted)]">
+              Mark some sprites as owned first — then you can showcase them here.
+            </p>
+          ) : (
+            <div className="grid max-h-44 grid-cols-6 gap-1.5 overflow-y-auto rounded-lg bg-[var(--panel)] p-2 sm:grid-cols-7">
+              {ownedSprites.map((s) => {
+                const idx = showcase.indexOf(s.id)
+                const picked = idx >= 0
+                return (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => toggleShowcase(s.id)}
+                    title={`${s.typeName}${s.themeId !== 'normal' ? ` · ${s.themeId}` : ''}${picked ? ' — in showcase' : ''}`}
+                    aria-pressed={picked}
+                    className={`relative grid aspect-square place-items-center overflow-hidden rounded-lg border ${picked ? 'border-[var(--brand)] ring-1 ring-[var(--brand)]' : 'border-transparent hover:border-[var(--border)]'}`}
+                  >
+                    <SpriteArt sprite={s} className="h-full w-full" />
+                    {picked && (
+                      <span className="absolute right-0 top-0 grid h-4 w-4 place-items-center rounded-bl-lg bg-[var(--brand)] text-[9px] font-extrabold text-black">
+                        {idx + 1}
+                      </span>
+                    )}
+                  </button>
+                )
+              })}
+            </div>
+          )}
+          <p className="mt-1.5 text-[11px] text-[var(--muted)]">Saved with the button above.</p>
         </div>
 
         <p className="mt-4 rounded-lg bg-[var(--bg-2)] px-3 py-2 text-[11px] text-[var(--muted)]">
