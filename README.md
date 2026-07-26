@@ -52,6 +52,9 @@ future New Sprite Days; anything Epic hasn't confirmed — e.g. the leaked
   your **rarest missing** sprite, the set you're **closest to finishing**, and an
   **easy one to grab** — each a tap away.
 - **Drop rates** per sprite (community-datamined estimates; Epic publishes none).
+- **Chest luck calculator** — turns a drop rate into real expectations: average
+  chests to find a sprite, chests for a 50/90/99% chance, and a live "open N
+  chests → chance of at least one."
 - **Sprite detail view** — rarity, drop rate, ability, a **gameplay tier**
   (S/A/B/C — how strong it is, not just how rare), **how the ability scales
   to Lv 5** (e.g. Demon lifesteal ≈10→≈30 HP; it highlights the level you own),

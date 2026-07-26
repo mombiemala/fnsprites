@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 26, 2026',
+    title: 'Chest luck calculator',
+    summary:
+      'A new sidebar tool that turns drop rates into real expectations: how many Sprite Chests it takes to land a given Sprite.',
+    changes: [
+      { tag: 'Added', text: 'A 🎲 Chest luck card — pick any Sprite to see its base drop rate, the average number of chests to find one, and the chests needed for a 50% / 90% / 99% chance, plus a live “open N chests → chance of at least one.”' },
+    ],
+    why:
+      'The drop rates were just numbers on a card. Framing them as “~11 chests on average” or “707k chests for a coin-flip at a Grim Reaper” makes the rarity tangible. It uses the standard geometric model (each chest an independent draw at the base rate) and is clearly labelled as community-estimated.',
+  },
+  {
+    date: 'July 26, 2026',
     title: '“Sprites I need” export now shows only what you’re missing',
     summary:
       'The “Sprites I need” image is now a clean want-list — just the released sprites you don’t own yet, nothing else.',

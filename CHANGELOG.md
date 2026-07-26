@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 26, 2026 — Chest luck calculator
+
+- **Added:** `src/components/ChestOdds.jsx` — a sidebar tool that converts base
+  drop rates into expectations: expected chests (`1/p`), chests for 50/90/99%
+  confidence (`ceil(ln(1-conf)/ln(1-p))`), and a live "open N → `1-(1-p)^N`"
+  readout. Sprite picker grouped by rarity; only types with a known `dropRate`.
+  Clearly labelled community-estimated / base-form. Placed after `DustToComplete`
+  in the collection sidebar (`!isShareView`).
+
+---
+
 ## July 26, 2026 — "Sprites I need" export shows only missing-released
 
 - **Changed:** `mode: 'missing'` now routes to a new `generateMissingImage` that

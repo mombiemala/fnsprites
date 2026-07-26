@@ -15,6 +15,7 @@ import StatsBreakdown from './components/StatsBreakdown'
 import NextToChase from './components/NextToChase'
 import QuickCheckList from './components/QuickCheckList'
 import DustToComplete from './components/DustToComplete'
+import ChestOdds from './components/ChestOdds'
 import OverflowNav from './components/OverflowNav'
 import UpcomingSprites from './components/UpcomingSprites'
 import WelcomeModal from './components/WelcomeModal'
@@ -550,6 +551,8 @@ export default function App() {
           <StatsBreakdown tracking={activeTracking} />
 
           {!isShareView && <DustToComplete tracking={activeTracking} />}
+
+          {!isShareView && <ChestOdds />}
 
           {!isShareView &&
             (user ? (
