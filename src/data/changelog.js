@@ -13,6 +13,7 @@ export const CHANGELOG = [
     changes: [
       { tag: 'Added', text: 'A detail popup for Item Shop offers: hero art, description, Type / Series / Set / Introduced season, first-added date and how many times it’s been in the shop, plus a discount %.' },
       { tag: 'Added', text: 'An “In this offer” grid — bundles often include a pickaxe, glider, wrap etc. that the shop tile didn’t show; now you can see everything you’d get.' },
+      { tag: 'Fixed', text: 'Long set names, item names and shop-history text in the detail popup now wrap and stay fully readable instead of being cut off.' },
     ],
     why:
       'Shop tiles only previewed the first item of an offer and had no detail. All the extra info was already in the data we fetch — it just needed a place to live, so a tap now opens the full picture (no new data source).',

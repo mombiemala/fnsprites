@@ -102,7 +102,7 @@ export default function ShopItemModal({ entry, onClose }) {
               {meta.map(([k, v]) => (
                 <div key={k} className="min-w-0">
                   <dt className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">{k}</dt>
-                  <dd className="truncate text-white" title={String(v)}>{v}</dd>
+                  <dd className="break-words text-white">{v}</dd>
                 </div>
               ))}
             </dl>
@@ -121,7 +121,7 @@ export default function ShopItemModal({ entry, onClose }) {
                       <div className="aspect-square w-full" style={{ boxShadow: `inset 0 -30px 30px -22px ${t}` }}>
                         {img ? <img src={img} alt={it.name || 'Item'} loading="lazy" className="h-full w-full object-cover" /> : <div className="grid h-full w-full place-items-center text-xl text-[var(--muted)]">🎁</div>}
                       </div>
-                      <p className="truncate px-1.5 py-1 text-[11px] font-semibold text-white">{it.name || it.title || 'Item'}</p>
+                      <p className="break-words px-1.5 py-1 text-[11px] font-semibold leading-tight text-white">{it.name || it.title || 'Item'}</p>
                     </div>
                   )
                 })}

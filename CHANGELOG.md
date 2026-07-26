@@ -19,6 +19,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   grid of every item bundled in the offer (the tile only previewed the first).
 - **Changed:** `ShopCard` is now a `<button>` (keyboard-focusable, hover ring)
   wired to open the modal; `ShopTab` tracks the selected entry.
+- **Fixed:** metadata values and bundled-item names in the modal now wrap
+  (`break-words`) instead of `truncate`, so long set/item/history text is fully
+  readable (the hover-`title` fallback was useless on touch).
 - All fields come from the existing `fortnite-api.com` `/v2/shop` payload — no
   new data source. Layout degrades gracefully when fields are absent.
 
