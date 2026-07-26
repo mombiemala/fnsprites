@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 26, 2026 — Sprite Dust re-summon costs lowered (Jul 24 hotfix)
+
+- **Changed:** `DUST_VARIANT` in `src/data/sprites.js` — variant re-summon Dust
+  cut ~33% per Epic's Jul 24 hotfix: Rare 4000→2700, Epic 6000→4000, Legendary
+  10000→6700, Mythic 15000→10000. `DUST_BASE` (Normal) unchanged. Community-cited
+  endpoints were Rare→2700 and Mythic→10000; Epic/Legendary interpolated at the
+  same ~33% to keep the table consistent. Still estimates (Epic publishes none).
+
+---
+
 ## July 26, 2026 — Trainer Cards (showcase + badges)
 
 - **Added:** ⭐ **Showcase** picker in Profile — feature up to 6 owned sprites on

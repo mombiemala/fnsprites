@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 26, 2026',
+    title: 'Sprite Dust re-summon costs lowered',
+    summary:
+      'Epic’s July 24 hotfix cut the Dust needed to re-summon special variants by about a third — the tracker’s Dust estimates now reflect it.',
+    changes: [
+      { tag: 'Changed', text: 'Variant (Gold/Gummy/Galaxy/Holofoil…) re-summon Dust: Rare 4000→2700, Epic 6000→4000, Legendary 10000→6700, Mythic 15000→10000. Base (Normal) costs are unchanged.' },
+    ],
+    why:
+      'The Jul 24 hotfix advertised “up to 33% off” variant summon costs ahead of Shinier Hours. Only the Rare (→2700) and Mythic (→10000) endpoints were spelled out by the community, so Epic/Legendary use the same ~33% cut to keep the table consistent — these are still community estimates, as before.',
+  },
+  {
+    date: 'July 26, 2026',
     title: 'Trainer Cards — show off your collection',
     summary:
       'Your shared link (?u=…) now opens a proper player profile: an avatar, headline stats, earned badges, and a showcase of your favorite sprites.',
