@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 24, 2026 — Connect your Epic account (Stats auto-load)
+
+- **Added:** a 🎮 **Epic account** field in Profile (`profiles.epic_username` +
+  `profiles.epic_platform`, added via migration). Once saved, the 📊 Stats tab
+  auto-loads that account on open (StatsTab reads `profile.epic_username` and runs
+  the lookup once). Plus a "★ This is me — save to profile" shortcut on any result
+  and a "Your account" badge.
+- **Fixed:** marked the **Aura & Fire shield-damage** known issue resolved — fixed
+  by Epic in **v41.20** (also fixed: drop-to-extract turning a Sprite into a Water
+  Sprite / no Dust).
+- **Security:** `sharedCollection` now selects only public display fields
+  (`id, gamertag, display_name, is_public`) instead of `*`, so a saved Epic name
+  is never exposed through a `?u=` share link. (True Epic OAuth linking isn't
+  available to third-party apps; saving the display name is the practical path.)
+
+---
+
 ## July 24, 2026 — Shiny Hours (Jul 25) details filled in
 
 - **Changed:** enriched the Jul 25 **Shiny Hours** callout (banner + News): exact

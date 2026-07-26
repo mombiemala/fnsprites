@@ -18,7 +18,9 @@ export function rowsToMap(rows) {
 // Fetch a public profile + progress for the read-only share view.
 export async function fetchSharedCollection(userId) {
   const [{ data: prof }, { data: rows }] = await Promise.all([
-    supabase.from('profiles').select('*').eq('id', userId).maybeSingle(),
+    // Only the public display fields — never expose private profile data (e.g.
+    // the saved Epic username) through a shared link.
+    supabase.from('profiles').select('id, gamertag, display_name, is_public').eq('id', userId).maybeSingle(),
     supabase.from('sprite_progress').select('*').eq('user_id', userId),
   ])
   return { profile: prof, tracking: rowsToMap(rows) }

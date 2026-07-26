@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { fetchPlayerStats, summarizeStats } from '../lib/statsApi'
+import { useAuth } from '../context/authStore'
+import { useToast } from '../context/toastStore'
 
 const selectCls =
   'rounded-xl border border-[var(--border)] bg-[var(--panel-2)] px-3 py-2 text-sm text-white outline-none focus:border-[var(--brand)]'
@@ -17,28 +19,59 @@ function Tile({ label, value, hint }) {
 }
 
 export default function StatsTab() {
+  const { user, profile, updateProfile } = useAuth()
+  const { toast } = useToast()
   const [name, setName] = useState('')
   const [accountType, setAccountType] = useState('epic')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [stats, setStats] = useState(null)
+  const [lookedUp, setLookedUp] = useState(null) // { name, accountType } of the last successful lookup
+  const autoRan = useRef(false)
 
-  const run = async (e) => {
-    e?.preventDefault()
-    const q = name.trim()
-    if (!q || loading) return
+  const runWith = async (q, type) => {
+    q = q.trim()
+    if (!q) return
     setLoading(true)
     setError(null)
     try {
-      const data = await fetchPlayerStats(q, accountType)
+      const data = await fetchPlayerStats(q, type)
       setStats(summarizeStats(data))
+      setLookedUp({ name: q, accountType: type })
     } catch (err) {
       setStats(null)
+      setLookedUp(null)
       setError(err.message || 'Could not load stats.')
     } finally {
       setLoading(false)
     }
   }
+
+  const run = (e) => {
+    e?.preventDefault()
+    if (!loading) runWith(name, accountType)
+  }
+
+  // Auto-load the signed-in user's saved Epic account once it's available.
+  useEffect(() => {
+    if (autoRan.current || !profile?.epic_username) return
+    autoRan.current = true
+    setName(profile.epic_username)
+    setAccountType(profile.epic_platform || 'epic')
+    runWith(profile.epic_username, profile.epic_platform || 'epic')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile?.epic_username])
+
+  const saveMine = async () => {
+    if (!lookedUp) return
+    const res = await updateProfile({ epic_username: lookedUp.name, epic_platform: lookedUp.accountType })
+    toast(res?.error ? res.error : 'Saved to your profile — it’ll auto-load next time', res?.error ? 'error' : undefined)
+  }
+
+  const isMine = user && lookedUp && profile?.epic_username &&
+    lookedUp.name.toLowerCase() === profile.epic_username.toLowerCase() &&
+    lookedUp.accountType === (profile.epic_platform || 'epic')
+  const canSaveMine = user && lookedUp && !isMine
 
   const o = stats?.overall
 
@@ -92,20 +125,33 @@ export default function StatsTab() {
       {!error && !stats && !loading && (
         <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-8 text-center text-sm text-[var(--muted)]">
           Enter an Epic display name above to see wins, K/D, matches and more.
+          {user
+            ? ' Tip: save your Epic account in your Profile and it’ll load here automatically.'
+            : ' Log in and save your Epic account to have it auto-load every time.'}
         </div>
       )}
 
       {stats && !error && (
         <div className="space-y-5">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <h3 className="font-display text-xl text-white">
               {stats.account?.name || name}
+              {isMine && <span className="ml-2 rounded-full bg-[var(--brand)]/15 px-2 py-0.5 align-middle text-[10px] font-bold uppercase text-[var(--brand)]">Your account</span>}
               {stats.battlePassLevel > 0 && (
                 <span className="ml-2 align-middle text-sm font-bold text-[var(--muted)]">
                   Battle Pass Lv {stats.battlePassLevel}
                 </span>
               )}
             </h3>
+            {canSaveMine && (
+              <button
+                onClick={saveMine}
+                title="Save this as your Epic account so the Stats tab auto-loads it next time"
+                className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-white hover:bg-[var(--border)]"
+              >
+                ★ This is me — save to profile
+              </button>
+            )}
           </div>
 
           {/* Overall headline tiles */}

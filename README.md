@@ -62,7 +62,9 @@ future New Sprite Days; anything Epic hasn't confirmed — e.g. the leaked
   name (or PSN/Xbox): wins, win rate, K/D, kills, matches, top-10/25, hours, and a
   solo/duo/squad breakdown. Requires the target's match history to be public. The
   stats API key is held server-side by a small serverless proxy (`api/stats.js`),
-  never shipped to the browser.
+  never shipped to the browser. **Connect your account:** signed-in players can
+  save their Epic name in their Profile (or via a one-tap "save to profile" on any
+  result), and the Stats tab then auto-loads their stats on open.
 - **Item Shop** — today's rotating Fortnite Item Shop (the in-game store, shown
   read-only) grouped by section, with item art, rarity and V-Bucks prices, plus
   filters (search, rarity, type, price sort). Pulls live from the free public
@@ -179,8 +181,9 @@ directly and need no key.
 
 Database schema (applied via migrations):
 
-- `profiles` — one row per user (`gamertag`, `is_public`, …). Public-readable for
-  sharing; owner-writable.
+- `profiles` — one row per user (`gamertag`, `is_public`, `epic_username`,
+  `epic_platform`, …). Public-readable for sharing; owner-writable. Shared-link
+  reads select only the display fields, so `epic_username` isn't exposed to others.
 - `sprite_progress` — `(user_id, sprite_id)` with `owned` / `mastered` flags
   (plus dormant `for_trade` / `wanted` columns from the retired trading feature).
   Readable when the owning profile is public (or it's your own); owner-writable.

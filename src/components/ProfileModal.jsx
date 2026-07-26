@@ -11,6 +11,8 @@ export default function ProfileModal({ onClose }) {
 
   const [gamertag, setGamertag] = useState(profile?.gamertag || '')
   const [isPublic, setIsPublic] = useState(profile?.is_public ?? true)
+  const [epicName, setEpicName] = useState(profile?.epic_username || '')
+  const [epicPlatform, setEpicPlatform] = useState(profile?.epic_platform || 'epic')
   const [savingProfile, setSavingProfile] = useState(false)
   const [busy, setBusy] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
@@ -19,7 +21,12 @@ export default function ProfileModal({ onClose }) {
 
   const saveProfile = async () => {
     setSavingProfile(true)
-    const res = await updateProfile({ gamertag: gamertag.trim() || null, is_public: isPublic })
+    const res = await updateProfile({
+      gamertag: gamertag.trim() || null,
+      is_public: isPublic,
+      epic_username: epicName.trim() || null,
+      epic_platform: epicPlatform,
+    })
     setSavingProfile(false)
     toast(res.error ? res.error : 'Profile saved', res.error ? 'error' : undefined)
   }
@@ -83,6 +90,36 @@ export default function ProfileModal({ onClose }) {
               {savingProfile ? 'Saving…' : 'Save'}
             </button>
           </div>
+        </div>
+
+        {/* Epic account — powers the Stats tab auto-lookup */}
+        <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] p-3">
+          <label className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">
+            🎮 Epic account <span className="font-semibold normal-case text-[var(--muted)]/80">— for the Stats tab</span>
+          </label>
+          <div className="flex gap-2">
+            <input
+              value={epicName}
+              onChange={(e) => setEpicName(e.target.value)}
+              placeholder="Epic display name"
+              maxLength={32}
+              title="Your exact Epic display name — the Stats tab will auto-load your stats"
+              className="min-w-0 flex-1 rounded-lg border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-sm text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)]"
+            />
+            <select
+              value={epicPlatform}
+              onChange={(e) => setEpicPlatform(e.target.value)}
+              title="Which account your display name belongs to"
+              className="shrink-0 rounded-lg border border-[var(--border)] bg-[var(--panel)] px-2 py-2 text-sm text-white outline-none focus:border-[var(--brand)]"
+            >
+              <option value="epic">Epic</option>
+              <option value="psn">PlayStation</option>
+              <option value="xbl">Xbox</option>
+            </select>
+          </div>
+          <p className="mt-1.5 text-[11px] text-[var(--muted)]">
+            Connect it once and the <b className="text-white">📊 Stats</b> tab auto‑loads your Battle Royale stats. Your match history must be <b className="text-white">public</b> (Epic → Settings → Account &amp; Privacy). Saved with the button above.
+          </p>
         </div>
 
         <p className="mt-4 rounded-lg bg-[var(--bg-2)] px-3 py-2 text-[11px] text-[var(--muted)]">

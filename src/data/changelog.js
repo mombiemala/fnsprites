@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'July 24, 2026',
+    title: 'Connect your Epic account — Stats load automatically',
+    summary:
+      'Save your Epic name to your profile once and the Stats tab pulls up your Battle Royale stats every time — no more retyping.',
+    changes: [
+      { tag: 'Added', text: 'A 🎮 Epic account field in your Profile (display name + platform). Once it’s saved, the 📊 Stats tab auto-loads your stats whenever you open it.' },
+      { tag: 'Added', text: 'A “★ This is me — save to profile” shortcut on any stats result, so you can connect your account right from the Stats tab. Your saved account shows a “Your account” badge.' },
+      { tag: 'Fixed', text: 'Marked the Aura & Fire Sprite “shield damage doesn’t register” bug resolved — Epic fixed it in v41.20 (along with the drop-to-extract-turns-into-Water-Sprite bug).' },
+      { tag: 'Security', text: 'Your saved Epic name is never exposed through public share links (shared collection views only read the display fields). Stats still require your match history to be public on Epic.' },
+    ],
+    why:
+      'Looking up your own stats meant retyping your name every visit. “Connect once, always there” is the obvious win — and true Epic OAuth account-linking isn’t available to third-party apps, so saving the display name is the practical way to do it.',
+  },
+  {
+    date: 'July 24, 2026',
     title: 'Shiny Hours (Jul 25) details filled in',
     summary:
       'Fleshed out tomorrow’s Shiny Hours callout with the full details so you can plan around it.',
