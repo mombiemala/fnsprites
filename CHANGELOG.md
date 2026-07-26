@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 26, 2026 — Rich link previews for shared collections
+
+- **Added:** `api/og.js` — a Vercel **edge** function using `@vercel/og` that
+  renders a 1200×630 Trainer Card PNG (gamertag, sprites collected, mastered,
+  flair tag) from public profile + progress data. Always returns an image
+  (falls back to a generic branded card on any error).
+- **Added:** `middleware.js` — edge middleware matching `/`; when a `?u=` param
+  is present it swaps the static `og:image`/`twitter:image` to `/api/og?u=<id>`
+  (and `og:url` to the share link) so crawlers get a personalized unfurl.
+  Defensive: only acts on `?u=`, and any failure falls through to the normal page.
+- Deps: `@vercel/og`, `@vercel/edge`. Not imported by `src/`, so the client
+  bundle is unaffected. Verified the renderer output locally before shipping.
+
+---
+
 ## July 26, 2026 — Sprite Dust re-summon costs lowered (Jul 24 hotfix)
 
 - **Changed:** `DUST_VARIANT` in `src/data/sprites.js` — variant re-summon Dust

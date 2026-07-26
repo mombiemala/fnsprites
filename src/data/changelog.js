@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 26, 2026',
+    title: 'Shared links now unfurl with your Trainer Card',
+    summary:
+      'Paste your collection link into Discord, Twitter, iMessage and friends see a generated card with your name and stats — not a generic banner.',
+    changes: [
+      { tag: 'Added', text: 'A dynamic social preview image for shared links (?u=…): a 1200×630 “Trainer Card” with your gamertag, sprites collected, mastered count and a flair tag, rendered on the fly.' },
+    ],
+    why:
+      'The Trainer Card only showed up once you opened the app. Preview images are what actually make a link worth clicking, so shared links now personalize their unfurl. It’s handled at the edge (a tiny renderer plus middleware that points crawlers at the image) and fails safe — if the preview can’t render, the link still works normally.',
+  },
+  {
+    date: 'July 26, 2026',
     title: 'Sprite Dust re-summon costs lowered',
     summary:
       'Epic’s July 24 hotfix cut the Dust needed to re-summon special variants by about a third — the tracker’s Dust estimates now reflect it.',
