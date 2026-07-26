@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { fetchShop, entryItems, rarityTint } from '../lib/fortniteApi'
+import ShopItemModal from './ShopItemModal'
 
 // Pull a display image for an entry from whichever item bucket it has.
 function entryImage(item) {
@@ -14,7 +15,7 @@ function entryImage(item) {
   )
 }
 
-function ShopCard({ entry }) {
+function ShopCard({ entry, onOpen }) {
   const items = entryItems(entry)
   const rep = items[0]
   const img = entryImage(rep)
@@ -25,9 +26,11 @@ function ShopCard({ entry }) {
   const extra = items.length > 1 ? ` +${items.length - 1}` : ''
 
   return (
-    <div
-      className="group overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--panel)]"
-      title={`${name}${type ? ` · ${type}` : ''}${rarity ? ` · ${rarity}` : ''} — ${entry.finalPrice} V-Bucks`}
+    <button
+      type="button"
+      onClick={() => onOpen(entry)}
+      className="group overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--panel)] text-left transition-colors hover:border-[var(--brand)] focus:border-[var(--brand)] focus:outline-none"
+      title={`${name}${type ? ` · ${type}` : ''}${rarity ? ` · ${rarity}` : ''} — ${entry.finalPrice} V-Bucks · click for details`}
     >
       <div className="relative aspect-square w-full overflow-hidden bg-[var(--bg-2)]" style={{ boxShadow: `inset 0 -60px 60px -40px ${tint}` }}>
         {img ? (
@@ -48,7 +51,7 @@ function ShopCard({ entry }) {
           )}
         </p>
       </div>
-    </div>
+    </button>
   )
 }
 
@@ -60,6 +63,7 @@ export default function ShopTab() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [reloadKey, setReloadKey] = useState(0)
+  const [selected, setSelected] = useState(null)
   // Filters (competitor-style): search by name, plus rarity / type / sort.
   const [query, setQuery] = useState('')
   const [rarity, setRarity] = useState('all')
@@ -180,12 +184,14 @@ export default function ShopTab() {
             <section key={sec.name ?? `s${si}`}>
               {sec.name && <h4 className="mb-2 font-display text-base text-white/90">{sec.name} <span className="text-sm text-[var(--muted)]">· {sec.items.length}</span></h4>}
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-                {sec.items.map((e, i) => <ShopCard key={e.offerId || i} entry={e} />)}
+                {sec.items.map((e, i) => <ShopCard key={e.offerId || i} entry={e} onOpen={setSelected} />)}
               </div>
             </section>
           ))}
         </div>
       )}
+
+      {selected && <ShopItemModal entry={selected} onClose={() => setSelected(null)} />}
     </div>
   )
 }

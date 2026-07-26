@@ -67,7 +67,9 @@ future New Sprite Days; anything Epic hasn't confirmed — e.g. the leaked
   result), and the Stats tab then auto-loads their stats on open.
 - **Item Shop** — today's rotating Fortnite Item Shop (the in-game store, shown
   read-only) grouped by section, with item art, rarity and V-Bucks prices, plus
-  filters (search, rarity, type, price sort). Pulls live from the free public
+  filters (search, rarity, type, price sort). **Tap any offer** for a detail view
+  — big render, description, set/series/season, shop history, and every item
+  bundled in the offer. Pulls live from the free public
   [fortnite-api.com](https://fortnite-api.com).
 - **Cosmetics (beta)** — a proof-of-concept that browses the newest Fortnite
   cosmetics with a local-only wishlist, trialling cosmetic tracking alongside

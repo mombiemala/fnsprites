@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 26, 2026 — Item Shop: clickable cards with a detail view
+
+- **Added:** `src/components/ShopItemModal.jsx` — clicking a shop card opens a
+  detail modal: hero render, description, Type/Series/Set/Introduced, first-added
+  date, `shopHistory` count ("seen N×"), discount %, and an **"In this offer"**
+  grid of every item bundled in the offer (the tile only previewed the first).
+- **Changed:** `ShopCard` is now a `<button>` (keyboard-focusable, hover ring)
+  wired to open the modal; `ShopTab` tracks the selected entry.
+- All fields come from the existing `fortnite-api.com` `/v2/shop` payload — no
+  new data source. Layout degrades gracefully when fields are absent.
+
+---
+
 ## July 26, 2026 — Rich link previews for shared collections
 
 - **Added:** `api/og.js` — a Vercel **edge** function using `@vercel/og` that

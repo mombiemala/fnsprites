@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 26, 2026',
+    title: 'Item Shop — tap any offer for full details',
+    summary:
+      'Shop cards are now clickable. Open one to see the big render, the full description, set/series/season, price breakdown, shop history, and every item bundled in the offer.',
+    changes: [
+      { tag: 'Added', text: 'A detail popup for Item Shop offers: hero art, description, Type / Series / Set / Introduced season, first-added date and how many times it’s been in the shop, plus a discount %.' },
+      { tag: 'Added', text: 'An “In this offer” grid — bundles often include a pickaxe, glider, wrap etc. that the shop tile didn’t show; now you can see everything you’d get.' },
+    ],
+    why:
+      'Shop tiles only previewed the first item of an offer and had no detail. All the extra info was already in the data we fetch — it just needed a place to live, so a tap now opens the full picture (no new data source).',
+  },
+  {
+    date: 'July 26, 2026',
     title: 'Shared links now unfurl with your Trainer Card',
     summary:
       'Paste your collection link into Discord, Twitter, iMessage and friends see a generated card with your name and stats — not a generic banner.',
