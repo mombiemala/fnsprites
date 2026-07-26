@@ -91,6 +91,8 @@ future New Sprite Days; anything Epic hasn't confirmed — e.g. the leaked
   an avatar and up to 6 hand-picked **showcase** sprites, headline stats, and
   **earned badges** (Completionist, Shiny Hunter, Mythic Owner, Variant Hunter…)
   derived on the fly from your progress. Badges also appear on the leaderboard.
+  Optionally (opt-in in Profile) surface your live **Battle Royale stats** on the
+  card too.
 - **Share & export** — set your gamertag and share the read-only public link
   above; **copy a ready-to-paste Discord/Reddit caption** of your progress; or
   export a **Sprite Locker–style poster** of your collection (or just the sprites
@@ -191,10 +193,12 @@ directly and need no key.
 Database schema (applied via migrations):
 
 - `profiles` — one row per user (`gamertag`, `is_public`, `epic_username`,
-  `epic_platform`, `showcase_sprite_ids`, …). Public-readable for sharing;
-  owner-writable. Shared-link reads select only the display fields
-  (`gamertag`, `display_name`, `is_public`, `showcase_sprite_ids`), so
-  `epic_username` isn't exposed to others.
+  `epic_platform`, `showcase_sprite_ids`, `stats_public`, …). Public-readable for
+  sharing; owner-writable. Shared-link reads go through the `get_shared_profile()`
+  **security-definer** RPC, which returns only public display fields plus the Epic
+  account **only** when `stats_public` is on. Anonymous SELECT on the Epic columns
+  is revoked at the DB level, so `epic_username` is never exposed unless the owner
+  opts into public stats.
 - `sprite_progress` — `(user_id, sprite_id)` with `owned` / `mastered` flags
   (plus dormant `for_trade` / `wanted` columns from the retired trading feature).
   Readable when the owning profile is public (or it's your own); owner-writable.

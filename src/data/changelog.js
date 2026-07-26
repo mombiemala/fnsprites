@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 26, 2026',
+    title: 'Show your Battle Royale stats on your Trainer Card (opt-in)',
+    summary:
+      'A new toggle lets you surface your live BR stats on your shared profile — off by default, and behind a real privacy boundary.',
+    changes: [
+      { tag: 'Added', text: 'Profile → “Show my stats on my shared profile.” When on, your shared (?u=…) Trainer Card shows a Battle Royale strip: Wins, Win rate, K/D and Kills, pulled live (needs your Epic name saved + match history public).' },
+      { tag: 'Security', text: 'Off by default. The shared-profile read now goes through a security-definer function that returns your Epic name ONLY when you’ve opted in — and anonymous direct read access to the Epic columns was revoked at the database level, so nobody can pull your Epic name from a share link unless you turn stats on.' },
+    ],
+    why:
+      'It finishes the “connect once” story and makes the Trainer Card a genuine flex — but stats are personal, so it’s strictly opt-in. Auditing the database turned up that the Epic name was technically readable via the public API even though the app never showed it; this change closes that for anonymous access and makes the opt-in an actual boundary, not just a UI choice.',
+  },
+  {
+    date: 'July 26, 2026',
     title: 'Chest luck calculator',
     summary:
       'A new sidebar tool that turns drop rates into real expectations: how many Sprite Chests it takes to land a given Sprite.',

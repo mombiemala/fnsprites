@@ -17,6 +17,7 @@ export default function ProfileModal({ onClose }) {
   const [isPublic, setIsPublic] = useState(profile?.is_public ?? true)
   const [epicName, setEpicName] = useState(profile?.epic_username || '')
   const [epicPlatform, setEpicPlatform] = useState(profile?.epic_platform || 'epic')
+  const [statsPublic, setStatsPublic] = useState(profile?.stats_public ?? false)
   const [showcase, setShowcase] = useState(() => (profile?.showcase_sprite_ids || []).slice(0, SHOWCASE_MAX))
   const [savingProfile, setSavingProfile] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -46,6 +47,8 @@ export default function ProfileModal({ onClose }) {
       epic_username: epicName.trim() || null,
       epic_platform: epicPlatform,
       showcase_sprite_ids: showcase.length ? showcase : null,
+      // Public stats only make sense with a saved Epic name; force off otherwise.
+      stats_public: epicName.trim() ? statsPublic : false,
     })
     setSavingProfile(false)
     toast(res.error ? res.error : 'Profile saved', res.error ? 'error' : undefined)
@@ -140,6 +143,21 @@ export default function ProfileModal({ onClose }) {
           <p className="mt-1.5 text-[11px] text-[var(--muted)]">
             Connect it once and the <b className="text-white">📊 Stats</b> tab auto‑loads your Battle Royale stats. Your match history must be <b className="text-white">public</b> (Epic → Settings → Account &amp; Privacy). Saved with the button above.
           </p>
+
+          {/* Opt-in: surface stats on the public Trainer Card */}
+          <label className={`mt-3 flex items-start gap-2 border-t border-[var(--border)] pt-3 text-xs ${epicName.trim() ? 'text-[var(--muted)]' : 'text-[var(--muted)]/50'}`}>
+            <input
+              type="checkbox"
+              className="mt-0.5"
+              checked={epicName.trim() ? statsPublic : false}
+              disabled={!epicName.trim()}
+              onChange={(e) => setStatsPublic(e.target.checked)}
+            />
+            <span>
+              <b className="font-semibold text-white">Show my stats on my shared profile</b> — anyone with your share link will see your Battle Royale stats on your Trainer Card.
+              {!epicName.trim() && <span className="block text-[var(--muted)]/70">Add your Epic name first.</span>}
+            </span>
+          </label>
         </div>
 
         {/* Showcase — featured sprites on your public Trainer Card (?u= share view) */}

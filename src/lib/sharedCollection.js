@@ -16,13 +16,16 @@ export function rowsToMap(rows) {
 }
 
 // Fetch a public profile + progress for the read-only share view.
+//
+// The profile comes from the get_shared_profile() RPC (security definer), not a
+// direct table read: it returns only public display fields, and the saved Epic
+// account ONLY when the player turned on public stats (stats_public && is_public).
+// anon's direct SELECT on the Epic columns is revoked, so this RPC is the single
+// gated path by which an Epic name can reach a viewer.
 export async function fetchSharedCollection(userId) {
-  const [{ data: prof }, { data: rows }] = await Promise.all([
-    // Only the public display fields — never expose private profile data (e.g.
-    // the saved Epic username) through a shared link. showcase_sprite_ids is
-    // public display data (the Trainer Card's featured sprites).
-    supabase.from('profiles').select('id, gamertag, display_name, is_public, showcase_sprite_ids').eq('id', userId).maybeSingle(),
+  const [{ data: profRows }, { data: rows }] = await Promise.all([
+    supabase.rpc('get_shared_profile', { uid: userId }),
     supabase.from('sprite_progress').select('*').eq('user_id', userId),
   ])
-  return { profile: prof, tracking: rowsToMap(rows) }
+  return { profile: Array.isArray(profRows) ? profRows[0] || null : profRows, tracking: rowsToMap(rows) }
 }

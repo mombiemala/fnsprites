@@ -383,6 +383,8 @@ export default function App() {
                 total={set.released}
                 tracking={activeTracking}
                 showcaseIds={shared.profile.showcase_sprite_ids}
+                epicUsername={shared.profile.epic_username}
+                epicPlatform={shared.profile.epic_platform}
               />
               <p className="mt-2 px-1 text-xs text-[var(--muted)]">
                 Read-only view. <a href={window.location.pathname} className="font-bold text-[var(--brand)] underline">Track your own →</a>

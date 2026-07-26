@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 26, 2026 — Public stats on the Trainer Card (opt-in)
+
+- **Added:** `profiles.stats_public` (boolean, default false) + a Profile toggle.
+  When on, the shared `?u=` Trainer Card renders a BR stats strip (Wins / Win
+  rate / K/D / Kills) via the existing `/api/stats` proxy (`TrainerCard` →
+  `StatsStrip`, fails quietly on private history / API error).
+- **Security:** `fetchSharedCollection` now reads the profile via a new
+  `get_shared_profile(uid)` **security-definer** RPC that returns `epic_username`
+  /`epic_platform` ONLY when `stats_public AND is_public`. Anonymous SELECT on the
+  Epic columns was revoked — replaced Supabase's table-wide grant to `anon` with a
+  column-scoped grant excluding the Epic columns (a column REVOKE alone was a
+  no-op against the table grant). The owner still reads their own row as
+  `authenticated`. So the opt-in is a real DB boundary, not just UI.
+
+---
+
 ## July 26, 2026 — Chest luck calculator
 
 - **Added:** `src/components/ChestOdds.jsx` — a sidebar tool that converts base
