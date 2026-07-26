@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 26, 2026',
+    title: '“Sprites I need” export now shows only what you’re missing',
+    summary:
+      'The “Sprites I need” image is now a clean want-list — just the released sprites you don’t own yet, nothing else.',
+    changes: [
+      { tag: 'Changed', text: 'The “Sprites I need” export is now a focused grid of only your missing released sprites (each with its variant + a “still needed” marker), instead of the full locker with owned cells dimmed and unreleased ones locked.' },
+      { tag: 'Added', text: 'A “Nothing left to collect!” card when you own every released sprite, and a header count (“N to go”) that matches your missing total. Works signed-in or as a guest.' },
+    ],
+    why:
+      'The old version drew the entire matrix and just dimmed what you owned, which buried the one thing the image is for: what you still need. Showing only the missing-released sprites makes it an actual checklist you can screenshot and hunt from.',
+  },
+  {
+    date: 'July 26, 2026',
     title: 'Item Shop — tap any offer for full details',
     summary:
       'Shop cards are now clickable. Open one to see the big render, the full description, set/series/season, price breakdown, shop history, and every item bundled in the offer.',

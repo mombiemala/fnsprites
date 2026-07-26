@@ -89,11 +89,178 @@ function drawLock(ctx, cx, cy, s) {
   ctx.restore()
 }
 
+const VARIANT_LABEL = { normal: 'Normal', gold: 'Gold', gummy: 'Gummy', galaxy: 'Galaxy', gem: 'Gem', holofoil: 'Holofoil', cube: 'Cube', quack: 'Quack' }
+const VARIANT_ORDER = ['normal', 'gold', 'gummy', 'galaxy', 'gem', 'holofoil', 'cube', 'quack']
+
+// Shrink `font`px until `text` fits `maxW`, then draw it left-aligned at (x,y).
+function drawFit(ctx, text, x, y, maxW, weight, size, minSize = 11) {
+  let s = size
+  do {
+    ctx.font = `${weight} ${s}px Inter, sans-serif`
+    if (ctx.measureText(text).width <= maxW || s <= minSize) break
+    s -= 1
+  } while (s > minSize)
+  ctx.fillText(text, x, y)
+  return s
+}
+
+// "Sprites I need" export — ONLY the released variants this player is still
+// missing (no owned, no unreleased/locked cells), as a compact wrapping grid.
+// The count matches the app's "missing" stat (all released variants, every form
+// — not just the five Locker columns). Works for guests and signed-in users
+// alike since it reads the active `tracking` map it's handed.
+export async function generateMissingImage({ gamertag, tracking = {}, theme = 'midnight', shareUrl }) {
+  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.vercel.app/')
+
+  const releasedTotal = ALL_SPRITES.filter((s) => s.released).length
+  const ownedTotal = ALL_SPRITES.filter((s) => s.released && tracking[s.id]?.owned).length
+  const pct = releasedTotal ? Math.round((ownedTotal / releasedTotal) * 100) : 0
+
+  const typeIndex = Object.fromEntries(SPRITE_TYPES.map((t, i) => [t.id, i]))
+  const vIndex = Object.fromEntries(VARIANT_ORDER.map((v, i) => [v, i]))
+  const missing = ALL_SPRITES
+    .filter((s) => s.released && !tracking[s.id]?.owned)
+    .sort((a, b) => (typeIndex[a.typeId] - typeIndex[b.typeId]) || ((vIndex[a.themeId] ?? 9) - (vIndex[b.themeId] ?? 9)))
+
+  const pad = 44
+  const canvas = document.createElement('canvas')
+
+  // Everything collected — celebratory card instead of an empty grid.
+  if (missing.length === 0) {
+    const W = 660, H = 460
+    canvas.width = W; canvas.height = H
+    const ctx = canvas.getContext('2d')
+    const themeBg = (CARD_THEMES[theme] || CARD_THEMES.midnight).bg
+    const bg = ctx.createLinearGradient(0, 0, 0, H)
+    bg.addColorStop(0, themeBg[0]); bg.addColorStop(1, themeBg[1])
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H)
+    ctx.fillStyle = '#7f8ab0'; ctx.font = '700 18px Inter, sans-serif'
+    ctx.fillText('FN SPRITE TRACKER', pad, 52)
+    ctx.textAlign = 'center'
+    ctx.font = '800 90px Inter, sans-serif'; ctx.fillText('🏆', W / 2, 210)
+    ctx.fillStyle = '#ffffff'; ctx.font = '800 40px Inter, sans-serif'
+    ctx.fillText('Nothing left to collect!', W / 2, 280)
+    ctx.fillStyle = '#95a0c4'; ctx.font = '600 22px Inter, sans-serif'
+    ctx.fillText(`${gamertag ? `${gamertag} owns` : 'You own'} all ${releasedTotal} released sprites`, W / 2, 320)
+    ctx.textAlign = 'left'
+    await drawExportFooter(ctx, { W, H, pad, url })
+    return canvas.toDataURL('image/png')
+  }
+
+  // Grid geometry — up to 6 tiles per row, centered.
+  const cols = Math.min(6, Math.max(1, missing.length))
+  const rowsN = Math.ceil(missing.length / cols)
+  const cell = 150, gap = 16, labelH = 42
+  const tileH = cell + labelH
+  const gridW = cols * cell + (cols - 1) * gap
+  const W = Math.max(680, gridW + pad * 2)
+  const gridX0 = Math.round((W - gridW) / 2)
+  const gridTop = 250
+  const H = gridTop + rowsN * (tileH + gap) + 150
+
+  canvas.width = W; canvas.height = H
+  const ctx = canvas.getContext('2d')
+  ctx.textBaseline = 'alphabetic'
+
+  const themeBg = (CARD_THEMES[theme] || CARD_THEMES.midnight).bg
+  const bg = ctx.createLinearGradient(0, 0, 0, H)
+  bg.addColorStop(0, themeBg[0]); bg.addColorStop(1, themeBg[1])
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H)
+
+  // Header
+  ctx.fillStyle = '#7f8ab0'; ctx.font = '700 18px Inter, sans-serif'
+  ctx.fillText('FN SPRITE TRACKER', pad, 52)
+  ctx.fillStyle = '#ffffff'; ctx.font = '800 46px Inter, sans-serif'
+  ctx.fillText('SPRITES I NEED', pad, 100)
+  ctx.fillStyle = '#95a0c4'; ctx.font = '600 20px Inter, sans-serif'
+  ctx.fillText(gamertag ? `${gamertag} · released sprites still to collect` : 'Released sprites still to collect', pad, 130)
+
+  // Count (top-right) + progress bar
+  ctx.fillStyle = '#ff5d8f'; ctx.font = '800 26px Inter, sans-serif'
+  const stat = `${missing.length} to go`
+  ctx.fillText(stat, W - pad - ctx.measureText(stat).width, 100)
+  const barY = 158, barW = W - pad * 2
+  ctx.fillStyle = '#212a48'; roundRect(ctx, pad, barY, barW, 14, 7); ctx.fill()
+  const pg = ctx.createLinearGradient(pad, 0, pad + barW, 0)
+  pg.addColorStop(0, '#36c5ff'); pg.addColorStop(1, '#9a7bff')
+  ctx.fillStyle = pg; roundRect(ctx, pad, barY, Math.max(8, (ownedTotal / Math.max(1, releasedTotal)) * barW), 14, 7); ctx.fill()
+  ctx.fillStyle = '#7f8ab0'; ctx.font = '700 14px Inter, sans-serif'
+  ctx.fillText(`${ownedTotal} / ${releasedTotal} collected · ${pct}%`, pad, barY + 34)
+
+  // Preload the missing sprites' art.
+  const loaded = {}
+  await Promise.all([...new Set(missing.map((s) => s.image))].map(async (src) => { loaded[src] = await loadImage(src) }))
+
+  // Tiles
+  missing.forEach((s, i) => {
+    const col = i % cols
+    const row = Math.floor(i / cols)
+    const x = gridX0 + col * (cell + gap)
+    const y = gridTop + row * (tileH + gap)
+
+    variantBg(ctx, s.themeId, x, y, cell, cell, false)
+
+    const img = loaded[s.image]
+    if (img) {
+      ctx.save()
+      roundRect(ctx, x, y, cell, cell, 14); ctx.clip()
+      const sz = cell - 20
+      ctx.drawImage(img, x + 10, y + 10, sz, sz)
+      ctx.restore()
+    }
+    // "still needed" marker
+    ctx.beginPath(); ctx.arc(x + cell - 18, y + 18, 9, 0, Math.PI * 2)
+    ctx.strokeStyle = '#ff5d8f'; ctx.lineWidth = 3; ctx.stroke()
+
+    // Label: rarity dot + type name, then the variant beneath.
+    const cx = x + cell / 2
+    ctx.textAlign = 'center'
+    ctx.fillStyle = '#eef1f8'
+    drawFit(ctx, s.typeName, cx, y + cell + 20, cell - 8, '700', 17)
+    ctx.fillStyle = '#95a0c4'; ctx.font = '600 13px Inter, sans-serif'
+    ctx.fillText(VARIANT_LABEL[s.themeId] || s.themeId, cx, y + cell + 37)
+    ctx.textAlign = 'left'
+    // rarity dot to the left of the type name
+    ctx.beginPath(); ctx.arc(cx - ctx.measureText(s.typeName).width / 2 - 10, y + cell + 14, 4, 0, Math.PI * 2)
+    ctx.fillStyle = RARITY_COLORS[s.rarity] || '#888'; ctx.fill()
+  })
+
+  await drawExportFooter(ctx, { W, H, pad, url })
+  return canvas.toDataURL('image/png')
+}
+
+// Shared footer (QR + app name + link + creator code) for the export cards.
+async function drawExportFooter(ctx, { W, H, pad, url }) {
+  let host = 'fnsprites.vercel.app'
+  try { host = new URL(url).host } catch { /* keep default */ }
+  let qrImg = null
+  try {
+    const qrData = await QRCode.toDataURL(url, { margin: 1, width: 240, color: { dark: '#0a0f1eff', light: '#ffffffff' } })
+    qrImg = await loadImage(qrData)
+  } catch { /* QR is a nicety */ }
+  if (qrImg) {
+    const qs = 96, qx = W - pad - qs, qy = H - qs - 30
+    ctx.fillStyle = '#ffffff'; roundRect(ctx, qx - 7, qy - 7, qs + 14, qs + 14, 12); ctx.fill()
+    ctx.drawImage(qrImg, qx, qy, qs, qs)
+    ctx.fillStyle = '#95a0c4'; ctx.font = '700 14px Inter, sans-serif'
+    const lbl = 'Scan to track yours'
+    ctx.fillText(lbl, qx + qs - ctx.measureText(lbl).width, qy - 16)
+  }
+  ctx.fillStyle = '#ffffff'; ctx.font = '800 24px Inter, sans-serif'
+  ctx.fillText('FN Sprite Tracker', pad, H - 78)
+  ctx.fillStyle = '#36c5ff'; ctx.font = '700 21px Inter, sans-serif'
+  ctx.fillText(host, pad, H - 50)
+  ctx.fillStyle = '#7f8ab0'; ctx.font = '700 19px Inter, sans-serif'
+  ctx.fillText(`Creator Code: ${CREATOR_CODE.toUpperCase()}`, pad, H - 24)
+}
+
 // Sprite Locker–style matrix: rows = sprite types, columns = the four variants,
 // every cell on a consistent per-variant gradient. `mode` = 'collection' (owned
-// bright + ✓, missing dimmed) or 'missing' (the ones you still need highlighted).
+// bright + ✓, missing dimmed). For mode = 'missing' we delegate to
+// generateMissingImage, which shows ONLY the released sprites still needed.
 export async function generateCollectionImage({ gamertag, tracking, mode = 'collection', theme = 'midnight', shareUrl }) {
-  const missing = mode === 'missing'
+  if (mode === 'missing') return generateMissingImage({ gamertag, tracking, theme, shareUrl })
+  const missing = false
   const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.vercel.app/')
   const rows = SPRITE_TYPES.filter((t) => t.released)
 

@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 26, 2026 — "Sprites I need" export shows only missing-released
+
+- **Changed:** `mode: 'missing'` now routes to a new `generateMissingImage` that
+  renders ONLY released variants the player doesn't own (compact wrapping grid,
+  ≤6 per row, each with variant label + "still needed" ring) — instead of the
+  full Locker matrix with owned cells dimmed and unreleased ones locked.
+- **Added:** a "Nothing left to collect!" card for 100% owners; header count
+  ("N to go") matching the app's missing stat. Reads the active `tracking` map,
+  so it's correct for guests and signed-in users. Shared `drawExportFooter`
+  helper (QR + link + creator code) used by both export paths.
+
+---
+
 ## July 26, 2026 — Item Shop: clickable cards with a detail view
 
 - **Added:** `src/components/ShopItemModal.jsx` — clicking a shop card opens a
