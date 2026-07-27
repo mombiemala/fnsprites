@@ -49,8 +49,12 @@ a{color:var(--brand);text-decoration:none}.wrap{max-width:920px;margin:0 auto;pa
 header.site{display:flex;align-items:center;justify-content:space-between;padding:8px 0 22px}.logo{font-weight:800;font-size:20px;color:var(--text)}.logo b{color:var(--brand)}
 .cta{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#04101c;font-weight:800;padding:9px 16px;border-radius:12px;font-size:14px}
 .crumbs{font-size:12px;color:var(--muted);margin-bottom:14px}.crumbs a{color:var(--muted)}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.nav a{background:var(--bg2);border:1px solid var(--border);color:var(--muted);padding:7px 12px;border-radius:10px;font-size:13px;font-weight:700;white-space:nowrap}
+.nav a.on{background:var(--brand);color:#04101c;border-color:transparent}
 .hero{display:flex;gap:20px;align-items:center;border:1px solid var(--border);border-radius:22px;padding:22px}
-.avatar{width:104px;height:104px;border-radius:20px;display:grid;place-items:center;font-size:54px;flex:0 0 auto;border:1px solid var(--border)}
+.avatar{width:104px;height:104px;border-radius:20px;display:grid;place-items:center;font-size:54px;flex:0 0 auto;border:1px solid var(--border);position:relative;overflow:hidden}
+.avatar .art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 h1{margin:0;font-size:32px;letter-spacing:-.5px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
 .tag{font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:var(--bg2)}
 .lede{color:var(--muted);margin:10px 0 0;font-size:15px}
@@ -63,7 +67,8 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}td.v{text-align:right;font-weight:700}
 .variants{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px}
 .variant{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;font-size:12px}
-.variant .sw{width:38px;height:38px;border-radius:10px;margin:0 auto 6px}.variant small{color:var(--muted);display:block;font-size:10px}
+.variant .sw{width:64px;height:64px;border-radius:12px;margin:0 auto 6px;overflow:hidden;position:relative}
+.variant .sw img{width:100%;height:100%;object-fit:contain}.variant small{color:var(--muted);display:block;font-size:10px}
 details{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:2px 14px;margin-bottom:8px}
 summary{cursor:pointer;font-weight:700;padding:12px 0}details p{margin:0 0 12px}
 .related{display:flex;gap:10px;flex-wrap:wrap}.related a{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:8px 12px;font-weight:700;font-size:14px;color:var(--text)}
@@ -71,8 +76,11 @@ summary{cursor:pointer;font-weight:700;padding:12px 0}details p{margin:0 0 12px}
 footer{color:var(--muted);font-size:12px;margin-top:40px;border-top:1px solid var(--border);padding-top:16px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
 .tile{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px;color:var(--text)}
-.tile .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:24px;flex:0 0 auto}
-@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.hero{flex-direction:column;text-align:center}}
+.tile .ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-size:24px;flex:0 0 auto;overflow:hidden}
+.tile .ic img{width:100%;height:100%;object-fit:contain}
+.fnav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 4px;margin-bottom:14px;font-size:12px}
+.fnav a{color:var(--muted)}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.hero{flex-direction:column;text-align:center}h1{font-size:26px}.avatar{width:88px;height:88px}}
 `
 
 function head({ title, desc, canonical, jsonld }) {
@@ -89,10 +97,21 @@ function head({ title, desc, canonical, jsonld }) {
 <meta name="twitter:description" content="${esc(desc)}"><meta name="twitter:image" content="${SITE}/og-image.png">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 <style>${CSS}</style></head><body><div class="wrap">
-<header class="site"><a class="logo" href="/">FN <b>Sprite</b> Tracker</a><a class="cta" href="/">Track your collection →</a></header>`
+<header class="site"><a class="logo" href="/">FN <b>Sprite</b> Tracker</a><a class="cta" href="/">Track your collection →</a></header>
+<nav class="nav" aria-label="Sections">
+  <a href="/">Collection</a>
+  <a href="/sprites" class="on" aria-current="page">Sprites</a>
+  <a href="/?view=leaderboard">Leaderboard</a>
+  <a href="/?view=stats">Stats</a>
+  <a href="/?view=news">News</a>
+  <a href="/?view=shop">Item Shop</a>
+</nav>`
 }
 
-const FOOT = `<footer>Fan-made — not affiliated with Epic Games. Drop rates &amp; dust are community estimates; Epic doesn't publish official figures. Creator Code MOMBIE.</footer></div></body></html>`
+const FOOT = `<nav class="fnav" aria-label="Sections">
+  <a href="/">Collection</a> · <a href="/sprites">All sprites</a> · <a href="/?view=leaderboard">Leaderboard</a> · <a href="/?view=stats">Stats</a> · <a href="/?view=news">News</a> · <a href="/?view=shop">Item Shop</a>
+</nav>
+<footer>Fan-made — not affiliated with Epic Games. Drop rates &amp; dust are community estimates; Epic doesn't publish official figures. Creator Code MOMBIE.</footer></div></body></html>`
 
 // ---------- per-sprite page ----------
 function spritePage(type, others) {
@@ -157,7 +176,7 @@ function spritePage(type, others) {
   return head({ title, desc, canonical: url, jsonld }) + `
 <nav class="crumbs"><a href="/">Home</a> › <a href="/sprites">Sprites</a> › <span>${esc(name)}</span></nav>
 <section class="hero" style="background:linear-gradient(135deg,${tint}22,var(--panel))">
-  <div class="avatar" style="background:${VARIANT_BG.normal}">${esc(type.icon || '🧩')}</div>
+  <div class="avatar" style="background:${VARIANT_BG.normal}"><img class="art" src="/sprites/${type.id}_normal.png" alt="${esc(name)} Sprite (Normal)" onerror="this.style.display='none'"></div>
   <div><h1>${esc(name)} Sprite</h1>
     <div class="tags"><span class="tag" style="background:${tint};color:#0a0606;border-color:transparent">${esc(type.rarity)}</span>${tier ? `<span class="tag">${tier}-Tier</span>` : ''}${type.released ? '' : '<span class="tag">Upcoming</span>'}</div>
     <p class="lede">${esc(desc)}</p></div>
@@ -170,7 +189,7 @@ ${oddsTable}
 ${type.ability ? `<h2>Ability &amp; leveling</h2><div class="card"><p style="margin:0">${esc(type.ability)}${scaling ? ` <span style="color:var(--muted)">${esc(scaling)}</span>` : ''} Reaches full effect at <b>Level 5 (Mastered)</b>. Community-reported — Epic doesn't publish exact figures.</p></div>` : ''}
 
 <h2>${esc(name)} variants</h2>
-<div class="variants">${variants.map((v) => `<div class="variant"><div class="sw" style="background:${VARIANT_BG[v.tid] || VARIANT_BG.normal}"></div>${esc(v.name)}<small>${v.released ? 'Available' : 'Coming soon'}</small></div>`).join('')}</div>
+<div class="variants">${variants.map((v) => `<div class="variant"><div class="sw" style="background:${VARIANT_BG[v.tid] || VARIANT_BG.normal}"><img src="/sprites/${type.id}_${v.tid}.png" alt="${esc(name)} ${esc(v.name)}" loading="lazy" onerror="this.style.display='none'"></div>${esc(v.name)}<small>${v.released ? 'Available' : 'Coming soon'}</small></div>`).join('')}</div>
 
 <h2>${esc(name)} FAQ</h2>
 ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
@@ -194,7 +213,7 @@ function indexPage(types) {
 <nav class="crumbs"><a href="/">Home</a> › <span>Sprites</span></nav>
 <h1>All Fortnite Sprites</h1>
 <p class="lede">Every released sprite type — tap one for its drop rate, Dust cost, ability, variants and chest odds. ${RELEASED_COUNT} variants obtainable right now.</p>
-${byRarity.map((g) => `<h2>${g.r} sprites</h2><div class="grid">${g.items.map((t) => `<a class="tile" href="/sprite/${slug(t.name)}"><span class="ic" style="background:${VARIANT_BG.normal}">${esc(t.icon || '🧩')}</span><span><b>${esc(t.name)}</b><br><small style="color:var(--muted)">${esc(t.rarity)}${t.dropRate ? ` · ${esc(t.dropRate)}` : ''}</small></span></a>`).join('')}</div>`).join('')}
+${byRarity.map((g) => `<h2>${g.r} sprites</h2><div class="grid">${g.items.map((t) => `<a class="tile" href="/sprite/${slug(t.name)}"><span class="ic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span><b>${esc(t.name)}</b><br><small style="color:var(--muted)">${esc(t.rarity)}${t.dropRate ? ` · ${esc(t.dropRate)}` : ''}</small></span></a>`).join('')}</div>`).join('')}
 <a class="bigcta" href="/">Start tracking your collection — free →</a>
 ` + FOOT
 }

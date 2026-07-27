@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 26, 2026 — Sprite pages: real art + consistent nav
+
+- **Changed:** `scripts/prerender.mjs` now renders the real sprite PNGs
+  (`/sprites/<id>.png`) for the hero and every variant tile (with a graceful
+  gradient fallback via `onerror`), and the `/sprites` index tiles.
+- **Changed:** every generated page carries a shared, responsive **section nav**
+  (Collection · Sprites · Leaderboard · Stats · News · Item Shop) in the header
+  and footer, matching the app — unifying the static pages with the SPA. Mobile
+  layout verified (nav wraps, hero stacks, stats go 2-up).
+
+---
+
 ## July 26, 2026 — Per-sprite SEO pages (build-time prerender)
 
 - **Added:** `scripts/prerender.mjs`, run after `vite build` (see `package.json`).

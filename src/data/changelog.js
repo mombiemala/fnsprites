@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 26, 2026',
+    title: 'Sprite pages: real artwork + consistent navigation',
+    summary:
+      'The per-sprite pages now show the actual sprite art and share the same section nav as the app, top and bottom — so the whole site feels like one product on any screen size.',
+    changes: [
+      { tag: 'Changed', text: 'Per-sprite and /sprites pages now use the real sprite artwork (hero image + every variant) instead of placeholder icons.' },
+      { tag: 'Changed', text: 'Those pages carry the same section navigation as the app (Collection · Sprites · Leaderboard · Stats · News · Item Shop) in a responsive header and footer, so you can move between the sprite pages and the tracker seamlessly. Fully mobile-responsive.' },
+    ],
+    why:
+      'A visitor who lands on a sprite page from search should immediately feel they’re in the real app and be able to get anywhere — and see the actual sprite, not a stand-in. Reusing the collection’s artwork and the app’s nav ties the static pages and the SPA into one consistent experience.',
+  },
+  {
+    date: 'July 26, 2026',
     title: 'A page for every sprite (better search discovery)',
     summary:
       'Every released sprite now has its own shareable page with drop rate, Dust cost, chest odds, ability, variants and an FAQ — so people can find the tracker by searching for a specific sprite.',
