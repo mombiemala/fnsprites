@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 26, 2026',
+    title: 'A page for every sprite (better search discovery)',
+    summary:
+      'Every released sprite now has its own shareable page with drop rate, Dust cost, chest odds, ability, variants and an FAQ — so people can find the tracker by searching for a specific sprite.',
+    changes: [
+      { tag: 'Added', text: 'Per-sprite pages at /sprite/<name> (e.g. /sprite/grim-reaper) plus an all-sprites index at /sprites — real, fast-loading pages with drop rate, re-summon Dust, “how many chests it takes,” ability, variants and a FAQ.' },
+      { tag: 'Added', text: 'A “🗂️ Sprite database” link in the footer, an updated sitemap, and structured data (FAQ) so search engines can build rich results.' },
+    ],
+    why:
+      'There are a lot of sprite trackers competing for the same searches. These pages are generated at build time from the same data the app already uses (so they’re always accurate and cost nothing to serve) and give Google real content to rank for “<sprite> drop rate / how to get / dust cost” — the searches that actually bring in new players.',
+  },
+  {
+    date: 'July 26, 2026',
     title: 'Show your Battle Royale stats on your Trainer Card (opt-in)',
     summary:
       'A new toggle lets you surface your live BR stats on your shared profile — off by default, and behind a real privacy boundary.',

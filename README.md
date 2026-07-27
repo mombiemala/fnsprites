@@ -55,6 +55,11 @@ future New Sprite Days; anything Epic hasn't confirmed — e.g. the leaked
 - **Chest luck calculator** — turns a drop rate into real expectations: average
   chests to find a sprite, chests for a 50/90/99% chance, and a live "open N
   chests → chance of at least one."
+- **Per-sprite pages** (`/sprite/<name>`, e.g. `/sprite/grim-reaper`) and an
+  all-sprites index (`/sprites`) — static, SEO-friendly pages with drop rate,
+  Dust cost, chest odds, ability, variants and an FAQ, prerendered at build time
+  from the same data the app uses (`scripts/prerender.mjs`), with JSON-LD for
+  rich search results.
 - **Sprite detail view** — rarity, drop rate, ability, a **gameplay tier**
   (S/A/B/C — how strong it is, not just how rare), **how the ability scales
   to Lv 5** (e.g. Demon lifesteal ≈10→≈30 HP; it highlights the level you own),

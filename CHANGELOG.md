@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 26, 2026 — Per-sprite SEO pages (build-time prerender)
+
+- **Added:** `scripts/prerender.mjs`, run after `vite build` (see `package.json`).
+  Reads `src/data/sprites.js` and emits static HTML: one page per released sprite
+  type at `dist/sprite/<slug>/index.html` (drop rate, Dust cost, chest odds,
+  ability, variants, FAQ), a `/sprites` index hub, and a regenerated
+  `sitemap.xml`. Real content + meta + JSON-LD (`BreadcrumbList` + `FAQPage`) in
+  the markup — crawlable with no JS. 21 pages + index generated.
+- **Changed:** `sprites.js` is now Node-importable (guarded `import.meta.env`,
+  explicit `./themes.js` extension) so the generator can reuse the live data.
+  Removed the hand-maintained `public/sitemap.xml` (generator is authoritative).
+- **Added:** a "🗂️ Sprite database" footer link (`/sprites`) for internal linking.
+
+---
+
 ## July 26, 2026 — Public stats on the Trainer Card (opt-in)
 
 - **Added:** `profiles.stats_public` (boolean, default false) + a Profile toggle.

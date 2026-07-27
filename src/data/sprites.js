@@ -1,4 +1,4 @@
-import { THEME_MAP } from './themes'
+import { THEME_MAP } from './themes.js'
 
 // Fortnite sprite roster. Variant sets, themes (incl. the Rift line) and
 // released/unreleased flags are aligned with the community tracker
@@ -199,7 +199,9 @@ export function buildSpriteList() {
         themeId,
         // Official Epic sprite art at public/sprites/<id>.png; SpriteArt falls
         // back to generated SVG if the file is missing.
-        image: `${import.meta.env.BASE_URL}sprites/${type.id}_${themeId}.png`,
+        // `import.meta.env` is undefined under plain Node (the prerender script
+        // imports this module directly), so fall back to a root base path there.
+        image: `${import.meta.env?.BASE_URL ?? '/'}sprites/${type.id}_${themeId}.png`,
         // Leaked/unconfirmed: either the whole sprite is rumored, or it's a
         // rumored variant form (e.g. Cube/Quack) whose bonus isn't confirmed.
         // BUT a variant explicitly flagged R is confirmed live, so it never wears
