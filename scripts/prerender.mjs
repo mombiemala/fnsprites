@@ -43,10 +43,14 @@ const VARIANT_BG = {
 }
 
 const CSS = `
-:root{--bg:#0c0f1a;--panel:#141a30;--bg2:#10152a;--text:#e8ecf8;--muted:#9aa4bf;--border:#26304a;--brand:#36c5ff;--brand2:#7b61ff}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#1b2447 0%,var(--bg) 55%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0c0f1a;--panel:#1a2036;--panel2:#222a45;--bg2:#131829;--text:#e8ecf8;--muted:#95a0c4;--border:#2a3350;--brand:#36c5ff;--brand2:#7b61ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#1b2447 0%,var(--bg) 55%);color:var(--text);font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
 a{color:var(--brand);text-decoration:none}.wrap{max-width:920px;margin:0 auto;padding:20px 20px 60px}
-header.site{display:flex;align-items:center;justify-content:space-between;padding:8px 0 22px}.logo{font-weight:800;font-size:20px;color:var(--text)}.logo b{color:var(--brand)}
+header.site{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 20px}
+.logo{display:inline-flex;align-items:center;gap:9px;color:var(--text)}.logo .mark-sm{width:30px;height:30px;flex:0 0 auto}
+.logo .wm{font-family:'Luckiest Guy','Inter',cursive;font-weight:400;font-size:22px;letter-spacing:.5px}.logo .wm b{color:var(--brand);font-weight:400}
+h1,h2{font-family:'Luckiest Guy','Inter',sans-serif;font-weight:400;letter-spacing:.4px}
 .cta{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#04101c;font-weight:800;padding:9px 16px;border-radius:12px;font-size:14px}
 .crumbs{font-size:12px;color:var(--muted);margin-bottom:14px}.crumbs a{color:var(--muted)}
 .nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
@@ -83,6 +87,9 @@ footer{color:var(--muted);font-size:12px;margin-top:40px;border-top:1px solid va
 @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.hero{flex-direction:column;text-align:center}h1{font-size:26px}.avatar{width:88px;height:88px}}
 `
 
+// The shared sprite logomark (mirrors src/components/Logo.jsx).
+const MARK = `<svg class="mark-sm" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="smg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5ff"/><stop offset="1" stop-color="#7b61ff"/></linearGradient></defs><rect x="8" y="8" width="84" height="84" rx="26" fill="url(#smg)"/><circle cx="50" cy="15" r="5" fill="#eafcff"/><rect x="48" y="15" width="4" height="10" fill="#eafcff"/><circle cx="38" cy="50" r="9" fill="#0c1330"/><circle cx="41" cy="47" r="3" fill="#fff"/><circle cx="66" cy="50" r="9" fill="#0c1330"/><circle cx="69" cy="47" r="3" fill="#fff"/><path d="M40 68 Q52 78 64 68" stroke="#0c1330" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`
+
 function head({ title, desc, canonical, jsonld }) {
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -97,14 +104,14 @@ function head({ title, desc, canonical, jsonld }) {
 <meta name="twitter:description" content="${esc(desc)}"><meta name="twitter:image" content="${SITE}/og-image.png">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 <style>${CSS}</style></head><body><div class="wrap">
-<header class="site"><a class="logo" href="/">FN <b>Sprite</b> Tracker</a><a class="cta" href="/">Track your collection →</a></header>
+<header class="site"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><a class="cta" href="/">Track your collection →</a></header>
 <nav class="nav" aria-label="Sections">
   <a href="/">Collection</a>
-  <a href="/sprites" class="on" aria-current="page">Sprites</a>
-  <a href="/?view=leaderboard">Leaderboard</a>
-  <a href="/?view=stats">Stats</a>
-  <a href="/?view=news">News</a>
-  <a href="/?view=shop">Item Shop</a>
+  <a href="/sprites" class="on" aria-current="page">🧩 Sprites</a>
+  <a href="/?view=leaderboard">🏆 Leaderboard</a>
+  <a href="/?view=stats">📊 Stats</a>
+  <a href="/?view=news">📰 News</a>
+  <a href="/?view=shop">🛒 Item Shop</a>
 </nav>`
 }
 

@@ -6,6 +6,19 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 27, 2026',
+    title: 'A proper logo + one navigation everywhere',
+    summary:
+      'FN Sprite Tracker now has a little Sprite logomark, and the sprite pages share the app’s exact wordmark, colors and navigation — so the whole site finally looks like one product.',
+    changes: [
+      { tag: 'Added', text: 'A Sprite logomark (a rounded, kawaii Sprite in the brand gradient) now sits beside the name in the app header, on the sprite pages, and in the browser tab (favicon).' },
+      { tag: 'Added', text: 'A 🧩 Sprites tab in the app’s main navigation (→ the sprite database), so it’s a real section, not just a footer link.' },
+      { tag: 'Changed', text: 'The sprite pages now use the same wordmark font, color palette and section nav (Collection · Sprites · Leaderboard · Stats · News · Item Shop) as the app. Fully responsive.' },
+    ],
+    why:
+      'The name was rendering in two different fonts between the app and the new sprite pages, and the navigation didn’t match — so the pages felt like a separate site. A single self-contained SVG mark (no web-font dependency) plus one shared nav ties everything together and reinforces the brand wherever people land.',
+  },
+  {
     date: 'July 26, 2026',
     title: 'Sprite pages: real artwork + consistent navigation',
     summary:

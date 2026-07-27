@@ -8,6 +8,7 @@ import CollectionSwitcher from './components/CollectionSwitcher'
 import SpriteCard from './components/SpriteCard'
 import ProgressStats from './components/ProgressStats'
 import TrainerCard from './components/TrainerCard'
+import { SpriteMark } from './components/Logo'
 import Toolbar from './components/Toolbar'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
@@ -301,9 +302,10 @@ export default function App() {
             <button
               onClick={goHome}
               title={isShareView ? 'FN Sprite Tracker — go to your own tracker' : 'FN Sprite Tracker — back to your collection'}
-              className="rounded-lg text-left text-white outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--brand)]"
+              className="flex items-center gap-2 rounded-lg text-left text-white outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[var(--brand)] sm:gap-2.5"
             >
-              FN <span className="text-[var(--brand)]">Sprite</span> Tracker
+              <SpriteMark className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
+              <span>FN <span className="text-[var(--brand)]">Sprite</span> Tracker</span>
             </button>
           </h1>
           <p className="mt-1 text-xs text-[var(--muted)] sm:text-sm">
@@ -351,6 +353,7 @@ export default function App() {
         isShareView={isShareView}
         onSelectView={setView}
         actions={[
+          { key: 'sprites', label: '🧩 Sprites', href: '/sprites', title: 'All sprites — drop rates, dust costs & chest odds' },
           { key: 'cosmetics', label: '🧢 Cosmetics', onClick: () => setShowCosmetics(true), title: 'Browse the newest Fortnite cosmetics (beta)' },
         ]}
         extras={utilityLinks.filter((l) => l.id !== 'cosmetics')}

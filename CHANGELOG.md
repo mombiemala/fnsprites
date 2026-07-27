@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 27, 2026 — Logo mark + unified navigation
+
+- **Added:** `src/components/Logo.jsx` (`SpriteMark`) — a self-contained SVG
+  logomark (kawaii Sprite in the brand gradient), rendered in the app header,
+  mirrored in `scripts/prerender.mjs` for the sprite pages, and used as the new
+  `public/favicon.svg`. No web-font dependency, so it's pixel-identical everywhere.
+- **Added:** a `🧩 Sprites` item in the app's `OverflowNav` (an `href` action →
+  `/sprites`) so the sprite database is a first-class nav section.
+- **Changed:** the prerendered pages now load `Luckiest Guy` for the wordmark and
+  adopt the app's exact palette (`--panel #1a2036`, `--muted #95a0c4`, …) and the
+  same emoji section labels — fixing the two-different-fonts / mismatched-nav gap
+  between the SPA and the static pages. Header + nav verified responsive.
+
+---
+
 ## July 26, 2026 — Sprite pages: real art + consistent nav
 
 - **Changed:** `scripts/prerender.mjs` now renders the real sprite PNGs
