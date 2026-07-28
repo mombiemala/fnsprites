@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 28, 2026',
+    title: 'Sprite pages now match the app, seam for seam',
+    summary:
+      'The static sprite pages share the app’s exact content width, background, palette, cards and type — so moving between the app and a sprite page feels like one continuous site.',
+    changes: [
+      { tag: 'Changed', text: 'Rebuilt the sprite pages on the app’s own design tokens: the same 1152px content width, the same layered gradient background, identical panel/card styling, and the Inter-body / Luckiest-Guy-display split.' },
+      { tag: 'Changed', text: 'Section headers now use the app’s Inter-extrabold treatment (the display font is reserved for the wordmark and the page title), matching the app’s hierarchy instead of setting every heading in the display face.' },
+      { tag: 'Fixed', text: 'Corrected the narrower page width and a few off-by-a-shade colors (borders, body text) that made the sprite pages read as a separate site.' },
+    ],
+    why:
+      'The logo and nav were already unified, but the pages still felt like a different site: the container was narrower, the background and a couple of colors were slightly off, and every heading used the display font. Matching the app’s tokens exactly removes those seams so the SEO pages read as a native part of the product.',
+  },
+  {
+    date: 'July 28, 2026',
     title: 'Per-sprite share cards + a New Sprite Day heads-up',
     summary:
       'Links to a specific sprite now unfurl with that sprite’s own card, and the news feed is refreshed for the July 30 New Sprite Day drop.',

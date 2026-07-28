@@ -42,49 +42,59 @@ const VARIANT_BG = {
   quack: 'linear-gradient(160deg,#ffcf4d,#a0691a)',
 }
 
+// Design tokens + primitives are lifted verbatim from the app (src/index.css +
+// tailwind usage in App.jsx) so the static pages read as the SAME product:
+// identical palette, the app's two-radial background, its max-w-6xl (1152px)
+// container, rounded-2xl cards, and the Inter body / Luckiest-Guy display split.
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;500;600;700;800&display=swap');
-:root{--bg:#0c0f1a;--panel:#1a2036;--panel2:#222a45;--bg2:#131829;--text:#e8ecf8;--muted:#95a0c4;--border:#2a3350;--brand:#36c5ff;--brand2:#7b61ff}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#1b2447 0%,var(--bg) 55%);color:var(--text);font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
-a{color:var(--brand);text-decoration:none}.wrap{max-width:920px;margin:0 auto;padding:20px 20px 60px}
+:root{--bg:#0c0f1a;--bg2:#131829;--panel:#1a2036;--panel2:#222a45;--border:#2c3556;--text:#eaf0ff;--muted:#95a0c4;--brand:#36c5ff;--brand2:#7b61ff}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--text);line-height:1.6;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;background:radial-gradient(1200px 600px at 80% -10%,rgba(123,97,255,.18),transparent 60%),radial-gradient(1000px 500px at 0% 0%,rgba(54,197,255,.14),transparent 55%),var(--bg)}
+a{color:var(--brand);text-decoration:none}
+.wrap{max-width:1152px;margin:0 auto;padding:24px 16px 96px}
 header.site{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 20px}
-.logo{display:inline-flex;align-items:center;gap:9px;color:var(--text)}.logo .mark-sm{width:30px;height:30px;flex:0 0 auto}
-.logo .wm{font-family:'Luckiest Guy','Inter',cursive;font-weight:400;font-size:22px;letter-spacing:.5px}.logo .wm b{color:var(--brand);font-weight:400}
-h1,h2{font-family:'Luckiest Guy','Inter',sans-serif;font-weight:400;letter-spacing:.4px}
-.cta{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#04101c;font-weight:800;padding:9px 16px;border-radius:12px;font-size:14px}
-.crumbs{font-size:12px;color:var(--muted);margin-bottom:14px}.crumbs a{color:var(--muted)}
-.nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.nav a{background:var(--bg2);border:1px solid var(--border);color:var(--muted);padding:7px 12px;border-radius:10px;font-size:13px;font-weight:700;white-space:nowrap}
-.nav a.on{background:var(--brand);color:#04101c;border-color:transparent}
-.hero{display:flex;gap:20px;align-items:center;border:1px solid var(--border);border-radius:22px;padding:22px}
-.avatar{width:104px;height:104px;border-radius:20px;display:grid;place-items:center;font-size:54px;flex:0 0 auto;border:1px solid var(--border);position:relative;overflow:hidden}
+.logo{display:inline-flex;align-items:center;gap:10px;color:var(--text)}.logo .mark-sm{width:32px;height:32px;flex:0 0 auto}
+.logo .wm{font-family:'Luckiest Guy','Inter',cursive;font-weight:400;font-size:22px;letter-spacing:.02em}.logo .wm b{color:var(--brand);font-weight:400}
+.cta{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#000;font-weight:800;padding:9px 16px;border-radius:12px;font-size:13px;white-space:nowrap}
+.crumbs{font-size:12px;color:var(--muted);margin-bottom:16px}.crumbs a{color:var(--muted)}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.nav a{background:var(--panel2);color:var(--muted);padding:8px 14px;border-radius:12px;font-size:13px;font-weight:700;white-space:nowrap;transition:color .15s}
+.nav a:hover{color:#fff}.nav a.on{background:var(--brand);color:#000}
+.hero{display:flex;gap:22px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px}
+.avatar{width:108px;height:108px;border-radius:16px;display:grid;place-items:center;font-size:54px;flex:0 0 auto;border:1px solid var(--border);position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
 .avatar .art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-h1{margin:0;font-size:32px;letter-spacing:-.5px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.tag{font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:var(--bg2)}
-.lede{color:var(--muted);margin:10px 0 0;font-size:15px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}
-.stat{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:14px;text-align:center}
-.stat .n{font-size:20px;font-weight:800}.stat .l{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
-h2{font-size:20px;margin:34px 0 10px;letter-spacing:-.3px}p{color:#d3dbf0}
-.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:16px}
-table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--border)}
+h1{margin:0;font-family:'Luckiest Guy','Inter',sans-serif;font-weight:400;font-size:36px;letter-spacing:.02em;line-height:1.1}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tag{font-size:12px;font-weight:800;padding:4px 12px;border-radius:999px;border:1px solid var(--border);background:var(--panel2)}
+.lede{color:var(--muted);margin:12px 0 0;font-size:15px;max-width:70ch}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.stat{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:16px 14px;text-align:center}
+.stat .n{font-size:22px;font-weight:800}.stat .l{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+h2{font-family:'Inter',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.01em;margin:36px 0 12px}
+p{color:#cdd6f0;max-width:70ch}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border)}
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}td.v{text-align:right;font-weight:700}
-.variants{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px}
-.variant{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;font-size:12px}
+.variants{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.variant{background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;font-size:12px}
 .variant .sw{width:64px;height:64px;border-radius:12px;margin:0 auto 6px;overflow:hidden;position:relative}
 .variant .sw img{width:100%;height:100%;object-fit:contain}.variant small{color:var(--muted);display:block;font-size:10px}
-details{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:2px 14px;margin-bottom:8px}
-summary{cursor:pointer;font-weight:700;padding:12px 0}details p{margin:0 0 12px}
-.related{display:flex;gap:10px;flex-wrap:wrap}.related a{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:8px 12px;font-weight:700;font-size:14px;color:var(--text)}
-.bigcta{display:block;text-align:center;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#04101c;font-weight:800;padding:16px;border-radius:16px;margin:30px 0 10px;font-size:16px}
-footer{color:var(--muted);font-size:12px;margin-top:40px;border-top:1px solid var(--border);padding-top:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.tile{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px;color:var(--text)}
+details{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:2px 16px;margin-bottom:8px}
+summary{cursor:pointer;font-weight:700;padding:13px 0}details p{margin:0 0 12px;max-width:none}
+.related{display:flex;gap:10px;flex-wrap:wrap}.related a{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:9px 13px;font-weight:700;font-size:14px;color:var(--text);transition:border-color .15s}
+.related a:hover{border-color:var(--brand)}
+.bigcta{display:block;text-align:center;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#000;font-weight:800;padding:16px;border-radius:14px;margin:32px 0 10px;font-size:16px;max-width:none}
+footer{color:var(--muted);font-size:12px;margin-top:44px;border-top:1px solid var(--border);padding-top:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.tile{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px;color:var(--text);transition:border-color .15s}
+.tile:hover{border-color:var(--brand)}
 .tile .ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-size:24px;flex:0 0 auto;overflow:hidden}
 .tile .ic img{width:100%;height:100%;object-fit:contain}
 .fnav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 4px;margin-bottom:14px;font-size:12px}
 .fnav a{color:var(--muted)}
-@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.hero{flex-direction:column;text-align:center}h1{font-size:26px}.avatar{width:88px;height:88px}}
+@media(min-width:640px){.wrap{padding:24px 24px 96px}}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.hero{flex-direction:column;text-align:center}h1{font-size:28px}.avatar{width:92px;height:92px}.tags{justify-content:center}}
 `
 
 // The shared sprite logomark (mirrors src/components/Logo.jsx).

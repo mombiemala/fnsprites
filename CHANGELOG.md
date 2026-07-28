@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 28, 2026 — Sprite pages restyled to match the app
+
+- **Changed:** `scripts/prerender.mjs` CSS is now lifted from the app's own tokens
+  (`src/index.css` + App.jsx usage): the `max-w-6xl` (1152px) container, the app's
+  two-radial background, exact palette (`--border #2c3556`, `--text #eaf0ff`, …),
+  `rounded-2xl` cards, `panel-2` nav pills, and the Inter-body / Luckiest-Guy-display
+  split. Section headers use Inter-extrabold (display font reserved for the wordmark
+  and hero title); prose capped at ~70ch for readability inside the wide container.
+- **Fixed:** the sprite pages' narrower width + slightly-off colors that made them
+  read as a separate site.
+- **Chore:** `src/data/news.js` — added `'bug'` to the documented `tag` list (it was
+  already used + defined in `NEWS_TAGS`); audited every entry's category (all correct).
+
+---
+
 ## July 28, 2026 — Per-sprite OG cards + New Sprite Day refresh
 
 - **Added:** `api/og.js` now renders a per-sprite card when hit with `?sprite=<id>`

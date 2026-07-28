@@ -1,5 +1,5 @@
 // Curated Fortnite update feed (sprites + general). Newest first. Edit/extend as
-// new updates land. `tag`: 'sprites' | 'update' | 'event' | 'upcoming'.
+// new updates land. `tag`: 'sprites' | 'update' | 'event' | 'upcoming' | 'bug'.
 // `when` is a display date; `ts` (YYYY-MM-DD) is used for sorting only.
 // Optional `start`/`end` ('YYYY-MM-DD'): while today is inside the window the
 // item is treated as "live now" and pinned to the top of the feed; afterwards
