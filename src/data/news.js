@@ -155,16 +155,6 @@ export const NEWS = [
     official: false,
   },
   {
-    ts: '2026-07-16',
-    when: 'Jul 16, 2026',
-    tag: 'upcoming',
-    title: 'v41.20 — Sprite Pod styles (upcoming)',
-    body: 'The v41.10 Sprites (Striker, Fishy, Aura, Boss & Grim Reaper) and their variants are set to arrive as Sprite Pod styles in v41.20, releasing July 16, 2026.',
-    link: 'https://www.fortnite.com/news',
-    source: 'Epic Games',
-    official: true,
-  },
-  {
     ts: '2026-07-16c',
     when: 'Jul 16, 2026',
     tag: 'sprites',

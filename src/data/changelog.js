@@ -14,6 +14,7 @@ export const CHANGELOG = [
       { tag: 'Added', text: 'Every /sprite/… page now generates its own social preview image (rarity, drop rate, Dust, chests-for-50%), so sharing a sprite link on Discord/Twitter/iMessage shows that sprite’s card instead of the generic banner.' },
       { tag: 'Added', text: 'An “Upcoming” news entry + announcement bar for New Sprite Day (v41.30, Jul 30): the leaked Peely, Loot Llama & Quack Zero Point Sprites and the Spider-Man collab — all clearly flagged as leaks.' },
       { tag: 'Changed', text: 'Softened the Spider-Man Sprite’s placeholder rarity — its tier, ability and drop rate are datamined, not confirmed by Epic.' },
+      { tag: 'Fixed', text: 'Removed a stale “v41.20 — Sprite Pod styles (upcoming)” news item that still showed as upcoming after that patch had already shipped.' },
     ],
     why:
       'Per-sprite cards make shared links far more clickable and reinforce the brand on the exact page someone is sharing. The events refresh keeps the feed honest ahead of the season’s last major patch while labeling everything unconfirmed, so we’re never presenting leaks as fact. We deliberately left the “accurate to Jul 23” collection marker unchanged until the new Sprites are actually live.',

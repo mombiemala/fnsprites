@@ -24,6 +24,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   `src/data/announcements.js` — a matching Jul 29–31 event bar. Both `official:false`.
 - **Changed:** `src/data/sprites.js` — Spider-Man's ability text now states the
   Legendary rarity is a best-guess placeholder (tier/ability/drop rate unconfirmed).
+- **Fixed:** removed a stale `v41.20 — Sprite Pod styles (upcoming)` news item that
+  still rendered as upcoming after v41.20 had shipped (its launch is already covered
+  by the live Pollo & Vini Jr. entry).
 - **Note:** the app's "accurate to Jul 23" collection marker is intentionally left
   as-is until the new Sprites go live.
 
