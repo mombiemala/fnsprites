@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'new-sprite-day-2026-07-30',
+    emoji: '🕸️',
+    message: 'New Sprite Day — Thu, Jul 30 (v41.30, ~9 AM ET reset): three new Sprites join the hunt — Peely, Loot Llama & the ultra-rare Quack Zero Point — alongside the Spider-Man collab (leaked web-swinging “Sprite Net”). Boosted new-Sprite spawns during Power Hours (2 & 9 PM ET). Leaked lineup — treat as unconfirmed until Epic’s patch notes.',
+    link: 'https://www.vice.com/en/article/new-fortnite-sprites-coming-july-30/',
+    linkLabel: 'Details',
+    start: '2026-07-29',
+    end: '2026-07-31',
+    source: 'Vice',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'shiny-hours-2026-07-25',
     emoji: '✨',
     message: 'Shiny Hours — Sat, Jul 25 (2–4 PM & 9–11 PM ET): boosted Gold/Gummy/Galaxy/Holofoil spawns, Batman/Pollo/Seven/Air more common, and 2× Sprites from regular chests — plus Big Heads & a Self-Revive for everyone.',

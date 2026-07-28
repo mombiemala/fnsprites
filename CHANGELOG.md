@@ -11,6 +11,24 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 28, 2026 — Per-sprite OG cards + New Sprite Day refresh
+
+- **Added:** `api/og.js` now renders a per-sprite card when hit with `?sprite=<id>`
+  (rarity pill, big name, drop-rate / Dust / chests-for-50% chips, canonical URL).
+  `scripts/prerender.mjs` points each released `/sprite/<slug>` page's
+  `og:image`/`twitter:image` at `/api/og?sprite=<id>` via a new `ogImage` arg to
+  `head()`. Text-only for reliability (satori can't rasterize the emoji icon); a
+  bad/leaked id falls through to the generic card, never a 500.
+- **Added:** `src/data/news.js` — an `upcoming` entry for v41.30 (Jul 30): leaked
+  Peely, Loot Llama & Quack Zero Point Sprites + the Spider-Man collab.
+  `src/data/announcements.js` — a matching Jul 29–31 event bar. Both `official:false`.
+- **Changed:** `src/data/sprites.js` — Spider-Man's ability text now states the
+  Legendary rarity is a best-guess placeholder (tier/ability/drop rate unconfirmed).
+- **Note:** the app's "accurate to Jul 23" collection marker is intentionally left
+  as-is until the new Sprites go live.
+
+---
+
 ## July 27, 2026 — Logo mark + unified navigation
 
 - **Added:** `src/components/Logo.jsx` (`SpriteMark`) — a self-contained SVG

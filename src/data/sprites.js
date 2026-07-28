@@ -99,7 +99,7 @@ export const SPRITE_TYPES = [
     ability: 'Deploy the Bat Cape midair for a glide / slow descent. DC “Hot Bat Summer” collab Sprite (Mythic), in Gold, Gummy, Galaxy & Holofoil, plus a Cube variant from New Sprite Day (Jul 23). Live in the Jul 16 (v41.20) update.',
     variants: { normal: U, gold: U, gummy: U, galaxy: U, holofoil: U, cube: R } },
   { id: 'spiderman', name: 'Spider-Man', icon: '🕷️', rarity: 'Legendary', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-30',
-    ability: 'Datamined Marvel collab Sprite — reportedly grants web-swinging mobility. Leaked for ~Jul 30 (v41.30); not yet confirmed by Epic.',
+    ability: 'Datamined Marvel collab Sprite — leaked “Sprite Net” tags point to web-swinging mobility. Expected with v41.30 on Jul 30, timed to the Spider-Man: Brand New Day film. Rarity shown is a best-guess placeholder — Epic hasn’t confirmed its tier, ability or drop rate.',
     variants: { normal: U } },
   // Collab Mythics — live in v41.20 (Jul 16), found in Sprite Chests. Normal-only
   // for now (no Gold/Gummy/Galaxy/Holofoil line yet), like Burnt Peanut.

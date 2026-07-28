@@ -6,6 +6,19 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 28, 2026',
+    title: 'Per-sprite share cards + a New Sprite Day heads-up',
+    summary:
+      'Links to a specific sprite now unfurl with that sprite’s own card, and the news feed is refreshed for the July 30 New Sprite Day drop.',
+    changes: [
+      { tag: 'Added', text: 'Every /sprite/… page now generates its own social preview image (rarity, drop rate, Dust, chests-for-50%), so sharing a sprite link on Discord/Twitter/iMessage shows that sprite’s card instead of the generic banner.' },
+      { tag: 'Added', text: 'An “Upcoming” news entry + announcement bar for New Sprite Day (v41.30, Jul 30): the leaked Peely, Loot Llama & Quack Zero Point Sprites and the Spider-Man collab — all clearly flagged as leaks.' },
+      { tag: 'Changed', text: 'Softened the Spider-Man Sprite’s placeholder rarity — its tier, ability and drop rate are datamined, not confirmed by Epic.' },
+    ],
+    why:
+      'Per-sprite cards make shared links far more clickable and reinforce the brand on the exact page someone is sharing. The events refresh keeps the feed honest ahead of the season’s last major patch while labeling everything unconfirmed, so we’re never presenting leaks as fact. We deliberately left the “accurate to Jul 23” collection marker unchanged until the new Sprites are actually live.',
+  },
+  {
     date: 'July 27, 2026',
     title: 'A proper logo + one navigation everywhere',
     summary:

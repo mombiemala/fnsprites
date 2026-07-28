@@ -10,6 +10,19 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-07-30',
+    when: 'Jul 30, 2026',
+    tag: 'upcoming',
+    start: '2026-07-29',
+    end: '2026-07-31',
+    title: 'New Sprite Day (v41.30): Peely, Loot Llama & Quack Zero Point 🕸️',
+    body: 'The v41.30 update lands Thursday, July 30 (4 AM PT / 7 AM ET), with three new Sprites expected once the weekly reset runs (~9 AM ET): Peely, Loot Llama, and the ultra-rare Quack Zero Point. Peely and Llama are expected to bring their own Gold/Gummy/Galaxy/Holofoil variants to chase. It’s the last major Chapter 7 Season 3 drop, arriving alongside the Spider-Man collab (leaked web-swinging “Sprite Net”), with boosted new-Sprite spawns during Power Hours (2 & 9 PM ET). Abilities, rarities and variants are all datamined and not yet confirmed — treat as leaks until Epic’s patch notes.',
+    link: 'https://www.vice.com/en/article/new-fortnite-sprites-coming-july-30/',
+    source: 'Vice',
+    official: false,
+    tentative: true,
+  },
+  {
     ts: '2026-07-21',
     when: 'Jul 21, 2026',
     tag: 'update',

@@ -90,7 +90,8 @@ footer{color:var(--muted);font-size:12px;margin-top:40px;border-top:1px solid va
 // The shared sprite logomark (mirrors src/components/Logo.jsx).
 const MARK = `<svg class="mark-sm" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="smg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5ff"/><stop offset="1" stop-color="#7b61ff"/></linearGradient></defs><rect x="8" y="8" width="84" height="84" rx="26" fill="url(#smg)"/><circle cx="50" cy="15" r="5" fill="#eafcff"/><rect x="48" y="15" width="4" height="10" fill="#eafcff"/><circle cx="38" cy="50" r="9" fill="#0c1330"/><circle cx="41" cy="47" r="3" fill="#fff"/><circle cx="66" cy="50" r="9" fill="#0c1330"/><circle cx="69" cy="47" r="3" fill="#fff"/><path d="M40 68 Q52 78 64 68" stroke="#0c1330" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`
 
-function head({ title, desc, canonical, jsonld }) {
+function head({ title, desc, canonical, jsonld, ogImage }) {
+  const img = ogImage || `${SITE}/og-image.png`
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
@@ -99,9 +100,9 @@ function head({ title, desc, canonical, jsonld }) {
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="article"><meta property="og:site_name" content="FN Sprite Tracker">
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
-<meta property="og:url" content="${canonical}"><meta property="og:image" content="${SITE}/og-image.png">
+<meta property="og:url" content="${canonical}"><meta property="og:image" content="${esc(img)}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}">
-<meta name="twitter:description" content="${esc(desc)}"><meta name="twitter:image" content="${SITE}/og-image.png">
+<meta name="twitter:description" content="${esc(desc)}"><meta name="twitter:image" content="${esc(img)}">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 <style>${CSS}</style></head><body><div class="wrap">
 <header class="site"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><a class="cta" href="/">Track your collection →</a></header>
@@ -180,7 +181,7 @@ function spritePage(type, others) {
     <tr><td>Almost sure (99% chance)</td><td class="v">${fmt(chestsFor(p, 0.99))}</td></tr>
   </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Modeled as independent draws at the base rate. Run your own numbers in the live <a href="/">Chest luck calculator →</a></p></div>` : ''
 
-  return head({ title, desc, canonical: url, jsonld }) + `
+  return head({ title, desc, canonical: url, jsonld, ogImage: `${SITE}/api/og?sprite=${encodeURIComponent(type.id)}` }) + `
 <nav class="crumbs"><a href="/">Home</a> › <a href="/sprites">Sprites</a> › <span>${esc(name)}</span></nav>
 <section class="hero" style="background:linear-gradient(135deg,${tint}22,var(--panel))">
   <div class="avatar" style="background:${VARIANT_BG.normal}"><img class="art" src="/sprites/${type.id}_normal.png" alt="${esc(name)} Sprite (Normal)" onerror="this.style.display='none'"></div>
