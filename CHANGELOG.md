@@ -11,6 +11,32 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 29, 2026 — Fixed the display font + Sprites page sidebar
+
+- **Fixed:** `tailwind.config.js` set `fontFamily.display` to `DM Serif Display`
+  (leftover template cruft, never added to the `@import`), so the Tailwind
+  `font-display` utility overrode the intended `.font-display { Luckiest Guy }`
+  base rule and the app fell back to **Georgia serif** — while the SEO pages
+  rendered **Luckiest Guy**. Pointed `display` back at Luckiest Guy so the app
+  and the sprite pages share one display font.
+- **Added:** `scripts/prerender.mjs` nav now has the app's `⋯ More` menu (a
+  `<details>` dropdown: About · Changelog · Backup · Report a bug · Buy me a coffee).
+- **Changed:** the `/sprites` page is now a two-column layout mirroring the app
+  (`.cols` → `.main` grid + `.side` sidebar). The sidebar holds a compact
+  **How Sprites work** card (collapsible sections), a **Start tracking** CTA card,
+  an **Upcoming & leaked** card (built from unreleased `SPRITE_TYPES`), and a
+  **Support the maker** card (Creator Code + Buy me a coffee).
+- **Changed:** removed the `.crumbs` breadcrumb, the `All Fortnite Sprites` `<h1>`
+  (kept as `sr-only` for SEO) and the intro blurb from `/sprites`; removed the
+  breadcrumb from per-sprite pages too (their name heading stays).
+- **Why:** the persistent "pages don't match" was a real font bug — a stale
+  Tailwind override loaded no font, so the app rendered serif and the SEO pages
+  rendered Luckiest Guy. Fixing it at the source aligns every wordmark/heading;
+  the two-column shell + dropped SEO title/breadcrumb make the Sprites page read
+  as a native app section.
+
+---
+
 ## July 29, 2026 — Sprite pages share the app's full header & footer
 
 - **Changed:** `scripts/prerender.mjs` header now mirrors the app (`src/App.jsx`):

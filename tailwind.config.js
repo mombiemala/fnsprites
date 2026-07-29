@@ -24,7 +24,11 @@ export default {
           'sans-serif',
         ],
         serif: ['IBM Plex Serif', 'Georgia', 'serif'],
-        display: ['DM Serif Display', 'Georgia', 'serif'],
+        // Display font = the wordmark/title face. Must match the loaded font in
+        // src/index.css (@import Luckiest Guy) and scripts/prerender.mjs; a stale
+        // 'DM Serif Display' here (never imported) made the app fall back to
+        // Georgia serif while the SEO pages rendered Luckiest Guy.
+        display: ['Luckiest Guy', 'Inter', 'sans-serif'],
       },
       letterSpacing: {
         hero: '-0.01em',

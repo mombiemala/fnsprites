@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'July 29, 2026',
+    title: 'Fixed the display font everywhere + gave the Sprites page a sidebar',
+    summary:
+      'The wordmark and headings were quietly falling back to a serif font in the app; that’s fixed, so the app and the sprite pages finally use the same Luckiest Guy display font. The Sprites page also gets the ⋯ More menu and a proper right sidebar.',
+    changes: [
+      { tag: 'Fixed', text: 'The display font (wordmark + headings) was set to “DM Serif Display” in the Tailwind config, which was never loaded — so the app fell back to Georgia serif while the sprite pages showed Luckiest Guy. Pointed it back at Luckiest Guy so everything matches.' },
+      { tag: 'Added', text: 'The sprite pages’ nav now has the same ⋯ More menu as the app (About · Changelog · Backup · Report a bug · Buy me a coffee).' },
+      { tag: 'Changed', text: 'The Sprites page is now a two-column layout like the app: the sprite grid on the left, and a right sidebar with How Sprites Work (collapsible), a Start-tracking CTA, an Upcoming & leaked list, and a Support-the-maker card.' },
+      { tag: 'Changed', text: 'Dropped the page breadcrumb and the big “All Fortnite Sprites” heading + blurb so the Sprites page matches the app’s section pages (which don’t have page titles). Per-sprite pages keep their name heading; their breadcrumb is gone too.' },
+    ],
+    why:
+      'The recurring “the pages don’t match” came down to a real bug: a stale Tailwind display-font override that was never loaded, so the app rendered a serif while the SEO pages rendered the intended Luckiest Guy. Fixing it at the source lines up every wordmark and heading. Moving the Sprites page to the app’s two-column shell (grid + sidebar) and dropping the SEO-style title/breadcrumb makes it read like a native section of the app rather than a separate landing page.',
+  },
+  {
+    date: 'July 29, 2026',
     title: 'Sprite pages now share the app’s full header & footer',
     summary:
       'The static sprite pages now carry the same header (wordmark + tagline + CTA) and the same full footer (sections, utility links, Creator Code and the attribution notes) as the app, so the top and bottom of every page match.',

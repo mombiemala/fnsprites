@@ -53,6 +53,8 @@ const CSS = `
 body{margin:0;min-height:100vh;color:var(--text);line-height:1.6;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;background:radial-gradient(1200px 600px at 80% -10%,rgba(123,97,255,.18),transparent 60%),radial-gradient(1000px 500px at 0% 0%,rgba(54,197,255,.14),transparent 55%),var(--bg)}
 a{color:var(--brand);text-decoration:none}
 .wrap{max-width:1152px;margin:0 auto;padding:24px 16px 96px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.main>h2:first-of-type{margin-top:4px}
 header.site{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:8px 0 20px}
 .hgroup{min-width:0}.tagline{margin:4px 0 0;font-size:12px;color:var(--muted);line-height:1.5}
 .logo{display:inline-flex;align-items:center;gap:8px;color:var(--text)}.logo .mark-sm{width:32px;height:32px;flex:0 0 auto}
@@ -62,6 +64,31 @@ header.site{display:flex;align-items:flex-start;justify-content:space-between;ga
 .nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
 .nav a{background:var(--panel2);color:var(--muted);padding:8px 14px;border-radius:12px;font-size:13px;font-weight:700;white-space:nowrap;transition:color .15s}
 .nav a:hover{color:#fff}.nav a.on{background:var(--brand);color:#000}
+.nav .more{position:relative;list-style:none}
+.nav .more>summary{list-style:none;background:var(--panel2);color:var(--muted);padding:8px 14px;border-radius:12px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer;user-select:none}
+.nav .more>summary::-webkit-details-marker{display:none}.nav .more>summary::marker{content:''}
+.nav .more[open]>summary,.nav .more>summary:hover{color:#fff}
+.moremenu{position:absolute;right:0;top:calc(100% + 6px);z-index:40;min-width:190px;display:flex;flex-direction:column;padding:6px;gap:2px;background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.moremenu a{background:none;color:var(--muted);padding:8px 12px;border-radius:8px;font-size:13px;font-weight:700;white-space:nowrap}
+.moremenu a:hover{background:var(--panel2);color:#fff}
+/* Two-column layout for /sprites — grid + right sidebar (mirrors the app). */
+.cols{display:block}.side{display:flex;flex-direction:column;gap:16px;margin-top:32px}
+@media(min-width:960px){.cols{display:flex;align-items:flex-start;gap:24px}.main{min-width:0;flex:1}.side{margin-top:0;width:320px;flex:0 0 320px}}
+.sidecard{padding:16px}.sidecard .sh{font-family:'Inter',sans-serif;font-size:16px;font-weight:800;color:#fff;margin:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.sidecard .sub{margin:6px 0 10px;font-size:12px;color:var(--muted)}
+.sidecard .rumored{background:rgba(245,158,11,.16);color:#fcd34d;font-size:9px;font-weight:800;text-transform:uppercase;padding:2px 6px;border-radius:5px}
+.sidecard .fine{margin:10px 0 0;font-size:11px;color:var(--muted);opacity:.85}
+details.gd{background:var(--panel2);border:0;border-radius:10px;padding:0 12px;margin:8px 0 0}
+details.gd summary{font-size:13px;font-weight:700;padding:10px 0}details.gd p{font-size:13px;color:#cdd6f0;margin:0 0 10px;max-width:none}
+.ctacard{display:block;text-align:center;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#000;font-weight:800;padding:16px;border-radius:16px;font-size:15px}
+.uplist{display:flex;flex-direction:column;gap:8px}
+.uprow{display:flex;align-items:center;gap:10px;background:var(--panel2);border-radius:12px;padding:8px}
+.upic{width:40px;height:40px;border-radius:9px;flex:0 0 auto;overflow:hidden;display:block}.upic img{width:100%;height:100%;object-fit:contain}
+.upmeta{min-width:0;flex:1}.upmeta b{font-size:13px;color:#fff}.upmeta small{display:block;font-size:11px}.upmeta .upab{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.update{flex:0 0 auto;font-size:11px;font-weight:800;color:#fcd34d;text-align:right}
+.supportcard{background:linear-gradient(160deg,rgba(123,97,255,.22),rgba(54,197,255,.12))}
+.supportcard .cc2{color:var(--brand);font-weight:800;letter-spacing:.03em}
+.supportcard .bmc{display:block;text-align:center;margin-top:10px;background:#FFDD00;color:#000;font-weight:800;padding:10px;border-radius:10px}
 .hero{display:flex;gap:22px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px}
 .avatar{width:108px;height:108px;border-radius:16px;display:grid;place-items:center;font-size:54px;flex:0 0 auto;border:1px solid var(--border);position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
 .avatar .art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
@@ -131,6 +158,13 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
   <a href="/?view=shop">🛒 Item Shop</a>
   <a href="/sprites" class="on" aria-current="page">🧩 Sprites</a>
   <a href="/?cosmetics=1">🧢 Cosmetics</a>
+  <details class="more"><summary>⋯ More</summary><div class="moremenu">
+    <a href="/?about=1">About</a>
+    <a href="/?changelog=1">Changelog</a>
+    <a href="/?backup=1">Backup</a>
+    <a href="/?bug=1">Report a bug</a>
+    <a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a>
+  </div></details>
 </nav>`
 }
 
@@ -206,7 +240,6 @@ function spritePage(type, others) {
   </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Modeled as independent draws at the base rate. Run your own numbers in the live <a href="/">Chest luck calculator →</a></p></div>` : ''
 
   return head({ title, desc, canonical: url, jsonld, ogImage: `${SITE}/api/og?sprite=${encodeURIComponent(type.id)}` }) + `
-<nav class="crumbs"><a href="/">Home</a> › <a href="/sprites">Sprites</a> › <span>${esc(name)}</span></nav>
 <section class="hero" style="background:linear-gradient(135deg,${tint}22,var(--panel))">
   <div class="avatar" style="background:${VARIANT_BG.normal}"><img class="art" src="/sprites/${type.id}_normal.png" alt="${esc(name)} Sprite (Normal)" onerror="this.style.display='none'"></div>
   <div><h1>${esc(name)} Sprite</h1>
@@ -261,11 +294,33 @@ const GUIDE = [
   ] },
 ]
 const rich = (t) => esc(t).replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>')
-const guideSection = () => `
-<h2 id="how-sprites-work">How Fortnite Sprites work</h2>
-<p class="lede" style="margin:0 0 16px">A quick guide to extraction, leveling, mastery &amp; trading — the parts people get caught out by.</p>
-<div class="guide">${GUIDE.map((s) => `<section class="card"><h3>${esc(s.h)}</h3>${s.body.map((t) => `<p>${rich(t)}</p>`).join('')}</section>`).join('')}</div>
-<p style="color:var(--muted);font-size:12px;margin:6px 0 0">Community-sourced — Epic doesn’t publish exact point/drop values, so treat numbers as estimates.</p>`
+
+// ---------- /sprites right-sidebar cards (mirror the app's collection sidebar) ----------
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const fmtLeak = (d) => { const [, m, day] = d.split('-').map(Number); return `${MONTHS[m - 1]} ${day}` }
+
+// "How Sprites work" as a compact sidebar card (collapsible sections).
+const guideCard = () => `<div class="card sidecard" id="how-sprites-work"><h3 class="sh">How Sprites work</h3>
+<p class="sub">Extraction, leveling, mastery &amp; trading — the parts people get caught out by.</p>
+${GUIDE.map((s, i) => `<details class="gd"${i === 0 ? ' open' : ''}><summary>${esc(s.h)}</summary>${s.body.map((t) => `<p>${rich(t)}</p>`).join('')}</details>`).join('')}
+<p class="fine">Community-sourced — Epic doesn’t publish exact point/drop values, so treat numbers as estimates.</p></div>`
+
+const ctaCard = () => `<a class="card ctacard" href="/">Start tracking your collection — free →</a>`
+
+// Upcoming & leaked sprites — same data the app's UpcomingSprites card uses.
+const upcomingCard = () => {
+  const up = SPRITE_TYPES.filter((t) => !t.released)
+    .sort((a, b) => (a.releaseDate ? 0 : 1) - (b.releaseDate ? 0 : 1) || (a.releaseDate || '').localeCompare(b.releaseDate || ''))
+  if (!up.length) return ''
+  return `<div class="card sidecard"><h3 class="sh">🔮 Upcoming &amp; leaked <span class="rumored">Rumored</span></h3>
+<p class="sub">Datamined / leaked — dates &amp; details aren’t confirmed by Epic.</p>
+<div class="uplist">${up.map((t) => `<div class="uprow"><span class="upic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span class="upmeta"><b>${esc(t.name)}</b> <small style="color:${RARITY_TINT[t.rarity] || '#95a0c4'}">${esc(t.rarity)}</small>${t.ability ? `<small class="upab">${esc(t.ability)}</small>` : ''}</span><span class="update">${t.releaseDate ? fmtLeak(t.releaseDate) : 'TBA'}</span></div>`).join('')}</div></div>`
+}
+
+const supportCard = () => `<div class="card sidecard supportcard"><h3 class="sh">Support the maker 💜</h3>
+<p class="sub">This tracker is free &amp; fan-made. Two easy ways to help:</p>
+<p style="font-size:13px;color:#cdd6f0;margin:0 0 4px">Enter Creator Code <b class="cc2">MOMBIE</b> in the Fortnite Item Shop at checkout — it supports me at no extra cost. #EpicPartner</p>
+<a class="bmc" href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a></div>`
 
 // ---------- /sprites index hub ----------
 function indexPage(types) {
@@ -276,12 +331,18 @@ function indexPage(types) {
     url: SITE + '/sprites', description: desc,
   }
   return head({ title: 'All Fortnite Sprites — Checklist, Drop Rates & Dust Costs | FN Sprite Tracker', desc, canonical: SITE + '/sprites', jsonld }) + `
-<nav class="crumbs"><a href="/">Home</a> › <span>Sprites</span></nav>
-<h1>All Fortnite Sprites</h1>
-<p class="lede">Every released sprite type — tap one for its drop rate, Dust cost, ability, variants and chest odds. ${RELEASED_COUNT} variants obtainable right now.</p>
-${byRarity.map((g) => `<h2>${g.r} sprites</h2><div class="grid">${g.items.map((t) => `<a class="tile" href="/sprite/${slug(t.name)}"><span class="ic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span><b>${esc(t.name)}</b><br><small style="color:var(--muted)">${esc(t.rarity)}${t.dropRate ? ` · ${esc(t.dropRate)}` : ''}</small></span></a>`).join('')}</div>`).join('')}
-${guideSection()}
-<a class="bigcta" href="/">Start tracking your collection — free →</a>
+<div class="cols">
+  <div class="main">
+    <h1 class="sr-only">All Fortnite Sprites</h1>
+${byRarity.map((g) => `    <h2>${g.r} sprites</h2><div class="grid">${g.items.map((t) => `<a class="tile" href="/sprite/${slug(t.name)}"><span class="ic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span><b>${esc(t.name)}</b><br><small style="color:var(--muted)">${esc(t.rarity)}${t.dropRate ? ` · ${esc(t.dropRate)}` : ''}</small></span></a>`).join('')}</div>`).join('\n')}
+  </div>
+  <aside class="side">
+    ${guideCard()}
+    ${ctaCard()}
+    ${upcomingCard()}
+    ${supportCard()}
+  </aside>
+</div>
 ` + FOOT
 }
 
