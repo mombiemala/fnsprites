@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 29, 2026',
+    title: 'Live Chest-luck calculator on the Sprites pages',
+    summary:
+      'The interactive Chest luck calculator now lives in the sidebar on the Sprites page and on every per-sprite page — the same tool as in the app, pre-set to whichever Sprite you’re viewing.',
+    changes: [
+      { tag: 'Added', text: 'A working Chest luck calculator (pick a Sprite → chests for a 50/90/99% chance, plus a live “open N chests → chance of at least one”) in the Sprites-page sidebar and on each per-sprite page. On a Sprite’s own page it defaults to that Sprite. Same geometric math as the in-app calculator, running as a small self-contained script.' },
+      { tag: 'Changed', text: 'Per-sprite pages are now two-column (content + sidebar) like the collection view, with the Chest-luck and Support cards alongside.' },
+      { tag: 'Fixed', text: 'The ⋯ More button on the sprite pages now shows the same dropdown caret (▾) as the in-app nav.' },
+    ],
+    why:
+      'The static per-sprite pages already listed static chest odds, but people want to run their own numbers without leaving for the app. Cloning the calculator as a tiny vanilla-JS widget keeps the pages static and fast while giving them the app’s interactivity, and defaulting it to the current Sprite makes it useful the moment the page loads.',
+  },
+  {
+    date: 'July 29, 2026',
     title: 'Sprites-page polish: nav sizing, readable CTA, clickable leaks',
     summary:
       'A round of fixes on the Sprites page — tighter nav, a readable Start-tracking button, and the Upcoming & leaked Sprites now open their detail card like on the collection page.',

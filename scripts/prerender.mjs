@@ -68,6 +68,7 @@ header.site{display:flex;align-items:flex-start;justify-content:space-between;ga
 .nav .more>summary{list-style:none;cursor:pointer;user-select:none}
 .nav .more>summary::-webkit-details-marker{display:none}.nav .more>summary::marker{content:''}
 .nav .more[open]>summary,.nav .more>summary:hover{color:#fff}
+.nav .more>summary .mcaret{font-size:9px;color:var(--muted);transition:transform .15s}.nav .more[open]>summary .mcaret{transform:rotate(180deg)}
 .moremenu{position:absolute;right:0;top:calc(100% + 6px);z-index:40;min-width:190px;display:flex;flex-direction:column;padding:6px;gap:2px;background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:0 14px 34px rgba(0,0,0,.45)}
 .moremenu a{background:none;color:var(--muted);padding:8px 12px;border-radius:8px;font-size:13px;font-weight:700;white-space:nowrap}
 .moremenu a:hover{background:var(--panel2);color:#fff}
@@ -88,6 +89,17 @@ details.gd summary{font-size:13px;font-weight:700;padding:10px 0}details.gd p{fo
 .upic{width:40px;height:40px;border-radius:9px;flex:0 0 auto;overflow:hidden;display:block}.upic img{width:100%;height:100%;object-fit:contain}
 .upmeta{min-width:0;flex:1}.upmeta b{font-size:13px;color:#fff}.upmeta small{display:block;font-size:11px}.upmeta .upab{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .update{flex:0 0 auto;font-size:11px;font-weight:800;color:#fcd34d;text-align:right}
+.chestcard .cl-lab{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:2px 0 4px}
+.chestcard .cl-sel{width:100%;background:var(--panel2);color:#fff;border:1px solid var(--border);border-radius:12px;padding:9px 10px;font-size:13px;margin-bottom:10px}
+.chestcard .cl-rate{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--bg2);border-radius:12px;padding:8px 10px;font-size:13px;color:#fff;margin-bottom:10px}
+.chestcard .cl-rate .cl-dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px}
+.chestcard .cl-avg{color:var(--muted);text-align:right}.chestcard .cl-avg b{color:#fff}
+.chestcard .cl-rows{display:flex;flex-direction:column;gap:4px}
+.chestcard .cl-rows>div{display:flex;justify-content:space-between;font-size:13px}.chestcard .cl-rows span{color:var(--muted)}.chestcard .cl-rows b{color:#fff;font-weight:700}
+.chestcard .cl-open{margin-top:10px;background:var(--bg2);border-radius:12px;padding:10px}
+.chestcard .cl-open .cl-in{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.chestcard .cl-n{width:92px;background:var(--panel);color:#fff;border:1px solid var(--border);border-radius:8px;padding:5px 8px;font-size:13px}
+.chestcard .cl-res{margin:8px 0 0;font-size:13px;color:#fff}.chestcard .cl-res b{color:var(--brand)}
 .supportcard{background:linear-gradient(160deg,rgba(123,97,255,.22),rgba(54,197,255,.12))}
 .supportcard .cc2{color:var(--brand);font-weight:800;letter-spacing:.03em}
 .supportcard .bmc{display:block;text-align:center;margin-top:10px;background:#FFDD00;color:#000;font-weight:800;padding:10px;border-radius:10px}
@@ -160,7 +172,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
   <a href="/?view=shop">🛒 Item Shop</a>
   <a href="/sprites" class="on" aria-current="page">🧩 Sprites</a>
   <a href="/?cosmetics=1">🧢 Cosmetics</a>
-  <details class="more"><summary>⋯ More</summary><div class="moremenu">
+  <details class="more"><summary>⋯ More <span class="mcaret">▾</span></summary><div class="moremenu">
     <a href="/?about=1">About</a>
     <a href="/?changelog=1">Changelog</a>
     <a href="/?backup=1">Backup</a>
@@ -169,6 +181,14 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
   </div></details>
 </nav>`
 }
+
+// Chest luck calculator data + runtime — a static clone of the app's
+// src/components/ChestOdds.jsx. RATED_MAP is every Sprite with a known base
+// drop rate; the inline script wires each .chestcard (select + "open N chests").
+const RATED_MAP = Object.fromEntries(
+  SPRITE_TYPES.map((t) => { const p = parseRate(t.dropRate); return p ? [t.id, { p, dropRate: t.dropRate, name: t.name, color: RARITY_TINT[t.rarity] || '#888' }] : null }).filter(Boolean),
+)
+const CHEST_SCRIPT = `<script>window.__RATED=${JSON.stringify(RATED_MAP)};(function(){var R=window.__RATED||{};var cf=function(p,c){return Math.ceil(Math.log(1-c)/Math.log(1-p))};var a1=function(p,n){return 1-Math.pow(1-p,n)};var fmt=function(x){return Math.round(x).toLocaleString()};var pct=function(x){var v=x*100;if(v>=99.95)return'>99.9%';if(v<0.1)return v.toPrecision(2)+'%';return v.toFixed(1)+'%'};document.querySelectorAll('.chestcard').forEach(function(card){var sel=card.querySelector('.cl-sel'),n=card.querySelector('.cl-n');function res(){var d=R[sel.value];if(!d)return;var v=Math.max(0,Math.floor(Number(n.value)||0));card.querySelector('.cl-res').innerHTML='<b>'+pct(a1(d.p,v))+'</b> chance of at least one <b>'+d.name+'</b>';}function draw(){var d=R[sel.value];if(!d)return;var p=d.p;card.querySelector('.cl-dot').style.background=d.color;card.querySelector('.cl-rateval').textContent=d.dropRate;card.querySelector('.cl-avg').innerHTML='~<b>'+fmt(1/p)+'</b> chests avg';card.querySelector('.cl-c50').textContent=fmt(cf(p,.5))+' chests';card.querySelector('.cl-c90').textContent=fmt(cf(p,.9))+' chests';card.querySelector('.cl-c99').textContent=fmt(cf(p,.99))+' chests';res();}sel.addEventListener('change',function(){n.value=cf(R[sel.value].p,.5);draw();});n.addEventListener('input',res);if(R[sel.value]){n.value=cf(R[sel.value].p,.5);}draw();});})();</script>`
 
 // Mirrors the app footer (src/App.jsx) so the whole site shares one footer:
 // the same sections row, the utility/support row (modal links deep-link into
@@ -179,7 +199,7 @@ const FOOT = `<footer class="foot">
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
 <p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
-</footer></div></body></html>`
+</footer></div>${CHEST_SCRIPT}</body></html>`
 
 // ---------- per-sprite page ----------
 function spritePage(type, others) {
@@ -250,6 +270,8 @@ function spritePage(type, others) {
 </section>
 <div class="stats">${stats.map(([n, l]) => `<div class="stat"><div class="n">${esc(n)}</div><div class="l">${esc(l)}</div></div>`).join('')}</div>
 
+<div class="cols">
+  <div class="main">
 <h2>How to get the ${esc(name)} Sprite</h2>
 <p>${esc(source)}${p ? ` As a ${type.rarity}, at ${type.dropRate} per chest you'll typically need to open Sprite Chests at volume — or pick one up through a trade.` : ''}</p>
 ${oddsTable}
@@ -265,6 +287,12 @@ ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}<
 
 <h2>Other sprites</h2>
 <div class="related">${others.map((o) => `<a href="/sprite/${slug(o.name)}">${esc(o.icon || '🧩')} ${esc(o.name)}</a>`).join('')}</div>
+  </div>
+  <aside class="side">
+    ${chestLuckCard(type.id)}
+    ${supportCard()}
+  </aside>
+</div>
 ` + FOOT
 }
 
@@ -319,6 +347,20 @@ const upcomingCard = () => {
 <div class="uplist">${up.map((t) => `<a class="uprow" href="/?sprite=${encodeURIComponent(t.id)}" title="Open ${esc(t.name)}"><span class="upic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span class="upmeta"><b>${esc(t.name)}</b> <small style="color:${RARITY_TINT[t.rarity] || '#95a0c4'}">${esc(t.rarity)}</small>${t.ability ? `<small class="upab">${esc(t.ability)}</small>` : ''}</span><span class="update">${t.releaseDate ? fmtLeak(t.releaseDate) : 'TBA'}</span></a>`).join('')}</div></div>`
 }
 
+// Chest luck card HTML. `selId` pre-selects a Sprite (used on its own page).
+const chestSelectOptions = (selId) => ['Mythic', 'Legendary', 'Epic', 'Rare'].map((r) => {
+  const items = SPRITE_TYPES.filter((t) => t.rarity === r && parseRate(t.dropRate))
+  return items.length ? `<optgroup label="${r}">${items.map((t) => `<option value="${t.id}"${t.id === selId ? ' selected' : ''}>${esc(t.icon || '')} ${esc(t.name)} — ${esc(t.dropRate)}</option>`).join('')}</optgroup>` : ''
+}).join('')
+const chestLuckCard = (selId) => `<div class="card sidecard chestcard">
+<h3 class="sh">🎲 Chest luck</h3>
+<label class="cl-lab">Sprite</label>
+<select class="cl-sel" aria-label="Pick a Sprite">${chestSelectOptions(RATED_MAP[selId] ? selId : undefined)}</select>
+<div class="cl-rate"><span><span class="cl-dot"></span>Drop rate <b class="cl-rateval"></b></span><span class="cl-avg"></span></div>
+<div class="cl-rows"><div><span>Coin-flip (50%)</span><b class="cl-c50"></b></div><div><span>Likely (90%)</span><b class="cl-c90"></b></div><div><span>Almost sure (99%)</span><b class="cl-c99"></b></div></div>
+<div class="cl-open"><div class="cl-in"><span>Open</span><input class="cl-n" type="number" min="0" aria-label="Chests to open"><span>chests →</span></div><p class="cl-res"></p></div>
+<p class="fine">Base (Normal-form) rates, community-estimated — Epic doesn’t publish official odds. Gold/Gummy/Galaxy and other variants are much rarer than the base shown.</p></div>`
+
 const supportCard = () => `<div class="card sidecard supportcard"><h3 class="sh">Support the maker 💜</h3>
 <p class="sub">This tracker is free &amp; fan-made. Two easy ways to help:</p>
 <p style="font-size:13px;color:#cdd6f0;margin:0 0 4px">Enter Creator Code <b class="cc2">MOMBIE</b> in the Fortnite Item Shop at checkout — it supports me at no extra cost. #EpicPartner</p>
@@ -342,6 +384,7 @@ ${byRarity.map((g) => `    <h2>${g.r} sprites</h2><div class="grid">${g.items.ma
     ${guideCard()}
     ${ctaCard()}
     ${upcomingCard()}
+    ${chestLuckCard()}
     ${supportCard()}
   </aside>
 </div>
