@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 29, 2026',
+    title: 'Sprite pages now share the app’s full header & footer',
+    summary:
+      'The static sprite pages now carry the same header (wordmark + tagline + CTA) and the same full footer (sections, utility links, Creator Code and the attribution notes) as the app, so the top and bottom of every page match.',
+    changes: [
+      { tag: 'Changed', text: 'Sprite-page header now includes the app’s tagline under the wordmark (“N released variants · accurate to…”) and the same top-right CTA, not just the logo.' },
+      { tag: 'Changed', text: 'Sprite-page footer rebuilt to mirror the app’s: the sections row, the utility/support row (Cosmetics · About · Changelog · Backup · Report a bug · Buy me a coffee · Sprite database · Creator Code MOMBIE), the #EpicPartner line and the full image/roster/data attribution notes.' },
+      { tag: 'Added', text: 'The footer’s utility links deep-link into the app (/?about=1, /?changelog=1, /?backup=1, /?bug=1, /?cosmetics=1), so they open the matching modal the same way the in-app footer does.' },
+    ],
+    why:
+      'The sprite pages had already adopted the app’s colors and body styling, but the header was just a logo and the footer was a one-line disclaimer — so the chrome still read as a different site. Sharing the exact header and footer (and making the footer’s links actually work via deep-links) makes the SEO pages feel like the same product top to bottom, and carries the full attribution onto every indexed page.',
+  },
+  {
+    date: 'July 29, 2026',
     title: 'Collection page cleanup: one stats hub, guide moved to the Sprites page',
     summary:
       'The Collection sidebar is consolidated so your stats live in a single Breakdown card, the sidebar is reordered, and the “How Sprites work” guide now lives on the Sprites page instead of a pop-up.',

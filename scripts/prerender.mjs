@@ -53,7 +53,8 @@ const CSS = `
 body{margin:0;min-height:100vh;color:var(--text);line-height:1.6;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;background:radial-gradient(1200px 600px at 80% -10%,rgba(123,97,255,.18),transparent 60%),radial-gradient(1000px 500px at 0% 0%,rgba(54,197,255,.14),transparent 55%),var(--bg)}
 a{color:var(--brand);text-decoration:none}
 .wrap{max-width:1152px;margin:0 auto;padding:24px 16px 96px}
-header.site{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 20px}
+header.site{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:8px 0 20px}
+.hgroup{min-width:0}.tagline{margin:4px 0 0;font-size:12px;color:var(--muted);line-height:1.5}
 .logo{display:inline-flex;align-items:center;gap:8px;color:var(--text)}.logo .mark-sm{width:32px;height:32px;flex:0 0 auto}
 .logo .wm{font-family:'Luckiest Guy','Inter',sans-serif;font-weight:400;font-size:30px;line-height:1;letter-spacing:.02em}.logo .wm b{color:var(--brand);font-weight:400}
 .cta{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#000;font-weight:800;padding:9px 16px;border-radius:12px;font-size:13px;white-space:nowrap}
@@ -85,7 +86,12 @@ summary{cursor:pointer;font-weight:700;padding:13px 0}details p{margin:0 0 12px;
 .related{display:flex;gap:10px;flex-wrap:wrap}.related a{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:9px 13px;font-weight:700;font-size:14px;color:var(--text);transition:border-color .15s}
 .related a:hover{border-color:var(--brand)}
 .bigcta{display:block;text-align:center;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#000;font-weight:800;padding:16px;border-radius:14px;margin:32px 0 10px;font-size:16px;max-width:none}
-footer{color:var(--muted);font-size:12px;margin-top:44px;border-top:1px solid var(--border);padding-top:18px}
+footer.foot{margin-top:48px;border-top:1px solid var(--border);padding-top:24px;text-align:center;font-size:12px;color:var(--muted)}
+.foot .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 16px;margin-bottom:12px;font-weight:600}
+.foot .row a{color:var(--muted)}.foot .row a:hover{color:#fff}.foot .sep{opacity:.3}
+.foot .cc b{color:var(--brand);font-weight:700}
+.foot p{max-width:none;margin:8px auto 0;opacity:.8;line-height:1.5;color:var(--muted)}
+.foot p a{color:var(--muted);text-decoration:underline}.foot p a:hover{color:#fff}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
 .tile{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px;color:var(--text);transition:border-color .15s}
 .tile:hover{border-color:var(--brand)}
@@ -94,9 +100,7 @@ footer{color:var(--muted);font-size:12px;margin-top:44px;border-top:1px solid va
 .guide{display:grid;gap:10px;margin:0 0 8px}
 .guide .card h3{font-family:'Inter',sans-serif;font-size:15px;font-weight:800;color:var(--brand);letter-spacing:0;margin:0 0 6px}
 .guide .card p{margin:0 0 8px;max-width:none}.guide .card p:last-child{margin-bottom:0}.guide .card b{color:#fff}
-.fnav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 4px;margin-bottom:14px;font-size:12px}
-.fnav a{color:var(--muted)}
-@media(min-width:640px){.wrap{padding:24px 24px 96px}.logo{gap:10px}.logo .mark-sm{width:36px;height:36px}.logo .wm{font-size:36px}}
+@media(min-width:640px){.wrap{padding:24px 24px 96px}.logo{gap:10px}.logo .mark-sm{width:36px;height:36px}.logo .wm{font-size:36px}.tagline{font-size:14px}}
 @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.hero{flex-direction:column;text-align:center}h1{font-size:28px}.avatar{width:92px;height:92px}.tags{justify-content:center}}
 `
 
@@ -118,7 +122,7 @@ function head({ title, desc, canonical, jsonld, ogImage }) {
 <meta name="twitter:description" content="${esc(desc)}"><meta name="twitter:image" content="${esc(img)}">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 <style>${CSS}</style></head><body><div class="wrap">
-<header class="site"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><a class="cta" href="/">Track your collection →</a></header>
+<header class="site"><div class="hgroup"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><p class="tagline">${RELEASED_COUNT} released variants · accurate to the Jul 23, 2026 New Sprite Day (Cube variant, wave 1).</p></div><a class="cta" href="/">Log in to save</a></header>
 <nav class="nav" aria-label="Sections">
   <a href="/">Collection</a>
   <a href="/?view=leaderboard">🏆 Leaderboard</a>
@@ -130,10 +134,16 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 </nav>`
 }
 
-const FOOT = `<nav class="fnav" aria-label="Sections">
-  <a href="/">Collection</a> · <a href="/?view=leaderboard">🏆 Leaderboard</a> · <a href="/?view=stats">📊 Stats</a> · <a href="/?view=news">📰 News</a> · <a href="/?view=shop">🛒 Item Shop</a> · <a href="/sprites">🧩 Sprites</a>
-</nav>
-<footer>Fan-made — not affiliated with Epic Games. Drop rates &amp; dust are community estimates; Epic doesn't publish official figures. Creator Code MOMBIE.</footer></div></body></html>`
+// Mirrors the app footer (src/App.jsx) so the whole site shares one footer:
+// the same sections row, the utility/support row (modal links deep-link into
+// the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
+const FOOT = `<footer class="foot">
+<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=news">📰 News</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
+<div class="row"><a href="/?cosmetics=1">🧢 Cosmetics (beta)</a><span class="sep">·</span><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><a href="/sprites">🗂️ Sprite database</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
+<p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
+<p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
+<p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
+</footer></div></body></html>`
 
 // ---------- per-sprite page ----------
 function spritePage(type, others) {

@@ -74,6 +74,11 @@ function useInitialView() {
   }, [])
 }
 
+// Deep-link helper so the static SEO pages can open an app modal on load — e.g.
+// the footer's About/Changelog/Backup/Report-a-bug/Cosmetics links point at
+// /?about=1 etc., mirroring the app footer's actions.
+const openParam = (k) => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get(k) === '1'
+
 // Fallback shown while a lazy-loaded tab chunk is fetched.
 function TabLoading() {
   return (
@@ -99,10 +104,10 @@ export default function App() {
   const [shareLoading, setShareLoading] = useState(!!shareTarget)
   const [detailType, setDetailType] = useState(null)
   const [view, setView] = useState(useInitialView())
-  const [showBug, setShowBug] = useState(false)
-  const [showAbout, setShowAbout] = useState(false)
-  const [showChangelog, setShowChangelog] = useState(false)
-  const [showBackup, setShowBackup] = useState(false)
+  const [showBug, setShowBug] = useState(() => openParam('bug'))
+  const [showAbout, setShowAbout] = useState(() => openParam('about'))
+  const [showChangelog, setShowChangelog] = useState(() => openParam('changelog'))
+  const [showBackup, setShowBackup] = useState(() => openParam('backup'))
 
   // Single source of truth for the utility/support links, so the header "More"
   // menu and the footer show the exact same set. Cosmetics has its own inline nav
@@ -145,9 +150,7 @@ export default function App() {
   const [showShare, setShowShare] = useState(false)
   // Deep-linkable so the Cosmetics nav item on the static sprite pages (/?cosmetics=1)
   // opens the same modal the in-app nav button does.
-  const [showCosmetics, setShowCosmetics] = useState(
-    () => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('cosmetics') === '1',
-  )
+  const [showCosmetics, setShowCosmetics] = useState(() => openParam('cosmetics'))
 
   useEffect(() => {
     if (!shareTarget) return

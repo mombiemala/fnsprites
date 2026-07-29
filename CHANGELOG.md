@@ -11,6 +11,29 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 29, 2026 — Sprite pages share the app's full header & footer
+
+- **Changed:** `scripts/prerender.mjs` header now mirrors the app (`src/App.jsx`):
+  the wordmark gets the app's tagline beneath it (`${RELEASED_COUNT} released
+  variants · accurate to…`) and the top-right CTA, with `.site` aligned to the top
+  and new `.hgroup`/`.tagline` styles.
+- **Changed:** the sprite-page footer was rebuilt to mirror the app's footer — the
+  sections row (TABS), the utility/support row (Cosmetics · About · Changelog ·
+  Backup · Report a bug · ☕ Buy me a coffee · 🗂️ Sprite database · Creator Code
+  MOMBIE), the `#EpicPartner` line, and the full image/roster/data attribution
+  paragraphs — replacing the old one-line disclaimer. Dropped the `.fnav` styles for
+  a `.foot` block that matches the app's footer layout.
+- **Added:** `src/App.jsx` — a small `openParam()` helper initializes the About,
+  Changelog, Backup, Report-a-bug and Cosmetics modals from `?about=1`/`?changelog=1`/
+  `?backup=1`/`?bug=1`/`?cosmetics=1`, so the static footer's utility links open the
+  same modals the in-app footer does.
+- **Why:** the pages already matched the app's palette/body, but a logo-only header
+  and a one-line footer still read as a separate site. Sharing the exact header and
+  footer (and wiring the footer links so they actually work) makes the SEO pages feel
+  like one product top to bottom and carries the full attribution onto every page.
+
+---
+
 ## July 29, 2026 — Collection page cleanup: one stats hub, guide on the Sprites page
 
 - **Changed:** `src/components/StatsBreakdown.jsx` is now the single stats hub —
