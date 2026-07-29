@@ -41,3 +41,17 @@ update, that turn isn't done.
 
 Run `npm run lint && npm run build` — both must pass. Develop on the
 `sprite-tracker` branch; the public deploy repo is `mombiemala/fnsprites`.
+
+## Deploy after every commit (standing habit)
+
+A commit isn't finished until it's live. **After each commit to `sprite-tracker`,
+deploy it** — don't wait to be asked:
+
+```
+git push fnsprites sprite-tracker:main   # Vercel auto-builds fnsprites.vercel.app
+```
+
+If the `fnsprites` remote is missing (e.g. a fresh container), add it first:
+`git remote add fnsprites <mombiemala/fnsprites repo URL>`. The public site serves
+`fnsprites` `main`, so skipping this leaves changes invisible even though the code
+is committed.
