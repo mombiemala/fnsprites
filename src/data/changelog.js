@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'July 29, 2026',
+    title: 'Sprites-page polish: nav sizing, readable CTA, clickable leaks',
+    summary:
+      'A round of fixes on the Sprites page — tighter nav, a readable Start-tracking button, and the Upcoming & leaked Sprites now open their detail card like on the collection page.',
+    changes: [
+      { tag: 'Fixed', text: 'The Sprites-page nav pills were too tall and the ⋯ More button didn’t match them; both are now the app’s compact pill height and line up.' },
+      { tag: 'Fixed', text: 'The “Start tracking your collection” button had near-unreadable dark text on the darker end of the gradient — it now sits on the brand colour so it reads clearly.' },
+      { tag: 'Added', text: 'Sprites in the Upcoming & leaked card are now clickable — they open the same detail modal the collection page uses (via /?sprite=…), so a deep link lands straight on that Sprite instead of the welcome pop-up.' },
+      { tag: 'Fixed', text: 'John Wick’s and Spider-Man’s “where to find” notes are corrected — John Wick is leaked as a Simpsons Reload exclusive (Reload Portable Extractor), not a standard chest drop.' },
+    ],
+    why:
+      'These were the rough edges left after moving the Sprites page onto the app’s layout: the nav inherited the wrong line-height, the CTA’s dark text fell on the purple end of the gradient in the narrow sidebar, and the leaked Sprites weren’t clickable. Wiring them to the existing detail modal (and skipping the welcome pop-up on a deep link) makes the leaked entries behave exactly like the collection page.',
+  },
+  {
+    date: 'July 29, 2026',
     title: 'Fixed the display font everywhere + gave the Sprites page a sidebar',
     summary:
       'The wordmark and headings were quietly falling back to a serif font in the app; that’s fixed, so the app and the sprite pages finally use the same Luckiest Guy display font. The Sprites page also gets the ⋯ More menu and a proper right sidebar.',

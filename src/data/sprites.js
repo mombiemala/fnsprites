@@ -249,6 +249,8 @@ const SPRITE_SOURCE = {
   grim: 'Sprite Chests — spawns almost exclusively here (no mid-match spawns).',
   peanut: 'Extremely rare — a lucky Sprite Chest find.',
   zeropoint: 'Sprite Chests — Mythic, so very rare from any single chest.',
+  wick: 'Leaked as exclusive to The Simpsons Fortnite Reload — reveal it on the Springfield map with the new Reload Portable Extractor, eliminate a player already carrying it, or find it in Reload chests. Unconfirmed until Epic’s patch notes.',
+  spiderman: 'Expected with the Spider-Man: Brand New Day collab (v41.30, Jul 30). Exact source unconfirmed — treat as a leak until Epic’s patch notes.',
 }
 export function spriteSource(typeId) {
   return SPRITE_SOURCE[typeId] || 'Sprite Chests around the island — any chest can drop any Sprite (rarer ones less often), plus occasional mid-match spawns.'

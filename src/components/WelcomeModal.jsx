@@ -7,6 +7,10 @@ const KEY = 'fnsprites.welcomed'
 // onboarding hint dismissed).
 function shouldShow() {
   try {
+    // Don't cover a deep link (e.g. /?sprite=…, /?cosmetics=1, /?view=…, /?u=…)
+    // with the generic welcome — show the content the link points to instead.
+    const q = new URLSearchParams(window.location.search)
+    if (['sprite', 'cosmetics', 'about', 'changelog', 'backup', 'bug', 'view', 'u'].some((k) => q.has(k))) return false
     return localStorage.getItem(KEY) !== '1' && localStorage.getItem('fnsprites.onboarded') !== '1'
   } catch {
     return false

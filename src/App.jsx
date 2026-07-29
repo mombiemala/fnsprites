@@ -102,7 +102,12 @@ export default function App() {
   const [showAuth, setShowAuth] = useState(false)
   const [shared, setShared] = useState(null)
   const [shareLoading, setShareLoading] = useState(!!shareTarget)
-  const [detailType, setDetailType] = useState(null)
+  // Deep-linkable: the static /sprites "Upcoming & leaked" rows link to
+  // /?sprite=<id> so they open the same detail modal the app uses. An unknown id
+  // is harmless — SpriteDetailModal renders nothing when the type isn't found.
+  const [detailType, setDetailType] = useState(
+    () => (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('sprite')) || null,
+  )
   const [view, setView] = useState(useInitialView())
   const [showBug, setShowBug] = useState(() => openParam('bug'))
   const [showAbout, setShowAbout] = useState(() => openParam('about'))

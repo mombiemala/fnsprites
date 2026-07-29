@@ -61,11 +61,11 @@ header.site{display:flex;align-items:flex-start;justify-content:space-between;ga
 .logo .wm{font-family:'Luckiest Guy','Inter',sans-serif;font-weight:400;font-size:30px;line-height:1;letter-spacing:.02em}.logo .wm b{color:var(--brand);font-weight:400}
 .cta{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#000;font-weight:800;padding:9px 16px;border-radius:12px;font-size:13px;white-space:nowrap}
 .crumbs{font-size:12px;color:var(--muted);margin-bottom:16px}.crumbs a{color:var(--muted)}
-.nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-.nav a{background:var(--panel2);color:var(--muted);padding:8px 14px;border-radius:12px;font-size:13px;font-weight:700;white-space:nowrap;transition:color .15s}
+.nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:18px}
+.nav a,.nav .more>summary{display:inline-flex;align-items:center;background:var(--panel2);color:var(--muted);padding:9px 14px;border-radius:12px;font-size:13px;font-weight:700;line-height:1;white-space:nowrap;transition:color .15s}
 .nav a:hover{color:#fff}.nav a.on{background:var(--brand);color:#000}
 .nav .more{position:relative;list-style:none}
-.nav .more>summary{list-style:none;background:var(--panel2);color:var(--muted);padding:8px 14px;border-radius:12px;font-size:13px;font-weight:700;white-space:nowrap;cursor:pointer;user-select:none}
+.nav .more>summary{list-style:none;cursor:pointer;user-select:none}
 .nav .more>summary::-webkit-details-marker{display:none}.nav .more>summary::marker{content:''}
 .nav .more[open]>summary,.nav .more>summary:hover{color:#fff}
 .moremenu{position:absolute;right:0;top:calc(100% + 6px);z-index:40;min-width:190px;display:flex;flex-direction:column;padding:6px;gap:2px;background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:0 14px 34px rgba(0,0,0,.45)}
@@ -80,9 +80,11 @@ header.site{display:flex;align-items:flex-start;justify-content:space-between;ga
 .sidecard .fine{margin:10px 0 0;font-size:11px;color:var(--muted);opacity:.85}
 details.gd{background:var(--panel2);border:0;border-radius:10px;padding:0 12px;margin:8px 0 0}
 details.gd summary{font-size:13px;font-weight:700;padding:10px 0}details.gd p{font-size:13px;color:#cdd6f0;margin:0 0 10px;max-width:none}
-.ctacard{display:block;text-align:center;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#000;font-weight:800;padding:16px;border-radius:16px;font-size:15px}
+.ctacard{display:block;text-align:center;background:linear-gradient(90deg,var(--brand),var(--brand2) 175%);color:#04121f;font-weight:800;padding:15px 16px;border-radius:16px;font-size:15px;box-shadow:0 8px 22px rgba(54,197,255,.22)}
+.ctacard:hover{filter:brightness(1.04)}
 .uplist{display:flex;flex-direction:column;gap:8px}
-.uprow{display:flex;align-items:center;gap:10px;background:var(--panel2);border-radius:12px;padding:8px}
+.uprow{display:flex;align-items:center;gap:10px;background:var(--panel2);border:1px solid transparent;border-radius:12px;padding:8px;color:inherit;transition:border-color .15s}
+.uprow:hover{border-color:var(--brand)}
 .upic{width:40px;height:40px;border-radius:9px;flex:0 0 auto;overflow:hidden;display:block}.upic img{width:100%;height:100%;object-fit:contain}
 .upmeta{min-width:0;flex:1}.upmeta b{font-size:13px;color:#fff}.upmeta small{display:block;font-size:11px}.upmeta .upab{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .update{flex:0 0 auto;font-size:11px;font-weight:800;color:#fcd34d;text-align:right}
@@ -314,7 +316,7 @@ const upcomingCard = () => {
   if (!up.length) return ''
   return `<div class="card sidecard"><h3 class="sh">🔮 Upcoming &amp; leaked <span class="rumored">Rumored</span></h3>
 <p class="sub">Datamined / leaked — dates &amp; details aren’t confirmed by Epic.</p>
-<div class="uplist">${up.map((t) => `<div class="uprow"><span class="upic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span class="upmeta"><b>${esc(t.name)}</b> <small style="color:${RARITY_TINT[t.rarity] || '#95a0c4'}">${esc(t.rarity)}</small>${t.ability ? `<small class="upab">${esc(t.ability)}</small>` : ''}</span><span class="update">${t.releaseDate ? fmtLeak(t.releaseDate) : 'TBA'}</span></div>`).join('')}</div></div>`
+<div class="uplist">${up.map((t) => `<a class="uprow" href="/?sprite=${encodeURIComponent(t.id)}" title="Open ${esc(t.name)}"><span class="upic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span class="upmeta"><b>${esc(t.name)}</b> <small style="color:${RARITY_TINT[t.rarity] || '#95a0c4'}">${esc(t.rarity)}</small>${t.ability ? `<small class="upab">${esc(t.ability)}</small>` : ''}</span><span class="update">${t.releaseDate ? fmtLeak(t.releaseDate) : 'TBA'}</span></a>`).join('')}</div></div>`
 }
 
 const supportCard = () => `<div class="card sidecard supportcard"><h3 class="sh">Support the maker 💜</h3>

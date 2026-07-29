@@ -11,6 +11,26 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 29, 2026 — Sprites-page polish: nav, CTA, clickable leaks
+
+- **Fixed:** `scripts/prerender.mjs` nav pills inherited the body `line-height:1.6`
+  (≈51px tall) and the `⋯ More` `<summary>` rendered as `list-item` (shorter,
+  misaligned). Unified pill + summary styling with `line-height:1` +
+  `inline-flex` so both are the app's compact ~31px height.
+- **Fixed:** the `.ctacard` "Start tracking" button used black text on the full
+  `brand→brand-2` gradient; in the narrow sidebar the text fell on the purple end
+  and was unreadable. Gradient is now cyan-dominant so the dark text reads.
+- **Added:** the Upcoming & leaked rows are now `<a href="/?sprite=<id>">`, and
+  `src/App.jsx` initializes `detailType` from `?sprite=` so the app opens that
+  Sprite's detail modal — matching the collection page. `WelcomeModal` now
+  suppresses itself when any deep-link param is present (`sprite`, `cosmetics`,
+  `about`, `view`, `u`, …) so it doesn't cover the linked content.
+- **Fixed:** `SPRITE_SOURCE` now has accurate "where to find" text for `wick`
+  (Simpsons Reload exclusive via the Reload Portable Extractor) and `spiderman`
+  (Brand New Day collab, v41.30) instead of the generic Sprite-Chest line.
+
+---
+
 ## July 29, 2026 — Fixed the display font + Sprites page sidebar
 
 - **Fixed:** `tailwind.config.js` set `fontFamily.display` to `DM Serif Display`
