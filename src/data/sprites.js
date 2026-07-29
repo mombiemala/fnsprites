@@ -80,8 +80,8 @@ export const SPRITE_TYPES = [
 
   // ---- Datamined / upcoming (NOT yet released). `rumored` = leaked/unconfirmed;
   //      abilities & exact variant lines can change before launch. ----
-  { id: 'wick', name: 'John Wick', icon: '🔫', rarity: 'Rare', dropRate: null, released: false, rumored: true,
-    ability: 'Datamined collab sprite — not yet released.',
+  { id: 'wick', name: 'John Wick', icon: '🔫', rarity: 'Mythic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-30',
+    ability: 'Reveals nearby enemies after you knock or eliminate a player; datamined to also buff pistol damage (~5%). Leaked as exclusive to The Simpsons Fortnite Reload — reveal it on the Springfield map with the new Reload Portable Extractor.',
     variants: { normal: U } },
   { id: 'drifter', name: 'Drifter', icon: '🏜️', rarity: 'Rare', dropRate: null, released: false, rumored: true,
     ability: 'Datamined sprite — not yet released.',
