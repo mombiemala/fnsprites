@@ -54,8 +54,8 @@ body{margin:0;min-height:100vh;color:var(--text);line-height:1.6;font-family:'In
 a{color:var(--brand);text-decoration:none}
 .wrap{max-width:1152px;margin:0 auto;padding:24px 16px 96px}
 header.site{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 20px}
-.logo{display:inline-flex;align-items:center;gap:10px;color:var(--text)}.logo .mark-sm{width:32px;height:32px;flex:0 0 auto}
-.logo .wm{font-family:'Luckiest Guy','Inter',cursive;font-weight:400;font-size:22px;letter-spacing:.02em}.logo .wm b{color:var(--brand);font-weight:400}
+.logo{display:inline-flex;align-items:center;gap:8px;color:var(--text)}.logo .mark-sm{width:32px;height:32px;flex:0 0 auto}
+.logo .wm{font-family:'Luckiest Guy','Inter',sans-serif;font-weight:400;font-size:30px;line-height:1;letter-spacing:.02em}.logo .wm b{color:var(--brand);font-weight:400}
 .cta{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#000;font-weight:800;padding:9px 16px;border-radius:12px;font-size:13px;white-space:nowrap}
 .crumbs{font-size:12px;color:var(--muted);margin-bottom:16px}.crumbs a{color:var(--muted)}
 .nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
@@ -93,7 +93,7 @@ footer{color:var(--muted);font-size:12px;margin-top:44px;border-top:1px solid va
 .tile .ic img{width:100%;height:100%;object-fit:contain}
 .fnav{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 4px;margin-bottom:14px;font-size:12px}
 .fnav a{color:var(--muted)}
-@media(min-width:640px){.wrap{padding:24px 24px 96px}}
+@media(min-width:640px){.wrap{padding:24px 24px 96px}.logo{gap:10px}.logo .mark-sm{width:36px;height:36px}.logo .wm{font-size:36px}}
 @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.hero{flex-direction:column;text-align:center}h1{font-size:28px}.avatar{width:92px;height:92px}.tags{justify-content:center}}
 `
 
@@ -118,16 +118,17 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 <header class="site"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><a class="cta" href="/">Track your collection →</a></header>
 <nav class="nav" aria-label="Sections">
   <a href="/">Collection</a>
-  <a href="/sprites" class="on" aria-current="page">🧩 Sprites</a>
   <a href="/?view=leaderboard">🏆 Leaderboard</a>
   <a href="/?view=stats">📊 Stats</a>
   <a href="/?view=news">📰 News</a>
   <a href="/?view=shop">🛒 Item Shop</a>
+  <a href="/sprites" class="on" aria-current="page">🧩 Sprites</a>
+  <a href="/?cosmetics=1">🧢 Cosmetics</a>
 </nav>`
 }
 
 const FOOT = `<nav class="fnav" aria-label="Sections">
-  <a href="/">Collection</a> · <a href="/sprites">All sprites</a> · <a href="/?view=leaderboard">Leaderboard</a> · <a href="/?view=stats">Stats</a> · <a href="/?view=news">News</a> · <a href="/?view=shop">Item Shop</a>
+  <a href="/">Collection</a> · <a href="/?view=leaderboard">🏆 Leaderboard</a> · <a href="/?view=stats">📊 Stats</a> · <a href="/?view=news">📰 News</a> · <a href="/?view=shop">🛒 Item Shop</a> · <a href="/sprites">🧩 Sprites</a>
 </nav>
 <footer>Fan-made — not affiliated with Epic Games. Drop rates &amp; dust are community estimates; Epic doesn't publish official figures. Creator Code MOMBIE.</footer></div></body></html>`
 

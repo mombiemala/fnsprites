@@ -148,7 +148,11 @@ export default function App() {
   const [showProfile, setShowProfile] = useState(false)
   const [showImport, setShowImport] = useState(false)
   const [showShare, setShowShare] = useState(false)
-  const [showCosmetics, setShowCosmetics] = useState(false)
+  // Deep-linkable so the Cosmetics nav item on the static sprite pages (/?cosmetics=1)
+  // opens the same modal the in-app nav button does.
+  const [showCosmetics, setShowCosmetics] = useState(
+    () => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('cosmetics') === '1',
+  )
 
   useEffect(() => {
     if (!shareTarget) return

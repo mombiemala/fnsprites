@@ -11,6 +11,28 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 29, 2026 — Sprite pages: identical header logo & nav to the app
+
+- **Changed:** `scripts/prerender.mjs` — the header wordmark/logomark now use the
+  app's exact type sizes instead of a fixed small wordmark. `.logo .wm` is `30px`
+  → `36px` at `≥640px` (was a flat `22px`), `line-height:1`, `sans-serif` fallback;
+  `.mark-sm` is `32px` → `36px`; gap `8px` → `10px` — mirroring App.jsx's
+  `font-display text-3xl sm:text-4xl` wordmark and `h-8 w-8 sm:h-9 sm:w-9` mark.
+- **Changed:** the section nav now mirrors the app's `TABS` order —
+  Collection · 🏆 Leaderboard · 📊 Stats · 📰 News · 🛒 Item Shop · 🧩 Sprites ·
+  🧢 Cosmetics — instead of putting Sprites second and omitting Cosmetics. Footer
+  nav aligned to the same order + emoji labels.
+- **Added:** `src/App.jsx` — `showCosmetics` initializes from a `?cosmetics=1` query
+  param (mirrors the existing `?view=` deep-link pattern), so the new Cosmetics nav
+  link on a static sprite page opens the same modal the in-app nav button does.
+- **Why:** logo, palette and page styling were already unified, but the wordmark
+  rendered noticeably smaller on the SEO pages and the nav ordering differed (and
+  dropped Cosmetics) — small header inconsistencies that made a sprite page feel
+  like a different site for a beat. Matching the app's exact sizes and nav order
+  closes that gap.
+
+---
+
 ## July 28, 2026 — Sprite pages restyled to match the app
 
 - **Changed:** `scripts/prerender.mjs` CSS is now lifted from the app's own tokens

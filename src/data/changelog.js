@@ -6,6 +6,19 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 29, 2026',
+    title: 'Sprite pages: identical header logo & nav to the app',
+    summary:
+      'The wordmark on the static sprite pages is now the exact size it is in the app, and the section nav lists the same items in the same order — so the header no longer subtly “resets” when you land on a sprite page.',
+    changes: [
+      { tag: 'Changed', text: 'The “FN Sprite Tracker” wordmark and logomark on the sprite pages now use the app’s exact type sizes (30px → 36px display, 32px → 36px mark) and responsive step, instead of a smaller fixed 22px wordmark.' },
+      { tag: 'Changed', text: 'The sprite-page section nav now mirrors the app’s order — Collection · Leaderboard · Stats · News · Item Shop · Sprites · Cosmetics — and adds the missing Cosmetics link.' },
+      { tag: 'Added', text: 'Cosmetics is now deep-linkable (/?cosmetics=1), so the Cosmetics nav item on a sprite page opens the same Cosmetics modal the in-app button does.' },
+    ],
+    why:
+      'The logo, palette and page styling were already unified, but the header wordmark was rendered noticeably smaller on the SEO pages and the nav put Sprites in a different slot and dropped Cosmetics entirely — small inconsistencies that made the header feel like a different site for a beat. Matching the app’s exact type sizes and nav order (and giving Cosmetics a real link) closes that last gap.',
+  },
+  {
     date: 'July 28, 2026',
     title: 'Sprite pages now match the app, seam for seam',
     summary:
