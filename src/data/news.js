@@ -36,6 +36,17 @@ export const NEWS = [
   {
     ts: '2026-07-30',
     when: 'Jul 30, 2026',
+    tag: 'upcoming',
+    title: 'v41.30 quests: Cube Punk, Galaxy Demon, Holofoil Seven & Gem Aura 💎',
+    body: 'Alongside the New Sprite Day drop, v41.30 is expected to add quests that reward four specific variant Sprites: Cube Punk, Galaxy Demon, Holofoil Seven and Gem Aura. If you’ve already collected one of them, completing its quest is said to grant 10,000 Sprite Dust instead. Gem Aura is the genuinely new one here — Cube Punk, Galaxy Demon and Holofoil Seven are already obtainable in the wild. Datamined / community leak — unconfirmed until Epic’s patch notes.',
+    link: 'https://nerdschalk.com/fortnite-new-sprite-dust-update-new-sprites-gem-variants-and-tips/',
+    source: 'Nerdschalk',
+    official: false,
+    tentative: true,
+  },
+  {
+    ts: '2026-07-30',
+    when: 'Jul 30, 2026',
     tag: 'sprites',
     title: 'John Wick Sprite (Mythic) — Simpsons Reload exclusive 🎯',
     body: 'The John Wick Sprite arrives with v41.30 on July 30 as a Mythic. Its ability reveals nearby enemies after you knock or eliminate a player, and datamined files point to a pistol-damage buff (~5%) that synergizes with pistol loadouts like the Lancehead Pistol and 9MM Baba Yaga. It’s leaked as exclusive to The Simpsons Fortnite Reload: reveal it on the Springfield map with the new Reload Portable Extractor, eliminate a player already carrying it, or find it in Reload chests. Details are datamined — treat as a leak until Epic’s patch notes confirm them.',
