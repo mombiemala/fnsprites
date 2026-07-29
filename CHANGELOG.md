@@ -11,6 +11,30 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 29, 2026 — Collection page cleanup: one stats hub, guide on the Sprites page
+
+- **Changed:** `src/components/StatsBreakdown.jsx` is now the single stats hub —
+  added a **Collection %** pill beside the existing Mastery %, and folded in the
+  Dust-to-complete detail (missing-variant count + per-rarity Dust split) from the
+  old standalone card.
+- **Changed:** `src/App.jsx` — removed the `ProgressStats` card (Collection/Mastery
+  bars) and the standalone `DustToComplete` card; deleted both now-orphaned
+  components. Reordered the sidebar: **Share & export** now sits directly under the
+  “Import from a screenshot” card, with **Breakdown** immediately below it.
+- **Changed:** the “How Sprites work” guide moved out of `HowItWorksModal` and onto
+  the `/sprites` landing page (`scripts/prerender.mjs`, `#how-sprites-work`) as the
+  single source. Removed it from the primary nav (`utilityLinks`); the in-app
+  “How Sprites work” buttons now link to that section. Deleted `HowItWorksModal.jsx`.
+- **Changed:** a shared Trainer Card page (share view) inherits the consolidated
+  Breakdown and no longer renders a Share & export button (it lived on the removed
+  ProgressStats card, which had rendered in both views).
+- **Why:** the Collection sidebar had three overlapping stat cards plus a
+  beginner-guide modal. One Breakdown card + a real, linkable guide page (better for
+  sharing/SEO, and a single source that can't drift from the app) removes the
+  duplication and makes the page scan faster.
+
+---
+
 ## July 29, 2026 — Sprite pages: identical header logo & nav to the app
 
 - **Changed:** `scripts/prerender.mjs` — the header wordmark/logomark now use the

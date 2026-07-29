@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'July 29, 2026',
+    title: 'Collection page cleanup: one stats hub, guide moved to the Sprites page',
+    summary:
+      'The Collection sidebar is consolidated so your stats live in a single Breakdown card, the sidebar is reordered, and the “How Sprites work” guide now lives on the Sprites page instead of a pop-up.',
+    changes: [
+      { tag: 'Changed', text: 'The Breakdown card is now the one stats hub: Collection % and Mastery % sit side by side, and the Dust-to-complete detail (missing count + per-rarity split) is folded in. The separate Collection/Mastery card and the standalone “Dust to complete” card are gone.' },
+      { tag: 'Changed', text: 'Reordered the Collection sidebar — Share & export now sits directly under the “Import from a screenshot” card, with the Breakdown card right below it.' },
+      { tag: 'Changed', text: 'The “How Sprites work” guide moved out of a modal and onto the Sprites page (/sprites#how-sprites-work); it’s no longer a nav item. The in-app “How Sprites work” links now jump to that section.' },
+      { tag: 'Changed', text: 'A shared Trainer Card page shows the same consolidated Breakdown and no longer shows a Share & export button (that only made sense on your own tracker).' },
+    ],
+    why:
+      'The Collection sidebar had three overlapping stat cards plus a beginner-guide modal. Folding the numbers into one Breakdown card and moving the guide to a real, linkable page (better for sharing and SEO, and a single source of truth that can’t drift from the app) removes the duplication and makes the page scan faster.',
+  },
+  {
+    date: 'July 29, 2026',
     title: 'Sprite pages: identical header logo & nav to the app',
     summary:
       'The wordmark on the static sprite pages is now the exact size it is in the app, and the section nav lists the same items in the same order — so the header no longer subtly “resets” when you land on a sprite page.',

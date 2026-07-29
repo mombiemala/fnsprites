@@ -6,7 +6,6 @@ import { getCollection, ACTIVE_COLLECTION_ID } from './data/collections'
 import { generateCollectionImage, downloadDataUrl } from './lib/exportImage'
 import CollectionSwitcher from './components/CollectionSwitcher'
 import SpriteCard from './components/SpriteCard'
-import ProgressStats from './components/ProgressStats'
 import TrainerCard from './components/TrainerCard'
 import { SpriteMark } from './components/Logo'
 import Toolbar from './components/Toolbar'
@@ -15,7 +14,6 @@ import SupportBanner from './components/SupportBanner'
 import StatsBreakdown from './components/StatsBreakdown'
 import NextToChase from './components/NextToChase'
 import QuickCheckList from './components/QuickCheckList'
-import DustToComplete from './components/DustToComplete'
 import ChestOdds from './components/ChestOdds'
 import OverflowNav from './components/OverflowNav'
 import UpcomingSprites from './components/UpcomingSprites'
@@ -34,7 +32,6 @@ const SpriteDetailModal = lazy(() => import('./components/SpriteDetailModal'))
 const BugReportModal = lazy(() => import('./components/BugReportModal'))
 const AboutModal = lazy(() => import('./components/AboutModal'))
 const ChangelogModal = lazy(() => import('./components/ChangelogModal'))
-const HowItWorksModal = lazy(() => import('./components/HowItWorksModal'))
 const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
@@ -105,17 +102,15 @@ export default function App() {
   const [showBug, setShowBug] = useState(false)
   const [showAbout, setShowAbout] = useState(false)
   const [showChangelog, setShowChangelog] = useState(false)
-  const [showHelp, setShowHelp] = useState(false)
   const [showBackup, setShowBackup] = useState(false)
 
   // Single source of truth for the utility/support links, so the header "More"
   // menu and the footer show the exact same set. Cosmetics has its own inline nav
   // action, so it's filtered out of the header ⋯ More menu to avoid a duplicate —
-  // but it stays in this list for the footer. The Guide ("How Sprites work") lives
-  // in the ⋯ More menu + footer, plus a small card above "Next to chase" once you
-  // sign in.
+  // but it stays in this list for the footer. The "How Sprites work" guide is no
+  // longer a nav item: its content now lives on the /sprites landing page
+  // (#how-sprites-work), which the in-app "How Sprites work" links point to.
   const utilityLinks = [
-    { id: 'help', label: '❔ How Sprites work', onClick: () => setShowHelp(true) },
     { id: 'cosmetics', label: '🧢 Cosmetics (beta)', onClick: () => setShowCosmetics(true) },
     { id: 'about', label: 'About', onClick: () => setShowAbout(true) },
     { id: 'changelog', label: 'Changelog', onClick: () => setShowChangelog(true) },
@@ -408,16 +403,6 @@ export default function App() {
         </div>
       )}
 
-      <div className="mb-5">
-        <ProgressStats
-          owned={stats.owned}
-          mastered={stats.mastered}
-          total={filters.showUnreleased ? set.total : set.released}
-          upcoming={set.total - set.released}
-          onShare={() => setShowShare(true)}
-        />
-      </div>
-
       {/* Full-width filters bar (sticks to the top on scroll) */}
       <div className="sticky top-0 z-30 -mx-4 mb-5 border-b border-[var(--border)] bg-[#0c0f1a]/85 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">
         <Toolbar
@@ -456,9 +441,9 @@ export default function App() {
                     ✓ Mark all {bulkTargets.length} owned
                   </button>
                 )}
-                <button onClick={() => setShowHelp(true)} title="Learn how Sprites work — extraction, leveling, mastery & trading" className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
+                <a href="/sprites#how-sprites-work" title="Learn how Sprites work — extraction, leveling, mastery & trading" className="inline-flex items-center rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
                   ❔ How Sprites work
-                </button>
+                </a>
               </div>
               <p className="mt-2 text-[11px] text-[var(--muted)]">Progress saves in this browser — log in to sync &amp; share it.</p>
             </div>
@@ -541,28 +526,7 @@ export default function App() {
             </button>
           )}
 
-          {/* Small guide nudge for signed-in players (the Guide left the top nav). */}
-          {user && !isShareView && (
-            <button
-              onClick={() => setShowHelp(true)}
-              title="How Sprites work — extraction, leveling, mastery & variants"
-              className="flex items-center gap-2 rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-left text-xs font-bold text-[var(--muted)] transition-colors hover:border-[var(--brand)] hover:text-white"
-            >
-              <span className="text-base">❔</span>
-              New to Sprites? <span className="text-[var(--brand)]">Read the quick guide →</span>
-            </button>
-          )}
-
-          {!isShareView && <NextToChase tracking={activeTracking} onOpen={setDetailType} />}
-
-          {!isShareView && <UpcomingSprites onOpen={setDetailType} />}
-
-          <StatsBreakdown tracking={activeTracking} />
-
-          {!isShareView && <DustToComplete tracking={activeTracking} />}
-
-          {!isShareView && <ChestOdds />}
-
+          {/* Share & export — pulled up directly under the import card. */}
           {!isShareView &&
             (user ? (
               <ShareBar onExport={exportImage} exporting={exporting} />
@@ -579,6 +543,28 @@ export default function App() {
                 </button>
               </div>
             ))}
+
+          {/* Breakdown — the single stats hub (Collection %, Mastery %, Dust, rings). */}
+          <StatsBreakdown tracking={activeTracking} />
+
+          {/* Small guide nudge for signed-in players — links to the guide that now
+              lives on the /sprites landing page (the modal + nav item were removed). */}
+          {user && !isShareView && (
+            <a
+              href="/sprites#how-sprites-work"
+              title="How Sprites work — extraction, leveling, mastery & variants"
+              className="flex items-center gap-2 rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-left text-xs font-bold text-[var(--muted)] transition-colors hover:border-[var(--brand)] hover:text-white"
+            >
+              <span className="text-base">❔</span>
+              New to Sprites? <span className="text-[var(--brand)]">Read the quick guide →</span>
+            </a>
+          )}
+
+          {!isShareView && <NextToChase tracking={activeTracking} onOpen={setDetailType} />}
+
+          {!isShareView && <UpcomingSprites onOpen={setDetailType} />}
+
+          {!isShareView && <ChestOdds />}
 
           {!isShareView && <SupportBanner />}
         </aside>
@@ -643,7 +629,6 @@ export default function App() {
         {showBug && <BugReportModal onClose={() => setShowBug(false)} />}
         {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
         {showChangelog && <ChangelogModal onClose={() => setShowChangelog(false)} />}
-        {showHelp && <HowItWorksModal onClose={() => setShowHelp(false)} />}
         {showBackup && <BackupModal onClose={() => setShowBackup(false)} />}
         {showProfile && <ProfileModal onClose={() => setShowProfile(false)} />}
         {showImport && <ScreenshotImportModal onClose={() => setShowImport(false)} />}

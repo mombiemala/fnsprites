@@ -27,17 +27,31 @@ function Ring({ owned, total, color, label }) {
 }
 
 export default function StatsBreakdown({ tracking }) {
-  const { rarities, themes, closest, badges, masteryPct, dustToComplete } = useMemo(() => {
+  const { rarities, themes, closest, badges, collectionPct, masteryPct, dustToComplete, missing, dustByRarity } = useMemo(() => {
     const released = ALL_SPRITES.filter((s) => s.released)
     const owned = (s) => !!tracking[s.id]?.owned
+
+    // Collection % = variants owned vs everything obtainable right now.
+    const ownedCount = released.filter(owned).length
+    const collectionPct = released.length ? Math.round((ownedCount / released.length) * 100) : 0
 
     // Mastery % based on levels (each sprite is worth up to 5) + total Sprite
     // Dust still needed to summon everything you're missing.
     const totalLevels = released.reduce((sum, s) => sum + (tracking[s.id]?.level || 0), 0)
     const masteryPct = released.length ? Math.round((totalLevels / (released.length * 5)) * 100) : 0
-    const dustToComplete = released
-      .filter((s) => !owned(s))
-      .reduce((sum, s) => sum + (dustCost(s.rarity, s.themeId) || 0), 0)
+    // Sprite Dust to summon everything you're still missing — total, missing
+    // count, and a per-rarity split (folded in from the old standalone
+    // "Dust to complete" card so the Breakdown is the single stats hub).
+    let dustToComplete = 0
+    let missing = 0
+    const dustByRarity = {}
+    for (const s of released) {
+      if (owned(s)) continue
+      const c = dustCost(s.rarity, s.themeId) || 0
+      dustToComplete += c
+      missing++
+      dustByRarity[s.rarity] = (dustByRarity[s.rarity] || 0) + c
+    }
 
     const byRarity = RARITY_ORDER.map((r) => {
       const list = released.filter((s) => s.rarity === r)
@@ -56,7 +70,7 @@ export default function StatsBreakdown({ tracking }) {
     const closest = incomplete[0] || null
 
     const badges = groups.filter((g) => g.owned >= g.total).map((g) => ({ label: g.label, color: g.color }))
-    return { rarities: byRarity, themes: byTheme, closest, badges, masteryPct, dustToComplete }
+    return { rarities: byRarity, themes: byTheme, closest, badges, collectionPct, masteryPct, dustToComplete, missing, dustByRarity }
   }, [tracking])
 
   return (
@@ -74,6 +88,9 @@ export default function StatsBreakdown({ tracking }) {
       </div>
 
       <div className="mb-3 flex flex-wrap gap-2">
+        <span className="rounded-lg bg-[var(--bg-2)] px-3 py-1.5 text-xs font-bold text-white" title="Variants owned vs everything obtainable right now">
+          🗂️ Collection <span className="text-[var(--brand)]">{collectionPct}%</span>
+        </span>
         <span className="rounded-lg bg-[var(--bg-2)] px-3 py-1.5 text-xs font-bold text-white" title="Total sprite levels earned vs the max (5 each)">
           🏅 Mastery <span className="text-amber-300">{masteryPct}%</span>
         </span>
@@ -81,6 +98,25 @@ export default function StatsBreakdown({ tracking }) {
           💨 Dust to complete <span className="text-[var(--brand)]">≈{dustToComplete.toLocaleString()}</span>
         </span>
       </div>
+
+      {missing > 0 && (
+        <div className="mb-3 text-[11px] text-[var(--muted)]">
+          <div className="mb-1">
+            Dust for your <b className="text-white">{missing}</b> missing variant{missing === 1 ? '' : 's'}, by rarity:
+          </div>
+          <div className="flex flex-wrap gap-x-3 gap-y-0.5">
+            {RARITY_ORDER.filter((r) => dustByRarity[r]).map((r) => (
+              <span key={r} className="inline-flex items-center gap-1">
+                <span className="h-2 w-2 rounded-full" style={{ background: RARITY_COLORS[r] }} />
+                {r} <span className="font-semibold text-[var(--text)]">{dustByRarity[r].toLocaleString()}</span>
+              </span>
+            ))}
+          </div>
+          <div className="mt-1 text-[10px]">
+            Estimate — most Sprites come from Chests; Dust is for (re)summoning indexed variants.
+          </div>
+        </div>
+      )}
 
       <div className="mb-1 text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">By rarity</div>
       <div className="mb-3 flex flex-wrap gap-3">
