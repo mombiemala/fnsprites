@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 29, 2026',
+    title: 'Sprite popup links to the full Sprite page',
+    summary:
+      'Opening a released Sprite’s detail popup now offers a link straight to its full page (drop rate, Dust, chest odds & FAQ).',
+    changes: [
+      { tag: 'Added', text: 'The Sprite detail modal now has a “View the full … page” link to /sprite/<name> for released Sprites — a shareable, deep-linkable page with the full write-up. Hidden for unreleased Sprites (no page yet).' },
+    ],
+    why:
+      'The modal is great for quick tracking, but the static Sprite pages have more (chest-odds table, FAQ, JSON-LD) and are shareable. Linking them connects the two and helps SEO via internal links.',
+  },
+  {
+    date: 'July 29, 2026',
     title: 'Live Chest-luck calculator on the Sprites pages',
     summary:
       'The interactive Chest luck calculator now lives in the sidebar on the Sprites page and on every per-sprite page — the same tool as in the app, pre-set to whichever Sprite you’re viewing.',

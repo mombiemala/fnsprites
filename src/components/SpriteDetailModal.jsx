@@ -15,6 +15,9 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
   // Highest level among the variants you actually own — so we can show progress
   // against the ability's Lv-5 scaling.
   const bestLevel = variants.reduce((m, v) => (tracking[v.id]?.owned ? Math.max(m, tracking[v.id]?.level || 0) : m), 0)
+  // Released Sprites have a static /sprite/<slug> page (see scripts/prerender.mjs);
+  // link to it so the modal can hand off to the fuller, shareable page.
+  const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4 backdrop-blur-sm" onClick={onClose}>
@@ -96,6 +99,16 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
             <span className="font-bold text-[var(--brand)]">🗺️ Where to find:</span> {spriteSource(type.id)}
           </p>
         </div>
+
+        {type.released && (
+          <a
+            href={`/sprite/${slug(type.name)}`}
+            title={`Open the full ${type.name} Sprite page`}
+            className="mt-2 flex items-center justify-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-sm font-bold text-[var(--brand)] transition-colors hover:border-[var(--brand)]"
+          >
+            View the full {type.name} page — drop rate, dust &amp; FAQ →
+          </a>
+        )}
 
         <div className="mt-4 flex items-center justify-between">
           <h3 className="text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">
