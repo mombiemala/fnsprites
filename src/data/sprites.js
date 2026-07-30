@@ -27,16 +27,16 @@ const U = false  // unreleased
 export const SPRITE_TYPES = [
   { id: 'water', name: 'Water', icon: '💧', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Replenishes shields for you and nearby squad while you’re in water.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: R, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: R, cube: U, quack: U } },
   { id: 'earth', name: 'Earth', icon: '🪨', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Better chance of rare rewards when opening chests.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: R, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: U, cube: R, quack: U } },
   { id: 'fire', name: 'Fire', icon: '🔥', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Unleashes a fiery burst once you deal enough damage to an enemy.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: R, quack: U } },
   { id: 'duck', name: 'Duck', icon: '🦆', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Emoting or Jamming replenishes your shields.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: U, cube: U, quack: U } },
   { id: 'ghost', name: 'Ghost', icon: '👻', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Reloading cloaks you (near-invisible) for a few seconds — longer as it levels.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: U, quack: U } },
@@ -45,7 +45,7 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, rift: U, cube: R, quack: U } },
   { id: 'demon', name: 'Demon', icon: '😈', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Siphons health and shields when you eliminate an opponent.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: U, cube: U, quack: U } },
   { id: 'punk', name: 'Punk', icon: '🎸', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Rolls a random buff on level-up; at max level, a chance at infinite ammo.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, rift: U, cube: R, quack: U } },
@@ -54,7 +54,8 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: U, quack: U } },
   { id: 'zeropoint', name: 'Zero Point', icon: '🔷', rarity: 'Mythic', dropRate: '0.00034%', released: true,
     ability: 'Spawns a Shield Bubble Jr. when you use a healing item on yourself (not splashes or grenades).',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
+    // Zero Point is the ONLY Sprite with the exclusive Quack variant (v41.30).
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: U, cube: U, quack: R } },
   { id: 'peanut', name: 'Burnt Peanut', icon: '🥜', rarity: 'Mythic', dropRate: '2.97%', released: true,
     ability: 'A rare snack that grants a powerful random buff.',
     // Normal-only special — no variant line (Holofoil ships for the other 15
@@ -70,13 +71,23 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: R, quack: U } },
   { id: 'aura', name: 'Aura', icon: '✨', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Builds a Shock Rock charge as you deal damage.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: U, cube: U, quack: U } },
   { id: 'boss', name: 'Boss', icon: '🤵', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Boosts your max HP and Shield, growing each level (up to +25).',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: R, quack: U } },
   { id: 'grim', name: 'Grim Reaper', icon: '💀', rarity: 'Mythic', dropRate: '0.000098%', released: true,
     ability: 'Marks the location of any enemy who damages you. Spawns almost exclusively from Sprite Chests.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: R, quack: U } },
+
+  // ---- Added in the Jul 30, 2026 update (v41.30 New Sprite Day) ----
+  //      Rarity/drop rate are community estimates pending Epic's confirmation;
+  //      variant lines beyond Normal roll out over the coming weeks.
+  { id: 'peely', name: 'Peely', icon: '🍌', rarity: 'Legendary', dropRate: null, released: true,
+    ability: 'Gives a chance to upgrade weapons you pull from ammo boxes.',
+    variants: { normal: R, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U } },
+  { id: 'llama', name: 'Loot Llama', icon: '🦙', rarity: 'Legendary', dropRate: null, released: true,
+    ability: 'Pings nearby rare Sprites on the map.',
+    variants: { normal: R, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U } },
 
   // ---- Datamined / upcoming (NOT yet released). `rumored` = leaked/unconfirmed;
   //      abilities & exact variant lines can change before launch. ----

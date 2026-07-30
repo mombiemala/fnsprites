@@ -6,6 +6,20 @@
 
 export const CHANGELOG = [
   {
+    date: 'July 30, 2026',
+    title: 'New Sprite Day is LIVE — v41.30: Peely, Loot Llama, Quack Zero Point + the Gem wave',
+    summary:
+      'The v41.30 New Sprite Day drop is in the tracker: two new Sprites, the exclusive Quack Zero Point, a seven-strong Gem variant wave, and the John Wick / Spider-Man collabs — plus the Springfield Reloaded and Web-Shooter Power Hour events.',
+    changes: [
+      { tag: 'Added', text: 'Two new base Sprites — Peely (chance to upgrade weapons from ammo boxes) and Loot Llama (pings nearby rare Sprites).' },
+      { tag: 'Added', text: 'The Gem wave: Gem variants for Water, Earth, Duck, Demon, Aura and Zero Point, plus the exclusive Quack Zero Point (Zero Point is the only Sprite with the Quack variant).' },
+      { tag: 'Added', text: 'The v41.30 quest variants (Cube Punk, Galaxy Demon, Holofoil Seven, Gem Aura) and the John Wick Sprite (Mythic, exclusive to Springfield Reloaded) are all trackable; Spider-Man is live via the Brand New Day collab.' },
+      { tag: 'Changed', text: 'News + announcement flipped from “leaked” to “live”, and added the Springfield Reloaded event (Simpsons map on Reload through Aug 3, the John Wick “The Confidential” POI, 50-player lobbies) and the Aug 1 Web-Shooter Power Hour. Header tagline now reads “accurate to the Jul 30 New Sprite Day (v41.30).”' },
+    ],
+    why:
+      'New Sprite Day is the last major Chapter 7 Season 3 drop, so getting the roster, variants and events in on day one keeps the tracker trustworthy. Rarities and drop rates for the brand-new Sprites are community estimates until Epic publishes official figures, and a couple of the newest Sprites may show a placeholder until their art is added — flagged rather than guessed.',
+  },
+  {
     date: 'July 29, 2026',
     title: 'A more visual Player Stats empty state',
     summary:

@@ -16,15 +16,15 @@
 
 export const ANNOUNCEMENTS = [
   {
-    id: 'new-sprite-day-2026-07-30',
-    emoji: '🕸️',
-    message: 'New Sprite Day — Thu, Jul 30 (v41.30, ~9 AM ET reset): three new Sprites join the hunt — Peely, Loot Llama & the ultra-rare Quack Zero Point — alongside the Spider-Man collab (leaked web-swinging “Sprite Net”). Boosted new-Sprite spawns during Power Hours (2 & 9 PM ET). Leaked lineup — treat as unconfirmed until Epic’s patch notes.',
-    link: 'https://www.vice.com/en/article/new-fortnite-sprites-coming-july-30/',
-    linkLabel: 'Details',
-    start: '2026-07-29',
-    end: '2026-07-31',
-    source: 'Vice',
-    official: false,
+    id: 'new-sprite-day-live-2026-07-30',
+    emoji: '🍌',
+    message: 'New Sprite Day is LIVE (v41.30): Peely, Loot Llama & the ultra-rare Quack Zero Point are in — plus a Gem wave (Water, Earth, Duck, Demon, Aura, Zero Point). John Wick is over on Springfield Reloaded; Spider-Man’s Web-Shooter Power Hour is Aug 1.',
+    link: 'https://games.gg/fortnite/guides/fortnite-v41-30-update-patch-notes/',
+    linkLabel: 'Patch notes',
+    start: '2026-07-30',
+    end: '2026-08-02',
+    source: 'GAMES.GG',
+    official: true,
     tone: 'event',
   },
   {
