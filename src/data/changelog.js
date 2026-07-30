@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 30, 2026',
+    title: 'v41.30 corrected to the real 20-Sprite drop (Ironmouse added, abilities fixed)',
+    summary:
+      'Reconciled the roster with the confirmed v41.30 list of 20 new Sprites — added the Ironmouse collab, fixed the Peely/Llama ability mix-up, and trimmed the variants that were pre-launch speculation, so the count matches the game’s 111.',
+    changes: [
+      { tag: 'Added', text: 'The Ironmouse Sprite (Mythic VTuber collab) — regenerates health while granting Cloak and low gravity when you drop low (60 → 100 HP by level).' },
+      { tag: 'Fixed', text: 'Peeky Peely and Lootin’ Llama had their abilities swapped: Peely is the ping that reveals nearby rare-Sprite carriers (40 → 80m), Llama is the ammo-box weapon-upgrade chance (5% → 20%). Also corrected John Wick (reveal on knock/elim, mark 3 → 5s) and added per-level scaling to all.' },
+      { tag: 'Fixed', text: 'Trimmed the variants to the ones that actually shipped: full Gold/Gummy/Galaxy/Gem/Holofoil for Peely & Llama, Grim’s Gem + Holofoil, and Quack for Water/Earth/Fire/Zero Point. Removed the speculative wide Gem/Holofoil waves that didn’t drop — the roster count now lines up with the game’s 111.' },
+    ],
+    why:
+      'Pre-launch leaks over-promised (a broad Gem wave, roster-wide Holofoils) and had Peely/Llama’s powers reversed. The post-launch “20 new Sprites → 111 total” breakdown is the authoritative source, so the tracker now mirrors exactly what’s live rather than the leaks.',
+  },
+  {
+    date: 'July 30, 2026',
     title: 'v41.30 follow-ups: correct Sprite names + graceful art fallback',
     summary:
       'Fixed the two new Sprites’ names to their in-game ones and made sprite pages fall back to a glyph when a Sprite’s art image hasn’t been added yet.',

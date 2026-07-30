@@ -164,7 +164,7 @@ function head({ title, desc, canonical, jsonld, ogImage }) {
 <meta name="twitter:description" content="${esc(desc)}"><meta name="twitter:image" content="${esc(img)}">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 <style>${CSS}</style></head><body><div class="wrap">
-<header class="site"><div class="hgroup"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><p class="tagline">${RELEASED_COUNT} released variants · accurate to the Jul 30, 2026 New Sprite Day (v41.30 — Peely, Loot Llama, Quack Zero Point &amp; the Gem wave).</p></div><a class="cta" href="/">Log in to save</a></header>
+<header class="site"><div class="hgroup"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><p class="tagline">${RELEASED_COUNT} released variants · accurate to the Jul 30, 2026 New Sprite Day (v41.30 — Peeky Peely, Lootin’ Llama, Ironmouse + the John Wick &amp; Spider-Man collabs).</p></div><a class="cta" href="/">Log in to save</a></header>
 <nav class="nav" aria-label="Sections">
   <a href="/">Collection</a>
   <a href="/?view=leaderboard">🏆 Leaderboard</a>
