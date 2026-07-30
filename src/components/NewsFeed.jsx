@@ -1,6 +1,20 @@
 import { useEffect, useState, useMemo } from 'react'
 import { NEWS, NEWS_TAGS } from '../data/news'
+import { SPRITE_BY_ID } from '../data/sprites'
 import { fetchLiveNews } from '../lib/liveNews'
+import SpriteArt from './SpriteArt'
+
+// Fallback glyph per tag — used on the card thumbnail when an item has no image
+// and no linked sprite art.
+const TAG_ICON = { sprites: '🧩', update: '🛠️', event: '🎉', upcoming: '🔮', bug: '🐛' }
+
+// "Live now" = today is inside the item's start/end window.
+const isLiveNow = (n, today) => {
+  if (!n.start && !n.end) return false
+  if (n.start && today < n.start) return false
+  if (n.end && today > n.end) return false
+  return true
+}
 
 export default function NewsFeed() {
   const [live, setLive] = useState([])
@@ -23,12 +37,6 @@ export default function NewsFeed() {
     // leads the feed. After the window passes it drops back to its normal group.
     const today = new Date().toISOString().slice(0, 10)
     const todayNum = Number(today.replace(/-/g, ''))
-    const isLiveNow = (n) => {
-      if (!n.start && !n.end) return false
-      if (n.start && today < n.start) return false
-      if (n.end && today > n.end) return false
-      return true
-    }
     // Sortable YYYYMMDD from the item's date. Undated/evergreen items (weekly
     // events, known issues) count as "today" so they sit with current news
     // rather than sinking to the bottom of the timeline.
@@ -42,9 +50,9 @@ export default function NewsFeed() {
     // (newest first). Each group is sorted by real date so the feed reads
     // chronologically within it. Dedupe by normalized title so a live item can't
     // double a curated one.
-    const liveNow = NEWS.filter(isLiveNow).sort((a, b) => dateNum(b) - dateNum(a))
-    const upcoming = NEWS.filter((n) => n.tag === 'upcoming' && !isLiveNow(n)).sort((a, b) => dateNum(a) - dateNum(b))
-    const history = NEWS.filter((n) => n.tag !== 'upcoming' && !isLiveNow(n)).sort((a, b) => dateNum(b) - dateNum(a))
+    const liveNow = NEWS.filter((n) => isLiveNow(n, today)).sort((a, b) => dateNum(b) - dateNum(a))
+    const upcoming = NEWS.filter((n) => n.tag === 'upcoming' && !isLiveNow(n, today)).sort((a, b) => dateNum(a) - dateNum(b))
+    const history = NEWS.filter((n) => n.tag !== 'upcoming' && !isLiveNow(n, today)).sort((a, b) => dateNum(b) - dateNum(a))
     const seen = new Set()
     let merged = [...liveNow, ...upcoming, ...live, ...history].filter((n) => {
       const k = (n._key || n.title).toLowerCase().trim()
@@ -61,6 +69,8 @@ export default function NewsFeed() {
     }
     return merged
   }, [live, filter, query])
+
+  const today = new Date().toISOString().slice(0, 10)
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
@@ -108,44 +118,71 @@ export default function NewsFeed() {
           // A known issue Epic has fixed: show a green "Resolved" badge instead
           // of the red "Known Issue" one (set `resolved: true` on the item).
           const resolved = n.tag === 'bug' && n.resolved
+          const live = isLiveNow(n, today)
+          // Thumbnail art: an explicit image, else a linked sprite's art, else a
+          // tag-coloured tile with the tag glyph.
+          const spriteObj = n.sprites?.[0] ? SPRITE_BY_ID[`${n.sprites[0]}_normal`] : null
           return (
             <a
-              key={n.ts}
+              key={`${n.ts}-${n.title}`}
               href={n.link}
               target="_blank"
               rel="noreferrer"
-              className="block rounded-xl bg-[var(--bg-2)] p-3 transition-colors hover:bg-[var(--panel-2)]"
+              className="group flex gap-3 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] p-3 transition-all hover:-translate-y-0.5 hover:bg-[var(--panel-2)]"
+              style={{ borderLeftWidth: '3px', borderLeftColor: tag.color }}
             >
-              <div className="mb-1 flex flex-wrap items-center gap-2">
-                {resolved ? (
-                  <span className="rounded bg-emerald-400/20 px-1.5 py-0.5 text-[10px] font-extrabold uppercase text-emerald-300" title={n.resolvedOn ? `Fixed in ${n.resolvedOn}` : 'Fixed by Epic'}>
-                    ✓ Resolved{n.resolvedOn ? ` · ${n.resolvedOn}` : ''}
-                  </span>
+              <div
+                className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg"
+                style={{ background: `linear-gradient(150deg, ${tag.color}33, ${tag.color}0f)` }}
+              >
+                {n.image ? (
+                  <img src={n.image} alt="" loading="lazy" className="h-full w-full object-cover" />
+                ) : spriteObj ? (
+                  <div className="sprite-art h-full w-full theme-normal" style={{ borderRadius: 0 }}>
+                    <SpriteArt sprite={spriteObj} />
+                  </div>
                 ) : (
-                  <span className="rounded px-1.5 py-0.5 text-[10px] font-extrabold uppercase text-black" style={{ background: tag.color }}>
-                    {tag.label}
+                  <span className="grid h-full w-full place-items-center text-2xl">{TAG_ICON[n.tag] || '📰'}</span>
+                )}
+                {live && (
+                  <span className="absolute left-1 top-1 flex items-center gap-1 rounded bg-red-500 px-1 py-0.5 text-[8px] font-extrabold uppercase text-white shadow">
+                    <span className="h-1 w-1 animate-pulse rounded-full bg-white" /> Live
                   </span>
                 )}
-                {n.tentative && (
-                  <span className="rounded bg-amber-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-amber-300" title="Date/details not yet confirmed by Epic">
-                    Tentative
-                  </span>
-                )}
-                <span className="text-[11px] font-semibold text-[var(--muted)]">{n.when}</span>
               </div>
-              <p className="text-sm font-bold text-white">{n.title}</p>
-              {n.body && <p className="mt-0.5 text-xs text-[var(--muted)]">{n.body}</p>}
-              {n.source && (
-                <p className="mt-1.5 flex items-center gap-1 text-[10px] font-semibold text-[var(--muted)]">
-                  <span>
-                    Source: {n.source}
-                    <span className={n.official ? 'text-emerald-300' : 'text-amber-300'}>
-                      {n.official ? ' · official' : ' · unofficial'}
+
+              <div className="min-w-0 flex-1">
+                <div className="mb-1 flex flex-wrap items-center gap-2">
+                  {resolved ? (
+                    <span className="rounded bg-emerald-400/20 px-1.5 py-0.5 text-[10px] font-extrabold uppercase text-emerald-300" title={n.resolvedOn ? `Fixed in ${n.resolvedOn}` : 'Fixed by Epic'}>
+                      ✓ Resolved{n.resolvedOn ? ` · ${n.resolvedOn}` : ''}
                     </span>
-                  </span>
-                  <span aria-hidden="true">· opens in a new tab ↗</span>
-                </p>
-              )}
+                  ) : (
+                    <span className="rounded px-1.5 py-0.5 text-[10px] font-extrabold uppercase text-black" style={{ background: tag.color }}>
+                      {tag.label}
+                    </span>
+                  )}
+                  {n.tentative && (
+                    <span className="rounded bg-amber-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-amber-300" title="Date/details not yet confirmed by Epic">
+                      Tentative
+                    </span>
+                  )}
+                  <span className="text-[11px] font-semibold text-[var(--muted)]">{n.when}</span>
+                </div>
+                <p className="text-sm font-bold leading-snug text-white">{n.title}</p>
+                {n.body && <p className="mt-0.5 text-xs leading-relaxed text-[var(--muted)]">{n.body}</p>}
+                {n.source && (
+                  <p className="mt-1.5 flex items-center gap-1 text-[10px] font-semibold text-[var(--muted)]">
+                    <span>
+                      Source: {n.source}
+                      <span className={n.official ? 'text-emerald-300' : 'text-amber-300'}>
+                        {n.official ? ' · official' : ' · unofficial'}
+                      </span>
+                    </span>
+                    <span aria-hidden="true">· opens in a new tab ↗</span>
+                  </p>
+                )}
+              </div>
             </a>
           )
         })}

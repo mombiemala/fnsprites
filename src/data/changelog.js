@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 30, 2026',
+    title: 'A more visual News feed',
+    summary:
+      'The News tab now leads each item with imagery — the relevant Sprite’s art or a category tile — plus a live-event badge and colour-coded accents.',
+    changes: [
+      { tag: 'Changed', text: 'News cards now show a thumbnail: the linked Sprite’s art where it fits, otherwise a tag-coloured tile with the category glyph. Added a coloured accent bar per category, a pulsing “LIVE” badge on events running right now, and a subtle hover lift.' },
+      { tag: 'Added', text: 'News entries can carry an `image` URL or a `sprites: [ids]` link, so an item pulls in real Sprite art (e.g. the New Sprite Day post shows the Zero Point Sprite).' },
+    ],
+    why:
+      'The feed was a wall of text. Leading each card with an image — mostly reusing Sprite art the app already has — makes it scannable and lively without external video embeds (which would add weight and cross-origin requests).',
+  },
+  {
+    date: 'July 30, 2026',
     title: 'Flagged the vaulted Sprites (Ironmouse & Gem Grim)',
     summary:
       'Epic pulled the Ironmouse Sprite and the Gem Grim variant the same day they launched — the tracker now flags them “Vaulted” instead of showing them as freely collectible.',
