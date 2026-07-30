@@ -9,6 +9,17 @@ const selectCls =
 const fmt = (n) => (typeof n === 'number' ? n.toLocaleString() : n)
 const pct = (n) => `${(Math.round(n * 10) / 10).toFixed(1)}%`
 
+// Well-known players to seed the empty state — one tap prefills + runs the lookup
+// so the tab is useful before you've typed anything.
+const EXAMPLES = [
+  { name: 'Ninja', type: 'epic', emoji: '🥷' },
+  { name: 'Bugha', type: 'epic', emoji: '🏆' },
+  { name: 'SypherPK', type: 'epic', emoji: '🎯' },
+  { name: 'Clix', type: 'epic', emoji: '⚡' },
+]
+// The metrics a lookup fills in — shown ghosted before a search as a preview.
+const PREVIEW_TILES = ['Wins', 'Win rate', 'K/D', 'Kills', 'Matches', 'Top 10', 'Top 25', 'Hours played']
+
 function Tile({ label, value, hint }) {
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-3" title={hint || label}>
@@ -123,11 +134,43 @@ export default function StatsTab() {
       )}
 
       {!error && !stats && !loading && (
-        <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-8 text-center text-sm text-[var(--muted)]">
-          Enter an Epic display name above to see wins, K/D, matches and more.
-          {user
-            ? ' Tip: save your Epic account in your Profile and it’ll load here automatically.'
-            : ' Log in and save your Epic account to have it auto-load every time.'}
+        <div className="space-y-4">
+          {/* Try an example — one tap runs a real lookup */}
+          <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
+            <p className="text-sm text-[var(--muted)]">Not sure where to start? Tap a pro to see it in action:</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {EXAMPLES.map((ex) => (
+                <button
+                  key={ex.name}
+                  onClick={() => { setName(ex.name); setAccountType(ex.type); runWith(ex.name, ex.type) }}
+                  title={`Look up ${ex.name}'s stats`}
+                  className="rounded-full bg-[var(--panel-2)] px-3.5 py-1.5 text-xs font-bold text-white transition-colors hover:bg-[var(--border)]"
+                >
+                  {ex.emoji} {ex.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Ghosted preview of the metrics a lookup fills in */}
+          <div>
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">What you’ll see</p>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4" aria-hidden="true">
+              {PREVIEW_TILES.map((t) => (
+                <div key={t} className="rounded-2xl border border-dashed border-[var(--border)] bg-[var(--panel)]/40 p-3">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">{t}</p>
+                  <p className="mt-1 font-display text-2xl leading-none text-[var(--muted)]/40">—</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <p className="text-center text-xs text-[var(--muted)]">
+            Or enter any Epic display name above.{' '}
+            {user
+              ? 'Tip: save your Epic account in your Profile and it’ll load here automatically.'
+              : 'Log in and save your Epic account to have it auto-load every time.'}
+          </p>
         </div>
       )}
 

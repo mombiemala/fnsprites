@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 29, 2026',
+    title: 'A more visual Player Stats empty state',
+    summary:
+      'Before you search, the Player Stats tab now shows tap-to-try example players and a preview of the metrics you’ll get — instead of a single line of text.',
+    changes: [
+      { tag: 'Added', text: 'A “tap a pro” row (Ninja, Bugha, SypherPK, Clix) on the empty Stats tab — one tap prefills and runs the lookup so you can see the feature immediately.' },
+      { tag: 'Added', text: 'A ghosted “What you’ll see” preview grid (Wins, Win rate, K/D, Kills, Matches, Top 10, Top 25, Hours) so the tab isn’t empty before a search.' },
+    ],
+    why:
+      'The Stats tab was a single sentence until you searched, which read as unfinished. Showing what a lookup returns — and letting people try one in a tap — makes the feature discoverable and the page feel alive from the first visit.',
+  },
+  {
+    date: 'July 29, 2026',
     title: 'Sprite popup links to the full Sprite page',
     summary:
       'Opening a released Sprite’s detail popup now offers a link straight to its full page (drop rate, Dust, chest odds & FAQ).',
