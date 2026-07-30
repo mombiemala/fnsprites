@@ -65,6 +65,14 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                     Rumored
                   </span>
                 )}
+                {type.vaulted && (
+                  <span
+                    title="Launched then pulled by Epic — currently unavailable (owners keep it)"
+                    className="rounded bg-red-500/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-red-300"
+                  >
+                    Vaulted
+                  </span>
+                )}
               </div>
             </div>
           </div>
@@ -132,7 +140,9 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-1.5">
                     <span className="text-sm font-bold text-white">{theme?.name}</span>
-                    {v.unreleased && (
+                    {v.vaulted ? (
+                      <span title="Vaulted — currently unavailable" className="rounded bg-red-500/15 px-1 py-0.5 text-[9px] font-bold uppercase text-red-300">vaulted</span>
+                    ) : v.unreleased && (
                       <span className="rounded bg-black/40 px-1 py-0.5 text-[9px] font-bold uppercase text-white/60">soon</span>
                     )}
                     {dust != null && (

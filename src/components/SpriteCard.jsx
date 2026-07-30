@@ -28,7 +28,11 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
             ★
           </span>
         )}
-        {sprite.unreleased && (
+        {sprite.vaulted ? (
+          <span title="Vaulted — currently unavailable" className="absolute left-1 top-1 z-[3] rounded bg-red-500/80 px-1 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
+            vaulted
+          </span>
+        ) : sprite.unreleased && (
           <span className="absolute left-1 top-1 z-[3] rounded bg-black/60 px-1 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white/80">
             soon
           </span>

@@ -77,6 +77,8 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: R, quack: U } },
   { id: 'grim', name: 'Grim Reaper', icon: '💀', rarity: 'Mythic', dropRate: '0.000098%', released: true,
     ability: 'Marks the location of any enemy who damages you. Spawns almost exclusively from Sprite Chests.',
+    // The Gem variant launched with v41.30 then was vaulted the same day (Jul 30).
+    vaultedForms: ['gem'],
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: R, cube: R, quack: U } },
 
   // ---- Added in the Jul 30, 2026 update (v41.30 New Sprite Day) ----
@@ -89,8 +91,8 @@ export const SPRITE_TYPES = [
     // Legendary tier, but reported to drop fairly often (unlike most Legendaries).
     ability: 'Opening ammo boxes has a chance to grant a weapon upgrade — the chance grows each level (5% → 10% → 15% → 17% → 20% at Lv 5).',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: R, cube: U } },
-  { id: 'ironmouse', name: 'Ironmouse', icon: '🐭', rarity: 'Mythic', dropRate: null, released: true,
-    ability: 'When your health drops critically low, regenerate over time while gaining Cloak and low gravity — health restored grows each level (60 → 70 → 80 → 90 → 100 HP at Lv 5). VTuber collab.',
+  { id: 'ironmouse', name: 'Ironmouse', icon: '🐭', rarity: 'Mythic', dropRate: null, released: true, vaulted: true,
+    ability: 'Found in Relic Chests: when your health drops critically low, regenerate over time while gaining Cloak and low gravity — health restored grows each level (60 → 70 → 80 → 90 → 100 HP at Lv 5). VTuber collab. Vaulted shortly after the v41.30 launch (Jul 30) — currently unavailable.',
     variants: { normal: R } },
 
   // ---- Datamined / upcoming (NOT yet released). `rumored` = leaked/unconfirmed;
@@ -230,6 +232,10 @@ export function buildSpriteList() {
         // only when the sprite type itself is released.
         released: type.released && (variantReleased || formLive(themeId)),
         unreleased: !(type.released && (variantReleased || formLive(themeId))),
+        // Vaulted = launched then pulled by Epic (whole type, or a specific form).
+        // It still shows (owners keep it) but wears a "Vaulted" badge and isn't
+        // currently obtainable.
+        vaulted: !!(type.vaulted || type.vaultedForms?.includes(themeId)),
       })
     }
   }

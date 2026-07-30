@@ -216,7 +216,7 @@ function spritePage(type, others) {
 
   const variants = Object.keys(type.variants)
     .filter((tid) => THEME_MAP[tid])
-    .map((tid) => ({ tid, name: THEME_MAP[tid].name, bonus: THEME_MAP[tid].bonus, released: !!SPRITE_BY_ID[`${type.id}_${tid}`]?.released }))
+    .map((tid) => ({ tid, name: THEME_MAP[tid].name, bonus: THEME_MAP[tid].bonus, released: !!SPRITE_BY_ID[`${type.id}_${tid}`]?.released, vaulted: !!SPRITE_BY_ID[`${type.id}_${tid}`]?.vaulted }))
 
   const desc = `${name} is a ${type.rarity} Fortnite Sprite${p ? ` with about a ${type.dropRate} drop rate from Sprite Chests` : ''}. See its ${p ? 'drop rate, ' : ''}re-summon Dust cost, ability, variants${p ? ', and how many chests it takes to get one' : ''}.`
   const title = `${name} Sprite — ${p ? 'Drop Rate, ' : ''}Dust Cost & How to Get | FN Sprite Tracker`
@@ -266,7 +266,7 @@ function spritePage(type, others) {
 <section class="hero" style="background:linear-gradient(135deg,${tint}22,var(--panel))">
   <div class="avatar" style="background:${VARIANT_BG.normal}"><span class="avfallback">${esc(type.icon || '🧩')}</span><img class="art" src="/sprites/${type.id}_normal.png" alt="${esc(name)} Sprite (Normal)" onerror="this.style.display='none'"></div>
   <div><h1>${esc(name)} Sprite</h1>
-    <div class="tags"><span class="tag" style="background:${tint};color:#0a0606;border-color:transparent">${esc(type.rarity)}</span>${tier ? `<span class="tag">${tier}-Tier</span>` : ''}${type.released ? '' : '<span class="tag">Upcoming</span>'}</div>
+    <div class="tags"><span class="tag" style="background:${tint};color:#0a0606;border-color:transparent">${esc(type.rarity)}</span>${tier ? `<span class="tag">${tier}-Tier</span>` : ''}${type.vaulted ? '<span class="tag" style="background:#ef444422;color:#fca5a5;border-color:transparent">Vaulted</span>' : ''}${type.released ? '' : '<span class="tag">Upcoming</span>'}</div>
     <p class="lede">${esc(desc)}</p></div>
 </section>
 <div class="stats">${stats.map(([n, l]) => `<div class="stat"><div class="n">${esc(n)}</div><div class="l">${esc(l)}</div></div>`).join('')}</div>
@@ -279,7 +279,7 @@ ${oddsTable}
 ${type.ability ? `<h2>Ability &amp; leveling</h2><div class="card"><p style="margin:0">${esc(type.ability)}${scaling ? ` <span style="color:var(--muted)">${esc(scaling)}</span>` : ''} Reaches full effect at <b>Level 5 (Mastered)</b>. Community-reported — Epic doesn't publish exact figures.</p></div>` : ''}
 
 <h2>${esc(name)} variants</h2>
-<div class="variants">${variants.map((v) => `<div class="variant"><div class="sw" style="background:${VARIANT_BG[v.tid] || VARIANT_BG.normal}"><span class="swfallback">${esc(type.icon || '🧩')}</span><img src="/sprites/${type.id}_${v.tid}.png" alt="${esc(name)} ${esc(v.name)}" loading="lazy" onerror="this.style.display='none'"></div>${esc(v.name)}<small>${v.released ? 'Available' : 'Coming soon'}</small></div>`).join('')}</div>
+<div class="variants">${variants.map((v) => `<div class="variant"><div class="sw" style="background:${VARIANT_BG[v.tid] || VARIANT_BG.normal}"><span class="swfallback">${esc(type.icon || '🧩')}</span><img src="/sprites/${type.id}_${v.tid}.png" alt="${esc(name)} ${esc(v.name)}" loading="lazy" onerror="this.style.display='none'"></div>${esc(v.name)}<small${v.vaulted ? ' style="color:#fca5a5"' : ''}>${v.vaulted ? 'Vaulted' : v.released ? 'Available' : 'Coming soon'}</small></div>`).join('')}</div>
 
 <h2>${esc(name)} FAQ</h2>
 ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
@@ -379,7 +379,7 @@ function indexPage(types) {
 <div class="cols">
   <div class="main">
     <h1 class="sr-only">All Fortnite Sprites</h1>
-${byRarity.map((g) => `    <h2>${g.r} sprites</h2><div class="grid">${g.items.map((t) => `<a class="tile" href="/sprite/${slug(t.name)}"><span class="ic" style="background:${VARIANT_BG.normal}"><span class="icfallback">${esc(t.icon || '🧩')}</span><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span><b>${esc(t.name)}</b><br><small style="color:var(--muted)">${esc(t.rarity)}${t.dropRate ? ` · ${esc(t.dropRate)}` : ''}</small></span></a>`).join('')}</div>`).join('\n')}
+${byRarity.map((g) => `    <h2>${g.r} sprites</h2><div class="grid">${g.items.map((t) => `<a class="tile" href="/sprite/${slug(t.name)}"><span class="ic" style="background:${VARIANT_BG.normal}"><span class="icfallback">${esc(t.icon || '🧩')}</span><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span><b>${esc(t.name)}</b><br><small style="color:var(--muted)">${esc(t.rarity)}${t.dropRate ? ` · ${esc(t.dropRate)}` : ''}${t.vaulted ? ' · <span style="color:#fca5a5;font-weight:700">Vaulted</span>' : ''}</small></span></a>`).join('')}</div>`).join('\n')}
   </div>
   <aside class="side">
     ${guideCard()}

@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 30, 2026',
+    title: 'Flagged the vaulted Sprites (Ironmouse & Gem Grim)',
+    summary:
+      'Epic pulled the Ironmouse Sprite and the Gem Grim variant the same day they launched — the tracker now flags them “Vaulted” instead of showing them as freely collectible.',
+    changes: [
+      { tag: 'Added', text: 'A “Vaulted” state + badge for a Sprite (or a specific variant) that Epic launched then pulled. Ironmouse and Grim’s Gem variant now show a red Vaulted badge across the grid, the detail popup and the sprite pages.' },
+      { tag: 'Changed', text: 'Ironmouse’s “where to find” now notes Relic Chests and the vaulting; added a news entry for it.' },
+    ],
+    why:
+      'HYPEX reported both were vaulted within hours of the v41.30 launch. Owners keep what they extracted, so the Sprites stay visible in the tracker — but clearly labelled as currently unavailable rather than collectible.',
+  },
+  {
+    date: 'July 30, 2026',
     title: 'v41.30 corrected to the real 20-Sprite drop (Ironmouse added, abilities fixed)',
     summary:
       'Reconciled the roster with the confirmed v41.30 list of 20 new Sprites — added the Ironmouse collab, fixed the Peely/Llama ability mix-up, and trimmed the variants that were pre-launch speculation, so the count matches the game’s 111.',
