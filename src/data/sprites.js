@@ -82,10 +82,11 @@ export const SPRITE_TYPES = [
   // ---- Added in the Jul 30, 2026 update (v41.30 New Sprite Day) ----
   //      Rarity/drop rate are community estimates pending Epic's confirmation;
   //      variant lines beyond Normal roll out over the coming weeks.
-  { id: 'peely', name: 'Peely', icon: '🍌', rarity: 'Legendary', dropRate: null, released: true,
+  { id: 'peely', name: 'Peeky Peely', icon: '🍌', rarity: 'Legendary', dropRate: null, released: true,
     ability: 'Gives a chance to upgrade weapons you pull from ammo boxes.',
     variants: { normal: R, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U } },
-  { id: 'llama', name: 'Loot Llama', icon: '🦙', rarity: 'Legendary', dropRate: null, released: true,
+  { id: 'llama', name: 'Lootin’ Llama', icon: '🦙', rarity: 'Legendary', dropRate: null, released: true,
+    // Legendary tier, but reported to drop fairly often (unlike most Legendaries).
     ability: 'Pings nearby rare Sprites on the map.',
     variants: { normal: R, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U } },
 

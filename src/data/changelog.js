@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 30, 2026',
+    title: 'v41.30 follow-ups: correct Sprite names + graceful art fallback',
+    summary:
+      'Fixed the two new Sprites’ names to their in-game ones and made sprite pages fall back to a glyph when a Sprite’s art image hasn’t been added yet.',
+    changes: [
+      { tag: 'Changed', text: 'The two new Sprites are now named Peeky Peely and Lootin’ Llama (their official in-game names) — both confirmed Legendary. Loot Llama actually drops fairly often despite the tier.' },
+      { tag: 'Fixed', text: 'On the sprite pages, a Sprite whose art hasn’t been added yet now shows its glyph on the themed tile (matching the app) instead of a blank avatar — so the newest Sprites don’t look broken while their images are pending.' },
+    ],
+    why:
+      'Community sources settled on “Peeky Peely” / “Lootin’ Llama,” so the tracker should match. And the static sprite pages hid missing images entirely (blank), unlike the app which draws a procedural glyph — the fallback closes that gap until official art is dropped into public/sprites/.',
+  },
+  {
+    date: 'July 30, 2026',
     title: 'New Sprite Day is LIVE — v41.30: Peely, Loot Llama, Quack Zero Point + the Gem wave',
     summary:
       'The v41.30 New Sprite Day drop is in the tracker: two new Sprites, the exclusive Quack Zero Point, a seven-strong Gem variant wave, and the John Wick / Spider-Man collabs — plus the Springfield Reloaded and Web-Shooter Power Hour events.',

@@ -105,7 +105,8 @@ details.gd summary{font-size:13px;font-weight:700;padding:10px 0}details.gd p{fo
 .supportcard .bmc{display:block;text-align:center;margin-top:10px;background:#FFDD00;color:#000;font-weight:800;padding:10px;border-radius:10px}
 .hero{display:flex;gap:22px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px}
 .avatar{width:108px;height:108px;border-radius:16px;display:grid;place-items:center;font-size:54px;flex:0 0 auto;border:1px solid var(--border);position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
-.avatar .art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.avatar .art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1}
+.avatar .avfallback{position:absolute;inset:0;display:grid;place-items:center;font-size:54px;z-index:0}
 h1{margin:0;font-family:'Luckiest Guy','Inter',sans-serif;font-weight:400;font-size:36px;letter-spacing:.02em;line-height:1.1}
 .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .tag{font-size:12px;font-weight:800;padding:4px 12px;border-radius:999px;border:1px solid var(--border);background:var(--panel2)}
@@ -121,7 +122,7 @@ th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06
 .variants{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
 .variant{background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;font-size:12px}
 .variant .sw{width:64px;height:64px;border-radius:12px;margin:0 auto 6px;overflow:hidden;position:relative}
-.variant .sw img{width:100%;height:100%;object-fit:contain}.variant small{color:var(--muted);display:block;font-size:10px}
+.variant .sw img{width:100%;height:100%;object-fit:contain;position:relative;z-index:1}.variant .sw .swfallback{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;z-index:0}.variant small{color:var(--muted);display:block;font-size:10px}
 details{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:2px 16px;margin-bottom:8px}
 summary{cursor:pointer;font-weight:700;padding:13px 0}details p{margin:0 0 12px;max-width:none}
 .related{display:flex;gap:10px;flex-wrap:wrap}.related a{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:9px 13px;font-weight:700;font-size:14px;color:var(--text);transition:border-color .15s}
@@ -137,7 +138,7 @@ footer.foot{margin-top:48px;border-top:1px solid var(--border);padding-top:24px;
 .tile{display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:12px;color:var(--text);transition:border-color .15s}
 .tile:hover{border-color:var(--brand)}
 .tile .ic{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-size:24px;flex:0 0 auto;overflow:hidden}
-.tile .ic img{width:100%;height:100%;object-fit:contain}
+.tile .ic{position:relative}.tile .ic img{width:100%;height:100%;object-fit:contain;position:relative;z-index:1}.tile .ic .icfallback{position:absolute;inset:0;display:grid;place-items:center;font-size:24px;z-index:0}
 .guide{display:grid;gap:10px;margin:0 0 8px}
 .guide .card h3{font-family:'Inter',sans-serif;font-size:15px;font-weight:800;color:var(--brand);letter-spacing:0;margin:0 0 6px}
 .guide .card p{margin:0 0 8px;max-width:none}.guide .card p:last-child{margin-bottom:0}.guide .card b{color:#fff}
@@ -263,7 +264,7 @@ function spritePage(type, others) {
 
   return head({ title, desc, canonical: url, jsonld, ogImage: `${SITE}/api/og?sprite=${encodeURIComponent(type.id)}` }) + `
 <section class="hero" style="background:linear-gradient(135deg,${tint}22,var(--panel))">
-  <div class="avatar" style="background:${VARIANT_BG.normal}"><img class="art" src="/sprites/${type.id}_normal.png" alt="${esc(name)} Sprite (Normal)" onerror="this.style.display='none'"></div>
+  <div class="avatar" style="background:${VARIANT_BG.normal}"><span class="avfallback">${esc(type.icon || '🧩')}</span><img class="art" src="/sprites/${type.id}_normal.png" alt="${esc(name)} Sprite (Normal)" onerror="this.style.display='none'"></div>
   <div><h1>${esc(name)} Sprite</h1>
     <div class="tags"><span class="tag" style="background:${tint};color:#0a0606;border-color:transparent">${esc(type.rarity)}</span>${tier ? `<span class="tag">${tier}-Tier</span>` : ''}${type.released ? '' : '<span class="tag">Upcoming</span>'}</div>
     <p class="lede">${esc(desc)}</p></div>
@@ -278,7 +279,7 @@ ${oddsTable}
 ${type.ability ? `<h2>Ability &amp; leveling</h2><div class="card"><p style="margin:0">${esc(type.ability)}${scaling ? ` <span style="color:var(--muted)">${esc(scaling)}</span>` : ''} Reaches full effect at <b>Level 5 (Mastered)</b>. Community-reported — Epic doesn't publish exact figures.</p></div>` : ''}
 
 <h2>${esc(name)} variants</h2>
-<div class="variants">${variants.map((v) => `<div class="variant"><div class="sw" style="background:${VARIANT_BG[v.tid] || VARIANT_BG.normal}"><img src="/sprites/${type.id}_${v.tid}.png" alt="${esc(name)} ${esc(v.name)}" loading="lazy" onerror="this.style.display='none'"></div>${esc(v.name)}<small>${v.released ? 'Available' : 'Coming soon'}</small></div>`).join('')}</div>
+<div class="variants">${variants.map((v) => `<div class="variant"><div class="sw" style="background:${VARIANT_BG[v.tid] || VARIANT_BG.normal}"><span class="swfallback">${esc(type.icon || '🧩')}</span><img src="/sprites/${type.id}_${v.tid}.png" alt="${esc(name)} ${esc(v.name)}" loading="lazy" onerror="this.style.display='none'"></div>${esc(v.name)}<small>${v.released ? 'Available' : 'Coming soon'}</small></div>`).join('')}</div>
 
 <h2>${esc(name)} FAQ</h2>
 ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
@@ -378,7 +379,7 @@ function indexPage(types) {
 <div class="cols">
   <div class="main">
     <h1 class="sr-only">All Fortnite Sprites</h1>
-${byRarity.map((g) => `    <h2>${g.r} sprites</h2><div class="grid">${g.items.map((t) => `<a class="tile" href="/sprite/${slug(t.name)}"><span class="ic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span><b>${esc(t.name)}</b><br><small style="color:var(--muted)">${esc(t.rarity)}${t.dropRate ? ` · ${esc(t.dropRate)}` : ''}</small></span></a>`).join('')}</div>`).join('\n')}
+${byRarity.map((g) => `    <h2>${g.r} sprites</h2><div class="grid">${g.items.map((t) => `<a class="tile" href="/sprite/${slug(t.name)}"><span class="ic" style="background:${VARIANT_BG.normal}"><span class="icfallback">${esc(t.icon || '🧩')}</span><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span><b>${esc(t.name)}</b><br><small style="color:var(--muted)">${esc(t.rarity)}${t.dropRate ? ` · ${esc(t.dropRate)}` : ''}</small></span></a>`).join('')}</div>`).join('\n')}
   </div>
   <aside class="side">
     ${guideCard()}
