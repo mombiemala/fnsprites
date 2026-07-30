@@ -1,0 +1,25 @@
+{
+  "//": "Paste an image URL for each key, then run: npm run fetch:art",
+  "//how": "Keys are <typeId>_<theme>. Empty values and // keys are skipped. Regenerate this list any time with: npm run art:missing",
+  "//note": "Use clean, ideally already-transparent art (Epic's official art with the background removed for collabs; your Gemini exports for abstract finishes). The script normalizes to 512x512 PNG but does NOT remove backgrounds.",
+
+  "peely_normal": "",
+  "peely_gold": "",
+  "peely_gummy": "",
+  "peely_galaxy": "",
+  "peely_gem": "",
+  "peely_holofoil": "",
+
+  "llama_normal": "",
+  "llama_gold": "",
+  "llama_gummy": "",
+  "llama_galaxy": "",
+  "llama_gem": "",
+  "llama_holofoil": "",
+
+  "ironmouse_normal": "",
+  "spiderman_normal": "",
+
+  "grim_gem": "",
+  "aura_gem": ""
+}
