@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Roster corrections: no Peely Gem or Llama Holofoil; Spider-Man still unreleased
+
+- **Fixed:** removed the Peely Gem and Lootin' Llama Holofoil variants — neither exists
+  in-game.
+- **Fixed:** Spider-Man no longer shows as released — cleared its July 30 release date (it
+  hadn't actually dropped), so it reads as unreleased/rumored again.
+- **Why:** Epic's official icon set made clear those two finishes were never real, and
+  Spider-Man missed its expected window — the count is back to the confirmed 111.
+
+---
+
 ## July 31, 2026 — Aura's Gem art added
 
 - **Added:** real art for Aura's Gem finish (`aura_gem`) — the hooded, glowing-eyed Aura

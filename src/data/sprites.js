@@ -86,11 +86,11 @@ export const SPRITE_TYPES = [
   //      variant lines beyond Normal roll out over the coming weeks.
   { id: 'peely', name: 'Peeky Peely', icon: '🍌', rarity: 'Legendary', dropRate: null, released: true,
     ability: 'Emits a ping that reveals players carrying rare Sprites nearby — but marks you on the map too. Ping radius grows each level (40 → 50 → 60 → 70 → 80m at Lv 5).',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: R, cube: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: U } },
   { id: 'llama', name: 'Lootin’ Llama', icon: '🦙', rarity: 'Legendary', dropRate: null, released: true,
     // Legendary tier, but reported to drop fairly often (unlike most Legendaries).
     ability: 'Opening ammo boxes has a chance to grant a weapon upgrade — the chance grows each level (5% → 10% → 15% → 17% → 20% at Lv 5).',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: R, cube: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, cube: U } },
   { id: 'ironmouse', name: 'Ironmouse', icon: '🐭', rarity: 'Mythic', dropRate: null, released: true, vaulted: true,
     ability: 'Found in Relic Chests: when your health drops critically low, regenerate over time while gaining Cloak and low gravity — health restored grows each level (60 → 70 → 80 → 90 → 100 HP at Lv 5). VTuber collab. Vaulted shortly after the v41.30 launch (Jul 30) — currently unavailable.',
     variants: { normal: R } },
@@ -115,8 +115,8 @@ export const SPRITE_TYPES = [
   { id: 'batman', name: 'Batman', icon: '🦇', rarity: 'Mythic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
     ability: 'Deploy the Bat Cape midair for a glide / slow descent. DC “Hot Bat Summer” collab Sprite (Mythic), in Gold, Gummy, Galaxy & Holofoil, plus a Cube variant from New Sprite Day (Jul 23). Live in the Jul 16 (v41.20) update.',
     variants: { normal: U, gold: U, gummy: U, galaxy: U, holofoil: U, cube: R } },
-  { id: 'spiderman', name: 'Spider-Man', icon: '🕷️', rarity: 'Legendary', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-30',
-    ability: 'Datamined Marvel collab Sprite — leaked “Sprite Net” tags point to web-swinging mobility. Expected with v41.30 on Jul 30, timed to the Spider-Man: Brand New Day film. Rarity shown is a best-guess placeholder — Epic hasn’t confirmed its tier, ability or drop rate.',
+  { id: 'spiderman', name: 'Spider-Man', icon: '🕷️', rarity: 'Legendary', dropRate: null, released: false, rumored: true,
+    ability: 'Datamined Marvel collab Sprite — leaked “Sprite Net” tags point to web-swinging mobility. Not released yet; was expected around v41.30 (timed to the Spider-Man: Brand New Day film) but hasn’t dropped. Rarity shown is a best-guess placeholder — Epic hasn’t confirmed its tier, ability or drop rate.',
     variants: { normal: U } },
   // Collab Mythics — live in v41.20 (Jul 16), found in Sprite Chests. Normal-only
   // for now (no Gold/Gummy/Galaxy/Holofoil line yet), like Burnt Peanut.

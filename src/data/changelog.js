@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Roster corrections: no Peely Gem or Llama Holofoil; Spider-Man still unreleased',
+    summary:
+      'Trimmed two finishes that don\u2019t actually exist and stopped showing Spider-Man as live, so the roster matches the game (111).',
+    changes: [
+      { tag: 'Fixed', text: 'Removed the Peely Gem and Lootin\u2019 Llama Holofoil variants \u2014 neither exists in-game.' },
+      { tag: 'Fixed', text: 'Spider-Man no longer shows as released: cleared its July 30 release date (it hadn\u2019t actually dropped), so it reads as an unreleased/rumored Sprite again.' },
+    ],
+    why:
+      'With Epic\u2019s official icon set in hand it\u2019s clear those two finishes were never real, and Spider-Man missed its expected window \u2014 the count is back to the confirmed 111 released Sprites.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Aura\u2019s Gem art added',
     summary:
       'Filled the last confirmed Gem gap with Epic\u2019s official Aura Gem art.',
