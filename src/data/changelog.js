@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'News now has its own SEO page (/news)',
+    summary:
+      'Added a crawlable /news page — the curated Fortnite news feed, prerendered and styled like /sprites, with client-side tag filters and search.',
+    changes: [
+      { tag: 'Added', text: 'A static /news page (build-time prerender) that mirrors the in-app News feed: every curated item ordered live-now → upcoming → history, as real HTML with per-source attribution, tag chips (Sprites / Update / Event / Upcoming / Known Issue) and a search box — all filtering client-side. It shares the app’s header, footer and sidebar (Upcoming & leaked, Support).' },
+      { tag: 'Changed', text: 'The News nav link on the static SEO pages now points at /news (instead of deep-linking into the app), and /news is in the sitemap. The prerender nav marks the current section active per page (Sprites vs News).' },
+    ],
+    why:
+      'People search for “Fortnite sprite news / patch notes / event times,” and the in-app feed rendered client-side — invisible to crawlers. The news data was already static, so prerendering it is low-effort, high-return SEO. Stats/Leaderboard stay app-only (personalized/volatile), and Item Shop is held back until a live rebuild can keep a static snapshot honest.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Cosmetics is a full tab now (not a pop-up)',
     summary:
       'The Cosmetics browser moved out of a modal and into a proper tab — laid out like the Item Shop, with name search, rarity/type filters and a wishlist-only toggle.',

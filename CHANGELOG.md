@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — News now has its own SEO page (/news)
+
+- **Added:** a static, prerendered `/news` page (`scripts/prerender.mjs`) mirroring the in-app
+  News feed — every curated item ordered live-now → upcoming → history, as crawlable HTML with
+  source attribution, tag chips (Sprites / Update / Event / Upcoming / Known Issue) and a search
+  box, all filtering client-side (inline JS, like the `/sprites` board). Shares the site header,
+  footer and sidebar (Upcoming & leaked, Support).
+- **Changed:** the `head()` nav is parameterized (`active`) so each prerendered page marks its own
+  section; the News link on the SEO pages now points to `/news`, and `/news` replaced `/?view=news`
+  in the sitemap.
+- **Why:** "Fortnite sprite news / patch notes / event times" are real searches, but the in-app
+  feed renders client-side (invisible to crawlers). The news data is already static, so this is
+  low-effort, high-return SEO. Stats/Leaderboard stay app-only (personalized/volatile); Item Shop
+  waits until a live rebuild can keep a static snapshot honest.
+
 ## July 31, 2026 — Cosmetics is a full tab now (not a pop-up)
 
 - **Changed:** the Cosmetics browser moved from a modal (`CosmeticsModal.jsx`, removed) into a

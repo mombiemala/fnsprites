@@ -17,6 +17,7 @@ import {
 } from '../src/data/sprites.js'
 import { THEME_MAP, FINISH_ODDS_FACTOR } from '../src/data/themes.js'
 import { SPRITE_GUIDE } from '../src/data/spriteGuide.js'
+import { NEWS, NEWS_TAGS } from '../src/data/news.js'
 
 const SITE = 'https://fnsprites.vercel.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -181,6 +182,33 @@ footer.foot{margin-top:48px;border-top:1px solid var(--border);padding-top:24px;
 @media(min-width:640px){.grow .src{grid-column:auto;margin:0}}
 .board .empty{display:none;text-align:center;padding:16px;border-radius:12px;background:var(--bg2);color:var(--muted);font-size:13px}
 .board .fine{margin:12px 0 0;font-size:10.5px;line-height:1.5;color:var(--muted)}
+/* /news feed — mirrors the in-app NewsFeed: tag chips + search over card rows. */
+.nf .bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 10px}
+.nf .search{position:relative;flex:1 1 100%}
+.nf .search input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:9px 12px 9px 34px;color:#fff;font-size:14px;font-family:inherit}
+.nf .search input::placeholder{color:var(--muted)}.nf .search input:focus{outline:none;border-color:var(--brand)}
+.nf .search .mag{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px}
+.nf .segs{display:flex;flex-wrap:wrap;gap:4px}
+.nf .seg{background:var(--panel2);color:var(--muted);border:0;border-radius:999px;padding:5px 11px;font-size:11px;font-weight:800;cursor:pointer;font-family:inherit}
+.nf .seg:hover{color:#fff}.nf .seg.on{background:var(--sc);color:#000}
+.nf .list{display:flex;flex-direction:column;gap:8px}
+.ncard{display:flex;gap:12px;background:var(--bg2);border:1px solid var(--border);border-left-width:3px;border-radius:12px;padding:12px;color:inherit;transition:transform .15s,background .15s}
+.ncard:hover{transform:translateY(-2px);background:var(--panel2)}
+.ncard .thumb{position:relative;width:64px;height:64px;flex:0 0 auto;border-radius:10px;overflow:hidden;display:grid;place-items:center;font-size:26px}
+.ncard .thumb img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1}
+.ncard .thumb .live{position:absolute;left:4px;top:4px;z-index:2;background:#ef4444;color:#fff;font-size:8px;font-weight:800;text-transform:uppercase;padding:2px 4px;border-radius:4px;letter-spacing:.04em}
+.ncard .meta{min-width:0;flex:1}
+.ncard .tgs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:4px}
+.ncard .tg{font-size:10px;font-weight:800;text-transform:uppercase;color:#000;padding:1px 6px;border-radius:4px}
+.ncard .tent{font-size:10px;font-weight:800;text-transform:uppercase;color:#fcd34d;background:rgba(245,158,11,.16);padding:1px 6px;border-radius:4px}
+.ncard .res{font-size:10px;font-weight:800;text-transform:uppercase;color:#6ee7b7;background:rgba(52,211,153,.18);padding:1px 6px;border-radius:4px}
+.ncard .when{font-size:11px;font-weight:700;color:var(--muted)}
+.ncard h3{font-size:14px;font-weight:800;color:#fff;margin:0;line-height:1.3}
+.ncard .bd{font-size:12px;color:var(--muted);margin:3px 0 0;max-width:none;line-height:1.5}
+.ncard .src{font-size:10px;font-weight:700;color:var(--muted);margin-top:6px}
+.ncard .src .off{color:#6ee7b7}.ncard .src .un{color:#fcd34d}
+.nf .empty{display:none;text-align:center;padding:16px;border-radius:12px;background:var(--bg2);color:var(--muted);font-size:13px}
+.nf .fine{margin:12px 0 0;font-size:10.5px;line-height:1.5;color:var(--muted)}
 @media(min-width:640px){.wrap{padding:24px 24px 96px}.logo{gap:10px}.logo .mark-sm{width:36px;height:36px}.logo .wm{font-size:36px}.tagline{font-size:14px}}
 @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.hero{flex-direction:column;text-align:center}h1{font-size:28px}.avatar{width:92px;height:92px}.tags{justify-content:center}}
 `
@@ -188,7 +216,19 @@ footer.foot{margin-top:48px;border-top:1px solid var(--border);padding-top:24px;
 // The shared sprite logomark (mirrors src/components/Logo.jsx).
 const MARK = `<svg class="mark-sm" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="smg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#36c5ff"/><stop offset="1" stop-color="#7b61ff"/></linearGradient></defs><rect x="8" y="8" width="84" height="84" rx="26" fill="url(#smg)"/><circle cx="50" cy="15" r="5" fill="#eafcff"/><rect x="48" y="15" width="4" height="10" fill="#eafcff"/><circle cx="38" cy="50" r="9" fill="#0c1330"/><circle cx="41" cy="47" r="3" fill="#fff"/><circle cx="66" cy="50" r="9" fill="#0c1330"/><circle cx="69" cy="47" r="3" fill="#fff"/><path d="M40 68 Q52 78 64 68" stroke="#0c1330" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`
 
-function head({ title, desc, canonical, jsonld, ogImage }) {
+// Primary nav — the two prerendered destinations (/sprites, /news) are real
+// static pages; the rest deep-link into the app. `active` marks the current one.
+const NAV_LINKS = [
+  { key: 'collection', href: '/', label: 'Collection' },
+  { key: 'leaderboard', href: '/?view=leaderboard', label: '🏆 Leaderboard' },
+  { key: 'stats', href: '/?view=stats', label: '📊 Stats' },
+  { key: 'news', href: '/news', label: '📰 News' },
+  { key: 'shop', href: '/?view=shop', label: '🛒 Item Shop' },
+  { key: 'sprites', href: '/sprites', label: '🧩 Sprites' },
+  { key: 'cosmetics', href: '/?view=cosmetics', label: '🧢 Cosmetics' },
+]
+
+function head({ title, desc, canonical, jsonld, ogImage, active = 'sprites' }) {
   const img = ogImage || `${SITE}/og-image.png`
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -205,13 +245,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 <style>${CSS}</style></head><body><div class="wrap">
 <header class="site"><div class="hgroup"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><p class="tagline">${RELEASED_COUNT} released variants · accurate to the Jul 30, 2026 New Sprite Day (v41.30 — Peeky Peely, Lootin’ Llama, Ironmouse + the John Wick &amp; Spider-Man collabs).</p></div><a class="cta" href="/">Log in to save</a></header>
 <nav class="nav" aria-label="Sections">
-  <a href="/">Collection</a>
-  <a href="/?view=leaderboard">🏆 Leaderboard</a>
-  <a href="/?view=stats">📊 Stats</a>
-  <a href="/?view=news">📰 News</a>
-  <a href="/?view=shop">🛒 Item Shop</a>
-  <a href="/sprites" class="on" aria-current="page">🧩 Sprites</a>
-  <a href="/?cosmetics=1">🧢 Cosmetics</a>
+  ${NAV_LINKS.map((l) => `<a href="${l.href}"${l.key === active ? ' class="on" aria-current="page"' : ''}>${l.label}</a>`).join('\n  ')}
   <details class="more"><summary>⋯ More <span class="mcaret">▾</span></summary><div class="moremenu">
     <a href="/?about=1">About</a>
     <a href="/?changelog=1">Changelog</a>
@@ -243,16 +277,20 @@ const CHEST_SCRIPT = `<script>window.__RATED=${JSON.stringify(RATED_MAP)};(funct
 // filter and search over the pre-rendered rows. No-ops on pages without #how-to-get.
 const GUIDE_SCRIPT = `<script>(function(){var b=document.getElementById('how-to-get');if(!b)return;var grows=b.querySelector('.grows'),rows=[].slice.call(b.querySelectorAll('.grow')),search=b.querySelector('#gsearch'),empty=b.querySelector('#gempty');var sort='easiest',filter='all';function num(v,f){return v===''||v==null?f:parseFloat(v)}var S={easiest:function(a,b){var sa=a.dataset.status==='available'?0:1,sb=b.dataset.status==='available'?0:1;return sa-sb||num(b.dataset.p,-1)-num(a.dataset.p,-1)||(+a.dataset.rank)-(+b.dataset.rank)},rarest:function(a,b){return (+b.dataset.rank)-(+a.dataset.rank)||num(a.dataset.p,2)-num(b.dataset.p,2)},dust:function(a,b){return num(a.dataset.dust,Infinity)-num(b.dataset.dust,Infinity)},az:function(a,b){return a.dataset.name<b.dataset.name?-1:a.dataset.name>b.dataset.name?1:0}};function apply(){var q=(search.value||'').trim().toLowerCase();var shown=rows.filter(function(r){if(filter!=='all'&&r.dataset.status!==filter)return false;if(q&&r.dataset.search.indexOf(q)===-1)return false;return true;});rows.forEach(function(r){r.style.display='none'});shown.sort(S[sort]);shown.forEach(function(r){r.style.display='';grows.appendChild(r)});empty.style.display=shown.length?'none':'';empty.textContent=q?('No Sprites match \\u201C'+search.value.trim()+'\\u201D.'):'No Sprites match this filter.';}b.querySelectorAll('[data-sort]').forEach(function(el){el.addEventListener('click',function(){sort=el.dataset.sort;b.querySelectorAll('[data-sort]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});b.querySelectorAll('[data-filter]').forEach(function(el){el.addEventListener('click',function(){filter=el.dataset.filter;b.querySelectorAll('[data-filter]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});search.addEventListener('input',apply);apply();})();</script>`
 
+// Runtime for the /news feed: client-side tag filter + search over the
+// pre-rendered cards. No-ops on pages without #newsfeed.
+const NEWS_SCRIPT = `<script>(function(){var b=document.getElementById('newsfeed');if(!b)return;var cards=[].slice.call(b.querySelectorAll('.ncard')),search=b.querySelector('#nsearch'),empty=b.querySelector('#nempty');var tag='all';function apply(){var q=(search.value||'').trim().toLowerCase();var shown=0;cards.forEach(function(c){var ok=(tag==='all'||c.dataset.tag===tag)&&(!q||c.dataset.search.indexOf(q)!==-1);c.style.display=ok?'':'none';if(ok)shown++;});empty.style.display=shown?'none':'';empty.textContent=q?('No news matches \\u201C'+search.value.trim()+'\\u201D.'):'No news matches this filter.';}b.querySelectorAll('.seg').forEach(function(el){el.addEventListener('click',function(){tag=el.dataset.tag;b.querySelectorAll('.seg').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});search.addEventListener('input',apply);apply();})();</script>`
+
 // Mirrors the app footer (src/App.jsx) so the whole site shares one footer:
 // the same sections row, the utility/support row (modal links deep-link into
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
-<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=news">📰 News</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
+<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
 <div class="row"><a href="/?cosmetics=1">🧢 Cosmetics (beta)</a><span class="sep">·</span><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><a href="/sprites">🗂️ Sprite database</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
 <p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
-</footer></div>${CHEST_SCRIPT}${GUIDE_SCRIPT}</body></html>`
+</footer></div>${CHEST_SCRIPT}${GUIDE_SCRIPT}${NEWS_SCRIPT}</body></html>`
 
 // ---------- per-sprite page ----------
 function spritePage(type, others) {
@@ -489,12 +527,99 @@ function indexPage() {
 ` + FOOT
 }
 
+// ---------- /news feed ----------
+// A static mirror of the in-app NewsFeed (src/components/NewsFeed.jsx): the same
+// curated items, ordered live-now → upcoming → history, rendered as crawlable
+// cards with data-* keys the inline script uses to tag-filter and search. The
+// runtime "live build" pull the app does is app-only; the static page is the
+// curated feed, which is what search engines should index anyway.
+const TAG_ICON = { sprites: '🧩', update: '🛠️', event: '🎉', upcoming: '🔮', bug: '🐛' }
+const NEWS_TODAY = new Date().toISOString().slice(0, 10)
+const newsLive = (n) => {
+  if (!n.start && !n.end) return false
+  if (n.start && NEWS_TODAY < n.start) return false
+  if (n.end && NEWS_TODAY > n.end) return false
+  return true
+}
+const newsDateNum = (n) => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(n.ts || '')
+  if (m) return Number(m[1] + m[2] + m[3])
+  if (n.start && /^\d{4}-\d{2}-\d{2}$/.test(n.start)) return Number(n.start.replace(/-/g, ''))
+  return Number(NEWS_TODAY.replace(/-/g, ''))
+}
+function orderedNews() {
+  const liveNow = NEWS.filter(newsLive).sort((a, b) => newsDateNum(b) - newsDateNum(a))
+  const upcoming = NEWS.filter((n) => n.tag === 'upcoming' && !newsLive(n)).sort((a, b) => newsDateNum(a) - newsDateNum(b))
+  const history = NEWS.filter((n) => n.tag !== 'upcoming' && !newsLive(n)).sort((a, b) => newsDateNum(b) - newsDateNum(a))
+  return [...liveNow, ...upcoming, ...history]
+}
+
+function newsCard(n) {
+  const tag = NEWS_TAGS[n.tag] || NEWS_TAGS.update
+  const live = newsLive(n)
+  const resolved = n.tag === 'bug' && n.resolved
+  const spriteId = n.sprites?.[0]
+  const hasSpriteArt = spriteId && SPRITE_BY_ID[`${spriteId}_normal`]
+  const img = n.image
+    ? `<img src="${esc(n.image)}" alt="" loading="lazy">`
+    : hasSpriteArt
+      ? `<img src="/sprites/${spriteId}_normal.png" alt="" loading="lazy" onerror="this.style.display='none'">`
+      : ''
+  const search = `${n.title} ${n.body || ''} ${n.source || ''} ${tag.label}`.toLowerCase()
+  const badge = resolved
+    ? `<span class="res">✓ Resolved${n.resolvedOn ? ` · ${esc(n.resolvedOn)}` : ''}</span>`
+    : `<span class="tg" style="background:${tag.color}">${esc(tag.label)}</span>`
+  return `<a class="ncard" href="${esc(n.link || '#')}"${n.link ? ' target="_blank" rel="noreferrer"' : ''} style="border-left-color:${tag.color}" data-tag="${esc(n.tag)}" data-search="${esc(search)}">`
+    + `<span class="thumb" style="background:linear-gradient(150deg,${tag.color}33,${tag.color}0f)">${esc(TAG_ICON[n.tag] || '📰')}${img}${live ? '<span class="live">● Live</span>' : ''}</span>`
+    + `<span class="meta"><span class="tgs">${badge}${n.tentative ? '<span class="tent">Tentative</span>' : ''}<span class="when">${esc(n.when || '')}</span></span>`
+    + `<h3>${esc(n.title)}</h3>${n.body ? `<p class="bd">${esc(n.body)}</p>` : ''}`
+    + `${n.source ? `<p class="src">Source: ${esc(n.source)} <span class="${n.official ? 'off' : 'un'}">· ${n.official ? 'official' : 'unofficial'}</span>${n.link ? ' · opens in a new tab ↗' : ''}</p>` : ''}`
+    + `</span></a>`
+}
+
+function newsBoard() {
+  const items = orderedNews()
+  return `<section class="nf" id="newsfeed">
+<div class="bar"><div class="search"><span class="mag">🔍</span><input type="search" id="nsearch" placeholder="Search news &amp; events…" aria-label="Search news and events"></div></div>
+<div class="bar"><div class="segs" role="tablist" aria-label="Filter news">
+  <button class="seg on" data-tag="all" style="--sc:var(--brand)">All</button>
+  ${Object.entries(NEWS_TAGS).map(([k, t]) => `<button class="seg" data-tag="${k}" style="--sc:${t.color}">${esc(t.label)}</button>`).join('')}
+</div></div>
+<div class="list">${items.map(newsCard).join('')}</div>
+<p class="empty" id="nempty">No news matches this filter.</p>
+<p class="fine">Curated Fortnite update feed — sprites, events &amp; known issues, each with its source shown. The in-app version also auto-pulls the current live build. Not affiliated with Epic Games.</p>
+</section>`
+}
+
+// ---------- /news page ----------
+function newsPage() {
+  const desc = 'Latest Fortnite Sprite news, patch notes and events — New Sprite Days, Shiny/Mastery hours, vaulted Sprites and known issues, each with its source. Searchable and filterable.'
+  const jsonld = {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: 'Fortnite Sprite News & Updates', url: SITE + '/news', description: desc,
+  }
+  return head({ title: 'Fortnite Sprite News, Patch Notes & Events | FN Sprite Tracker', desc, canonical: SITE + '/news', jsonld, active: 'news' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>Fortnite Sprite news &amp; updates</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:70ch">New Sprite Days, events, vaulted Sprites and known issues — a curated feed with each item's source. Filter by type or search, then tap through for the full story.</p>
+    ${newsBoard()}
+  </div>
+  <aside class="side">
+    ${ctaCard()}
+    ${upcomingCard()}
+    ${supportCard()}
+  </aside>
+</div>
+` + FOOT
+}
+
 // ---------- sitemap ----------
 function sitemap(types) {
   const urls = [
     { loc: SITE + '/', changefreq: 'daily', priority: '1.0' },
     { loc: SITE + '/sprites', changefreq: 'weekly', priority: '0.9' },
-    { loc: SITE + '/?view=news', changefreq: 'daily', priority: '0.8' },
+    { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
     { loc: SITE + '/?view=stats', changefreq: 'weekly', priority: '0.6' },
@@ -515,6 +640,8 @@ for (const type of types) {
 }
 mkdirSync(resolve(DIST, 'sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'sprites', 'index.html'), indexPage())
+mkdirSync(resolve(DIST, 'news'), { recursive: true })
+writeFileSync(resolve(DIST, 'news', 'index.html'), newsPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites index + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites index + /news + sitemap.xml → dist/`)
