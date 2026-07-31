@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Official Epic art across the roster (78 Sprite icons)',
+    summary:
+      'Swapped in Epic\u2019s official in-game Sprite icons for 78 variants from a full asset archive \u2014 replacing the built-in stand-ins almost everywhere and filling several gaps, including the Ironmouse Sprite.',
+    changes: [
+      { tag: 'Added', text: 'Real art for the Ironmouse Sprite (ironmouse), plus Peely\u2019s Galaxy & Holofoil finishes \u2014 all previously on the vector fallback.' },
+      { tag: 'Changed', text: 'Replaced 72 variant images with Epic\u2019s official icons across Water, Earth, Fire, Zero Point, Grim, King, Duck, Demon, Punk, Ghost, Air, Boss, Fishy, Seven, Peely, Llama, Batman and Dream \u2014 the finishes (Gold, Gummy, Galaxy, Gem, Holofoil, Cube, Quack) now match the game exactly.' },
+    ],
+    why:
+      'The maker supplied a full archive of Epic\u2019s official Sprite icons (their real filenames map cleanly to our type + finish). Genuine assets are the source of truth, so they supersede every generated stand-in. A few Drifter finishes and one unlabelled \u201CSoccer\u201D Sprite from the archive are staged but held \u2014 Drifter isn\u2019t live yet, and the Soccer Sprite needs identifying before it\u2019s filed.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Real Epic art for a whole batch of variants (Quack, Gem & finishes)',
     summary:
       'Dropped in official in-game art for a big set of variants supplied by the maker, and corrected what the “Quack” finish actually is.',

@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Official Epic art across the roster (78 Sprite icons)
+
+- **Added:** real art for the **Ironmouse** Sprite, plus **Peely** Galaxy & Holofoil —
+  all previously on the vector fallback.
+- **Changed:** replaced **72** variant images with Epic's official icons across Water,
+  Earth, Fire, Zero Point, Grim, King, Duck, Demon, Punk, Ghost, Air, Boss, Fishy,
+  Seven, Peely, Llama, Batman and Dream — every finish (Gold, Gummy, Galaxy, Gem,
+  Holofoil, Cube, Quack) now matches the game.
+- **Why:** the maker supplied a full archive of Epic's official Sprite icons whose real
+  filenames (`T_Icon_BR_Creature_Sprite_<Name>_<Finish>_ui_L`) map cleanly to our type +
+  finish (Epic's "Candy" = our Gummy, "Holo" = Holofoil; codenames resolved:
+  Sleepy→Dream, FossilMeal→Batman, PedicureAntacid→Ironmouse). Genuine assets are the
+  source of truth. Three **Drifter** finishes and an unlabelled **"Soccer"** Sprite from
+  the archive are staged but held — Drifter isn't live yet and Soccer needs identifying.
+
+---
+
 ## July 31, 2026 — Real Epic art for a whole batch of variants (Quack, Gem & finishes)
 
 - **Added:** official in-game art for the **Quack** finish (Water, Earth, Fire, Zero
