@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'New \u201CGuide\u201D tab: how to get every Sprite',
+    summary:
+      'A ranked, filterable guide to landing every Sprite \u2014 drop rate, average chests, re-summon Dust and where to find each one.',
+    changes: [
+      { tag: 'Added', text: 'A Guide tab that lists every Sprite ranked by how easy it is to get (default), or by Rarity, cheapest Dust or A\u2013Z. Each row shows rarity, tier, drop rate + average Sprite Chests, Dust cost, obtainable/upcoming/vaulted status and how to farm it. Filter by Available / Upcoming / Vaulted, and tap through to any Sprite\u2019s page.' },
+      { tag: 'Added', text: 'A Mastery Monday callout that highlights the weekly 2\u00d7 Sprite Dust & XP window (and lights up when today is Monday).' },
+    ],
+    why:
+      'Players kept asking \u201Cwhat\u2019s easiest / how do I get this one\u201D \u2014 the data was spread across individual Sprite pages. This pulls it into one scannable, sortable board (inspired by fortnite.gg\u2019s cosmetics guides) so you can plan a grind at a glance.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Striker\u2019s real finishes added (the \u201CSoccer\u201D icons)',
     summary:
       'Identified the archive\u2019s unlabelled \u201CSoccer\u201D Sprite as Striker and dropped in its official Gummy, Galaxy and Holofoil art.',

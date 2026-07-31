@@ -27,6 +27,7 @@ const Leaderboard = lazy(() => import('./components/Leaderboard'))
 const NewsFeed = lazy(() => import('./components/NewsFeed'))
 const ShopTab = lazy(() => import('./components/ShopTab'))
 const StatsTab = lazy(() => import('./components/StatsTab'))
+const SpriteGuide = lazy(() => import('./components/SpriteGuide'))
 const AuthModal = lazy(() => import('./components/AuthModal'))
 const SpriteDetailModal = lazy(() => import('./components/SpriteDetailModal'))
 const BugReportModal = lazy(() => import('./components/BugReportModal'))
@@ -42,6 +43,7 @@ import { LINKS } from './lib/supabase'
 const TABS = [
   { id: 'collection', label: 'Collection' },
   { id: 'leaderboard', label: '🏆 Leaderboard' },
+  { id: 'guide', label: '🧭 Guide' },
   { id: 'stats', label: '📊 Stats' },
   { id: 'news', label: '📰 News' },
   { id: 'shop', label: '🛒 Item Shop' },
@@ -367,9 +369,10 @@ export default function App() {
         ariaLabel="Sections"
       />
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'guide' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
+          {effectiveView === 'guide' && <div className="mb-5"><SpriteGuide /></div>}
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}

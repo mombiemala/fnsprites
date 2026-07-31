@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — New "Guide" tab: how to get every Sprite
+
+- **Added:** a Guide tab (`src/components/SpriteGuide.jsx`) listing every Sprite ranked by
+  how easy it is to get (default), or by Rarity / cheapest Dust / A–Z. Each row shows
+  rarity, tier, drop rate + average Sprite Chests, Dust cost, obtainable/upcoming/vaulted
+  status and how to farm it; filter by Available / Upcoming / Vaulted, tap through to a
+  Sprite's page.
+- **Added:** a Mastery Monday callout for the weekly 2× Sprite Dust & XP window (lights up
+  on Mondays).
+- **Why:** "what's easiest / how do I get this" was spread across individual Sprite pages.
+  This pulls it into one sortable board (inspired by fortnite.gg's cosmetics guides).
+
+---
+
 ## July 31, 2026 — Striker's real finishes added (the "Soccer" icons)
 
 - **Added:** official art for Striker's Gummy, Galaxy and Holofoil finishes. Epic's files
