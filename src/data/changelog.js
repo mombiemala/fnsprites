@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Chest luck can now estimate odds for a specific finish',
+    summary:
+      'Pick a finish (Gold, Gummy, Galaxy\u2026) in the Chest-luck calculator and it estimates how many chests it takes to pull that exact variant \u2014 not just the base Sprite.',
+    changes: [
+      { tag: 'Added', text: 'A Finish dropdown on the Chest-luck calculator (in-app and on every per-Sprite page). Choosing a special finish multiplies the base (Normal) drop rate by that finish\u2019s rarity factor and recomputes the effective rate, avg chests and 50/90/99% targets, plus the \u201Copen N \u2192 chance of at least one\u201D line.' },
+      { tag: 'Added', text: 'A clear \u201Cestimate only\u201D flag whenever a special finish is selected, since Epic doesn\u2019t publish finish odds.' },
+    ],
+    why:
+      'Special finishes are much rarer than the base Sprite, and people wanted per-finish numbers. Epic doesn\u2019t publish finish-roll odds, so the factors live in one clearly-labelled place (FINISH_ODDS_FACTOR in themes.js) as rough, tunable estimates \u2014 the UI marks them as approximate rather than implying measured precision.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Sprite pages now spell out what each variant does',
     summary:
       'Every finish on a Sprite\u2019s page now shows its bonus perk and whether it\u2019s obtainable, not just its name.',

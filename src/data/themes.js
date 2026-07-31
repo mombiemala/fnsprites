@@ -21,3 +21,21 @@ export const THEMES = [
 
 export const THEME_MAP = Object.fromEntries(THEMES.map((t) => [t.id, t]))
 export const THEME_ORDER = THEMES.map((t) => t.id)
+
+// ROUGH ESTIMATE — how likely a given Sprite pull rolls each finish, relative to
+// the Normal form (Normal = 1). Epic does NOT publish finish-roll odds, so these
+// are deliberately approximate placeholders, not measured values. The Chest-luck
+// calculator multiplies the base (Normal-form) drop rate by this factor to
+// estimate the odds of pulling a *specific* finish. Tune here if better community
+// numbers surface — this is the single source of truth for that math.
+export const FINISH_ODDS_FACTOR = {
+  normal: 1,
+  gold: 0.15,
+  gummy: 0.12,
+  galaxy: 0.08,
+  holofoil: 0.03,
+  gem: 0.02,
+  cube: 0.02,
+  quack: 0.02,
+  rift: 0.05,
+}

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { SPRITE_TYPES, RARITY_COLORS, RARITY_ORDER } from '../data/sprites'
+import { SPRITE_TYPES, SPRITE_BY_ID, RARITY_COLORS, RARITY_ORDER } from '../data/sprites'
+import { THEME_MAP, FINISH_ODDS_FACTOR } from '../data/themes'
 import Tooltip from './Tooltip'
 
 // Parse a base drop-rate string like "8.73%" or "0.00034%" → probability (0..1).
@@ -36,21 +37,39 @@ const fmtPct = (x) => {
 // each chest is an independent draw at the base rate.
 export default function ChestOdds() {
   const [typeId, setTypeId] = useState(RATED[0]?.id)
+  const [finish, setFinish] = useState('normal')
   const type = RATED.find((t) => t.id === typeId) || RATED[0]
-  const p = type?.p
 
-  // Re-seed the chest input to the ~50% mark whenever the Sprite changes
-  // (adjust-state-during-render pattern — no effect needed).
+  // Finishes this Sprite actually has AND that are currently obtainable (a
+  // released variant with a known odds factor). Normal is always first.
+  const finishes = type
+    ? Object.keys(type.variants).filter(
+        (f) => THEME_MAP[f] && FINISH_ODDS_FACTOR[f] != null && SPRITE_BY_ID[`${type.id}_${f}`]?.released,
+      )
+    : []
+  const activeFinish = finishes.includes(finish) ? finish : 'normal'
+  const factor = FINISH_ODDS_FACTOR[activeFinish] ?? 1
+  // Effective per-chest probability for the chosen finish: base (Normal) rate ×
+  // the finish's rough odds factor.
+  const p = type ? type.p * factor : null
+
+  // Re-seed the chest input to the ~50% mark whenever the Sprite or finish
+  // changes (adjust-state-during-render pattern — no effect needed).
+  const seedKey = `${typeId}:${activeFinish}`
   const [seeded, setSeeded] = useState(null)
   const [chests, setChests] = useState('')
-  if (type && typeId !== seeded) {
-    setSeeded(typeId)
+  if (type && seedKey !== seeded) {
+    setSeeded(seedKey)
     setChests(String(chestsFor(p, 0.5)))
   }
 
   if (!type) return null
   const n = Math.max(0, Math.floor(Number(chests) || 0))
   const expected = 1 / p
+  const isSpecial = activeFinish !== 'normal'
+  const finishName = THEME_MAP[activeFinish]?.name || 'Normal'
+  const effPct = p * 100
+  const effRate = effPct < 0.1 ? `${effPct.toPrecision(2)}%` : `${effPct.toFixed(2)}%`
 
   const rows = [
     ['Coin-flip (50%)', chestsFor(p, 0.5)],
@@ -62,7 +81,7 @@ export default function ChestOdds() {
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
       <h3 className="mb-3 flex items-center gap-1.5 font-display text-lg text-white">
         🎲 Chest luck
-        <Tooltip content="Odds of pulling a Sprite from a Sprite Chest, treating each chest as an independent draw at the base (Normal) drop rate. Community-estimated rates — special variants are far rarer.">
+        <Tooltip content="Odds of pulling a Sprite from a Sprite Chest, treating each chest as an independent draw. The base (Normal) rate is community-estimated; picking a special finish multiplies it by a rough finish-rarity estimate (Epic doesn't publish finish odds).">
           <span className="grid h-4 w-4 cursor-help place-items-center rounded-full bg-[var(--panel-2)] text-[10px] text-[var(--muted)]" aria-label="How this is calculated">ⓘ</span>
         </Tooltip>
       </h3>
@@ -83,13 +102,37 @@ export default function ChestOdds() {
         ))}
       </select>
 
+      {finishes.length > 1 && (
+        <>
+          <label className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">Finish</label>
+          <select
+            value={activeFinish}
+            onChange={(e) => setFinish(e.target.value)}
+            title="Pick a finish to estimate the odds of pulling that specific variant"
+            className="mb-3 w-full rounded-xl border border-[var(--border)] bg-[var(--panel-2)] px-3 py-2 text-sm text-white outline-none focus:border-[var(--brand)]"
+          >
+            {finishes.map((f) => (
+              <option key={f} value={f}>
+                {THEME_MAP[f].name}{f === 'normal' ? ' (base rate)' : ` — ~${Math.round(1 / FINISH_ODDS_FACTOR[f])}× rarer`}
+              </option>
+            ))}
+          </select>
+        </>
+      )}
+
       <div className="mb-3 flex items-center justify-between rounded-xl bg-[var(--bg-2)] px-3 py-2">
         <span className="flex items-center gap-2 text-sm text-white">
           <span className="h-2.5 w-2.5 rounded-full" style={{ background: RARITY_COLORS[type.rarity] || '#888' }} />
-          Drop rate <b>{type.dropRate}</b>
+          {isSpecial ? <>{finishName} rate <b>≈{effRate}</b></> : <>Drop rate <b>{type.dropRate}</b></>}
         </span>
         <span className="text-right text-sm text-[var(--muted)]">~<b className="text-white">{fmt(expected)}</b> chests avg</span>
       </div>
+
+      {isSpecial && (
+        <p className="mb-3 -mt-1 rounded-lg bg-amber-400/10 px-2.5 py-1.5 text-[10px] leading-relaxed text-amber-200/90">
+          ⚠︎ Estimate only — Epic doesn’t publish finish odds. This assumes the {finishName} finish is ~{Math.round(1 / factor)}× rarer than the base pull.
+        </p>
+      )}
 
       <div className="space-y-1">
         {rows.map(([label, c]) => (
@@ -114,12 +157,12 @@ export default function ChestOdds() {
           <span className="text-sm text-[var(--muted)]">chests →</span>
         </div>
         <p className="mt-2 text-sm text-white">
-          <b className="text-[var(--brand)]">{fmtPct(atLeastOne(p, n))}</b> chance of at least one <b>{type.name}</b>
+          <b className="text-[var(--brand)]">{fmtPct(atLeastOne(p, n))}</b> chance of at least one <b>{isSpecial ? `${finishName} ${type.name}` : type.name}</b>
         </p>
       </div>
 
       <p className="mt-3 text-[10px] leading-relaxed text-[var(--muted)]">
-        Base (Normal-form) rates, community-estimated — Epic doesn’t publish official odds. Gold/Gummy/Galaxy and other variants are much rarer than the base rate shown.
+        Base (Normal-form) rates are community-estimated — Epic doesn’t publish official odds. Special-finish odds multiply that base by a rough finish-rarity estimate and are approximate, not measured.
       </p>
     </div>
   )

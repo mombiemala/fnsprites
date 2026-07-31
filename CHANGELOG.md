@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Chest luck can now estimate odds for a specific finish
+
+- **Added:** a **Finish** dropdown on the Chest-luck calculator (in-app `ChestOdds.jsx` and
+  the vanilla-JS version on every per-Sprite page). Choosing a special finish multiplies
+  the base (Normal) drop rate by that finish's rarity factor and recomputes the effective
+  rate, avg chests, 50/90/99% targets and the "open N → chance of at least one" line.
+- **Added:** a clear "estimate only" flag whenever a special finish is selected.
+- **Why:** special finishes are much rarer than the base Sprite and people wanted per-finish
+  numbers. Epic doesn't publish finish-roll odds, so the factors live in one labelled place
+  (`FINISH_ODDS_FACTOR` in `themes.js`) as rough, tunable estimates — the UI marks them as
+  approximate rather than implying measured precision.
+
+---
+
 ## July 31, 2026 — Sprite pages now spell out what each variant does
 
 - **Added:** each variant card on a per-Sprite page (`scripts/prerender.mjs`) now lists the

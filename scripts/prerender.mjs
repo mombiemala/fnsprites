@@ -14,7 +14,7 @@ import {
   SPRITE_TYPES, SPRITE_BY_ID, RELEASED_COUNT,
   dustCost, spriteTier, spriteScaling, spriteSource,
 } from '../src/data/sprites.js'
-import { THEME_MAP } from '../src/data/themes.js'
+import { THEME_MAP, FINISH_ODDS_FACTOR } from '../src/data/themes.js'
 
 const SITE = 'https://fnsprites.vercel.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -90,7 +90,8 @@ details.gd summary{font-size:13px;font-weight:700;padding:10px 0}details.gd p{fo
 .upmeta{min-width:0;flex:1}.upmeta b{font-size:13px;color:#fff}.upmeta small{display:block;font-size:11px}.upmeta .upab{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .update{flex:0 0 auto;font-size:11px;font-weight:800;color:#fcd34d;text-align:right}
 .chestcard .cl-lab{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:2px 0 4px}
-.chestcard .cl-sel{width:100%;background:var(--panel2);color:#fff;border:1px solid var(--border);border-radius:12px;padding:9px 10px;font-size:13px;margin-bottom:10px}
+.chestcard .cl-sel,.chestcard .cl-fin{width:100%;background:var(--panel2);color:#fff;border:1px solid var(--border);border-radius:12px;padding:9px 10px;font-size:13px;margin-bottom:10px}
+.chestcard .cl-warn{margin:-4px 0 10px;padding:6px 9px;border-radius:9px;background:rgba(251,191,36,.1);color:#fde68a;font-size:10.5px;line-height:1.4}
 .chestcard .cl-rate{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--bg2);border-radius:12px;padding:8px 10px;font-size:13px;color:#fff;margin-bottom:10px}
 .chestcard .cl-rate .cl-dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px}
 .chestcard .cl-avg{color:var(--muted);text-align:right}.chestcard .cl-avg b{color:#fff}
@@ -190,9 +191,17 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 // src/components/ChestOdds.jsx. RATED_MAP is every Sprite with a known base
 // drop rate; the inline script wires each .chestcard (select + "open N chests").
 const RATED_MAP = Object.fromEntries(
-  SPRITE_TYPES.map((t) => { const p = parseRate(t.dropRate); return p ? [t.id, { p, dropRate: t.dropRate, name: t.name, color: RARITY_TINT[t.rarity] || '#888' }] : null }).filter(Boolean),
+  SPRITE_TYPES.map((t) => {
+    const p = parseRate(t.dropRate)
+    if (!p) return null
+    // Obtainable finishes for this Sprite (released variant + known odds factor).
+    const finishes = Object.keys(t.variants)
+      .filter((f) => THEME_MAP[f] && FINISH_ODDS_FACTOR[f] != null && SPRITE_BY_ID[`${t.id}_${f}`]?.released)
+      .map((f) => ({ id: f, name: THEME_MAP[f].name, factor: FINISH_ODDS_FACTOR[f] }))
+    return [t.id, { p, dropRate: t.dropRate, name: t.name, color: RARITY_TINT[t.rarity] || '#888', finishes }]
+  }).filter(Boolean),
 )
-const CHEST_SCRIPT = `<script>window.__RATED=${JSON.stringify(RATED_MAP)};(function(){var R=window.__RATED||{};var cf=function(p,c){return Math.ceil(Math.log(1-c)/Math.log(1-p))};var a1=function(p,n){return 1-Math.pow(1-p,n)};var fmt=function(x){return Math.round(x).toLocaleString()};var pct=function(x){var v=x*100;if(v>=99.95)return'>99.9%';if(v<0.1)return v.toPrecision(2)+'%';return v.toFixed(1)+'%'};document.querySelectorAll('.chestcard').forEach(function(card){var sel=card.querySelector('.cl-sel'),n=card.querySelector('.cl-n');function res(){var d=R[sel.value];if(!d)return;var v=Math.max(0,Math.floor(Number(n.value)||0));card.querySelector('.cl-res').innerHTML='<b>'+pct(a1(d.p,v))+'</b> chance of at least one <b>'+d.name+'</b>';}function draw(){var d=R[sel.value];if(!d)return;var p=d.p;card.querySelector('.cl-dot').style.background=d.color;card.querySelector('.cl-rateval').textContent=d.dropRate;card.querySelector('.cl-avg').innerHTML='~<b>'+fmt(1/p)+'</b> chests avg';card.querySelector('.cl-c50').textContent=fmt(cf(p,.5))+' chests';card.querySelector('.cl-c90').textContent=fmt(cf(p,.9))+' chests';card.querySelector('.cl-c99').textContent=fmt(cf(p,.99))+' chests';res();}sel.addEventListener('change',function(){n.value=cf(R[sel.value].p,.5);draw();});n.addEventListener('input',res);if(R[sel.value]){n.value=cf(R[sel.value].p,.5);}draw();});})();</script>`
+const CHEST_SCRIPT = `<script>window.__RATED=${JSON.stringify(RATED_MAP)};(function(){var R=window.__RATED||{};var cf=function(p,c){return Math.ceil(Math.log(1-c)/Math.log(1-p))};var a1=function(p,n){return 1-Math.pow(1-p,n)};var fmt=function(x){return Math.round(x).toLocaleString()};var pct=function(x){var v=x*100;if(v>=99.95)return'>99.9%';if(v<0.1)return v.toPrecision(2)+'%';return v.toFixed(1)+'%'};var rs=function(x){var v=x*100;return (v<0.1?v.toPrecision(2):v.toFixed(2))+'%'};document.querySelectorAll('.chestcard').forEach(function(card){var sel=card.querySelector('.cl-sel'),fin=card.querySelector('.cl-fin'),finlab=card.querySelector('.cl-finlab'),warn=card.querySelector('.cl-warn'),n=card.querySelector('.cl-n');function d(){return R[sel.value];}function cur(){var o=(d()&&d().finishes)||[];for(var i=0;i<o.length;i++){if(o[i].id===fin.value)return o[i];}return{id:'normal',name:'Normal',factor:1};}function eff(){return d().p*cur().factor;}function fill(){var o=(d()&&d().finishes)||[];if(o.length>1){fin.innerHTML=o.map(function(f){return '<option value="'+f.id+'">'+f.name+(f.id==='normal'?' (base rate)':' \\u2014 ~'+Math.round(1/f.factor)+'x rarer')+'</option>';}).join('');fin.value='normal';fin.style.display='';finlab.style.display='';}else{fin.innerHTML='';fin.style.display='none';finlab.style.display='none';}}function res(){if(!d())return;var p=eff(),c=cur();var v=Math.max(0,Math.floor(Number(n.value)||0));var nm=c.id==='normal'?d().name:(c.name+' '+d().name);card.querySelector('.cl-res').innerHTML='<b>'+pct(a1(p,v))+'</b> chance of at least one <b>'+nm+'</b>';}function draw(){if(!d())return;var p=eff(),c=cur(),sp=c.id!=='normal';card.querySelector('.cl-dot').style.background=d().color;card.querySelector('.cl-ratelab').textContent=sp?(c.name+' rate'):'Drop rate';card.querySelector('.cl-rateval').textContent=sp?('\\u2248'+rs(p)):d().dropRate;card.querySelector('.cl-avg').innerHTML='~<b>'+fmt(1/p)+'</b> chests avg';card.querySelector('.cl-c50').textContent=fmt(cf(p,.5))+' chests';card.querySelector('.cl-c90').textContent=fmt(cf(p,.9))+' chests';card.querySelector('.cl-c99').textContent=fmt(cf(p,.99))+' chests';if(sp){warn.style.display='';warn.textContent='\\u26A0\\uFE0E Estimate only \\u2014 assumes the '+c.name+' finish is ~'+Math.round(1/c.factor)+'x rarer than the base pull.';}else{warn.style.display='none';}res();}sel.addEventListener('change',function(){fill();n.value=cf(eff(),.5);draw();});fin.addEventListener('change',function(){n.value=cf(eff(),.5);draw();});n.addEventListener('input',res);if(d()){fill();n.value=cf(eff(),.5);}draw();});})();</script>`
 
 // Mirrors the app footer (src/App.jsx) so the whole site shares one footer:
 // the same sections row, the utility/support row (modal links deep-link into
@@ -361,10 +370,13 @@ const chestLuckCard = (selId) => `<div class="card sidecard chestcard">
 <h3 class="sh">🎲 Chest luck</h3>
 <label class="cl-lab">Sprite</label>
 <select class="cl-sel" aria-label="Pick a Sprite">${chestSelectOptions(RATED_MAP[selId] ? selId : undefined)}</select>
-<div class="cl-rate"><span><span class="cl-dot"></span>Drop rate <b class="cl-rateval"></b></span><span class="cl-avg"></span></div>
+<label class="cl-lab cl-finlab" style="display:none">Finish</label>
+<select class="cl-fin" aria-label="Pick a finish" style="display:none"></select>
+<div class="cl-rate"><span><span class="cl-dot"></span><span class="cl-ratelab">Drop rate</span> <b class="cl-rateval"></b></span><span class="cl-avg"></span></div>
+<p class="cl-warn" style="display:none"></p>
 <div class="cl-rows"><div><span>Coin-flip (50%)</span><b class="cl-c50"></b></div><div><span>Likely (90%)</span><b class="cl-c90"></b></div><div><span>Almost sure (99%)</span><b class="cl-c99"></b></div></div>
 <div class="cl-open"><div class="cl-in"><span>Open</span><input class="cl-n" type="number" min="0" aria-label="Chests to open"><span>chests →</span></div><p class="cl-res"></p></div>
-<p class="fine">Base (Normal-form) rates, community-estimated — Epic doesn’t publish official odds. Gold/Gummy/Galaxy and other variants are much rarer than the base shown.</p></div>`
+<p class="fine">Base (Normal-form) rates are community-estimated — Epic doesn’t publish official odds. Special-finish odds multiply that base by a rough finish-rarity estimate and are approximate, not measured.</p></div>`
 
 const supportCard = () => `<div class="card sidecard supportcard"><h3 class="sh">Support the maker 💜</h3>
 <p class="sub">This tracker is free &amp; fan-made. Two easy ways to help:</p>
