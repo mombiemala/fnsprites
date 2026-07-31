@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Striker\u2019s real finishes added (the \u201CSoccer\u201D icons)',
+    summary:
+      'Identified the archive\u2019s unlabelled \u201CSoccer\u201D Sprite as Striker and dropped in its official Gummy, Galaxy and Holofoil art.',
+    changes: [
+      { tag: 'Added', text: 'Official art for Striker\u2019s Gummy, Galaxy and Holofoil finishes (Epic\u2019s files were codenamed \u201CSoccer\u201D \u2014 the soccer-ball-headed Sprite, not the Vini Jr. collab). No Gem finish exists for it yet.' },
+    ],
+    why:
+      'The \u201CSoccer\u201D codename matched Striker\u2019s ball-head silhouette, not Vini Jr. (a human-headed player), so its finishes belong to Striker.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Chest luck can now estimate odds for a specific finish',
     summary:
       'Pick a finish (Gold, Gummy, Galaxy\u2026) in the Chest-luck calculator and it estimates how many chests it takes to pull that exact variant \u2014 not just the base Sprite.',

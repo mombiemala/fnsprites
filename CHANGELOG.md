@@ -11,6 +11,14 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Striker's real finishes added (the "Soccer" icons)
+
+- **Added:** official art for Striker's Gummy, Galaxy and Holofoil finishes. Epic's files
+  were codenamed "Soccer" — the soccer-ball-headed Sprite (matches `striker_normal`), not
+  the Vini Jr. collab (a human-headed player). No Gem finish exists for it yet.
+
+---
+
 ## July 31, 2026 — Chest luck can now estimate odds for a specific finish
 
 - **Added:** a **Finish** dropdown on the Chest-luck calculator (in-app `ChestOdds.jsx` and
