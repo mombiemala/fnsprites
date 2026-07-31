@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Roster fix: Gem King is unreleased (release pulled)
+
+- **Fixed:** the Gem King variant is now flagged unreleased (`king` → `gem: U` in
+  `src/data/sprites.js`). It exists in the game files and is datamined alongside the other
+  Gem variants, but Fortnite.GG still lists it as unreleased and its public release was
+  pulled from the in-game news feed. It shows as "coming soon" on King's variant line and
+  no longer appears as a selectable finish in the Chest-luck calculator.
+- **Changed:** the released-variant count drops 111 → 110 (computed from `RELEASED_COUNT` /
+  `set.released`, so it updates automatically in the header tagline and on `/sprites`); the
+  live v41.30 announcement (`announcements.js`) and news entry (`news.js`) were corrected to
+  match.
+- **Why:** counting a variant nobody can pull overstated the roster and let the odds
+  calculator quote numbers for an unobtainable finish. Flag it unreleased until Epic ships
+  it for real.
+
 ## July 31, 2026 — Guide + Sprites are now one page
 
 - **Added:** a search box on the Sprites board — type a name to filter instantly, on top

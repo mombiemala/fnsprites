@@ -18,7 +18,7 @@ export const ANNOUNCEMENTS = [
   {
     id: 'new-sprite-day-live-2026-07-30',
     emoji: '🍌',
-    message: 'New Sprite Day is LIVE (v41.30): 20 new Sprites push the count to 111 — Ironmouse, Peeky Peely & Lootin’ Llama bring new powers, plus Peely/Llama variants, Grim’s Gem + Holofoil, and Quack for Water/Earth/Fire/Zero Point. John Wick’s on Springfield Reloaded; Spider-Man’s Web-Shooter Power Hour is Aug 1.',
+    message: 'New Sprite Day is LIVE (v41.30): 20 new Sprites push the count to 110 — Ironmouse, Peeky Peely & Lootin’ Llama bring new powers, plus Peely/Llama variants, Grim’s Gem + Holofoil, and Quack for Water/Earth/Fire/Zero Point. John Wick’s on Springfield Reloaded; Spider-Man’s Web-Shooter Power Hour is Aug 1.',
     link: 'https://games.gg/fortnite/guides/fortnite-v41-30-update-patch-notes/',
     linkLabel: 'Patch notes',
     start: '2026-07-30',

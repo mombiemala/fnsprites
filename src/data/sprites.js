@@ -51,7 +51,10 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, rift: U, cube: R, quack: U } },
   { id: 'king', name: 'King', icon: '👑', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Your pickaxe deals extra damage.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: R, cube: U, quack: U } },
+    // Gem King exists in the game files and is datamined alongside the other Gem
+    // variants, but its public release was pulled from the in-game news feed —
+    // Fortnite.GG still lists it as an unreleased special variant, so gem stays U.
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: R, cube: U, quack: U } },
   { id: 'zeropoint', name: 'Zero Point', icon: '🔷', rarity: 'Mythic', dropRate: '0.00034%', released: true,
     ability: 'Spawns a Shield Bubble Jr. when you use a healing item on yourself (not splashes or grenades).',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: R } },

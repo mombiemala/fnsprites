@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Roster fix: Gem King is unreleased (release pulled)',
+    summary:
+      'Marked the Gem King variant as unreleased. It exists in the game files but its public release was pulled, so it’s no longer counted as obtainable.',
+    changes: [
+      { tag: 'Fixed', text: 'Gem King now shows as an unreleased special variant (not collectible). It stays on King’s variant line as “coming soon” rather than being marked available, and it no longer appears as a selectable finish in the Chest-luck calculator.' },
+      { tag: 'Changed', text: 'The released-variant count drops 111 → 110 everywhere it’s shown (header tagline, /sprites), and the v41.30 New Sprite Day announcement + news entry were corrected to match.' },
+    ],
+    why:
+      'Data miners found Gem King alongside the other v41.30 Gem variants, but Fortnite.GG still lists it as unreleased and its public release was pulled from the in-game news feed. Counting it as obtainable overstated the roster and would let players “calculate odds” for a finish nobody can actually pull — so it’s flagged unreleased until Epic ships it for real.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Guide + Sprites are now one page',
     summary:
       'Merged the old Guide tab and the Sprites page into a single \u201CSprites\u201D destination \u2014 the searchable, sortable \u201Chow to get every Sprite\u201D board with the reference sidebar (how Sprites work, upcoming/leaked, chest luck, support) beside it.',
