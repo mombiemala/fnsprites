@@ -7,14 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
-    title: 'Distinct art for Peely, Llama & Ironmouse (until real art lands)',
+    title: 'Better built-in art: Peely, Llama, Ironmouse + a real duck bill for Quack',
     summary:
-      'The three newest character Sprites were falling back to an identical generic blob. They now render with their own colour palette and a recognisable feature so you can tell them apart at a glance.',
+      'The three newest character Sprites were falling back to an identical generic blob, and the Quack variant was just a recoloured body. Both now render with recognisable features so you can tell them apart at a glance.',
     changes: [
-      { tag: 'Fixed', text: 'Peeky Peely (banana-yellow with a stem + peel flaps), Lootin’ Llama (piñata-blue with upright ears + a bright snout) and Ironmouse (pink with little demon horns + a heart) now each have a distinct built-in vector treatment instead of the default blue blob.' },
+      { tag: 'Fixed', text: 'Peeky Peely (banana-yellow with a stem cap + soft ridges), Lootin’ Llama (piñata-blue with upright ears + a bright snout) and Ironmouse (pink with little demon horns + a heart) now each have a distinct built-in vector treatment instead of the default blue blob.' },
+      { tag: 'Fixed', text: 'The Quack variant (Water, Earth, Fire, Zero Point) now draws an orange duck bill in place of the smile, so a recoloured body actually reads as a duck instead of a plain yellow blob with a gloss spot.' },
     ],
     why:
-      'Their real in-game art isn’t available from any source the build can reach yet (no Sprite image API; the wiki and the community mirrors either block automated fetches or predate the July 30 drop). Rather than leave three look-alike placeholders, they get on-theme original glyphs — consistent with how Batman, Spider-Man and Grim are drawn — as a clean stand-in. These are stylised icons, never an AI likeness of a real performer; the moment official art is in hand it drops straight in over the top.',
+      'Real in-game art for the newest Sprites isn’t available from any source the build can reach (no Sprite image API; the wiki, fortnite.gg and the community mirrors either block automated fetches or predate the July 30 drop). Rather than leave look-alike placeholders, they get on-theme original glyphs — consistent with how Batman, Spider-Man and Grim are drawn. These are stylised icons, never an AI likeness of a real performer; the moment official art is in public/sprites/ it drops straight in over the top.',
   },
   {
     date: 'July 30, 2026',

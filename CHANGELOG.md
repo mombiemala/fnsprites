@@ -11,21 +11,24 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## July 31, 2026 — Distinct art for Peely, Llama & Ironmouse (until real art lands)
+## July 31, 2026 — Better built-in art: Peely, Llama, Ironmouse + a real duck bill for Quack
 
-- **Fixed:** Peeky Peely (banana-yellow with a stem + peel flaps), Lootin' Llama
+- **Fixed:** Peeky Peely (banana-yellow with a stem cap + soft ridges), Lootin' Llama
   (piñata-blue with upright ears + a bright snout) and Ironmouse (pink with little
   demon horns + a heart) now each have a distinct built-in vector treatment in
   `src/components/SpriteArt.jsx` (own `TYPES` palette + `Features` case) instead of
   the shared default blue blob.
-- **Why:** their real in-game art isn't reachable from any source the build can
-  hit yet — there's no Sprite image API, and the Fortnite Wiki plus the community
-  mirrors (e.g. `UltronCore/sprite-tracker`) either block automated fetches (403)
-  or predate the July 30 drop and don't contain these Sprites. Rather than three
-  look-alike placeholders, they get on-theme original glyphs — consistent with how
-  Batman, Spider-Man and Grim are drawn. These are stylised icons, never an AI
-  likeness of a real performer; official art drops straight in over the top once
-  it's in `public/sprites/`.
+- **Fixed:** the Quack variant (Water, Earth, Fire, Zero Point) now draws an orange
+  duck bill in place of the smile, so a recoloured body actually reads as a duck
+  instead of a plain yellow blob with a gloss spot.
+- **Why:** real in-game art for these isn't reachable from any source the build can
+  hit — there's no Sprite image API, and the Fortnite Wiki, fortnite.gg and the
+  community mirrors (e.g. `UltronCore/sprite-tracker`) either block automated fetches
+  (403 / network-policy denial) or predate the July 30 drop and don't contain these
+  Sprites. Rather than look-alike placeholders, they get on-theme original glyphs —
+  consistent with how Batman, Spider-Man and Grim are drawn. These are stylised
+  icons, never an AI likeness of a real performer; official art drops straight in
+  over the top once it's in `public/sprites/`.
 
 ---
 

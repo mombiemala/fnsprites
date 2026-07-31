@@ -115,6 +115,17 @@ function Smile({ y = 68, w = 6 }) {
   return <path d={`M${50 - w} ${y} q${w} ${w} ${w * 2} 0`} stroke={INK} strokeWidth="2.4" fill="none" strokeLinecap="round" />
 }
 
+// Duck bill — used in place of the smile on the "Quack" variant so a recoloured
+// body actually reads as a duck.
+function DuckBill() {
+  return (
+    <g>
+      <path d="M38 67 Q50 61 62 67 Q60 76 50 76 Q40 76 38 67 Z" fill="#ff9d2e" stroke="rgba(0,0,0,.3)" strokeWidth="1.4" strokeLinejoin="round" />
+      <path d="M43 71.5 h14" stroke="rgba(0,0,0,.28)" strokeWidth="1.1" strokeLinecap="round" />
+    </g>
+  )
+}
+
 // Per-type features drawn on top. `fc` = feature color (treatment-aware),
 // `gid` lets body-colored extensions (fins, tails) match the treatment.
 function Features({ id, fc, gid }) {
@@ -185,12 +196,14 @@ function Features({ id, fc, gid }) {
         </g>
       </g>
     case 'peely':
-      // Peely the banana: a little brown stem up top + peeled-back skin flaps
-      // framing the face — reads as a peeking banana without copying Epic's art.
+      // Peely the banana: a little brown stem cap up top + two soft banana ridges
+      // curving down the body — reads as a banana without copying Epic's art.
       return <g>
-        <path d="M47 13 C46 6 49 3 53 2 C51 7 50 10 51 13 Z" fill={fc} stroke="rgba(0,0,0,.2)" strokeWidth="1" strokeLinejoin="round" />
-        <path d="M23 32 C18 42 20 60 27 68 C24 52 25 40 30 32 Z" fill={fc} opacity="0.5" />
-        <path d="M77 32 C82 42 80 60 73 68 C76 52 75 40 70 32 Z" fill={fc} opacity="0.5" />
+        <path d="M44 13 C42 5 47 1 53 1 C57 1 59 5 57 9 C55 6 52 6 51 9 C50 11 51 12 51 13 Z" fill="#5a3a16" stroke="rgba(0,0,0,.25)" strokeWidth="1" strokeLinejoin="round" />
+        <g stroke={fc} strokeWidth="1.6" opacity="0.3" fill="none" strokeLinecap="round">
+          <path d="M37 30 Q34 55 41 79" />
+          <path d="M63 30 Q66 55 59 79" />
+        </g>
       </g>
     case 'llama':
       // Loot-llama piñata: two upright ears (treatment-matched) + a bright snout.
@@ -233,6 +246,7 @@ export default function SpriteArt({ sprite, className = '' }) {
   const gid = `g-${uid}`, cid = `c-${uid}`, hgid = `h-${uid}`
   const tr = treatment(sprite.themeId, type, gid, hgid)
   const isBoss = sprite.typeId === 'boss'
+  const isQuack = sprite.themeId === 'quack'
   const maskFace = sprite.typeId === 'batman' || sprite.typeId === 'spiderman'
   const glow = sprite.typeId === 'grim' ? type.feat : sprite.themeId === 'galaxy' ? '#bdbcff' : null
 
@@ -272,7 +286,7 @@ export default function SpriteArt({ sprite, className = '' }) {
         <>
           {!maskFace && <Eyes glow={glow} />}
           <Blush />
-          <Smile />
+          {isQuack ? <DuckBill /> : <Smile />}
         </>
       )}
     </svg>
