@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Real Epic art for Peely & Lootin' Llama
+
+- **Added:** official 512×512 transparent art for Peeky Peely and Lootin' Llama in
+  `public/sprites/`, so both now show their real in-game look across the grid, the
+  detail popup and the sprite pages instead of the vector fallback.
+- **Why:** the built-in glyphs were only ever a stand-in until real art was in hand.
+  With the official images supplied they drop straight in over the top with no code
+  change — the SVG fallback still covers any variant whose art isn't added yet
+  (Ironmouse, Spider-Man, the Peely/Llama finishes, and the Grim/Aura gems).
+
+---
+
 ## July 31, 2026 — Better built-in art: Peely, Llama, Ironmouse + a real duck bill for Quack
 
 - **Fixed:** Peeky Peely (banana-yellow with a stem cap + soft ridges), Lootin' Llama

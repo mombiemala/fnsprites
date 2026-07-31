@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Real Epic art for Peely & Lootin\u2019 Llama',
+    summary:
+      'Dropped in the official in-game art for the two newest base Sprites, replacing the built-in stand-in glyphs.',
+    changes: [
+      { tag: 'Added', text: 'Official 512\u00d7512 transparent art for Peeky Peely and Lootin\u2019 Llama in public/sprites/, so both now show their real in-game look across the grid, detail popup and sprite pages instead of the vector fallback.' },
+    ],
+    why:
+      'The stand-in glyphs were only ever a placeholder until real art was in hand \u2014 with the official images supplied, they drop straight in over the top with no code change (the fallback still covers any variant whose art isn\u2019t added yet).',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Better built-in art: Peely, Llama, Ironmouse + a real duck bill for Quack',
     summary:
       'The three newest character Sprites were falling back to an identical generic blob, and the Quack variant was just a recoloured body. Both now render with recognisable features so you can tell them apart at a glance.',
