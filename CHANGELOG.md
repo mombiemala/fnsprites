@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Sprite pages now spell out what each variant does
+
+- **Added:** each variant card on a per-Sprite page (`scripts/prerender.mjs`) now lists the
+  finish's bonus perk — Gummy = +20% Sprite Dust on extraction, Galaxy = +30% ammo when
+  looting, Holofoil = +5% squad chance to find rare Sprites, etc. — colour-tinted to the
+  finish, alongside its Available / Coming soon / Vaulted status.
+- **Why:** the grid listed finishes by name only. Every finish keeps the Sprite's base
+  ability but adds its own perk; surfacing that (from `themes.js`) makes it a real
+  reference for which variants are worth chasing.
+
+---
+
 ## July 31, 2026 — Roster corrections: no Peely Gem or Llama Holofoil; Spider-Man still unreleased
 
 - **Fixed:** removed the Peely Gem and Lootin' Llama Holofoil variants — neither exists

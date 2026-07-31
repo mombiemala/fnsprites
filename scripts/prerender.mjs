@@ -119,10 +119,13 @@ p{color:#cdd6f0;max-width:70ch}
 .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px}
 table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border)}
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}td.v{text-align:right;font-weight:700}
-.variants{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
-.variant{background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;font-size:12px}
+.variants{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:10px}
+.variant{background:var(--panel2);border:1px solid var(--border);border-radius:14px;padding:12px 10px;text-align:center;font-size:12px}
 .variant .sw{width:64px;height:64px;border-radius:12px;margin:0 auto 6px;overflow:hidden;position:relative}
 .variant .sw img{width:100%;height:100%;object-fit:contain;position:relative;z-index:1}.variant .sw .swfallback{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;z-index:0}.variant small{color:var(--muted);display:block;font-size:10px}
+.variant .nm{display:block;font-weight:700;color:var(--text);font-size:12.5px}
+.variant .perk{display:block;margin-top:7px;padding-top:7px;border-top:1px solid var(--border);color:var(--muted);font-size:10.5px;line-height:1.4;text-align:left}
+.variant .perk b{display:block;font-size:8.5px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;font-weight:800}
 details{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:2px 16px;margin-bottom:8px}
 summary{cursor:pointer;font-weight:700;padding:13px 0}details p{margin:0 0 12px;max-width:none}
 .related{display:flex;gap:10px;flex-wrap:wrap}.related a{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:9px 13px;font-weight:700;font-size:14px;color:var(--text);transition:border-color .15s}
@@ -216,7 +219,7 @@ function spritePage(type, others) {
 
   const variants = Object.keys(type.variants)
     .filter((tid) => THEME_MAP[tid])
-    .map((tid) => ({ tid, name: THEME_MAP[tid].name, bonus: THEME_MAP[tid].bonus, released: !!SPRITE_BY_ID[`${type.id}_${tid}`]?.released, vaulted: !!SPRITE_BY_ID[`${type.id}_${tid}`]?.vaulted }))
+    .map((tid) => ({ tid, name: THEME_MAP[tid].name, bonus: THEME_MAP[tid].bonus, accent: THEME_MAP[tid].accent, released: !!SPRITE_BY_ID[`${type.id}_${tid}`]?.released, vaulted: !!SPRITE_BY_ID[`${type.id}_${tid}`]?.vaulted }))
 
   const desc = `${name} is a ${type.rarity} Fortnite Sprite${p ? ` with about a ${type.dropRate} drop rate from Sprite Chests` : ''}. See its ${p ? 'drop rate, ' : ''}re-summon Dust cost, ability, variants${p ? ', and how many chests it takes to get one' : ''}.`
   const title = `${name} Sprite — ${p ? 'Drop Rate, ' : ''}Dust Cost & How to Get | FN Sprite Tracker`
@@ -279,7 +282,8 @@ ${oddsTable}
 ${type.ability ? `<h2>Ability &amp; leveling</h2><div class="card"><p style="margin:0">${esc(type.ability)}${scaling ? ` <span style="color:var(--muted)">${esc(scaling)}</span>` : ''} Reaches full effect at <b>Level 5 (Mastered)</b>. Community-reported — Epic doesn't publish exact figures.</p></div>` : ''}
 
 <h2>${esc(name)} variants</h2>
-<div class="variants">${variants.map((v) => `<div class="variant"><div class="sw" style="background:${VARIANT_BG[v.tid] || VARIANT_BG.normal}"><span class="swfallback">${esc(type.icon || '🧩')}</span><img src="/sprites/${type.id}_${v.tid}.png" alt="${esc(name)} ${esc(v.name)}" loading="lazy" onerror="this.style.display='none'"></div>${esc(v.name)}<small${v.vaulted ? ' style="color:#fca5a5"' : ''}>${v.vaulted ? 'Vaulted' : v.released ? 'Available' : 'Coming soon'}</small></div>`).join('')}</div>
+<p style="color:var(--muted);margin:-4px 0 14px;font-size:13px">Every finish shares the Sprite’s base ability and adds its own bonus perk. Below: what each ${esc(name)} finish grants and whether it’s currently obtainable.</p>
+<div class="variants">${variants.map((v) => `<div class="variant"><div class="sw" style="background:${VARIANT_BG[v.tid] || VARIANT_BG.normal}"><span class="swfallback">${esc(type.icon || '🧩')}</span><img src="/sprites/${type.id}_${v.tid}.png" alt="${esc(name)} ${esc(v.name)}" loading="lazy" onerror="this.style.display='none'"></div><b class="nm">${esc(v.name)}</b><small${v.vaulted ? ' style="color:#fca5a5"' : ''}>${v.vaulted ? 'Vaulted' : v.released ? 'Available' : 'Coming soon'}</small>${v.bonus ? `<span class="perk" style="border-top-color:${v.accent}44"><b style="color:${v.accent}">Perk</b>${esc(v.bonus)}</span>` : ''}</div>`).join('')}</div>
 
 <h2>${esc(name)} FAQ</h2>
 ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}

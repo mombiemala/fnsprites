@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Sprite pages now spell out what each variant does',
+    summary:
+      'Every finish on a Sprite\u2019s page now shows its bonus perk and whether it\u2019s obtainable, not just its name.',
+    changes: [
+      { tag: 'Added', text: 'Each variant card on a per-Sprite page now lists the finish\u2019s bonus perk (e.g. Gummy = +20% Sprite Dust on extraction, Galaxy = +30% ammo when looting, Holofoil = +5% squad chance to find rare Sprites), colour-tinted to the finish, alongside its Available / Coming soon / Vaulted status.' },
+    ],
+    why:
+      'The pages listed finishes by name only. Every finish keeps the Sprite\u2019s base ability but adds its own perk \u2014 surfacing that (data the app already had in themes.js) turns the variant grid into a real reference for what each one is worth chasing.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Roster corrections: no Peely Gem or Llama Holofoil; Spider-Man still unreleased',
     summary:
       'Trimmed two finishes that don\u2019t actually exist and stopped showing Spider-Man as live, so the roster matches the game (111).',
