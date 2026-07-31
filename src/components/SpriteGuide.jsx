@@ -61,6 +61,7 @@ const FILTERS = { all: 'All', available: 'Available', upcoming: 'Upcoming', vaul
 export default function SpriteGuide() {
   const [sort, setSort] = useState('easiest')
   const [filter, setFilter] = useState('all')
+  const [q, setQ] = useState('')
   const allRows = useMemo(() => buildRows(), [])
   // Monday = Mastery Monday (2× Sprite Dust & XP). getDay(): 0 Sun … 1 Mon.
   const isMasteryMonday = new Date().getDay() === 1
@@ -68,8 +69,10 @@ export default function SpriteGuide() {
   const rows = useMemo(() => {
     let r = allRows
     if (filter !== 'all') r = r.filter((x) => x.status === filter)
+    const needle = q.trim().toLowerCase()
+    if (needle) r = r.filter((x) => `${x.name} ${x.rarity}`.toLowerCase().includes(needle))
     return [...r].sort(SORTS[sort])
-  }, [allRows, sort, filter])
+  }, [allRows, sort, filter, q])
 
   const available = allRows.filter((r) => r.status === 'available').length
 
@@ -89,6 +92,19 @@ export default function SpriteGuide() {
         }`}
       >
         {isMasteryMonday ? '🔥 It’s Mastery Monday' : '📅 Mastery Mondays'} — 2× Sprite Dust &amp; XP and boosted Sprite spawns{isMasteryMonday ? ' all day. Best day to grind & level.' : ' every Monday. The fastest day to farm and level up.'}
+      </div>
+
+      {/* Search */}
+      <div className="relative mb-2">
+        <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-[var(--muted)]">🔍</span>
+        <input
+          type="search"
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="Search Sprites by name…"
+          aria-label="Search Sprites by name"
+          className="w-full rounded-xl border border-[var(--border)] bg-[var(--bg-2)] py-2 pl-9 pr-3 text-sm text-white placeholder:text-[var(--muted)] focus:border-[var(--brand)] focus:outline-none"
+        />
       </div>
 
       {/* Controls */}
@@ -130,7 +146,9 @@ export default function SpriteGuide() {
 
       <div className="space-y-1">
         {rows.length === 0 && (
-          <p className="rounded-xl bg-[var(--bg-2)] p-4 text-center text-xs text-[var(--muted)]">No Sprites match this filter.</p>
+          <p className="rounded-xl bg-[var(--bg-2)] p-4 text-center text-xs text-[var(--muted)]">
+            {q.trim() ? `No Sprites match “${q.trim()}”.` : 'No Sprites match this filter.'}
+          </p>
         )}
         {rows.map((r) => {
           const st = STATUS_META[r.status]

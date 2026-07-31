@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Guide + Sprites are now one page',
+    summary:
+      'Merged the old Guide tab and the Sprites page into a single \u201CSprites\u201D destination \u2014 the searchable, sortable \u201Chow to get every Sprite\u201D board with the reference sidebar (how Sprites work, upcoming/leaked, chest luck, support) beside it.',
+    changes: [
+      { tag: 'Added', text: 'A search box on the Sprites board \u2014 type a name to filter the list instantly, on top of the existing Easiest / Rarest / Cheapest Dust / A\u2013Z sorts and Available / Upcoming / Vaulted filters.' },
+      { tag: 'Changed', text: 'The Sprites nav entry now opens the combined board-plus-sidebar layout in-app, and the static /sprites SEO page was rebuilt to match it (its main column is the same how-to-get table, with sort/filter/search running client-side).' },
+      { tag: 'Removed', text: 'The separate \u201C\uD83E\uDDED Guide\u201D nav entry \u2014 its content lives on the Sprites page now. Old ?view=guide links redirect there.' },
+    ],
+    why:
+      'The Guide tab and the Sprites page listed the same Sprites twice in two different layouts. Folding them together removes the duplication: one place to browse, filter and plan a grind, keeping the Guide\u2019s scannable ranked table and the Sprites page\u2019s reference sidebar. The in-app view and the static SEO page share one content source so they can\u2019t drift.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'New \u201CGuide\u201D tab: how to get every Sprite',
     summary:
       'A ranked, filterable guide to landing every Sprite \u2014 drop rate, average chests, re-summon Dust and where to find each one.',

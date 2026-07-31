@@ -17,6 +17,7 @@ import QuickCheckList from './components/QuickCheckList'
 import ChestOdds from './components/ChestOdds'
 import OverflowNav from './components/OverflowNav'
 import UpcomingSprites from './components/UpcomingSprites'
+import HowSpritesWork from './components/HowSpritesWork'
 import WelcomeModal from './components/WelcomeModal'
 import AnnouncementBar from './components/AnnouncementBar'
 import SaveStatusPill from './components/SaveStatusPill'
@@ -43,7 +44,7 @@ import { LINKS } from './lib/supabase'
 const TABS = [
   { id: 'collection', label: 'Collection' },
   { id: 'leaderboard', label: '🏆 Leaderboard' },
-  { id: 'guide', label: '🧭 Guide' },
+  { id: 'sprites', label: '🧩 Sprites' },
   { id: 'stats', label: '📊 Stats' },
   { id: 'news', label: '📰 News' },
   { id: 'shop', label: '🛒 Item Shop' },
@@ -72,6 +73,9 @@ function useShareTarget() {
 function useInitialView() {
   return useMemo(() => {
     const v = new URLSearchParams(window.location.search).get('view')
+    // The old Guide tab folded into the combined Sprites view — keep its
+    // deep link (?view=guide) working by mapping it across.
+    if (v === 'guide') return 'sprites'
     return TABS.some((t) => t.id === v) ? v : 'collection'
   }, [])
 }
@@ -362,21 +366,36 @@ export default function App() {
         isShareView={isShareView}
         onSelectView={setView}
         actions={[
-          { key: 'sprites', label: '🧩 Sprites', href: '/sprites', title: 'All sprites — drop rates, dust costs & chest odds' },
           { key: 'cosmetics', label: '🧢 Cosmetics', onClick: () => setShowCosmetics(true), title: 'Browse the newest Fortnite cosmetics (beta)' },
         ]}
         extras={utilityLinks.filter((l) => l.id !== 'cosmetics')}
         ariaLabel="Sections"
       />
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'guide' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
-          {effectiveView === 'guide' && <div className="mb-5"><SpriteGuide /></div>}
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}
         </Suspense>
+      )}
+
+      {/* Sprites — the combined page: the filterable/searchable "how to get every
+          Sprite" board (main) beside the reference sidebar (how Sprites work,
+          upcoming/leaked, chest luck, support). Mirrors the static /sprites page. */}
+      {effectiveView === 'sprites' && (
+        <div className="mb-5 flex flex-col gap-6 lg:flex-row lg:items-start">
+          <div className="min-w-0 flex-1">
+            <Suspense fallback={<TabLoading />}><SpriteGuide /></Suspense>
+          </div>
+          <aside className="flex flex-col gap-4 lg:w-80 lg:shrink-0">
+            <HowSpritesWork />
+            <UpcomingSprites onOpen={setDetailType} />
+            <ChestOdds />
+            <SupportBanner />
+          </aside>
+        </div>
       )}
 
       {effectiveView === 'collection' && (

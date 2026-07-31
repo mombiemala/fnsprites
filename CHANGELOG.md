@@ -11,6 +11,25 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Guide + Sprites are now one page
+
+- **Added:** a search box on the Sprites board — type a name to filter instantly, on top
+  of the Easiest / Rarest / Cheapest Dust / A–Z sorts and Available / Upcoming / Vaulted
+  filters.
+- **Changed:** the **🧩 Sprites** nav entry now opens a combined layout in-app — the
+  searchable "how to get every Sprite" table (`SpriteGuide.jsx`) as the main column beside
+  the reference sidebar (`HowSpritesWork.jsx`, `UpcomingSprites`, `ChestOdds`,
+  `SupportBanner`). The static `/sprites` SEO page (`scripts/prerender.mjs`) was rebuilt to
+  match: same how-to-get table, with sort/filter/search running as inline client-side JS.
+- **Changed:** the "How Sprites work" copy now has a single source of truth
+  (`src/data/spriteGuide.js`), shared by the in-app card and the prerendered page so they
+  can't drift.
+- **Removed:** the separate **🧭 Guide** nav entry; its content lives on the Sprites page.
+  Old `?view=guide` deep links redirect to `?view=sprites`.
+- **Why:** the Guide tab and the Sprites page listed the same Sprites twice in two layouts.
+  Merging them removes the duplication — one place to browse, filter and plan a grind —
+  keeping the Guide's ranked table and the Sprites page's sidebar.
+
 ## July 31, 2026 — New "Guide" tab: how to get every Sprite
 
 - **Added:** a Guide tab (`src/components/SpriteGuide.jsx`) listing every Sprite ranked by

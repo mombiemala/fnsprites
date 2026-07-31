@@ -12,9 +12,11 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import {
   SPRITE_TYPES, SPRITE_BY_ID, RELEASED_COUNT,
+  RARITY_COLORS, RARITY_ORDER, TIER_META,
   dustCost, spriteTier, spriteScaling, spriteSource,
 } from '../src/data/sprites.js'
 import { THEME_MAP, FINISH_ODDS_FACTOR } from '../src/data/themes.js'
+import { SPRITE_GUIDE } from '../src/data/spriteGuide.js'
 
 const SITE = 'https://fnsprites.vercel.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -146,6 +148,39 @@ footer.foot{margin-top:48px;border-top:1px solid var(--border);padding-top:24px;
 .guide{display:grid;gap:10px;margin:0 0 8px}
 .guide .card h3{font-family:'Inter',sans-serif;font-size:15px;font-weight:800;color:var(--brand);letter-spacing:0;margin:0 0 6px}
 .guide .card p{margin:0 0 8px;max-width:none}.guide .card p:last-child{margin-bottom:0}.guide .card b{color:#fff}
+/* /sprites "How to get every Sprite" board — mirrors the in-app SpriteGuide:
+   a searchable, sortable, filterable table (sort/filter/search run client-side). */
+.board .lede{color:var(--muted);margin:2px 0 14px;font-size:14px;max-width:70ch}
+.board .bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 10px}
+.board .search{position:relative;flex:1 1 100%}
+.board .search input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:9px 12px 9px 34px;color:#fff;font-size:14px;font-family:inherit}
+.board .search input::placeholder{color:var(--muted)}.board .search input:focus{outline:none;border-color:var(--brand)}
+.board .search .mag{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px}
+.board .segs{display:flex;flex-wrap:wrap;gap:4px}
+.board .seg{background:var(--panel2);color:var(--muted);border:0;border-radius:999px;padding:5px 11px;font-size:11px;font-weight:800;cursor:pointer;font-family:inherit}
+.board .seg:hover{color:#fff}
+.board .sortsegs .seg.on{background:var(--brand);color:#000}
+.board .filtsegs{margin-left:auto}.board .filtsegs .seg.on{background:rgba(255,255,255,.9);color:#000}
+.board .monday{margin:0 0 12px;border-radius:12px;padding:8px 12px;font-size:12px;font-weight:700;background:var(--bg2);color:var(--muted)}
+.ghead{display:none}
+@media(min-width:640px){.ghead{display:grid;grid-template-columns:1.6fr .7fr .9fr .7fr 2fr;gap:8px;padding:0 10px 4px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}.ghead .r{text-align:right}}
+.grows{display:flex;flex-direction:column;gap:4px}
+.grow{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;align-items:center;background:var(--bg2);border:1px solid transparent;border-radius:12px;padding:9px 10px;color:inherit;transition:background .15s,border-color .15s}
+.grow:hover{background:var(--panel2);border-color:var(--brand)}
+@media(min-width:640px){.grow{grid-template-columns:1.6fr .7fr .9fr .7fr 2fr}}
+.grow .nm{display:flex;align-items:center;gap:8px;min-width:0}
+.grow .nm .ic{font-size:18px;line-height:1;flex:0 0 auto}.grow .nm .nt{min-width:0}
+.grow .nm .nt b{display:block;font-size:13.5px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grow .badges{display:flex;gap:4px;margin-top:3px}
+.grow .badges span{font-size:9px;font-weight:800;text-transform:uppercase;padding:1px 5px;border-radius:4px;line-height:1.5}
+.grow .tier{text-align:right}@media(min-width:640px){.grow .tier{text-align:left}}
+.grow .tier span{font-size:10px;font-weight:800;padding:2px 6px;border-radius:5px}
+.grow .drop,.grow .dust{text-align:right;font-size:12px}
+.grow .drop b,.grow .dust b{color:#fff;font-weight:700}.grow .drop small,.grow .dust small{display:block;font-size:10px;color:var(--muted)}
+.grow .src{grid-column:1/-1;font-size:11px;line-height:1.5;color:var(--muted)}
+@media(min-width:640px){.grow .src{grid-column:auto;margin:0}}
+.board .empty{display:none;text-align:center;padding:16px;border-radius:12px;background:var(--bg2);color:var(--muted);font-size:13px}
+.board .fine{margin:12px 0 0;font-size:10.5px;line-height:1.5;color:var(--muted)}
 @media(min-width:640px){.wrap{padding:24px 24px 96px}.logo{gap:10px}.logo .mark-sm{width:36px;height:36px}.logo .wm{font-size:36px}.tagline{font-size:14px}}
 @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.hero{flex-direction:column;text-align:center}h1{font-size:28px}.avatar{width:92px;height:92px}.tags{justify-content:center}}
 `
@@ -203,6 +238,10 @@ const RATED_MAP = Object.fromEntries(
 )
 const CHEST_SCRIPT = `<script>window.__RATED=${JSON.stringify(RATED_MAP)};(function(){var R=window.__RATED||{};var cf=function(p,c){return Math.ceil(Math.log(1-c)/Math.log(1-p))};var a1=function(p,n){return 1-Math.pow(1-p,n)};var fmt=function(x){return Math.round(x).toLocaleString()};var pct=function(x){var v=x*100;if(v>=99.95)return'>99.9%';if(v<0.1)return v.toPrecision(2)+'%';return v.toFixed(1)+'%'};var rs=function(x){var v=x*100;return (v<0.1?v.toPrecision(2):v.toFixed(2))+'%'};document.querySelectorAll('.chestcard').forEach(function(card){var sel=card.querySelector('.cl-sel'),fin=card.querySelector('.cl-fin'),finlab=card.querySelector('.cl-finlab'),warn=card.querySelector('.cl-warn'),n=card.querySelector('.cl-n');function d(){return R[sel.value];}function cur(){var o=(d()&&d().finishes)||[];for(var i=0;i<o.length;i++){if(o[i].id===fin.value)return o[i];}return{id:'normal',name:'Normal',factor:1};}function eff(){return d().p*cur().factor;}function fill(){var o=(d()&&d().finishes)||[];if(o.length>1){fin.innerHTML=o.map(function(f){return '<option value="'+f.id+'">'+f.name+(f.id==='normal'?' (base rate)':' \\u2014 ~'+Math.round(1/f.factor)+'x rarer')+'</option>';}).join('');fin.value='normal';fin.style.display='';finlab.style.display='';}else{fin.innerHTML='';fin.style.display='none';finlab.style.display='none';}}function res(){if(!d())return;var p=eff(),c=cur();var v=Math.max(0,Math.floor(Number(n.value)||0));var nm=c.id==='normal'?d().name:(c.name+' '+d().name);card.querySelector('.cl-res').innerHTML='<b>'+pct(a1(p,v))+'</b> chance of at least one <b>'+nm+'</b>';}function draw(){if(!d())return;var p=eff(),c=cur(),sp=c.id!=='normal';card.querySelector('.cl-dot').style.background=d().color;card.querySelector('.cl-ratelab').textContent=sp?(c.name+' rate'):'Drop rate';card.querySelector('.cl-rateval').textContent=sp?('\\u2248'+rs(p)):d().dropRate;card.querySelector('.cl-avg').innerHTML='~<b>'+fmt(1/p)+'</b> chests avg';card.querySelector('.cl-c50').textContent=fmt(cf(p,.5))+' chests';card.querySelector('.cl-c90').textContent=fmt(cf(p,.9))+' chests';card.querySelector('.cl-c99').textContent=fmt(cf(p,.99))+' chests';if(sp){warn.style.display='';warn.textContent='\\u26A0\\uFE0E Estimate only \\u2014 assumes the '+c.name+' finish is ~'+Math.round(1/c.factor)+'x rarer than the base pull.';}else{warn.style.display='none';}res();}sel.addEventListener('change',function(){fill();n.value=cf(eff(),.5);draw();});fin.addEventListener('change',function(){n.value=cf(eff(),.5);draw();});n.addEventListener('input',res);if(d()){fill();n.value=cf(eff(),.5);}draw();});})();</script>`
 
+// Runtime for the /sprites "how to get every Sprite" board: client-side sort,
+// filter and search over the pre-rendered rows. No-ops on pages without #how-to-get.
+const GUIDE_SCRIPT = `<script>(function(){var b=document.getElementById('how-to-get');if(!b)return;var grows=b.querySelector('.grows'),rows=[].slice.call(b.querySelectorAll('.grow')),search=b.querySelector('#gsearch'),empty=b.querySelector('#gempty');var sort='easiest',filter='all';function num(v,f){return v===''||v==null?f:parseFloat(v)}var S={easiest:function(a,b){var sa=a.dataset.status==='available'?0:1,sb=b.dataset.status==='available'?0:1;return sa-sb||num(b.dataset.p,-1)-num(a.dataset.p,-1)||(+a.dataset.rank)-(+b.dataset.rank)},rarest:function(a,b){return (+b.dataset.rank)-(+a.dataset.rank)||num(a.dataset.p,2)-num(b.dataset.p,2)},dust:function(a,b){return num(a.dataset.dust,Infinity)-num(b.dataset.dust,Infinity)},az:function(a,b){return a.dataset.name<b.dataset.name?-1:a.dataset.name>b.dataset.name?1:0}};function apply(){var q=(search.value||'').trim().toLowerCase();var shown=rows.filter(function(r){if(filter!=='all'&&r.dataset.status!==filter)return false;if(q&&r.dataset.search.indexOf(q)===-1)return false;return true;});rows.forEach(function(r){r.style.display='none'});shown.sort(S[sort]);shown.forEach(function(r){r.style.display='';grows.appendChild(r)});empty.style.display=shown.length?'none':'';empty.textContent=q?('No Sprites match \\u201C'+search.value.trim()+'\\u201D.'):'No Sprites match this filter.';}b.querySelectorAll('[data-sort]').forEach(function(el){el.addEventListener('click',function(){sort=el.dataset.sort;b.querySelectorAll('[data-sort]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});b.querySelectorAll('[data-filter]').forEach(function(el){el.addEventListener('click',function(){filter=el.dataset.filter;b.querySelectorAll('[data-filter]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});search.addEventListener('input',apply);apply();})();</script>`
+
 // Mirrors the app footer (src/App.jsx) so the whole site shares one footer:
 // the same sections row, the utility/support row (modal links deep-link into
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
@@ -212,7 +251,7 @@ const FOOT = `<footer class="foot">
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
 <p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
-</footer></div>${CHEST_SCRIPT}</body></html>`
+</footer></div>${CHEST_SCRIPT}${GUIDE_SCRIPT}</body></html>`
 
 // ---------- per-sprite page ----------
 function spritePage(type, others) {
@@ -310,33 +349,10 @@ ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}<
 ` + FOOT
 }
 
-// The "How Sprites work" guide — same content as the old in-app HowItWorksModal,
-// consolidated here as the single source of truth (the modal and its nav entry
-// were removed; in-app "How Sprites work" links now point at #how-sprites-work).
-const GUIDE = [
-  { h: '✨ Getting Sprites', body: [
-    'Sprites mostly come from **Sprite Chests** around the island (a few also spawn mid-match). Rarer ones — Zero Point, Grim Reaper, Burnt Peanut — have very low drop rates, which is why trading duplicates is popular.',
-    '**Any chest can drop any Sprite** — rarity sets the odds, not the location. Chests glow blue with a pink crystal; turn on **Visualized Sounds** to spot them. Busiest farm is **Sinister Strip** (4 chests); Wonkeeland, Calamari Canyon, Heatwave Harbor & Shaken Sanctuary have 3 each.',
-  ] },
-  { h: '⚠️ Extract it, or you lose it', body: [
-    'A Sprite **isn’t yours until you Extract it.** If you’re eliminated before extracting, it’s gone. Extract at an **Extraction Site** or with a **Portable Extractor** (a Mastery reward). Only extracted Sprites count toward your collection.',
-  ] },
-  { h: '⬆️ Leveling (1 → 5)', body: [
-    'A Sprite gets stronger as it levels, up to **Lv 5**. You earn level points by:',
-    '• Opening containers — **≈75 pts**\n• Eliminations — **≈200 pts**\n• Extracting a duplicate Sprite — **≈200 pts**',
-    '**Mastery Mondays** (every Monday, 9 AM ET, 24h) grant **2× Sprite XP & Dust** — the fastest time to level. A common tactic: land quiet, get one to Lv 3 in game one, finish to Lv 5 in game two.',
-  ] },
-  { h: '⭐ Mastery', body: [
-    'Reaching Lv 5 **isn’t enough on its own** — you must **Extract a Sprite while it’s at Lv 5** to Master it. Each Mastery unlocks rewards in the Sprites menu: **Portable Extractors, Sprite Dust, XP and cosmetics.**',
-    'In this tracker, marking a variant **★ Mastered** = you’ve extracted it at Lv 5.',
-  ] },
-  { h: '🎨 Variants & forms', body: [
-    'Each Sprite comes in variant finishes — Normal, Gold, Gummy, Galaxy, and newer Gem / Holofoil / Cube / Quack — each stacking a small **bonus** on top of the Sprite’s ability. Re-summoning a variant you’ve traded away costs **Sprite Dust**.',
-  ] },
-  { h: '🔁 Trading', body: [
-    'There’s **no official trade menu** — trades happen in-game by dropping a Sprite for another player to pick up and **co-extract**. Rule of thumb: **don’t drop first**, use quiet/bot lobbies, and stick to **vouched** partners.',
-  ] },
-]
+// The "How Sprites work" guide content is shared with the in-app sidebar card
+// (src/components/HowSpritesWork.jsx) via src/data/spriteGuide.js — one source
+// of truth so the static page and the app never drift.
+const GUIDE = SPRITE_GUIDE
 const rich = (t) => esc(t).replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>').replace(/\n/g, '<br>')
 
 // ---------- /sprites right-sidebar cards (mirror the app's collection sidebar) ----------
@@ -383,19 +399,83 @@ const supportCard = () => `<div class="card sidecard supportcard"><h3 class="sh"
 <p style="font-size:13px;color:#cdd6f0;margin:0 0 4px">Enter Creator Code <b class="cc2">MOMBIE</b> in the Fortnite Item Shop at checkout — it supports me at no extra cost. #EpicPartner</p>
 <a class="bmc" href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a></div>`
 
+// ---------- /sprites "how to get every Sprite" board ----------
+// A static mirror of the in-app SpriteGuide: one row per base Sprite, enriched
+// with tier / drop rate / avg chests / Dust / source, plus data-* keys the
+// inline script uses to sort, filter and search entirely client-side.
+const STATUS_META = {
+  available: { label: 'Available', color: '#34d399' },
+  upcoming: { label: 'Upcoming', color: '#3da9fc' },
+  vaulted: { label: 'Vaulted', color: '#ef4444' },
+}
+const RARITY_RANK = Object.fromEntries(RARITY_ORDER.map((r, i) => [r, i]))
+
+function buildGuideRows() {
+  return SPRITE_TYPES.map((t) => {
+    const live = SPRITE_BY_ID[`${t.id}_normal`]
+    const released = !!live?.released
+    const vaulted = !!(t.vaulted || live?.vaulted)
+    const p = parseRate(t.dropRate)
+    return {
+      id: t.id, name: t.name, icon: t.icon || '🧩', rarity: t.rarity,
+      tier: spriteTier(t.id), dropRate: t.dropRate, p,
+      avg: p ? Math.round(1 / p) : null,
+      dust: dustCost(t.rarity, 'normal'), source: spriteSource(t.id),
+      status: vaulted ? 'vaulted' : released ? 'available' : 'upcoming',
+      released,
+    }
+  })
+}
+
+function guideRow(r) {
+  const rc = RARITY_COLORS[r.rarity] || '#95a0c4'
+  const st = STATUS_META[r.status]
+  const tm = r.tier ? TIER_META[r.tier] : null
+  const href = r.released ? `/sprite/${slug(r.name)}` : `/?sprite=${encodeURIComponent(r.id)}`
+  return `<a class="grow" href="${href}" title="Open ${esc(r.name)}"`
+    + ` data-status="${r.status}" data-p="${r.p ?? ''}" data-rank="${RARITY_RANK[r.rarity] ?? 0}"`
+    + ` data-dust="${r.dust ?? ''}" data-name="${esc(r.name.toLowerCase())}" data-search="${esc(`${r.name} ${r.rarity}`.toLowerCase())}">`
+    + `<span class="nm"><span class="ic">${esc(r.icon)}</span><span class="nt"><b>${esc(r.name)}</b>`
+    + `<span class="badges"><span style="color:${rc};background:${rc}22">${esc(r.rarity)}</span>`
+    + `<span style="color:${st.color};background:${st.color}22">${st.label}</span></span></span></span>`
+    + `<span class="tier">${tm ? `<span style="color:${tm.color};background:${tm.color}22" title="${esc(tm.blurb || '')}">${esc(tm.label)}</span>` : '<small style="color:var(--muted)">—</small>'}</span>`
+    + `<span class="drop">${r.p ? `<b>${esc(r.dropRate)}</b><small>~${fmt(r.avg)} chests</small>` : '<small>rate TBD</small>'}</span>`
+    + `<span class="dust">${r.dust != null ? `<b>${fmt(r.dust)}</b><small>dust</small>` : '<small>—</small>'}</span>`
+    + `<span class="src">${esc(r.source)}</span></a>`
+}
+
+function guideBoard() {
+  const rows = buildGuideRows()
+  const available = rows.filter((r) => r.status === 'available').length
+  const SORTS = [['easiest', 'Easiest'], ['rarest', 'Rarest'], ['dust', 'Cheapest Dust'], ['az', 'A–Z']]
+  const FILTERS = [['all', 'All'], ['available', 'Available'], ['upcoming', 'Upcoming'], ['vaulted', 'Vaulted']]
+  return `<section class="board" id="how-to-get">
+<div class="bar"><div class="search"><span class="mag">🔍</span><input type="search" id="gsearch" placeholder="Search Sprites by name…" aria-label="Search Sprites by name"></div></div>
+<div class="bar">
+  <div class="segs sortsegs" role="tablist" aria-label="Sort">${SORTS.map(([k, l], i) => `<button class="seg${i === 0 ? ' on' : ''}" data-sort="${k}">${l}</button>`).join('')}</div>
+  <div class="segs filtsegs" role="tablist" aria-label="Filter">${FILTERS.map(([k, l], i) => `<button class="seg${i === 0 ? ' on' : ''}" data-filter="${k}">${l}</button>`).join('')}</div>
+</div>
+<p class="monday">📅 <b style="color:#fcd34d">Mastery Mondays</b> — 2× Sprite Dust &amp; XP and boosted Sprite spawns every Monday. The fastest day to farm and level up.</p>
+<div class="ghead"><span>Sprite</span><span>Tier</span><span class="r">Drop / chests</span><span class="r">Dust</span><span>How to get</span></div>
+<div class="grows">${rows.map(guideRow).join('')}</div>
+<p class="empty" id="gempty">No Sprites match this filter.</p>
+<p class="fine">${available} obtainable right now. Drop rates &amp; Dust are community-estimated — Epic doesn’t publish official figures. Tap a Sprite for its full page.</p>
+</section>`
+}
+
 // ---------- /sprites index hub ----------
-function indexPage(types) {
-  const byRarity = ['Mythic', 'Legendary', 'Epic', 'Rare'].map((r) => ({ r, items: types.filter((t) => t.rarity === r) })).filter((g) => g.items.length)
-  const desc = `The complete Fortnite Sprite checklist — all ${RELEASED_COUNT} released sprite variants with drop rates, re-summon Dust costs, abilities and tiers. Track and compare your collection free.`
+function indexPage() {
+  const desc = `How to get every Fortnite Sprite — all ${RELEASED_COUNT} released variants ranked by how easy they are to land, with drop rates, average Sprite Chests, re-summon Dust costs and tiers. Search, sort and filter, free.`
   const jsonld = {
     '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'All Fortnite Sprites',
     url: SITE + '/sprites', description: desc,
   }
-  return head({ title: 'All Fortnite Sprites — Checklist, Drop Rates & Dust Costs | FN Sprite Tracker', desc, canonical: SITE + '/sprites', jsonld }) + `
+  return head({ title: 'All Fortnite Sprites — How to Get Every One, Drop Rates & Dust | FN Sprite Tracker', desc, canonical: SITE + '/sprites', jsonld }) + `
 <div class="cols">
   <div class="main">
-    <h1 class="sr-only">All Fortnite Sprites</h1>
-${byRarity.map((g) => `    <h2>${g.r} sprites</h2><div class="grid">${g.items.map((t) => `<a class="tile" href="/sprite/${slug(t.name)}"><span class="ic" style="background:${VARIANT_BG.normal}"><span class="icfallback">${esc(t.icon || '🧩')}</span><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span><b>${esc(t.name)}</b><br><small style="color:var(--muted)">${esc(t.rarity)}${t.dropRate ? ` · ${esc(t.dropRate)}` : ''}${t.vaulted ? ' · <span style="color:#fca5a5;font-weight:700">Vaulted</span>' : ''}</small></span></a>`).join('')}</div>`).join('\n')}
+    <h1>How to get every Fortnite Sprite</h1>
+    <p class="board-lede lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:70ch">Every Sprite ranked by how easy it is to land — with its drop rate, average Sprite Chests, re-summon Dust cost and where to find it. Search, sort or filter, then tap one for its full page.</p>
+    ${guideBoard()}
   </div>
   <aside class="side">
     ${guideCard()}
@@ -433,7 +513,7 @@ for (const type of types) {
   n++
 }
 mkdirSync(resolve(DIST, 'sprites'), { recursive: true })
-writeFileSync(resolve(DIST, 'sprites', 'index.html'), indexPage(types))
+writeFileSync(resolve(DIST, 'sprites', 'index.html'), indexPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
 console.log(`prerender: ${n} sprite pages + /sprites index + sitemap.xml → dist/`)
