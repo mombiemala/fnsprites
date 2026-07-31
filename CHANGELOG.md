@@ -11,6 +11,14 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Aura's Gem art added
+
+- **Added:** real art for Aura's Gem finish (`aura_gem`) — the hooded, glowing-eyed Aura
+  in crystal — replacing the vector fallback.
+- **Why:** `aura_gem` was the last confirmed Gem variant still on the built-in stand-in.
+
+---
+
 ## July 31, 2026 — Official Epic art across the roster (78 Sprite icons)
 
 - **Added:** real art for the **Ironmouse** Sprite, plus **Peely** Galaxy & Holofoil —

@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Aura\u2019s Gem art added',
+    summary:
+      'Filled the last confirmed Gem gap with Epic\u2019s official Aura Gem art.',
+    changes: [
+      { tag: 'Added', text: 'Real art for Aura\u2019s Gem finish (aura_gem) \u2014 the hooded, glowing-eyed Aura in crystal \u2014 replacing the vector fallback.' },
+    ],
+    why:
+      'aura_gem was the one confirmed Gem variant still on the built-in fallback; with the official image in hand it now matches the game.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Official Epic art across the roster (78 Sprite icons)',
     summary:
       'Swapped in Epic\u2019s official in-game Sprite icons for 78 variants from a full asset archive \u2014 replacing the built-in stand-ins almost everywhere and filling several gaps, including the Ironmouse Sprite.',
