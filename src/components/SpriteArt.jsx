@@ -115,17 +115,6 @@ function Smile({ y = 68, w = 6 }) {
   return <path d={`M${50 - w} ${y} q${w} ${w} ${w * 2} 0`} stroke={INK} strokeWidth="2.4" fill="none" strokeLinecap="round" />
 }
 
-// Duck bill — used in place of the smile on the "Quack" variant so a recoloured
-// body actually reads as a duck.
-function DuckBill() {
-  return (
-    <g>
-      <path d="M38 67 Q50 61 62 67 Q60 76 50 76 Q40 76 38 67 Z" fill="#ff9d2e" stroke="rgba(0,0,0,.3)" strokeWidth="1.4" strokeLinejoin="round" />
-      <path d="M43 71.5 h14" stroke="rgba(0,0,0,.28)" strokeWidth="1.1" strokeLinecap="round" />
-    </g>
-  )
-}
-
 // Per-type features drawn on top. `fc` = feature color (treatment-aware),
 // `gid` lets body-colored extensions (fins, tails) match the treatment.
 function Features({ id, fc, gid }) {
@@ -246,7 +235,6 @@ export default function SpriteArt({ sprite, className = '' }) {
   const gid = `g-${uid}`, cid = `c-${uid}`, hgid = `h-${uid}`
   const tr = treatment(sprite.themeId, type, gid, hgid)
   const isBoss = sprite.typeId === 'boss'
-  const isQuack = sprite.themeId === 'quack'
   const maskFace = sprite.typeId === 'batman' || sprite.typeId === 'spiderman'
   const glow = sprite.typeId === 'grim' ? type.feat : sprite.themeId === 'galaxy' ? '#bdbcff' : null
 
@@ -286,7 +274,7 @@ export default function SpriteArt({ sprite, className = '' }) {
         <>
           {!maskFace && <Eyes glow={glow} />}
           <Blush />
-          {isQuack ? <DuckBill /> : <Smile />}
+          <Smile />
         </>
       )}
     </svg>

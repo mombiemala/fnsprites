@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Real Epic art for a whole batch of variants (Quack, Gem & finishes)',
+    summary:
+      'Dropped in official in-game art for a big set of variants supplied by the maker, and corrected what the “Quack” finish actually is.',
+    changes: [
+      { tag: 'Added', text: 'Official art for the Quack finish (Water, Earth, Fire, Zero Point), the Gem finish (King, Water, Grim), and Peely’s Gold/Gummy plus Lootin’ Llama’s Gold/Gummy/Galaxy/Gem.' },
+      { tag: 'Added', text: 'A Gem variant for King — its real art surfaced, so it now counts in the roster alongside King’s other finishes.' },
+      { tag: 'Changed', text: 'The “Quack” finish is a crystalline treatment, not a duck — removed the placeholder duck-bill the fallback art was drawing and let the real art speak for itself.' },
+    ],
+    why:
+      'With real images in hand for these finishes, the built-in vector stand-ins are replaced by the genuine look. The duck-bill was a wrong guess at what “Quack” meant; the actual Quack art is a purple-crystal finish, so the stand-in was corrected to match.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Real Epic art for Peely & Lootin\u2019 Llama',
     summary:
       'Dropped in the official in-game art for the two newest base Sprites, replacing the built-in stand-in glyphs.',

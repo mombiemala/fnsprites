@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Real Epic art for a whole batch of variants (Quack, Gem & finishes)
+
+- **Added:** official in-game art for the **Quack** finish (Water, Earth, Fire, Zero
+  Point), the **Gem** finish (King, Water, Grim), and **Peely** Gold/Gummy plus
+  **Lootin' Llama** Gold/Gummy/Galaxy/Gem — all placed in `public/sprites/`.
+- **Added:** a **Gem** variant for King in `sprites.js` — its real art surfaced, so it
+  now sits alongside King's other finishes.
+- **Changed:** the **Quack** finish is a crystalline treatment, not a duck — removed
+  the placeholder duck-bill the SVG fallback was drawing (`SpriteArt.jsx`) now that the
+  real art is in.
+- **Why:** with genuine images in hand these finishes no longer fall back to the vector
+  stand-in. The duck-bill was a wrong reading of what "Quack" meant — the actual art is
+  a purple-crystal finish.
+
+---
+
 ## July 31, 2026 — Real Epic art for Peely & Lootin' Llama
 
 - **Added:** official 512×512 transparent art for Peeky Peely and Lootin' Llama in
