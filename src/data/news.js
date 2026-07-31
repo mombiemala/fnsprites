@@ -73,7 +73,7 @@ export const NEWS = [
     when: 'Jul 30, 2026',
     tag: 'sprites',
     title: 'v41.30 quests: Cube Punk, Galaxy Demon, Holofoil Seven & Gem Aura 💎',
-    body: 'v41.30 adds quests that reward four specific variant Sprites: Cube Punk, Galaxy Demon, Holofoil Seven and Gem Aura. If you’ve already collected one, completing its quest grants 10,000 Sprite Dust instead. Gem Aura is the genuinely new one here — Cube Punk, Galaxy Demon and Holofoil Seven were already obtainable in the wild.',
+    body: 'v41.30 adds quests that reward four specific variant Sprites: Cube Punk, Galaxy Demon, Holofoil Seven and Gem Aura. If you’ve already collected one, completing its quest grants 10,000 Sprite Dust instead. Gem Aura is the genuinely new one here — Cube Punk, Galaxy Demon and Holofoil Seven were already obtainable in the wild. Update (Jul 31): Gem Aura has since been vaulted again — players who unlocked it keep it, but it’s no longer obtainable for now.',
     link: 'https://nerdschalk.com/fortnite-new-sprite-dust-update-new-sprites-gem-variants-and-tips/',
     source: 'Nerdschalk',
     official: false,

@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Gem Aura vaulted again',
+    summary:
+      'Gem Aura — the variant from the v41.30 quest — was vaulted again. Players who unlocked it keep it, but it’s no longer obtainable.',
+    changes: [
+      { tag: 'Changed', text: 'Gem Aura now wears a “Vaulted” badge and isn’t counted as currently obtainable. It stays in the roster (owners keep it, so the released-variant count is unchanged), matching how Grim Reaper’s vaulted Gem is handled.' },
+      { tag: 'Changed', text: 'The v41.30 quests news entry now notes that Gem Aura has since been vaulted, so it no longer reads as still-available.' },
+    ],
+    why:
+      'Gem Aura launched through its v41.30 quest and then Epic pulled it again. “Vaulted” (not “unreleased”) is the accurate state here — unlike Gem King, this one actually went live, so anyone who earned it keeps it while it stops being obtainable for everyone else.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Roster fix: Gem King is unreleased (release pulled)',
     summary:
       'Marked the Gem King variant as unreleased. It exists in the game files but its public release was pulled, so it’s no longer counted as obtainable.',

@@ -73,7 +73,10 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: R, quack: U } },
   { id: 'aura', name: 'Aura', icon: '✨', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Builds a Shock Rock charge as you deal damage.',
-    // Gem Aura is obtainable via its v41.30 quest; Aura's Holofoil hasn't dropped.
+    // Gem Aura launched via its v41.30 quest, then was vaulted again — owners keep
+    // it (stays R, still counts) but it wears a "Vaulted" badge and isn't currently
+    // obtainable. Aura's Holofoil hasn't dropped.
+    vaultedForms: ['gem'],
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: U, cube: U, quack: U } },
   { id: 'boss', name: 'Boss', icon: '🤵', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Boosts your max HP and Shield, growing each level (up to +25).',
