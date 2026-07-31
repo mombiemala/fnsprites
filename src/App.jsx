@@ -38,7 +38,7 @@ const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
 const ShareExportModal = lazy(() => import('./components/ShareExportModal'))
-const CosmeticsModal = lazy(() => import('./components/CosmeticsModal'))
+const CosmeticsTab = lazy(() => import('./components/CosmeticsTab'))
 import { LINKS } from './lib/supabase'
 
 const TABS = [
@@ -48,6 +48,7 @@ const TABS = [
   { id: 'stats', label: '📊 Stats' },
   { id: 'news', label: '📰 News' },
   { id: 'shop', label: '🛒 Item Shop' },
+  { id: 'cosmetics', label: '🧢 Cosmetics' },
 ]
 
 const DEFAULT_FILTERS = {
@@ -72,10 +73,14 @@ function useShareTarget() {
 // profile) land on the right section.
 function useInitialView() {
   return useMemo(() => {
-    const v = new URLSearchParams(window.location.search).get('view')
+    const params = new URLSearchParams(window.location.search)
+    const v = params.get('view')
     // The old Guide tab folded into the combined Sprites view — keep its
     // deep link (?view=guide) working by mapping it across.
     if (v === 'guide') return 'sprites'
+    // Cosmetics used to open as a modal via ?cosmetics=1 (still linked from the
+    // static SEO pages) — it's now a tab, so route that param to the view.
+    if (params.get('cosmetics') === '1') return 'cosmetics'
     return TABS.some((t) => t.id === v) ? v : 'collection'
   }, [])
 }
@@ -121,13 +126,12 @@ export default function App() {
   const [showBackup, setShowBackup] = useState(() => openParam('backup'))
 
   // Single source of truth for the utility/support links, so the header "More"
-  // menu and the footer show the exact same set. Cosmetics has its own inline nav
-  // action, so it's filtered out of the header ⋯ More menu to avoid a duplicate —
-  // but it stays in this list for the footer. The "How Sprites work" guide is no
-  // longer a nav item: its content now lives on the /sprites landing page
-  // (#how-sprites-work), which the in-app "How Sprites work" links point to.
+  // menu and the footer show the exact same set. Cosmetics is now a primary tab
+  // (like the Item Shop), so it's no longer in this utility list. The "How Sprites
+  // work" guide is no longer a nav item either: its content lives on the /sprites
+  // landing page (#how-sprites-work), which the in-app "How Sprites work" links
+  // point to.
   const utilityLinks = [
-    { id: 'cosmetics', label: '🧢 Cosmetics (beta)', onClick: () => setShowCosmetics(true) },
     { id: 'about', label: 'About', onClick: () => setShowAbout(true) },
     { id: 'changelog', label: 'Changelog', onClick: () => setShowChangelog(true) },
     { id: 'backup', label: 'Backup', onClick: () => setShowBackup(true) },
@@ -159,9 +163,6 @@ export default function App() {
   const [showProfile, setShowProfile] = useState(false)
   const [showImport, setShowImport] = useState(false)
   const [showShare, setShowShare] = useState(false)
-  // Deep-linkable so the Cosmetics nav item on the static sprite pages (/?cosmetics=1)
-  // opens the same modal the in-app nav button does.
-  const [showCosmetics, setShowCosmetics] = useState(() => openParam('cosmetics'))
 
   useEffect(() => {
     if (!shareTarget) return
@@ -365,19 +366,17 @@ export default function App() {
         view={view}
         isShareView={isShareView}
         onSelectView={setView}
-        actions={[
-          { key: 'cosmetics', label: '🧢 Cosmetics', onClick: () => setShowCosmetics(true), title: 'Browse the newest Fortnite cosmetics (beta)' },
-        ]}
-        extras={utilityLinks.filter((l) => l.id !== 'cosmetics')}
+        extras={utilityLinks}
         ariaLabel="Sections"
       />
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop' || effectiveView === 'cosmetics') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}
+          {effectiveView === 'cosmetics' && <div className="mb-5"><CosmeticsTab /></div>}
         </Suspense>
       )}
 
@@ -663,7 +662,6 @@ export default function App() {
         {showProfile && <ProfileModal onClose={() => setShowProfile(false)} />}
         {showImport && <ScreenshotImportModal onClose={() => setShowImport(false)} />}
         {showShare && <ShareExportModal onClose={() => setShowShare(false)} />}
-        {showCosmetics && <CosmeticsModal onClose={() => setShowCosmetics(false)} />}
         {detailType && (
           <SpriteDetailModal
             typeId={detailType}

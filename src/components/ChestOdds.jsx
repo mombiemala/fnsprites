@@ -41,10 +41,16 @@ export default function ChestOdds() {
   const type = RATED.find((t) => t.id === typeId) || RATED[0]
 
   // Finishes this Sprite actually has AND that are currently obtainable (a
-  // released variant with a known odds factor). Normal is always first.
+  // released, non-vaulted variant with a known odds factor). Vaulted finishes
+  // (e.g. Grim's / Aura's Gem) are excluded — you can't pull them right now, so
+  // quoting chest odds for them would be misleading. Normal is always first.
   const finishes = type
     ? Object.keys(type.variants).filter(
-        (f) => THEME_MAP[f] && FINISH_ODDS_FACTOR[f] != null && SPRITE_BY_ID[`${type.id}_${f}`]?.released,
+        (f) =>
+          THEME_MAP[f] &&
+          FINISH_ODDS_FACTOR[f] != null &&
+          SPRITE_BY_ID[`${type.id}_${f}`]?.released &&
+          !SPRITE_BY_ID[`${type.id}_${f}`]?.vaulted,
       )
     : []
   const activeFinish = finishes.includes(finish) ? finish : 'normal'

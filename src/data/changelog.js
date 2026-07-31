@@ -7,6 +7,28 @@
 export const CHANGELOG = [
   {
     date: 'July 31, 2026',
+    title: 'Cosmetics is a full tab now (not a pop-up)',
+    summary:
+      'The Cosmetics browser moved out of a modal and into a proper tab — laid out like the Item Shop, with name search, rarity/type filters and a wishlist-only toggle.',
+    changes: [
+      { tag: 'Changed', text: 'Cosmetics is now a primary nav tab (next to Item Shop) instead of a pop-up. Same content — the newest Fortnite cosmetics with the local ♥ Want wishlist — but as a full page with the Item Shop’s search + rarity/type filters and a “♥ Wishlist” filter. Old /?cosmetics=1 links still work (they open the tab).' },
+    ],
+    why:
+      'A modal was a cramped home for a browsable, filterable grid — it fought the Item Shop it sits beside. Making Cosmetics a tab gives it the same room and controls, and keeps the two “what’s in Fortnite right now” views consistent.',
+  },
+  {
+    date: 'July 31, 2026',
+    title: 'Chest luck skips vaulted finishes',
+    summary:
+      'The Chest-luck calculator no longer offers vaulted finishes (like Grim’s or Aura’s Gem) — you can’t pull them right now, so quoting odds for them was misleading.',
+    changes: [
+      { tag: 'Fixed', text: 'Vaulted variant finishes are excluded from the finish picker in the Chest-luck calculator (in-app and on every per-Sprite page) until they’re obtainable again. Released, non-vaulted finishes are unaffected.' },
+    ],
+    why:
+      'The calculator answers “how many chests to pull this finish.” For a vaulted finish the honest answer is “you can’t right now,” so listing it with an odds estimate implied it was farmable when it isn’t.',
+  },
+  {
+    date: 'July 31, 2026',
     title: 'Gem Aura vaulted again',
     summary:
       'Gem Aura — the variant from the v41.30 quest — was vaulted again. Players who unlocked it keep it, but it’s no longer obtainable.',

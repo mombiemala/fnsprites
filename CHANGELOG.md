@@ -11,6 +11,24 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Cosmetics is a full tab now (not a pop-up)
+
+- **Changed:** the Cosmetics browser moved from a modal (`CosmeticsModal.jsx`, removed) into a
+  primary nav tab (`CosmeticsTab.jsx`), laid out like the Item Shop — name search, rarity/type
+  filters and a "♥ Wishlist" toggle over the same recently-added cosmetics grid + local
+  wishlist. It's a `TABS` entry now (top nav + footer Sections); `?cosmetics=1` maps to the
+  tab so existing links (incl. the static SEO pages) still work.
+- **Why:** a modal cramped a browsable, filterable grid that sits right next to the Item Shop.
+  A tab gives it the same room and controls and keeps the two live-Fortnite views consistent.
+
+## July 31, 2026 — Chest luck skips vaulted finishes
+
+- **Fixed:** the Chest-luck calculator (in-app `ChestOdds.jsx` and the prerendered per-Sprite /
+  `/sprites` calculators) no longer lists vaulted finishes — e.g. Grim Reaper's and Aura's Gem —
+  in the finish picker. Released, non-vaulted finishes are unchanged.
+- **Why:** the calculator answers "how many chests to pull this finish"; for a vaulted finish
+  that's currently impossible, so offering an odds estimate implied it was farmable when it isn't.
+
 ## July 31, 2026 — Gem Aura vaulted again
 
 - **Changed:** Gem Aura (`aura` → `vaultedForms: ['gem']` in `src/data/sprites.js`) now

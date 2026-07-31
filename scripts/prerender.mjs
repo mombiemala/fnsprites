@@ -229,9 +229,10 @@ const RATED_MAP = Object.fromEntries(
   SPRITE_TYPES.map((t) => {
     const p = parseRate(t.dropRate)
     if (!p) return null
-    // Obtainable finishes for this Sprite (released variant + known odds factor).
+    // Obtainable finishes for this Sprite (released, non-vaulted variant + known
+    // odds factor). Vaulted finishes aren't currently pullable, so they're excluded.
     const finishes = Object.keys(t.variants)
-      .filter((f) => THEME_MAP[f] && FINISH_ODDS_FACTOR[f] != null && SPRITE_BY_ID[`${t.id}_${f}`]?.released)
+      .filter((f) => THEME_MAP[f] && FINISH_ODDS_FACTOR[f] != null && SPRITE_BY_ID[`${t.id}_${f}`]?.released && !SPRITE_BY_ID[`${t.id}_${f}`]?.vaulted)
       .map((f) => ({ id: f, name: THEME_MAP[f].name, factor: FINISH_ODDS_FACTOR[f] }))
     return [t.id, { p, dropRate: t.dropRate, name: t.name, color: RARITY_TINT[t.rarity] || '#888', finishes }]
   }).filter(Boolean),
