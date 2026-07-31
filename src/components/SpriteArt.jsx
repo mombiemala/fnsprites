@@ -35,6 +35,9 @@ const TYPES = {
   air: { c: ['#f2fbff', '#c4e8ff', '#87c3ec'], feat: '#ffffff' },
   batman: { c: ['#4a5878', '#28324e', '#0d1220'], feat: '#f6c945' },
   spiderman: { c: ['#ff7a7a', '#e11d2a', '#7a0a12'], feat: '#141a3d' },
+  peely: { c: ['#fff2b0', '#ffd23f', '#c98a1a'], feat: '#7a5220' },
+  llama: { c: ['#bfe9ff', '#3ea0e0', '#1f5f9a'], feat: '#ff5db0' },
+  ironmouse: { c: ['#ffd0e6', '#ff5d8f', '#b01050'], feat: '#a8102e' },
 }
 
 const BODY =
@@ -180,6 +183,30 @@ function Features({ id, fc, gid }) {
           <ellipse cx="50" cy="72" rx="2.1" ry="2.8" stroke="none" />
           <path d="M50 66 V70 M44 67 L48.5 71 M43 72 H48 M44.5 77 L49 73 M56 67 L51.5 71 M57 72 H52 M55.5 77 L51 73" />
         </g>
+      </g>
+    case 'peely':
+      // Peely the banana: a little brown stem up top + peeled-back skin flaps
+      // framing the face — reads as a peeking banana without copying Epic's art.
+      return <g>
+        <path d="M47 13 C46 6 49 3 53 2 C51 7 50 10 51 13 Z" fill={fc} stroke="rgba(0,0,0,.2)" strokeWidth="1" strokeLinejoin="round" />
+        <path d="M23 32 C18 42 20 60 27 68 C24 52 25 40 30 32 Z" fill={fc} opacity="0.5" />
+        <path d="M77 32 C82 42 80 60 73 68 C76 52 75 40 70 32 Z" fill={fc} opacity="0.5" />
+      </g>
+    case 'llama':
+      // Loot-llama piñata: two upright ears (treatment-matched) + a bright snout.
+      return <g>
+        <path d="M32 20 L28 3 L41 15 Z" fill={bodyFill} stroke="rgba(0,0,0,.25)" strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M68 20 L72 3 L59 15 Z" fill={bodyFill} stroke="rgba(0,0,0,.25)" strokeWidth="1.5" strokeLinejoin="round" />
+        <ellipse cx="50" cy="72" rx="8" ry="5.5" fill={fc} />
+        <path d="M50 68 v6 M46 72 h8" stroke="#fff" strokeWidth="1.4" opacity="0.5" strokeLinecap="round" />
+      </g>
+    case 'ironmouse':
+      // Demon-queen motif: two little curved horns + a heart mark. Original
+      // stylised iconography — never an AI likeness of the real performer.
+      return <g>
+        <path d="M34 16 C29 8 30 3 33 2 C34 7 37 11 41 14 Z" fill={fc} stroke="rgba(0,0,0,.25)" strokeWidth="1" strokeLinejoin="round" />
+        <path d="M66 16 C71 8 70 3 67 2 C66 7 63 11 59 14 Z" fill={fc} stroke="rgba(0,0,0,.25)" strokeWidth="1" strokeLinejoin="round" />
+        <path d="M50 76 c-3-4-9-3-9 2 0 4 6 7 9 10 3-3 9-6 9-10 0-5-6-6-9-2 Z" fill={fc} opacity="0.85" />
       </g>
     case 'dream':
       return <><path d="M58 30 a11 11 0 1 0 0.5 21 9 9 0 1 1-0.5-21 Z" fill="#fff" opacity="0.85" /><path d="M40 28 l1.5 4 4 1.5 -4 1.5 L40 41 l-1.5-4 -4-1.5 4-1.5 Z" fill="#fff" opacity="0.8" /></>

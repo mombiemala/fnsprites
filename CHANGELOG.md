@@ -11,6 +11,100 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## July 31, 2026 — Distinct art for Peely, Llama & Ironmouse (until real art lands)
+
+- **Fixed:** Peeky Peely (banana-yellow with a stem + peel flaps), Lootin' Llama
+  (piñata-blue with upright ears + a bright snout) and Ironmouse (pink with little
+  demon horns + a heart) now each have a distinct built-in vector treatment in
+  `src/components/SpriteArt.jsx` (own `TYPES` palette + `Features` case) instead of
+  the shared default blue blob.
+- **Why:** their real in-game art isn't reachable from any source the build can
+  hit yet — there's no Sprite image API, and the Fortnite Wiki plus the community
+  mirrors (e.g. `UltronCore/sprite-tracker`) either block automated fetches (403)
+  or predate the July 30 drop and don't contain these Sprites. Rather than three
+  look-alike placeholders, they get on-theme original glyphs — consistent with how
+  Batman, Spider-Man and Grim are drawn. These are stylised icons, never an AI
+  likeness of a real performer; official art drops straight in over the top once
+  it's in `public/sprites/`.
+
+---
+
+## July 30, 2026 — A more visual News feed
+
+- **Changed:** News cards now lead with a 64px thumbnail — the linked Sprite's art
+  where it fits, otherwise a tag-coloured tile with the category glyph — plus a
+  colour-coded left accent bar, a pulsing "LIVE" badge on events running right now,
+  and a subtle hover lift.
+- **Added:** News entries can carry an `image` URL or a `sprites: [ids]` link, so an
+  item pulls in real Sprite art (e.g. the New Sprite Day post shows the Zero Point
+  Sprite).
+- **Why:** the feed was a wall of text. Leading each card with an image — mostly
+  reusing Sprite art the app already has — makes it scannable without external video
+  embeds (which would add weight and cross-origin requests).
+
+---
+
+## July 30, 2026 — Flagged the vaulted Sprites (Ironmouse & Gem Grim)
+
+- **Added:** a "Vaulted" state + red badge for a Sprite (or a specific variant) that
+  Epic launched then pulled — shown across the grid, the detail popup and the sprite
+  pages. Ironmouse and Grim's Gem variant are the first two.
+- **Changed:** Ironmouse's "where to find" now notes Relic Chests and the vaulting;
+  added a news entry for it.
+- **Why:** HYPEX reported both were vaulted within hours of the v41.30 launch. Owners
+  keep what they extracted, so the Sprites stay visible in the tracker — but clearly
+  labelled as currently unavailable rather than collectible.
+
+---
+
+## July 30, 2026 — v41.30 corrected to the real 20-Sprite drop (Ironmouse added, abilities fixed)
+
+- **Added:** the Ironmouse Sprite (Mythic VTuber collab) — regenerates health while
+  granting Cloak and low gravity when you drop low (60 → 100 HP by level).
+- **Fixed:** Peeky Peely and Lootin' Llama had their abilities swapped — Peely is the
+  ping that reveals nearby rare-Sprite carriers (40 → 80m), Llama is the ammo-box
+  weapon-upgrade chance (5% → 20%). Also corrected John Wick (reveal on knock/elim,
+  mark 3 → 5s) and added per-level scaling to all.
+- **Fixed:** trimmed the variants to the ones that actually shipped (full
+  Gold/Gummy/Galaxy/Gem/Holofoil for Peely & Llama, Grim's Gem + Holofoil, Quack for
+  Water/Earth/Fire/Zero Point); removed the speculative wide Gem/Holofoil waves that
+  didn't drop, so the roster count lines up with the game's 111.
+- **Why:** pre-launch leaks over-promised and had Peely/Llama's powers reversed. The
+  post-launch "20 new Sprites → 111 total" breakdown is authoritative, so the tracker
+  mirrors what's live rather than the leaks.
+
+---
+
+## July 30, 2026 — v41.30 follow-ups: correct Sprite names + graceful art fallback
+
+- **Changed:** the two new Sprites are now named Peeky Peely and Lootin' Llama (their
+  official in-game names), both confirmed Legendary.
+- **Fixed:** on the sprite pages, a Sprite whose art hasn't been added yet now shows
+  its glyph on the themed tile (matching the app) instead of a blank avatar.
+- **Why:** community sources settled on "Peeky Peely" / "Lootin' Llama," and the static
+  sprite pages previously hid missing images entirely — the glyph fallback closes that
+  gap until official art is dropped into `public/sprites/`.
+
+---
+
+## July 30, 2026 — New Sprite Day is LIVE (v41.30)
+
+- **Added:** two new base Sprites — Peely (ammo-box weapon upgrade) and Loot Llama
+  (pings nearby rare Sprites) — plus the Gem wave (Water, Earth, Duck, Demon, Aura,
+  Zero Point), the exclusive Quack Zero Point, the quest variants (Cube Punk, Galaxy
+  Demon, Holofoil Seven, Gem Aura), the John Wick Sprite (Mythic, Springfield Reloaded
+  exclusive) and Spider-Man via the Brand New Day collab.
+- **Changed:** news + announcement flipped from "leaked" to "live"; added Springfield
+  Reloaded (Simpsons map on Reload through Aug 3, the John Wick "The Confidential" POI)
+  and the Aug 1 Web-Shooter Power Hour. Header tagline now reads "accurate to the Jul 30
+  New Sprite Day (v41.30)."
+- **Why:** New Sprite Day is the last major Chapter 7 Season 3 drop, so getting the
+  roster, variants and events in on day one keeps the tracker trustworthy. Rarities and
+  drop rates for the brand-new Sprites are community estimates until Epic publishes
+  official figures.
+
+---
+
 ## July 29, 2026 — Sprites-page polish: nav, CTA, clickable leaks
 
 - **Fixed:** `scripts/prerender.mjs` nav pills inherited the body `line-height:1.6`
