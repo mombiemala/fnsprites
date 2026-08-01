@@ -6,6 +6,17 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 1, 2026',
+    title: 'Header tagline refreshed for the post-launch roster',
+    summary:
+      'Updated the line under the wordmark so it reflects the current v41.30 state — Peeky Peely & Lootin’ Llama live, and Ironmouse & Gem Grim now vaulted.',
+    changes: [
+      { tag: 'Fixed', text: 'The header tagline (in-app and on the static SEO pages) no longer headlines Ironmouse as a fresh addition — it and Gem Grim were vaulted right after v41.30 launched. It now reads: released-variant count, current to the v41.30 New Sprite Day (Jul 30, 2026) with Peeky Peely & Lootin’ Llama plus the John Wick & Spider-Man collabs, and notes Ironmouse & Gem Grim as vaulted.' },
+    ],
+    why:
+      'The tagline is the first thing visitors read and it was advertising a Sprite you can no longer get. Keeping it honest about what’s actually obtainable matters more than freezing the launch-day copy.',
+  },
+  {
     date: 'July 31, 2026',
     title: 'News now has its own SEO page (/news)',
     summary:

@@ -323,7 +323,7 @@ export default function App() {
             </button>
           </h1>
           <p className="mt-1 text-xs text-[var(--muted)] sm:text-sm">
-            {set.released} released variants · accurate to the Jul 30, 2026 New Sprite Day (v41.30 — Peeky Peely, Lootin’ Llama, Ironmouse + the John Wick &amp; Spider-Man collabs).
+            {set.released} released variants · current to the v41.30 New Sprite Day (Jul 30, 2026): Peeky Peely &amp; Lootin’ Llama, plus the John Wick &amp; Spider-Man collabs — with Ironmouse &amp; Gem Grim vaulted soon after.
           </p>
         </div>
         {!authLoading &&

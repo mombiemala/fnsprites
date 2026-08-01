@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 1, 2026 — Header tagline refreshed for the post-launch roster
+
+- **Fixed:** the header tagline (in-app `App.jsx` + the static pages' `head()` in
+  `prerender.mjs`) no longer headlines Ironmouse as a fresh v41.30 addition — Ironmouse and
+  Gem Grim were vaulted right after launch. It now reads: the released-variant count, current
+  to the v41.30 New Sprite Day (Jul 30, 2026) with Peeky Peely & Lootin' Llama plus the John
+  Wick & Spider-Man collabs, and notes Ironmouse & Gem Grim as vaulted.
+- **Why:** the tagline is the first line visitors read and it was advertising a Sprite you can
+  no longer get. Honest-about-obtainable beats freezing launch-day copy.
+
 ## July 31, 2026 — News now has its own SEO page (/news)
 
 - **Added:** a static, prerendered `/news` page (`scripts/prerender.mjs`) mirroring the in-app
