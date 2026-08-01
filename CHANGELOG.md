@@ -31,6 +31,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 - **Fixed:** trimmed speculative finishes to match Fortnite.GG exactly (no Cube Water, no Holofoil
   Earth, no Gem/Cube/Quack King·Seven·Air, Quack only on Water/Earth/Fire/Zero Point, etc.). Cube
   Zero Point kept (real, unreleased). Roster is now **25 characters / 118 variants (110 released)**.
+- **Fixed:** scrubbed leftover Spider-Man Sprite references from `news.js` and `announcements.js`
+  (the Aug 1 "Web-Shooter Power Hour" was premised on a Sprite that doesn't exist).
 - **Why:** the tracker looked near-identical to other community trackers, and its roster had drifted
   onto a theoretical "every Sprite × every finish" matrix plus a few leaks that never landed.
   Leaning into the collectible-finish theme makes the UI distinctly ours; reconciling the data to
