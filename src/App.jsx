@@ -57,7 +57,7 @@ const DEFAULT_FILTERS = {
   rarity: 'all',
   ownership: 'all',
   hideMastered: false,
-  showUnreleased: false,
+  showUnreleased: true,
   groupBy: 'none',
   sort: 'default',
   view: 'grid',

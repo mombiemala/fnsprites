@@ -11,6 +11,31 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 1, 2026 — A collectible-card redesign + a roster reconciled to Fortnite.GG
+
+- **Changed:** `SpriteCard.jsx` reworked into a trading-card treatment — a rarity-tinted foil
+  edge, nameplate, a holographic sheen that sweeps on hover and a subtle 3D tilt (all in
+  `index.css`, `prefers-reduced-motion` respected). Owned cards glow in their rarity colour;
+  "Have"/"Soon" badges sit on the art. All existing behaviour (Have / ★ Mastered / level dots /
+  readOnly) is preserved.
+- **Changed:** palette in `index.css` moved off the shared navy/cyan look onto a warm
+  "card-binder" scheme (`--brand` is now gold, `--brand-2` a warm violet; warmed bg/panels) so
+  each finish's own colour pops.
+- **Changed:** `showUnreleased` now defaults to `true` (`App.jsx`, `Toolbar.jsx`) — upcoming
+  variants (e.g. Cube / Holofoil / Gem Zero Point) show with a "Soon" badge instead of being hidden.
+- **Fixed:** removed three non-existent Sprites — Drifter, Ice and the Spider-Man Sprite — from
+  `sprites.js` (and their now-dead art in `SpriteArt.jsx` + a stale `spriteSource` entry).
+  `ESD_DrifterSprite` is actually Aura's internal id, so "Drifter" was a phantom; Ice and
+  Spider-Man never shipped. Confirmed against Fortnite.GG (Show Unreleased on) and the datamined
+  `ESD_`/`EID_` asset-id list.
+- **Fixed:** trimmed speculative finishes to match Fortnite.GG exactly (no Cube Water, no Holofoil
+  Earth, no Gem/Cube/Quack King·Seven·Air, Quack only on Water/Earth/Fire/Zero Point, etc.). Cube
+  Zero Point kept (real, unreleased). Roster is now **25 characters / 118 variants (110 released)**.
+- **Why:** the tracker looked near-identical to other community trackers, and its roster had drifted
+  onto a theoretical "every Sprite × every finish" matrix plus a few leaks that never landed.
+  Leaning into the collectible-finish theme makes the UI distinctly ours; reconciling the data to
+  the two authoritative sources (Fortnite.GG + datamined IDs) makes it correct — the point of a tracker.
+
 ## August 1, 2026 — Slimmer header tagline + a banner for today's Power Hour
 
 - **Changed:** the header tagline (in-app `App.jsx` + the static pages' `head()` in

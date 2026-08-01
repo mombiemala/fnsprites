@@ -27,34 +27,33 @@ const U = false  // unreleased
 export const SPRITE_TYPES = [
   { id: 'water', name: 'Water', icon: '💧', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Replenishes shields for you and nearby squad while you’re in water.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: R, cube: U, quack: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: R, quack: R } },
   { id: 'earth', name: 'Earth', icon: '🪨', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Better chance of rare rewards when opening chests.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: R, quack: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, cube: R, quack: R } },
   { id: 'fire', name: 'Fire', icon: '🔥', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Unleashes a fiery burst once you deal enough damage to an enemy.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: R, quack: R } },
   { id: 'duck', name: 'Duck', icon: '🦆', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Emoting or Jamming replenishes your shields.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U } },
   { id: 'ghost', name: 'Ghost', icon: '👻', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Reloading cloaks you (near-invisible) for a few seconds — longer as it levels.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
   { id: 'dream', name: 'Dream', icon: '🌙', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Drops a random item each level-up, showering Legendary loot at max level.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, rift: U, cube: R, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, cube: R } },
   { id: 'demon', name: 'Demon', icon: '😈', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Siphons health and shields when you eliminate an opponent.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U } },
   { id: 'punk', name: 'Punk', icon: '🎸', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Rolls a random buff on level-up; at max level, a chance at infinite ammo.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, rift: U, cube: R, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, cube: R } },
   { id: 'king', name: 'King', icon: '👑', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Your pickaxe deals extra damage.',
-    // Gem King exists in the game files and is datamined alongside the other Gem
-    // variants, but its public release was pulled from the in-game news feed —
-    // Fortnite.GG still lists it as an unreleased special variant, so gem stays U.
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: R, cube: U, quack: U } },
+    // King ships Normal/Gold/Gummy/Galaxy/Holofoil only — Fortnite.GG lists no
+    // Gem/Cube/Quack King (the earlier Gem King datamine never shipped publicly).
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
   { id: 'zeropoint', name: 'Zero Point', icon: '🔷', rarity: 'Mythic', dropRate: '0.00034%', released: true,
     ability: 'Spawns a Shield Bubble Jr. when you use a healing item on yourself (not splashes or grenades).',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: R } },
@@ -67,36 +66,37 @@ export const SPRITE_TYPES = [
   // ---- Added in the Jun 25, 2026 update ----
   { id: 'striker', name: 'Striker', icon: '⚡', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Grants Overdrive (faster firing, reload & movement) when you Mantle, Hurdle or Wall Scramble.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
   { id: 'fishy', name: 'Fishy', icon: '🐟', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Boosts your swim speed.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: R, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, cube: R } },
   { id: 'aura', name: 'Aura', icon: '✨', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Builds a Shock Rock charge as you deal damage.',
     // Gem Aura launched via its v41.30 quest, then was vaulted again — owners keep
     // it (stays R, still counts) but it wears a "Vaulted" badge and isn't currently
-    // obtainable. Aura's Holofoil hasn't dropped.
+    // obtainable. (Internal asset id: ESD_DrifterSprite — the source of the old
+    // phantom "Drifter" entry, now removed.)
     vaultedForms: ['gem'],
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: U, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R } },
   { id: 'boss', name: 'Boss', icon: '🤵', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Boosts your max HP and Shield, growing each level (up to +25).',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: U, cube: R, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, cube: R } },
   { id: 'grim', name: 'Grim Reaper', icon: '💀', rarity: 'Mythic', dropRate: '0.000098%', released: true,
     ability: 'Marks the location of any enemy who damages you. Spawns almost exclusively from Sprite Chests.',
     // The Gem variant launched with v41.30 then was vaulted the same day (Jul 30).
     vaultedForms: ['gem'],
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: R, cube: R, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: R, cube: R } },
 
   // ---- Added in the Jul 30, 2026 update (v41.30 New Sprite Day) ----
   //      Rarity/drop rate are community estimates pending Epic's confirmation;
   //      variant lines beyond Normal roll out over the coming weeks.
   { id: 'peely', name: 'Peeky Peely', icon: '🍌', rarity: 'Legendary', dropRate: null, released: true,
     ability: 'Emits a ping that reveals players carrying rare Sprites nearby — but marks you on the map too. Ping radius grows each level (40 → 50 → 60 → 70 → 80m at Lv 5).',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
   { id: 'llama', name: 'Lootin’ Llama', icon: '🦙', rarity: 'Legendary', dropRate: null, released: true,
     // Legendary tier, but reported to drop fairly often (unlike most Legendaries).
     ability: 'Opening ammo boxes has a chance to grant a weapon upgrade — the chance grows each level (5% → 10% → 15% → 17% → 20% at Lv 5).',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, cube: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R } },
   { id: 'ironmouse', name: 'Ironmouse', icon: '🐭', rarity: 'Mythic', dropRate: null, released: true, vaulted: true,
     ability: 'Found in Relic Chests: when your health drops critically low, regenerate over time while gaining Cloak and low gravity — health restored grows each level (60 → 70 → 80 → 90 → 100 HP at Lv 5). VTuber collab. Vaulted shortly after the v41.30 launch (Jul 30) — currently unavailable.',
     variants: { normal: R } },
@@ -106,24 +106,15 @@ export const SPRITE_TYPES = [
   { id: 'wick', name: 'John Wick', icon: '🔫', rarity: 'Mythic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-30',
     ability: 'Knocking or eliminating a player reveals nearby enemies on the map — the mark lasts longer each level (3 → 3.5 → 4 → 4.5 → 5s at Lv 5). Exclusive to Springfield Reloaded (The Simpsons on Reload).',
     variants: { normal: U } },
-  { id: 'drifter', name: 'Drifter', icon: '🏜️', rarity: 'Rare', dropRate: null, released: false, rumored: true,
-    ability: 'Datamined sprite — not yet released.',
-    variants: { normal: U } },
-  { id: 'ice', name: 'Ice', icon: '❄️', rarity: 'Rare', dropRate: null, released: false, rumored: true,
-    ability: 'Datamined sprite — not yet released.',
-    variants: { normal: U } },
   { id: 'seven', name: 'Seven', icon: '7️⃣', rarity: 'Epic', dropRate: null, released: true,
     ability: 'Reveals enemy foot trails on the map for your whole squad — duration ramps by level (10 → 15 → 20 → 25 → 30s at max). The Seven faction collab, live in the Jul 16 (v41.20) update.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: R, cube: U, quack: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
   { id: 'air', name: 'Air', icon: '🌬️', rarity: 'Epic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
     ability: 'A movement Sprite — increases sprint speed & jump height and removes fall damage. On Epic’s Jul 16 New Sprite Day schedule (DC Summer); power not fully confirmed by Epic.',
-    variants: { normal: U, gold: U, gummy: U, galaxy: U, gem: U, holofoil: U, cube: U, quack: U } },
+    variants: { normal: U, gold: U, gummy: U, galaxy: U, holofoil: U } },
   { id: 'batman', name: 'Batman', icon: '🦇', rarity: 'Mythic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
     ability: 'Deploy the Bat Cape midair for a glide / slow descent. DC “Hot Bat Summer” collab Sprite (Mythic), in Gold, Gummy, Galaxy & Holofoil, plus a Cube variant from New Sprite Day (Jul 23). Live in the Jul 16 (v41.20) update.',
     variants: { normal: U, gold: U, gummy: U, galaxy: U, holofoil: U, cube: R } },
-  { id: 'spiderman', name: 'Spider-Man', icon: '🕷️', rarity: 'Legendary', dropRate: null, released: false, rumored: true,
-    ability: 'Datamined Marvel collab Sprite — leaked “Sprite Net” tags point to web-swinging mobility. Not released yet; was expected around v41.30 (timed to the Spider-Man: Brand New Day film) but hasn’t dropped. Rarity shown is a best-guess placeholder — Epic hasn’t confirmed its tier, ability or drop rate.',
-    variants: { normal: U } },
   // Collab Mythics — live in v41.20 (Jul 16), found in Sprite Chests. Normal-only
   // for now (no Gold/Gummy/Galaxy/Holofoil line yet), like Burnt Peanut.
   { id: 'pollo', name: 'Pollo', icon: '🐔', rarity: 'Mythic', dropRate: null, released: true,
@@ -277,7 +268,6 @@ const SPRITE_SOURCE = {
   peanut: 'Extremely rare — a lucky Sprite Chest find.',
   zeropoint: 'Sprite Chests — Mythic, so very rare from any single chest.',
   wick: 'Leaked as exclusive to The Simpsons Fortnite Reload — reveal it on the Springfield map with the new Reload Portable Extractor, eliminate a player already carrying it, or find it in Reload chests. Unconfirmed until Epic’s patch notes.',
-  spiderman: 'Expected with the Spider-Man: Brand New Day collab (v41.30, Jul 30). Exact source unconfirmed — treat as a leak until Epic’s patch notes.',
 }
 export function spriteSource(typeId) {
   return SPRITE_SOURCE[typeId] || 'Sprite Chests around the island — any chest can drop any Sprite (rarer ones less often), plus occasional mid-match spawns.'

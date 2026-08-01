@@ -7,6 +7,21 @@
 export const CHANGELOG = [
   {
     date: 'August 1, 2026',
+    title: 'A collectible-card redesign — and a roster reconciled to Fortnite.GG',
+    summary:
+      'The tracker now looks like a binder of trading cards instead of a checklist, and the Sprite roster was corrected against Fortnite.GG’s official list and the datamined asset IDs — so it’s exactly the 25 real Sprites / 118 variants, no phantoms.',
+    changes: [
+      { tag: 'Changed', text: 'Every Sprite is framed like a collectible card: a rarity-tinted foil edge (Rare/Epic/Legendary/Mythic), a nameplate, a holographic sheen that sweeps on hover, and a gentle 3D tilt. Owned cards glow in their rarity colour; “Have” and “Soon” badges sit on the art. The card still does everything it did (Have / ★ Mastered / level dots).' },
+      { tag: 'Changed', text: 'Reskinned the whole app off the cool navy/cyan palette that every community tracker shares, onto a warm “card-binder” look (warm charcoal + gold) that lets each finish’s own colour pop. Animations respect prefers-reduced-motion.' },
+      { tag: 'Changed', text: 'Unreleased variants now show by default (with a “Soon” badge) instead of being hidden — so upcoming finishes like Cube / Holofoil / Gem Zero Point are visible without digging into filters.' },
+      { tag: 'Fixed', text: 'Removed three Sprites that don’t exist in the game: Drifter, Ice, and the Spider-Man Sprite. “Drifter” was a phantom born from a misread codename — ESD_DrifterSprite is actually Aura’s internal asset id. None appear on Fortnite.GG (even with “Show unreleased” on) or in the datamined ESD_/EID_ id list.' },
+      { tag: 'Fixed', text: 'Trimmed speculative finishes that were never in the game to match Fortnite.GG exactly: e.g. no Cube Water, no Holofoil Earth, no Gem/Cube/Quack King or Seven or Air, and Quack only exists for Water/Earth/Fire/Zero Point. Cube Zero Point stays — it’s real (unreleased). Roster is now 25 characters / 118 variants (110 released).' },
+    ],
+    why:
+      'Two goals landed together. First, the tracker looked near-identical to other community trackers; leaning into the “these are collectible finishes” idea (foil, holo tilt, a binder aesthetic) makes it unmistakably ours without changing how fast it is to use. Second, the roster had drifted onto a theoretical “every Sprite gets every finish” matrix, plus a few leaked Sprites that never shipped. Fortnite.GG’s published list and the datamined asset IDs are the authoritative sources, so the roster is reconciled to them exactly — accuracy is the whole point of a tracker.',
+  },
+  {
+    date: 'August 1, 2026',
     title: 'Slimmer header tagline + a banner for today’s Power Hour',
     summary:
       'Trimmed the line under the wordmark down to the essentials, and added a live announcement banner for the Aug 1 Web-Shooter Power Hour.',

@@ -29,12 +29,9 @@ const TYPES = {
   boss: { c: ['#eef1f7', '#c2c9da', '#6b7488'], feat: INK },
   grim: { c: ['#5a6488', '#39405c', '#171c2e'], feat: '#46e0c0' },
   wick: { c: ['#5a627a', '#3a4258', '#14171f'], feat: '#c01030' },
-  drifter: { c: ['#f2e0bd', '#e0bd8a', '#a06b3c'], feat: '#a06b3c' },
-  ice: { c: ['#e6f9ff', '#a6e8ff', '#5fbfe0'], feat: '#ffffff' },
   seven: { c: ['#dfe4ff', '#8a97ff', '#5b6bff'], feat: '#ffffff' },
   air: { c: ['#f2fbff', '#c4e8ff', '#87c3ec'], feat: '#ffffff' },
   batman: { c: ['#4a5878', '#28324e', '#0d1220'], feat: '#f6c945' },
-  spiderman: { c: ['#ff7a7a', '#e11d2a', '#7a0a12'], feat: '#141a3d' },
   peely: { c: ['#fff2b0', '#ffd23f', '#c98a1a'], feat: '#7a5220' },
   llama: { c: ['#bfe9ff', '#3ea0e0', '#1f5f9a'], feat: '#ff5db0' },
   ironmouse: { c: ['#ffd0e6', '#ff5d8f', '#b01050'], feat: '#a8102e' },
@@ -151,8 +148,6 @@ function Features({ id, fc, gid }) {
       return <g stroke={fc} strokeWidth="1.6" opacity="0.5" fill="none"><path d="M40 40 h20 M41 50 h18 M42 60 h16" /></g>
     case 'striker':
       return <path d="M55 26 L40 52 h9 l-4 18 18-26 h-9 Z" {...st} />
-    case 'ice':
-      return <g stroke={fc} strokeWidth="3" strokeLinecap="round"><path d="M42 16 l4-8 M50 14 l0-9 M58 16 l-4-8" /></g>
     case 'seven':
       // Stylized "7" agent emblem on a subtle chest plate.
       return <><rect x="37" y="45" width="26" height="26" rx="7" fill="#ffffff" opacity="0.12" /><text x="50" y="67" textAnchor="middle" fontSize="27" fontWeight="900" fill={fc} opacity="0.95" fontFamily="Inter, sans-serif">7</text><path d="M43 58 h11" stroke={fc} strokeWidth="2.6" strokeLinecap="round" opacity="0.95" /></>
@@ -169,20 +164,6 @@ function Features({ id, fc, gid }) {
         <path d="M65 45 L55 43 L56 50 L64 49 Z" fill="#e6ecff" />
         <ellipse cx="50" cy="73" rx="10" ry="5.5" fill={fc} />
         <path d="M50 70 C48.5 68.5 46 69 45 71 C44 69.5 42 70 42.5 72 L45 72 L46.5 74.5 L50 72 L53.5 74.5 L55 72 L57.5 72 C58 70 56 69.5 55 71 C54 69 51.5 68.5 50 70 Z" fill={INK} />
-      </g>
-    case 'spiderman':
-      // Spider-Man mask: web lines on the head, big white angular mask eyes, and
-      // a little spider emblem on the chest (default kawaii eyes suppressed).
-      return <g>
-        <g stroke="rgba(0,0,0,.32)" strokeWidth="0.8" fill="none">
-          <path d="M50 13 V41 M30 21 Q50 30 70 21 M27 32 Q50 41 73 32 M35 15 L39 41 M65 15 L61 41" />
-        </g>
-        <path d="M31 47 Q40 40 46 46 Q42 55 34 55 Q28 52 31 47 Z" fill="#fff" stroke={INK} strokeWidth="1.6" strokeLinejoin="round" />
-        <path d="M69 47 Q60 40 54 46 Q58 55 66 55 Q72 52 69 47 Z" fill="#fff" stroke={INK} strokeWidth="1.6" strokeLinejoin="round" />
-        <g fill={fc} stroke={fc} strokeWidth="1.3" strokeLinecap="round">
-          <ellipse cx="50" cy="72" rx="2.1" ry="2.8" stroke="none" />
-          <path d="M50 66 V70 M44 67 L48.5 71 M43 72 H48 M44.5 77 L49 73 M56 67 L51.5 71 M57 72 H52 M55.5 77 L51 73" />
-        </g>
       </g>
     case 'peely':
       // Peely the banana: a little brown stem cap up top + two soft banana ridges
@@ -235,7 +216,7 @@ export default function SpriteArt({ sprite, className = '' }) {
   const gid = `g-${uid}`, cid = `c-${uid}`, hgid = `h-${uid}`
   const tr = treatment(sprite.themeId, type, gid, hgid)
   const isBoss = sprite.typeId === 'boss'
-  const maskFace = sprite.typeId === 'batman' || sprite.typeId === 'spiderman'
+  const maskFace = sprite.typeId === 'batman'
   const glow = sprite.typeId === 'grim' ? type.feat : sprite.themeId === 'galaxy' ? '#bdbcff' : null
 
   return (

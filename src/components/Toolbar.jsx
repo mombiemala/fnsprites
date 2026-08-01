@@ -11,7 +11,7 @@ const FILTER_DEFAULTS = {
   ownership: 'all',
   groupBy: 'none',
   hideMastered: false,
-  showUnreleased: false,
+  showUnreleased: true,
 }
 
 function Chip({ active, onClick, children, color, title }) {
