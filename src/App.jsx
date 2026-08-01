@@ -629,8 +629,6 @@ export default function App() {
             </Fragment>
           ))}
           <span className="opacity-30">·</span>
-          <a href="/sprites" className="hover:text-white">🗂️ Sprite database</a>
-          <span className="opacity-30">·</span>
           <span>Creator Code <span className="font-bold text-[var(--brand)]">MOMBIE</span></span>
         </div>
         <p className="opacity-80">Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>

@@ -43,7 +43,7 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
         </button>
 
         {/* Nameplate */}
-        <div className="px-2.5 pb-2.5 pt-2">
+        <div className="flex flex-1 flex-col px-2.5 pb-2.5 pt-2">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: edge, boxShadow: `0 0 8px ${edge}` }} />
             <span className="min-w-0 flex-1">
@@ -92,7 +92,7 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
 
           {/* Controls */}
           {!readOnly ? (
-            <div className="mt-2 flex gap-1">
+            <div className="mt-auto flex gap-1 pt-2">
               <button
                 onClick={() => onToggleOwned(sprite.id, !owned)}
                 title={owned ? `Owned — tap to unmark ${sprite.typeName} · ${theme?.name}` : `Mark ${sprite.typeName} · ${theme?.name} as owned`}
@@ -113,7 +113,7 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
               </button>
             </div>
           ) : (
-            <div className="mt-2 flex gap-1 text-[11px] font-bold">
+            <div className="mt-auto flex gap-1 pt-2 text-[11px] font-bold">
               <span className={`flex-1 rounded-lg py-1 text-center ${owned ? 'bg-[var(--brand)] text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}>
                 {owned ? 'Owned' : 'Missing'}
               </span>

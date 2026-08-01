@@ -33,6 +33,10 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   Zero Point kept (real, unreleased). Roster is now **25 characters / 118 variants (110 released)**.
 - **Fixed:** scrubbed leftover Spider-Man Sprite references from `news.js` and `announcements.js`
   (the Aug 1 "Web-Shooter Power Hour" was premised on a Sprite that doesn't exist).
+- **Fixed:** card layout — `.sc-card`/`.sc-inner` are flex columns so cards stretch to equal
+  height in a row and the controls anchor to the bottom; "Soon"/unreleased/vaulted cards (no level
+  dots) no longer leave a gap under the frame. Removed a duplicate "Sprite database" link from the
+  footer (the Sprites section is already in the footer section nav).
 - **Why:** the tracker looked near-identical to other community trackers, and its roster had drifted
   onto a theoretical "every Sprite × every finish" matrix plus a few leaks that never landed.
   Leaning into the collectible-finish theme makes the UI distinctly ours; reconciling the data to
