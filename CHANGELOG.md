@@ -11,15 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## August 1, 2026 — Header tagline refreshed for the post-launch roster
+## August 1, 2026 — Slimmer header tagline + a banner for today's Power Hour
 
-- **Fixed:** the header tagline (in-app `App.jsx` + the static pages' `head()` in
-  `prerender.mjs`) no longer headlines Ironmouse as a fresh v41.30 addition — Ironmouse and
-  Gem Grim were vaulted right after launch. It now reads: the released-variant count, current
-  to the v41.30 New Sprite Day (Jul 30, 2026) with Peeky Peely & Lootin' Llama plus the John
-  Wick & Spider-Man collabs, and notes Ironmouse & Gem Grim as vaulted.
-- **Why:** the tagline is the first line visitors read and it was advertising a Sprite you can
-  no longer get. Honest-about-obtainable beats freezing launch-day copy.
+- **Changed:** the header tagline (in-app `App.jsx` + the static pages' `head()` in
+  `prerender.mjs`) is now just the released-variant count and the current version —
+  "110 released variants · v41.30 (Jul 30, 2026)". The old copy duplicated launch/vaulting news
+  the announcement banner already carries (and had gone stale, still headlining the now-vaulted
+  Ironmouse).
+- **Added:** a time-boxed announcement (`announcements.js`) for the Aug 1 Web-Shooter Power Hour
+  (Spider-Man: Brand New Day) — it auto-shows that day and steps aside afterwards.
+- **Why:** tagline and banner were overlapping, and the tagline kept going stale as the roster
+  changed. Tagline = evergreen "what version are we on", banner = today's live event — both stay
+  accurate with less upkeep.
 
 ## July 31, 2026 — News now has its own SEO page (/news)
 

@@ -7,14 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'August 1, 2026',
-    title: 'Header tagline refreshed for the post-launch roster',
+    title: 'Slimmer header tagline + a banner for today’s Power Hour',
     summary:
-      'Updated the line under the wordmark so it reflects the current v41.30 state — Peeky Peely & Lootin’ Llama live, and Ironmouse & Gem Grim now vaulted.',
+      'Trimmed the line under the wordmark down to the essentials, and added a live announcement banner for the Aug 1 Web-Shooter Power Hour.',
     changes: [
-      { tag: 'Fixed', text: 'The header tagline (in-app and on the static SEO pages) no longer headlines Ironmouse as a fresh addition — it and Gem Grim were vaulted right after v41.30 launched. It now reads: released-variant count, current to the v41.30 New Sprite Day (Jul 30, 2026) with Peeky Peely & Lootin’ Llama plus the John Wick & Spider-Man collabs, and notes Ironmouse & Gem Grim as vaulted.' },
+      { tag: 'Changed', text: 'The header tagline (in-app and on the static SEO pages) is now just the released-variant count and the current version — “110 released variants · v41.30 (Jul 30, 2026).” The old copy repeated launch/vaulting news the announcement banner already carries (and had gone stale, still headlining the now-vaulted Ironmouse).' },
+      { tag: 'Added', text: 'A time-boxed announcement banner for the Web-Shooter Power Hour (Spider-Man: Brand New Day) on Aug 1 — it auto-shows that day and steps aside afterwards.' },
     ],
     why:
-      'The tagline is the first thing visitors read and it was advertising a Sprite you can no longer get. Keeping it honest about what’s actually obtainable matters more than freezing the launch-day copy.',
+      'The tagline and the banner were saying overlapping things, and the tagline kept going stale as the roster changed. Splitting the jobs — tagline = evergreen “what version are we on,” banner = today’s live event — keeps both accurate with less upkeep.',
   },
   {
     date: 'July 31, 2026',

@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'web-shooter-power-hour-2026-08-01',
+    emoji: '🕷️',
+    message: 'Web-Shooter Power Hour — today (Fri, Aug 1): boosted Sprite spawns for the Spider-Man: Brand New Day collab. Check in-game for the exact window.',
+    link: 'https://www.vice.com/en/article/everything-coming-in-fortnites-july-30-update-simpsons-map-spider-man-skins-and-more/',
+    linkLabel: 'Details',
+    start: '2026-08-01',
+    end: '2026-08-01',
+    source: 'Vice',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'new-sprite-day-live-2026-07-30',
     emoji: '🍌',
     message: 'New Sprite Day is LIVE (v41.30): 20 new Sprites push the count to 110 — Ironmouse, Peeky Peely & Lootin’ Llama bring new powers, plus Peely/Llama variants, Grim’s Gem + Holofoil, and Quack for Water/Earth/Fire/Zero Point. John Wick’s on Springfield Reloaded; Spider-Man’s Web-Shooter Power Hour is Aug 1.',
