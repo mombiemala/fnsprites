@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 2, 2026 — Live in-game news fixed (now pulled through the API key)
+
+- **Fixed:** the auto "In-game now" news tiles had gone blank — `liveNews.js` was calling
+  `fortnite-api.com/v2/news/br` from the browser unauthenticated, which now gets rate-limited/rejected,
+  so limited-time in-game events (e.g. a Sprite "Hours" drop) never surfaced.
+- **Security:** moved the news fetch server-side. New `api/news.js` proxy adds the key from
+  `FORTNITE_API_KEY` (the same env var the stats proxy uses) so it never ships in the client bundle;
+  `liveNews.js` now calls our own `/api/news` (which also avoids third-party CORS).
+- **Added:** `api/news.js` — a cached serverless proxy returning `{ data: { build, motds } }` (current
+  live build + trimmed official BR news tiles) in one call; degrades to a safe empty shape on any
+  upstream failure so the curated feed never breaks.
+- **Why:** the live feed is what makes limited-time events appear on their own without hand-curating each
+  one. It broke because the endpoint started requiring auth, and the fix had to honor the same rule as
+  player stats — the key never reaches the client — so it now routes through `/api/news`.
+
+---
+
 ## August 2, 2026 — The logo is now "Mombie", the maker's mascot
 
 - **Changed:** reworked the logomark (`Logo.jsx` `SpriteMark`, mirrored in `scripts/prerender.mjs` and

@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 2, 2026',
+    title: 'Live in-game news, fixed — now pulled through the API key',
+    summary:
+      'The auto “In-game now” news tiles (how limited-time in-game events like Sprite “Hours” show up on their own) had quietly gone blank. The browser was calling fortnite-api.com’s news endpoint unauthenticated, which now gets rate-limited/rejected — so nothing came back. It’s now pulled through our own server with the API key, and live events surface again.',
+    changes: [
+      { tag: 'Fixed', text: 'Live “In-game now” tiles are back — they’d silently fallen empty because the unauthenticated news call to fortnite-api.com was being rate-limited/rejected, so limited-time in-game events (e.g. a Sprite “Hours” drop) never appeared in the feed.' },
+      { tag: 'Security', text: 'Moved the news fetch server-side. The Fortnite API key now stays on the server (the same FORTNITE_API_KEY the stats proxy already uses) instead of the browser calling the third-party API directly — which also sidesteps third-party CORS.' },
+      { tag: 'Added', text: 'A cached serverless proxy (api/news.js) that returns the current live build + the official BR news tiles in one call, and degrades to an empty-but-safe shape so the curated feed never breaks.' },
+    ],
+    why:
+      'The live feed is the thing that makes limited-time events appear on their own without hand-curating every one. It broke because the news endpoint started requiring auth — and the fix had to respect the same rule as player stats: the key never ships to the client. Routing through our own /api/news both restores the feed and keeps the key server-only.',
+  },
+  {
+    date: 'August 2, 2026',
     title: 'Say hi to Mombie — the logo is now the maker’s mascot',
     summary:
       'The Sprite logomark got a personality: it’s now “Mombie” — the app’s own kawaii Sprite with a messy top-bun and bow, clutching a steaming coffee (“like a zombie, but with kids”). Same body shape and warm gold→violet gradient, just unmistakably the maker — the character Creator Code MOMBIE is named for.',
