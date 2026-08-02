@@ -11,12 +11,14 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## August 2, 2026 — New logo: the sprite, warmed up
+## August 2, 2026 — New logo: actually shaped like a Sprite
 
-- **Changed:** recolored the logomark (`Logo.jsx` `SpriteMark`, mirrored in `scripts/prerender.mjs`) —
-  the same rounded kawaii sprite (antenna + face), now in the gold→violet brand gradient with
-  warm-dark features. Rolled out to the app header, static SEO pages, favicon, PWA icon and OG image.
-- **Changed:** `public/favicon.svg` recolored to match; the full-bleed sprite stays legible down to 16px.
+- **Changed:** reworked the logomark (`Logo.jsx` `SpriteMark`, mirrored in `scripts/prerender.mjs`)
+  into the app's own Sprite silhouette — the domed capsule body (matched to `SpriteArt.jsx`'s `BODY`
+  path) with two little feet and a big kawaii face, in the gold→violet brand gradient. Rolled out to
+  the app header, static SEO pages, favicon, PWA icon and OG image.
+- **Changed:** `public/favicon.svg` uses the same sprite shape with a tight viewBox so it fills the
+  icon and stays legible down to 16px.
 - **Changed:** recolored the remaining cool-palette holdouts — the pre-React boot screen in
   `index.html` (was flashing blue), the `theme-color` meta, and the `manifest.webmanifest`
   background/theme colors (`#0d0b12`).

@@ -7,11 +7,11 @@
 export const CHANGELOG = [
   {
     date: 'August 2, 2026',
-    title: 'New logo — the sprite, warmed up',
+    title: 'New logo — actually shaped like a Sprite',
     summary:
-      'Recolored the friendly kawaii-sprite logomark from the old cyan/blue to the warm gold→violet brand gradient, so it matches the redesign while keeping the mark players already recognize.',
+      'Reworked the logomark into the app’s own Sprite silhouette — the domed capsule body with two little feet and a big kawaii face — in the warm gold→violet gradient. So the logo is literally one of the Sprites you’re tracking, not a generic rounded-square icon.',
     changes: [
-      { tag: 'Changed', text: 'New logomark across the app header, the static SEO pages, the favicon, the PWA icon and the social-share (OG) image — the same rounded sprite with antenna + kawaii face, now in the gold→violet gradient with warm-dark features. Reads cleanly all the way down to a 16px favicon.' },
+      { tag: 'Changed', text: 'New logomark across the app header, the static SEO pages, the favicon, the PWA icon and the social-share (OG) image — the actual Sprite body shape (matched to the in-app sprite art), with feet and a kawaii face, in the gold→violet gradient. The favicon crops in tight so it still reads down to 16px.' },
       { tag: 'Changed', text: 'Recolored the last cool-palette holdouts to match: the pre-load boot screen (was flashing blue), the browser theme-color and the PWA manifest background/theme colors.' },
       { tag: 'Fixed', text: 'Regenerated the OG share image — it still showed the old blue mark; links shared to Discord/Twitter now preview the new warm sprite and look.' },
     ],

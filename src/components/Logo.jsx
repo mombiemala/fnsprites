@@ -13,14 +13,19 @@ export function SpriteMark({ className = '', title }) {
           <stop offset="1" stopColor="#b45cff" />
         </linearGradient>
       </defs>
-      <rect x="8" y="8" width="84" height="84" rx="26" fill="url(#flm-edge)" />
-      <circle cx="50" cy="15" r="5" fill="#fff4e0" />
-      <rect x="48" y="15" width="4" height="10" fill="#fff4e0" />
-      <circle cx="38" cy="50" r="9" fill="#241533" />
-      <circle cx="41" cy="47" r="3" fill="#fff" />
-      <circle cx="66" cy="50" r="9" fill="#241533" />
-      <circle cx="69" cy="47" r="3" fill="#fff" />
-      <path d="M40 68 Q52 78 64 68" stroke="#241533" strokeWidth="5" fill="none" strokeLinecap="round" />
+      {/* Sprite silhouette — the app's own kawaii body shape (domed capsule with
+          two little feet), matched to SpriteArt.jsx's BODY path. */}
+      <ellipse cx="38" cy="91" rx="8" ry="5.5" fill="url(#flm-edge)" />
+      <ellipse cx="62" cy="91" rx="8" ry="5.5" fill="url(#flm-edge)" />
+      <path d="M50 10 C31 10 21 21 21 42 L21 63 C21 82 34 92 50 92 C66 92 79 82 79 63 L79 42 C79 21 69 10 50 10 Z" fill="url(#flm-edge)" />
+      {/* Kawaii face */}
+      <ellipse cx="39" cy="49" rx="6.6" ry="8.6" fill="#fff" />
+      <ellipse cx="61" cy="49" rx="6.6" ry="8.6" fill="#fff" />
+      <circle cx="40.2" cy="50.5" r="3.4" fill="#241533" />
+      <circle cx="62.2" cy="50.5" r="3.4" fill="#241533" />
+      <circle cx="38.2" cy="47.4" r="1.5" fill="#fff" />
+      <circle cx="60.2" cy="47.4" r="1.5" fill="#fff" />
+      <path d="M41 64 Q50 73 59 64" stroke="#241533" strokeWidth="4.2" fill="none" strokeLinecap="round" />
     </svg>
   )
 }
