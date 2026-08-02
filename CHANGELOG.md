@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 2, 2026 — New logo: a holographic collectible card
+
+- **Changed:** new logomark (`Logo.jsx` `SpriteMark`, mirrored in `scripts/prerender.mjs`) — a tilted
+  collectible card with the kawaii sprite face + a foil sparkle, in the gold→violet brand gradient.
+  Rolled out to the app header, static SEO pages, favicon, PWA icon and OG image.
+- **Changed:** `public/favicon.svg` is a full-bleed version of the mark (the whole icon is the card)
+  so it stays legible down to 16px.
+- **Changed:** recolored the remaining cool-palette holdouts to match — the pre-React boot screen in
+  `index.html` (was flashing blue), the `theme-color` meta, and the `manifest.webmanifest`
+  background/theme colors (`#0d0b12`).
+- **Fixed:** regenerated `public/og-image.png` (it still showed the old blue mark) — shared links now
+  preview the new card logo, warm palette and the actual Luckiest Guy wordmark.
+- **Why:** after the collectible-card redesign, the old cyan sprite-blob logo was the last thing still
+  on the generic community-tracker palette — and it's the first thing seen in the tab, on shares and on
+  the home screen. Making the logo literally a foil card ties the identity together; the full-bleed
+  favicon keeps it readable where a floating tilted card would vanish.
+
 ## August 1, 2026 — A collectible-card redesign + a roster reconciled to Fortnite.GG
 
 - **Changed:** `SpriteCard.jsx` reworked into a trading-card treatment — a rarity-tinted foil
