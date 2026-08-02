@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 2, 2026 — The logo is now "Mombie", the maker's mascot
+
+- **Changed:** reworked the logomark (`Logo.jsx` `SpriteMark`, mirrored in `scripts/prerender.mjs` and
+  `public/favicon.svg`) into **Mombie** — the app's own kawaii Sprite body given a messy top-bun + bow
+  and a steaming coffee mug, in the gold→violet brand gradient. Rolled out to the app header, static
+  SEO pages, favicon, PWA icon and OG image. The favicon viewBox is re-cropped for the taller
+  bun-and-coffee silhouette so it still reads down to 16px.
+- **Changed:** regenerated `public/og-image.png` with the Mombie mark — the Luckiest Guy wordmark, warm
+  palette and "Creator Code MOMBIE" pill are unchanged.
+- **Why:** the mark was a generic (if on-brand) Sprite. Giving it the maker's own "Mombie" persona — the
+  coffee-clutching "like a zombie, but with kids" character that Creator Code MOMBIE is named for — makes
+  it ownable and personal without leaving the Sprite family or the warm palette. It's drawn as an original
+  vector in the app's own style, not traced from any outside artwork, so it sits natively beside the other
+  Sprites.
+
+---
+
 ## August 2, 2026 — New logo: actually shaped like a Sprite
 
 - **Changed:** reworked the logomark (`Logo.jsx` `SpriteMark`, mirrored in `scripts/prerender.mjs`)

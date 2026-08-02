@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 2, 2026',
+    title: 'Say hi to Mombie — the logo is now the maker’s mascot',
+    summary:
+      'The Sprite logomark got a personality: it’s now “Mombie” — the app’s own kawaii Sprite with a messy top-bun and bow, clutching a steaming coffee (“like a zombie, but with kids”). Same body shape and warm gold→violet gradient, just unmistakably the maker — the character Creator Code MOMBIE is named for.',
+    changes: [
+      { tag: 'Changed', text: 'New “Mombie” logomark across the app header, the static SEO pages, the favicon, the PWA icon and the social-share (OG) image — the app’s own Sprite body given a messy bun + bow and a steaming coffee mug. Still pure SVG, so it stays crisp everywhere and reads down to 16px (the favicon re-crops to fit the taller silhouette).' },
+      { tag: 'Changed', text: 'Regenerated the OG share card so links shared to Discord/Twitter preview the Mombie mark — the wordmark, warm palette and “Creator Code MOMBIE” pill are unchanged.' },
+    ],
+    why:
+      'The logo was a generic (if on-brand) Sprite. Giving it the maker’s own “Mombie” persona — the coffee-clutching zombie-mom the Creator Code is named for — makes the mark ownable and personal without leaving the Sprite family or the warm palette. It’s drawn as an original vector in the app’s own style (not traced from any outside artwork), so it belongs natively beside the other Sprites.',
+  },
+  {
+    date: 'August 2, 2026',
     title: 'New logo — actually shaped like a Sprite',
     summary:
       'Reworked the logomark into the app’s own Sprite silhouette — the domed capsule body with two little feet and a big kawaii face — in the warm gold→violet gradient. So the logo is literally one of the Sprites you’re tracking, not a generic rounded-square icon.',
