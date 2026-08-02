@@ -37,6 +37,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   height in a row and the controls anchor to the bottom; "Soon"/unreleased/vaulted cards (no level
   dots) no longer leave a gap under the frame. Removed a duplicate "Sprite database" link from the
   footer (the Sprites section is already in the footer section nav).
+- **Changed:** shortened the footer — the long attribution/credits block (© Epic notices, AI-art
+  disclosure, data sources) now sits in a collapsed `<details>` "Credits, sources & disclaimers"
+  disclosure, so the footer is compact by default with everything one tap away.
 - **Why:** the tracker looked near-identical to other community trackers, and its roster had drifted
   onto a theoretical "every Sprite × every finish" matrix plus a few leaks that never landed.
   Leaning into the collectible-finish theme makes the UI distinctly ours; reconciling the data to

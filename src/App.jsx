@@ -632,21 +632,29 @@ export default function App() {
           <span>Creator Code <span className="font-bold text-[var(--brand)]">MOMBIE</span></span>
         </div>
         <p className="opacity-80">Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
-        <p className="mt-2 opacity-80">
-          Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from{' '}
-          <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>;
-          some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic&apos;s official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.
-        </p>
-        <p className="mt-1 opacity-80">
-          Roster, themes &amp; drop rates cross-referenced from{' '}
-          <a className="underline" href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>,{' '}
-          <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a>{' '}
-          &amp; the <a className="underline" href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>.
-          Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a className="underline" href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a className="underline" href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a className="underline" href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>).
-          News &amp; events from official Fortnite patch notes, <a className="underline" href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>,
-          with some event details cross-referenced from community trackers (<a className="underline" href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a className="underline" href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a className="underline" href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a className="underline" href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a className="underline" href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it&apos;s official.
-          Item Shop, cosmetics &amp; player stats come from <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a className="underline" href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a className="underline" href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn&apos;t published official rates. Built with React, Vite &amp; Supabase.
-        </p>
+        {/* The long attribution/credits live in a collapsed disclosure so the footer
+            stays short — all the © notices, AI-art disclosure and sources are one tap away. */}
+        <details className="group mt-2">
+          <summary className="cursor-pointer list-none opacity-70 hover:text-white">
+            <span className="underline decoration-dotted underline-offset-2">Credits, sources &amp; disclaimers</span>
+            <span className="ml-1 inline-block transition-transform group-open:rotate-90">›</span>
+          </summary>
+          <p className="mx-auto mt-2 max-w-3xl opacity-80">
+            Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from{' '}
+            <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>;
+            some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic&apos;s official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.
+          </p>
+          <p className="mx-auto mt-2 max-w-3xl opacity-80">
+            Roster, themes &amp; drop rates cross-referenced from{' '}
+            <a className="underline" href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>,{' '}
+            <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a>{' '}
+            &amp; the <a className="underline" href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>.
+            Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a className="underline" href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a className="underline" href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a className="underline" href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>).
+            News &amp; events from official Fortnite patch notes, <a className="underline" href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>,
+            with some event details cross-referenced from community trackers (<a className="underline" href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a className="underline" href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a className="underline" href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a className="underline" href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a className="underline" href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it&apos;s official.
+            Item Shop, cosmetics &amp; player stats come from <a className="underline" href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a className="underline" href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a className="underline" href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn&apos;t published official rates. Built with React, Vite &amp; Supabase.
+          </p>
+        </details>
       </footer>
 
       {!isShareView && <SaveStatusPill />}

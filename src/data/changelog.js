@@ -19,6 +19,7 @@ export const CHANGELOG = [
       { tag: 'Fixed', text: 'Scrubbed the leftover Spider-Man Sprite references from the News feed and the Aug 1 announcement bar — the “Web-Shooter Power Hour” was premised on a Sprite that doesn’t exist.' },
       { tag: 'Fixed', text: 'Cards now stretch to equal height within a row, so “Soon”/unreleased/vaulted cards (which have no level dots) fill their cell instead of leaving a gap under the frame.' },
       { tag: 'Fixed', text: 'Removed a duplicate “Sprite database” link from the footer — the Sprites section is already in the footer’s section nav.' },
+      { tag: 'Changed', text: 'Shortened the footer: the long attribution/credits block (© Epic notices, AI-art disclosure, data sources) now lives in a collapsed “Credits, sources & disclaimers” disclosure, so the footer is compact but everything is one tap away.' },
     ],
     why:
       'Two goals landed together. First, the tracker looked near-identical to other community trackers; leaning into the “these are collectible finishes” idea (foil, holo tilt, a binder aesthetic) makes it unmistakably ours without changing how fast it is to use. Second, the roster had drifted onto a theoretical “every Sprite gets every finish” matrix, plus a few leaked Sprites that never shipped. Fortnite.GG’s published list and the datamined asset IDs are the authoritative sources, so the roster is reconciled to them exactly — accuracy is the whole point of a tracker.',
