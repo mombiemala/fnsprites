@@ -7,16 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'August 2, 2026',
-    title: 'New logo — a holographic collectible card',
+    title: 'New logo — the sprite, warmed up',
     summary:
-      'Replaced the old blue sprite logomark with a warm “foil card” mark that matches the redesign: a tilted collectible card with the kawaii sprite face and a foil sparkle, in the gold→violet brand gradient.',
+      'Recolored the friendly kawaii-sprite logomark from the old cyan/blue to the warm gold→violet brand gradient, so it matches the redesign while keeping the mark players already recognize.',
     changes: [
-      { tag: 'Changed', text: 'New logomark across the app header, the static SEO pages, the favicon, the PWA icon and the social-share (OG) image — a holographic collectible card with a sprite face + foil sparkle, in gold→violet. The favicon is a full-bleed version so it stays legible down to 16px.' },
+      { tag: 'Changed', text: 'New logomark across the app header, the static SEO pages, the favicon, the PWA icon and the social-share (OG) image — the same rounded sprite with antenna + kawaii face, now in the gold→violet gradient with warm-dark features. Reads cleanly all the way down to a 16px favicon.' },
       { tag: 'Changed', text: 'Recolored the last cool-palette holdouts to match: the pre-load boot screen (was flashing blue), the browser theme-color and the PWA manifest background/theme colors.' },
-      { tag: 'Fixed', text: 'Regenerated the OG share image — it still showed the old blue mark; links shared to Discord/Twitter now preview the new card logo and warm look.' },
+      { tag: 'Fixed', text: 'Regenerated the OG share image — it still showed the old blue mark; links shared to Discord/Twitter now preview the new warm sprite and look.' },
     ],
     why:
-      'After the collectible-card redesign, the old cyan “sprite blob” logo was the last thing still wearing the generic community-tracker palette — and the first thing people see in the tab, on shares and on the home screen. Making the logo literally a foil card ties the whole identity together, and doing a full-bleed favicon keeps it readable at tiny sizes where a floating tilted card would disappear.',
+      'After the collectible-card redesign, the old cyan sprite logo was the last thing still wearing the generic community-tracker palette — and it’s the first thing people see in the tab, on shares and on the home screen. Keeping the sprite everyone already knows but warming it to the new gradient ties the identity together without throwing away recognition.',
   },
   {
     date: 'August 1, 2026',
