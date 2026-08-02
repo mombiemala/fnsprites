@@ -92,9 +92,15 @@ export default function OverflowNav({ views = [], view, isShareView, onSelectVie
   return (
     <nav aria-label={ariaLabel} className="relative mb-5">
       {/* Off-screen measurement copy of every pill — gives stable widths no matter
-          what's currently shown. Hidden from a11y + pointer + layout flow. */}
-      <div ref={measureRef} aria-hidden="true" className="pointer-events-none invisible absolute left-0 top-0 flex gap-1.5">
-        {items.map((d) => <span key={d.key} className={pillCls(false)}>{d.label}</span>)}
+          what's currently shown. Hidden from a11y + pointer + layout flow. It's
+          wrapped in a 0×0 overflow-hidden box (with a w-max inner row) so the
+          non-wrapping pills keep their natural, measurable widths without inflating
+          the page's horizontal scrollWidth on narrow screens — that stray overflow
+          widened the mobile layout viewport and pushed fixed modals off-center. */}
+      <div aria-hidden="true" className="pointer-events-none invisible absolute left-0 top-0 h-0 w-0 overflow-hidden">
+        <div ref={measureRef} className="flex w-max gap-1.5">
+          {items.map((d) => <span key={d.key} className={pillCls(false)}>{d.label}</span>)}
+        </div>
       </div>
 
       <div ref={wrapRef} className="flex items-center gap-1.5">

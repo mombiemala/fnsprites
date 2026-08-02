@@ -40,6 +40,11 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 - **Changed:** shortened the footer — the long attribution/credits block (© Epic notices, AI-art
   disclosure, data sources) now sits in a collapsed `<details>` "Credits, sources & disclaimers"
   disclosure, so the footer is compact by default with everything one tap away.
+- **Fixed:** modals were off-center on mobile. `OverflowNav`'s hidden pill-measurement row
+  (`absolute`, non-wrapping) leaked ~290px of horizontal scrollWidth, widening the mobile layout
+  viewport so `fixed inset-0` overlays centered against the wider box and drifted off-screen. The
+  measurement row is now wrapped in a 0×0 `overflow-hidden` box with a `w-max` inner row — widths
+  stay measurable, the page no longer scrolls sideways, and every modal centers on phones.
 - **Why:** the tracker looked near-identical to other community trackers, and its roster had drifted
   onto a theoretical "every Sprite × every finish" matrix plus a few leaks that never landed.
   Leaning into the collectible-finish theme makes the UI distinctly ours; reconciling the data to
