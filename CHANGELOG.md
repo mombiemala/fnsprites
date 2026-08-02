@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 2, 2026 — Peeky Peely Hours added (+ a note on the staged Zero Point finishes)
+
+- **Added:** the live **Peeky Peely Hours** event to the News feed (`src/data/news.js`) and a live
+  announcement bar (`src/data/announcements.js`). It runs every day through **Aug 5**, two windows daily
+  (**4–5 PM ET** and **11 PM–12 AM ET**) in **Battle Royale & Zero Build**, boosting Peeky Peely Sprite
+  (and variant) spawns. Both use a `start`/`end` window so the event pins as "live now" and self-expires
+  after Aug 5 — no cleanup needed.
+- **Added:** a News entry clarifying that **Cube Zero Point** and **Holofoil Zero Point** are present in
+  the v41.30 files but not yet obtainable, so it's clear why the tracker flags them "Soon".
+- **Why:** the auto in-game feed only carries what Epic is actively promoting in its news tiles, and
+  neither of these was in it — Peeky Peely Hours is a timed community event, and the extra Zero Point
+  finishes are staged in the files. Curating them (with tight event dates) keeps the feed accurate
+  without waiting on the auto feed. Sources: Fortnite's official X/@Fortnite and the Epic Communities
+  "Peeky Peely Hours" thread; Fortnite Wiki for the Zero Point finishes.
+
+---
+
 ## August 2, 2026 — Live in-game news fixed (now pulled through the API key)
 
 - **Fixed:** the auto "In-game now" news tiles had gone blank — `liveNews.js` was calling

@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 2, 2026',
+    title: 'Peeky Peely Hours added — plus a note on the staged Zero Point finishes',
+    summary:
+      'Curated the live “Peeky Peely Hours” event (running daily through Aug 5) into the News feed and the announcement bar, and added a News entry explaining why Cube & Holofoil Zero Point show as “Soon” — they’re in the v41.30 files but not yet obtainable.',
+    changes: [
+      { tag: 'Added', text: 'Peeky Peely Hours event in the News feed and a live announcement bar: every day through Aug 5, two windows daily (4–5 PM ET and 11 PM–12 AM ET) in Battle Royale & Zero Build boost Peeky Peely Sprite (and variant) spawns. The bar auto-shows during the event window and hides after.' },
+      { tag: 'Added', text: 'A News entry clarifying that Cube Zero Point and Holofoil Zero Point exist in the v41.30 files but aren’t obtainable yet — so it’s clear why the tracker flags them “Soon” rather than missing.' },
+    ],
+    why:
+      'These are curated because the live in-game feed only carries what Epic is actively promoting in its news tiles, and neither of these was in it — Peeky Peely Hours is a timed community event and the extra Zero Point finishes are staged in the files. Hand-adding them (with tight event dates so the event self-expires) keeps the feed accurate without waiting on the auto feed.',
+  },
+  {
+    date: 'August 2, 2026',
     title: 'Live in-game news, fixed — now pulled through the API key',
     summary:
       'The auto “In-game now” news tiles (how limited-time in-game events like Sprite “Hours” show up on their own) had quietly gone blank. The browser was calling fortnite-api.com’s news endpoint unauthenticated, which now gets rate-limited/rejected — so nothing came back. It’s now pulled through our own server with the API key, and live events surface again.',

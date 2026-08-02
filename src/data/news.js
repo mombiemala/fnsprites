@@ -11,6 +11,19 @@
 export const NEWS = [
   {
     ts: '2026-07-30',
+    when: 'Jul 30 – Aug 5, 2026',
+    tag: 'event',
+    start: '2026-07-30',
+    end: '2026-08-05',
+    title: 'Peeky Peely Hours — boosted Peeky Peely spawns 🍌',
+    sprites: ['peely'],
+    body: 'Peeky Peely Hours run every day through August 5 — two windows daily: 4–5 PM ET (8–9 PM UTC) and again 11 PM–12 AM ET (3–4 AM UTC next day). Drop into Battle Royale or Zero Build during those hours and the Peeky Peely Sprite and its variants appear more often across the Island, giving you more chances to extract them and grow your collection. Peeky Peely emits a ping that reveals players carrying rare Sprites nearby (but marks you too). A Peely-packed bananza!',
+    link: 'https://communities.epicgames.com/thread/peeky-peely-hours/CZlK/',
+    source: 'Epic Games',
+    official: true,
+  },
+  {
+    ts: '2026-07-30',
     when: 'Jul 30, 2026',
     tag: 'sprites',
     title: 'Ironmouse & Gem Grim Sprites vaulted 🔒',
@@ -32,6 +45,18 @@ export const NEWS = [
     link: 'https://games.gg/fortnite/guides/fortnite-v41-30-update-patch-notes/',
     source: 'GAMES.GG',
     official: true,
+  },
+  {
+    ts: '2026-07-30',
+    when: 'Jul 30, 2026',
+    tag: 'sprites',
+    tentative: true,
+    title: 'Cube & Holofoil Zero Point — in the files, not yet obtainable 🔷',
+    sprites: ['zeropoint'],
+    body: 'v41.30 added two more Zero Point Sprite finishes to the game files — Holofoil Zero Point and Cube Zero Point — but neither is obtainable yet. They sit in the Sprites menu (currently without unique icons) and look staged for a later drop rather than being available now, so both stay flagged “Soon” in the tracker until Epic switches them on — likely via a New Sprite Day or event. Zero Point remains the game’s rarest Sprite (Mythic, ~0.00034%). Datamined; availability and timing unconfirmed.',
+    link: 'https://fortnite.fandom.com/wiki/Zero_Point_Sprite',
+    source: 'Fortnite Wiki',
+    official: false,
   },
   {
     ts: '2026-07-30',

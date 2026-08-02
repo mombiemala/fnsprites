@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'peeky-peely-hours-2026-07-30',
+    emoji: '🍌',
+    message: 'Peeky Peely Hours are LIVE — every day through Aug 5, 4–5 PM & 11 PM–12 AM ET, in Battle Royale & Zero Build: the Peeky Peely Sprite and its variants spawn more often across the Island. A Peely-packed bananza!',
+    link: 'https://communities.epicgames.com/thread/peeky-peely-hours/CZlK/',
+    linkLabel: 'Details',
+    start: '2026-07-30',
+    end: '2026-08-05',
+    source: 'Epic Games',
+    official: true,
+    tone: 'event',
+  },
+  {
     id: 'new-sprite-day-live-2026-07-30',
     emoji: '🍌',
     message: 'New Sprite Day is LIVE (v41.30): 20 new Sprites push the count to 110 — Ironmouse, Peeky Peely & Lootin’ Llama bring new powers, plus Peely/Llama variants, Grim’s Gem + Holofoil, and Quack for Water/Earth/Fire/Zero Point. John Wick’s on Springfield Reloaded.',
