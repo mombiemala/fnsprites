@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'August 4, 2026',
+    title: 'SEO sprite pages now match the app’s gold/violet theme',
+    summary:
+      'The prerendered /sprite/<slug> pages were still painted in the old cool navy + cyan palette, so after the app’s warm gold + violet refresh they looked like a different site — and clashed with the new Mombie logo. Repainted the static pages to the app’s current palette.',
+    changes: [
+      { tag: 'Fixed', text: 'Synced the static SEO pages’ CSS to the app’s theme tokens — warm background (#0d0b12), gold brand (#ffc93c) and violet accent (#b45cff), plus matching text/muted/panel/border — replacing the stale cyan (#36c5ff) + cool-navy values. The brand glows (page background, CTA glow, support card) and body-copy text were warmed to match; rarity colours and the per-finish tile gradients were left alone since they already match the app’s SpriteArt.' },
+    ],
+    why:
+      'The app moved to a warm gold/violet palette, but the prerendered pages hardcode their own CSS, so they drifted out of sync and read as off-brand — especially next to the new logo. A Google visitor’s first impression should feel like the same product as the app.',
+  },
+  {
+    date: 'August 4, 2026',
     title: 'A cuter Mombie logo — and sprite pages now hand off into the app',
     summary:
       'Redrew the Mombie mark so it reads as a cuter, more human character — framing hair, big glossy puppy-dog eyes, a softer smile — on the same Sprite body as the John Wick sprite. And each SEO sprite page’s “Track this” button now opens the app with that sprite’s card already up, instead of the generic home grid.',

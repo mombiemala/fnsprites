@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 4, 2026 — SEO sprite pages repainted to the app's gold/violet theme
+
+- **Fixed:** the prerendered `/sprite/<slug>` pages hardcoded the old cool palette (navy `#0c0f1a`
+  + cyan `#36c5ff`) in `scripts/prerender.mjs`, so after the app's warm refresh they looked off-brand
+  and clashed with the new logo. Synced the static CSS `:root` to the app's tokens — bg `#0d0b12`,
+  brand gold `#ffc93c`, accent violet `#b45cff`, warm text/muted/panel/border — and warmed the
+  hardcoded brand glows (body background, `.ctacard` shadow, `.supportcard` gradient) and body-copy
+  text from cool `#cdd6f0`.
+- **Kept:** rarity colours (`RARITY_TINT`) and per-finish tile gradients (`VARIANT_BG`) — those already
+  match `src/components/SpriteArt.jsx` and represent real finish appearances, not brand chrome.
+- **Why:** the static pages carry their own CSS copy, so an app palette change doesn't reach them
+  automatically; they'd drifted and read as a different site. First impression from a Google result
+  should match the app.
+
+---
+
 ## August 4, 2026 — Cuter Mombie logo + sprite-page CTAs deep-link into the app
 
 - **Changed:** redrew the Mombie logomark (`Logo.jsx` `SpriteMark`, mirrored in `scripts/prerender.mjs`

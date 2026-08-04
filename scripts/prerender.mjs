@@ -51,9 +51,9 @@ const VARIANT_BG = {
 // container, rounded-2xl cards, and the Inter body / Luckiest-Guy display split.
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;500;600;700;800&display=swap');
-:root{--bg:#0c0f1a;--bg2:#131829;--panel:#1a2036;--panel2:#222a45;--border:#2c3556;--text:#eaf0ff;--muted:#95a0c4;--brand:#36c5ff;--brand2:#7b61ff}
+:root{--bg:#0d0b12;--bg2:#15111c;--panel:#191420;--panel2:#241d30;--border:#2f2740;--text:#f4efe9;--muted:#a99fb8;--brand:#ffc93c;--brand2:#b45cff}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;color:var(--text);line-height:1.6;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;background:radial-gradient(1200px 600px at 80% -10%,rgba(123,97,255,.18),transparent 60%),radial-gradient(1000px 500px at 0% 0%,rgba(54,197,255,.14),transparent 55%),var(--bg)}
+body{margin:0;min-height:100vh;color:var(--text);line-height:1.6;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;background:radial-gradient(1200px 600px at 80% -10%,rgba(180,92,255,.18),transparent 60%),radial-gradient(1000px 500px at 0% 0%,rgba(255,201,60,.14),transparent 55%),var(--bg)}
 a{color:var(--brand);text-decoration:none}
 .wrap{max-width:1152px;margin:0 auto;padding:24px 16px 96px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
@@ -83,8 +83,8 @@ header.site{display:flex;align-items:flex-start;justify-content:space-between;ga
 .sidecard .rumored{background:rgba(245,158,11,.16);color:#fcd34d;font-size:9px;font-weight:800;text-transform:uppercase;padding:2px 6px;border-radius:5px}
 .sidecard .fine{margin:10px 0 0;font-size:11px;color:var(--muted);opacity:.85}
 details.gd{background:var(--panel2);border:0;border-radius:10px;padding:0 12px;margin:8px 0 0}
-details.gd summary{font-size:13px;font-weight:700;padding:10px 0}details.gd p{font-size:13px;color:#cdd6f0;margin:0 0 10px;max-width:none}
-.ctacard{display:block;text-align:center;background:linear-gradient(90deg,var(--brand),var(--brand2) 175%);color:#04121f;font-weight:800;padding:15px 16px;border-radius:16px;font-size:15px;box-shadow:0 8px 22px rgba(54,197,255,.22)}
+details.gd summary{font-size:13px;font-weight:700;padding:10px 0}details.gd p{font-size:13px;color:#dcd2e6;margin:0 0 10px;max-width:none}
+.ctacard{display:block;text-align:center;background:linear-gradient(90deg,var(--brand),var(--brand2) 175%);color:#1a1020;font-weight:800;padding:15px 16px;border-radius:16px;font-size:15px;box-shadow:0 8px 22px rgba(255,201,60,.22)}
 .ctacard:hover{filter:brightness(1.04)}
 .uplist{display:flex;flex-direction:column;gap:8px}
 .uprow{display:flex;align-items:center;gap:10px;background:var(--panel2);border:1px solid transparent;border-radius:12px;padding:8px;color:inherit;transition:border-color .15s}
@@ -104,7 +104,7 @@ details.gd summary{font-size:13px;font-weight:700;padding:10px 0}details.gd p{fo
 .chestcard .cl-open .cl-in{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
 .chestcard .cl-n{width:92px;background:var(--panel);color:#fff;border:1px solid var(--border);border-radius:8px;padding:5px 8px;font-size:13px}
 .chestcard .cl-res{margin:8px 0 0;font-size:13px;color:#fff}.chestcard .cl-res b{color:var(--brand)}
-.supportcard{background:linear-gradient(160deg,rgba(123,97,255,.22),rgba(54,197,255,.12))}
+.supportcard{background:linear-gradient(160deg,rgba(180,92,255,.22),rgba(255,201,60,.12))}
 .supportcard .cc2{color:var(--brand);font-weight:800;letter-spacing:.03em}
 .supportcard .bmc{display:block;text-align:center;margin-top:10px;background:#FFDD00;color:#000;font-weight:800;padding:10px;border-radius:10px}
 .hero{display:flex;gap:22px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px}
@@ -119,7 +119,7 @@ h1{margin:0;font-family:'Luckiest Guy','Inter',sans-serif;font-weight:400;font-s
 .stat{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:16px 14px;text-align:center}
 .stat .n{font-size:22px;font-weight:800}.stat .l{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 h2{font-family:'Inter',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.01em;margin:36px 0 12px}
-p{color:#cdd6f0;max-width:70ch}
+p{color:#dcd2e6;max-width:70ch}
 .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px}
 table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border)}
 th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}td.v{text-align:right;font-weight:700}
@@ -296,7 +296,7 @@ const FOOT = `<footer class="foot">
 function spritePage(type, others) {
   const name = type.name
   const url = `${SITE}/sprite/${slug(name)}`
-  const tint = RARITY_TINT[type.rarity] || '#7f8ab0'
+  const tint = RARITY_TINT[type.rarity] || '#a99fb8'
   const p = parseRate(type.dropRate)
   const dustN = dustCost(type.rarity, 'normal')
   const dustV = dustCost(type.rarity, 'gold')
@@ -413,7 +413,7 @@ const upcomingCard = () => {
   if (!up.length) return ''
   return `<div class="card sidecard"><h3 class="sh">🔮 Upcoming &amp; leaked <span class="rumored">Rumored</span></h3>
 <p class="sub">Datamined / leaked — dates &amp; details aren’t confirmed by Epic.</p>
-<div class="uplist">${up.map((t) => `<a class="uprow" href="/?sprite=${encodeURIComponent(t.id)}" title="Open ${esc(t.name)}"><span class="upic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span class="upmeta"><b>${esc(t.name)}</b> <small style="color:${RARITY_TINT[t.rarity] || '#95a0c4'}">${esc(t.rarity)}</small>${t.ability ? `<small class="upab">${esc(t.ability)}</small>` : ''}</span><span class="update">${t.releaseDate ? fmtLeak(t.releaseDate) : 'TBA'}</span></a>`).join('')}</div></div>`
+<div class="uplist">${up.map((t) => `<a class="uprow" href="/?sprite=${encodeURIComponent(t.id)}" title="Open ${esc(t.name)}"><span class="upic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span class="upmeta"><b>${esc(t.name)}</b> <small style="color:${RARITY_TINT[t.rarity] || '#a99fb8'}">${esc(t.rarity)}</small>${t.ability ? `<small class="upab">${esc(t.ability)}</small>` : ''}</span><span class="update">${t.releaseDate ? fmtLeak(t.releaseDate) : 'TBA'}</span></a>`).join('')}</div></div>`
 }
 
 // Chest luck card HTML. `selId` pre-selects a Sprite (used on its own page).
@@ -435,7 +435,7 @@ const chestLuckCard = (selId) => `<div class="card sidecard chestcard">
 
 const supportCard = () => `<div class="card sidecard supportcard"><h3 class="sh">Support the maker 💜</h3>
 <p class="sub">This tracker is free &amp; fan-made. Two easy ways to help:</p>
-<p style="font-size:13px;color:#cdd6f0;margin:0 0 4px">Enter Creator Code <b class="cc2">MOMBIE</b> in the Fortnite Item Shop at checkout — it supports me at no extra cost. #EpicPartner</p>
+<p style="font-size:13px;color:#dcd2e6;margin:0 0 4px">Enter Creator Code <b class="cc2">MOMBIE</b> in the Fortnite Item Shop at checkout — it supports me at no extra cost. #EpicPartner</p>
 <a class="bmc" href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a></div>`
 
 // ---------- /sprites "how to get every Sprite" board ----------
@@ -467,7 +467,7 @@ function buildGuideRows() {
 }
 
 function guideRow(r) {
-  const rc = RARITY_COLORS[r.rarity] || '#95a0c4'
+  const rc = RARITY_COLORS[r.rarity] || '#a99fb8'
   const st = STATUS_META[r.status]
   const tm = r.tier ? TIER_META[r.tier] : null
   const href = r.released ? `/sprite/${slug(r.name)}` : `/?sprite=${encodeURIComponent(r.id)}`
