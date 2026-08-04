@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 2, 2026 — Curated the Aug 6 Gem Sprites drop + Gem Hours
+
+- **Added:** News entry + announcement bar (`src/data/news.js`, `src/data/announcements.js`) for the
+  **Aug 6 Gem Sprites New Sprite Day** — the remaining 8 Gem variants complete a 9-Sprite set (Gem Llama
+  dropped early Jul 30), each granting **+30% fall-damage reduction** stacked on its base perk. Gem
+  Water/Earth roam their biomes; Gem Punk/Grim/Zero Point are Sprite Chest finds. Marked **Tentative**
+  (leaked date/details, not yet Epic-confirmed); a `start`/`end` window pins it live Aug 6–8.
+- **Added:** News entry for **Gem Hours** (Sat Aug 8) — the weekend Power Hour boosting the newly
+  released Gem Sprites.
+- **Why:** dated a few days out but well-corroborated across trackers, and Gem is the variant the app
+  already flags "Soon" — so surfacing the window with a Tentative badge helps collectors plan without
+  overstating certainty. Deliberately did **not** add the "Web Shooter" event some aggregators list the
+  same week: it's premised on the Spider-Man Sprite already removed as a phantom. Sources: Beebom /
+  ChainPlay schedule + Vice Gem Sprites release writeup.
+
+---
+
 ## August 2, 2026 — Peeky Peely Hours added (+ a note on the staged Zero Point finishes)
 
 - **Added:** the live **Peeky Peely Hours** event to the News feed (`src/data/news.js`) and a live

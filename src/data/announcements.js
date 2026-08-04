@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'gem-sprites-day-2026-08-06',
+    emoji: '💎',
+    message: 'New Sprite Day, Thu Aug 6 (9 AM ET): the Gem line drops — the remaining 8 Gem variants complete a 9-Sprite set, each adding +30% fall-damage reduction on top of its base perk. Gem Water/Earth roam their biomes; Gem Punk, Grim & Zero Point hide in Sprite Chests. Leaked; not yet Epic-confirmed.',
+    link: 'https://beebom.com/fortnite-gem-sprites-release-date/',
+    linkLabel: 'Details',
+    start: '2026-08-05',
+    end: '2026-08-08',
+    source: 'Beebom',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'peeky-peely-hours-2026-07-30',
     emoji: '🍌',
     message: 'Peeky Peely Hours are LIVE — every day through Aug 5, 4–5 PM & 11 PM–12 AM ET, in Battle Royale & Zero Build: the Peeky Peely Sprite and its variants spawn more often across the Island. A Peely-packed bananza!',

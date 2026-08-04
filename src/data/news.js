@@ -10,6 +10,33 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-08-06',
+    when: 'Thu, Aug 6, 2026',
+    tag: 'sprites',
+    tentative: true,
+    start: '2026-08-06',
+    end: '2026-08-08',
+    title: 'New Sprite Day: Gem Sprites finally drop 💎',
+    sprites: ['zeropoint'],
+    body: 'This Thursday’s New Sprite Day (Aug 6, from 9 AM ET / 6 AM PT at the weekly reset) is set to release the Gem line properly: the remaining eight Gem variants debut, completing a nine-Sprite Gem set (Gem Llama already slipped out early on Jul 30 from Relic Chests). Every Gem variant reportedly grants a flat 30% fall-damage reduction that stacks on top of its base Sprite perk — e.g. Gem Demon keeps its health-siphon and adds the fall-damage cut. Gem Water & Gem Earth wander their matching biomes; the rarer ones — Gem Punk, Gem Grim and Gem Zero Point — are Sprite Chest finds. Leaked scheduling and details; not yet Epic-confirmed.',
+    link: 'https://beebom.com/fortnite-gem-sprites-release-date/',
+    source: 'Beebom',
+    official: false,
+  },
+  {
+    ts: '2026-08-08',
+    when: 'Sat, Aug 8, 2026',
+    tag: 'event',
+    tentative: true,
+    start: '2026-08-08',
+    end: '2026-08-08',
+    title: 'Gem Hours — boosted Gem Sprite spawns 💎',
+    body: 'The Saturday right after Gem’s launch, Gem Hours is expected as the weekend Power Hour — two 2-hour sessions (the usual 2 PM & 9 PM ET windows) with a boosted chance of finding the freshly released Gem Sprites, so you can round out the set the same weekend. Leaked/aggregated schedule; exact times may shift.',
+    link: 'https://beebom.com/fortnite-sprite-events-schedule/',
+    source: 'Beebom',
+    official: false,
+  },
+  {
     ts: '2026-07-30',
     when: 'Jul 30 – Aug 5, 2026',
     tag: 'event',

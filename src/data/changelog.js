@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 2, 2026',
+    title: 'Curated the Aug 6 Gem Sprites drop + Gem Hours',
+    summary:
+      'Got the feed ahead of the week: added a heads-up for this Thursday’s New Sprite Day — the long-staged Gem line finally releasing (Aug 6) — plus the Gem Hours Power Hour the following Saturday.',
+    changes: [
+      { tag: 'Added', text: 'News entry + announcement bar for the Aug 6 Gem Sprites New Sprite Day: the remaining 8 Gem variants complete a 9-Sprite set (Gem Llama dropped early Jul 30), each adding +30% fall-damage reduction on top of its base perk; Gem Water/Earth roam their biomes while Gem Punk/Grim/Zero Point are chest finds. Flagged Tentative (leaked date/details, not yet Epic-confirmed).' },
+      { tag: 'Added', text: 'News entry for Gem Hours (Sat Aug 8) — the weekend Power Hour boosting the freshly released Gem Sprites.' },
+    ],
+    why:
+      'These are dated a few days out but well-corroborated across trackers, and Gem is the variant the app already flags “Soon” — so surfacing the release window with a Tentative badge helps collectors plan without overstating certainty. Deliberately did NOT add the “Web Shooter” event some aggregators list the same week: it’s premised on the Spider-Man Sprite we already removed as a phantom.',
+  },
+  {
+    date: 'August 2, 2026',
     title: 'Peeky Peely Hours added — plus a note on the staged Zero Point finishes',
     summary:
       'Curated the live “Peeky Peely Hours” event (running daily through Aug 5) into the News feed and the announcement bar, and added a News entry explaining why Cube & Holofoil Zero Point show as “Soon” — they’re in the v41.30 files but not yet obtainable.',
