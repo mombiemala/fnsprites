@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 4, 2026 — Cuter Mombie logo + sprite-page CTAs deep-link into the app
+
+- **Changed:** redrew the Mombie logomark (`Logo.jsx` `SpriteMark`, mirrored in `scripts/prerender.mjs`
+  `MARK` and `public/favicon.svg`): real hair framing the face (soft bangs + side locks), bigger glossy
+  puppy-dog eyes in a softer plum tone, rosier cheeks and a small open smile — the old flat mouth read
+  as a moustache, and tiny pupils in big whites read as uncanny. Rolled across the app header, static
+  SEO pages, favicon/PWA icon and the OG image (`public/og-image.png` regenerated with the new face).
+- **Changed:** the prerendered `/sprite/<slug>` SEO pages' primary CTA now points at `/?sprite=<id>`
+  (opens the app with that sprite's detail modal up) instead of `/`.
+- **Why:** the mark felt generic and a touch uncanny; framing hair + big kawaii eyes make it read as the
+  maker's own cute character while staying in the Sprite family. The CTA change continues a Google
+  visitor straight to the sprite they were reading about. Released→dedicated-page and related→page links
+  were left as-is — correct for SEO (verified: all 25 pages, sitemap and related links resolve; the
+  `/?sprite=` modal path is a valid fallback that's currently dormant since every sprite type is released).
+
+---
+
 ## August 2, 2026 — Curated the Aug 6 Gem Sprites drop + Gem Hours
 
 - **Added:** News entry + announcement bar (`src/data/news.js`, `src/data/announcements.js`) for the

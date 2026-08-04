@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 4, 2026',
+    title: 'A cuter Mombie logo — and sprite pages now hand off into the app',
+    summary:
+      'Redrew the Mombie mark so it reads as a cuter, more human character — framing hair, big glossy puppy-dog eyes, a softer smile — on the same Sprite body as the John Wick sprite. And each SEO sprite page’s “Track this” button now opens the app with that sprite’s card already up, instead of the generic home grid.',
+    changes: [
+      { tag: 'Changed', text: 'Redrew the Mombie logomark: real hair framing the face (soft bangs + side locks), bigger glossy puppy-dog eyes in a softer plum tone, rosier cheeks and a small open smile — the old flat mouth was reading as a moustache. Rolled across the app header, the static SEO pages, the favicon/PWA icon and the OG share image (regenerated with the new face). Still pure SVG, so it stays crisp everywhere.' },
+      { tag: 'Changed', text: 'On the prerendered /sprite/<slug> SEO pages, the primary “Track the … in your collection” CTA now deep-links to /?sprite=<id> — which opens the app with that sprite’s detail modal already up — instead of dropping you on the home grid to find it again.' },
+    ],
+    why:
+      'The mark felt a little generic and, up close, slightly uncanny (tiny pupils floating in big whites). Framing hair + big kawaii eyes make it read as the maker’s own cute character while staying in the Sprite family. The CTA is a small conversion fix: a visitor who landed on one sprite’s SEO page continues straight to that sprite in the app. The released→dedicated-page and related→page links were deliberately left alone — those are correct for SEO (verified: all 25 pages + sitemap + related links resolve).',
+  },
+  {
     date: 'August 2, 2026',
     title: 'Curated the Aug 6 Gem Sprites drop + Gem Hours',
     summary:
