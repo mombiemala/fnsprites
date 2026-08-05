@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 4, 2026',
+    title: 'Ironmouse Sprite is back — un-vaulted',
+    summary:
+      'Epic re-enabled the Ironmouse Sprite on Aug 4 (timed to Ironmouse’s VTuber debut anniversary) after it was pulled for launching earlier than intended post-v41.30. Un-vaulted it across the tracker and posted the return to the news feed.',
+    changes: [
+      { tag: 'Changed', text: 'Ironmouse is no longer flagged “Vaulted” — it’s obtainable again from Relic Chests. The badge clears everywhere it appears (roster cards, detail modal), the Guide moves it from Vaulted → Available, and its finish is eligible in the Chest-luck picker again.' },
+      { tag: 'Changed', text: 'Ironmouse’s ability blurb now reflects the return — accidental early release → brief vault → re-enabled Aug 4; early collectors are restored automatically at the level they last had it.' },
+      { tag: 'Added', text: 'A news entry announcing the Aug 4 return (pinned while live), and updated the original “vaulted” entry so it notes Ironmouse is back while Gem Grim stays vaulted.' },
+    ],
+    why:
+      'The Sprite was only ever pulled because it went live earlier than intended — the return was reported by HYPEX and tied to Ironmouse’s debut anniversary. A player checking whether they can finally grab it should see “Available,” not a stale “Vaulted” lock.',
+  },
+  {
+    date: 'August 4, 2026',
     title: 'SEO sprite pages now match the app’s gold/violet theme',
     summary:
       'The prerendered /sprite/<slug> pages were still painted in the old cool navy + cyan palette, so after the app’s warm gold + violet refresh they looked like a different site — and clashed with the new Mombie logo. Repainted the static pages to the app’s current palette.',

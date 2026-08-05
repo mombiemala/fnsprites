@@ -10,6 +10,19 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-08-04',
+    when: 'Tue, Aug 4, 2026',
+    tag: 'sprites',
+    start: '2026-08-04',
+    end: '2026-08-08',
+    title: 'Ironmouse Sprite is back 🐭',
+    sprites: ['ironmouse'],
+    body: 'The Ironmouse Sprite has returned. It was only pulled because it went live earlier than intended just after v41.30 — now Epic has re-enabled it on Aug 4, timed to Ironmouse’s VTuber debut anniversary. It’s obtainable again from Relic Chests (when your health drops critically low: regenerate over time while gaining Cloak and low gravity). If you collected it during its short early window, it’s restored to your collection automatically at the level you last had it. No longer flagged “Vaulted” in the tracker. (Gem Grim is still vaulted for now.)',
+    link: 'https://x.com/HYPEX',
+    source: 'HYPEX',
+    official: false,
+  },
+  {
     ts: '2026-08-06',
     when: 'Thu, Aug 6, 2026',
     tag: 'sprites',
@@ -55,7 +68,7 @@ export const NEWS = [
     tag: 'sprites',
     title: 'Ironmouse & Gem Grim Sprites vaulted 🔒',
     sprites: ['grim'],
-    body: 'Just hours after v41.30 went live, Epic vaulted the Ironmouse Sprite and the Gem Grim variant — both are currently unavailable to collect (players who already extracted them keep them). Ironmouse was found in Relic Chests (regen + Cloak + low gravity when low); Gem Grim was a rare Sprite Chest find. No word yet on if or when they return — flagged “Vaulted” in the tracker until then.',
+    body: 'Just hours after v41.30 went live, Epic vaulted the Ironmouse Sprite and the Gem Grim variant — both were unavailable to collect (players who already extracted them keep them). Ironmouse was found in Relic Chests (regen + Cloak + low gravity when low); Gem Grim was a rare Sprite Chest find. Update (Aug 4): Ironmouse is back — Epic re-enabled it on Aug 4, 2026 (see the newer entry). Gem Grim remains vaulted for now.',
     link: 'https://x.com/HYPEX',
     source: 'HYPEX',
     official: false,

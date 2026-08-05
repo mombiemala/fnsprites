@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 4, 2026 — Ironmouse Sprite un-vaulted (it's back)
+
+- **Changed:** removed `vaulted: true` from Ironmouse in `src/data/sprites.js` — Epic re-enabled it on
+  Aug 4, 2026 (timed to Ironmouse's VTuber debut anniversary) after it was pulled for launching earlier
+  than intended post-v41.30. The "Vaulted" badge now clears on the cards and detail modal, the Guide
+  reclassifies it Vaulted → Available, and its finish is eligible again in the Chest-luck calculator.
+- **Changed:** refreshed Ironmouse's ability text to describe the return (early release → brief vault →
+  re-enabled Aug 4; early collectors restored automatically at their last level).
+- **Added:** a `src/data/news.js` entry announcing the return (pinned via `start`/`end` while live), and
+  updated the original "Ironmouse & Gem Grim vaulted" entry to note Ironmouse is back — Gem Grim stays vaulted.
+- **Why:** the Sprite was only pulled because it went live too early; the return was reported by HYPEX and
+  tied to Ironmouse's anniversary. Players should see "Available," not a stale lock. Source: HYPEX (via X).
+
+---
+
 ## August 4, 2026 — SEO sprite pages repainted to the app's gold/violet theme
 
 - **Fixed:** the prerendered `/sprite/<slug>` pages hardcoded the old cool palette (navy `#0c0f1a`
