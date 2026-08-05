@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 4, 2026',
+    title: 'Flagged a reported Ironmouse extraction issue (unconfirmed)',
+    summary:
+      'Players are reporting the Ironmouse Sprite isn’t extracting since its Aug 4 return. We couldn’t find an official Epic acknowledgement, so it’s surfaced as a monitored, unverified known issue and Ironmouse’s copy now carries the caveat.',
+    changes: [
+      { tag: 'Added', text: 'A known-issue (bug) news entry — “Ironmouse Sprite not extracting since its return” — clearly marked Tentative / unofficial (source: community reports). It notes a likely timing factor: the return went live Aug 4 at 6 PM PT / 9 PM ET with boosted rates only until Aug 5, 3 AM ET, and it’s very rare after that.' },
+      { tag: 'Changed', text: 'Softened Ironmouse’s “available now” wording (both the sprite detail and the return news entry) to point at the reported extraction issue until it’s confirmed or resolved.' },
+    ],
+    why:
+      'We couldn’t verify the glitch in any reachable source (X and Epic’s help pages block our fetches), but it’s worth surfacing rather than leaving “available now” unqualified — flagged as unverified and monitored so it’s honest without over-claiming an Epic-confirmed bug. Ironmouse stays listed as released (owners keep it; it isn’t re-vaulted).',
+  },
+  {
+    date: 'August 4, 2026',
     title: 'Quack finish details filled in — it’s a Mastery reward (+50% XP share)',
     summary:
       'The Quack finish still read “Bonus not yet revealed” and was offered in the Chest-luck calculator — but Quack Sprites are Sprite Mastery rewards, not chest pulls. Filled in the real bonus and stopped quoting chest odds for them.',

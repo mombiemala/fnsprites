@@ -98,7 +98,7 @@ export const SPRITE_TYPES = [
     ability: 'Opening ammo boxes has a chance to grant a weapon upgrade — the chance grows each level (5% → 10% → 15% → 17% → 20% at Lv 5).',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R } },
   { id: 'ironmouse', name: 'Ironmouse', icon: '🐭', rarity: 'Mythic', dropRate: null, released: true,
-    ability: 'Found in Relic Chests: when your health drops critically low, regenerate over time while gaining Cloak and low gravity — health restored grows each level (60 → 70 → 80 → 90 → 100 HP at Lv 5). VTuber collab. Accidentally released early ahead of v41.30 and briefly vaulted, then re-enabled on Aug 4, 2026 (Ironmouse’s VTuber debut anniversary) — available again now. If you collected it during its short early window, it returns to your collection automatically at the level you last had it.',
+    ability: 'Found in Relic Chests: when your health drops critically low, regenerate over time while gaining Cloak and low gravity — health restored grows each level (60 → 70 → 80 → 90 → 100 HP at Lv 5). VTuber collab. Accidentally released early ahead of v41.30 and briefly vaulted, then re-enabled on Aug 4, 2026 (Ironmouse’s VTuber debut anniversary) — available again as of Aug 4. If you collected it during its short early window, it returns to your collection automatically at the level you last had it. Note: some players report it isn’t extracting since the return (unconfirmed — see News).',
     variants: { normal: R } },
 
   // ---- Datamined / upcoming (NOT yet released). `rumored` = leaked/unconfirmed;

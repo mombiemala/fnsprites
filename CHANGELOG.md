@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 4, 2026 — Reported Ironmouse extraction issue flagged (unconfirmed)
+
+- **Added:** a `bug`-tagged news entry in `src/data/news.js` — "Ironmouse Sprite not extracting since its
+  return" — marked `tentative: true`, `official: false`, source "Community reports." Notes the likely
+  timing factor (return went live Aug 4 6 PM PT / 9 PM ET; boosted rates only until Aug 5 3 AM ET).
+- **Changed:** softened Ironmouse's "available again now" copy in `sprites.js` and the return news entry
+  to point at the reported extraction issue until it's confirmed or resolved.
+- **Why:** couldn't verify the glitch in any reachable source (X, Epic Help, several outlets all 403 our
+  fetches). Surfacing it as unverified/monitored is more honest than leaving "available now" unqualified,
+  without over-claiming an Epic-confirmed bug. Ironmouse stays released (not re-vaulted).
+
+---
+
 ## August 4, 2026 — Quack finish details (Mastery reward, +50% XP share)
 
 - **Changed:** filled in the Quack finish bonus in `src/data/themes.js` — it shares 50% of the XP it
