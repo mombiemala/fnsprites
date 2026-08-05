@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 5, 2026 — Ironmouse extraction bug confirmed by Epic, then fixed
+
+- **Fixed:** upgraded the known-issue entry in `src/data/news.js` — Epic (Fortnite Status) confirmed
+  extracting Ironmouse wasn't granting the Sprite (missing from Collection, no Sprite Dust) and that some
+  Sprite Chests were empty, then hotfixed it on Aug 5 and re-enabled Ironmouse in the loot pool. Entry is
+  now `resolved: true` (green "Resolved" badge), `official: true`, source "Fortnite Status" with the post link.
+- **Changed:** reverted the cautious "some players report it isn't extracting" wording on the Ironmouse
+  sprite detail (`sprites.js`) and its return news entry to note the bug was confirmed and hotfixed.
+- **Why:** @FortniteStatus confirmed the report and shipped a fix, so the state moved from "unverified" to
+  "Epic-confirmed, resolved." Source: [Fortnite Status](https://x.com/FortniteStatus/status/2084825147500802553).
+
+---
+
 ## August 4, 2026 — Reported Ironmouse extraction issue flagged (unconfirmed)
 
 - **Added:** a `bug`-tagged news entry in `src/data/news.js` — "Ironmouse Sprite not extracting since its

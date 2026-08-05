@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 5, 2026',
+    title: 'Ironmouse extraction bug — confirmed by Epic, then fixed',
+    summary:
+      'Fortnite Status confirmed the Ironmouse extraction issue (Sprite not granted on extract, missing from Collection, no Sprite Dust, plus empty Sprite Chests) and hotfixed it on Aug 5. Upgraded our earlier “unverified” note to the confirmed, now-resolved issue.',
+    changes: [
+      { tag: 'Fixed', text: 'The known-issue entry now reflects reality: Epic (Fortnite Status) acknowledged that extracting Ironmouse wasn’t granting the Sprite (missing from Collection, no Dust) and that some Sprite Chests were empty, then hotfixed it on Aug 5 and re-enabled Ironmouse in the loot pool. The entry carries a green “Resolved” badge and cites the official Fortnite Status post.' },
+      { tag: 'Changed', text: 'Reverted the cautious “some players report it isn’t extracting” wording on the Ironmouse Sprite detail and its return entry to note the bug was confirmed and hotfixed, so nothing stays stuck on a now-resolved problem.' },
+    ],
+    why:
+      '@FortniteStatus confirmed exactly what was reported and shipped a fix, so the honest state moved from “unverified” to “Epic-confirmed, resolved.” Leaving a fixed bug flagged as an open mystery would mislead as much as ignoring it did.',
+  },
+  {
     date: 'August 4, 2026',
     title: 'Flagged a reported Ironmouse extraction issue (unconfirmed)',
     summary:
