@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 4, 2026 — Quack finish details (Mastery reward, +50% XP share)
+
+- **Changed:** filled in the Quack finish bonus in `src/data/themes.js` — it shares 50% of the XP it
+  earns with every other Sprite in your match — and removed the `rumored` / "Bonus not yet revealed"
+  placeholder (Quack has shipped for Water, Earth, Fire and Zero Point).
+- **Fixed:** set `FINISH_ODDS_FACTOR.quack = null` so Quack is dropped from the Chest-luck finish picker
+  (app + static pages both guard on `!= null`). Quack Sprites are Sprite Mastery rewards, not chest
+  pulls — you can't get them from Sprite Chests, Locators or bosses — so chest odds were misleading.
+- **Added:** Mastery thresholds to the Guide (`src/data/spriteGuide.js`): master 35 Sprites for Quack
+  Water, 40 Earth, 45 Fire, 55 for Quack Zero Point.
+- **Why:** Quack was added before its bonus/unlock were confirmed, so it carried placeholder copy and the
+  generic chest-odds treatment. It's a Mastery-only reward with a known XP-share perk now — the tracker
+  should say what it does and how to actually get it. Sources: allthings.how, gamerant, fortnite.gg.
+
+---
+
 ## August 4, 2026 — Weekly Sprite schedule confirmed (news feed)
 
 - **Added:** a schedule-overview entry in `src/data/news.js` for the Fortnite "Runners" week

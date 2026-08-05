@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 4, 2026',
+    title: 'Quack finish details filled in — it’s a Mastery reward (+50% XP share)',
+    summary:
+      'The Quack finish still read “Bonus not yet revealed” and was offered in the Chest-luck calculator — but Quack Sprites are Sprite Mastery rewards, not chest pulls. Filled in the real bonus and stopped quoting chest odds for them.',
+    changes: [
+      { tag: 'Changed', text: 'Quack’s perk is now shown: it shares 50% of the XP it earns with every other Sprite in your match (levels your collection faster). Dropped the “rumored / Bonus not yet revealed” placeholder — Quack has shipped for Water, Earth, Fire and Zero Point.' },
+      { tag: 'Fixed', text: 'Removed Quack from the Chest-luck finish picker (in-app and on every per-Sprite page). Quack Sprites are earned via Sprite Mastery milestones — not from Sprite Chests, Locators or bosses — so quoting chest odds for them was misleading.' },
+      { tag: 'Added', text: 'A Guide note with the Mastery thresholds: master 35 Sprites for Quack Water, 40 for Quack Earth, 45 for Quack Fire, and 55 for Quack Zero Point.' },
+    ],
+    why:
+      'Quack landed in the roster before its bonus/unlock were known, so it carried placeholder copy and inherited the generic chest-odds treatment. Now that it’s confirmed as a Mastery-only reward with a known XP-share perk, the tracker should state exactly what it does and how you actually get it — and never imply you can chest-farm it.',
+  },
+  {
+    date: 'August 4, 2026',
     title: 'Weekly Sprite schedule confirmed (Gem drop + Gem Hours no longer “tentative”)',
     summary:
       'Epic’s official weekly Sprite schedule (the Fortnite “Runners” graphic) confirmed this week’s events, so the news feed no longer guesses at them: the Gem New Sprite Day (Thu Aug 6) and Gem Hours (Sat Aug 8) are confirmed, Peely Hours are pinned to the right days, and Mastery Mondays is now represented.',

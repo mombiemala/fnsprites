@@ -15,7 +15,7 @@ export const THEMES = [
   // still unconfirmed AND `rumored: true` is what keeps the leaked-Sprite loop from
   // auto-releasing Cube early — so it stays true until each wave actually lands.
   { id: 'cube', name: 'Cube', short: 'Cu', className: 'theme-cube', accent: '#8a2be2', bonus: 'Overdrive (speed boost) while you’re in the Storm.', rumored: true },
-  { id: 'quack', name: 'Quack', short: 'Qk', className: 'theme-quack', accent: '#ffcf4d', bonus: 'Bonus not yet revealed', rumored: true },
+  { id: 'quack', name: 'Quack', short: 'Qk', className: 'theme-quack', accent: '#ffcf4d', bonus: 'Shares 50% of the XP it earns with every other Sprite in your match — levels your collection faster. Earned via Sprite Mastery rewards, not from chests.', mastery: true },
   { id: 'rift', name: 'Rift', short: 'R', className: 'theme-rift', accent: '#36c5ff', bonus: 'Special Rift variant' },
 ]
 
@@ -36,6 +36,9 @@ export const FINISH_ODDS_FACTOR = {
   holofoil: 0.03,
   gem: 0.02,
   cube: 0.02,
-  quack: 0.02,
+  // Quack is a Sprite Mastery reward (unlocked by mastering N Sprites), NOT a
+  // chest pull — null keeps it out of the Chest-luck picker in both the app and
+  // the static pages, which both filter finishes on `FINISH_ODDS_FACTOR[f] != null`.
+  quack: null,
   rift: 0.05,
 }
