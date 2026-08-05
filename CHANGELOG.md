@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 4, 2026 — Weekly Sprite schedule confirmed (news feed)
+
+- **Added:** a schedule-overview entry in `src/data/news.js` for the Fortnite "Runners" week
+  (Mastery Mondays → Peely Hours → New Sprite Day → Gem Hours), sourced to Epic's official weekly
+  graphic — also surfaces **Mastery Mondays**, which the feed had no entry for.
+- **Changed:** removed `tentative: true` from the Gem New Sprite Day (Aug 6) and Gem Hours (Aug 8)
+  entries now that Epic has confirmed both dates. The detailed Gem mechanics / variant list stay
+  described as leaked (source still Beebom) until Epic spells them out.
+- **Fixed:** Peely Hours were listed as "every day through Aug 5"; the official schedule shows them on
+  Tue Aug 4 & Wed Aug 5 only (Mon = Mastery Mondays). Corrected the `when`/`start` window and body, and
+  renamed to the in-game "Peely Hours."
+- **Why:** the feed should be the reliable Sprite calendar; with an official schedule in hand, leaving
+  confirmed events "tentative" (or Peely Hours on the wrong days) understates what players can count on.
+  Source: Epic's official weekly Sprite schedule graphic.
+
+---
+
 ## August 4, 2026 — Ironmouse Sprite un-vaulted (it's back)
 
 - **Changed:** removed `vaulted: true` from Ironmouse in `src/data/sprites.js` — Epic re-enabled it on

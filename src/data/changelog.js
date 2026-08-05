@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 4, 2026',
+    title: 'Weekly Sprite schedule confirmed (Gem drop + Gem Hours no longer “tentative”)',
+    summary:
+      'Epic’s official weekly Sprite schedule (the Fortnite “Runners” graphic) confirmed this week’s events, so the news feed no longer guesses at them: the Gem New Sprite Day (Thu Aug 6) and Gem Hours (Sat Aug 8) are confirmed, Peely Hours are pinned to the right days, and Mastery Mondays is now represented.',
+    changes: [
+      { tag: 'Added', text: 'A schedule-overview news entry for the week (Mastery Mondays → Peely Hours → New Sprite Day → Gem Hours), sourced to Epic’s official weekly graphic — this also adds Mastery Mondays, which the feed was missing.' },
+      { tag: 'Changed', text: 'Dropped the “Tentative” badge from the Gem New Sprite Day (Aug 6) and Gem Hours (Aug 8) entries now that Epic has confirmed both dates; the detailed Gem mechanics/variant list stay flagged as leaked until Epic spells them out.' },
+      { tag: 'Fixed', text: 'Peely Hours were listed as running “every day through Aug 5,” but the official schedule shows them on Tuesday Aug 4 & Wednesday Aug 5 (Monday was Mastery Mondays). Corrected the days/window and used the in-game name “Peely Hours.”' },
+    ],
+    why:
+      'The feed’s job is to be the accurate, at-a-glance Sprite calendar. With an official schedule in hand, leaving confirmed events marked “tentative” (or Peely Hours on the wrong days) would undersell what players can rely on — and quietly omitting Mastery Mondays left the week incomplete.',
+  },
+  {
+    date: 'August 4, 2026',
     title: 'Ironmouse Sprite is back — un-vaulted',
     summary:
       'Epic re-enabled the Ironmouse Sprite on Aug 4 (timed to Ironmouse’s VTuber debut anniversary) after it was pulled for launching earlier than intended post-v41.30. Un-vaulted it across the tracker and posted the return to the news feed.',
