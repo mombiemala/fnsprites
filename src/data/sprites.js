@@ -56,7 +56,7 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
   { id: 'zeropoint', name: 'Zero Point', icon: '🔷', rarity: 'Mythic', dropRate: '0.00034%', released: true,
     ability: 'Spawns a Shield Bubble Jr. when you use a healing item on yourself (not splashes or grenades).',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: U, cube: U, quack: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: U, cube: R, quack: R } },
   { id: 'peanut', name: 'Burnt Peanut', icon: '🥜', rarity: 'Mythic', dropRate: '2.97%', released: true,
     ability: 'A rare snack that grants a powerful random buff.',
     // Normal-only special — no variant line (Holofoil ships for the other 15

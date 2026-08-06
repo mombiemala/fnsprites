@@ -22,8 +22,12 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   "take 30% less fall damage (stacks with the base ability)."
 - **Changed:** `news.js` + `announcements.js` updated to the LIVE, Epic-confirmed drop; the "Gem Grim
   vaulted" note records its Aug 6 return.
+- **Fixed:** accuracy audit caught **Cube Zero Point** still flagged "Soon" in `sprites.js` — it's been
+  obtainable since v41.30 (Jul 30) from Vault/keycard Sprite Chests (sub-0.01%). Flipped `cube: R` for
+  zeropoint and rewrote the Zero Point-finishes note; **Holofoil Zero Point** stays the only Zero Point
+  finish not yet switched on. Released-variant count 110 → 117.
 - **Why:** the Gem line was the week's New Sprite Day and went live at the 9 AM ET reset (confirmed by
-  Epic's Communities post + in-game reveal). Source: [Epic — Gem Sprite Variant Arrives Aug 6](https://communities.epicgames.com/thread/gem-sprite-variant-arrives-thursday-august-6/AZQp).
+  Epic's Communities post + in-game reveal). Sources: [Epic — Gem Sprite Variant Arrives Aug 6](https://communities.epicgames.com/thread/gem-sprite-variant-arrives-thursday-august-6/AZQp), [Fortnite.GG — Cube Zero Point](https://fortnite.gg/sprites/112-cube-zero-point-sprite).
 
 ---
 

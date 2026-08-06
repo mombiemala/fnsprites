@@ -15,6 +15,7 @@ export const CHANGELOG = [
       { tag: 'Changed', text: 'Un-vaulted Gem Aura and Gem Grim — both return with the Gem line, so their “Vaulted” badges clear and they’re back in the Chest-luck picker.' },
       { tag: 'Changed', text: 'The Gem finish is no longer “datamined/disabled”: its bonus now reads the confirmed “take 30% less fall damage (stacks with the base ability),” and Gem is eligible in Chest-luck again (Gem Sprites drop from Sprite Chests).' },
       { tag: 'Changed', text: 'News + announcement bar updated to the LIVE, Epic-confirmed Gem drop (source: Epic’s official Fortnite Communities post), and the old “Gem Grim vaulted” note now records its Aug 6 return.' },
+      { tag: 'Fixed', text: 'Separately, an accuracy audit caught Cube Zero Point still flagged “Soon” — it’s actually been obtainable since v41.30 (Jul 30) from Vault / keycard Sprite Chests at a sub-0.01% rate. Marked it Available (now in the Chest-luck picker) and rewrote the Zero Point-finishes note; Holofoil Zero Point stays the only Zero Point finish not yet switched on. Released-variant count 110 → 117.' },
     ],
     why:
       'The Gem line was the week’s headline New Sprite Day and went live at the 9 AM ET reset — confirmed by Epic’s Communities post and the in-game reveal. Leaving nine Sprites flagged unreleased/vaulted on drop day is exactly the staleness this tracker exists to avoid.',
