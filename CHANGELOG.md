@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 6, 2026 — Gem Sprites live: full 9-Sprite Gem set marked obtainable
+
+- **Added:** flipped the Gem line to released in `src/data/sprites.js` — `gem: R` for Water, Earth, Duck,
+  Punk, Demon and Zero Point, joining the already-out Gem Llama. Nine Gem Sprites total; released-variant
+  count moves 110 → 116.
+- **Changed:** removed `vaultedForms: ['gem']` from Aura and Grim — Gem Aura & Gem Grim return with the
+  Gem line (badges clear, back in the Chest-luck picker).
+- **Changed:** the Gem finish in `themes.js` is no longer `rumored`/"disabled" — bonus is now the confirmed
+  "take 30% less fall damage (stacks with the base ability)."
+- **Changed:** `news.js` + `announcements.js` updated to the LIVE, Epic-confirmed drop; the "Gem Grim
+  vaulted" note records its Aug 6 return.
+- **Why:** the Gem line was the week's New Sprite Day and went live at the 9 AM ET reset (confirmed by
+  Epic's Communities post + in-game reveal). Source: [Epic — Gem Sprite Variant Arrives Aug 6](https://communities.epicgames.com/thread/gem-sprite-variant-arrives-thursday-august-6/AZQp).
+
+---
+
 ## August 5, 2026 — Ironmouse extraction bug confirmed by Epic, then fixed
 
 - **Fixed:** upgraded the known-issue entry in `src/data/news.js` — Epic (Fortnite Status) confirmed

@@ -6,6 +6,20 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 6, 2026',
+    title: 'Gem Sprites are live — full 9-Sprite Gem set marked obtainable',
+    summary:
+      'New Sprite Day (Aug 6) dropped the Gem line. Flipped all nine Gem Sprites to obtainable, un-vaulted Gem Aura & Gem Grim, and updated the Gem finish to its live −30% fall-damage bonus.',
+    changes: [
+      { tag: 'Added', text: 'Marked the full Gem set obtainable: Gem Water, Earth, Duck, Punk, Demon and Zero Point flip to released, joining the already-out Gem Llama — nine Gem Sprites in all. The released-variant count moves 110 → 116.' },
+      { tag: 'Changed', text: 'Un-vaulted Gem Aura and Gem Grim — both return with the Gem line, so their “Vaulted” badges clear and they’re back in the Chest-luck picker.' },
+      { tag: 'Changed', text: 'The Gem finish is no longer “datamined/disabled”: its bonus now reads the confirmed “take 30% less fall damage (stacks with the base ability),” and Gem is eligible in Chest-luck again (Gem Sprites drop from Sprite Chests).' },
+      { tag: 'Changed', text: 'News + announcement bar updated to the LIVE, Epic-confirmed Gem drop (source: Epic’s official Fortnite Communities post), and the old “Gem Grim vaulted” note now records its Aug 6 return.' },
+    ],
+    why:
+      'The Gem line was the week’s headline New Sprite Day and went live at the 9 AM ET reset — confirmed by Epic’s Communities post and the in-game reveal. Leaving nine Sprites flagged unreleased/vaulted on drop day is exactly the staleness this tracker exists to avoid.',
+  },
+  {
     date: 'August 5, 2026',
     title: 'Ironmouse extraction bug — confirmed by Epic, then fixed',
     summary:

@@ -16,15 +16,15 @@
 
 export const ANNOUNCEMENTS = [
   {
-    id: 'gem-sprites-day-2026-08-06',
+    id: 'gem-sprites-live-2026-08-06',
     emoji: '💎',
-    message: 'New Sprite Day, Thu Aug 6 (9 AM ET): the Gem line drops — the remaining 8 Gem variants complete a 9-Sprite set, each adding +30% fall-damage reduction on top of its base perk. Gem Water/Earth roam their biomes; Gem Punk, Grim & Zero Point hide in Sprite Chests. Leaked; not yet Epic-confirmed.',
-    link: 'https://beebom.com/fortnite-gem-sprites-release-date/',
+    message: 'Gem Sprites are LIVE (New Sprite Day, Aug 6) — the full 9-Sprite Gem set is out: Water, Earth, Duck, Llama, Zero Point, Punk, Aura, Demon & Grim. Each takes 30% less fall damage on top of its base perk. From Sprite Chests, boosted today and again at Gem Hours (Aug 8).',
+    link: 'https://communities.epicgames.com/thread/gem-sprite-variant-arrives-thursday-august-6/AZQp',
     linkLabel: 'Details',
-    start: '2026-08-05',
+    start: '2026-08-06',
     end: '2026-08-08',
-    source: 'Beebom',
-    official: false,
+    source: 'Epic Games',
+    official: true,
     tone: 'event',
   },
   {

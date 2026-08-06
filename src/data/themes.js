@@ -9,7 +9,7 @@ export const THEMES = [
   { id: 'gold', name: 'Gold', short: 'G', className: 'theme-gold', accent: '#f6c945', bonus: 'Bonus elimination XP' },
   { id: 'gummy', name: 'Gummy', short: 'Gy', className: 'theme-gummy', accent: '#ff5d8f', bonus: '+20% Sprite Dust on extraction' },
   { id: 'galaxy', name: 'Galaxy', short: 'Gx', className: 'theme-galaxy', accent: '#7b61ff', bonus: '+30% ammo when looting' },
-  { id: 'gem', name: 'Gem', short: 'Ge', className: 'theme-gem', accent: '#27e0c4', bonus: '−30% fall damage (datamined — Gem was disabled Jun 25, not currently obtainable)', rumored: true },
+  { id: 'gem', name: 'Gem', short: 'Ge', className: 'theme-gem', accent: '#27e0c4', bonus: 'Take 30% less fall damage (stacks with the Sprite’s base ability). Live from New Sprite Day, Aug 6, 2026.' },
   { id: 'holofoil', name: 'Holofoil', short: 'H', className: 'theme-holofoil', accent: '#c44dff', bonus: '+5% squad chance to find rare (Gold/Gummy/Galaxy) Sprites from chests' },
   // Event date is Epic-confirmed (Jul 23), but which Sprites get Cube each wave is
   // still unconfirmed AND `rumored: true` is what keeps the leaked-Sprite loop from

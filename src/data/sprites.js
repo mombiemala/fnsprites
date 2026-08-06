@@ -27,16 +27,16 @@ const U = false  // unreleased
 export const SPRITE_TYPES = [
   { id: 'water', name: 'Water', icon: '💧', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Replenishes shields for you and nearby squad while you’re in water.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: R, quack: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: R, quack: R } },
   { id: 'earth', name: 'Earth', icon: '🪨', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Better chance of rare rewards when opening chests.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, cube: R, quack: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, cube: R, quack: R } },
   { id: 'fire', name: 'Fire', icon: '🔥', rarity: 'Rare', dropRate: '8.73%', released: true,
     ability: 'Unleashes a fiery burst once you deal enough damage to an enemy.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R, cube: R, quack: R } },
   { id: 'duck', name: 'Duck', icon: '🦆', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Emoting or Jamming replenishes your shields.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R } },
   { id: 'ghost', name: 'Ghost', icon: '👻', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Reloading cloaks you (near-invisible) for a few seconds — longer as it levels.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
@@ -45,10 +45,10 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, cube: R } },
   { id: 'demon', name: 'Demon', icon: '😈', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Siphons health and shields when you eliminate an opponent.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R } },
   { id: 'punk', name: 'Punk', icon: '🎸', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Rolls a random buff on level-up; at max level, a chance at infinite ammo.',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, cube: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, cube: R } },
   { id: 'king', name: 'King', icon: '👑', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Your pickaxe deals extra damage.',
     // King ships Normal/Gold/Gummy/Galaxy/Holofoil only — Fortnite.GG lists no
@@ -56,7 +56,7 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
   { id: 'zeropoint', name: 'Zero Point', icon: '🔷', rarity: 'Mythic', dropRate: '0.00034%', released: true,
     ability: 'Spawns a Shield Bubble Jr. when you use a healing item on yourself (not splashes or grenades).',
-    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: U, holofoil: U, cube: U, quack: R } },
+    variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: U, cube: U, quack: R } },
   { id: 'peanut', name: 'Burnt Peanut', icon: '🥜', rarity: 'Mythic', dropRate: '2.97%', released: true,
     ability: 'A rare snack that grants a powerful random buff.',
     // Normal-only special — no variant line (Holofoil ships for the other 15
@@ -72,19 +72,18 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, gummy: R, galaxy: R, cube: R } },
   { id: 'aura', name: 'Aura', icon: '✨', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Builds a Shock Rock charge as you deal damage.',
-    // Gem Aura launched via its v41.30 quest, then was vaulted again — owners keep
-    // it (stays R, still counts) but it wears a "Vaulted" badge and isn't currently
-    // obtainable. (Internal asset id: ESD_DrifterSprite — the source of the old
-    // phantom "Drifter" entry, now removed.)
-    vaultedForms: ['gem'],
+    // Gem Aura launched via its v41.30 quest, was briefly vaulted, and returned
+    // with the full Gem line on New Sprite Day (Aug 6, 2026) — obtainable again.
+    // (Internal asset id: ESD_DrifterSprite — the source of the old phantom
+    // "Drifter" entry, now removed.)
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R } },
   { id: 'boss', name: 'Boss', icon: '🤵', rarity: 'Legendary', dropRate: '2.436%', released: true,
     ability: 'Boosts your max HP and Shield, growing each level (up to +25).',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, cube: R } },
   { id: 'grim', name: 'Grim Reaper', icon: '💀', rarity: 'Mythic', dropRate: '0.000098%', released: true,
     ability: 'Marks the location of any enemy who damages you. Spawns almost exclusively from Sprite Chests.',
-    // The Gem variant launched with v41.30 then was vaulted the same day (Jul 30).
-    vaultedForms: ['gem'],
+    // Gem Grim launched with v41.30, was vaulted the same day (Jul 30), and
+    // returned with the full Gem line on New Sprite Day (Aug 6, 2026).
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: R, cube: R } },
 
   // ---- Added in the Jul 30, 2026 update (v41.30 New Sprite Day) ----
