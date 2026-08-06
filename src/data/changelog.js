@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'August 6, 2026',
+    title: 'Fixed: couldn’t un-mark a Sprite flagged “for trade”',
+    summary:
+      'Tapping “not owned” on a Sprite that was marked for-trade did nothing — the “for-trade implies owned” rule snapped it straight back to owned, so the toggle looked stuck (easy to hit on a Gem duplicate). Un-marking now clears the for-trade flag first, so it actually un-owns.',
+    changes: [
+      { tag: 'Fixed', text: 'A Sprite marked “for trade” could not be returned to not-owned: the invariant that keeps for-trade Sprites owned re-bumped it every time, so the Owned toggle appeared glitched. Un-owning (or setting level 0) now clears for-trade first; marking a Sprite for-trade still implies owned, exactly as before.' },
+    ],
+    why:
+      'For-trade means “I have a spare,” so it implied ownership — but that made un-owning impossible once the flag was set, including when it came in from an imported backup or cloud sync where there’s no visible toggle to clear it. An explicit un-own should win.',
+  },
+  {
+    date: 'August 6, 2026',
     title: 'Gem Sprites are live — full 9-Sprite Gem set marked obtainable',
     summary:
       'New Sprite Day (Aug 6) dropped the Gem line. Flipped all nine Gem Sprites to obtainable, un-vaulted Gem Aura & Gem Grim, and updated the Gem finish to its live −30% fall-damage bonus.',

@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 6, 2026 — Fixed: couldn't un-mark a Sprite flagged "for trade"
+
+- **Fixed:** in `src/context/AuthContext.jsx` `update()`, un-owning a Sprite that had `forTrade: true`
+  did nothing — setting level 0 was immediately reverted by the "for-trade implies owned" invariant
+  (`if (entry.forTrade && entry.level < 1) entry.level = 1`), so `owned` snapped back to true. Now a
+  change that drops below level 1 clears `forTrade` first (unless the same patch is explicitly setting
+  for-trade), so an explicit un-own wins. Marking for-trade still implies owned.
+- **Why:** for-trade came in via backup import / cloud sync (no visible toggle in the current UI), so a
+  stuck for-trade flag made a Sprite impossible to un-own with no obvious cause — it read as a glitch,
+  e.g. on a freshly-dropped Gem duplicate.
+
+---
+
 ## August 6, 2026 — Gem Sprites live: full 9-Sprite Gem set marked obtainable
 
 - **Added:** flipped the Gem line to released in `src/data/sprites.js` — `gem: R` for Water, Earth, Duck,

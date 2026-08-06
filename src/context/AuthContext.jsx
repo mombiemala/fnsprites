@@ -119,6 +119,12 @@ export function AuthProvider({ children }) {
       } else if ('owned' in patch) {
         entry.level = patch.owned ? Math.max(1, cur.level) : 0
       }
+      // If this change drops the sprite below level 1 it means "not owned" — clear
+      // for-trade first. Otherwise the "for-trade implies owned" invariant below
+      // snaps the level back to 1, making a for-trade sprite impossible to un-mark
+      // (it reads as a glitch: tapping "not owned" does nothing). An explicit
+      // for-trade toggle in this same patch is still honored.
+      if (entry.level < 1 && !patch.forTrade) entry.forTrade = false
       // Marking for-trade implies you have it (at least level 1).
       if (entry.forTrade && entry.level < 1) entry.level = 1
       entry.owned = entry.level >= 1
