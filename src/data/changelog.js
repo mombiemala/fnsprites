@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 6, 2026',
+    title: 'Season-end deadlines + Gaming Legends leak refresh',
+    summary:
+      'Swept current sources for news & rumors: surfaced the Aug 19 season-end deadlines for collectors (the free Quack Zero Point at 55 mastery; S3 Sprite collection reportedly won’t carry into Season 4) and refreshed the “Gaming Legends” next-season leak with its datamined roster and date range.',
+    changes: [
+      { tag: 'Added', text: 'The season-end entry now flags collector deadlines: claim the free Quack Zero Point (55 mastered Sprites) before Aug 19, and reports that Chapter 7 Season 3 Sprite collections won’t carry into Season 4. Same deadline added to the Guide’s Mastery section.' },
+      { tag: 'Changed', text: 'Refreshed the “Gaming Legends” (Ch 7 S4) leak: datamined roster — Sonic & Eggman, Mega Man, Persona 5’s Joker, Pac-Man, Tetris, Crash, Kingdom Hearts — with ShiinaBR/HYPEX sourcing, the Wonkeeland Pac-Man easter egg, and the unsettled start date (Aug 19–20 vs Sept 4). Reconciled the Sprite outlook: the system looks set to continue, but S3 collections reportedly reset.' },
+    ],
+    why:
+      'A season-ending free reward with a hard date is exactly what a collection tracker should surface loudly. It also reconciles the earlier “Sprites look set to stay” note with newer reports that S3 collections won’t carry over — both can hold: the system continues, the collection resets.',
+  },
+  {
+    date: 'August 6, 2026',
     title: 'Fixed: couldn’t un-mark a Sprite flagged “for trade”',
     summary:
       'Tapping “not owned” on a Sprite that was marked for-trade did nothing — the “for-trade implies owned” rule snapped it straight back to owned, so the toggle looked stuck (easy to hit on a Gem duplicate). Un-marking now clears the for-trade flag first, so it actually un-owns.',

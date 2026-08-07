@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 6, 2026 — Season-end deadlines + Gaming Legends leak refresh (news/rumors)
+
+- **Added:** season-end entry (`news.js`) now flags collector deadlines — claim the free **Quack Zero
+  Point** (55 mastered Sprites) before **Aug 19**, and reports that Chapter 7 Season 3 Sprite collections
+  won't carry into Season 4. Same deadline added to the Guide's Mastery section (`spriteGuide.js`).
+- **Changed:** refreshed the **Gaming Legends** (Ch 7 S4) leak entry — datamined roster (Sonic & Eggman,
+  Mega Man, Persona 5's Joker, Pac-Man, Tetris, Crash, Kingdom Hearts), ShiinaBR/HYPEX sourcing, the
+  Wonkeeland Pac-Man easter egg, and the unsettled start date (Aug 19–20 vs Sept 4). Reconciled the Sprite
+  outlook: system looks set to continue, but S3 collections reportedly reset.
+- **Why:** a season-ending free reward with a hard date should be surfaced loudly; also reconciles the
+  earlier "Sprites look set to stay" note with newer "won't carry over" reports (both can be true).
+  Sources: [TechTimes — rarest companion free before season ends](https://www.techtimes.com/articles/322252/20260730/fortnite-adds-20-sprites-v4130-rarest-companion-yours-free-before-season-ends.htm), [Vice — Ch7 S4 collabs leak](https://www.vice.com/en/article/fortnite-chapter-7-season-4-collabs-leak/).
+
+---
+
 ## August 6, 2026 — Fixed: couldn't un-mark a Sprite flagged "for trade"
 
 - **Fixed:** in `src/context/AuthContext.jsx` `update()`, un-owning a Sprite that had `forTrade: true`
