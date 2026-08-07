@@ -17,7 +17,7 @@ export const NEWS = [
     end: '2026-08-16',
     title: 'Official: Sprites are staying forever ♾️',
     sprites: ['peely'],
-    body: 'Epic has confirmed the Sprite system is permanent — every past and future Sprite stays in your collection, a new generation arrives with each season, past generations are never removed, and your collection lives on even after Battle Royale. Arriving with Chapter 7 Season 4 (“Override”, ~Aug 20): a Sprite Garden — an island getaway to showcase and play with your full collection, and visit friends’ gardens. Your Season 3 Sprites carry over — they live on in the Garden and on your Collection page alongside the new generation (also surfacing as Sprite Mastery Pod Back Bling styles and Guardian Outfit pilots). This settles the earlier “won’t carry over” rumor — your collection is safe.',
+    body: 'Epic has confirmed the Sprite system is permanent — every past Sprite stays in your collection, and a full new generation arrives with each season. Chapter 7 Season 4 (“Override”, ~Aug 20) brings that new generation with new powers, quality-of-life updates and new ways to find Sprites, plus a Sprite Garden: an island to showcase, interact with and play your full collection, and to visit friends’ gardens. Your Season 3 Sprites carry over (they stay on your Collection page and in the Garden) and Season 4 Sprites are auto-added; your collection even lives on after Battle Royale, and older generations may return down the line. This settles the earlier “won’t carry over” rumor — your collection is safe.',
     link: 'https://communities.epicgames.com/thread/new-generation-of-sprites-in-chapter-7-season-4-override/6zPu',
     source: 'Epic Games',
     official: true,

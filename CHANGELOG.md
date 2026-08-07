@@ -15,7 +15,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 - **Changed:** confirmed the "Sprites are staying forever" reveal is genuinely official (Insider Gaming /
   Epic Communities) and added specifics — the **Sprite Garden** launches with **Chapter 7 Season 4 "Override"**
-  (~Aug 20); Season 3 Sprites live on there and on your Collection page.
+  (~Aug 20); Season 3 Sprites carry over (Collection page + Garden); the S4 generation brings **new powers,
+  QoL updates & new ways to find Sprites**, S4 Sprites auto-add to the Garden, and older generations may
+  return later (corroborated by HYPEX).
 - **Changed:** next-season (`news.js`) firmed up — S4 is officially **"Override,"** beginning **Aug 19–20**
   (earlier Sept 4 date superseded); the "Gaming Legends" collab roster stays leak-only.
 - **Changed:** Design-a-Sprite contest entry updated from "winners still to come" to the **revealed winners**
