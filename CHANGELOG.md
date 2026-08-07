@@ -21,7 +21,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 - **Changed:** next-season (`news.js`) firmed up — S4 is officially **"Override,"** beginning **Aug 19–20**
   (earlier Sept 4 date superseded); the "Gaming Legends" collab roster stays leak-only.
 - **Changed:** Design-a-Sprite contest entry updated from "winners still to come" to the **revealed winners**
-  (Pond, Bullet, Honey, Dumpster Dive, X-Ray) arriving in a **mid-season S4 update** — added to the roster once in-game.
+  with each designed ability — Pond (evolving frog: speed/jump + less fall damage), Bullet (bonus ammo),
+  Honey (beehive counter-attack), Dumpster Dive (raccoon: dumpster loot), X-Ray (reveals nearby players) —
+  arriving in a **mid-season S4 "Override" update** (added to the roster once in-game).
 - **Added:** cross-checked the released-variant count — **117** for Season 3 matches the tracker.
 - **Why:** a source pass caught two soft/stale spots (next-season date, contest winners) and confirmed the
   big official claims hold. Sources: [Insider Gaming — Sprite Garden](https://insider-gaming.com/fortnite-reveals-sprites-will-remain-reveals-sprite-garden/), [Beebom — Design-a-Sprite winners](https://beebom.com/fortnite-design-a-sprite-winners-revealed/).

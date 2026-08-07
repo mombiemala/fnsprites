@@ -13,7 +13,7 @@ export const CHANGELOG = [
     changes: [
       { tag: 'Changed', text: 'Confirmed the “Sprites are staying forever” reveal is genuinely official (Insider Gaming / Epic Communities) and added specifics: the Sprite Garden launches with Chapter 7 Season 4 “Override” (~Aug 20), your Season 3 Sprites carry over (staying on your Collection page and in the Garden), and — corroborated by HYPEX — the S4 generation brings new powers, QoL updates and new ways to find Sprites, S4 Sprites auto-add to the Garden, and older generations may return later.' },
       { tag: 'Changed', text: 'Next-season entry firmed up: S4 is officially titled “Override,” beginning Aug 19–20 (the earlier Sept 4 date is superseded). The “Gaming Legends” collab roster stays leak-only.' },
-      { tag: 'Changed', text: 'Design-a-Sprite contest: replaced the stale “winners still to come” note with the revealed winners — Pond, Bullet, Honey, Dumpster Dive and X-Ray — arriving in a mid-season S4 update (they’ll join the roster once they’re in-game).' },
+      { tag: 'Changed', text: 'Design-a-Sprite contest: replaced the stale “winners still to come” note with the revealed winners and each one’s designed ability — Pond (evolving frog: speed/jump + less fall damage), Bullet (bonus ammo), Honey (beehive counter-attack), Dumpster Dive (raccoon: loot from dumpsters), X-Ray (reveals nearby players). Arriving in a mid-season S4 “Override” update (they’ll join the roster once in-game).' },
       { tag: 'Added', text: 'Cross-checked the released-variant count against sources — 117 for Season 3 (Gem set + Cube Zero Point) matches the tracker.' },
     ],
     why:
