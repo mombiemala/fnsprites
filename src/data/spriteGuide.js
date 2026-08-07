@@ -17,7 +17,7 @@ export const SPRITE_GUIDE = [
   ] },
   { h: '⭐ Mastery', body: [
     'Reaching Lv 5 **isn’t enough on its own** — you must **Extract a Sprite while it’s at Lv 5** to Master it. Each Mastery unlocks rewards in the Sprites menu: **Portable Extractors, Sprite Dust, XP and cosmetics.**',
-    'The **Quack finishes are Mastery milestone rewards** — you can’t pull them from chests. Master **35** Sprites for Quack Water, **40** for Quack Earth, **45** for Quack Fire, and **55** for **Quack Zero Point** — the latter is a **free** reward, but claim it before Chapter 7 Season 3 ends (**Aug 19**), as reports say Season 3 Sprites won’t carry into Season 4. Each one shares **50%** of the XP it earns with every other Sprite in your match, so it fast-tracks the rest of your collection.',
+    'The **Quack finishes are Mastery milestone rewards** — you can’t pull them from chests. Master **35** Sprites for Quack Water, **40** for Quack Earth, **45** for Quack Fire, and **55** for **Quack Zero Point** (a **free** reward via the mastery track). Each one shares **50%** of the XP it earns with every other Sprite in your match, so it fast-tracks the rest of your collection.',
     'In this tracker, marking a variant **★ Mastered** = you’ve extracted it at Lv 5.',
   ] },
   { h: '🎨 Variants & forms', body: [

@@ -11,18 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## August 6, 2026 — Season-end deadlines + Gaming Legends leak refresh (news/rumors)
+## August 6, 2026 — Official: Sprites are staying forever (+ Gem Hours times)
 
-- **Added:** season-end entry (`news.js`) now flags collector deadlines — claim the free **Quack Zero
-  Point** (55 mastered Sprites) before **Aug 19**, and reports that Chapter 7 Season 3 Sprite collections
-  won't carry into Season 4. Same deadline added to the Guide's Mastery section (`spriteGuide.js`).
-- **Changed:** refreshed the **Gaming Legends** (Ch 7 S4) leak entry — datamined roster (Sonic & Eggman,
-  Mega Man, Persona 5's Joker, Pac-Man, Tetris, Crash, Kingdom Hearts), ShiinaBR/HYPEX sourcing, the
-  Wonkeeland Pac-Man easter egg, and the unsettled start date (Aug 19–20 vs Sept 4). Reconciled the Sprite
-  outlook: system looks set to continue, but S3 collections reportedly reset.
-- **Why:** a season-ending free reward with a hard date should be surfaced loudly; also reconciles the
-  earlier "Sprites look set to stay" note with newer "won't carry over" reports (both can be true).
-  Sources: [TechTimes — rarest companion free before season ends](https://www.techtimes.com/articles/322252/20260730/fortnite-adds-20-sprites-v4130-rarest-companion-yours-free-before-season-ends.htm), [Vice — Ch7 S4 collabs leak](https://www.vice.com/en/article/fortnite-chapter-7-season-4-collabs-leak/).
+- **Added:** a pinned news entry for Epic's official **"Sprites are staying forever"** reveal — all
+  generations always yours, a new generation each season, past generations never removed, even after
+  Battle Royale; plus teased **Sprite Garden** (showcase your collection on a private island) and visiting
+  friends' gardens.
+- **Fixed:** retracted the earlier **"Season 3 Sprites won't carry into Season 4"** note (a leak, now
+  contradicted by Epic) from the season-end entry, the Gaming Legends entry and the Guide — no more
+  carry-over-reset or Aug 19 collection deadline. Quack Zero Point stays a free 55-mastery reward.
+- **Changed:** **Gem Hours** (Sat Aug 8) now has confirmed times — two rounds, **2–4 PM & 9–11 PM ET** —
+  and bonuses (Self-Revive for all, full Mythic loot pool, Mythic Goldfish); added a Gem Hours banner.
+- **Changed:** kept the refreshed **Gaming Legends** (Ch 7 S4) leak (Sonic & Eggman, Mega Man, Persona's
+  Joker, Pac-Man, Tetris, Crash, Kingdom Hearts; ShiinaBR/HYPEX; date Aug 19–20 vs Sept 4).
+- **Why:** an official announcement outranks a leak — the "won't carry over" claim was wrong, so it came
+  out of every player-facing spot. Source: Epic's official "Sprites are staying forever" graphic.
 
 ---
 

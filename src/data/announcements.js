@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'gem-hours-2026-08-08',
+    emoji: '💎',
+    message: 'Gem Hours — Sat, Aug 8: boosted Gem Sprite spawns in two rounds (2–4 PM & 9–11 PM ET). Everyone starts with a Self-Revive, the loot pool goes full Mythic, and Mythic Goldfish appear in chests — the best window to complete the 9-Sprite Gem set.',
+    link: 'https://www.theclick.gg/fortnite-gem-hours/',
+    linkLabel: 'Times & bonuses',
+    start: '2026-08-07',
+    end: '2026-08-08',
+    source: 'The Click',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'gem-sprites-live-2026-08-06',
     emoji: '💎',
     message: 'Gem Sprites are LIVE (New Sprite Day, Aug 6) — the full 9-Sprite Gem set is out: Water, Earth, Duck, Llama, Zero Point, Punk, Aura, Demon & Grim. Each takes 30% less fall damage on top of its base perk. From Sprite Chests, boosted today and again at Gem Hours (Aug 8).',

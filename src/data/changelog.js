@@ -7,15 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'August 6, 2026',
-    title: 'Season-end deadlines + Gaming Legends leak refresh',
+    title: 'Official: Sprites are staying forever (+ Gem Hours times)',
     summary:
-      'Swept current sources for news & rumors: surfaced the Aug 19 season-end deadlines for collectors (the free Quack Zero Point at 55 mastery; S3 Sprite collection reportedly won’t carry into Season 4) and refreshed the “Gaming Legends” next-season leak with its datamined roster and date range.',
+      'Epic confirmed Sprites are permanent — every past and future generation stays in your collection, across seasons and even after Battle Royale — which retracts the earlier “Season 3 Sprites won’t carry over” rumour. Also locked in tomorrow’s Gem Hours times and kept the refreshed Gaming Legends leak.',
     changes: [
-      { tag: 'Added', text: 'The season-end entry now flags collector deadlines: claim the free Quack Zero Point (55 mastered Sprites) before Aug 19, and reports that Chapter 7 Season 3 Sprite collections won’t carry into Season 4. Same deadline added to the Guide’s Mastery section.' },
-      { tag: 'Changed', text: 'Refreshed the “Gaming Legends” (Ch 7 S4) leak: datamined roster — Sonic & Eggman, Mega Man, Persona 5’s Joker, Pac-Man, Tetris, Crash, Kingdom Hearts — with ShiinaBR/HYPEX sourcing, the Wonkeeland Pac-Man easter egg, and the unsettled start date (Aug 19–20 vs Sept 4). Reconciled the Sprite outlook: the system looks set to continue, but S3 collections reportedly reset.' },
+      { tag: 'Added', text: 'A pinned news entry for Epic’s official “Sprites are staying forever” reveal — all generations always yours, a new generation each season, past generations never removed, plus teased Sprite Garden (showcase your collection on a private island) and friend-garden visits.' },
+      { tag: 'Fixed', text: 'Retracted the earlier “Season 3 Sprite collection won’t carry into Season 4” note (a leak, now contradicted by Epic): the season-end entry, the Gaming Legends entry and the Guide no longer claim a carry-over reset or an Aug 19 collection deadline. Quack Zero Point stays listed as a free 55-mastery reward.' },
+      { tag: 'Changed', text: 'Gem Hours (Sat, Aug 8) now has confirmed times — two rounds, 2–4 PM & 9–11 PM ET — plus its bonuses (Self-Revive for all, full Mythic loot pool, Mythic Goldfish). Added a Gem Hours announcement banner for the day.' },
+      { tag: 'Changed', text: 'Kept the refreshed “Gaming Legends” (Ch 7 S4) leak — datamined roster (Sonic & Eggman, Mega Man, Persona’s Joker, Pac-Man, Tetris, Crash, Kingdom Hearts), ShiinaBR/HYPEX sourcing, Wonkeeland Pac-Man easter egg, unsettled date (Aug 19–20 vs Sept 4).' },
     ],
     why:
-      'A season-ending free reward with a hard date is exactly what a collection tracker should surface loudly. It also reconciles the earlier “Sprites look set to stay” note with newer reports that S3 collections won’t carry over — both can hold: the system continues, the collection resets.',
+      'An official announcement outranks a leak — the “won’t carry over” claim was wrong, so it had to come out of every player-facing spot, not just be softened. Confirming Sprites are permanent is reassuring news worth leading with.',
   },
   {
     date: 'August 6, 2026',
