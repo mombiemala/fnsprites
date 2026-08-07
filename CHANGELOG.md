@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 6, 2026 — Fact-check pass: Season 4 "Override" + Design-a-Sprite winners
+
+- **Changed:** confirmed the "Sprites are staying forever" reveal is genuinely official (Insider Gaming /
+  Epic Communities) and added specifics — the **Sprite Garden** launches with **Chapter 7 Season 4 "Override"**
+  (~Aug 20); Season 3 Sprites live on there and on your Collection page.
+- **Changed:** next-season (`news.js`) firmed up — S4 is officially **"Override,"** beginning **Aug 19–20**
+  (earlier Sept 4 date superseded); the "Gaming Legends" collab roster stays leak-only.
+- **Changed:** Design-a-Sprite contest entry updated from "winners still to come" to the **revealed winners**
+  (Pond, Bullet, Honey, Dumpster Dive, X-Ray) arriving in a **mid-season S4 update** — added to the roster once in-game.
+- **Added:** cross-checked the released-variant count — **117** for Season 3 matches the tracker.
+- **Why:** a source pass caught two soft/stale spots (next-season date, contest winners) and confirmed the
+  big official claims hold. Sources: [Insider Gaming — Sprite Garden](https://insider-gaming.com/fortnite-reveals-sprites-will-remain-reveals-sprite-garden/), [Beebom — Design-a-Sprite winners](https://beebom.com/fortnite-design-a-sprite-winners-revealed/).
+
+---
+
 ## August 6, 2026 — Official: Sprites are staying forever (+ Gem Hours times)
 
 - **Added:** a pinned news entry for Epic's official **"Sprites are staying forever"** reveal — all

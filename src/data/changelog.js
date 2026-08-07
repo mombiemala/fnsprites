@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'August 6, 2026',
+    title: 'Fact-check pass: Season 4 “Override” details + Design-a-Sprite winners',
+    summary:
+      'Verified the recent additions against open sources and firmed up the next-season facts: Chapter 7 Season 4 is officially “Override” (begins Aug 19–20) with the Sprite Garden around Aug 20, and the Design-a-Sprite contest winners are now known.',
+    changes: [
+      { tag: 'Changed', text: 'Confirmed the “Sprites are staying forever” reveal is genuinely official (Insider Gaming / Epic Communities) and added specifics: the Sprite Garden launches with Chapter 7 Season 4 “Override” (~Aug 20), and your Season 3 Sprites live on there and on your Collection page.' },
+      { tag: 'Changed', text: 'Next-season entry firmed up: S4 is officially titled “Override,” beginning Aug 19–20 (the earlier Sept 4 date is superseded). The “Gaming Legends” collab roster stays leak-only.' },
+      { tag: 'Changed', text: 'Design-a-Sprite contest: replaced the stale “winners still to come” note with the revealed winners — Pond, Bullet, Honey, Dumpster Dive and X-Ray — arriving in a mid-season S4 update (they’ll join the roster once they’re in-game).' },
+      { tag: 'Added', text: 'Cross-checked the released-variant count against sources — 117 for Season 3 (Gem set + Cube Zero Point) matches the tracker.' },
+    ],
+    why:
+      'A source pass caught two soft/stale spots — the next-season date (now Aug 19–20, not Sept 4) and the contest winners — and confirmed the bigger official claims hold up.',
+  },
+  {
+    date: 'August 6, 2026',
     title: 'Official: Sprites are staying forever (+ Gem Hours times)',
     summary:
       'Epic confirmed Sprites are permanent — every past and future generation stays in your collection, across seasons and even after Battle Royale — which retracts the earlier “Season 3 Sprites won’t carry over” rumour. Also locked in tomorrow’s Gem Hours times and kept the refreshed Gaming Legends leak.',
