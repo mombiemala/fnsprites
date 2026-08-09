@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 6, 2026 — "Unstable" Story Moment + Mythic Sprite Hours (Aug 15); S4 dated Aug 20
+
+- **Added:** news entry for the **"Unstable" Story Moment** (Sat Aug 15, 2:00 PM ET; log in 1:55 PM ET
+  near the Zero Point Stabilizer) and the **Mythic Sprite Power Hour** right after (2–4 PM ET, plus a
+  reported ~9–11 PM ET window) — boosted Mythic spawns (Grim & Zero Point most), raised loot, Self-Revive
+  for all, and extracting a Sprite fully heals + grants Slap. Flagged community/datamined; the source tip
+  was JST (Aug 16) → corrected to **ET Aug 15**.
+- **Changed:** next-season entry updated to Epic's confirmed date — **Chapter 7 Season 4 "Override"**
+  (tagline "Break the rules, change the game") launches **Thursday Aug 20**, the day after Runners ends.
+  "Gaming Legends" collab roster stays leak-only.
+- **Why:** the Aug 15 event is the last big Grim/Zero Point hunt before season end; the original tip's
+  times were JST, so the ET correction matters. Sources: [Dexerto — next live event](https://www.dexerto.com/fortnite/next-fortnite-live-event-when-time-2967293/), Google/community aggregation.
+
+---
+
 ## August 6, 2026 — Fact-check pass: Season 4 "Override" + Design-a-Sprite winners
 
 - **Changed:** confirmed the "Sprites are staying forever" reveal is genuinely official (Insider Gaming /

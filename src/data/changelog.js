@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 6, 2026',
+    title: '“Unstable” Story Moment + Mythic Sprite Hours (Aug 15); S4 “Override” dated Aug 20',
+    summary:
+      'Added the season’s end-of-story event and its Mythic Sprite Power Hour (Sat Aug 15), and firmed up the next-season date now that Epic has dated Chapter 7 Season 4 “Override.”',
+    changes: [
+      { tag: 'Added', text: 'A news entry for the “Unstable” Story Moment (Sat Aug 15, 2:00 PM ET; log in 1:55 PM ET near the Zero Point Stabilizer) and the Mythic Sprite Power Hour right after (2–4 PM ET, plus a reported ~9–11 PM ET window) — boosted Mythic spawns, Grim & Zero Point most of all, raised loot, everyone starts with a Self-Revive, and extracting a Sprite fully heals you + grants Slap. Flagged community/datamined (times converted from a JST source; Epic hasn’t posted the closing event).' },
+      { tag: 'Changed', text: 'Next-season entry updated to Epic’s confirmed date: Chapter 7 Season 4 “Override” (tagline “Break the rules, change the game”) launches Thursday, Aug 20 — the day after Runners ends (Aug 19). The “Gaming Legends” collab roster stays leak-only.' },
+    ],
+    why:
+      'The Aug 15 event is the last big rare-hunt (Grim & Zero Point) before the season closes — worth surfacing with the corrected ET time, since the original tip’s times were JST (Aug 16). And S4’s date is now official (Aug 20), so the “Aug 19–20” hedge could be tightened.',
+  },
+  {
+    date: 'August 6, 2026',
     title: 'Fact-check pass: Season 4 “Override” details + Design-a-Sprite winners',
     summary:
       'Verified the recent additions against open sources and firmed up the next-season facts: Chapter 7 Season 4 is officially “Override” (begins Aug 19–20) with the Sprite Garden around Aug 20, and the Design-a-Sprite contest winners are now known.',
