@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 7, 2026 — Holofoil Zero Point now Available (every Zero Point finish complete)
+
+- **Fixed:** flipped **Holofoil Zero Point** from "Soon" to Available (`holofoil: R` for zeropoint) — it
+  drops from Vault/keycard Sprite Chests at ~0.00028% (confirmed in-game). With Cube ZP already obtainable,
+  every Zero Point finish is now available; released-variant count **117 → 118**, nothing left "Soon."
+- **Added:** minor known-issue — an Aug 7 hotfix muted Water/Air/Zero Point Sprite **sound effects**
+  (cosmetic only; they still spawn and function).
+- **Changed:** pointed the resolved Ironmouse known-issue at Epic's actual "fixed" Fortnite Status post.
+- **Why:** Holofoil ZP was the lone "Soon" variant on conflicting reports; an in-game confirmation settled
+  it. Also confirmed **Dash Sprite** is a Ch6 Creative/utility item (vaulted from BR) — correctly not in the roster.
+
+---
+
 ## August 6, 2026 — "Unstable" Story Moment + Mythic Sprite Hours (Aug 15); S4 dated Aug 20
 
 - **Added:** news entry for the **"Unstable" Story Moment** (Sat Aug 15, 2:00 PM ET; log in 1:55 PM ET

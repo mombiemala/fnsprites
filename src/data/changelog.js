@@ -6,6 +6,19 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 7, 2026',
+    title: 'Holofoil Zero Point now Available — every Zero Point finish complete',
+    summary:
+      'A source sweep (confirmed in-game) shows Holofoil Zero Point is obtainable, not staged — flipped it to Available, which completes the Zero Point finish set. Also logged the Aug 7 sprite-sound hotfix.',
+    changes: [
+      { tag: 'Fixed', text: 'Holofoil Zero Point flipped from “Soon” to Available — it drops from Vault / keycard Sprite Chests at roughly 0.00028% (confirmed in-game). With Cube Zero Point already obtainable, every Zero Point finish is now marked available; the released-variant count moves 117 → 118 and nothing is left flagged “Soon.”' },
+      { tag: 'Added', text: 'Minor known-issue note: an Aug 7 hotfix muted the Water, Air and Zero Point Sprite sound effects (cosmetic only — they still spawn and function).' },
+      { tag: 'Changed', text: 'Pointed the resolved Ironmouse known-issue at Epic’s actual “fixed” Fortnite Status post (was the earlier “investigating” one).' },
+    ],
+    why:
+      'Holofoil Zero Point had been the lone “Soon” variant on conflicting reports; an in-game confirmation resolved it. Keeping the tracker’s obtainable set exactly right is the whole point, so the last unresolved variant needed settling.',
+  },
+  {
     date: 'August 6, 2026',
     title: '“Unstable” Story Moment + Mythic Sprite Hours (Aug 15); S4 “Override” dated Aug 20',
     summary:
