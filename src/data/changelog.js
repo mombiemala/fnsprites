@@ -13,6 +13,7 @@ export const CHANGELOG = [
     changes: [
       { tag: 'Changed', text: 'Sprite Garden: added the confirmed mechanics — it’s a UEFN island (built with Fairview Portals & Beyond Creative); Season 3 Sprites are preserved automatically and new Override Sprites auto-add; a Sprite that goes down in a match is never lost from the Garden; and it’ll keep growing with player feedback.' },
       { tag: 'Changed', text: 'Season 4 “Override” entry: added the leaked ~4 AM ET Thursday Aug 20 go-live (after the v42.00 downtime), flagged Sonic as the headliner (rumored Green Hill Zone POI), and added Vampire Survivors to the leaked Gaming Legends roster. Noted no specific new-Sprite names are datamined yet beyond the five Design-a-Sprite winners, and that per-collab themed Sprites aren’t confirmed.' },
+      { tag: 'Added', text: 'A pinned “Rumors vs official notices — how to read this feed” explainer that lays out which Season 4 items are Epic-confirmed vs leaked, so the two never blur together.' },
     ],
     why:
       'The next-season Sprite story is the biggest thing on the horizon for a collection tracker — worth capturing in full, while clearly separating confirmed (Sprite Garden, Override name/date) from leaked (collab roster, per-collab Sprites).',

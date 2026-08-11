@@ -20,6 +20,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   v42.00 downtime), flagged **Sonic** as headliner (rumored Green Hill Zone POI), added **Vampire Survivors**
   to the leaked roster; noted no specific new-Sprite names are datamined yet beyond the five Design-a-Sprite
   winners, and per-collab themed Sprites aren't confirmed.
+- **Added:** a pinned "Rumors vs official notices — how to read this feed" explainer that lays out which
+  Season 4 items are Epic-confirmed vs leaked, so the two never blur together.
 - **Why:** the next-season Sprite story is the biggest thing on the horizon — captured in full, keeping
   confirmed (Sprite Garden, Override name/date) separate from leaked (collab roster, per-collab Sprites).
   Sources: [Beebom — Sprite Garden guide](https://beebom.com/fortnite-sprite-garden-guide/), [Vice — C7S4 collabs leak](https://www.vice.com/en/article/fortnite-chapter-7-season-4-collabs-leak/).

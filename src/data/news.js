@@ -23,6 +23,14 @@ export const NEWS = [
     official: true,
   },
   {
+    ts: '2026-08-07',
+    when: 'Updated Aug 7, 2026',
+    tag: 'update',
+    title: 'Rumors vs official notices — how to read this feed 📌',
+    body: 'With Season 4 “Override” news pouring in, here’s how we tag it. Official notices (Epic) wear a green “· official” badge and come from Epic’s own channels — Fortnite Status, the Fortnite Communities posts, and in-game reveals; right now that covers Sprites staying forever, the Sprite Garden, and the Aug 20 “Override” launch. Rumors and leaks wear “· unofficial” (and a “Tentative” badge when the date or details aren’t locked) and come from reliable dataminers like HYPEX and ShiinaBR — currently the “Gaming Legends” collab roster (Sonic, Mega Man, Pac-Man, Persona’s Joker, Kingdom Hearts, Vampire Survivors…), exact event times, and any new-Sprite names before they’re in-game. We cite a source on every item, keep the two clearly separated, and upgrade a rumor to official the moment Epic confirms it.',
+    link: 'https://communities.epicgames.com/thread/new-generation-of-sprites-in-chapter-7-season-4-override/6zPu',
+  },
+  {
     ts: '2026-08-03',
     when: 'Aug 3–8, 2026',
     tag: 'event',
