@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 7, 2026 — Deep-dive: Sprite Garden + Season 4 "Override" resources
+
+- **Changed:** Sprite Garden details in `news.js` — confirmed it's a **UEFN island** (built with Fairview
+  Portals & Beyond Creative); S3 Sprites auto-preserved, new Override Sprites auto-add; a Sprite that goes
+  down in a match is never lost; the Garden will keep growing with player feedback.
+- **Changed:** Season 4 "Override" entry — added the leaked **~4 AM ET Thursday Aug 20** go-live (after
+  v42.00 downtime), flagged **Sonic** as headliner (rumored Green Hill Zone POI), added **Vampire Survivors**
+  to the leaked roster; noted no specific new-Sprite names are datamined yet beyond the five Design-a-Sprite
+  winners, and per-collab themed Sprites aren't confirmed.
+- **Why:** the next-season Sprite story is the biggest thing on the horizon — captured in full, keeping
+  confirmed (Sprite Garden, Override name/date) separate from leaked (collab roster, per-collab Sprites).
+  Sources: [Beebom — Sprite Garden guide](https://beebom.com/fortnite-sprite-garden-guide/), [Vice — C7S4 collabs leak](https://www.vice.com/en/article/fortnite-chapter-7-season-4-collabs-leak/).
+
+---
+
 ## August 7, 2026 — Holofoil Zero Point now Available (every Zero Point finish complete)
 
 - **Fixed:** flipped **Holofoil Zero Point** from "Soon" to Available (`holofoil: R` for zeropoint) — it

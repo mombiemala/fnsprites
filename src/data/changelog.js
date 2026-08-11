@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 7, 2026',
+    title: 'Deep-dive: the Sprite Garden + Season 4 “Override” resources',
+    summary:
+      'Pulled everything current on the incoming Sprite generation and the Sprite Garden and folded the new resources into the news feed.',
+    changes: [
+      { tag: 'Changed', text: 'Sprite Garden: added the confirmed mechanics — it’s a UEFN island (built with Fairview Portals & Beyond Creative); Season 3 Sprites are preserved automatically and new Override Sprites auto-add; a Sprite that goes down in a match is never lost from the Garden; and it’ll keep growing with player feedback.' },
+      { tag: 'Changed', text: 'Season 4 “Override” entry: added the leaked ~4 AM ET Thursday Aug 20 go-live (after the v42.00 downtime), flagged Sonic as the headliner (rumored Green Hill Zone POI), and added Vampire Survivors to the leaked Gaming Legends roster. Noted no specific new-Sprite names are datamined yet beyond the five Design-a-Sprite winners, and that per-collab themed Sprites aren’t confirmed.' },
+    ],
+    why:
+      'The next-season Sprite story is the biggest thing on the horizon for a collection tracker — worth capturing in full, while clearly separating confirmed (Sprite Garden, Override name/date) from leaked (collab roster, per-collab Sprites).',
+  },
+  {
+    date: 'August 7, 2026',
     title: 'Holofoil Zero Point now Available — every Zero Point finish complete',
     summary:
       'A source sweep (confirmed in-game) shows Holofoil Zero Point is obtainable, not staged — flipped it to Available, which completes the Zero Point finish set. Also logged the Aug 7 sprite-sound hotfix.',
