@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 7, 2026',
+    title: 'Sprite Spree Week added (Aug 15–19) + Aug 15 times fixed',
+    summary:
+      'Logged the end-of-season “Sprite Spree Week” — a themed Sprite Power Hour every day — and corrected the Unstable/Mythic Aug 15 timing.',
+    changes: [
+      { tag: 'Added', text: 'A “Sprite Spree Week” roundup: Aug 15 “Unstable” Story Moment (2 PM ET) + Mythic Sprite Hours; Aug 16 Galaxy; Aug 17 Holofoil; Aug 18 Cube; Aug 19 Gem — a different finish boosted each day, then Chapter 7 Season 4 “Override” launches Aug 20 (~4 AM ET). Community-sourced schedule.' },
+      { tag: 'Changed', text: 'Corrected the Aug 15 entry: the live event is 2 PM ET and the Mythic Sprite Hours run that evening (~9 PM ET), per the fuller schedule.' },
+    ],
+    why:
+      'The final week is packed with daily finish-specific hours — a gift for collectors racing to complete Galaxy/Holofoil/Cube/Gem lines before the season ends, so it belongs in the feed.',
+  },
+  {
+    date: 'August 7, 2026',
     title: 'Deep-dive: the Sprite Garden + Season 4 “Override” resources',
     summary:
       'Pulled everything current on the incoming Sprite generation and the Sprite Garden and folded the new resources into the news feed.',

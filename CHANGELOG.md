@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 7, 2026 — Sprite Spree Week (Aug 15–19) + Aug 15 times fixed
+
+- **Added:** a "Sprite Spree Week" roundup in `news.js` — Aug 15 "Unstable" Story Moment (2 PM ET) +
+  Mythic Sprite Hours; Aug 16 Galaxy; Aug 17 Holofoil; Aug 18 Cube; Aug 19 Gem (a themed finish boosted
+  each day), then S4 "Override" launches Aug 20 (~4 AM ET). Community-sourced.
+- **Changed:** corrected the Aug 15 entry — live event 2 PM ET, Mythic Sprite Hours that evening (~9 PM ET).
+- **Why:** the final week's daily finish-specific hours are a gift for collectors racing to complete lines
+  before season end. Source: community schedule (Beebom events roundup).
+
+---
+
 ## August 7, 2026 — Deep-dive: Sprite Garden + Season 4 "Override" resources
 
 - **Changed:** Sprite Garden details in `news.js` — confirmed it's a **UEFN island** (built with Fairview
