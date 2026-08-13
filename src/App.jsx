@@ -14,6 +14,7 @@ import SupportBanner from './components/SupportBanner'
 import StatsBreakdown from './components/StatsBreakdown'
 import NextToChase from './components/NextToChase'
 import QuickCheckList from './components/QuickCheckList'
+import GardenView from './components/GardenView'
 import ChestOdds from './components/ChestOdds'
 import OverflowNav from './components/OverflowNav'
 import UpcomingSprites from './components/UpcomingSprites'
@@ -109,7 +110,15 @@ export default function App() {
   const [collectionId, setCollectionId] = useState(ACTIVE_COLLECTION_ID)
   const set = useMemo(() => getCollection(collectionId), [collectionId])
 
-  const [filters, setFilters] = useState(DEFAULT_FILTERS)
+  // Layout view is deep-linkable (?view=garden|list|grid) — handy for sharing a
+  // Garden showcase link. Falls back to the default grid for anything else.
+  const [filters, setFilters] = useState(() => {
+    try {
+      const v = new URLSearchParams(window.location.search).get('view')
+      if (v === 'garden' || v === 'list' || v === 'grid') return { ...DEFAULT_FILTERS, view: v }
+    } catch { /* no-op */ }
+    return DEFAULT_FILTERS
+  })
   const [showAuth, setShowAuth] = useState(false)
   const [shared, setShared] = useState(null)
   const [shareLoading, setShareLoading] = useState(!!shareTarget)
@@ -508,6 +517,8 @@ export default function App() {
                 <div key={i} className="h-44 animate-pulse rounded-2xl bg-[var(--panel)]" />
               ))}
             </div>
+          ) : filters.view === 'garden' ? (
+            <GardenView set={set} tracking={activeTracking} onOpen={(sp) => setDetailType(sp.typeId)} />
           ) : visible.length === 0 ? (
             <p className="py-16 text-center text-sm text-[var(--muted)]">No sprites match your filters.</p>
           ) : filters.view === 'list' ? (
