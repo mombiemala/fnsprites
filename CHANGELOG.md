@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 7, 2026 — Header version auto-detects the live build
+
+- **Changed:** the in-app header tagline's version is now auto-detected from the live game build (`App.jsx`
+  fetches `/api/news` → `data.build`), so it self-updates on every Fortnite patch (e.g. Season 4 "Override" /
+  v42.00) and falls back to the static "v41.30 (Jul 30, 2026)" label offline. The released-variant **count**
+  was already derived from the roster (currently **118**).
+- **Note:** the prerendered SEO pages keep a build-time version label (they can't call the live API); v41.30
+  is still the current build there.
+- **Why:** a hardcoded version drifts stale the moment Epic patches — reading the build the app already
+  fetches keeps it honest with no upkeep.
+
+---
+
 ## August 7, 2026 — New (beta): a Sprite Garden view 🌱
 
 - **Added:** a third view (🌱, next to Grid and Quick-check list) — `components/GardenView.jsx`. Your owned

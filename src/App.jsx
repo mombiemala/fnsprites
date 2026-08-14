@@ -119,6 +119,18 @@ export default function App() {
     } catch { /* no-op */ }
     return DEFAULT_FILTERS
   })
+
+  // Live game build for the header — auto-detected from our /api/news proxy so
+  // the version label never goes stale. Falls back to the static label offline.
+  const [liveBuild, setLiveBuild] = useState(null)
+  useEffect(() => {
+    let cancelled = false
+    fetch('/api/news')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((body) => { if (!cancelled && body?.data?.build) setLiveBuild(String(body.data.build)) })
+      .catch(() => {})
+    return () => { cancelled = true }
+  }, [])
   const [showAuth, setShowAuth] = useState(false)
   const [shared, setShared] = useState(null)
   const [shareLoading, setShareLoading] = useState(!!shareTarget)
@@ -348,7 +360,7 @@ export default function App() {
             </button>
           </h1>
           <p className="mt-1 text-xs text-[var(--muted)] sm:text-sm">
-            {set.released} released variants · v41.30 (Jul 30, 2026)
+            {set.released} released variants · {liveBuild ? `v${liveBuild} live` : 'v41.30 (Jul 30, 2026)'}
           </p>
         </div>
         {!authLoading &&

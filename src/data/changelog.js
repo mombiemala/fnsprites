@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'August 7, 2026',
+    title: 'Header version now auto-detects the live build',
+    summary:
+      'The header showed a hardcoded “v41.30” next to the variant count; it now reads the current build from the live game data so it never goes stale.',
+    changes: [
+      { tag: 'Changed', text: 'The header tagline’s version is auto-detected from the live game build (via the same /api/news proxy the feed uses) — it self-updates on every Fortnite patch (e.g. when Season 4 “Override” / v42.00 goes live), falling back to the static label offline. The released-variant count was already derived from the roster (currently 118).' },
+    ],
+    why:
+      'A hardcoded version drifts out of date the moment Epic patches; reading the build the app already fetches keeps it honest with zero upkeep.',
+  },
+  {
+    date: 'August 7, 2026',
     title: 'New (beta): a Sprite Garden view 🌱',
     summary:
       'A new way to look at your collection — a “Sprite Garden” showcase of the Sprites you own, inspired by the Sprite Garden coming to Fortnite in Chapter 7 Season 4. Shipping in beta.',
