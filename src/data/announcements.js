@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'sprite-spree-week-2026-08-16',
+    emoji: '💫',
+    message: 'Sprite Spree Week (Aug 16–19): a 24-hour finish-hour each day — Galaxy (16), Holofoil (17), Cube (18), Gem (19) — plus 2×–4× Sprite XP, guaranteed Lucky Locators, a free Gem Zero Point, and FREE Dust-less re-summons of lost Sprites. Aug 15 kicks off with the “Unstable” Story Moment (2 PM ET) + Mythic Sprite Hours.',
+    link: 'https://beebom.com/fortnite-sprite-events-schedule/',
+    linkLabel: 'Full schedule',
+    start: '2026-08-15',
+    end: '2026-08-19',
+    source: 'Community + Epic',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'gem-hours-2026-08-08',
     emoji: '💎',
     message: 'Gem Hours — Sat, Aug 8: boosted Gem Sprite spawns in two rounds (2–4 PM & 9–11 PM ET). Everyone starts with a Self-Revive, the loot pool goes full Mythic, and Mythic Goldfish appear in chests — the best window to complete the 9-Sprite Gem set.',

@@ -1,29 +1,35 @@
 # FN Sprite Tracker
 
 A fan-made Fortnite **sprite tracker** — track every sprite across all of its
-variants (Normal, Gold, Gummy, Galaxy, Gem, Holofoil, the new **Cube** & **Quack**
-forms, and the special **Rift** line), see your collection and mastery progress,
-save it to the cloud, compare with other players, browse the live **Item Shop**,
-and look up any player's **Battle Royale stats**. Roster is current through the
-**Jul 23, 2026 New Sprite Day**: the first wave of **Cube** Sprites (Batman, Boss,
-Dream, Earth, Fire, Fishstick, Grim Reaper & Punk — Overdrive in the Storm) is
-live, on top of the Jul 16 v41.20 DC "Hot Bat Summer" drop (Batman, Air, Seven,
-plus the Mythics **Pollo** & **Vini Jr.**). Remaining Cube variants roll out on
-future New Sprite Days; anything Epic hasn't confirmed — e.g. the leaked
-**Spider-Man** sprite (~Jul 30, v41.30) and the **Quack** form — is flagged
-**Rumored**.
+variants (Normal, Gold, Gummy, Galaxy, **Gem**, **Holofoil**, **Cube** & **Quack**,
+plus the special **Rift** line), see your collection and mastery progress, save it
+to the cloud, compare with other players, browse the live **Item Shop**, and look
+up any player's **Battle Royale stats**. Roster is current through the **v41.30 New
+Sprite Day (Jul 30)** and the **Aug 6 Gem drop** — **25 sprites / 118 variants, all
+currently obtainable**: Ironmouse is back, the full nine-Sprite **Gem** line is
+live, and every Zero Point finish (**Cube, Holofoil & Quack Zero Point**) is
+obtainable. Chapter 7 Season 3 **"Runners"** ends **Aug 19**; Season 4
+**"Override"** launches **Aug 20** with a whole new generation of Sprites and a
+**Sprite Garden** — and Epic has confirmed **Sprites now stay forever**.
+Leaked/unconfirmed content (the **"Gaming Legends"** collab roster, exact event
+times, next-generation sprite names) is flagged **Rumored** until Epic confirms.
 
 > Not affiliated with Epic Games. Support the maker with **Creator Code: MOMBIE**
 > in the Fortnite Item Shop. #EpicPartner
 
 ## Features
 
-- **Accurate roster** — every released sprite & variant through the Jul 23, 2026
-  New Sprite Day (wave-1 Cube line + the v41.20 Batman/Air/Seven/Pollo/Vini Jr.
-  drop, the Holofoil line, Striker/Fishy/Aura/Boss/Grim, etc.); upcoming sprites &
-  forms roll out in waves and are clearly flagged **unreleased**, and anything
-  Epic hasn't confirmed (the leaked Spider-Man sprite, the Quack form, later Cube
-  waves) wears a **Rumored**/upcoming label so leaks never read as fact.
+- **Accurate roster** — every released sprite & variant, current through **v41.30**
+  and the **Aug 6 Gem drop** (**25 sprites / 118 variants, all obtainable**): the
+  full Gem line, Cube, Holofoil & Quack (a Sprite Mastery reward), Ironmouse back
+  from the vault, and every Zero Point finish live. Upcoming/leaked content (e.g.
+  the Season 4 **"Gaming Legends"** collabs, next-gen sprite names) is clearly
+  flagged **Rumored**/upcoming so leaks never read as fact — each news item shows
+  its source and whether it's official.
+- **Sprite Garden (beta)** — a showcase view (🌱, next to Grid/List) that lays out
+  the Sprites you own as circular, finish-tinted tiles grouped by **generation**,
+  mirroring the in-game **Sprite Garden** arriving in Chapter 7 Season 4. Deep-linkable
+  via `?view=garden`.
 - **Upcoming & leaked** — a card that lists every unreleased/datamined sprite
   sorted by its leaked release date, with a live **countdown** (“in 8 days”),
   tap-to-open. All clearly badged **Rumored**.

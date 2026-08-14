@@ -7,12 +7,25 @@
 export const CHANGELOG = [
   {
     date: 'August 7, 2026',
+    title: 'New (beta): a Sprite Garden view 🌱',
+    summary:
+      'A new way to look at your collection — a “Sprite Garden” showcase of the Sprites you own, inspired by the Sprite Garden coming to Fortnite in Chapter 7 Season 4. Shipping in beta.',
+    changes: [
+      { tag: 'Added', text: 'A third view (🌱, next to Grid and Quick-check list): your owned Sprites rendered as circular, finish-tinted tiles — sorted rarest-first, mastered ones ringed in gold with a ★ — with live “planted / mastered” counts. Tap any Sprite to open its details.' },
+      { tag: 'Added', text: 'Generation grouping: your current Sprites sit under “Chapter 7 Season 3 · Runners,” with a “Chapter 7 Season 4 · Override” section ready for the new generation on Aug 20 — since Sprites now stay forever, they’ll file in by generation.' },
+      { tag: 'Added', text: 'The layout view is now deep-linkable (?view=garden) — a first step toward sharing your Garden.' },
+    ],
+    why:
+      'Fortnite’s upcoming Sprite Garden turns your collection into a place you visit and show off; this is our take on that inside the tracker. It’s labelled Beta while we iterate — a lusher backdrop, sharing, and per-generation filing (once Override sprites exist) are the next steps.',
+  },
+  {
+    date: 'August 7, 2026',
     title: 'Sprite Spree Week added (Aug 15–19) + Aug 15 times fixed',
     summary:
       'Logged the end-of-season “Sprite Spree Week” — a themed Sprite Power Hour every day — and corrected the Unstable/Mythic Aug 15 timing.',
     changes: [
-      { tag: 'Added', text: 'A “Sprite Spree Week” roundup: Aug 15 “Unstable” Story Moment (2 PM ET) + Mythic Sprite Hours; Aug 16 Galaxy; Aug 17 Holofoil; Aug 18 Cube; Aug 19 Gem — a different finish boosted each day, then Chapter 7 Season 4 “Override” launches Aug 20 (~4 AM ET). Community-sourced schedule.' },
-      { tag: 'Changed', text: 'Corrected the Aug 15 entry: the live event is 2 PM ET and the Mythic Sprite Hours run that evening (~9 PM ET), per the fuller schedule.' },
+      { tag: 'Added', text: 'A “Sprite Spree Week” roundup: Aug 15 “Unstable” Story Moment (2 PM ET) + Mythic Sprite Hours, then daily 24-hour finish-hours from Sun Aug 16 — Galaxy (16), Holofoil (17), Cube (18), Gem (19) — with week-long bonuses: 2×–4× Sprite XP, extra Lucky Locators guaranteed to point at a Sprite you’re missing, a free Gem Zero Point via Bonus Quests, and (Epic-confirmed) free, Dust-less re-summons of lost Sprites from Aug 16 to season end.' },
+      { tag: 'Changed', text: 'Corrected the timing: the Unstable live event is Aug 15 at 2 PM ET, and Sprite Spree Week’s daily finish-hours start Sunday Aug 16 (each runs a full 24 hours).' },
     ],
     why:
       'The final week is packed with daily finish-specific hours — a gift for collectors racing to complete Galaxy/Holofoil/Cube/Gem lines before the season ends, so it belongs in the feed.',

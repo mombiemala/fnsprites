@@ -30,10 +30,10 @@ export default function GardenView({ set, tracking, onOpen }) {
           <h2 className="font-display text-xl text-white">🌱 Your Sprite Garden</h2>
           <p className="mt-0.5 text-xs text-[var(--muted)]">
             <b className="text-white">{owned.length}</b> of {total} planted
-            {mastered > 0 && <> · <b className="text-amber-300">{mastered}</b> mastered ★</>} · a preview of the in-app Garden
+            {mastered > 0 && <> · <b className="text-amber-300">{mastered}</b> mastered ★</>} · a beta first look at your collection as a garden
           </p>
         </div>
-        <span className="garden-pill">Preview</span>
+        <span className="garden-pill">Beta</span>
       </div>
 
       {owned.length === 0 ? (

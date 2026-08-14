@@ -11,14 +11,32 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## August 7, 2026 — Sprite Spree Week (Aug 15–19) + Aug 15 times fixed
+## August 7, 2026 — New (beta): a Sprite Garden view 🌱
+
+- **Added:** a third view (🌱, next to Grid and Quick-check list) — `components/GardenView.jsx`. Your owned
+  Sprites render as circular, finish-tinted tiles, rarest-first, mastered ones ringed gold with a ★, with
+  live "planted / mastered" counts; tap any to open its detail.
+- **Added:** generation grouping — current Sprites under "Chapter 7 Season 3 · Runners," with a
+  "Chapter 7 Season 4 · Override" section ready for the new generation on Aug 20.
+- **Added:** the layout view is now deep-linkable (`?view=garden|list|grid`) in `App.jsx` — a first step
+  toward sharing a Garden.
+- **Why:** Fortnite's upcoming Sprite Garden turns your collection into a place you visit and show off;
+  this is the tracker's take. Labelled **Beta** while we iterate (lusher backdrop, sharing, per-generation
+  filing once Override sprites exist).
+
+---
+
+## August 7, 2026 — Sprite Spree Week (Aug 15–19) + free re-summons
 
 - **Added:** a "Sprite Spree Week" roundup in `news.js` — Aug 15 "Unstable" Story Moment (2 PM ET) +
-  Mythic Sprite Hours; Aug 16 Galaxy; Aug 17 Holofoil; Aug 18 Cube; Aug 19 Gem (a themed finish boosted
-  each day), then S4 "Override" launches Aug 20 (~4 AM ET). Community-sourced.
-- **Changed:** corrected the Aug 15 entry — live event 2 PM ET, Mythic Sprite Hours that evening (~9 PM ET).
-- **Why:** the final week's daily finish-specific hours are a gift for collectors racing to complete lines
-  before season end. Source: community schedule (Beebom events roundup).
+  Mythic Sprite Hours, then daily **24-hour** finish-hours from **Sun Aug 16**: Galaxy (16), Holofoil (17),
+  Cube (18), Gem (19). Week-long bonuses: **2×–4× Sprite XP**, guaranteed **Lucky Locators** for missing
+  Sprites, a **free Gem Zero Point** via Bonus Quests, and (Epic-confirmed) **free Dust-less re-summons**
+  of lost Sprites from Aug 16 to season end.
+- **Changed:** corrected the timing — Unstable live event Aug 15 (2 PM ET); Spree Week finish-hours start
+  Sunday Aug 16.
+- **Why:** the final week is packed with finish-specific hours + a Dust holiday — a gift for collectors
+  racing to complete lines before season end. Sources: community schedules + Epic (Alec Shobin) on re-summons.
 
 ---
 
