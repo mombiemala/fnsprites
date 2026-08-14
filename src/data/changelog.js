@@ -13,7 +13,8 @@ export const CHANGELOG = [
     changes: [
       { tag: 'Added', text: 'A third view (🌱, next to Grid and Quick-check list): your owned Sprites rendered as circular, finish-tinted tiles — sorted rarest-first, mastered ones ringed in gold with a ★ — with live “planted / mastered” counts. Tap any Sprite to open its details.' },
       { tag: 'Added', text: 'Generation grouping: your current Sprites sit under “Chapter 7 Season 3 · Runners,” with a “Chapter 7 Season 4 · Override” section ready for the new generation on Aug 20 — since Sprites now stay forever, they’ll file in by generation.' },
-      { tag: 'Added', text: 'The layout view is now deep-linkable (?view=garden) — a first step toward sharing your Garden.' },
+      { tag: 'Added', text: 'The layout view is now deep-linkable (?view=garden).' },
+      { tag: 'Added', text: 'Share your Garden — a “Share” button (when logged in) copies a link friends can open read-only (?u=<id>&view=garden); a shared garden shows the owner’s gamertag in the header.' },
     ],
     why:
       'Fortnite’s upcoming Sprite Garden turns your collection into a place you visit and show off; this is our take on that inside the tracker. It’s labelled Beta while we iterate — a lusher backdrop, sharing, and per-generation filing (once Override sprites exist) are the next steps.',

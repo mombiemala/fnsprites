@@ -18,8 +18,10 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   live "planted / mastered" counts; tap any to open its detail.
 - **Added:** generation grouping — current Sprites under "Chapter 7 Season 3 · Runners," with a
   "Chapter 7 Season 4 · Override" section ready for the new generation on Aug 20.
-- **Added:** the layout view is now deep-linkable (`?view=garden|list|grid`) in `App.jsx` — a first step
-  toward sharing a Garden.
+- **Added:** the layout view is now deep-linkable (`?view=garden|list|grid`) in `App.jsx`.
+- **Added:** share your Garden — a "Share" button (when logged in) copies `?u=<id>&view=garden`, which
+  opens your collection as a garden read-only; a shared garden shows the owner's gamertag. Reuses the
+  existing public-profile sharing.
 - **Why:** Fortnite's upcoming Sprite Garden turns your collection into a place you visit and show off;
   this is the tracker's take. Labelled **Beta** while we iterate (lusher backdrop, sharing, per-generation
   filing once Override sprites exist).

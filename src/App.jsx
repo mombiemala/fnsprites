@@ -301,6 +301,22 @@ export default function App() {
   const hasAnyOwned = Object.values(activeTracking).some((v) => v?.owned)
   const showOnboarding = !isShareView && !readOnly && !hintDismissed && !hasAnyOwned
 
+  // Share a link straight to your Sprite Garden — friends open it read-only
+  // (?u=<id> loads your collection, &view=garden opens the Garden showcase).
+  const copyGardenLink = () => {
+    if (!user) return
+    const base = `${window.location.origin}${window.location.pathname}`
+    const url = `${base}?u=${user.id}&view=garden`
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(url).then(
+        () => toast('Garden link copied 🌱 — share it with friends'),
+        () => toast('Couldn’t copy — long-press the URL to share'),
+      )
+    } else {
+      toast('Copy not supported here — grab the URL from the address bar')
+    }
+  }
+
   const [exporting, setExporting] = useState(false)
   const exportImage = async (mode) => {
     setExporting(true)
@@ -518,7 +534,14 @@ export default function App() {
               ))}
             </div>
           ) : filters.view === 'garden' ? (
-            <GardenView set={set} tracking={activeTracking} onOpen={(sp) => setDetailType(sp.typeId)} />
+            <GardenView
+              set={set}
+              tracking={activeTracking}
+              onOpen={(sp) => setDetailType(sp.typeId)}
+              canShare={!!user && !isShareView}
+              onShare={copyGardenLink}
+              ownerName={isShareView ? gamertag : null}
+            />
           ) : visible.length === 0 ? (
             <p className="py-16 text-center text-sm text-[var(--muted)]">No sprites match your filters.</p>
           ) : filters.view === 'list' ? (

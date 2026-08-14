@@ -8,7 +8,7 @@ import { THEME_MAP } from '../data/themes'
 // generations get added alongside the old). Read-only, showcase-only.
 const RARITY_RANK = { Mythic: 0, Legendary: 1, Epic: 2, Rare: 3 }
 
-export default function GardenView({ set, tracking, onOpen }) {
+export default function GardenView({ set, tracking, onOpen, canShare, onShare, ownerName }) {
   const owned = useMemo(() => {
     return set.items
       .filter((s) => !s.unreleased && tracking[s.id]?.owned)
@@ -27,13 +27,20 @@ export default function GardenView({ set, tracking, onOpen }) {
     <div className="garden">
       <div className="garden-head">
         <div className="min-w-0">
-          <h2 className="font-display text-xl text-white">🌱 Your Sprite Garden</h2>
+          <h2 className="font-display text-xl text-white">🌱 {ownerName ? `${ownerName}’s` : 'Your'} Sprite Garden</h2>
           <p className="mt-0.5 text-xs text-[var(--muted)]">
             <b className="text-white">{owned.length}</b> of {total} planted
-            {mastered > 0 && <> · <b className="text-amber-300">{mastered}</b> mastered ★</>} · a beta first look at your collection as a garden
+            {mastered > 0 && <> · <b className="text-amber-300">{mastered}</b> mastered ★</>} · {ownerName ? 'a shared Sprite Garden' : 'a beta first look at your collection as a garden'}
           </p>
         </div>
-        <span className="garden-pill">Beta</span>
+        <div className="flex shrink-0 items-center gap-2">
+          {canShare && (
+            <button type="button" onClick={onShare} className="garden-share" title="Copy a link to your Sprite Garden — friends can visit it">
+              🔗 Share
+            </button>
+          )}
+          <span className="garden-pill">Beta</span>
+        </div>
       </div>
 
       {owned.length === 0 ? (
