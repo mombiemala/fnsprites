@@ -3,7 +3,7 @@ import { useAuth } from './context/authStore'
 import { useToast } from './context/toastStore'
 import { fetchSharedCollection } from './lib/sharedCollection'
 import { getCollection, ACTIVE_COLLECTION_ID } from './data/collections'
-import { generateCollectionImage, downloadDataUrl } from './lib/exportImage'
+import { generateCollectionImage, generateGardenImage, downloadDataUrl } from './lib/exportImage'
 import CollectionSwitcher from './components/CollectionSwitcher'
 import SpriteCard from './components/SpriteCard'
 import TrainerCard from './components/TrainerCard'
@@ -331,6 +331,22 @@ export default function App() {
     }
   }
 
+  // Download the Sprite Garden as a shareable image (lush circular tiles). Works
+  // for guests too — reads the active tracking map. Shown from the Garden view.
+  const [gardenExporting, setGardenExporting] = useState(false)
+  const exportGardenImage = async () => {
+    setGardenExporting(true)
+    try {
+      const base = `${window.location.origin}${window.location.pathname}`
+      const shareUrl = user ? `${base}?u=${user.id}&view=garden` : base
+      const url = await generateGardenImage({ gamertag, tracking: activeTracking, shareUrl })
+      downloadDataUrl(url, 'fn-sprite-garden.png')
+      toast('Sprite Garden image downloaded 🌱')
+    } finally {
+      setGardenExporting(false)
+    }
+  }
+
   const [exporting, setExporting] = useState(false)
   const exportImage = async (mode) => {
     setExporting(true)
@@ -555,6 +571,8 @@ export default function App() {
               onOpen={(sp) => setDetailType(sp.typeId)}
               canShare={!!user && !isShareView}
               onShare={copyGardenLink}
+              onShareImage={isShareView ? null : exportGardenImage}
+              imageBusy={gardenExporting}
               ownerName={isShareView ? gamertag : null}
             />
           ) : visible.length === 0 ? (

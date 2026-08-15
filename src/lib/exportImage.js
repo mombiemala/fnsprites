@@ -28,9 +28,10 @@ const COLS = [
   { id: 'holofoil', label: 'HOLOFOIL', accent: '#7fe3ff' },
 ]
 
-// Per-variant gradient background (same palette as the in-app cards) so the
-// backdrop is identical for every sprite in a column.
-function variantBg(ctx, theme, x, y, w, h, dim) {
+// The per-variant gradient (same palette as the in-app cards). Split out so both
+// the rectangular export cells and the circular Garden tiles share one source of
+// truth for finish colours.
+function variantGradient(ctx, theme, x, y, w, h) {
   let g
   if (theme === 'gold') {
     g = ctx.createLinearGradient(x, y, x, y + h)
@@ -45,13 +46,28 @@ function variantBg(ctx, theme, x, y, w, h, dim) {
     // Iridescent foil sweep — cyan → magenta → gold across the diagonal.
     g = ctx.createLinearGradient(x, y, x + w, y + h)
     g.addColorStop(0, '#8ef0ff'); g.addColorStop(0.4, '#c77dff'); g.addColorStop(0.7, '#ff8ac2'); g.addColorStop(1, '#ffd86b')
+  } else if (theme === 'gem') {
+    g = ctx.createLinearGradient(x, y, x + w, y + h)
+    g.addColorStop(0, '#a7f3d0'); g.addColorStop(0.5, '#34d399'); g.addColorStop(1, '#0e7490')
+  } else if (theme === 'quack') {
+    g = ctx.createLinearGradient(x, y, x, y + h)
+    g.addColorStop(0, '#ffe9a8'); g.addColorStop(0.5, '#f7c948'); g.addColorStop(1, '#c98a1a')
+  } else if (theme === 'cube') {
+    g = ctx.createLinearGradient(x, y, x, y + h)
+    g.addColorStop(0, '#5b1d1d'); g.addColorStop(0.6, '#3a0f18'); g.addColorStop(1, '#1a0710')
   } else {
     g = ctx.createLinearGradient(x, y, x, y + h)
     g.addColorStop(0, '#4b5470'); g.addColorStop(1, '#2b3147')
   }
+  return g
+}
+
+// Per-variant gradient background (same palette as the in-app cards) so the
+// backdrop is identical for every sprite in a column.
+function variantBg(ctx, theme, x, y, w, h, dim) {
   ctx.save()
   roundRect(ctx, x, y, w, h, 14)
-  ctx.fillStyle = g
+  ctx.fillStyle = variantGradient(ctx, theme, x, y, w, h)
   ctx.globalAlpha = dim ? 0.28 : 1
   ctx.fill()
   ctx.restore()
@@ -447,6 +463,142 @@ function roundRect(ctx, x, y, w, h, r) {
   ctx.arcTo(x, y + h, x, y, r)
   ctx.arcTo(x, y, x + w, y, r)
   ctx.closePath()
+}
+
+// Rarity order for the Garden showcase — rarest first, same as the in-app view.
+const GARDEN_RARITY_RANK = { Mythic: 0, Legendary: 1, Epic: 2, Rare: 3 }
+
+// "Sprite Garden" export — the player's owned Sprites as lush, circular,
+// finish-tinted tiles (mastered ones ringed gold with a ★), mirroring the in-app
+// Garden view. Reads the active `tracking` map, so it works for guests and
+// signed-in users alike.
+export async function generateGardenImage({ gamertag, tracking = {}, shareUrl }) {
+  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.vercel.app/')
+  const releasedTotal = ALL_SPRITES.filter((s) => s.released).length
+  const owned = ALL_SPRITES
+    .filter((s) => s.released && tracking[s.id]?.owned)
+    .sort(
+      (a, b) =>
+        (GARDEN_RARITY_RANK[a.rarity] ?? 9) - (GARDEN_RARITY_RANK[b.rarity] ?? 9) ||
+        a.typeName.localeCompare(b.typeName) ||
+        a.themeId.localeCompare(b.themeId),
+    )
+  const masteredCount = owned.filter((s) => tracking[s.id]?.mastered).length
+
+  const pad = 44
+  const canvas = document.createElement('canvas')
+  const gardenBg = (ctx, W, H) => {
+    const bg = ctx.createLinearGradient(0, 0, 0, H)
+    bg.addColorStop(0, '#12291f'); bg.addColorStop(1, '#08120d')
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H)
+  }
+
+  // Empty garden — a gentle nudge instead of a blank grid.
+  if (owned.length === 0) {
+    const W = 660, H = 420
+    canvas.width = W; canvas.height = H
+    const ctx = canvas.getContext('2d')
+    gardenBg(ctx, W, H)
+    ctx.fillStyle = '#7fbf9a'; ctx.font = '700 18px Inter, sans-serif'
+    ctx.fillText('FN SPRITE TRACKER', pad, 52)
+    ctx.textAlign = 'center'
+    ctx.font = '800 84px Inter, sans-serif'; ctx.fillText('🪴', W / 2, 210)
+    ctx.fillStyle = '#ffffff'; ctx.font = '800 36px Inter, sans-serif'
+    ctx.fillText('An empty Sprite Garden', W / 2, 275)
+    ctx.fillStyle = '#9fc9b3'; ctx.font = '600 20px Inter, sans-serif'
+    ctx.fillText('Mark the Sprites you own — they’ll be planted here', W / 2, 312)
+    ctx.textAlign = 'left'
+    await drawExportFooter(ctx, { W, H, pad, url })
+    return canvas.toDataURL('image/png')
+  }
+
+  // Grid geometry — circular tiles, up to 6 per row, centered.
+  const cols = Math.min(6, Math.max(1, owned.length))
+  const rowsN = Math.ceil(owned.length / cols)
+  const D = 140, gap = 18, labelH = 44
+  const tileH = D + labelH
+  const gridW = cols * D + (cols - 1) * gap
+  const W = Math.max(720, gridW + pad * 2)
+  const gridX0 = Math.round((W - gridW) / 2)
+  const gridTop = 250
+  const H = gridTop + rowsN * (tileH + gap) + 150
+
+  canvas.width = W; canvas.height = H
+  const ctx = canvas.getContext('2d')
+  ctx.textBaseline = 'alphabetic'
+  gardenBg(ctx, W, H)
+
+  // Header
+  ctx.fillStyle = '#7fbf9a'; ctx.font = '700 18px Inter, sans-serif'
+  ctx.fillText('FN SPRITE TRACKER', pad, 52)
+  ctx.fillStyle = '#ffffff'; ctx.font = '800 46px Inter, sans-serif'
+  ctx.fillText(gamertag ? `${gamertag.toUpperCase()}’S SPRITE GARDEN` : 'MY SPRITE GARDEN', pad, 100)
+  ctx.fillStyle = '#9fc9b3'; ctx.font = '600 20px Inter, sans-serif'
+  ctx.fillText('🌱 the Sprites I’ve collected', pad, 130)
+
+  // Count (top-right) + progress bar
+  ctx.fillStyle = '#34d399'; ctx.font = '800 26px Inter, sans-serif'
+  const stat = `${owned.length} planted${masteredCount ? ` · ${masteredCount}★` : ''}`
+  ctx.fillText(stat, W - pad - ctx.measureText(stat).width, 100)
+  const barY = 158, barW = W - pad * 2
+  ctx.fillStyle = '#123024'; roundRect(ctx, pad, barY, barW, 14, 7); ctx.fill()
+  const pg = ctx.createLinearGradient(pad, 0, pad + barW, 0)
+  pg.addColorStop(0, '#34d399'); pg.addColorStop(1, '#a7f3d0')
+  ctx.fillStyle = pg; roundRect(ctx, pad, barY, Math.max(8, (owned.length / Math.max(1, releasedTotal)) * barW), 14, 7); ctx.fill()
+  ctx.fillStyle = '#7fbf9a'; ctx.font = '700 14px Inter, sans-serif'
+  ctx.fillText(`${owned.length} / ${releasedTotal} of the collection planted`, pad, barY + 34)
+
+  // Preload owned sprite art.
+  const loaded = {}
+  await Promise.all([...new Set(owned.map((s) => s.image))].map(async (src) => { loaded[src] = await loadImage(src) }))
+
+  // Circular tiles
+  owned.forEach((s, i) => {
+    const col = i % cols
+    const row = Math.floor(i / cols)
+    const x = gridX0 + col * (D + gap)
+    const y = gridTop + row * (tileH + gap)
+    const cx = x + D / 2
+    const cy = y + D / 2
+    const r = D / 2
+    const mastered = !!tracking[s.id]?.mastered
+
+    // Finish-tinted disc
+    ctx.save()
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.clip()
+    ctx.fillStyle = variantGradient(ctx, s.themeId, x, y, D, D); ctx.fillRect(x, y, D, D)
+    const img = loaded[s.image]
+    if (img) {
+      const sz = D - 24
+      ctx.drawImage(img, x + 12, y + 12, sz, sz)
+    }
+    ctx.restore()
+
+    // Ring — gold + ★ for mastered, soft green otherwise
+    ctx.beginPath(); ctx.arc(cx, cy, r - 1.5, 0, Math.PI * 2)
+    ctx.lineWidth = mastered ? 5 : 2.5
+    ctx.strokeStyle = mastered ? '#fbbf24' : 'rgba(167,243,208,0.45)'
+    ctx.stroke()
+    if (mastered) {
+      ctx.fillStyle = '#fbbf24'
+      ctx.beginPath(); ctx.arc(cx + r * 0.66, cy - r * 0.66, 15, 0, Math.PI * 2); ctx.fill()
+      ctx.fillStyle = '#3a2c05'; ctx.font = '800 18px Inter, sans-serif'; ctx.textAlign = 'center'
+      ctx.fillText('★', cx + r * 0.66, cy - r * 0.66 + 6); ctx.textAlign = 'left'
+    }
+
+    // Label: type name + finish, plus rarity dot
+    ctx.textAlign = 'center'
+    ctx.fillStyle = '#eaf6ef'
+    drawFit(ctx, s.typeName, cx, y + D + 22, D - 4, '700', 17)
+    ctx.fillStyle = '#8fbfa6'; ctx.font = '600 13px Inter, sans-serif'
+    ctx.fillText(VARIANT_LABEL[s.themeId] || s.themeId, cx, y + D + 39)
+    ctx.textAlign = 'left'
+    ctx.beginPath(); ctx.arc(cx - ctx.measureText(s.typeName).width / 2 - 10, y + D + 16, 4, 0, Math.PI * 2)
+    ctx.fillStyle = RARITY_COLORS[s.rarity] || '#888'; ctx.fill()
+  })
+
+  await drawExportFooter(ctx, { W, H, pad, url })
+  return canvas.toDataURL('image/png')
 }
 
 // A trade card: "For trade" column + "Looking for" column, with the gamertag

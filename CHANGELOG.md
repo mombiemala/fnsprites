@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 15, 2026 — Share your Sprite Garden as an image 📸
+
+- **Added:** a **📸 Image** button in the Garden view (`GardenView` → `generateGardenImage` in
+  `lib/exportImage.js`) that downloads the player's owned Sprites as lush **circular, finish-tinted tiles**
+  (mastered ones ringed gold with a ★), with planted/mastered counts, a progress bar, a forest-themed
+  backdrop, and the shared QR/link footer. Refactored the per-variant gradient into a reusable
+  `variantGradient()` and added gem/quack/cube finishes to it.
+- **Added:** works for guests (reads the active `tracking` map); signed-in players get a QR/link straight to
+  their shareable Garden (`?u=…&view=garden`).
+- **Why:** the Garden's "Share" copies a link, but a link is bare text in most feeds — an actual image is
+  what spreads, and the QR recruits new trackers. Higher-leverage than fighting SPA OG-unfurl for now.
+
+---
+
 ## August 15, 2026 — New: a Trade tab — find players to swap Sprites with 🔁
 
 - **Added:** a **🔁 Trade tab** (`components/TradeTab.jsx`) — two-way matching against other players'

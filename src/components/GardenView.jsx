@@ -9,7 +9,7 @@ import { GENERATIONS } from '../data/sprites'
 // generations get added alongside the old). Read-only, showcase-only.
 const RARITY_RANK = { Mythic: 0, Legendary: 1, Epic: 2, Rare: 3 }
 
-export default function GardenView({ set, tracking, onOpen, canShare, onShare, ownerName }) {
+export default function GardenView({ set, tracking, onOpen, canShare, onShare, onShareImage, imageBusy, ownerName }) {
   const owned = useMemo(() => {
     return set.items
       .filter((s) => !s.unreleased && tracking[s.id]?.owned)
@@ -35,6 +35,11 @@ export default function GardenView({ set, tracking, onOpen, canShare, onShare, o
           </p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
+          {onShareImage && owned.length > 0 && (
+            <button type="button" onClick={onShareImage} disabled={imageBusy} className="garden-share" title="Download your Sprite Garden as an image to post">
+              {imageBusy ? '…' : '📸 Image'}
+            </button>
+          )}
           {canShare && (
             <button type="button" onClick={onShare} className="garden-share" title="Copy a link to your Sprite Garden — friends can visit it">
               🔗 Share

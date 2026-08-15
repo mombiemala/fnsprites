@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 15, 2026',
+    title: 'Share your Sprite Garden as an image 📸',
+    summary:
+      'The Garden view can now export a lush image of your collection — circular, finish-tinted tiles with mastered Sprites ringed in gold — ready to post to Discord, Reddit or socials.',
+    changes: [
+      { tag: 'Added', text: 'A “📸 Image” button in the Garden that downloads your owned Sprites as circular finish-tinted tiles (mastered ones ringed gold with a ★), with planted/mastered counts, a progress bar, and a scannable QR that links back to your Garden.' },
+      { tag: 'Added', text: 'Works for guests too (reads your local collection); signed-in players get a QR/link straight to their shareable Garden (?u=…&view=garden).' },
+    ],
+    why:
+      'The Garden’s “Share” copies a link, but a link is bare text in most feeds — an actual image is what spreads. A picture of your collection is far more shareable (and recruits new trackers via the QR) than a URL that may not even unfurl.',
+  },
+  {
+    date: 'August 15, 2026',
     title: 'New: a Trade tab — find players to swap Sprites with 🔁',
     summary:
       'Fortnite has no in-game trading, so it’s player-to-player. Mark your spare duplicates “For trade” and the Sprites you want, and the new Trade tab matches you with other players whose spares line up with your wishlist — then you DM to arrange the swap.',
