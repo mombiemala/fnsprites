@@ -196,6 +196,15 @@ for (const t of SPRITE_TYPES) {
   }
 }
 
+// Sprite generations — each season introduces a whole new generation; past
+// generations stay in your collection (Epic confirmed Sprites are permanent).
+// The Sprite Garden groups by these. To add the next gen: append an entry here
+// and tag its Sprite types with `gen: '<id>'` — they file in automatically.
+export const GENERATIONS = [
+  { id: 'c7s3', name: 'Chapter 7 Season 3', sub: 'Runners', released: true },
+  { id: 'c7s4', name: 'Chapter 7 Season 4', sub: 'Override', released: false, when: 'Aug 20' },
+]
+
 export function buildSpriteList() {
   const items = []
   for (const type of SPRITE_TYPES) {
@@ -204,6 +213,10 @@ export function buildSpriteList() {
       items.push({
         id: `${type.id}_${themeId}`,
         typeId: type.id,
+        // Which Sprite generation this belongs to (each season adds a new one;
+        // past generations stay — Epic confirmed Sprites are permanent). Defaults
+        // to the current gen; set `gen` on a type to file it elsewhere.
+        gen: type.gen || 'c7s3',
         typeName: type.name,
         icon: type.icon,
         rarity: type.rarity,

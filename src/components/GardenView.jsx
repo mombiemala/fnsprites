@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import SpriteArt from './SpriteArt'
 import { THEME_MAP } from '../data/themes'
+import { GENERATIONS } from '../data/sprites'
 
 // PROTOTYPE — an in-app "Sprite Garden": a showcase of the Sprites you own,
 // grouped by generation. Mirrors the Sprite Garden coming to Fortnite in
@@ -46,53 +47,63 @@ export default function GardenView({ set, tracking, onOpen, canShare, onShare, o
       {owned.length === 0 ? (
         <div className="garden-empty">
           <div className="text-4xl">🪴</div>
-          <p className="mt-2 text-sm text-[var(--text)]">Your garden is empty.</p>
-          <p className="mt-1 text-xs text-[var(--muted)]">
-            Switch to <b>Grid</b> and tap “Have it?” on the Sprites you own — they’ll be planted here.
-          </p>
+          <p className="mt-2 text-sm text-[var(--text)]">{ownerName ? `${ownerName}’s garden is empty.` : 'Your garden is empty.'}</p>
+          {!ownerName && (
+            <p className="mt-1 text-xs text-[var(--muted)]">
+              Switch to <b>Grid</b> and tap “Have it?” on the Sprites you own — they’ll be planted here.
+            </p>
+          )}
         </div>
       ) : (
-        <section className="garden-gen">
-          <div className="garden-gen-head">
-            <span className="garden-gen-title">Chapter 7 Season 3 · Runners</span>
-            <span className="garden-gen-count">{owned.length} planted</span>
-          </div>
-          <div className="garden-plot">
-            {owned.map((s) => {
-              const theme = THEME_MAP[s.themeId]
-              const isMastered = !!tracking[s.id]?.mastered
-              return (
-                <button
-                  key={s.id}
-                  type="button"
-                  onClick={() => onOpen?.(s)}
-                  className={`garden-sprite ${isMastered ? 'is-mastered' : ''}`}
-                  title={`${s.typeName} · ${theme?.name}${isMastered ? ' · Mastered' : ''} — details`}
-                >
-                  <span className={`garden-art sprite-art ${theme?.className || 'theme-normal'}`}>
-                    <SpriteArt sprite={s} />
-                  </span>
-                  {isMastered && <span className="garden-star" aria-hidden="true">★</span>}
-                  <span className="garden-name">{s.typeName}</span>
-                  <span className="garden-finish">{theme?.name}</span>
-                </button>
-              )
-            })}
-          </div>
-        </section>
+        GENERATIONS.filter((g) => g.released).map((g) => {
+          const list = owned.filter((s) => (s.gen || GENERATIONS[0].id) === g.id)
+          if (!list.length) return null
+          return (
+            <section key={g.id} className="garden-gen">
+              <div className="garden-gen-head">
+                <span className="garden-gen-title">{g.name} · {g.sub}</span>
+                <span className="garden-gen-count">{list.length} planted</span>
+              </div>
+              <div className="garden-plot">
+                {list.map((s) => {
+                  const theme = THEME_MAP[s.themeId]
+                  const isMastered = !!tracking[s.id]?.mastered
+                  return (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => onOpen?.(s)}
+                      className={`garden-sprite ${isMastered ? 'is-mastered' : ''}`}
+                      title={`${s.typeName} · ${theme?.name}${isMastered ? ' · Mastered' : ''} — details`}
+                    >
+                      <span className={`garden-art sprite-art ${theme?.className || 'theme-normal'}`}>
+                        <SpriteArt sprite={s} />
+                      </span>
+                      {isMastered && <span className="garden-star" aria-hidden="true">★</span>}
+                      <span className="garden-name">{s.typeName}</span>
+                      <span className="garden-finish">{theme?.name}</span>
+                    </button>
+                  )
+                })}
+              </div>
+            </section>
+          )
+        })
       )}
 
-      {/* Next-generation teaser — demonstrates generation grouping */}
-      <section className="garden-gen garden-gen--soon">
-        <div className="garden-gen-head">
-          <span className="garden-gen-title">Chapter 7 Season 4 · Override</span>
-          <span className="garden-gen-count">Aug 20</span>
-        </div>
-        <p className="garden-soon-note">
-          A whole new generation of Sprites lands with “Override.” They’ll grow here automatically alongside
-          your Season 3 collection — Sprites stay forever. 🌸
-        </p>
-      </section>
+      {/* Upcoming generations — Sprites stay forever, so future gens file in here */}
+      {GENERATIONS.filter((g) => !g.released).map((g) => (
+        <section key={g.id} className="garden-gen garden-gen--soon">
+          <div className="garden-gen-head">
+            <span className="garden-gen-title">{g.name} · {g.sub}</span>
+            <span className="garden-gen-count">{g.when || 'Soon'}</span>
+          </div>
+          <p className="garden-soon-note">
+            A whole new generation of Sprites lands with “{g.sub}.” They’ll grow here automatically alongside
+            your existing collection — Sprites stay forever. 🌸
+          </p>
+        </section>
+      ))}
     </div>
   )
 }

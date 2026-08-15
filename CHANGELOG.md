@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 7, 2026 — Sprite Garden: real generation grouping (Override-ready)
+
+- **Added:** a `GENERATIONS` model + a per-sprite `gen` field in `data/sprites.js` (defaults to Chapter 7
+  Season 3). `GardenView.jsx` now renders a section per *released* generation and a teaser for upcoming
+  ones — so adding the Season 4 "Override" generation on Aug 20 is a pure data change, no UI work.
+- **Changed:** the Garden's "Season 3 · Runners" / "Season 4 · Override" grouping is data-driven instead
+  of hardcoded.
+- **Why:** the grouping was scaffolding on a hardcoded label; making it real ahead of the Override drop
+  means Sprites spanning multiple generations file into their own plots automatically — they all live in
+  your Garden forever.
+
+---
+
 ## August 7, 2026 — Header version auto-detects the live build
 
 - **Changed:** the in-app header tagline's version is now auto-detected from the live game build (`App.jsx`

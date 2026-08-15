@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 7, 2026',
+    title: 'Sprite Garden: real generation grouping (Override-ready)',
+    summary:
+      'The Garden now groups by an actual generation field in the data — so Chapter 7 Season 4 “Override” Sprites will file into their own section automatically when they drop.',
+    changes: [
+      { tag: 'Added', text: 'A GENERATIONS model + a per-sprite `gen` field (defaults to Chapter 7 Season 3). The Garden renders a section per released generation and a teaser for upcoming ones — so adding the Override generation on Aug 20 is a data change, no UI work.' },
+      { tag: 'Changed', text: 'The Garden’s “Season 3 · Runners” / “Season 4 · Override” sections are now data-driven instead of hardcoded.' },
+    ],
+    why:
+      'The grouping was scaffolding on a hardcoded label; making it data-driven turns it into the real thing ahead of the Override drop, when Sprites start spanning multiple generations that all live in your Garden forever.',
+  },
+  {
+    date: 'August 7, 2026',
     title: 'Header version now auto-detects the live build',
     summary:
       'The header showed a hardcoded “v41.30” next to the variant count; it now reads the current build from the live game data so it never goes stale.',
