@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 15, 2026',
+    title: 'Leaderboard glow-up: a real podium 🏆',
+    summary:
+      'The Flex Score leaderboard is now a proper flex — a top-3 podium with each player’s Sprite as their avatar, plus score bars, medals and badges down the ranks.',
+    changes: [
+      { tag: 'Changed', text: 'Top 3 now sit on a 🥇🥈🥉 podium (gold/silver/bronze rings, #1 raised and highlighted), each showing the player’s first showcase Sprite as a finish-tinted avatar, their score, owned/mastered and badges.' },
+      { tag: 'Changed', text: 'Ranks 4+ are compact rows with a Sprite avatar and a score bar scaled to #1, so relative standing is visible at a glance. Compare is one tap from any row.' },
+      { tag: 'Added', text: 'The leaderboard now serves each player’s avatar Sprite (their first showcase pick) — set a showcase in Profile to choose yours.' },
+    ],
+    why:
+      'A plain text list undersells a “flex” page — the whole point is to show off. A podium with real Sprite avatars and visual score bars makes rank feel earned and gives players a reason to climb (and to pick a showcase).',
+  },
+  {
+    date: 'August 15, 2026',
     title: 'Profile: clearer saving, honest trade info, full Sprite showcase',
     summary:
       'The Profile now has one always-visible save bar that tells you exactly whether your changes are saved, the showcase lets you feature any Sprite you own (including the newest ones), and the trading section no longer implies emails we don’t send.',

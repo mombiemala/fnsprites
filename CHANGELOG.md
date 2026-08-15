@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 15, 2026 — Leaderboard glow-up: a real podium 🏆
+
+- **Changed:** `Leaderboard.jsx` rebuilt — top 3 on a 🥇🥈🥉 podium (gold/silver/bronze rings, #1 raised) with
+  each player's first showcase Sprite as a finish-tinted avatar; ranks 4+ as compact rows with avatars and
+  score bars scaled to #1. Compare stays one tap away.
+- **DB:** `leaderboard()` RPC recreated to also return `avatar` (the player's `showcase_sprite_ids[1]`).
+  Additive; existing fields unchanged.
+- **Why:** a flat text list undersells a flex page; a podium with real Sprite avatars and visual score bars
+  makes ranking feel earned and nudges players to set a showcase.
+
+---
+
 ## August 15, 2026 — Profile: clearer saving, honest trade info, full Sprite showcase
 
 - **Added:** a sticky save bar in `ProfileModal` with live dirty-state ("● Unsaved changes" / "✓ All changes
