@@ -39,7 +39,6 @@ const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
 const ShareExportModal = lazy(() => import('./components/ShareExportModal'))
-const CosmeticsTab = lazy(() => import('./components/CosmeticsTab'))
 const TradeTab = lazy(() => import('./components/TradeTab'))
 import { LINKS } from './lib/supabase'
 
@@ -51,7 +50,6 @@ const TABS = [
   { id: 'stats', label: '📊 Stats' },
   { id: 'news', label: '📰 News' },
   { id: 'shop', label: '🛒 Item Shop' },
-  { id: 'cosmetics', label: '🧢 Cosmetics' },
 ]
 
 const DEFAULT_FILTERS = {
@@ -81,9 +79,9 @@ function useInitialView() {
     // The old Guide tab folded into the combined Sprites view — keep its
     // deep link (?view=guide) working by mapping it across.
     if (v === 'guide') return 'sprites'
-    // Cosmetics used to open as a modal via ?cosmetics=1 (still linked from the
-    // static SEO pages) — it's now a tab, so route that param to the view.
-    if (params.get('cosmetics') === '1') return 'cosmetics'
+    // The Cosmetics tab was retired (it overlapped the Item Shop); route any old
+    // ?cosmetics=1 / ?view=cosmetics deep links to the Item Shop instead.
+    if (params.get('cosmetics') === '1' || v === 'cosmetics') return 'shop'
     return TABS.some((t) => t.id === v) ? v : 'collection'
   }, [])
 }
@@ -425,14 +423,13 @@ export default function App() {
         ariaLabel="Sections"
       />
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop' || effectiveView === 'cosmetics') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
           {effectiveView === 'trade' && <div className="mb-5"><TradeTab /></div>}
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}
-          {effectiveView === 'cosmetics' && <div className="mb-5"><CosmeticsTab /></div>}
         </Suspense>
       )}
 

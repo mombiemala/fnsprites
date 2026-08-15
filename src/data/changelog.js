@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 15, 2026',
+    title: 'Consistency pass: one header & nav everywhere, Cosmetics retired',
+    summary:
+      'The app and the SEO/landing pages now share the exact same header and navigation, a logged-in visitor no longer sees “Log in to save” on the static pages, and the experimental Cosmetics tab has been retired (it overlapped the Item Shop).',
+    changes: [
+      { tag: 'Changed', text: 'The static pages’ top nav now mirrors the in-app tabs exactly — same order, and the 🔁 Trade tab is included — so moving between the app and a Sprite page feels seamless.' },
+      { tag: 'Changed', text: 'On the static pages, the header now detects your login (same browser session) and shows “⚙ Profile” instead of “Log in to save,” and the version tag auto-updates to the live build — matching the app.' },
+      { tag: 'Removed', text: 'The experimental 🧢 Cosmetics tab. It duplicated the Item Shop and its “want” list only saved locally with nowhere to go; old links now land on the Item Shop.' },
+    ],
+    why:
+      'Two slightly different headers/navs made the site feel like two products bolted together; making them identical is the point of the SEO pages sharing the app’s design. Cosmetics was a proof-of-concept that never grew a purpose distinct from the Item Shop — cutting it removes a confusing, dead-end tab.',
+  },
+  {
+    date: 'August 15, 2026',
     title: 'Share your Sprite Garden as an image 📸',
     summary:
       'The Garden view can now export a lush image of your collection — circular, finish-tinted tiles with mastered Sprites ringed in gold — ready to post to Discord, Reddit or socials.',

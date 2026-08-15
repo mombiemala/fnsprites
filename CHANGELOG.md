@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 15, 2026 — Consistency pass: one header & nav everywhere, Cosmetics retired
+
+- **Changed:** the prerendered SEO pages' nav (`scripts/prerender.mjs` `NAV_LINKS` + footer) now mirrors the
+  in-app `TABS` order exactly and includes the 🔁 Trade tab.
+- **Changed:** a small progressive-enhancement script on the static pages swaps the header CTA to "⚙ Profile"
+  when a Supabase session exists in `localStorage`, and refreshes the tagline version from `/api/news` —
+  matching the app's live header.
+- **Removed:** the experimental Cosmetics tab (`CosmeticsTab.jsx` deleted; removed from `TABS`, lazy imports,
+  render, SEO nav/footer). Old `?cosmetics=1` / `?view=cosmetics` deep links now route to the Item Shop.
+  `fetchNewCosmetics` stays in `lib/fortniteApi.js` unused; `rarityTint` is still used by the Shop.
+- **Why:** two subtly different headers made the site feel like two products; identical nav is the whole point
+  of the SEO pages sharing the app design. Cosmetics never grew a purpose distinct from the Item Shop.
+
+---
+
 ## August 15, 2026 — Share your Sprite Garden as an image 📸
 
 - **Added:** a **📸 Image** button in the Garden view (`GardenView` → `generateGardenImage` in
