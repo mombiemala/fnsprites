@@ -18,6 +18,8 @@ export default function ProfileModal({ onClose }) {
   const [epicName, setEpicName] = useState(profile?.epic_username || '')
   const [epicPlatform, setEpicPlatform] = useState(profile?.epic_platform || 'epic')
   const [statsPublic, setStatsPublic] = useState(profile?.stats_public ?? false)
+  const [discord, setDiscord] = useState(profile?.discord || '')
+  const [notifyTrades, setNotifyTrades] = useState(profile?.notify_trades ?? false)
   const [showcase, setShowcase] = useState(() => (profile?.showcase_sprite_ids || []).slice(0, SHOWCASE_MAX))
   const [savingProfile, setSavingProfile] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -49,6 +51,8 @@ export default function ProfileModal({ onClose }) {
       showcase_sprite_ids: showcase.length ? showcase : null,
       // Public stats only make sense with a saved Epic name; force off otherwise.
       stats_public: epicName.trim() ? statsPublic : false,
+      discord: discord.trim() || null,
+      notify_trades: notifyTrades,
     })
     setSavingProfile(false)
     toast(res.error ? res.error : 'Profile saved', res.error ? 'error' : undefined)
@@ -158,6 +162,31 @@ export default function ProfileModal({ onClose }) {
               {!epicName.trim() && <span className="block text-[var(--muted)]/70">Add your Epic name first.</span>}
             </span>
           </label>
+        </div>
+
+        {/* Trading — Discord handle + match notifications, powers the 🔁 Trade tab */}
+        <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] p-3">
+          <label className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">
+            🔁 Trading <span className="font-semibold normal-case text-[var(--muted)]/80">— for the Trade tab</span>
+          </label>
+          <input
+            value={discord}
+            onChange={(e) => setDiscord(e.target.value)}
+            placeholder="Discord handle (e.g. yourname)"
+            maxLength={40}
+            title="Shown to your trade matches so they can DM you to arrange a swap"
+            className="w-full rounded-lg border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-sm text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)]"
+          />
+          <p className="mt-1.5 text-[11px] text-[var(--muted)]">
+            Mark spare duplicates <b className="text-white">🔁 For trade</b> and sprites you want <b className="text-white">🎯 Want</b> on any
+            sprite; the <b className="text-white">🔁 Trade</b> tab matches you with other <b className="text-white">public</b> players. Your handle
+            lets a match DM you — leave it blank to stay handle-less.
+          </p>
+          <label className="mt-2 flex items-start gap-2 text-xs text-[var(--muted)]">
+            <input type="checkbox" className="mt-0.5" checked={notifyTrades} onChange={(e) => setNotifyTrades(e.target.checked)} />
+            <span><b className="font-semibold text-white">Notify me about new trade matches</b> — we’ll flag when a new match appears.</span>
+          </label>
+          <p className="mt-1.5 text-[11px] text-[var(--muted)]">Saved with the button above.</p>
         </div>
 
         {/* Showcase — featured sprites on your public Trainer Card (?u= share view) */}

@@ -11,6 +11,28 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 15, 2026 — New: a Trade tab — find players to swap Sprites with 🔁
+
+- **Added:** a **🔁 Trade tab** (`components/TradeTab.jsx`) — two-way matching against other players'
+  collections. For each partner it shows **what they can give you** (their spares that are on your wishlist)
+  and **what you can give them** (your spares they want), ranked by overlap.
+- **Added:** per-sprite **🔁 For trade** (owned) and **🎯 Want** (missing) toggles in `SpriteDetailModal` —
+  these populate the matcher. Guests can flag locally; it syncs on login.
+- **Added:** a **Discord handle** + **notify_trades** option in `ProfileModal`. Match cards render a one-tap
+  copy of the partner's Discord handle (DM to arrange the swap). `LINKS.discordInvite` is a config seam
+  (currently `null`) that, when set, surfaces a "coordinate in our Discord" nudge — no server required today.
+- **DB:** added `profiles.discord`; recreated the `find_trade_matches(uuid)` RPC to also return the partner's
+  Discord handle. Matching is **security-definer** and only includes **public** profiles, so raw collections
+  are never exposed client-side. The matcher/`wanted`/`for_trade` columns already existed — this lights up
+  dormant backend.
+- **Why:** hunting rare variants is the core grind and trading duplicates is how players beat the RNG, but
+  it's currently scattered across Discord/Reddit. We already had the collection data, so an in-app
+  "who has what I need / needs what I have" matcher was the highest-value, lowest-cost gap to fill — and it
+  directly counters the one competitor (SpriteTrading) that had a real trading angle. Deliberately **not**
+  running a Discord community: the app is the product; Discord is the meeting room, reached via a handle.
+
+---
+
 ## August 7, 2026 — Sprite Garden: real generation grouping (Override-ready)
 
 - **Added:** a `GENERATIONS` model + a per-sprite `gen` field in `data/sprites.js` (defaults to Chapter 7

@@ -72,6 +72,13 @@ times, next-generation sprite names) is flagged **Rumored** until Epic confirms.
   and every variant with its in-game **bonus** (e.g. Gummy = +10% Sprite Dust).
 - **Leaderboard & Flex Score** — a rarity-weighted ranking of public
   collections, plus a **compare** view (what you both have / each are missing).
+- **Trade matches (🔁 Trade tab)** — Fortnite has no in-game trading, so it's
+  player-to-player. Flag spare duplicates **🔁 For trade** and the ones you want
+  **🎯 Want** on any sprite, and the matcher finds public players whose spares line
+  up with your wishlist (and vice-versa): **what they can give you** / **what you
+  can give them**, ranked by overlap. A one-tap **copy of their Discord handle**
+  lets you DM to arrange the swap — connections happen on Discord, not here. Set
+  your own handle (and opt into match notifications) in Profile.
 - **Player Stats** — look up any player's Battle Royale stats by Epic display
   name (or PSN/Xbox): wins, win rate, K/D, kills, matches, top-10/25, hours, and a
   solo/duo/squad breakdown. Requires the target's match history to be public. The
@@ -204,23 +211,28 @@ directly and need no key.
 Database schema (applied via migrations):
 
 - `profiles` — one row per user (`gamertag`, `is_public`, `epic_username`,
-  `epic_platform`, `showcase_sprite_ids`, `stats_public`, …). Public-readable for
+  `epic_platform`, `showcase_sprite_ids`, `stats_public`, `discord`,
+  `notify_trades`, …). Public-readable for
   sharing; owner-writable. Shared-link reads go through the `get_shared_profile()`
   **security-definer** RPC, which returns only public display fields plus the Epic
   account **only** when `stats_public` is on. Anonymous SELECT on the Epic columns
   is revoked at the DB level, so `epic_username` is never exposed unless the owner
   opts into public stats.
-- `sprite_progress` — `(user_id, sprite_id)` with `owned` / `mastered` flags
-  (plus dormant `for_trade` / `wanted` columns from the retired trading feature).
+- `sprite_progress` — `(user_id, sprite_id)` with `owned` / `mastered` flags plus
+  `for_trade` / `wanted` (which power the **🔁 Trade tab** — flag a spare or a
+  want and the matcher pairs you with other public players).
   Readable when the owning profile is public (or it's your own); owner-writable.
 - `bug_reports` — insert-only feedback backup.
 
-Key RPC: `leaderboard`.
+Key RPCs: `leaderboard`; `find_trade_matches(uuid)` — a **security-definer**
+function that returns two-way matches (partner `gamertag` + `discord`, `they_give`,
+`i_give`) across **public** profiles only, so raw collections are never exposed to
+the client.
 
-(Retired features left their tables in place, non-destructively: the trading
-hub — `trade_posts` / `trade_vouches` and the `find_trade_matches` RPC — and the
-old crowd-sourced map — `maps`, `map_shares`, `map_markers`, `map_marker_votes`.
-They're unused by the app.)
+(Some older tables are kept in place, non-destructively but unused by the app: the
+legacy trading **hub** — `trade_posts` / `trade_vouches` (the current Trade tab
+uses lightweight `for_trade`/`wanted` matching instead of posts) — and the old
+crowd-sourced map — `maps`, `map_shares`, `map_markers`, `map_marker_votes`.)
 
 ## Customizing
 

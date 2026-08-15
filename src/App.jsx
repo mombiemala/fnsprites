@@ -40,11 +40,13 @@ const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
 const ShareExportModal = lazy(() => import('./components/ShareExportModal'))
 const CosmeticsTab = lazy(() => import('./components/CosmeticsTab'))
+const TradeTab = lazy(() => import('./components/TradeTab'))
 import { LINKS } from './lib/supabase'
 
 const TABS = [
   { id: 'collection', label: 'Collection' },
   { id: 'leaderboard', label: '🏆 Leaderboard' },
+  { id: 'trade', label: '🔁 Trade' },
   { id: 'sprites', label: '🧩 Sprites' },
   { id: 'stats', label: '📊 Stats' },
   { id: 'news', label: '📰 News' },
@@ -101,7 +103,7 @@ function TabLoading() {
 }
 
 export default function App() {
-  const { user, profile, tracking, setOwned, setMastered, setLevel, bulkOwn, syncing, cloudStatus, authLoading } = useAuth()
+  const { user, profile, tracking, setOwned, setMastered, setLevel, setForTrade, setWanted, bulkOwn, syncing, cloudStatus, authLoading } = useAuth()
   const { toast } = useToast()
   const shareTarget = useShareTarget()
 
@@ -407,9 +409,10 @@ export default function App() {
         ariaLabel="Sections"
       />
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop' || effectiveView === 'cosmetics') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop' || effectiveView === 'cosmetics') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
+          {effectiveView === 'trade' && <div className="mb-5"><TradeTab /></div>}
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}
@@ -722,6 +725,8 @@ export default function App() {
             onToggleOwned={setOwned}
             onToggleMastered={setMastered}
             onSetLevel={setLevel}
+            onSetForTrade={setForTrade}
+            onSetWanted={setWanted}
             readOnly={readOnly}
           />
         )}

@@ -6,6 +6,20 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 15, 2026',
+    title: 'New: a Trade tab — find players to swap Sprites with 🔁',
+    summary:
+      'Fortnite has no in-game trading, so it’s player-to-player. Mark your spare duplicates “For trade” and the Sprites you want, and the new Trade tab matches you with other players whose spares line up with your wishlist — then you DM to arrange the swap.',
+    changes: [
+      { tag: 'Added', text: 'A 🔁 Trade tab that finds two-way matches: for each player, what they can give you (spares you want) and what you can give them (spares they want), ranked by how well you line up.' },
+      { tag: 'Added', text: 'Per-sprite “🔁 For trade” (on owned) and “🎯 Want” (on missing) toggles in the sprite detail view — these feed the matcher.' },
+      { tag: 'Added', text: 'A Discord handle + “notify me about new matches” option in Profile. A match shows a one-tap copy of the partner’s Discord so you can DM them; connections happen on Discord, not here.' },
+      { tag: 'Security', text: 'Matching only ever considers players who’ve made their profile public, and runs server-side (a security-definer function) so no one’s raw collection is exposed to the client.' },
+    ],
+    why:
+      'Finding rare variants is the #1 grind, and trading duplicates is how players skip the luck — but today that means scattered Discord/Reddit posts. We already tracked owned/spare data, so an in-app “who has what I need / needs what I have” matcher was the highest-value thing we could add. We deliberately did NOT build a Discord community to run: the app is the product; Discord is just the meeting room, wired in via a handle so people connect where sprite traders already are.',
+  },
+  {
     date: 'August 7, 2026',
     title: 'Sprite Garden: real generation grouping (Override-ready)',
     summary:

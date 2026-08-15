@@ -3,7 +3,7 @@ import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
 import { useEscClose } from '../lib/useEscClose'
 
-export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, onSetLevel, readOnly }) {
+export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleOwned, onToggleMastered, onSetLevel, onSetForTrade, onSetWanted, readOnly }) {
   useEscClose(onClose)
   const type = SPRITE_TYPES.find((t) => t.id === typeId)
   if (!type) return null
@@ -130,6 +130,8 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
             const st = tracking[v.id]
             const owned = !!st?.owned
             const mastered = !!st?.mastered
+            const forTrade = !!st?.forTrade
+            const wanted = !!st?.wanted
             const level = st?.level || 0
             const dust = dustCost(type.rarity, v.themeId)
             return (
@@ -188,7 +190,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                   )}
                 </div>
                 {!readOnly ? (
-                  <div className="flex shrink-0 gap-1">
+                  <div className="flex shrink-0 items-center gap-1">
                     <button
                       onClick={() => onToggleOwned(v.id, !owned)}
                       aria-label={owned ? 'Owned' : 'Mark owned'}
@@ -197,14 +199,41 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                     >
                       {owned ? 'Owned' : 'Have'}
                     </button>
-                    <button
-                      onClick={() => onToggleMastered(v.id, !mastered)}
-                      aria-label="Mastered"
-                      title="Mastered (max level)"
-                      className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${mastered ? 'bg-amber-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
-                    >
-                      ★
-                    </button>
+                    {owned ? (
+                      <>
+                        <button
+                          onClick={() => onToggleMastered(v.id, !mastered)}
+                          aria-label="Mastered"
+                          title="Mastered (max level)"
+                          className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${mastered ? 'bg-amber-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                        >
+                          ★
+                        </button>
+                        {onSetForTrade && (
+                          <button
+                            onClick={() => onSetForTrade(v.id, !forTrade)}
+                            aria-label="For trade"
+                            aria-pressed={forTrade}
+                            title={forTrade ? 'Listed for trade — tap to unlist' : 'Got a spare? List it for trade to find matches'}
+                            className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${forTrade ? 'bg-sky-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                          >
+                            🔁
+                          </button>
+                        )}
+                      </>
+                    ) : (
+                      onSetWanted && (
+                        <button
+                          onClick={() => onSetWanted(v.id, !wanted)}
+                          aria-label="Want"
+                          aria-pressed={wanted}
+                          title={wanted ? 'On your wishlist — tap to remove' : 'Want this one? Add it to your wishlist to find trades'}
+                          className={`rounded-lg px-2 py-1.5 text-[11px] font-bold ${wanted ? 'bg-fuchsia-400 text-black' : 'bg-[var(--panel-2)] text-[var(--muted)]'}`}
+                        >
+                          🎯
+                        </button>
+                      )
+                    )}
                   </div>
                 ) : (
                   <div className="flex shrink-0 items-center gap-1">
@@ -220,8 +249,10 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
 
         {!readOnly && (
           <p className="mt-3 text-[11px] leading-relaxed text-[var(--muted)]">
-            <b className="text-white">Owned</b> · <span className="text-amber-300">★</span> mastered.{' '}
-            <span className="text-amber-300">≈dust</span> = Sprite Dust to re-summon this variant.
+            <b className="text-white">Owned</b> · <span className="text-amber-300">★</span> mastered ·{' '}
+            <span className="text-sky-300">🔁</span> spare for trade · <span className="text-fuchsia-300">🎯</span> want it.{' '}
+            <span className="text-amber-300">≈dust</span> = Sprite Dust to re-summon this variant.{' '}
+            Trade matches show in the <b className="text-white">🔁 Trade</b> tab.
           </p>
         )}
       </div>

@@ -21,7 +21,11 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
 export const CREATOR_CODE = 'mombie'
 
 // Maker links. `reportEmail` is where bug reports are sent (change anytime).
+// `discordInvite` is null until/unless we stand up a community server — set it to
+// the invite URL and the Trade tab automatically shows a "coordinate in Discord"
+// nudge. Traders connect via each other's Discord handle regardless.
 export const LINKS = {
   buyMeACoffee: 'https://buymeacoffee.com/kamalathedesigner',
   reportEmail: 'dontbemad@gmail.com',
+  discordInvite: null,
 }
