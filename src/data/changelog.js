@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 15, 2026',
+    title: 'Profile: clearer saving, honest trade info, full Sprite showcase',
+    summary:
+      'The Profile now has one always-visible save bar that tells you exactly whether your changes are saved, the showcase lets you feature any Sprite you own (including the newest ones), and the trading section no longer implies emails we don’t send.',
+    changes: [
+      { tag: 'Added', text: 'A sticky “● Unsaved changes / ✓ All changes saved” bar with Save and Discard — it’s never ambiguous whether your edits stored. Replaces the easy-to-miss inline Save button and the scattered “saved with the button above” notes.' },
+      { tag: 'Fixed', text: 'The showcase picker now lists every Sprite you own, including newly-added ones — it previously hid Sprites that weren’t flagged “released,” which could drop the newest ones from the selection.' },
+      { tag: 'Changed', text: 'The trading section now says plainly that new matches just appear in the Trade tab when you open it — there are no email notifications. Removed the misleading “notify me” toggle.' },
+    ],
+    why:
+      'Every one of these was a “wait, did that save / where did my Sprite go / will this email me?” moment. A single honest save indicator, an ownership-based showcase, and copy that promises only what the app actually does remove the guesswork.',
+  },
+  {
+    date: 'August 15, 2026',
     title: 'Consistency pass: one header & nav everywhere, Cosmetics retired',
     summary:
       'The app and the SEO/landing pages now share the exact same header and navigation, a logged-in visitor no longer sees “Log in to save” on the static pages, and the experimental Cosmetics tab has been retired (it overlapped the Item Shop).',

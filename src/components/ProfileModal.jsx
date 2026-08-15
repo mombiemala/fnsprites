@@ -19,7 +19,6 @@ export default function ProfileModal({ onClose }) {
   const [epicPlatform, setEpicPlatform] = useState(profile?.epic_platform || 'epic')
   const [statsPublic, setStatsPublic] = useState(profile?.stats_public ?? false)
   const [discord, setDiscord] = useState(profile?.discord || '')
-  const [notifyTrades, setNotifyTrades] = useState(profile?.notify_trades ?? false)
   const [showcase, setShowcase] = useState(() => (profile?.showcase_sprite_ids || []).slice(0, SHOWCASE_MAX))
   const [savingProfile, setSavingProfile] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -27,8 +26,10 @@ export default function ProfileModal({ onClose }) {
 
   const providers = user?.app_metadata?.providers || (user?.app_metadata?.provider ? [user.app_metadata.provider] : [])
 
-  // You can only showcase sprites you actually own.
-  const ownedSprites = ALL_SPRITES.filter((s) => !s.unreleased && tracking?.[s.id]?.owned)
+  // Showcase any Sprite you own — including the newest ones. (Previously this
+  // gated on the "released" flag, which could hide a freshly-added Sprite you
+  // actually own; ownership is the only thing that matters here.)
+  const ownedSprites = ALL_SPRITES.filter((s) => tracking?.[s.id]?.owned)
 
   const toggleShowcase = (id) => {
     setShowcase((cur) => {
@@ -41,6 +42,32 @@ export default function ProfileModal({ onClose }) {
     })
   }
 
+  // Have any edits been made since the last save? Compared against the live
+  // `profile`, so it flips back to "saved" the moment updateProfile lands. Drives
+  // the single, always-visible save bar so it's never ambiguous whether changes
+  // are stored.
+  const effStatsPublic = epicName.trim() ? statsPublic : false
+  const savedShowcase = (profile?.showcase_sprite_ids || []).slice(0, SHOWCASE_MAX)
+  const dirty =
+    gamertag.trim() !== (profile?.gamertag || '') ||
+    isPublic !== (profile?.is_public ?? true) ||
+    epicName.trim() !== (profile?.epic_username || '') ||
+    epicPlatform !== (profile?.epic_platform || 'epic') ||
+    effStatsPublic !== (profile?.stats_public ?? false) ||
+    discord.trim() !== (profile?.discord || '') ||
+    JSON.stringify(showcase) !== JSON.stringify(savedShowcase)
+
+  // Revert every field to what's currently saved.
+  const discardChanges = () => {
+    setGamertag(profile?.gamertag || '')
+    setIsPublic(profile?.is_public ?? true)
+    setEpicName(profile?.epic_username || '')
+    setEpicPlatform(profile?.epic_platform || 'epic')
+    setStatsPublic(profile?.stats_public ?? false)
+    setDiscord(profile?.discord || '')
+    setShowcase(savedShowcase)
+  }
+
   const saveProfile = async () => {
     setSavingProfile(true)
     const res = await updateProfile({
@@ -50,12 +77,11 @@ export default function ProfileModal({ onClose }) {
       epic_platform: epicPlatform,
       showcase_sprite_ids: showcase.length ? showcase : null,
       // Public stats only make sense with a saved Epic name; force off otherwise.
-      stats_public: epicName.trim() ? statsPublic : false,
+      stats_public: effStatsPublic,
       discord: discord.trim() || null,
-      notify_trades: notifyTrades,
     })
     setSavingProfile(false)
-    toast(res.error ? res.error : 'Profile saved', res.error ? 'error' : undefined)
+    toast(res.error ? res.error : 'Profile saved ✓', res.error ? 'error' : undefined)
   }
 
   // Delete personal data (progress, own maps, profile) then sign out. Community
@@ -108,15 +134,10 @@ export default function ProfileModal({ onClose }) {
             maxLength={32}
             className="w-full rounded-xl border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-sm text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)]"
           />
-          <div className="mt-2 flex items-center justify-between gap-2">
-            <label className="flex items-center gap-2 text-xs font-semibold text-[var(--muted)]">
-              <input type="checkbox" checked={isPublic} onChange={(e) => setIsPublic(e.target.checked)} />
-              Public — appears on the leaderboard &amp; shareable link
-            </label>
-            <button onClick={saveProfile} disabled={savingProfile} title="Save your gamertag & visibility" className="shrink-0 rounded-lg bg-[var(--brand)] px-3 py-1.5 text-xs font-extrabold text-black disabled:opacity-60">
-              {savingProfile ? 'Saving…' : 'Save'}
-            </button>
-          </div>
+          <label className="mt-2 flex items-center gap-2 text-xs font-semibold text-[var(--muted)]">
+            <input type="checkbox" checked={isPublic} onChange={(e) => setIsPublic(e.target.checked)} />
+            Public — appears on the leaderboard &amp; shareable link
+          </label>
         </div>
 
         {/* Epic account — powers the Stats tab auto-lookup */}
@@ -145,7 +166,7 @@ export default function ProfileModal({ onClose }) {
             </select>
           </div>
           <p className="mt-1.5 text-[11px] text-[var(--muted)]">
-            Connect it once and the <b className="text-white">📊 Stats</b> tab auto‑loads your Battle Royale stats. Your match history must be <b className="text-white">public</b> (Epic → Settings → Account &amp; Privacy). Saved with the button above.
+            Connect it once and the <b className="text-white">📊 Stats</b> tab auto‑loads your Battle Royale stats. Your match history must be <b className="text-white">public</b> (Epic → Settings → Account &amp; Privacy).
           </p>
 
           {/* Opt-in: surface stats on the public Trainer Card */}
@@ -164,7 +185,7 @@ export default function ProfileModal({ onClose }) {
           </label>
         </div>
 
-        {/* Trading — Discord handle + match notifications, powers the 🔁 Trade tab */}
+        {/* Trading — Discord handle, powers the 🔁 Trade tab */}
         <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] p-3">
           <label className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">
             🔁 Trading <span className="font-semibold normal-case text-[var(--muted)]/80">— for the Trade tab</span>
@@ -180,13 +201,9 @@ export default function ProfileModal({ onClose }) {
           <p className="mt-1.5 text-[11px] text-[var(--muted)]">
             Mark spare duplicates <b className="text-white">🔁 For trade</b> and sprites you want <b className="text-white">🎯 Want</b> on any
             sprite; the <b className="text-white">🔁 Trade</b> tab matches you with other <b className="text-white">public</b> players. Your handle
-            lets a match DM you — leave it blank to stay handle-less.
+            lets a match DM you — leave it blank to stay handle-less. New matches simply show up in the Trade
+            tab whenever you open it (there are no emails).
           </p>
-          <label className="mt-2 flex items-start gap-2 text-xs text-[var(--muted)]">
-            <input type="checkbox" className="mt-0.5" checked={notifyTrades} onChange={(e) => setNotifyTrades(e.target.checked)} />
-            <span><b className="font-semibold text-white">Notify me about new trade matches</b> — we’ll flag when a new match appears.</span>
-          </label>
-          <p className="mt-1.5 text-[11px] text-[var(--muted)]">Saved with the button above.</p>
         </div>
 
         {/* Showcase — featured sprites on your public Trainer Card (?u= share view) */}
@@ -226,7 +243,6 @@ export default function ProfileModal({ onClose }) {
               })}
             </div>
           )}
-          <p className="mt-1.5 text-[11px] text-[var(--muted)]">Saved with the button above.</p>
         </div>
 
         <p className="mt-4 rounded-lg bg-[var(--bg-2)] px-3 py-2 text-[11px] text-[var(--muted)]">
@@ -234,7 +250,7 @@ export default function ProfileModal({ onClose }) {
         </p>
 
         {/* Actions */}
-        <div className="mt-5 flex items-center justify-between border-t border-[var(--border)] pt-4">
+        <div className="mt-5 flex items-center justify-between pt-4">
           <button onClick={async () => { await signOut(); onClose() }} title="Sign out of your account" className="rounded-xl bg-[var(--panel-2)] px-4 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
             Sign out
           </button>
@@ -251,6 +267,32 @@ export default function ProfileModal({ onClose }) {
               Delete my data
             </button>
           )}
+        </div>
+
+        {/* Save bar — always visible & sticky, so it's never ambiguous whether
+            your edits are stored. Shows the live saved/unsaved state and only
+            enables Save when something actually changed. */}
+        <div className="sticky bottom-0 -mx-6 -mb-6 mt-5 flex items-center justify-between gap-3 border-t border-[var(--border)] bg-[var(--panel)]/95 px-6 py-3 backdrop-blur">
+          {dirty ? (
+            <span className="text-xs font-bold text-amber-300">● Unsaved changes</span>
+          ) : (
+            <span className="text-xs font-bold text-emerald-300">✓ All changes saved</span>
+          )}
+          <div className="flex items-center gap-2">
+            {dirty && !savingProfile && (
+              <button onClick={discardChanges} title="Discard your unsaved changes" className="rounded-lg px-3 py-1.5 text-xs font-bold text-[var(--muted)] hover:text-white">
+                Discard
+              </button>
+            )}
+            <button
+              onClick={saveProfile}
+              disabled={!dirty || savingProfile}
+              title={dirty ? 'Save your profile changes' : 'Nothing to save'}
+              className="rounded-lg bg-[var(--brand)] px-4 py-1.5 text-xs font-extrabold text-black disabled:opacity-50"
+            >
+              {savingProfile ? 'Saving…' : dirty ? 'Save changes' : 'Saved'}
+            </button>
+          </div>
         </div>
       </div>
     </div>

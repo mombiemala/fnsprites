@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 15, 2026 — Profile: clearer saving, honest trade info, full Sprite showcase
+
+- **Added:** a sticky save bar in `ProfileModal` with live dirty-state ("● Unsaved changes" / "✓ All changes
+  saved") + Save/Discard. Removes the easy-to-miss inline Save button and the "saved with the button above"
+  notes; `dirty` is computed against the live `profile` so it flips to saved the moment `updateProfile` lands.
+- **Fixed:** the showcase picker filtered on `!s.unreleased`, which could hide freshly-added Sprites you own;
+  it now lists every owned Sprite (`tracking[s.id]?.owned`).
+- **Changed:** removed the `notify_trades` toggle and its "we'll flag when a new match appears" copy — there's
+  no email/notification backend, so it now states plainly that matches appear in the Trade tab. (`notify_trades`
+  column left in place, unused.)
+- **Why:** each was a moment of doubt ("did that save? where's my Sprite? will this email me?"). Honest,
+  unambiguous UI beats implying features that don't exist.
+
+---
+
 ## August 15, 2026 — Consistency pass: one header & nav everywhere, Cosmetics retired
 
 - **Changed:** the prerendered SEO pages' nav (`scripts/prerender.mjs` `NAV_LINKS` + footer) now mirrors the
