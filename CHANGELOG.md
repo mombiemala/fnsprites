@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 15, 2026 — Next-season preview: Override Sprites added as Upcoming 🔮
+
+- **Added:** six upcoming Sprites in `data/sprites.js`, all `released:false, rumored:true, gen:'c7s4'` and
+  **no `releaseDate`** (so they show as Upcoming/Rumored now but don't auto-release with placeholder data):
+  **Sonic** (confirmed "Gaming Legends" headliner) and the five Epic-revealed **Design-a-Sprite** winners —
+  **Pond, Bullet, Honey, Dumpster Dive, X-Ray** — with their designers' abilities. Surface in the app's
+  Upcoming card, the SEO `/sprites` board + upcoming card, and the detail modal (Rumored badge).
+- **Note:** `RELEASED_COUNT` is unchanged (still 118) — these are upcoming, not released. Abilities/rarities are
+  leaked/as-designed and TBC; flip to released with real data during the Aug 20 staging (see issue #35).
+- **Why:** everything current is released, so the "Upcoming & leaked" card was empty. Previewing the confirmed
+  next-gen Sprites keeps the tracker ahead of the drop; held to sourced items rather than the full rumor list.
+
+---
+
 ## August 15, 2026 — Leaderboard glow-up: a real podium 🏆
 
 - **Changed:** `Leaderboard.jsx` rebuilt — top 3 on a 🥇🥈🥉 podium (gold/silver/bronze rings, #1 raised) with

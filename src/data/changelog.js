@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 15, 2026',
+    title: 'Next-season preview: Override Sprites added as Upcoming 🔮',
+    summary:
+      'The Upcoming & Rumored lists now preview Chapter 7 Season 4 “Override” — the five Epic-confirmed Design-a-Sprite winners plus headliner Sonic — so the “what’s coming” card isn’t empty ahead of the Aug 20 drop.',
+    changes: [
+      { tag: 'Added', text: 'Six upcoming Sprites, filed under the new Season 4 generation: Sonic (the confirmed “Gaming Legends” headliner) and the five Design-a-Sprite contest winners — Pond, Bullet, Honey, Dumpster Dive and X-Ray — with their designers’ abilities. They show across the app and the SEO pages.' },
+      { tag: 'Added', text: 'All are clearly badged Rumored — abilities are as designed/leaked and may change, and they carry no drop rate or variants until they actually ship.' },
+    ],
+    why:
+      'Everything currently in the game is released, so the “Upcoming & leaked” card sat empty. Previewing the confirmed next-gen Sprites gives collectors a heads-up and keeps the tracker ahead of the drop. We stuck to sourced, confirmed items (Epic’s revealed Design-a-Sprite winners + the announced Sonic headliner) rather than the full rumor list, and left them dateless so nothing auto-releases with placeholder data before the real Aug 20 staging.',
+  },
+  {
+    date: 'August 15, 2026',
     title: 'Leaderboard glow-up: a real podium 🏆',
     summary:
       'The Flex Score leaderboard is now a proper flex — a top-3 podium with each player’s Sprite as their avatar, plus score bars, medals and badges down the ranks.',

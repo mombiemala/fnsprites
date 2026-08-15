@@ -22,10 +22,12 @@ times, next-generation sprite names) is flagged **Rumored** until Epic confirms.
 - **Accurate roster** — every released sprite & variant, current through **v41.30**
   and the **Aug 6 Gem drop** (**25 sprites / 118 variants, all obtainable**): the
   full Gem line, Cube, Holofoil & Quack (a Sprite Mastery reward), Ironmouse back
-  from the vault, and every Zero Point finish live. Upcoming/leaked content (e.g.
-  the Season 4 **"Gaming Legends"** collabs, next-gen sprite names) is clearly
-  flagged **Rumored**/upcoming so leaks never read as fact — each news item shows
-  its source and whether it's official.
+  from the vault, and every Zero Point finish live. The next generation —
+  Chapter 7 Season 4 **"Override"** — is previewed as **Upcoming/Rumored**: the
+  five Epic-confirmed **Design-a-Sprite** winners (Pond, Bullet, Honey, Dumpster
+  Dive, X-Ray) and headliner **Sonic**, filed under the `c7s4` generation. All
+  leaked/upcoming content is clearly flagged **Rumored** so leaks never read as
+  fact — each news item shows its source and whether it's official.
 - **Sprite Garden (beta)** — a showcase view (🌱, next to Grid/List) that lays out
   the Sprites you own as circular, finish-tinted tiles grouped by **generation**,
   mirroring the in-game **Sprite Garden** arriving in Chapter 7 Season 4. Deep-linkable

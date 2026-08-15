@@ -122,6 +122,33 @@ export const SPRITE_TYPES = [
   { id: 'vinijr', name: 'Vini Jr.', icon: '⚽', rarity: 'Mythic', dropRate: null, released: true,
     ability: 'Sprint briefly to make your slide destructive; slide-kicking enemies boosts your fire rate & reload speed. Mythic collab Sprite (Vinícius Júnior), live in the Jul 16 (v41.20) update.',
     variants: { normal: R } },
+
+  // ---- Chapter 7 Season 4 "Override" (Aug 20) — the NEXT generation, upcoming.
+  //   `gen: 'c7s4'` files them under the new generation; all `rumored` until Epic
+  //   ships them. The five Design-a-Sprite Sprites are Epic-revealed contest
+  //   winners (abilities as their designers built them — Epic may tweak; rarity
+  //   TBC); Sonic is the confirmed "Gaming Legends" headliner (ability not yet
+  //   revealed). Deliberately NO `releaseDate` — exact per-Sprite dates aren't
+  //   confirmed, so they stay Upcoming/Rumored until the Aug 20 staging flips
+  //   them with real variants, rarities and abilities (don't auto-release guesses).
+  { id: 'sonic', name: 'Sonic', icon: '🦔', rarity: 'Mythic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Headlines the “Gaming Legends” theme for Chapter 7 Season 4 “Override” (a Green Hill Zone POI is rumored). Confirmed by Epic as the season’s marquee collab; the Sprite’s exact ability hasn’t been revealed — a speed/movement theme is expected but unconfirmed.',
+    variants: { normal: U } },
+  { id: 'pond', name: 'Pond', icon: '🐸', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Design-a-Sprite winner (by Pine & Kiri): evolves egg → tadpole → frog, boosting movement speed & jump height and cutting fall damage as it grows. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
+    variants: { normal: U } },
+  { id: 'bullet', name: 'Bullet', icon: '💥', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Design-a-Sprite winner (by Enorull): ammo boxes give extra ammo. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
+    variants: { normal: U } },
+  { id: 'honey', name: 'Honey', icon: '🍯', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Design-a-Sprite winner (by Conejito_sam): spawns a beehive that swarms whoever damages you. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
+    variants: { normal: U } },
+  { id: 'dumpster', name: 'Dumpster Dive', icon: '🦝', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Design-a-Sprite winner (by StinkyPrincessGoose): a raccoon that finds you loot when you hide in dumpsters. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
+    variants: { normal: U } },
+  { id: 'xray', name: 'X-Ray', icon: '🩻', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players like the old medallion did. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
+    variants: { normal: U } },
 ]
 
 export const RARITY_ORDER = ['Rare', 'Epic', 'Legendary', 'Mythic']
