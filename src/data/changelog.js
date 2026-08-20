@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 20, 2026',
+    title: 'Filter by generation + a Garden-archive badge',
+    summary:
+      'You can now filter the collection by generation — Season 4 “Override” (current) vs Season 3 “Runners” (legacy) — and each Sprite’s detail shows whether it’s playable in Battle Royale now or preserved in the Garden.',
+    changes: [
+      { tag: 'Added', text: 'A “Generation” filter (All / Override (current) / Runners (legacy)) alongside ownership & rarity.' },
+      { tag: 'Added', text: 'A generation badge in each Sprite’s detail: 🟢 “playable in Battle Royale now” for the current gen, or 🏡 “Garden archive (kept forever; not used in BR this season)” for older ones — the honest version of the season transition.' },
+    ],
+    why:
+      'Season 4 started a new generation for Battle Royale while Season 3 Sprites moved to the Sprite Garden. Competitors handle this as a generation split, not one big list — a generation filter with a clear current-vs-legacy badge makes “what can I actually use this season” obvious.',
+  },
+  {
+    date: 'August 20, 2026',
     title: 'Simpler: retired the Garden view & Trade tab',
     summary:
       'Trimmed to two clear list views (Grid + Quick-check list), kept the Sprite Garden as a share-image, and pulled the Trade tab back — its data stays dormant so it’s easy to revive.',

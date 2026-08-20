@@ -268,10 +268,17 @@ for (const t of SPRITE_TYPES) {
 // generations stay in your collection (Epic confirmed Sprites are permanent).
 // The Sprite Garden groups by these. To add the next gen: append an entry here
 // and tag its Sprite types with `gen: '<id>'` — they file in automatically.
+// Sprite generations. `current` = the generation in play in Battle Royale this
+// season; `legacy` = kept in your collection / the in-game Sprite Garden but no
+// longer used in BR matches (Epic: past gens "may return down the line").
 export const GENERATIONS = [
-  { id: 'c7s3', name: 'Chapter 7 Season 3', sub: 'Runners', released: true },
-  { id: 'c7s4', name: 'Chapter 7 Season 4', sub: 'Override', released: false, when: 'Aug 20' },
+  { id: 'c7s3', name: 'Chapter 7 Season 3', sub: 'Runners', released: true, legacy: true },
+  { id: 'c7s4', name: 'Chapter 7 Season 4', sub: 'Override', released: true, current: true },
 ]
+// The generation currently playable in Battle Royale (used for the "current vs
+// Garden-archive/legacy" split). Update when a new season takes over BR.
+export const CURRENT_GEN = 'c7s4'
+export const GEN_MAP = Object.fromEntries(GENERATIONS.map((g) => [g.id, g]))
 
 export function buildSpriteList() {
   const items = []

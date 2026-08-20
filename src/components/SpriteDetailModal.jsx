@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { SPRITE_TYPES, ALL_SPRITES, SPRITE_BY_ID, RARITY_COLORS, dustCost, spriteSource, spriteScaling, spriteTier, TIER_META } from '../data/sprites'
+import { SPRITE_TYPES, ALL_SPRITES, SPRITE_BY_ID, RARITY_COLORS, dustCost, spriteSource, spriteScaling, spriteTier, TIER_META, GEN_MAP } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
 import { useEscClose } from '../lib/useEscClose'
@@ -93,6 +93,26 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
           </div>
           <button onClick={onClose} title="Close" aria-label="Close" className="text-[var(--muted)] hover:text-white">✕</button>
         </div>
+
+        {/* Generation / Battle-Royale status — current gen plays in BR; older
+            generations are preserved in the Sprite Garden but not used in BR. */}
+        {(() => {
+          const gen = GEN_MAP[type.gen || 'c7s3']
+          if (!gen) return null
+          const current = !!gen.current
+          return (
+            <div
+              className={`mt-3 flex items-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold ${current ? 'bg-emerald-400/10 text-emerald-200' : 'bg-[var(--bg-2)] text-[var(--muted)]'}`}
+              title={current ? 'Current generation — playable in Battle Royale this season' : 'Older generation — kept in your collection & the in-game Sprite Garden, but not used in Battle Royale this season (may return later)'}
+            >
+              <span>{current ? '🟢' : '🏡'}</span>
+              <span>
+                <b className="text-white">{gen.name} · {gen.sub}</b>{' '}
+                {current ? '— playable in Battle Royale now' : '— Garden archive (kept forever; not used in BR this season)'}
+              </span>
+            </div>
+          )
+        })()}
 
         {type.ability && (
           <p className="mt-3 rounded-xl bg-[var(--bg-2)] px-3 py-2 text-sm text-[var(--text)]/90">

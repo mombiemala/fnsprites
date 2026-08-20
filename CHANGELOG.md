@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 20, 2026 — Filter by generation + a Garden-archive badge
+
+- **Added:** a **Generation** filter (`filters.generation`, in `Toolbar` KeyFilters + `App` visible-filter) —
+  All / Override (current) / Runners (legacy) — driven by `GENERATIONS` (now with `legacy`/`current` flags +
+  `CURRENT_GEN` / `GEN_MAP` exports; `c7s4` flipped to released).
+- **Added:** a generation banner in `SpriteDetailModal` — 🟢 "playable in Battle Royale now" for `current`,
+  🏡 "Garden archive (kept forever; not used in BR this season)" for `legacy`.
+- **Why:** S4 started a new BR generation while S3 moved to the Sprite Garden; a generation filter + a clear
+  current-vs-legacy badge answers "what can I use this season."
+
+---
+
 ## August 20, 2026 — Simpler: retired the Garden view & Trade tab
 
 - **Removed:** the 🌱 Garden browse view (`GardenView.jsx` deleted; view toggle back to Grid + List). The

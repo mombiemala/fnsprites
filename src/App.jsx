@@ -61,6 +61,7 @@ const DEFAULT_FILTERS = {
   theme: 'all',
   rarity: 'all',
   ownership: 'all',
+  generation: 'all',
   hideMastered: false,
   showUnreleased: true,
   groupBy: 'none',
@@ -247,6 +248,7 @@ export default function App() {
       if (!filters.showUnreleased && s.unreleased) return false
       if (filters.theme !== 'all' && s.themeId !== filters.theme) return false
       if (filters.rarity !== 'all' && s.rarity !== filters.rarity) return false
+      if (filters.generation !== 'all' && (s.gen || 'c7s3') !== filters.generation) return false
       const st = activeTracking[s.id]
       if (filters.ownership === 'owned' && !st?.owned) return false
       if (filters.ownership === 'unowned' && st?.owned) return false
@@ -295,7 +297,7 @@ export default function App() {
   // View + sort are quick-access layout controls, not filters — so switching to
   // list view (or changing sort) must NOT light up "Clear filters", and clearing
   // must preserve them.
-  const FILTER_KEYS = ['search', 'theme', 'rarity', 'ownership', 'hideMastered', 'showUnreleased', 'groupBy']
+  const FILTER_KEYS = ['search', 'theme', 'rarity', 'ownership', 'generation', 'hideMastered', 'showUnreleased', 'groupBy']
   const hasActiveFilters = useMemo(
     () => FILTER_KEYS.some((k) => filters[k] !== DEFAULT_FILTERS[k]),
     // eslint-disable-next-line react-hooks/exhaustive-deps

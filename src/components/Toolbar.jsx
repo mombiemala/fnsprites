@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { THEMES } from '../data/themes'
-import { RARITY_ORDER } from '../data/sprites'
+import { RARITY_ORDER, GENERATIONS } from '../data/sprites'
 import Tooltip from './Tooltip'
 
 // Filters that count toward the "active" badge (search + sort + view stay
@@ -9,6 +9,7 @@ const FILTER_DEFAULTS = {
   theme: 'all',
   rarity: 'all',
   ownership: 'all',
+  generation: 'all',
   groupBy: 'none',
   hideMastered: false,
   showUnreleased: true,
@@ -37,6 +38,12 @@ const selectCls =
 function KeyFilters({ filters, set }) {
   return (
     <>
+      <select value={filters.generation} onChange={(e) => set({ generation: e.target.value })} title="Filter by Sprite generation (season)" className={`${selectCls} shrink-0`}>
+        <option value="all">All generations</option>
+        {GENERATIONS.map((g) => (
+          <option key={g.id} value={g.id}>{g.sub}{g.current ? ' (current)' : g.legacy ? ' (legacy)' : ''}</option>
+        ))}
+      </select>
       <select value={filters.ownership} onChange={(e) => set({ ownership: e.target.value })} title="Filter by ownership" className={`${selectCls} shrink-0`}>
         <option value="all">All ownership</option>
         <option value="owned">Owned only</option>
