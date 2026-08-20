@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 20, 2026 — Newest-season Sprites lead the lists
+
+- **Changed:** default sort in `App.jsx` is now newest-generation-first — `visible` orders by `genRank` desc
+  (stable within a generation) and type-grouping sorts `set.types` the same way. Explicit Name/Rarity sorts
+  untouched. Uses `GENERATIONS` order (`c7s3` → `c7s4`).
+- **Why:** the current season's Sprites are what players chase; they should headline the collection.
+
+---
+
 ## August 19, 2026 — Season 4 "Override" Sprites — real art + their own pages 🎮
 
 - **Added:** official datamined art (36 `.webp`, Normal/Gold/Cheatmaster) for the 12 Override Sprites in

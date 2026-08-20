@@ -3,6 +3,7 @@ import { useAuth } from './context/authStore'
 import { useToast } from './context/toastStore'
 import { fetchSharedCollection } from './lib/sharedCollection'
 import { getCollection, ACTIVE_COLLECTION_ID } from './data/collections'
+import { GENERATIONS } from './data/sprites'
 import { generateCollectionImage, generateGardenImage, downloadDataUrl } from './lib/exportImage'
 import CollectionSwitcher from './components/CollectionSwitcher'
 import SpriteCard from './components/SpriteCard'
@@ -65,6 +66,10 @@ const DEFAULT_FILTERS = {
 }
 
 const RARITY_RANK = { Rare: 0, Epic: 1, Legendary: 2, Mythic: 3 }
+// Generation recency — higher = newer. Lets the default order float the newest
+// season's Sprites to the top of the lists.
+const GEN_RANK = Object.fromEntries(GENERATIONS.map((g, i) => [g.id, i]))
+const genRank = (s) => GEN_RANK[s.gen || GENERATIONS[0].id] ?? 0
 
 function useShareTarget() {
   return useMemo(() => new URLSearchParams(window.location.search).get('u'), [])
@@ -250,6 +255,13 @@ export default function App() {
       list = [...list].sort((a, b) => a.typeName.localeCompare(b.typeName) || a.themeId.localeCompare(b.themeId))
     } else if (filters.sort === 'rarity') {
       list = [...list].sort((a, b) => (RARITY_RANK[a.rarity] - RARITY_RANK[b.rarity]) || a.typeName.localeCompare(b.typeName))
+    } else {
+      // Default: newest generation first, so the new-season Sprites lead the
+      // list; each generation keeps its natural roster order underneath.
+      list = list
+        .map((s, i) => [s, i])
+        .sort((a, b) => (genRank(b[0]) - genRank(a[0])) || (a[1] - b[1]))
+        .map(([s]) => s)
     }
     return list
   })()
@@ -268,7 +280,7 @@ export default function App() {
     if (filters.groupBy === 'theme') order = set.variants.map((t) => [t.id, t.name])
     else if (filters.groupBy === 'rarity') order = set.rarityOrder.map((r) => [r, r])
     else if (filters.groupBy === 'tier') order = [...(set.tierOrder || []), ['Unranked', 'Unranked']]
-    else order = set.types.map((t) => [t.id, t.name])
+    else order = [...set.types].sort((a, b) => genRank(b) - genRank(a)).map((t) => [t.id, t.name])
     return order.filter(([k]) => buckets[k]?.length).map(([k, label]) => ({ key: k, label, items: buckets[k] }))
   })()
 

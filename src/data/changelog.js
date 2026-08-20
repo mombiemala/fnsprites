@@ -6,6 +6,17 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 20, 2026',
+    title: 'Newest-season Sprites now lead the lists',
+    summary:
+      'The default sort floats the newest generation to the top, so the current season’s Sprites (Chapter 7 Season 4 “Override”) are the first thing you see instead of being buried below 100+ older ones.',
+    changes: [
+      { tag: 'Changed', text: 'Default ordering is now newest-generation-first (each generation keeps its natural roster order underneath). Explicit Name/Rarity sorts are unchanged, and grouping by type also leads with the newest season.' },
+    ],
+    why:
+      'With a new generation landing each season, the freshest Sprites are what players are actively chasing — they should headline the collection, not sit at the bottom.',
+  },
+  {
     date: 'August 19, 2026',
     title: 'Season 4 “Override” Sprites — real art + their own pages 🎮',
     summary:
