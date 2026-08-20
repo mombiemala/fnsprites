@@ -18,6 +18,7 @@ import {
 import { THEME_MAP, FINISH_ODDS_FACTOR } from '../src/data/themes.js'
 import { SPRITE_GUIDE } from '../src/data/spriteGuide.js'
 import { NEWS, NEWS_TAGS } from '../src/data/news.js'
+import { CODES_INTRO, LOBBY_CODES } from '../src/data/codes.js'
 
 const SITE = 'https://fnsprites.vercel.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -262,6 +263,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
     <a href="/?changelog=1">Changelog</a>
     <a href="/?backup=1">Backup</a>
     <a href="/?bug=1">Report a bug</a>
+    <a href="/codes">🔓 Lobby codes</a>
     <a href="/tier-list">🏆 Tier list</a>
     <a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a>
   </div></details>
@@ -305,7 +307,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
 <nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/?view=trade">🔁 Trade</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
-<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/sprites">🗂️ Sprite database</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
+<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><a href="/codes">🔓 Lobby codes</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/sprites">🗂️ Sprite database</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
 <p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Leaks &amp; datamines are credited to HYPEX, ShiinaBR, <a href="https://x.com/FN_Assist" target="_blank" rel="noreferrer">@FN_Assist</a> &amp; FNBRIntel, with tier &amp; farm-route context from <a href="https://punksprite.com" target="_blank" rel="noreferrer">punksprite</a> &amp; <a href="https://quackadex.com" target="_blank" rel="noreferrer">quackadex</a>. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
@@ -687,12 +689,58 @@ function tierListPage() {
 ` + FOOT
 }
 
+// ---------- /codes page ----------
+// Season 4 "Override" Hack-the-Lobby admin codes. High-intent SEO page; the codes
+// come from src/data/codes.js (shared with the in-app modal). Copy runs client-side.
+const CODES_SCRIPT = `<script>(function(){document.querySelectorAll('.codecopy').forEach(function(b){b.addEventListener('click',function(){var c=b.getAttribute('data-code');if(navigator.clipboard){navigator.clipboard.writeText(c).then(function(){var o=b.textContent;b.textContent='✓ Copied';setTimeout(function(){b.textContent=o},1400)})}})})})();</script>`
+function codesPage() {
+  const CST = { working: ['Working', '#34d399'], regional: ['Regional', '#fbbf24'], rumored: ['Unverified', '#8b93a7'] }
+  const working = LOBBY_CODES.filter((c) => c.status === 'working').length
+  const groups = [
+    ['🧩 Sprite unlocks (Cheatmaster)', (c) => c.type === 'sprite'],
+    ['🎁 Rewards, gizmos & effects', (c) => ['reward', 'effect', 'cosmetic'].includes(c.type) && c.status === 'working'],
+    ['🌍 Regional & promo (expire soon)', (c) => c.status === 'regional'],
+    ['❓ Unverified — check in-game first', (c) => c.status === 'rumored'],
+  ]
+  const desc = `Every Fortnite “Override” Hack the Lobby admin-panel code and what it unlocks — the Cheatmaster Sonic, Tails, 8-Bit, Jonesy & Adventure Sprites plus reward codes. ${working} working now; updated as Epic drops more.`
+  const jsonld = {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: 'Fortnite Override Lobby Hack Codes', url: SITE + '/codes', description: desc,
+  }
+  const codeRow = (c) => {
+    const [lbl, col] = CST[c.status] || CST.rumored
+    return `<div class="grow" style="cursor:default">
+      <span class="nm"><button class="codecopy" data-code="${esc(c.code)}" title="Copy ${esc(c.code)}" style="font-family:ui-monospace,Menlo,monospace;font-weight:800;font-size:13px;letter-spacing:.03em;color:#fff;background:var(--panel2);border:0;border-radius:8px;padding:6px 10px;cursor:pointer">${esc(c.code)}</button>
+        <span class="nt"><b style="font-weight:600;color:#dcd2e6">${esc(c.unlocks)}</b><span class="badges"><span style="color:${col};background:${col}22">${lbl}</span>${c.region ? `<span style="color:var(--muted);background:transparent">${esc(c.region)}</span>` : ''}</span></span></span>
+      <span class="src" style="grid-column:1/-1;margin-top:2px">via ${esc(c.source)}</span></div>`
+  }
+  const section = (label, match) => {
+    const items = LOBBY_CODES.filter(match)
+    if (!items.length) return ''
+    return `<h2 style="font-size:16px;margin:20px 0 8px">${esc(label)}</h2><div class="grows">${items.map(codeRow).join('')}</div>`
+  }
+  return head({ title: 'Fortnite Override Lobby Hack Codes — Admin Panel Cheat Codes | FN Sprite Tracker', desc, canonical: SITE + '/codes', jsonld, active: 'news' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>Fortnite “Override” Lobby Hack codes</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 14px;font-size:14px;max-width:70ch">${esc(CODES_INTRO.how)}</p>
+    <div class="card" style="padding:14px;margin:0 0 8px"><b style="color:#fff;font-size:13px">Rules</b><ul style="margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:12.5px;line-height:1.7">${CODES_INTRO.rules.map((r) => `<li>${esc(r)}</li>`).join('')}</ul></div>
+    ${groups.map(([l, m]) => section(l, m)).join('')}
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Community-sourced and moving fast — Epic drops new codes all season and promo codes expire. Verify each code in-game before relying on it; unverified ones are labelled. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track the Sprites you unlock — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT.replace('</body></html>', `${CODES_SCRIPT}</body></html>`)
+}
+
 // ---------- sitemap ----------
 function sitemap(types) {
   const urls = [
     { loc: SITE + '/', changefreq: 'daily', priority: '1.0' },
     { loc: SITE + '/sprites', changefreq: 'weekly', priority: '0.9' },
     { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
+    { loc: SITE + '/codes', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
@@ -722,6 +770,8 @@ mkdirSync(resolve(DIST, 'tier-list'), { recursive: true })
 writeFileSync(resolve(DIST, 'tier-list', 'index.html'), tierListPage())
 mkdirSync(resolve(DIST, 'news'), { recursive: true })
 writeFileSync(resolve(DIST, 'news', 'index.html'), newsPage())
+mkdirSync(resolve(DIST, 'codes'), { recursive: true })
+writeFileSync(resolve(DIST, 'codes', 'index.html'), codesPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /news + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /news + sitemap.xml → dist/`)

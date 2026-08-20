@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'lobby-hack-codes-2026-08-20',
+    emoji: '🔓',
+    message: 'Hack the Lobby is live — enter Admin Panel codes to unlock Cheatmaster Sprites (Sonic = GOTTAGOFAST, Tails = IWANNAFLYHIGH, 8-Bit = 8BITBLAST, Jonesy = PLAY4ALL) + more rewards. Full code list in the footer → Lobby codes.',
+    link: '/codes',
+    linkLabel: 'All codes',
+    start: '2026-08-20',
+    end: '2026-09-15',
+    source: 'Community',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'override-launch-2026-08-20',
     emoji: '🎮',
     message: 'Chapter 7 Season 4 “Override” is here (Aug 20, v42.00): a NEW generation of Sprites takes over Battle Royale. Your Season 3 Sprites are kept — preserved in the new Sprite Garden & your Collection — but aren’t used in BR this season (older gens “may return down the line”). Heads-up: Sprite Dust & Gizmos reset at the flip; the Sprites don’t.',

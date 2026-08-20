@@ -36,6 +36,7 @@ const SpriteDetailModal = lazy(() => import('./components/SpriteDetailModal'))
 const BugReportModal = lazy(() => import('./components/BugReportModal'))
 const AboutModal = lazy(() => import('./components/AboutModal'))
 const ChangelogModal = lazy(() => import('./components/ChangelogModal'))
+const CodesModal = lazy(() => import('./components/CodesModal'))
 const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
@@ -150,6 +151,7 @@ export default function App() {
   const [showAbout, setShowAbout] = useState(() => openParam('about'))
   const [showChangelog, setShowChangelog] = useState(() => openParam('changelog'))
   const [showBackup, setShowBackup] = useState(() => openParam('backup'))
+  const [showCodes, setShowCodes] = useState(() => openParam('codes'))
 
   // Single source of truth for the utility/support links, so the header "More"
   // menu and the footer show the exact same set. Cosmetics is now a primary tab
@@ -158,6 +160,7 @@ export default function App() {
   // landing page (#how-sprites-work), which the in-app "How Sprites work" links
   // point to.
   const utilityLinks = [
+    { id: 'codes', label: '🔓 Lobby codes', onClick: () => setShowCodes(true) },
     { id: 'about', label: 'About', onClick: () => setShowAbout(true) },
     { id: 'changelog', label: 'Changelog', onClick: () => setShowChangelog(true) },
     { id: 'backup', label: 'Backup', onClick: () => setShowBackup(true) },
@@ -742,6 +745,7 @@ export default function App() {
         {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
         {showChangelog && <ChangelogModal onClose={() => setShowChangelog(false)} />}
         {showBackup && <BackupModal onClose={() => setShowBackup(false)} />}
+        {showCodes && <CodesModal onClose={() => setShowCodes(false)} />}
         {showProfile && <ProfileModal onClose={() => setShowProfile(false)} />}
         {showImport && <ScreenshotImportModal onClose={() => setShowImport(false)} />}
         {showShare && <ShareExportModal onClose={() => setShowShare(false)} />}

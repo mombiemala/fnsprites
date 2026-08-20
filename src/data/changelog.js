@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 20, 2026',
+    title: 'New: Hack the Lobby codes 🔓',
+    summary:
+      'Override’s Admin Panel “Hack the Lobby” codes are now tracked — the Cheatmaster Sprite unlocks (Sonic, Tails, 8-Bit, Jonesy, Adventure) plus reward and regional codes, each with a one-tap copy button and a working/expiring/unverified status.',
+    changes: [
+      { tag: 'Added', text: 'A “🔓 Lobby codes” view (footer / ⋯ More, and a dedicated /codes page) listing every Admin Panel code and what it unlocks, grouped into Sprite unlocks · Rewards · Regional/promo · Unverified, with copy-to-clipboard and how-to-redeem steps.' },
+      { tag: 'Added', text: 'Codes are clearly status-tagged (Working / Regional-expiring / Unverified) and each shows its source — so a code you can’t trust yet is obvious. Redeeming a Sprite you already own grants Sprite Dust instead, noted inline.' },
+    ],
+    why:
+      'When a season launches on a “break the rules” theme, redeeming codes is how players get the headline Sprites — and the codes are scattered across a dozen sites with no status. A single maintained, source-cited, copy-ready list (that ties each code to the Sprite it unlocks in the tracker) is exactly the “trusted source” job the app exists to do.',
+  },
+  {
+    date: 'August 20, 2026',
     title: 'Newest-season Sprites now lead the lists',
     summary:
       'The default sort floats the newest generation to the top, so the current season’s Sprites (Chapter 7 Season 4 “Override”) are the first thing you see instead of being buried below 100+ older ones.',

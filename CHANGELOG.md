@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 20, 2026 — New: Hack the Lobby codes 🔓
+
+- **Added:** `src/data/codes.js` (`CODES_INTRO` + `LOBBY_CODES`) — the Override Admin Panel codes with what each
+  unlocks, `status` (working/regional/rumored), `source`, and `spriteId` linking Cheatmaster unlocks to the roster.
+- **Added:** `CodesModal.jsx` (footer / ⋯ More → "🔓 Lobby codes", deep-link `?codes=1`) with grouped codes,
+  copy-to-clipboard, how-to + rules; and a prerendered **/codes** SEO page (shared data) with client-side copy,
+  wired into the footer, More menu (app + SEO parity), sitemap, and a launch announcement banner.
+- **Why:** codes are the headline way to get Override's Sprites and are scattered across a dozen sites with no
+  status — a maintained, source-cited, copy-ready list that ties each code to its Sprite is core to the app's job.
+
+---
+
 ## August 20, 2026 — Newest-season Sprites lead the lists
 
 - **Changed:** default sort in `App.jsx` is now newest-generation-first — `visible` orders by `genRank` desc
