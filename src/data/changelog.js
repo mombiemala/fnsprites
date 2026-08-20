@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'August 20, 2026',
+    title: 'Codes: mark what you’ve redeemed ✅',
+    summary:
+      'The Lobby-codes view now tracks which codes you’ve already redeemed — check them off, hide the done ones, and see your progress at a glance.',
+    changes: [
+      { tag: 'Added', text: 'A per-code “redeemed” checkbox (saved on your device), a “Hide redeemed” toggle, and Redeem-all / Clear buttons — plus a redeemed count in the header. Redeemed codes dim and strike through.' },
+    ],
+    why:
+      'Codes are one-time-use per account and there are a lot of them; without a way to mark what you’ve claimed you re-scan the whole list every visit. Tracking redemption turns the list into an actual checklist — the same job the sprite tracker does for your collection.',
+  },
+  {
+    date: 'August 20, 2026',
     title: 'Override Sprites are live — “Soon” flipped to released ✅',
     summary:
       'With Season 4 live, the new-generation Sprites moved from “Upcoming/Rumored” to released, with their real art (Normal + the new Cheatmaster finish), reference-aligned rarities, and their own pages.',

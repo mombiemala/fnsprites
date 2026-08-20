@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 20, 2026 — Codes: mark what you've redeemed ✅
+
+- **Added:** redeemed-tracking in `CodesModal` — a per-code checkbox persisted to `localStorage`
+  (`fnsprites.codesRedeemed`), a "Hide redeemed" toggle (`fnsprites.codesHideRedeemed`), Redeem-all / Clear
+  bulk actions, a header redeemed count, and dimmed/struck styling for done codes.
+- **Why:** codes are one-time-use per account and there are many — marking redemption turns the list into a
+  real checklist instead of a re-scan every visit.
+
+---
+
 ## August 20, 2026 — Override Sprites are live — "Soon" flipped to released ✅
 
 - **Changed:** 11 Override Sprites flipped from `released:false, rumored:true` to released in `sprites.js` —
