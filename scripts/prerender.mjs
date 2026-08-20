@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import {
   SPRITE_TYPES, SPRITE_BY_ID, RELEASED_COUNT,
-  RARITY_COLORS, RARITY_ORDER, TIER_META, TIER_ORDER,
+  RARITY_COLORS, RARITY_ORDER, TIER_META, TIER_ORDER, GENERATIONS,
   dustCost, spriteTier, spriteScaling, spriteSource,
 } from '../src/data/sprites.js'
 import { THEME_MAP, FINISH_ODDS_FACTOR } from '../src/data/themes.js'
@@ -43,6 +43,16 @@ const VARIANT_BG = {
   holofoil: 'linear-gradient(135deg,#8ef0ff,#c77dff,#ffd86b)',
   cube: 'linear-gradient(160deg,#8a2be2,#2a0a4a)',
   quack: 'linear-gradient(160deg,#ffcf4d,#a0691a)',
+  cheatmaster: 'linear-gradient(135deg,#12351f,#0f2a3a 45%,#2a0f3a)',
+}
+
+// Season 4 "Override" art ships as .webp; Season 3 as .png. SpriteArt/onerror
+// handles the fallback either way.
+const imgExt = (type) => (type.gen === 'c7s4' ? 'webp' : 'png')
+// Human season label for a Sprite's generation (for the per-page "Season" tag).
+const genLabel = (type) => {
+  const g = GENERATIONS.find((x) => x.id === (type.gen || 'c7s3'))
+  return g ? `${g.name} · ${g.sub}` : null
 }
 
 // Design tokens + primitives are lifted verbatim from the app (src/index.css +
@@ -363,9 +373,9 @@ function spritePage(type, others) {
 
   return head({ title, desc, canonical: url, jsonld, ogImage: `${SITE}/api/og?sprite=${encodeURIComponent(type.id)}` }) + `
 <section class="hero" style="background:linear-gradient(135deg,${tint}22,var(--panel))">
-  <div class="avatar" style="background:${VARIANT_BG.normal}"><span class="avfallback">${esc(type.icon || '🧩')}</span><img class="art" src="/sprites/${type.id}_normal.png" alt="${esc(name)} Sprite (Normal)" onerror="this.style.display='none'"></div>
+  <div class="avatar" style="background:${VARIANT_BG.normal}"><span class="avfallback">${esc(type.icon || '🧩')}</span><img class="art" src="/sprites/${type.id}_normal.${imgExt(type)}" alt="${esc(name)} Sprite (Normal)" onerror="this.style.display='none'"></div>
   <div><h1>${esc(name)} Sprite</h1>
-    <div class="tags"><span class="tag" style="background:${tint};color:#0a0606;border-color:transparent">${esc(type.rarity)}</span>${tier ? `<span class="tag">${tier}-Tier</span>` : ''}${type.vaulted ? '<span class="tag" style="background:#ef444422;color:#fca5a5;border-color:transparent">Vaulted</span>' : ''}${type.released ? '' : '<span class="tag">Upcoming</span>'}</div>
+    <div class="tags"><span class="tag" style="background:${tint};color:#0a0606;border-color:transparent">${esc(type.rarity)}</span>${genLabel(type) ? `<span class="tag" title="Which season / generation this Sprite belongs to">${esc(genLabel(type))}</span>` : ''}${tier ? `<span class="tag">${tier}-Tier</span>` : ''}${type.vaulted ? '<span class="tag" style="background:#ef444422;color:#fca5a5;border-color:transparent">Vaulted</span>' : ''}${type.released ? '' : '<span class="tag">Upcoming</span>'}${type.rumored ? '<span class="tag" style="background:rgba(245,158,11,.16);color:#fcd34d;border-color:transparent">Rumored</span>' : ''}</div>
     <p class="lede">${esc(desc)}</p></div>
 </section>
 <div class="stats">${stats.map(([n, l]) => `<div class="stat"><div class="n">${esc(n)}</div><div class="l">${esc(l)}</div></div>`).join('')}</div>
@@ -379,7 +389,7 @@ ${type.ability ? `<h2>Ability &amp; leveling</h2><div class="card"><p style="mar
 
 <h2>${esc(name)} variants</h2>
 <p style="color:var(--muted);margin:-4px 0 14px;font-size:13px">Every finish shares the Sprite’s base ability and adds its own bonus perk. Below: what each ${esc(name)} finish grants and whether it’s currently obtainable.</p>
-<div class="variants">${variants.map((v) => `<div class="variant"><div class="sw" style="background:${VARIANT_BG[v.tid] || VARIANT_BG.normal}"><span class="swfallback">${esc(type.icon || '🧩')}</span><img src="/sprites/${type.id}_${v.tid}.png" alt="${esc(name)} ${esc(v.name)}" loading="lazy" onerror="this.style.display='none'"></div><b class="nm">${esc(v.name)}</b><small${v.vaulted ? ' style="color:#fca5a5"' : ''}>${v.vaulted ? 'Vaulted' : v.released ? 'Available' : 'Coming soon'}</small>${v.bonus ? `<span class="perk" style="border-top-color:${v.accent}44"><b style="color:${v.accent}">Perk</b>${esc(v.bonus)}</span>` : ''}</div>`).join('')}</div>
+<div class="variants">${variants.map((v) => `<div class="variant"><div class="sw" style="background:${VARIANT_BG[v.tid] || VARIANT_BG.normal}"><span class="swfallback">${esc(type.icon || '🧩')}</span><img src="/sprites/${type.id}_${v.tid}.${imgExt(type)}" alt="${esc(name)} ${esc(v.name)}" loading="lazy" onerror="this.style.display='none'"></div><b class="nm">${esc(v.name)}</b><small${v.vaulted ? ' style="color:#fca5a5"' : ''}>${v.vaulted ? 'Vaulted' : v.released ? 'Available' : 'Coming soon'}</small>${v.bonus ? `<span class="perk" style="border-top-color:${v.accent}44"><b style="color:${v.accent}">Perk</b>${esc(v.bonus)}</span>` : ''}</div>`).join('')}</div>
 
 <h2>${esc(name)} FAQ</h2>
 ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
@@ -422,7 +432,7 @@ const upcomingCard = () => {
   if (!up.length) return ''
   return `<div class="card sidecard"><h3 class="sh">🔮 Upcoming &amp; leaked <span class="rumored">Rumored</span></h3>
 <p class="sub">Datamined / leaked — dates &amp; details aren’t confirmed by Epic.</p>
-<div class="uplist">${up.map((t) => `<a class="uprow" href="/?sprite=${encodeURIComponent(t.id)}" title="Open ${esc(t.name)}"><span class="upic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.png" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span class="upmeta"><b>${esc(t.name)}</b> <small style="color:${RARITY_TINT[t.rarity] || '#a99fb8'}">${esc(t.rarity)}</small>${t.ability ? `<small class="upab">${esc(t.ability)}</small>` : ''}</span><span class="update">${t.releaseDate ? fmtLeak(t.releaseDate) : 'TBA'}</span></a>`).join('')}</div></div>`
+<div class="uplist">${up.map((t) => `<a class="uprow" href="/sprite/${slug(t.name)}" title="Open ${esc(t.name)}"><span class="upic" style="background:${VARIANT_BG.normal}"><img src="/sprites/${t.id}_normal.${imgExt(t)}" alt="${esc(t.name)} Sprite" loading="lazy" onerror="this.style.display='none'"></span><span class="upmeta"><b>${esc(t.name)}</b> <small style="color:${RARITY_TINT[t.rarity] || '#a99fb8'}">${esc(t.rarity)}</small>${t.ability ? `<small class="upab">${esc(t.ability)}</small>` : ''}</span><span class="update">${t.releaseDate ? fmtLeak(t.releaseDate) : 'TBA'}</span></a>`).join('')}</div></div>`
 }
 
 // Chest luck card HTML. `selId` pre-selects a Sprite (used on its own page).
@@ -471,6 +481,8 @@ function buildGuideRows() {
       dust: dustCost(t.rarity, 'normal'), source: spriteSource(t.id),
       status: vaulted ? 'vaulted' : released ? 'available' : 'upcoming',
       released,
+      // Released Sprites and the datamined Season 4 roster each have a static page.
+      hasPage: released || t.gen === 'c7s4',
     }
   })
 }
@@ -479,7 +491,7 @@ function guideRow(r) {
   const rc = RARITY_COLORS[r.rarity] || '#a99fb8'
   const st = STATUS_META[r.status]
   const tm = r.tier ? TIER_META[r.tier] : null
-  const href = r.released ? `/sprite/${slug(r.name)}` : `/?sprite=${encodeURIComponent(r.id)}`
+  const href = r.hasPage ? `/sprite/${slug(r.name)}` : `/?sprite=${encodeURIComponent(r.id)}`
   return `<a class="grow" href="${href}" title="Open ${esc(r.name)}"`
     + ` data-status="${r.status}" data-p="${r.p ?? ''}" data-rank="${RARITY_RANK[r.rarity] ?? 0}"`
     + ` data-dust="${r.dust ?? ''}" data-name="${esc(r.name.toLowerCase())}" data-search="${esc(`${r.name} ${r.rarity}`.toLowerCase())}">`
@@ -691,10 +703,14 @@ function sitemap(types) {
 }
 
 // ---------- write ----------
-const types = SPRITE_TYPES.filter((t) => t.released)
+// Give every released Sprite AND every datamined Season 4 "Override" Sprite its
+// own page (the new-gen roster ships with real art). Related links prefer the
+// released roster so "Other sprites" stays useful.
+const types = SPRITE_TYPES.filter((t) => t.released || t.gen === 'c7s4')
+const releasedPool = SPRITE_TYPES.filter((t) => t.released)
 let n = 0
 for (const type of types) {
-  const others = types.filter((o) => o.id !== type.id && o.rarity === type.rarity).concat(types.filter((o) => o.rarity !== type.rarity)).slice(0, 6)
+  const others = releasedPool.filter((o) => o.id !== type.id && o.rarity === type.rarity).concat(releasedPool.filter((o) => o.rarity !== type.rarity)).slice(0, 6)
   const dir = resolve(DIST, 'sprite', slug(type.name))
   mkdirSync(dir, { recursive: true })
   writeFileSync(resolve(dir, 'index.html'), spritePage(type, others))

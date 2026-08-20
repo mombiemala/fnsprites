@@ -16,6 +16,10 @@ export const THEMES = [
   // auto-releasing Cube early — so it stays true until each wave actually lands.
   { id: 'cube', name: 'Cube', short: 'Cu', className: 'theme-cube', accent: '#8a2be2', bonus: 'Overdrive (speed boost) while you’re in the Storm.', rumored: true },
   { id: 'quack', name: 'Quack', short: 'Qk', className: 'theme-quack', accent: '#ffcf4d', bonus: 'Shares 50% of the XP it earns with every other Sprite in your match — levels your collection faster. Earned via Sprite Mastery rewards, not from chests.', mastery: true },
+  // Cheatmaster — the Chapter 7 Season 4 "Override" finish (glitch/pixel theme).
+  // Datamined; its bonus and roll odds aren't confirmed yet, so `rumored: true`
+  // keeps it from auto-releasing (and reads as leaked) until Epic reveals it.
+  { id: 'cheatmaster', name: 'Cheatmaster', short: 'Ch', className: 'theme-cheatmaster', accent: '#41f08a', bonus: 'Season 4 “Override” finish — bonus not yet confirmed by Epic (datamined).', rumored: true },
   { id: 'rift', name: 'Rift', short: 'R', className: 'theme-rift', accent: '#36c5ff', bonus: 'Special Rift variant' },
 ]
 
@@ -40,5 +44,8 @@ export const FINISH_ODDS_FACTOR = {
   // chest pull — null keeps it out of the Chest-luck picker in both the app and
   // the static pages, which both filter finishes on `FINISH_ODDS_FACTOR[f] != null`.
   quack: null,
+  // Cheatmaster odds aren't known yet — null keeps it out of the Chest-luck picker
+  // until Epic (or the community) surfaces a roll rate.
+  cheatmaster: null,
   rift: 0.05,
 }

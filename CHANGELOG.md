@@ -11,6 +11,25 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 19, 2026 — Season 4 "Override" Sprites — real art + their own pages 🎮
+
+- **Added:** official datamined art (36 `.webp`, Normal/Gold/Cheatmaster) for the 12 Override Sprites in
+  `public/sprites/` — the Sonic collab (Sonic/Tails/Shadow, internal codename "NarrowFlea"), Klombo, Jonesy,
+  Victory Crown, 8-Bit Blaster, Storm Scout, Killswitch, Bush Ranger, Jazz Jackrabbit, Dwarf. Roster in
+  `sprites.js` reconciled to these (dropped the guessed "Adventurer"); `image` path is now `.webp` for
+  `gen: 'c7s4'`, `.png` otherwise.
+- **Added:** the **Cheatmaster** finish in `themes.js` (+ `.theme-cheatmaster` CSS, prerender `VARIANT_BG`),
+  `rumored: true` and `FINISH_ODDS_FACTOR: null` so its unknown bonus/odds don't leak as fact.
+- **Added:** per-sprite SEO pages for the Season 4 roster (`prerender.mjs` now builds pages for `released ||
+  gen==='c7s4'` — 42 pages total), a **Season** tag on every Sprite page via `GENERATIONS`, and a Rumored
+  badge; the board/upcoming card/sitemap route to the new pages.
+- **Note:** abilities & rarities for the new Sprites stay `rumored`/unconfirmed (placeholders) until Epic
+  reveals them; art + roster are datamine-confirmed. `RELEASED_COUNT` unchanged (118) — they're upcoming.
+- **Why:** the user supplied the datamined asset drop; real art + resolved internal names (NarrowFlea = the
+  Sonic set) beat generated placeholders, and per-page + season tagging readies the Aug 20 flip and SEO.
+
+---
+
 ## August 19, 2026 — See who owns a Sprite 👥
 
 - **Added:** a "👥 Who owns this" collapsible in `SpriteDetailModal` — public collectors of the Sprite, with

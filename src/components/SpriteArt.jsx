@@ -35,6 +35,22 @@ const TYPES = {
   peely: { c: ['#fff2b0', '#ffd23f', '#c98a1a'], feat: '#7a5220' },
   llama: { c: ['#bfe9ff', '#3ea0e0', '#1f5f9a'], feat: '#ff5db0' },
   ironmouse: { c: ['#ffd0e6', '#ff5d8f', '#b01050'], feat: '#a8102e' },
+  // Chapter 7 Season 4 "Override" — leaked/upcoming. Original stylised looks
+  // (colour + a simple motif that "reads as" the character), never a copy of the
+  // real IP art or an AI likeness — same approach as Peely/Batman/Ironmouse.
+  sonic: { c: ['#8fd3ff', '#2a6cf0', '#123a9e'], feat: '#ffffff' },
+  tails: { c: ['#ffd9a0', '#ff9a3c', '#c85e12'], feat: '#fff2df' },
+  jazz: { c: ['#bff0c0', '#43c463', '#1f7a3a'], feat: '#ffffff' },
+  klombo: { c: ['#ffc7ea', '#c86bd0', '#7a2e8a'], feat: '#ffe14d' },
+  bushranger: { c: ['#cfeaa0', '#7ab54a', '#3f6f28'], feat: '#8a5a2a' },
+  killswitch: { c: ['#8a94a8', '#3a4358', '#171c2a'], feat: '#ff3b3b' },
+  victorycrown: { c: ['#ffe9a8', '#ffcf4d', '#cf9a20'], feat: '#ff5566' },
+  adventurer: { c: ['#e8cfa0', '#c8974a', '#7a5220'], feat: '#3aa0ff' },
+  pond: { c: ['#bdf0c0', '#5ac86a', '#2b7a3a'], feat: '#ffffff' },
+  bullet: { c: ['#ffe6a0', '#e0a83c', '#9a6a12'], feat: '#5a4a2a' },
+  honey: { c: ['#ffe6a0', '#f5b81f', '#b8801c'], feat: '#7a5220' },
+  dumpster: { c: ['#cfd6e0', '#8b93a7', '#4a5265'], feat: '#1a2138' },
+  xray: { c: ['#d0faff', '#46d0e0', '#1f8fae'], feat: '#ffffff' },
 }
 
 const BODY =
@@ -193,6 +209,48 @@ function Features({ id, fc, gid }) {
       </g>
     case 'dream':
       return <><path d="M58 30 a11 11 0 1 0 0.5 21 9 9 0 1 1-0.5-21 Z" fill="#fff" opacity="0.85" /><path d="M40 28 l1.5 4 4 1.5 -4 1.5 L40 41 l-1.5-4 -4-1.5 4-1.5 Z" fill="#fff" opacity="0.8" /></>
+
+    // ---- Season 4 "Override" leaked Sprites — stylised motifs, not IP copies ----
+    case 'sonic':
+      // Swept-back "hedgehog" quills + a red sneaker hint.
+      return <><g fill={bodyFill} stroke="rgba(0,0,0,.25)" strokeWidth="1.4" strokeLinejoin="round"><path d="M58 18 L86 6 L64 30 Z" /><path d="M60 30 L90 26 L66 44 Z" /><path d="M40 15 L26 4 L48 16 Z" /></g><ellipse cx="42" cy="87" rx="9" ry="3.6" fill="#e63b2e" /></>
+    case 'tails':
+      // Two curly tails + fox ears.
+      return <><g fill={bodyFill} stroke="rgba(0,0,0,.25)" strokeWidth="1.3" strokeLinejoin="round"><path d="M72 58 q20 2 22 -10 q-6 12 -18 4 Z" /><path d="M74 66 q18 8 16 -6 q-4 10 -14 0 Z" /></g><path d="M34 17 L30 3 L43 15 Z" {...st} /><path d="M66 17 L70 3 L57 15 Z" {...st} /></>
+    case 'jazz':
+      // Tall jackrabbit ears.
+      return <g fill={bodyFill} stroke="rgba(0,0,0,.25)" strokeWidth="1.4" strokeLinejoin="round"><path d="M40 16 C36 2 41 -4 45 -2 C44 6 44 12 46 16 Z" /><path d="M60 16 C64 2 59 -4 55 -2 C56 6 56 12 54 16 Z" /></g>
+    case 'klombo':
+      // Chunky head spikes + big friendly nostrils.
+      return <><g fill={fc} stroke="rgba(0,0,0,.25)" strokeWidth="1.2" strokeLinejoin="round"><path d="M38 14 l5-9 5 9 Z" /><path d="M52 14 l5-9 5 9 Z" /></g><g fill={INK} opacity="0.55"><ellipse cx="44" cy="46" rx="2.4" ry="3.2" /><ellipse cx="56" cy="46" rx="2.4" ry="3.2" /></g></>
+    case 'bushranger':
+      // A little leaf sprout.
+      return <g fill={fc} stroke="rgba(0,0,0,.2)" strokeWidth="1" strokeLinejoin="round"><path d="M50 16 C50 6 42 2 36 4 C40 12 44 15 50 16 Z" /><path d="M50 16 C50 6 58 2 64 4 C60 12 56 15 50 16 Z" /></g>
+    case 'killswitch':
+      // A power / kill-switch emblem.
+      return <g fill="none" stroke={fc} strokeWidth="3" strokeLinecap="round"><circle cx="50" cy="52" r="10" opacity="0.9" /><path d="M50 42 v9" /></g>
+    case 'victorycrown':
+      // The Victory Crown — a bold royale crown with a gem.
+      return <><path d="M30 22 L34 6 L42 16 L50 2 L58 16 L66 6 L70 22 Z" {...st} /><circle cx="50" cy="12" r="2.4" fill="#ff5566" /><rect x="30" y="22" width="40" height="4" rx="2" fill={fc} /></>
+    case 'adventurer':
+      // An explorer's hat brim.
+      return <g fill={bodyFill} stroke="rgba(0,0,0,.25)" strokeWidth="1.4" strokeLinejoin="round"><ellipse cx="50" cy="24" rx="30" ry="6" /><path d="M38 24 C38 12 62 12 62 24 Z" /></g>
+    case 'pond':
+      // Frog eye-bumps on top (egg → tadpole → frog).
+      return <g><circle cx="40" cy="20" r="8" fill={bodyFill} stroke="rgba(0,0,0,.25)" strokeWidth="1.5" /><circle cx="60" cy="20" r="8" fill={bodyFill} stroke="rgba(0,0,0,.25)" strokeWidth="1.5" /><circle cx="40" cy="20" r="3.4" fill={INK} /><circle cx="60" cy="20" r="3.4" fill={INK} /></g>
+    case 'bullet':
+      // A stacked-ammo chevron emblem.
+      return <g fill="none" stroke={fc} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.85"><path d="M42 48 l8 6 8-6 M42 58 l8 6 8-6" /></g>
+    case 'honey':
+      // A honeycomb cluster.
+      return <g fill="none" stroke={fc} strokeWidth="2" opacity="0.6"><path d="M46 40 l6 0 3 5 -3 5 -6 0 -3-5 Z" /><path d="M55 45 l6 0 3 5 -3 5 -6 0 -3-5 Z" /><path d="M46 50 l6 0 3 5 -3 5 -6 0 -3-5 Z" /></g>
+    case 'dumpster':
+      // Raccoon eye-mask band + rounded ears.
+      return <><path d="M32 20 L30 8 L42 16 Z" {...st} /><path d="M68 20 L70 8 L58 16 Z" {...st} /><path d="M31 52 q19 -7 38 0 l0 6 q-19 -6 -38 0 Z" fill={INK} opacity="0.55" /></>
+    case 'xray':
+      // Ribcage scan lines.
+      return <g stroke={fc} strokeWidth="2" opacity="0.7" fill="none" strokeLinecap="round"><path d="M50 40 v26" /><path d="M40 46 h20 M38 54 h24 M40 62 h20" /></g>
+
     default:
       return null
   }

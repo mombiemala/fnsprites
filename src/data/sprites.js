@@ -132,8 +132,8 @@ export const SPRITE_TYPES = [
   //   confirmed, so they stay Upcoming/Rumored until the Aug 20 staging flips
   //   them with real variants, rarities and abilities (don't auto-release guesses).
   { id: 'sonic', name: 'Sonic', icon: '🦔', rarity: 'Mythic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Headlines the “Gaming Legends” theme for Chapter 7 Season 4 “Override” (a Green Hill Zone POI is rumored). Confirmed by Epic as the season’s marquee collab; the Sprite’s exact ability hasn’t been revealed — a speed/movement theme is expected but unconfirmed.',
-    variants: { normal: U } },
+    ability: 'Datamined Season 4 “Override” Sprite — the marquee Sonic collab (cube “backpack” redesign), in Normal, Gold & the new Cheatmaster finish. A speed/movement ability is expected but not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
   { id: 'pond', name: 'Pond', icon: '🐸', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Pine & Kiri): evolves egg → tadpole → frog, boosting movement speed & jump height and cutting fall damage as it grows. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
@@ -150,32 +150,46 @@ export const SPRITE_TYPES = [
     ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players like the old medallion did. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
 
-  // ---- Override "Gaming Legends" collab Sprites — DATAMINED/LEAKED (HYPEX,
-  //   ShiinaBR, @FN_Assist). Only Sonic (above) is trailer-confirmed; these are
-  //   leak-only, with abilities and rarities mostly unconfirmed — placeholders
-  //   below carry the `rumored` badge so nothing reads as fact. No `releaseDate`;
-  //   flip + set real rarities/abilities/variants during the Aug 20 staging. ----
-  { id: 'tails', name: 'Tails', icon: '🦊', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Leaked Season 4 “Override” Sprite (Sonic collab). Datamined ability: glide / hover through the air. Leaked — rarity & details unconfirmed by Epic.',
-    variants: { normal: U } },
+  // ---- Override new-generation Sprites — DATAMINED with official art (Normal,
+  //   Gold & the new "Cheatmaster" finish). Their existence + look are confirmed
+  //   from the v42.00 files, but abilities and rarities aren't revealed yet, so
+  //   they stay `rumored: true` (rarities below are best-effort placeholders) and
+  //   have no `releaseDate` — the Aug 20 staging flips them with real data. The
+  //   Sonic collab ships under the internal "NarrowFlea" codename: Sonic, Tails
+  //   (Monkey) and Shadow (Scribe). ----
+  { id: 'tails', name: 'Tails', icon: '🦊', rarity: 'Legendary', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — Tails (Sonic collab), cube redesign, in Normal/Gold/Cheatmaster. A flight/glide ability is expected; not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
+  { id: 'shadow', name: 'Shadow', icon: '🦔', rarity: 'Mythic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
   { id: 'jazz', name: 'Jazz Jackrabbit', icon: '🐇', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Leaked Season 4 “Override” Sprite. Datamined ability: an extra mid-air (double) jump. Leaked — rarity & details unconfirmed by Epic.',
-    variants: { normal: U } },
+    ability: 'Datamined Season 4 “Override” Sprite (Jazz Jackrabbit), in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
   { id: 'klombo', name: 'Klombo', icon: '🦕', rarity: 'Legendary', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Leaked Season 4 “Override” Sprite. Ability not yet datamined. Leaked — rarity & details unconfirmed by Epic.',
-    variants: { normal: U } },
-  { id: 'bushranger', name: 'Bushranger', icon: '🌿', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Leaked Season 4 “Override” Sprite. Ability not yet datamined. Leaked — rarity & details unconfirmed by Epic.',
-    variants: { normal: U } },
-  { id: 'killswitch', name: 'Killswitch', icon: '🎛️', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Leaked Season 4 “Override” Sprite. Ability not yet datamined. Leaked — rarity & details unconfirmed by Epic.',
-    variants: { normal: U } },
+    ability: 'Datamined Season 4 “Override” Sprite — Klombo, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
+  { id: 'bushranger', name: 'Bush Ranger', icon: '🌿', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — a woodland Bush Ranger, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
   { id: 'victorycrown', name: 'Victory Crown', icon: '👑', rarity: 'Legendary', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Leaked Season 4 “Override” Sprite. Ability not yet datamined. Leaked — rarity & details unconfirmed by Epic.',
-    variants: { normal: U } },
-  { id: 'adventurer', name: 'The Adventurer', icon: '🧭', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Leaked Season 4 “Override” Sprite. Ability not yet datamined. Leaked — rarity & details unconfirmed by Epic.',
-    variants: { normal: U } },
+    ability: 'Datamined Season 4 “Override” Sprite — a crowned royale Sprite, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
+  { id: 'jonesy', name: 'Jonesy', icon: '🕶️', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — Jonesy, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
+  { id: 'blaster', name: '8-Bit Blaster', icon: '🎮', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — a retro handheld “8-Bit Blaster”, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
+  { id: 'killswitch', name: 'Killswitch', icon: '🎯', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — a tactical “Killswitch”, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
+  { id: 'stormscout', name: 'Storm Scout', icon: '👿', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — a horned “Storm Scout”, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
+  { id: 'dwarf', name: 'Dwarf', icon: '🪓', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — a hooded “Dwarf”, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
+    variants: { normal: U, gold: U, cheatmaster: U } },
 ]
 
 export const RARITY_ORDER = ['Rare', 'Epic', 'Legendary', 'Mythic']
@@ -281,7 +295,9 @@ export function buildSpriteList() {
         // back to generated SVG if the file is missing.
         // `import.meta.env` is undefined under plain Node (the prerender script
         // imports this module directly), so fall back to a root base path there.
-        image: `${import.meta.env?.BASE_URL ?? '/'}sprites/${type.id}_${themeId}.png`,
+        // Season 4 "Override" art ships as .webp (datamined assets); the Season 3
+        // roster is .png. SpriteArt falls back to generated vector art either way.
+        image: `${import.meta.env?.BASE_URL ?? '/'}sprites/${type.id}_${themeId}.${type.gen === 'c7s4' ? 'webp' : 'png'}`,
         // Leaked/unconfirmed: either the whole sprite is rumored, or it's a
         // rumored variant form (e.g. Cube/Quack) whose bonus isn't confirmed.
         // BUT a variant explicitly flagged R is confirmed live, so it never wears

@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'August 19, 2026',
+    title: 'Season 4 “Override” Sprites — real art + their own pages 🎮',
+    summary:
+      'The datamined Chapter 7 Season 4 roster is in with official art: 12 new Sprites in the cube “backpack” redesign, the new Cheatmaster finish, a page for each, and a Season tag on every Sprite.',
+    changes: [
+      { tag: 'Added', text: 'Official art for the 12 datamined Override Sprites (Normal, Gold & Cheatmaster finishes): the Sonic collab — Sonic, Tails & Shadow — plus Klombo, Jonesy, Victory Crown, 8-Bit Blaster, Storm Scout, Killswitch, Bush Ranger, Jazz Jackrabbit and Dwarf. Replaces the earlier name-only placeholders (the leaked “NarrowFlea” codename turned out to be the Sonic set).' },
+      { tag: 'Added', text: 'The new “Cheatmaster” Season 4 finish (glitch/pixel look), and a dedicated SEO page for every new Sprite (each shows Upcoming + Rumored until launch).' },
+      { tag: 'Added', text: 'A “Season” tag on every Sprite page — Chapter 7 Season 3 “Runners” or Season 4 “Override” — so it’s clear which generation each belongs to.' },
+      { tag: 'Changed', text: 'Abilities and rarities for the new Sprites are still marked unconfirmed (Epic hasn’t revealed them); the art and roster are datamine-confirmed. They flip to fully released with real data at the Aug 20 launch.' },
+    ],
+    why:
+      'You sent the datamined asset drop — real art beats our generated placeholders, and the internal names finally resolved the roster (e.g. “NarrowFlea” = the Sonic/Tails/Shadow set). Giving each its own page + a season tag gets the tracker ready for the Aug 20 flip and captures “Override sprites” search traffic early.',
+  },
+  {
+    date: 'August 19, 2026',
     title: 'See who owns a Sprite 👥',
     summary:
       'Every Sprite’s detail view now has a “Who owns this” list — the public collectors who’ve got it, ranked by how many variants they’ve mastered. Tap through to their collection.',
