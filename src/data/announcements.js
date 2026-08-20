@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'override-launch-2026-08-20',
+    emoji: '🎮',
+    message: 'Chapter 7 Season 4 “Override” is here (Aug 20, v42.00): a NEW generation of Sprites takes over Battle Royale. Your Season 3 Sprites are kept — preserved in the new Sprite Garden & your Collection — but aren’t used in BR this season (older gens “may return down the line”). Heads-up: Sprite Dust & Gizmos reset at the flip; the Sprites don’t.',
+    link: 'https://communities.epicgames.com/thread/new-generation-of-sprites-in-chapter-7-season-4-override/6zPu',
+    linkLabel: 'Epic details',
+    start: '2026-08-19',
+    end: '2026-08-27',
+    source: 'Epic Games',
+    official: true,
+    tone: 'alert',
+  },
+  {
     id: 'sprite-spree-week-2026-08-16',
     emoji: '💫',
     message: 'Sprite Spree Week (Aug 16–19): a 24-hour finish-hour each day — Galaxy (16), Holofoil (17), Cube (18), Gem (19) — plus 2×–4× Sprite XP, guaranteed Lucky Locators, a free Gem Zero Point, and FREE Dust-less re-summons of lost Sprites. Aug 15 kicks off with the “Unstable” Story Moment (2 PM ET) + Mythic Sprite Hours.',

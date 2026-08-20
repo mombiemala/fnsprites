@@ -149,6 +149,33 @@ export const SPRITE_TYPES = [
   { id: 'xray', name: 'X-Ray', icon: '🩻', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players like the old medallion did. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
+
+  // ---- Override "Gaming Legends" collab Sprites — DATAMINED/LEAKED (HYPEX,
+  //   ShiinaBR, @FN_Assist). Only Sonic (above) is trailer-confirmed; these are
+  //   leak-only, with abilities and rarities mostly unconfirmed — placeholders
+  //   below carry the `rumored` badge so nothing reads as fact. No `releaseDate`;
+  //   flip + set real rarities/abilities/variants during the Aug 20 staging. ----
+  { id: 'tails', name: 'Tails', icon: '🦊', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Leaked Season 4 “Override” Sprite (Sonic collab). Datamined ability: glide / hover through the air. Leaked — rarity & details unconfirmed by Epic.',
+    variants: { normal: U } },
+  { id: 'jazz', name: 'Jazz Jackrabbit', icon: '🐇', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Leaked Season 4 “Override” Sprite. Datamined ability: an extra mid-air (double) jump. Leaked — rarity & details unconfirmed by Epic.',
+    variants: { normal: U } },
+  { id: 'klombo', name: 'Klombo', icon: '🦕', rarity: 'Legendary', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Leaked Season 4 “Override” Sprite. Ability not yet datamined. Leaked — rarity & details unconfirmed by Epic.',
+    variants: { normal: U } },
+  { id: 'bushranger', name: 'Bushranger', icon: '🌿', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Leaked Season 4 “Override” Sprite. Ability not yet datamined. Leaked — rarity & details unconfirmed by Epic.',
+    variants: { normal: U } },
+  { id: 'killswitch', name: 'Killswitch', icon: '🎛️', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Leaked Season 4 “Override” Sprite. Ability not yet datamined. Leaked — rarity & details unconfirmed by Epic.',
+    variants: { normal: U } },
+  { id: 'victorycrown', name: 'Victory Crown', icon: '👑', rarity: 'Legendary', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Leaked Season 4 “Override” Sprite. Ability not yet datamined. Leaked — rarity & details unconfirmed by Epic.',
+    variants: { normal: U } },
+  { id: 'adventurer', name: 'The Adventurer', icon: '🧭', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Leaked Season 4 “Override” Sprite. Ability not yet datamined. Leaked — rarity & details unconfirmed by Epic.',
+    variants: { normal: U } },
 ]
 
 export const RARITY_ORDER = ['Rare', 'Epic', 'Legendary', 'Mythic']

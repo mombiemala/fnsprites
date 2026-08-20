@@ -10,9 +10,13 @@ currently obtainable**: Ironmouse is back, the full nine-Sprite **Gem** line is
 live, and every Zero Point finish (**Cube, Holofoil & Quack Zero Point**) is
 obtainable. Chapter 7 Season 3 **"Runners"** ends **Aug 19**; Season 4
 **"Override"** launches **Aug 20** with a whole new generation of Sprites and a
-**Sprite Garden** — and Epic has confirmed **Sprites now stay forever**.
-Leaked/unconfirmed content (the **"Gaming Legends"** collab roster, exact event
-times, next-generation sprite names) is flagged **Rumored** until Epic confirms.
+**Sprite Garden**. Epic has confirmed **Sprites are kept forever** — but note the
+nuance: a new generation takes over **Battle Royale** in S4, so your Season 3
+Sprites are **preserved and displayed** (in the Sprite Garden + your Collection)
+rather than used in BR matches at launch (older gens "may return down the line"),
+and **Sprite Dust & Gizmos reset** at the season flip. Leaked/unconfirmed content
+(the **"Gaming Legends"** collab roster, exact event times, next-gen sprite names)
+is flagged **Rumored** until Epic confirms.
 
 > Not affiliated with Epic Games. Support the maker with **Creator Code: MOMBIE**
 > in the Fortnite Item Shop. #EpicPartner
@@ -25,7 +29,9 @@ times, next-generation sprite names) is flagged **Rumored** until Epic confirms.
   from the vault, and every Zero Point finish live. The next generation —
   Chapter 7 Season 4 **"Override"** — is previewed as **Upcoming/Rumored**: the
   five Epic-confirmed **Design-a-Sprite** winners (Pond, Bullet, Honey, Dumpster
-  Dive, X-Ray) and headliner **Sonic**, filed under the `c7s4` generation. All
+  Dive, X-Ray), the trailer-confirmed headliner **Sonic**, plus the datamined
+  lineup (**Tails, Jazz Jackrabbit, Klombo, Bushranger, Killswitch, Victory Crown,
+  The Adventurer**), all filed under the `c7s4` generation. All
   leaked/upcoming content is clearly flagged **Rumored** so leaks never read as
   fact — each news item shows its source and whether it's official.
 - **Sprite Garden (beta)** — a showcase view (🌱, next to Grid/List) that lays out

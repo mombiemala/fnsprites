@@ -11,6 +11,27 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 19, 2026 — Accuracy pass for Override — "stay forever," corrected
+
+- **Fixed:** the "Sprites stay forever" messaging across `news.js` (the staying-forever entry, the season-end
+  entry, the rumors-vs-official explainer), `announcements.js`, `GardenView.jsx` and `README.md`. It now
+  states the nuance Epic actually confirmed: S3 Sprites are **kept and displayed** (Sprite Garden, Collection
+  page, Mastery Pod Back Bling styles, Guardian Outfit pilots) but a **new generation takes over Battle
+  Royale** in S4 — old-gen Sprites aren't used in BR at launch ("may return down the line"). Prior copy
+  implied they carried into BR play.
+- **Added:** a heads-up that **Sprite Dust & Gizmos reset** at the season flip; an **Override launch** news
+  item + announcement banner (Aug 20, v42.00, downtime ~2 AM ET / back ~6 AM ET).
+- **Added:** the datamined Override roster in `sprites.js` — `tails, jazz, klombo, bushranger, killswitch,
+  victorycrown, adventurer` (all `released:false, rumored:true, gen:'c7s4'`, no `releaseDate`, abilities/
+  rarities flagged unconfirmed). Joins Sonic + the Design-a-Sprite winners. `RELEASED_COUNT` unchanged (118).
+- **Changed:** refreshed the leaked-roster news to the current picture (Sonic trailer-confirmed; some collabs
+  have skins but no confirmed Sprite; KH & Vampire Survivors leaked but not in the trailer; cube "backpack"
+  redesign leaked).
+- **Why:** a multi-source sweep (Epic Communities + FortniteStatus + 6+ outlets, direct quotes) showed the
+  "carry over" wording overstated it. Being the source players trust over leaks depends on getting this exact.
+
+---
+
 ## August 15, 2026 — Next-season preview: Override Sprites added as Upcoming 🔮
 
 - **Added:** six upcoming Sprites in `data/sprites.js`, all `released:false, rumored:true, gen:'c7s4'` and

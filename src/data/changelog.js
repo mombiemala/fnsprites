@@ -6,6 +6,20 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 19, 2026',
+    title: 'Accuracy pass for Override — “stay forever,” corrected',
+    summary:
+      'Ahead of the Aug 20 “Override” launch, we corrected the “Sprites stay forever” messaging to match Epic’s actual wording, added the launch news + banner, and expanded the leaked next-gen roster.',
+    changes: [
+      { tag: 'Fixed', text: 'Clarified what “Sprites stay forever” means: your Season 3 Sprites are kept and displayed (in the Sprite Garden, your Collection, Mastery Pod Back Bling styles, Guardian Outfit pilots) — but a new generation takes over Battle Royale in Season 4, so old-gen Sprites aren’t used in BR matches at launch (Epic: they “may return down the line”). Previous copy implied they carried into BR play.' },
+      { tag: 'Added', text: 'A heads-up that Sprite Dust & Gizmos reset at the season flip (the Sprites themselves don’t), an Override launch news item, and a launch announcement banner (Aug 20).' },
+      { tag: 'Added', text: 'Expanded the datamined Override roster: alongside Sonic + the Design-a-Sprite winners, added the leaked Tails, Jazz Jackrabbit, Klombo, Bushranger, Killswitch, Victory Crown and The Adventurer — all clearly badged Rumored with unconfirmed abilities/rarities, no drop data.' },
+      { tag: 'Changed', text: 'Refreshed the leaked-roster news to the current picture (Sonic trailer-confirmed; several collabs have skins but no confirmed Sprite; Kingdom Hearts & Vampire Survivors leaked but not in the trailer; cube “backpack” Sprite redesign leaked).' },
+    ],
+    why:
+      'A multi-source sweep (Epic Communities + FortniteStatus + 6+ outlets, with direct Epic quotes) showed our “carry over” wording overstated things: Epic keeps your Sprites but a fresh generation runs Battle Royale each season. Getting this exactly right matters more than sounding reassuring — the whole value of the tracker is being the source players trust over the leaks.',
+  },
+  {
     date: 'August 15, 2026',
     title: 'Next-season preview: Override Sprites added as Upcoming 🔮',
     summary:

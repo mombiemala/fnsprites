@@ -104,8 +104,8 @@ export default function GardenView({ set, tracking, onOpen, canShare, onShare, o
             <span className="garden-gen-count">{g.when || 'Soon'}</span>
           </div>
           <p className="garden-soon-note">
-            A whole new generation of Sprites lands with “{g.sub}.” They’ll grow here automatically alongside
-            your existing collection — Sprites stay forever. 🌸
+            A whole new generation of Sprites lands with “{g.sub}.” Your Sprites are kept forever — past
+            generations live on here in your Garden even as the new generation takes over Battle Royale. 🌸
           </p>
         </section>
       ))}
