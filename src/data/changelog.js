@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 20, 2026',
+    title: 'SEO: own the Override checklist & codes 🔎',
+    summary:
+      'Sharpened the homepage, the Sprites checklist and the codes page to rank for Chapter 7 Season 4 “Override” — dated codes with structured data, a real checklist schema, and season-qualified Sprite pages.',
+    changes: [
+      { tag: 'Changed', text: 'The homepage and the /sprites page now target “Fortnite Sprites checklist — Season 4 Override” across titles, meta and social cards, and dropped a stale “Rift” finish mention.' },
+      { tag: 'Added', text: 'The /codes page is now a month-dated, canonical codes page: a “X working · updated <date>” freshness line, an FAQ + ItemList structured-data block, and every Cheatmaster code links straight to its Sprite page.' },
+      { tag: 'Added', text: 'A checklist (ItemList) schema on /sprites listing every Sprite, and a “(Season 4 Override)” qualifier on the new Sprites’ page titles.' },
+    ],
+    why:
+      'A same-named site (fnsprites.info) launched and started outranking us for “Override checklist,” and the code→Cheatmaster-Sprite SEO was held by news sites, not trackers. Targeting the season’s real queries with dated, structured pages defends the brand and claims the codes traffic — from data we already publish.',
+  },
+  {
+    date: 'August 20, 2026',
     title: 'Codes: mark what you’ve redeemed ✅',
     summary:
       'The Lobby-codes view now tracks which codes you’ve already redeemed — check them off, hide the done ones, and see your progress at a glance.',

@@ -329,8 +329,12 @@ function spritePage(type, others) {
     .filter((tid) => THEME_MAP[tid])
     .map((tid) => ({ tid, name: THEME_MAP[tid].name, bonus: THEME_MAP[tid].bonus, accent: THEME_MAP[tid].accent, released: !!SPRITE_BY_ID[`${type.id}_${tid}`]?.released, vaulted: !!SPRITE_BY_ID[`${type.id}_${tid}`]?.vaulted }))
 
-  const desc = `${name} is a ${type.rarity} Fortnite Sprite${p ? ` with about a ${type.dropRate} drop rate from Sprite Chests` : ''}. See its ${p ? 'drop rate, ' : ''}re-summon Dust cost, ability, variants${p ? ', and how many chests it takes to get one' : ''}.`
-  const title = `${name} Sprite — ${p ? 'Drop Rate, ' : ''}Dust Cost & How to Get | FN Sprite Tracker`
+  // New-generation (Season 4 "Override") Sprites carry a season qualifier so they
+  // rank for the high-intent "Override" queries the whole field is chasing.
+  const s4 = type.gen === 'c7s4'
+  const seasonTitle = s4 ? ' (Season 4 Override)' : ''
+  const desc = `${name} is a ${type.rarity} Fortnite Sprite${s4 ? ' from Chapter 7 Season 4 “Override”' : ''}${p ? ` with about a ${type.dropRate} drop rate from Sprite Chests` : ''}. See its ${p ? 'drop rate, ' : ''}re-summon Dust cost, ability, variants${p ? ', and how many chests it takes to get one' : ''}.`
+  const title = `${name} Sprite${seasonTitle} — ${p ? 'Drop Rate, ' : ''}Dust Cost & How to Get | FN Sprite Tracker`
 
   // FAQ (drives rich results)
   const faqs = []
@@ -527,12 +531,16 @@ function guideBoard() {
 
 // ---------- /sprites index hub ----------
 function indexPage() {
-  const desc = `How to get every Fortnite Sprite — all ${RELEASED_COUNT} released variants ranked by how easy they are to land, with drop rates, average Sprite Chests, re-summon Dust costs and tiers. Search, sort and filter, free.`
-  const jsonld = {
-    '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'All Fortnite Sprites',
-    url: SITE + '/sprites', description: desc,
-  }
-  return head({ title: 'All Fortnite Sprites — How to Get Every One, Drop Rates & Dust | FN Sprite Tracker', desc, canonical: SITE + '/sprites', jsonld }) + `
+  const desc = `The Fortnite Sprites checklist — every Sprite across Chapter 7 Season 4 “Override” and Season 3, with drop rates, average Sprite Chests, re-summon Dust, Cheatmaster/Gold finishes and tiers. Track what you own, search, sort and filter, free.`
+  // A real checklist: an ItemList of every released Sprite, so search engines can
+  // build a "list of Fortnite Sprites" result and rank us for the checklist query.
+  const listed = SPRITE_TYPES.filter((t) => t.released)
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'CollectionPage', name: 'Fortnite Sprites Checklist', url: SITE + '/sprites', description: desc },
+    { '@type': 'ItemList', name: 'All Fortnite Sprites', numberOfItems: listed.length,
+      itemListElement: listed.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: `${t.name} Sprite`, url: `${SITE}/sprite/${slug(t.name)}` })) },
+  ] }
+  return head({ title: 'Fortnite Sprites Checklist — Every Sprite (Season 4 Override), Drop Rates & Dust | FN Sprite Tracker', desc, canonical: SITE + '/sprites', jsonld }) + `
 <div class="cols">
   <div class="main">
     <h1>How to get every Fortnite Sprite</h1>
@@ -696,22 +704,39 @@ const CODES_SCRIPT = `<script>(function(){document.querySelectorAll('.codecopy')
 function codesPage() {
   const CST = { working: ['Working', '#34d399'], regional: ['Regional', '#fbbf24'], rumored: ['Unverified', '#8b93a7'] }
   const working = LOBBY_CODES.filter((c) => c.status === 'working').length
+  const spriteCodes = LOBBY_CODES.filter((c) => c.type === 'sprite')
+  // Build-time month + date, so the page self-dates on every deploy (a freshness
+  // signal search engines reward for fast-moving "codes" queries).
+  const monthLabel = new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+  const spriteHref = (id) => { const t = SPRITE_TYPES.find((x) => x.id === id); return t ? `/sprite/${slug(t.name)}` : null }
   const groups = [
     ['🧩 Sprite unlocks (Cheatmaster)', (c) => c.type === 'sprite'],
     ['🎁 Rewards, gizmos & effects', (c) => ['reward', 'effect', 'cosmetic'].includes(c.type) && c.status === 'working'],
     ['🌍 Regional & promo (expire soon)', (c) => c.status === 'regional'],
     ['❓ Unverified — check in-game first', (c) => c.status === 'rumored'],
   ]
-  const desc = `Every Fortnite “Override” Hack the Lobby admin-panel code and what it unlocks — the Cheatmaster Sonic, Tails, 8-Bit, Jonesy & Adventure Sprites plus reward codes. ${working} working now; updated as Epic drops more.`
-  const jsonld = {
-    '@context': 'https://schema.org', '@type': 'CollectionPage',
-    name: 'Fortnite Override Lobby Hack Codes', url: SITE + '/codes', description: desc,
-  }
+  const desc = `All ${LOBBY_CODES.length} Fortnite “Override” Hack the Lobby admin-panel codes for ${monthLabel} and what each unlocks — the Cheatmaster Sonic (GOTTAGOFAST), Tails, 8-Bit, Jonesy & Adventure Sprites plus reward codes. ${working} working now, updated as Epic drops more.`
+  // Rich results: CollectionPage + a FAQ (drives the "how/which code" answer box)
+  // + an ItemList of the codes. Kept factual and dated.
+  const faqs = [
+    ['What are Fortnite “Override” Hack the Lobby codes?', 'In Chapter 7 Season 4 “Override,” you enter admin-panel codes in the Battle Royale lobby to unlock Cheatmaster Sprites, gizmos and rewards. Open the Admin Panel (the “…”/admin prompt, top-right), type a code exactly as shown, and hit Submit — a “LOBBY HACK ACTIVATED!” screen confirms it.'],
+    ['How do I redeem a Hack the Lobby code?', CODES_INTRO.how],
+    ['Which code unlocks the Cheatmaster Sonic Sprite?', 'Enter GOTTAGOFAST in the lobby Admin Panel. Other Sprite codes: Tails = IWANNAFLYHIGH, 8-Bit Blaster = 8BITBLAST, Jonesy = PLAY4ALL, Adventure = BORN2PLAY.'],
+    ['Do Fortnite lobby codes expire?', 'Sprite and reward codes stay claimable until you redeem them, but regional/promo codes expire when their campaign ends. Redeeming a Sprite you already own grants roughly 10,000 Sprite Dust instead.'],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'CollectionPage', name: 'Fortnite Override Lobby Hack Codes', url: SITE + '/codes', description: desc, dateModified: NEWS_TODAY },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+    { '@type': 'ItemList', name: 'Fortnite Override lobby codes', numberOfItems: LOBBY_CODES.length,
+      itemListElement: LOBBY_CODES.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.code, description: c.unlocks })) },
+  ] }
   const codeRow = (c) => {
     const [lbl, col] = CST[c.status] || CST.rumored
+    const href = c.type === 'sprite' ? spriteHref(c.spriteId) : null
+    const unlocks = href ? `<a href="${href}" style="color:#dcd2e6;text-decoration:underline;text-decoration-color:var(--border)">${esc(c.unlocks)}</a>` : `<b style="font-weight:600;color:#dcd2e6">${esc(c.unlocks)}</b>`
     return `<div class="grow" style="cursor:default">
       <span class="nm"><button class="codecopy" data-code="${esc(c.code)}" title="Copy ${esc(c.code)}" style="font-family:ui-monospace,Menlo,monospace;font-weight:800;font-size:13px;letter-spacing:.03em;color:#fff;background:var(--panel2);border:0;border-radius:8px;padding:6px 10px;cursor:pointer">${esc(c.code)}</button>
-        <span class="nt"><b style="font-weight:600;color:#dcd2e6">${esc(c.unlocks)}</b><span class="badges"><span style="color:${col};background:${col}22">${lbl}</span>${c.region ? `<span style="color:var(--muted);background:transparent">${esc(c.region)}</span>` : ''}</span></span></span>
+        <span class="nt">${unlocks}<span class="badges"><span style="color:${col};background:${col}22">${lbl}</span>${c.region ? `<span style="color:var(--muted);background:transparent">${esc(c.region)}</span>` : ''}</span></span></span>
       <span class="src" style="grid-column:1/-1;margin-top:2px">via ${esc(c.source)}</span></div>`
   }
   const section = (label, match) => {
@@ -719,13 +744,16 @@ function codesPage() {
     if (!items.length) return ''
     return `<h2 style="font-size:16px;margin:20px 0 8px">${esc(label)}</h2><div class="grows">${items.map(codeRow).join('')}</div>`
   }
-  return head({ title: 'Fortnite Override Lobby Hack Codes — Admin Panel Cheat Codes | FN Sprite Tracker', desc, canonical: SITE + '/codes', jsonld, active: 'news' }) + `
+  return head({ title: `Fortnite Override Lobby Hack Codes (${monthLabel}) — Admin Panel Cheat Codes | FN Sprite Tracker`, desc, canonical: SITE + '/codes', jsonld, active: 'news' }) + `
 <div class="cols">
   <div class="main">
-    <h1>Fortnite “Override” Lobby Hack codes</h1>
-    <p class="lede" style="color:var(--muted);margin:6px 0 14px;font-size:14px;max-width:70ch">${esc(CODES_INTRO.how)}</p>
+    <h1>Fortnite “Override” Lobby Hack codes (${monthLabel})</h1>
+    <p style="margin:2px 0 10px;font-size:12.5px;color:var(--muted)"><b style="color:#34d399">${working} working</b> · <b style="color:#fff">${spriteCodes.length} Cheatmaster Sprites</b> · updated <b style="color:#fff">${NEWS_TODAY}</b> — we keep this list fresh as Epic drops more.</p>
+    <p class="lede" style="color:var(--muted);margin:0 0 14px;font-size:14px;max-width:70ch">${esc(CODES_INTRO.how)}</p>
     <div class="card" style="padding:14px;margin:0 0 8px"><b style="color:#fff;font-size:13px">Rules</b><ul style="margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:12.5px;line-height:1.7">${CODES_INTRO.rules.map((r) => `<li>${esc(r)}</li>`).join('')}</ul></div>
     ${groups.map(([l, m]) => section(l, m)).join('')}
+    <h2 style="font-size:16px;margin:22px 0 8px">Fortnite lobby codes — FAQ</h2>
+    ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
     <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Community-sourced and moving fast — Epic drops new codes all season and promo codes expire. Verify each code in-game before relying on it; unverified ones are labelled. Not affiliated with Epic Games.</p>
     <a class="bigcta" href="/">Track the Sprites you unlock — free →</a>
   </div>
@@ -740,7 +768,7 @@ function sitemap(types) {
     { loc: SITE + '/', changefreq: 'daily', priority: '1.0' },
     { loc: SITE + '/sprites', changefreq: 'weekly', priority: '0.9' },
     { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
-    { loc: SITE + '/codes', changefreq: 'daily', priority: '0.8' },
+    { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },

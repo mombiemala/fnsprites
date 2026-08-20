@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 20, 2026 — SEO: own the Override checklist & codes 🔎
+
+- **Changed:** homepage (`index.html`) + `/sprites` (`indexPage`) retargeted to "Fortnite Sprites checklist —
+  Season 4 Override" across `<title>`, description, OG/Twitter, JSON-LD and the boot fallback; removed a stale
+  "Rift" finish mention; added a keywords meta.
+- **Added:** `/codes` (`codesPage`) is now month-dated (build-derived) and canonical — a "X working · updated
+  <date>" freshness line, `FAQPage` + `ItemList` structured data, and each Cheatmaster code deep-links to its
+  `/sprite/<name>` page. Sitemap priority 0.8 → 0.9.
+- **Added:** an `ItemList` (checklist) schema on `/sprites` enumerating every released Sprite; a
+  "(Season 4 Override)" qualifier on the `<title>`/description of `gen: 'c7s4'` Sprite pages (S3 pages
+  unchanged).
+- **Why:** a same-named entrant (`fnsprites.info`) is outranking us for "Override checklist," and code→sprite
+  SEO was held by news sites. Dated, structured, season-targeted pages defend the brand and claim codes traffic.
+
+---
+
 ## August 20, 2026 — Codes: mark what you've redeemed ✅
 
 - **Added:** redeemed-tracking in `CodesModal` — a per-code checkbox persisted to `localStorage`
