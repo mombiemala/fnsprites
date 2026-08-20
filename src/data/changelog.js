@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 20, 2026',
+    title: 'New: a Discord bot 🤖',
+    summary:
+      'A slash-command Discord bot that reuses the site’s own data — look up who owns a Sprite, a player’s collection, trade matches, and the live lobby codes, right in Discord.',
+    changes: [
+      { tag: 'Added', text: 'A Discord bot (a single Vercel Edge function) with /holders (who owns a Sprite), /vault (a player’s collection + rank), /spritematch (two-way trade matches), and /codes (live Hack-the-Lobby codes). Replies are private to whoever runs the command.' },
+      { tag: 'Added', text: 'It resolves everything by public gamertag / Sprite name — no account linking — and only ever reads public profiles, through the same Supabase functions the site uses (so the bot and site never disagree).' },
+    ],
+    why:
+      'A Discord bot is now table-stakes for Sprite trackers, and it meets players where trading already happens. Building it on the existing RPCs (holders, leaderboard, trade-match) meant almost no new surface area — the bot is a thin new face on the data we already serve. Setup is one-time and documented in DISCORD_BOT.md.',
+  },
+  {
+    date: 'August 20, 2026',
     title: 'New: Hack the Lobby codes 🔓',
     summary:
       'Override’s Admin Panel “Hack the Lobby” codes are now tracked — the Cheatmaster Sprite unlocks (Sonic, Tails, 8-Bit, Jonesy, Adventure) plus reward and regional codes, each with a one-tap copy button and a working/expiring/unverified status.',

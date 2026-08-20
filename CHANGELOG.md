@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 20, 2026 — New: a Discord bot 🤖
+
+- **Added:** `api/discord.js` — a Vercel **Edge** interactions endpoint (Ed25519-verified via `tweetnacl`) with
+  slash commands `/holders`, `/vault`, `/spritematch`, `/codes`. Ephemeral replies. Resolves by public
+  gamertag / Sprite name (no account linking); reads only public profiles.
+- **Added:** `scripts/register-discord-commands.mjs` (registers the commands) and `DISCORD_BOT.md` (one-time
+  setup: create app → set `DISCORD_PUBLIC_KEY` in Vercel → set interactions URL → run register script → invite).
+- **DB:** `trade_matches_for(uuid)` (bot-callable variant of `find_trade_matches`, which needs `auth.uid()`)
+  and `profile_by_gamertag(text)`; both security-definer, public profiles only. Reuses `sprite_holders` +
+  `leaderboard`. Codes come from `src/data/codes.js`. Added `tweetnacl` dependency.
+- **Why:** a bot is table-stakes for Sprite trackers and meets players where trading happens; built on existing
+  RPCs it's a thin new face on data we already serve.
+
+---
+
 ## August 20, 2026 — New: Hack the Lobby codes 🔓
 
 - **Added:** `src/data/codes.js` (`CODES_INTRO` + `LOBBY_CODES`) — the Override Admin Panel codes with what each
