@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import {
   SPRITE_TYPES, SPRITE_BY_ID, RELEASED_COUNT,
-  RARITY_COLORS, RARITY_ORDER, TIER_META,
+  RARITY_COLORS, RARITY_ORDER, TIER_META, TIER_ORDER,
   dustCost, spriteTier, spriteScaling, spriteSource,
 } from '../src/data/sprites.js'
 import { THEME_MAP, FINISH_ODDS_FACTOR } from '../src/data/themes.js'
@@ -252,6 +252,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
     <a href="/?changelog=1">Changelog</a>
     <a href="/?backup=1">Backup</a>
     <a href="/?bug=1">Report a bug</a>
+    <a href="/tier-list">🏆 Tier list</a>
     <a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a>
   </div></details>
 </nav>`
@@ -294,10 +295,10 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
 <nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/?view=trade">🔁 Trade</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
-<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><a href="/sprites">🗂️ Sprite database</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
+<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/sprites">🗂️ Sprite database</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
-<p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
+<p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Leaks &amp; datamines are credited to HYPEX, ShiinaBR, <a href="https://x.com/FN_Assist" target="_blank" rel="noreferrer">@FN_Assist</a> &amp; FNBRIntel, with tier &amp; farm-route context from <a href="https://punksprite.com" target="_blank" rel="noreferrer">punksprite</a> &amp; <a href="https://quackadex.com" target="_blank" rel="noreferrer">quackadex</a>. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
 </footer></div>${HEADER_SCRIPT}${CHEST_SCRIPT}${GUIDE_SCRIPT}${NEWS_SCRIPT}</body></html>`
 
 // ---------- per-sprite page ----------
@@ -622,11 +623,64 @@ function newsPage() {
 ` + FOOT
 }
 
+// ---------- /tier-list page ----------
+// A ranked gameplay tier list (S→C), assembled from the same per-Sprite tier data
+// the app uses (SPRITE_TIER / TIER_META). SEO asset — links out to each Sprite's
+// full page. Not in the primary nav (kept identical to the app); reachable from
+// the footer + the /sprites sidebar.
+function tierListPage() {
+  const rated = SPRITE_TYPES.filter((t) => t.released && spriteTier(t.id))
+  const byTier = TIER_ORDER.map((tk) => ({
+    tk, meta: TIER_META[tk],
+    items: rated.filter((t) => spriteTier(t.id) === tk)
+      .sort((a, b) => (RARITY_ORDER.indexOf(b.rarity) - RARITY_ORDER.indexOf(a.rarity)) || a.name.localeCompare(b.name)),
+  })).filter((g) => g.items.length)
+
+  const desc = `The Fortnite Sprites tier list — every released Sprite ranked S through C by how strong its ability is in the current meta, with what each one does and how to get it. A community/meta snapshot, updated as the game shifts.`
+  const jsonld = {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: 'Fortnite Sprites Tier List', url: SITE + '/tier-list', description: desc,
+  }
+  const row = (t) => {
+    const rc = RARITY_COLORS[t.rarity] || '#a99fb8'
+    return `<a class="grow" href="/sprite/${slug(t.name)}" title="Open ${esc(t.name)}">
+      <span class="nm"><span class="ic">${esc(t.icon || '🧩')}</span><span class="nt"><b>${esc(t.name)}</b>
+        <span class="badges"><span style="color:${rc};background:${rc}22">${esc(t.rarity)}</span>${t.dropRate ? `<span style="color:var(--muted);background:transparent">${esc(t.dropRate)}</span>` : ''}</span></span></span>
+      <span class="src" style="grid-column:1/-1;margin-top:2px">${esc(t.ability || spriteSource(t.id))}</span></a>`
+  }
+  const section = (g) => `<section style="margin:0 0 22px">
+    <div style="display:flex;align-items:center;gap:10px;margin:0 0 10px">
+      <span style="font-family:'Luckiest Guy','Inter',sans-serif;font-size:30px;line-height:1;color:${g.meta.color}">${g.tk}</span>
+      <div><div style="font-weight:800;font-size:15px;color:#fff">${esc(g.meta.label)}</div>
+      <div style="font-size:12.5px;color:var(--muted)">${esc(g.meta.blurb)} · ${g.items.length} sprite${g.items.length === 1 ? '' : 's'}</div></div>
+    </div>
+    <div class="grows">${g.items.map(row).join('')}</div>
+  </section>`
+
+  return head({ title: 'Fortnite Sprites Tier List — Every Sprite Ranked S–C | FN Sprite Tracker', desc, canonical: SITE + '/tier-list', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>Fortnite Sprites tier list</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 18px;font-size:14px;max-width:70ch">Every released Sprite ranked <b>S → C</b> by how strong its ability is in the current meta — with what it does and how to get it. Rarity is how <i>hard</i> a Sprite is to find; tier is how <i>good</i> it is once you have it.</p>
+    ${byTier.map(section).join('')}
+    <p class="fine" style="margin-top:6px;font-size:11px;color:var(--muted)">Tiers are a community/meta snapshot (cross-referenced from GAMES.GG, PlayerAuctions &amp; Destructoid) — opinion-based and shifting; not official Epic rankings. Tap any Sprite for its full page.</p>
+    <a class="bigcta" href="/">Track your collection — free →</a>
+  </div>
+  <aside class="side">
+    ${ctaCard()}
+    ${chestLuckCard()}
+    ${supportCard()}
+  </aside>
+</div>
+` + FOOT
+}
+
 // ---------- sitemap ----------
 function sitemap(types) {
   const urls = [
     { loc: SITE + '/', changefreq: 'daily', priority: '1.0' },
     { loc: SITE + '/sprites', changefreq: 'weekly', priority: '0.9' },
+    { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
@@ -648,8 +702,10 @@ for (const type of types) {
 }
 mkdirSync(resolve(DIST, 'sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'sprites', 'index.html'), indexPage())
+mkdirSync(resolve(DIST, 'tier-list'), { recursive: true })
+writeFileSync(resolve(DIST, 'tier-list', 'index.html'), tierListPage())
 mkdirSync(resolve(DIST, 'news'), { recursive: true })
 writeFileSync(resolve(DIST, 'news', 'index.html'), newsPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites index + /news + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /news + sitemap.xml → dist/`)

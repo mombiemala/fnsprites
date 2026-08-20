@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 19, 2026',
+    title: 'New: a Sprites tier list 🏆 + more sources credited',
+    summary:
+      'Added a dedicated tier-list page ranking every Sprite S→C by how strong its ability is, and credited the extra datamine/community sources we now cross-reference.',
+    changes: [
+      { tag: 'Added', text: 'A /tier-list page — every released Sprite ranked S through C (meta strength, distinct from rarity), with what each does and how to get it. Linked from the footer and the ⋯ More menu, in the sitemap, and it taps through to each Sprite’s full page.' },
+      { tag: 'Added', text: 'Credited the additional leak/community sources we cross-check — @FN_Assist & FNBRIntel (datamines), and punksprite & quackadex (tier/farm-route context) — alongside HYPEX & ShiinaBR.' },
+    ],
+    why:
+      'Rivals surface a tier list and we already stored a per-Sprite tier — assembling it is a low-effort, high-visibility page that answers a question players actually search (“best Fortnite Sprites”). Crediting every source we lean on keeps the “trust” bar high.',
+  },
+  {
+    date: 'August 19, 2026',
     title: 'Accuracy pass for Override — “stay forever,” corrected',
     summary:
       'Ahead of the Aug 20 “Override” launch, we corrected the “Sprites stay forever” messaging to match Epic’s actual wording, added the launch news + banner, and expanded the leaked next-gen roster.',

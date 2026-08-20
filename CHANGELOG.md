@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 19, 2026 — New: a Sprites tier list 🏆 + more sources credited
+
+- **Added:** a prerendered **/tier-list** page (`scripts/prerender.mjs` `tierListPage()`) ranking every released
+  Sprite S→C from `SPRITE_TIER`/`TIER_META`, with ability + rarity + drop rate, linking to each Sprite page.
+  Wired into the footer, the ⋯ More menu (app + SEO, kept in parity), and the sitemap.
+- **Added:** credited the extra sources we cross-reference — @FN_Assist & FNBRIntel (datamines), punksprite &
+  quackadex (tier/farm-route context) — in both the app footer and the SEO footer.
+- **Why:** low-effort, high-visibility SEO page built from data we already have; answers "best Fortnite Sprites."
+
+---
+
 ## August 19, 2026 — Accuracy pass for Override — "stay forever," corrected
 
 - **Fixed:** the "Sprites stay forever" messaging across `news.js` (the staying-forever entry, the season-end
