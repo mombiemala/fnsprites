@@ -5,7 +5,7 @@ variants (Normal, Gold, Gummy, Galaxy, **Gem**, **Holofoil**, **Cube** & **Quack
 plus the special **Rift** line), see your collection and mastery progress, save it
 to the cloud, compare with other players, browse the live **Item Shop**, and look
 up any player's **Battle Royale stats**. Roster is current through the **v41.30 New
-Sprite Day (Jul 30)** and the **Aug 6 Gem drop** — **25 sprites / 118 variants, all
+Sprite Day (Jul 30)** and the **Aug 6 Gem drop** — **36 sprites / 140 released variants, all
 currently obtainable**: Ironmouse is back, the full nine-Sprite **Gem** line is
 live, and every Zero Point finish (**Cube, Holofoil & Quack Zero Point**) is
 obtainable. Chapter 7 Season 3 **"Runners"** ends **Aug 19**; Season 4
@@ -24,7 +24,7 @@ is flagged **Rumored** until Epic confirms.
 ## Features
 
 - **Accurate roster** — every released sprite & variant, current through **v41.30**
-  and the **Aug 6 Gem drop** (**25 sprites / 118 variants, all obtainable**): the
+  and the **Aug 6 Gem drop** (**36 sprites / 140 released variants, all obtainable**): the
   full Gem line, Cube, Holofoil & Quack (a Sprite Mastery reward), Ironmouse back
   from the vault, and every Zero Point finish live. The next generation —
   Chapter 7 Season 4 **"Override"** — is previewed as **Upcoming/Rumored**: the

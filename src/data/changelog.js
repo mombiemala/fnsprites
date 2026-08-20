@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 20, 2026',
+    title: 'Override Sprites are live — “Soon” flipped to released ✅',
+    summary:
+      'With Season 4 live, the new-generation Sprites moved from “Upcoming/Rumored” to released, with their real art (Normal + the new Cheatmaster finish), reference-aligned rarities, and their own pages.',
+    changes: [
+      { tag: 'Changed', text: '11 Override Sprites are now released — Sonic, Tails, Shadow, Jazz Jackrabbit, Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch and Adventure — each with Normal & Cheatmaster live (Gold still rolling out). Released-variant count is now 140 (was 118).' },
+      { tag: 'Fixed', text: 'Renamed the “Dwarf” datamine codename to its real name, Adventure (matching its BORN2PLAY unlock code), and corrected rarities to the live values (e.g. Sonic/Tails/Shadow are Epic, Klombo/Crown Mythic, Bush/Jonesy/8-Bit/Adventure Rare).' },
+      { tag: 'Added', text: 'Real datamined art now shows for the new Sprites everywhere (app + SEO pages use the .webp assets), and each has its own SEO page. Storm Scout and the five Design-a-Sprite winners stay Upcoming until they’re obtainable.' },
+    ],
+    why:
+      'Leaving the launch Sprites tagged “Soon” after the season went live would make the tracker wrong on day one. Flipping them with real art + accurate rarities (cross-checked against the live roster) is the core promise — be right the moment the game changes.',
+  },
+  {
+    date: 'August 20, 2026',
     title: 'New: a Discord bot 🤖',
     summary:
       'A slash-command Discord bot that reuses the site’s own data — look up who owns a Sprite, a player’s collection, trade matches, and the live lobby codes, right in Discord.',

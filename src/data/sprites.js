@@ -131,9 +131,9 @@ export const SPRITE_TYPES = [
   //   revealed). Deliberately NO `releaseDate` — exact per-Sprite dates aren't
   //   confirmed, so they stay Upcoming/Rumored until the Aug 20 staging flips
   //   them with real variants, rarities and abilities (don't auto-release guesses).
-  { id: 'sonic', name: 'Sonic', icon: '🦔', rarity: 'Mythic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — the marquee Sonic collab (cube “backpack” redesign), in Normal, Gold & the new Cheatmaster finish. A speed/movement ability is expected but not yet confirmed by Epic.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
+  { id: 'sonic', name: 'Sonic', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the marquee Sonic collab (cube “backpack” redesign). Normal & Cheatmaster are live (Cheatmaster unlocks via the GOTTAGOFAST lobby code); Gold is still to come. Its exact in-game ability isn’t documented here yet.',
+    variants: { normal: R, gold: U, cheatmaster: R } },
   { id: 'pond', name: 'Pond', icon: '🐸', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Pine & Kiri): evolves egg → tadpole → frog, boosting movement speed & jump height and cutting fall damage as it grows. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
@@ -150,45 +150,45 @@ export const SPRITE_TYPES = [
     ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players like the old medallion did. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
 
-  // ---- Override new-generation Sprites — DATAMINED with official art (Normal,
-  //   Gold & the new "Cheatmaster" finish). Their existence + look are confirmed
-  //   from the v42.00 files, but abilities and rarities aren't revealed yet, so
-  //   they stay `rumored: true` (rarities below are best-effort placeholders) and
-  //   have no `releaseDate` — the Aug 20 staging flips them with real data. The
-  //   Sonic collab ships under the internal "NarrowFlea" codename: Sonic, Tails
-  //   (Monkey) and Shadow (Scribe). ----
-  { id: 'tails', name: 'Tails', icon: '🦊', rarity: 'Legendary', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — Tails (Sonic collab), cube redesign, in Normal/Gold/Cheatmaster. A flight/glide ability is expected; not yet confirmed by Epic.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
-  { id: 'shadow', name: 'Shadow', icon: '🦔', rarity: 'Mythic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
-  { id: 'jazz', name: 'Jazz Jackrabbit', icon: '🐇', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite (Jazz Jackrabbit), in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
-  { id: 'klombo', name: 'Klombo', icon: '🦕', rarity: 'Legendary', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — Klombo, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
-  { id: 'bushranger', name: 'Bush Ranger', icon: '🌿', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — a woodland Bush Ranger, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
-  { id: 'victorycrown', name: 'Victory Crown', icon: '👑', rarity: 'Legendary', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — a crowned royale Sprite, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
-  { id: 'jonesy', name: 'Jonesy', icon: '🕶️', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — Jonesy, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
-  { id: 'blaster', name: '8-Bit Blaster', icon: '🎮', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — a retro handheld “8-Bit Blaster”, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
-  { id: 'killswitch', name: 'Killswitch', icon: '🎯', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — a tactical “Killswitch”, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
-  { id: 'stormscout', name: 'Storm Scout', icon: '👿', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — a horned “Storm Scout”, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
-  { id: 'dwarf', name: 'Dwarf', icon: '🪓', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — a hooded “Dwarf”, in Normal/Gold/Cheatmaster. Ability not yet confirmed by Epic.',
+  // ---- Override new-generation Sprites — LIVE in Chapter 7 Season 4, with
+  //   official datamined art (Normal, Gold & the new "Cheatmaster" finish).
+  //   Normal & Cheatmaster are out (Cheatmaster via Hack-the-Lobby codes); Gold
+  //   is still rolling out, so it stays `U`. Exact in-game abilities aren't
+  //   documented yet, so ability text stays descriptive. Storm Scout is in the
+  //   files but not yet obtainable, so it stays unreleased. The Sonic collab
+  //   ships under the internal "NarrowFlea" codename: Sonic / Tails / Shadow. ----
+  { id: 'tails', name: 'Tails', icon: '🦊', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Tails (Sonic collab), cube redesign. Normal & Cheatmaster are live (Cheatmaster via the IWANNAFLYHIGH lobby code); Gold is coming. Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: U, cheatmaster: R } },
+  { id: 'shadow', name: 'Shadow', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: U, cheatmaster: R } },
+  { id: 'jazz', name: 'Jazz Jackrabbit', icon: '🐇', rarity: 'Legendary', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Jazz Jackrabbit. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: U, cheatmaster: R } },
+  { id: 'klombo', name: 'Klombo', icon: '🦕', rarity: 'Mythic', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the Klombo creature. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: U, cheatmaster: R } },
+  { id: 'bushranger', name: 'Bush Ranger', icon: '🌿', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — a woodland Bush Ranger. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: U, cheatmaster: R } },
+  { id: 'victorycrown', name: 'Crown', icon: '👑', rarity: 'Mythic', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the Crown. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: U, cheatmaster: R } },
+  { id: 'jonesy', name: 'Jonesy', icon: '🕶️', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Jonesy. Normal & Cheatmaster are live (Cheatmaster via the PLAY4ALL lobby code); Gold is coming. Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: U, cheatmaster: R } },
+  { id: 'blaster', name: '8-Bit Blaster', icon: '🎮', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — a retro handheld “8-Bit Blaster”. Normal & Cheatmaster are live (Cheatmaster via the 8BITBLAST lobby code); Gold is coming. Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: U, cheatmaster: R } },
+  { id: 'killswitch', name: 'Killswitch', icon: '🎯', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — a tactical “Killswitch”. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: U, cheatmaster: R } },
+  { id: 'adventure', name: 'Adventure', icon: '🧭', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the Adventure Sprite. Normal & Cheatmaster are live (Cheatmaster via the BORN2PLAY lobby code); Gold is coming. Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: U, cheatmaster: R } },
+  { id: 'stormscout', name: 'Storm Scout', icon: '👿', rarity: 'Rare', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — a horned “Storm Scout”, in Normal/Gold/Cheatmaster. In the files but not yet obtainable; ability not yet confirmed by Epic.',
     variants: { normal: U, gold: U, cheatmaster: U } },
 ]
 

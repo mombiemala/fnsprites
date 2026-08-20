@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 20, 2026 — Override Sprites are live — "Soon" flipped to released ✅
+
+- **Changed:** 11 Override Sprites flipped from `released:false, rumored:true` to released in `sprites.js` —
+  Sonic, Tails, Shadow, Jazz Jackrabbit, Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch,
+  Adventure — with `variants: { normal: R, gold: U, cheatmaster: R }`. `RELEASED_COUNT` 118 → **140**.
+- **Fixed:** renamed the `dwarf` datamine codename to **`adventure`** (id, name, `public/sprites/adventure_*.webp`,
+  and the `BORN2PLAY` code's `spriteId`); corrected S4 rarities to the live roster (Sonic/Tails/Shadow Epic,
+  Klombo/Crown Mythic, Jazz Legendary, Bush/Jonesy/8-Bit/Adventure Rare).
+- **Kept upcoming:** Storm Scout (in files, not yet obtainable) + the 5 Design-a-Sprite winners (mid-season).
+- **Art:** real `.webp` datamine art shows in-app and on SEO (prerender `imgExt` handles c7s4 = webp; fixed a
+  stray `.png` in news thumbnails). Each live Sprite has its own SEO page.
+- **Why:** leaving launch Sprites tagged "Soon" after go-live would make the tracker wrong on day one.
+
+---
+
 ## August 20, 2026 — New: a Discord bot 🤖
 
 - **Added:** `api/discord.js` — a Vercel **Edge** interactions endpoint (Ed25519-verified via `tweetnacl`) with

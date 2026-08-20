@@ -31,7 +31,7 @@ export const LOBBY_CODES = [
   { code: 'IWANNAFLYHIGH', unlocks: 'Cheatmaster Tails Sprite', type: 'sprite', spriteId: 'tails', status: 'working', source: 'Game8' },
   { code: '8BITBLAST', unlocks: 'Cheatmaster 8-Bit Blaster Sprite', type: 'sprite', spriteId: 'blaster', status: 'working', source: 'Dexerto' },
   { code: 'PLAY4ALL', unlocks: 'Cheatmaster Jonesy Sprite', type: 'sprite', spriteId: 'jonesy', status: 'working', source: 'Dexerto' },
-  { code: 'BORN2PLAY', unlocks: 'Cheatmaster Adventure Sprite', type: 'sprite', status: 'working', source: 'PCGamesN' },
+  { code: 'BORN2PLAY', unlocks: 'Cheatmaster Adventure Sprite', type: 'sprite', spriteId: 'adventure', status: 'working', source: 'PCGamesN' },
 
   // --- Rewards, gizmos & effects ---
   { code: 'DONTBLOCKME', unlocks: 'Tetris-block transform effect', type: 'effect', status: 'working', source: 'Loolo_WRLD' },

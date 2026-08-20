@@ -582,11 +582,11 @@ function newsCard(n) {
   const live = newsLive(n)
   const resolved = n.tag === 'bug' && n.resolved
   const spriteId = n.sprites?.[0]
-  const hasSpriteArt = spriteId && SPRITE_BY_ID[`${spriteId}_normal`]
+  const spriteArt = spriteId && SPRITE_BY_ID[`${spriteId}_normal`]
   const img = n.image
     ? `<img src="${esc(n.image)}" alt="" loading="lazy">`
-    : hasSpriteArt
-      ? `<img src="/sprites/${spriteId}_normal.png" alt="" loading="lazy" onerror="this.style.display='none'">`
+    : spriteArt
+      ? `<img src="/sprites/${spriteId}_normal.${spriteArt.gen === 'c7s4' ? 'webp' : 'png'}" alt="" loading="lazy" onerror="this.style.display='none'">`
       : ''
   const search = `${n.title} ${n.body || ''} ${n.source || ''} ${tag.label}`.toLowerCase()
   const badge = resolved
