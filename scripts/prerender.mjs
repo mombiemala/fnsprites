@@ -336,16 +336,26 @@ function spritePage(type, others) {
   const desc = `${name} is a ${type.rarity} Fortnite Sprite${s4 ? ' from Chapter 7 Season 4 “Override”' : ''}${p ? ` with about a ${type.dropRate} drop rate from Sprite Chests` : ''}. See its ${p ? 'drop rate, ' : ''}re-summon Dust cost, ability, variants${p ? ', and how many chests it takes to get one' : ''}.`
   const title = `${name} Sprite${seasonTitle} — ${p ? 'Drop Rate, ' : ''}Dust Cost & How to Get | FN Sprite Tracker`
 
-  // FAQ (drives rich results)
+  // FAQ (drives rich results) — generation-aware: Season 4 Sprites use Cheat/
+  // Lobby codes, not chests; older Season 3 Sprites keep the chest-odds answers.
   const faqs = []
-  faqs.push([`How rare is the ${name} Sprite?`, p
-    ? `${name} is a ${type.rarity} Sprite with about a ${type.dropRate} chance per Sprite Chest — roughly a 1-in-${fmt(1 / p)} pull.`
-    : `${name} is a ${type.rarity} Sprite. Its exact drop rate hasn't been documented by the community yet.`])
-  if (p) faqs.push([`How many chests to get a ${name} Sprite?`,
-    `About ${fmt(chestsFor(p, 0.5))} Sprite Chests for a 50% chance, and around ${fmt(chestsFor(p, 0.9))} for a 90% chance.`])
-  if (dustN != null) faqs.push([`How much Sprite Dust to re-summon ${name}?`,
-    `${fmt(dustN)} Dust for the Normal form${dustV != null ? `, or ${fmt(dustV)} for a special variant` : ''}.`])
+  if (s4) {
+    const codeForSprite = LOBBY_CODES.find((c) => c.spriteId === type.id && c.status === 'working')
+    faqs.push([`How do I get the ${name} Sprite?`,
+      `${spriteSource(type.id)}${codeForSprite ? ` Its Cheatmaster finish unlocks with the Hack the Lobby code “${codeForSprite.code}” — enter it in the lobby Admin Panel.` : ''}`])
+  } else {
+    faqs.push([`How rare is the ${name} Sprite?`, p
+      ? `${name} is a ${type.rarity} Sprite with about a ${type.dropRate} chance per Sprite Chest — roughly a 1-in-${fmt(1 / p)} pull.`
+      : `${name} is a ${type.rarity} Sprite. Its exact drop rate hasn't been documented by the community yet.`])
+    if (p) faqs.push([`How many chests to get a ${name} Sprite?`,
+      `About ${fmt(chestsFor(p, 0.5))} Sprite Chests for a 50% chance, and around ${fmt(chestsFor(p, 0.9))} for a 90% chance.`])
+    if (dustN != null) faqs.push([`How much Sprite Dust to re-summon ${name}?`,
+      `${fmt(dustN)} Dust for the Normal form${dustV != null ? `, or ${fmt(dustV)} for a special variant` : ''}.`])
+  }
   if (type.ability) faqs.push([`What does the ${name} Sprite do?`, type.ability])
+  faqs.push([`Is the ${name} Sprite usable in Battle Royale?`, s4
+    ? `Yes — ${name} is part of the current Season 4 “Override” generation, so you can equip and use it in Battle Royale this season.`
+    : `${name} is a Season 3 “Runners” Sprite. It's kept forever in your collection and the in-game Sprite Garden, but the Season 4 “Override” generation took over Battle Royale — so older-generation Sprites aren't used in BR matches this season (Epic says they may return later).`])
 
   const jsonld = {
     '@context': 'https://schema.org',
@@ -447,7 +457,8 @@ const chestSelectOptions = (selId) => ['Mythic', 'Legendary', 'Epic', 'Rare'].ma
   return items.length ? `<optgroup label="${r}">${items.map((t) => `<option value="${t.id}"${t.id === selId ? ' selected' : ''}>${esc(t.icon || '')} ${esc(t.name)} — ${esc(t.dropRate)}</option>`).join('')}</optgroup>` : ''
 }).join('')
 const chestLuckCard = (selId) => `<div class="card sidecard chestcard">
-<h3 class="sh">🎲 Chest luck</h3>
+<h3 class="sh">🎲 Chest luck <span style="font-size:11px;color:var(--muted)">· Season 3</span></h3>
+<p class="sub" style="margin:2px 0 8px">Season 3 “Runners” Sprites come from Sprite Chests. Season 4 “Override” Sprites are unlocked with <a href="/codes">Hack the Lobby codes</a>, not chests.</p>
 <label class="cl-lab">Sprite</label>
 <select class="cl-sel" aria-label="Pick a Sprite">${chestSelectOptions(RATED_MAP[selId] ? selId : undefined)}</select>
 <label class="cl-lab cl-finlab" style="display:none">Finish</label>
@@ -651,14 +662,18 @@ function newsPage() {
 // full page. Not in the primary nav (kept identical to the app); reachable from
 // the footer + the /sprites sidebar.
 function tierListPage() {
+  const bySpriteName = (a, b) => (RARITY_ORDER.indexOf(b.rarity) - RARITY_ORDER.indexOf(a.rarity)) || a.name.localeCompare(b.name)
   const rated = SPRITE_TYPES.filter((t) => t.released && spriteTier(t.id))
   const byTier = TIER_ORDER.map((tk) => ({
     tk, meta: TIER_META[tk],
-    items: rated.filter((t) => spriteTier(t.id) === tk)
-      .sort((a, b) => (RARITY_ORDER.indexOf(b.rarity) - RARITY_ORDER.indexOf(a.rarity)) || a.name.localeCompare(b.name)),
+    items: rated.filter((t) => spriteTier(t.id) === tk).sort(bySpriteName),
   })).filter((g) => g.items.length)
+  // Released Sprites with no settled tier yet — every Season 4 "Override" Sprite
+  // (too new to rank) plus a few niche/collab S3 ones. Shown as their own group
+  // so the page is complete and mirrors the app's "Unranked" tier bucket.
+  const unranked = SPRITE_TYPES.filter((t) => t.released && !spriteTier(t.id)).sort(bySpriteName)
 
-  const desc = `The Fortnite Sprites tier list — every released Sprite ranked S through C by how strong its ability is in the current meta, with what each one does and how to get it. A community/meta snapshot, updated as the game shifts.`
+  const desc = `The Fortnite Sprites tier list — every released Sprite ranked S through C by how strong its ability is, with what each one does and how to get it. Season 4 “Override” Sprites are still Unranked (too new for a settled meta). A community snapshot, updated as the game shifts.`
   const jsonld = {
     '@context': 'https://schema.org', '@type': 'CollectionPage',
     name: 'Fortnite Sprites Tier List', url: SITE + '/tier-list', description: desc,
@@ -679,12 +694,22 @@ function tierListPage() {
     <div class="grows">${g.items.map(row).join('')}</div>
   </section>`
 
-  return head({ title: 'Fortnite Sprites Tier List — Every Sprite Ranked S–C | FN Sprite Tracker', desc, canonical: SITE + '/tier-list', jsonld, active: 'sprites' }) + `
+  const unrankedSection = unranked.length ? `<section style="margin:0 0 22px">
+    <div style="display:flex;align-items:center;gap:10px;margin:0 0 10px">
+      <span style="font-family:'Luckiest Guy','Inter',sans-serif;font-size:26px;line-height:1;color:#8b93a7">–</span>
+      <div><div style="font-weight:800;font-size:15px;color:#fff">Unranked</div>
+      <div style="font-size:12.5px;color:var(--muted)">New (all Season 4 “Override” Sprites) or niche — no settled meta tier yet · ${unranked.length} sprite${unranked.length === 1 ? '' : 's'}</div></div>
+    </div>
+    <div class="grows">${unranked.map(row).join('')}</div>
+  </section>` : ''
+
+  return head({ title: 'Fortnite Sprites Tier List — Every Sprite Ranked S–C (Season 4 Override) | FN Sprite Tracker', desc, canonical: SITE + '/tier-list', jsonld, active: 'sprites' }) + `
 <div class="cols">
   <div class="main">
     <h1>Fortnite Sprites tier list</h1>
-    <p class="lede" style="color:var(--muted);margin:6px 0 18px;font-size:14px;max-width:70ch">Every released Sprite ranked <b>S → C</b> by how strong its ability is in the current meta — with what it does and how to get it. Rarity is how <i>hard</i> a Sprite is to find; tier is how <i>good</i> it is once you have it.</p>
+    <p class="lede" style="color:var(--muted);margin:6px 0 18px;font-size:14px;max-width:70ch">Every released Sprite ranked <b>S → C</b> by how strong its ability is — with what it does and how to get it. Rarity is how <i>hard</i> a Sprite is to find; tier is how <i>good</i> it is once you have it. Season 4 “Override” Sprites sit in <b>Unranked</b> until the meta settles.</p>
     ${byTier.map(section).join('')}
+    ${unrankedSection}
     <p class="fine" style="margin-top:6px;font-size:11px;color:var(--muted)">Tiers are a community/meta snapshot (cross-referenced from GAMES.GG, PlayerAuctions &amp; Destructoid) — opinion-based and shifting; not official Epic rankings. Tap any Sprite for its full page.</p>
     <a class="bigcta" href="/">Track your collection — free →</a>
   </div>

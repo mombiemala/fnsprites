@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'August 20, 2026',
+    title: 'Season 4 accuracy pass: exports, chest luck, tiers & FAQs',
+    summary:
+      'Squared the tools and content pages up with the new Override generation — exports show the Cheatmaster finish, chest luck is Season-3-scoped, the tier list lists the new Unranked Sprites, and per-Sprite pages answer the Override-era questions.',
+    changes: [
+      { tag: 'Added', text: 'A Cheatmaster column in the collection export image (older Sprites show a dashed N/A, like any missing finish).' },
+      { tag: 'Changed', text: 'The Chest-luck calculator is now labelled “Season 3” and notes that Season 4 “Override” Sprites are unlocked with Hack the Lobby codes, not chests.' },
+      { tag: 'Changed', text: 'The tier list now has an “Unranked” section (all Season 4 Sprites + niche ones), so it’s complete and matches the app’s tier grouping.' },
+      { tag: 'Fixed', text: 'Per-Sprite pages answer “How do I get X” and “Is X usable in Battle Royale?” by generation — Season 4 Sprites reference Cheat-Code activities + Lobby codes (not chests), and “where to find” no longer wrongly says “Sprite Chests” for the new generation.' },
+    ],
+    why:
+      'Override changed how Sprites are obtained (codes/Cheat activities vs chests) and split BR-usability by generation, but the tools and SEO pages still assumed the old chest model. Accuracy here is what keeps the tracker trustworthy through a season change.',
+  },
+  {
+    date: 'August 20, 2026',
     title: 'Filter by generation + a Garden-archive badge',
     summary:
       'You can now filter the collection by generation — Season 4 “Override” (current) vs Season 3 “Runners” (legacy) — and each Sprite’s detail shows whether it’s playable in Battle Royale now or preserved in the Garden.',

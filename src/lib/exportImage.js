@@ -26,6 +26,9 @@ const COLS = [
   { id: 'gummy', label: 'GUMMY', accent: '#ff5d8f' },
   { id: 'galaxy', label: 'GALAXY', accent: '#9a7bff' },
   { id: 'holofoil', label: 'HOLOFOIL', accent: '#7fe3ff' },
+  // Season 4 "Override" finish — only the new-gen Sprites have it (older rows
+  // show a dashed N/A, same as any Sprite without a given finish).
+  { id: 'cheatmaster', label: 'CHEATMASTER', accent: '#41f08a' },
 ]
 
 // The per-variant gradient (same palette as the in-app cards). Split out so both
@@ -55,6 +58,10 @@ function variantGradient(ctx, theme, x, y, w, h) {
   } else if (theme === 'cube') {
     g = ctx.createLinearGradient(x, y, x, y + h)
     g.addColorStop(0, '#5b1d1d'); g.addColorStop(0.6, '#3a0f18'); g.addColorStop(1, '#1a0710')
+  } else if (theme === 'cheatmaster') {
+    // Season 4 "Override" glitch/pixel green.
+    g = ctx.createLinearGradient(x, y, x + w, y + h)
+    g.addColorStop(0, '#7dffb0'); g.addColorStop(0.5, '#22c55e'); g.addColorStop(1, '#0a5c30')
   } else {
     g = ctx.createLinearGradient(x, y, x, y + h)
     g.addColorStop(0, '#4b5470'); g.addColorStop(1, '#2b3147')

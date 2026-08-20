@@ -359,7 +359,13 @@ const SPRITE_SOURCE = {
   wick: 'Leaked as exclusive to The Simpsons Fortnite Reload — reveal it on the Springfield map with the new Reload Portable Extractor, eliminate a player already carrying it, or find it in Reload chests. Unconfirmed until Epic’s patch notes.',
 }
 export function spriteSource(typeId) {
-  return SPRITE_SOURCE[typeId] || 'Sprite Chests around the island — any chest can drop any Sprite (rarer ones less often), plus occasional mid-match spawns.'
+  if (SPRITE_SOURCE[typeId]) return SPRITE_SOURCE[typeId]
+  // Season 4 "Override" replaced Sprite Chests with in-world acquisition (Cheat
+  // Code activities) + the Cheatmaster finish via Hack the Lobby codes — so the
+  // chest-based default would be wrong for the new generation.
+  const t = SPRITE_TYPES.find((x) => x.id === typeId)
+  if (t?.gen === 'c7s4') return 'A Chapter 7 Season 4 “Override” Sprite — earned through Season 4 play (in-world Cheat Code activities), not from Sprite Chests.'
+  return 'Sprite Chests around the island — any chest can drop any Sprite (rarer ones less often), plus occasional mid-match spawns.'
 }
 
 // How a sprite's ability grows as you level it 1 → 5 (Lv 5 = Mastered).

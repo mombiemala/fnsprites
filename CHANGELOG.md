@@ -11,6 +11,25 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 20, 2026 — Season 4 accuracy pass: exports, chest luck, tiers & FAQs
+
+- **Added:** a **Cheatmaster** column in the collection export image (`exportImage.js` — `variantGradient`
+  green case + `COLS`); older Sprites render a dashed N/A cell like any missing finish.
+- **Changed:** the **Chest-luck** calculator (`ChestOdds.jsx` + prerender `chestLuckCard`) is now scoped to
+  "Season 3" and notes that Season 4 "Override" Sprites are unlocked with Hack the Lobby codes, not chests.
+- **Changed:** the tier list (`prerender` `tierListPage`) gained an **Unranked** section (all released S4
+  Sprites + niche ones, via `SPRITE_TYPES.filter(t => t.released && !spriteTier(t.id))`), so it's complete and
+  matches the app's tier grouping; lede/desc/title updated.
+- **Fixed:** per-Sprite pages (`prerender` `spritePage` FAQ) answer "How do I get X" and "Is X usable in
+  Battle Royale?" by generation — S4 references Cheat-Code activities + the working Lobby code, S3 keeps the
+  chest-odds FAQ. `spriteSource` in `sprites.js` is now generation-aware so S4 no longer wrongly says
+  "Sprite Chests."
+- **Why:** Override changed how Sprites are obtained (codes/Cheat activities vs chests) and split BR-usability
+  by generation, but the tools and SEO pages still assumed the old chest model. Accuracy here keeps the tracker
+  trustworthy through the season change.
+
+---
+
 ## August 20, 2026 — Filter by generation + a Garden-archive badge
 
 - **Added:** a **Generation** filter (`filters.generation`, in `Toolbar` KeyFilters + `App` visible-filter) —

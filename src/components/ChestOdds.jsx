@@ -85,12 +85,16 @@ export default function ChestOdds() {
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
-      <h3 className="mb-3 flex items-center gap-1.5 font-display text-lg text-white">
-        🎲 Chest luck
+      <h3 className="mb-1 flex items-center gap-1.5 font-display text-lg text-white">
+        🎲 Chest luck <span className="text-xs font-bold text-[var(--muted)]">· Season 3</span>
         <Tooltip content="Odds of pulling a Sprite from a Sprite Chest, treating each chest as an independent draw. The base (Normal) rate is community-estimated; picking a special finish multiplies it by a rough finish-rarity estimate (Epic doesn't publish finish odds).">
           <span className="grid h-4 w-4 cursor-help place-items-center rounded-full bg-[var(--panel-2)] text-[10px] text-[var(--muted)]" aria-label="How this is calculated">ⓘ</span>
         </Tooltip>
       </h3>
+      <p className="mb-3 text-[11px] leading-relaxed text-[var(--muted)]">
+        Covers the Season 3 “Runners” Sprites, which come from <b className="text-white">Sprite Chests</b>. Season 4
+        “Override” Sprites aren’t random — they’re unlocked with <a href="/codes" className="font-bold text-[var(--brand)] hover:underline">Hack the Lobby codes</a>.
+      </p>
 
       <label className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">Sprite</label>
       <select
