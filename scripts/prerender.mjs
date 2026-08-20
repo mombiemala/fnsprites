@@ -18,7 +18,7 @@ import {
 import { THEME_MAP, FINISH_ODDS_FACTOR } from '../src/data/themes.js'
 import { SPRITE_GUIDE } from '../src/data/spriteGuide.js'
 import { NEWS, NEWS_TAGS } from '../src/data/news.js'
-import { CODES_INTRO, LOBBY_CODES } from '../src/data/codes.js'
+import { CODES_INTRO, CODE_CATEGORIES, LOBBY_CODES } from '../src/data/codes.js'
 
 const SITE = 'https://fnsprites.vercel.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -233,7 +233,7 @@ const MARK = `<svg class="mark-sm" viewBox="0 0 100 100" aria-hidden="true"><def
 const NAV_LINKS = [
   { key: 'collection', href: '/', label: 'Collection' },
   { key: 'sprites', href: '/sprites', label: '🧩 Sprites' },
-  { key: 'codes', href: '/codes', label: '🔓 Codes' },
+  { key: 'codes', href: '/codes', label: '🔓 Lobby Hacks' },
   { key: 'leaderboard', href: '/?view=leaderboard', label: '🏆 Leaderboard' },
   { key: 'news', href: '/news', label: '📰 News' },
   { key: 'stats', href: '/?view=stats', label: '📊 Stats' },
@@ -263,7 +263,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
     <a href="/?changelog=1">Changelog</a>
     <a href="/?backup=1">Backup</a>
     <a href="/?bug=1">Report a bug</a>
-    <a href="/codes">🔓 Lobby codes</a>
+    <a href="/codes">🔓 Lobby Hacks</a>
     <a href="/tier-list">🏆 Tier list</a>
     <a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a>
   </div></details>
@@ -306,7 +306,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the same sections row, the utility/support row (modal links deep-link into
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
-<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Codes</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
+<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
 <div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/sprites">🗂️ Sprite database</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
@@ -734,12 +734,9 @@ function codesPage() {
   // signal search engines reward for fast-moving "codes" queries).
   const monthLabel = new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })
   const spriteHref = (id) => { const t = SPRITE_TYPES.find((x) => x.id === id); return t ? `/sprite/${slug(t.name)}` : null }
-  const groups = [
-    ['🧩 Sprite unlocks (Cheatmaster)', (c) => c.type === 'sprite'],
-    ['🎁 Rewards, gizmos & effects', (c) => ['reward', 'effect', 'cosmetic'].includes(c.type) && c.status === 'working'],
-    ['🌍 Regional & promo (expire soon)', (c) => c.status === 'regional'],
-    ['❓ Unverified — check in-game first', (c) => c.status === 'rumored'],
-  ]
+  // Group by reward category (what you get), status stays a per-code badge. Within
+  // a category, lead with the codes that work right now.
+  const statusRank = { working: 0, regional: 1, rumored: 2 }
   const desc = `All ${LOBBY_CODES.length} Fortnite “Override” Hack the Lobby admin-panel codes for ${monthLabel} and what each unlocks — the Cheatmaster Sonic (GOTTAGOFAST), Tails, 8-Bit, Jonesy & Adventure Sprites plus reward codes. ${working} working now, updated as Epic drops more.`
   // Rich results: CollectionPage + a FAQ (drives the "how/which code" answer box)
   // + an ItemList of the codes. Kept factual and dated.
@@ -764,10 +761,13 @@ function codesPage() {
         <span class="nt">${unlocks}<span class="badges"><span style="color:${col};background:${col}22">${lbl}</span>${c.region ? `<span style="color:var(--muted);background:transparent">${esc(c.region)}</span>` : ''}</span></span></span>
       <span class="src" style="grid-column:1/-1;margin-top:2px">via ${esc(c.source)}</span></div>`
   }
-  const section = (label, match) => {
-    const items = LOBBY_CODES.filter(match)
+  const section = (cat) => {
+    const items = LOBBY_CODES.filter((c) => c.category === cat.key)
+      .sort((a, b) => (statusRank[a.status] ?? 3) - (statusRank[b.status] ?? 3))
     if (!items.length) return ''
-    return `<h2 style="font-size:16px;margin:20px 0 8px">${esc(label)}</h2><div class="grows">${items.map(codeRow).join('')}</div>`
+    return `<h2 style="font-size:16px;margin:20px 0 4px">${cat.icon} ${esc(cat.label)} <span style="color:var(--muted);font-weight:600;font-size:13px">· ${items.length}</span></h2>
+      <p style="margin:0 0 8px;font-size:12px;color:var(--muted)">${esc(cat.blurb)}</p>
+      <div class="grows">${items.map(codeRow).join('')}</div>`
   }
   return head({ title: `Fortnite Override Lobby Hack Codes (${monthLabel}) — Admin Panel Cheat Codes | FN Sprite Tracker`, desc, canonical: SITE + '/codes', jsonld, active: 'news' }) + `
 <div class="cols">
@@ -776,7 +776,7 @@ function codesPage() {
     <p style="margin:2px 0 10px;font-size:12.5px;color:var(--muted)"><b style="color:#34d399">${working} working</b> · <b style="color:#fff">${spriteCodes.length} Cheatmaster Sprites</b> · updated <b style="color:#fff">${NEWS_TODAY}</b> — we keep this list fresh as Epic drops more.</p>
     <p class="lede" style="color:var(--muted);margin:0 0 14px;font-size:14px;max-width:70ch">${esc(CODES_INTRO.how)}</p>
     <div class="card" style="padding:14px;margin:0 0 8px"><b style="color:#fff;font-size:13px">Rules</b><ul style="margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:12.5px;line-height:1.7">${CODES_INTRO.rules.map((r) => `<li>${esc(r)}</li>`).join('')}</ul></div>
-    ${groups.map(([l, m]) => section(l, m)).join('')}
+    ${CODE_CATEGORIES.map(section).join('')}
     <h2 style="font-size:16px;margin:22px 0 8px">Fortnite lobby codes — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
     <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Community-sourced and moving fast — Epic drops new codes all season and promo codes expire. Verify each code in-game before relying on it; unverified ones are labelled. Not affiliated with Epic Games.</p>

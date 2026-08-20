@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 20, 2026 — Lobby Hacks: codes grouped by reward + a clearer name
+
+- **Changed:** the 🔓 Codes tab → **Lobby Hacks** (app `TABS` label + SEO `NAV_LINKS`/footer/nav row), matching
+  Override's in-game "Hack the Lobby / Admin Panel" language. The `/codes` URL is unchanged (SEO preserved);
+  `CODES_INTRO.title` → "Lobby Hacks — Admin Panel codes".
+- **Changed:** codes are grouped by reward **`category`** (new field + `CODE_CATEGORIES`: sprites · gizmos ·
+  boosts · dust · screens) in both `CodesView` and the prerender `/codes` page, each with a count + blurb;
+  `status` (working/regional/rumored) is now a per-code badge, and items sort working-first within a category.
+- **Changed:** launch announcement copy points to the "Lobby Hacks tab" instead of the old footer link.
+- **Why:** players come for a specific reward (a Sprite, XP, Dust), so grouping by "what you get" — like
+  fortnite.gg — scans faster than grouping by freshness; "Lobby Hacks" is the feature's real in-game name.
+  Keeping the `/codes` URL preserves the canonical-codes SEO.
+
+---
+
 ## August 20, 2026 — Season 4 accuracy pass: exports, chest luck, tiers & FAQs
 
 - **Added:** a **Cheatmaster** column in the collection export image (`exportImage.js` — `variantGradient`

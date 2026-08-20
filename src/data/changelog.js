@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 20, 2026',
+    title: 'Lobby Hacks: codes grouped by reward + a clearer name',
+    summary:
+      'Renamed the Codes tab to “Lobby Hacks” to match the in-game experience, and regrouped the codes by what you actually get — Sprites, Gizmos & effects, Boosts & XP, Sprite Dust, Loading screens — instead of by status.',
+    changes: [
+      { tag: 'Changed', text: 'The 🔓 Codes tab (and the SEO /codes page) is now “Lobby Hacks,” matching Override’s in-game “Hack the Lobby / Admin Panel” language. The URL stays /codes.' },
+      { tag: 'Changed', text: 'Codes are grouped by reward category (Cheatmaster Sprites · Gizmos & effects · Boosts & XP · Sprite Dust · Loading screens) with a per-category count and a one-line blurb; working codes sort to the top of each group.' },
+      { tag: 'Changed', text: 'Working / Regional / Unverified is now a per-code badge rather than its own section, so an expiring or unverified code still sits in its reward bucket but stays clearly flagged.' },
+    ],
+    why:
+      'Players come to this page for a specific thing — a Sprite, or XP, or Dust — so grouping by “what you get” (the way fortnite.gg does) is faster to scan than grouping by freshness. “Lobby Hacks” is what the feature is actually called in-game, so the label should match; keeping the /codes URL preserves the SEO we just built.',
+  },
+  {
+    date: 'August 20, 2026',
     title: 'Season 4 accuracy pass: exports, chest luck, tiers & FAQs',
     summary:
       'Squared the tools and content pages up with the new Override generation — exports show the Cheatmaster finish, chest luck is Season-3-scoped, the tier list lists the new Unranked Sprites, and per-Sprite pages answer the Override-era questions.',

@@ -1,21 +1,19 @@
 import { useState } from 'react'
 import { useToast } from '../context/toastStore'
-import { CODES_INTRO, LOBBY_CODES } from '../data/codes'
+import { CODES_INTRO, CODE_CATEGORIES, LOBBY_CODES } from '../data/codes'
 
-// The "Hack the Lobby" codes as a first-class tab (was a modal). Same data as the
+// The "Lobby Hacks" codes as a first-class tab (was a modal). Same data as the
 // prerendered /codes SEO page (src/data/codes.js); copy + redeemed-tracking are
-// client-side and persist locally.
+// client-side and persist locally. Grouped by reward category (what you get);
+// status is a per-code badge so freshness stays obvious.
 const STATUS = {
   working: { label: 'Working', cls: 'bg-emerald-400/15 text-emerald-300' },
   regional: { label: 'Regional', cls: 'bg-amber-400/15 text-amber-300' },
   rumored: { label: 'Unverified', cls: 'bg-white/10 text-[var(--muted)]' },
 }
-const GROUPS = [
-  { key: 'sprites', label: '🧩 Sprite unlocks (Cheatmaster)', match: (c) => c.type === 'sprite' },
-  { key: 'rewards', label: '🎁 Rewards, gizmos & effects', match: (c) => (c.type === 'reward' || c.type === 'effect' || c.type === 'cosmetic') && c.status !== 'regional' && c.status !== 'rumored' },
-  { key: 'regional', label: '🌍 Regional & promo (expire soon)', match: (c) => c.status === 'regional' },
-  { key: 'rumored', label: '❓ Unverified — check in-game first', match: (c) => c.status === 'rumored' },
-]
+// Within a category, lead with the codes players can use right now.
+const STATUS_RANK = { working: 0, regional: 1, rumored: 2 }
+const byStatus = (a, b) => (STATUS_RANK[a.status] ?? 3) - (STATUS_RANK[b.status] ?? 3)
 
 const REDEEMED_KEY = 'fnsprites.codesRedeemed'
 const HIDE_KEY = 'fnsprites.codesHideRedeemed'
@@ -75,7 +73,7 @@ export default function CodesView() {
             {redeemedCount > 0 && <> · <b className="text-white">{redeemedCount}/{LOBBY_CODES.length}</b> redeemed</>}
           </p>
         </div>
-        <a href="/codes" title="Open the full codes page" className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-[var(--muted)] hover:text-white">Full page ↗</a>
+        <a href="/codes" title="Open the full Lobby Hacks page" className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-[var(--muted)] hover:text-white">Full page ↗</a>
       </div>
 
       {/* How it works */}
@@ -98,14 +96,18 @@ export default function CodesView() {
         </div>
       </div>
 
-      {/* Code groups */}
+      {/* Code groups — by reward category */}
       <div className="mt-4 grid gap-4 lg:grid-cols-2">
-        {GROUPS.map((g) => {
-          const items = LOBBY_CODES.filter(g.match).filter((c) => !hideRedeemed || !redeemed.has(c.code))
+        {CODE_CATEGORIES.map((g) => {
+          const items = LOBBY_CODES
+            .filter((c) => c.category === g.key)
+            .filter((c) => !hideRedeemed || !redeemed.has(c.code))
+            .sort(byStatus)
           if (!items.length) return null
           return (
             <section key={g.key}>
-              <h3 className="mb-2 text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">{g.label}</h3>
+              <h3 className="mb-0.5 text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">{g.icon} {g.label} <span className="text-[var(--muted)]/60">· {items.length}</span></h3>
+              <p className="mb-2 text-[10px] leading-snug text-[var(--muted)]/80">{g.blurb}</p>
               <div className="flex flex-col gap-1.5">
                 {items.map((c) => {
                   const st = STATUS[c.status] || STATUS.rumored

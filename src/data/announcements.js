@@ -18,9 +18,9 @@ export const ANNOUNCEMENTS = [
   {
     id: 'lobby-hack-codes-2026-08-20',
     emoji: '🔓',
-    message: 'Hack the Lobby is live — enter Admin Panel codes to unlock Cheatmaster Sprites (Sonic = GOTTAGOFAST, Tails = IWANNAFLYHIGH, 8-Bit = 8BITBLAST, Jonesy = PLAY4ALL) + more rewards. Full code list in the footer → Lobby codes.',
+    message: 'Hack the Lobby is live — enter Admin Panel codes to unlock Cheatmaster Sprites (Sonic = GOTTAGOFAST, Tails = IWANNAFLYHIGH, 8-Bit = 8BITBLAST, Jonesy = PLAY4ALL) + more rewards. Full list on the Lobby Hacks tab.',
     link: '/codes',
-    linkLabel: 'All codes',
+    linkLabel: 'Lobby Hacks',
     start: '2026-08-20',
     end: '2026-09-15',
     source: 'Community',

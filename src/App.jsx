@@ -49,7 +49,7 @@ import { LINKS } from './lib/supabase'
 const TABS = [
   { id: 'collection', label: 'Collection' },
   { id: 'sprites', label: '🧩 Sprites' },
-  { id: 'codes', label: '🔓 Codes' },
+  { id: 'codes', label: '🔓 Lobby Hacks' },
   { id: 'leaderboard', label: '🏆 Leaderboard' },
   { id: 'news', label: '📰 News' },
   { id: 'stats', label: '📊 Stats' },
