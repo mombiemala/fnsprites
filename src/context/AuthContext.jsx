@@ -301,6 +301,15 @@ export function AuthProvider({ children }) {
     return data || []
   }, [])
 
+  // "Who owns this Sprite" — public players who own a given Sprite type (Postgres
+  // RPC; public profiles only). Viewable by anyone, signed in or not.
+  const fetchSpriteHolders = useCallback(async (typeId) => {
+    if (!typeId) return []
+    const { data, error } = await supabase.rpc('sprite_holders', { type_id: typeId })
+    if (error) return []
+    return data || []
+  }, [])
+
   const value = {
     session,
     user,
@@ -318,6 +327,7 @@ export function AuthProvider({ children }) {
     importTracking,
     findTradeMatches,
     fetchLeaderboard,
+    fetchSpriteHolders,
     signUp,
     signIn,
     signInWithProvider,

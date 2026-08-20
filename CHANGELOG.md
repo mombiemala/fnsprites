@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 19, 2026 — See who owns a Sprite 👥
+
+- **Added:** a "👥 Who owns this" collapsible in `SpriteDetailModal` — public collectors of the Sprite, with
+  their showcase avatar + owned/mastered counts, linking to each `?u=` profile. Loads on expand via a new
+  `fetchSpriteHolders(typeId)` helper.
+- **DB:** `sprite_holders(text)` RPC — security-definer, public profiles only, groups `sprite_progress` by the
+  Sprite type (prefix of `sprite_id`), ordered by mastered then owned, capped at 60.
+- **Why:** rivals gate a "who owns X" behind Discord bots; we already hold public-profile data, so it's pure
+  leverage — social proof + a way for trade-hunters to find who has a grail.
+
+---
+
 ## August 19, 2026 — New: a Sprites tier list 🏆 + more sources credited
 
 - **Added:** a prerendered **/tier-list** page (`scripts/prerender.mjs` `tierListPage()`) ranking every released

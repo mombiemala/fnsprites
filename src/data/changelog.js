@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 19, 2026',
+    title: 'See who owns a Sprite 👥',
+    summary:
+      'Every Sprite’s detail view now has a “Who owns this” list — the public collectors who’ve got it, ranked by how many variants they’ve mastered. Tap through to their collection.',
+    changes: [
+      { tag: 'Added', text: 'A collapsible “👥 Who owns this” section in the Sprite detail view: public players who own the Sprite, with their showcase avatar and owned/mastered counts, linking to each collection. Loads on demand.' },
+      { tag: 'Security', text: 'Runs through a server-side (security-definer) function over public profiles only — no private collection is ever exposed.' },
+    ],
+    why:
+      'A “who owns this” directory is a feature rivals charge for or hide in a Discord bot; we already hold the public-profile data, so it’s pure leverage — it makes the collection feel social and gives trade-hunters a way to find who has the grail they’re chasing.',
+  },
+  {
+    date: 'August 19, 2026',
     title: 'New: a Sprites tier list 🏆 + more sources credited',
     summary:
       'Added a dedicated tier-list page ranking every Sprite S→C by how strong its ability is, and credited the extra datamine/community sources we now cross-reference.',
