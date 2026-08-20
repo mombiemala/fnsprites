@@ -19,8 +19,10 @@ export const THEMES = [
   // Cheatmaster — the Chapter 7 Season 4 "Override" finish (glitch/pixel theme).
   // Datamined; its bonus and roll odds aren't confirmed yet, so `rumored: true`
   // keeps it from auto-releasing (and reads as leaked) until Epic reveals it.
-  { id: 'cheatmaster', name: 'Cheatmaster', short: 'Ch', className: 'theme-cheatmaster', accent: '#41f08a', bonus: 'Season 4 “Override” finish — bonus not yet confirmed by Epic (datamined).', rumored: true },
-  { id: 'rift', name: 'Rift', short: 'R', className: 'theme-rift', accent: '#36c5ff', bonus: 'Special Rift variant' },
+  // `noSummon`: unlocked another way (a Hack-the-Lobby code), not by spending
+  // Sprite Dust — so it's excluded from "Dust to complete" math. (Quack is the
+  // same idea via `mastery`.)
+  { id: 'cheatmaster', name: 'Cheatmaster', short: 'Ch', className: 'theme-cheatmaster', accent: '#41f08a', bonus: 'Season 4 “Override” finish — unlocked by a Hack the Lobby code, not summoned. Bonus not yet confirmed by Epic (datamined).', rumored: true, noSummon: true },
 ]
 
 export const THEME_MAP = Object.fromEntries(THEMES.map((t) => [t.id, t]))

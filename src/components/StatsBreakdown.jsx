@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { ALL_SPRITES, RARITY_ORDER, RARITY_COLORS, dustCost } from '../data/sprites'
-import { THEMES } from '../data/themes'
+import { THEMES, THEME_MAP } from '../data/themes'
 
 function Ring({ owned, total, color, label }) {
   const pct = total ? owned / total : 0
@@ -47,6 +47,11 @@ export default function StatsBreakdown({ tracking }) {
     const dustByRarity = {}
     for (const s of released) {
       if (owned(s)) continue
+      // Skip finishes you don't summon with Dust: Cheatmaster (Hack-the-Lobby
+      // code) and Quack (Sprite Mastery reward). Counting them inflated the Dust
+      // total and the "missing variants" line against them.
+      const th = THEME_MAP[s.themeId]
+      if (th?.noSummon || th?.mastery) continue
       const c = dustCost(s.rarity, s.themeId) || 0
       dustToComplete += c
       missing++
