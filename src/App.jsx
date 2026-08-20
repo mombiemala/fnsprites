@@ -36,7 +36,7 @@ const SpriteDetailModal = lazy(() => import('./components/SpriteDetailModal'))
 const BugReportModal = lazy(() => import('./components/BugReportModal'))
 const AboutModal = lazy(() => import('./components/AboutModal'))
 const ChangelogModal = lazy(() => import('./components/ChangelogModal'))
-const CodesModal = lazy(() => import('./components/CodesModal'))
+const CodesView = lazy(() => import('./components/CodesView'))
 const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
@@ -44,13 +44,18 @@ const ShareExportModal = lazy(() => import('./components/ShareExportModal'))
 const TradeTab = lazy(() => import('./components/TradeTab'))
 import { LINKS } from './lib/supabase'
 
+// Primary sections, in first-glance order: the collection, the sprite database,
+// the timely Override codes, then social (leaderboard/trade) and reference
+// (news/stats/shop). On desktop they all show inline; only narrow screens fold
+// the overflow into a "⋯ More" menu (see OverflowNav).
 const TABS = [
   { id: 'collection', label: 'Collection' },
+  { id: 'sprites', label: '🧩 Sprites' },
+  { id: 'codes', label: '🔓 Codes' },
   { id: 'leaderboard', label: '🏆 Leaderboard' },
   { id: 'trade', label: '🔁 Trade' },
-  { id: 'sprites', label: '🧩 Sprites' },
-  { id: 'stats', label: '📊 Stats' },
   { id: 'news', label: '📰 News' },
+  { id: 'stats', label: '📊 Stats' },
   { id: 'shop', label: '🛒 Item Shop' },
 ]
 
@@ -88,6 +93,9 @@ function useInitialView() {
     // The Cosmetics tab was retired (it overlapped the Item Shop); route any old
     // ?cosmetics=1 / ?view=cosmetics deep links to the Item Shop instead.
     if (params.get('cosmetics') === '1' || v === 'cosmetics') return 'shop'
+    // Lobby codes used to open as a modal (?codes=1, still linked from the SEO
+    // footer); it's now a tab, so route that param to the view.
+    if (params.get('codes') === '1') return 'codes'
     return TABS.some((t) => t.id === v) ? v : 'collection'
   }, [])
 }
@@ -151,7 +159,6 @@ export default function App() {
   const [showAbout, setShowAbout] = useState(() => openParam('about'))
   const [showChangelog, setShowChangelog] = useState(() => openParam('changelog'))
   const [showBackup, setShowBackup] = useState(() => openParam('backup'))
-  const [showCodes, setShowCodes] = useState(() => openParam('codes'))
 
   // Single source of truth for the utility/support links, so the header "More"
   // menu and the footer show the exact same set. Cosmetics is now a primary tab
@@ -160,7 +167,6 @@ export default function App() {
   // landing page (#how-sprites-work), which the in-app "How Sprites work" links
   // point to.
   const utilityLinks = [
-    { id: 'codes', label: '🔓 Lobby codes', onClick: () => setShowCodes(true) },
     { id: 'about', label: 'About', onClick: () => setShowAbout(true) },
     { id: 'changelog', label: 'Changelog', onClick: () => setShowChangelog(true) },
     { id: 'backup', label: 'Backup', onClick: () => setShowBackup(true) },
@@ -439,10 +445,11 @@ export default function App() {
         ariaLabel="Sections"
       />
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'codes' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
           {effectiveView === 'trade' && <div className="mb-5"><TradeTab /></div>}
+          {effectiveView === 'codes' && <div className="mb-5"><CodesView /></div>}
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}
@@ -745,7 +752,6 @@ export default function App() {
         {showAbout && <AboutModal onClose={() => setShowAbout(false)} />}
         {showChangelog && <ChangelogModal onClose={() => setShowChangelog(false)} />}
         {showBackup && <BackupModal onClose={() => setShowBackup(false)} />}
-        {showCodes && <CodesModal onClose={() => setShowCodes(false)} />}
         {showProfile && <ProfileModal onClose={() => setShowProfile(false)} />}
         {showImport && <ScreenshotImportModal onClose={() => setShowImport(false)} />}
         {showShare && <ShareExportModal onClose={() => setShowShare(false)} />}

@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 20, 2026 — Navigation: every section at a glance + Codes promoted
+
+- **Changed:** `OverflowNav` now measures whether *all* primary items fit; on desktop they do, so no "⋯ More"
+  button renders at all. It only appears on narrow screens when items overflow, and carries the utility
+  `extras` (which otherwise live in the footer).
+- **Changed:** nav reordered — Collection · 🧩 Sprites · 🔓 Codes · 🏆 Leaderboard · 🔁 Trade · 📰 News ·
+  📊 Stats · 🛒 Item Shop — in both the app (`TABS`) and the SEO nav (`NAV_LINKS`) + footers.
+- **Changed:** Lobby Codes moved from a modal (`CodesModal`, deleted) to a first-class `CodesView` tab
+  (two-column on wide screens); `?codes=1` / `?view=codes` route to it.
+- **Why:** Override codes are the season's hottest query; a "More" menu hid them. Show every section up front,
+  collapse only when the screen forces it.
+
+---
+
 ## August 20, 2026 — SEO: own the Override checklist & codes 🔎
 
 - **Changed:** homepage (`index.html`) + `/sprites` (`indexPage`) retargeted to "Fortnite Sprites checklist —

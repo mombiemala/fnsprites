@@ -65,12 +65,16 @@ export default function OverflowNav({ views = [], view, isShareView, onSelectVie
     const moreW = (moreRef.current?.offsetWidth || 90) + 6
     const gap = 6
     const kids = Array.from(measure.children)
+    // First pass: do ALL primary items fit without a More button? On desktop they
+    // do — then every section shows inline and no ⋯ More appears at all.
+    let total = 0
+    for (let i = 0; i < kids.length; i++) total += kids[i].offsetWidth + gap
+    if (total <= avail) { setVisible(kids.length); return }
+    // Otherwise (narrow screens) reserve room for the More button and fit what we can.
     let used = 0
     let count = 0
     for (let i = 0; i < kids.length; i++) {
       used += kids[i].offsetWidth + gap
-      // The "More" button is (almost) always present (it holds the utility
-      // extras), so always leave room for it.
       if (used + moreW <= avail) count++
       else break
     }
@@ -86,7 +90,10 @@ export default function OverflowNav({ views = [], view, isShareView, onSelectVie
   }, [recompute, items.length])
 
   const overflow = items.slice(visible)
-  const showMore = overflow.length > 0 || extras.length > 0
+  // "More" appears ONLY when primary items overflow (narrow screens). On desktop
+  // everything fits, so there's no More button; the utility `extras` are always
+  // reachable from the footer, and ride along in this menu when it does appear.
+  const showMore = overflow.length > 0
   const close = () => setOpen(false)
 
   return (

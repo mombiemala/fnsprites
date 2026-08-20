@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 20, 2026',
+    title: 'Navigation: every section at a glance + Codes promoted',
+    summary:
+      'The top nav now shows every section inline on desktop — no more hunting in “⋯ More” — and the timely Override Codes are a first-class tab, in a clearer order.',
+    changes: [
+      { tag: 'Changed', text: 'On desktop all sections show inline; the “⋯ More” button now appears only on narrow screens when items actually overflow (utility links live in the footer).' },
+      { tag: 'Changed', text: 'Reordered the nav to a first-glance order: Collection · Sprites · 🔓 Codes · Leaderboard · Trade · News · Stats · Item Shop.' },
+      { tag: 'Changed', text: 'Lobby Codes graduated from a footer/“More” modal to a full 🔓 Codes tab (with a two-column layout on wide screens) — the in-app and SEO nav match.' },
+    ],
+    why:
+      'Override just dropped and the codes are the hottest thing players want — burying them in a “More” menu hid them. Showing every section up front (and only collapsing on small screens) makes the app easier to scan and puts the timely stuff where people look first.',
+  },
+  {
+    date: 'August 20, 2026',
     title: 'SEO: own the Override checklist & codes 🔎',
     summary:
       'Sharpened the homepage, the Sprites checklist and the codes page to rank for Chapter 7 Season 4 “Override” — dated codes with structured data, a real checklist schema, and season-qualified Sprite pages.',
