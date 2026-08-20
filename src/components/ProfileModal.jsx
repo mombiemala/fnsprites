@@ -18,7 +18,6 @@ export default function ProfileModal({ onClose }) {
   const [epicName, setEpicName] = useState(profile?.epic_username || '')
   const [epicPlatform, setEpicPlatform] = useState(profile?.epic_platform || 'epic')
   const [statsPublic, setStatsPublic] = useState(profile?.stats_public ?? false)
-  const [discord, setDiscord] = useState(profile?.discord || '')
   const [showcase, setShowcase] = useState(() => (profile?.showcase_sprite_ids || []).slice(0, SHOWCASE_MAX))
   const [savingProfile, setSavingProfile] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -54,7 +53,6 @@ export default function ProfileModal({ onClose }) {
     epicName.trim() !== (profile?.epic_username || '') ||
     epicPlatform !== (profile?.epic_platform || 'epic') ||
     effStatsPublic !== (profile?.stats_public ?? false) ||
-    discord.trim() !== (profile?.discord || '') ||
     JSON.stringify(showcase) !== JSON.stringify(savedShowcase)
 
   // Revert every field to what's currently saved.
@@ -64,7 +62,6 @@ export default function ProfileModal({ onClose }) {
     setEpicName(profile?.epic_username || '')
     setEpicPlatform(profile?.epic_platform || 'epic')
     setStatsPublic(profile?.stats_public ?? false)
-    setDiscord(profile?.discord || '')
     setShowcase(savedShowcase)
   }
 
@@ -78,7 +75,6 @@ export default function ProfileModal({ onClose }) {
       showcase_sprite_ids: showcase.length ? showcase : null,
       // Public stats only make sense with a saved Epic name; force off otherwise.
       stats_public: effStatsPublic,
-      discord: discord.trim() || null,
     })
     setSavingProfile(false)
     toast(res.error ? res.error : 'Profile saved ✓', res.error ? 'error' : undefined)
@@ -183,27 +179,6 @@ export default function ProfileModal({ onClose }) {
               {!epicName.trim() && <span className="block text-[var(--muted)]/70">Add your Epic name first.</span>}
             </span>
           </label>
-        </div>
-
-        {/* Trading — Discord handle, powers the 🔁 Trade tab */}
-        <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] p-3">
-          <label className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">
-            🔁 Trading <span className="font-semibold normal-case text-[var(--muted)]/80">— for the Trade tab</span>
-          </label>
-          <input
-            value={discord}
-            onChange={(e) => setDiscord(e.target.value)}
-            placeholder="Discord handle (e.g. yourname)"
-            maxLength={40}
-            title="Shown to your trade matches so they can DM you to arrange a swap"
-            className="w-full rounded-lg border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-sm text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)]"
-          />
-          <p className="mt-1.5 text-[11px] text-[var(--muted)]">
-            Mark spare duplicates <b className="text-white">🔁 For trade</b> and sprites you want <b className="text-white">🎯 Want</b> on any
-            sprite; the <b className="text-white">🔁 Trade</b> tab matches you with other <b className="text-white">public</b> players. Your handle
-            lets a match DM you — leave it blank to stay handle-less. New matches simply show up in the Trade
-            tab whenever you open it (there are no emails).
-          </p>
         </div>
 
         {/* Showcase — featured sprites on your public Trainer Card (?u= share view) */}

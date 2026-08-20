@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 20, 2026 — Simpler: retired the Garden view & Trade tab
+
+- **Removed:** the 🌱 Garden browse view (`GardenView.jsx` deleted; view toggle back to Grid + List). The
+  Garden **share-image** (`generateGardenImage`) moves into the Share & export bar. `?view=garden` falls back
+  to grid.
+- **Removed:** the 🔁 Trade tab (`TradeTab.jsx` deleted), the per-sprite For-trade/Want toggles in
+  `SpriteDetailModal`, and the Discord field in `ProfileModal`. Removed from app `TABS` + SEO `NAV_LINKS` +
+  footers. The DB (`profiles.discord`, `sprite_progress.for_trade/wanted`) and RPCs (`find_trade_matches`,
+  `sprite_holders`) stay in place, dormant — easy to revive.
+- **Why:** competitor research corroborated the call — a garden browse-mode is rare (showcase = an image), and
+  trading is niche unless you run a community. Declutter toward tracking + timely Override content.
+
+---
+
 ## August 20, 2026 — Navigation: every section at a glance + Codes promoted
 
 - **Changed:** `OverflowNav` now measures whether *all* primary items fit; on desktop they do, so no "⋯ More"

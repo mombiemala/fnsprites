@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 20, 2026',
+    title: 'Simpler: retired the Garden view & Trade tab',
+    summary:
+      'Trimmed to two clear list views (Grid + Quick-check list), kept the Sprite Garden as a share-image, and pulled the Trade tab back — its data stays dormant so it’s easy to revive.',
+    changes: [
+      { tag: 'Removed', text: 'The 🌱 Garden browse view — three list views was one too many. Your Garden lives on as a downloadable showcase image under Share & export.' },
+      { tag: 'Removed', text: 'The 🔁 Trade tab, the per-sprite For-trade/Want toggles, and the Profile Discord field. The underlying data + matching stay in place (dormant), so trading is easy to bring back if we ever run a community.' },
+    ],
+    why:
+      'Competitor research matched the instinct: a “garden” browse-mode is rare (a showcase belongs as an image, not a mode), and trading is a niche most trackers skip unless they commit to a community. Cutting both declutters the collection and focuses the app on tracking + the timely Override content.',
+  },
+  {
+    date: 'August 20, 2026',
     title: 'Navigation: every section at a glance + Codes promoted',
     summary:
       'The top nav now shows every section inline on desktop — no more hunting in “⋯ More” — and the timely Override Codes are a first-class tab, in a clearer order.',

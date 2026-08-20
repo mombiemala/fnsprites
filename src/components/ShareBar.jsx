@@ -3,7 +3,7 @@ import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 import { ALL_SPRITES, RELEASED_COUNT } from '../data/sprites'
 
-export default function ShareBar({ onExport, exporting }) {
+export default function ShareBar({ onExport, exporting, onExportGarden, gardenExporting }) {
   const { user, profile, updateProfile, tracking } = useAuth()
   const { toast } = useToast()
   const [gamertag, setGamertag] = useState(profile?.gamertag || '')
@@ -148,6 +148,16 @@ export default function ShareBar({ onExport, exporting }) {
             >
               {exporting ? 'Rendering…' : '⬇️ Missing-sprites image'}
             </button>
+            {onExportGarden && (
+              <button
+                onClick={onExportGarden}
+                disabled={gardenExporting}
+                title="Your owned Sprites as a lush circular “Sprite Garden” showcase"
+                className="rounded-xl bg-[var(--panel-2)] px-3 py-2 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60"
+              >
+                {gardenExporting ? 'Rendering…' : '🌱 Sprite Garden image'}
+              </button>
+            )}
           </div>
         </div>
       )}

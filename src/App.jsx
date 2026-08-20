@@ -15,7 +15,6 @@ import SupportBanner from './components/SupportBanner'
 import StatsBreakdown from './components/StatsBreakdown'
 import NextToChase from './components/NextToChase'
 import QuickCheckList from './components/QuickCheckList'
-import GardenView from './components/GardenView'
 import ChestOdds from './components/ChestOdds'
 import OverflowNav from './components/OverflowNav'
 import UpcomingSprites from './components/UpcomingSprites'
@@ -41,7 +40,6 @@ const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
 const ShareExportModal = lazy(() => import('./components/ShareExportModal'))
-const TradeTab = lazy(() => import('./components/TradeTab'))
 import { LINKS } from './lib/supabase'
 
 // Primary sections, in first-glance order: the collection, the sprite database,
@@ -53,7 +51,6 @@ const TABS = [
   { id: 'sprites', label: '🧩 Sprites' },
   { id: 'codes', label: '🔓 Codes' },
   { id: 'leaderboard', label: '🏆 Leaderboard' },
-  { id: 'trade', label: '🔁 Trade' },
   { id: 'news', label: '📰 News' },
   { id: 'stats', label: '📊 Stats' },
   { id: 'shop', label: '🛒 Item Shop' },
@@ -115,7 +112,7 @@ function TabLoading() {
 }
 
 export default function App() {
-  const { user, profile, tracking, setOwned, setMastered, setLevel, setForTrade, setWanted, bulkOwn, syncing, cloudStatus, authLoading } = useAuth()
+  const { user, profile, tracking, setOwned, setMastered, setLevel, bulkOwn, syncing, cloudStatus, authLoading } = useAuth()
   const { toast } = useToast()
   const shareTarget = useShareTarget()
 
@@ -124,12 +121,12 @@ export default function App() {
   const [collectionId, setCollectionId] = useState(ACTIVE_COLLECTION_ID)
   const set = useMemo(() => getCollection(collectionId), [collectionId])
 
-  // Layout view is deep-linkable (?view=garden|list|grid) — handy for sharing a
-  // Garden showcase link. Falls back to the default grid for anything else.
+  // Layout view is deep-linkable (?view=list|grid). Falls back to the default
+  // grid for anything else (the retired ?view=garden included).
   const [filters, setFilters] = useState(() => {
     try {
       const v = new URLSearchParams(window.location.search).get('view')
-      if (v === 'garden' || v === 'list' || v === 'grid') return { ...DEFAULT_FILTERS, view: v }
+      if (v === 'list' || v === 'grid') return { ...DEFAULT_FILTERS, view: v }
     } catch { /* no-op */ }
     return DEFAULT_FILTERS
   })
@@ -335,30 +332,16 @@ export default function App() {
   const hasAnyOwned = Object.values(activeTracking).some((v) => v?.owned)
   const showOnboarding = !isShareView && !readOnly && !hintDismissed && !hasAnyOwned
 
-  // Share a link straight to your Sprite Garden — friends open it read-only
-  // (?u=<id> loads your collection, &view=garden opens the Garden showcase).
-  const copyGardenLink = () => {
-    if (!user) return
-    const base = `${window.location.origin}${window.location.pathname}`
-    const url = `${base}?u=${user.id}&view=garden`
-    if (navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(url).then(
-        () => toast('Garden link copied 🌱 — share it with friends'),
-        () => toast('Couldn’t copy — long-press the URL to share'),
-      )
-    } else {
-      toast('Copy not supported here — grab the URL from the address bar')
-    }
-  }
-
-  // Download the Sprite Garden as a shareable image (lush circular tiles). Works
-  // for guests too — reads the active tracking map. Shown from the Garden view.
+  // Download the Sprite Garden as a shareable image (lush circular tiles) — a
+  // showcase artifact for Discord/socials. The Garden browse-view was retired
+  // (competitors deliver the showcase as an image, not a mode), so this lives in
+  // the Share & export flow now. Works for guests (reads the active tracking).
   const [gardenExporting, setGardenExporting] = useState(false)
   const exportGardenImage = async () => {
     setGardenExporting(true)
     try {
       const base = `${window.location.origin}${window.location.pathname}`
-      const shareUrl = user ? `${base}?u=${user.id}&view=garden` : base
+      const shareUrl = user ? `${base}?u=${user.id}` : base
       const url = await generateGardenImage({ gamertag, tracking: activeTracking, shareUrl })
       downloadDataUrl(url, 'fn-sprite-garden.png')
       toast('Sprite Garden image downloaded 🌱')
@@ -445,10 +428,9 @@ export default function App() {
         ariaLabel="Sections"
       />
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'trade' || effectiveView === 'codes' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'codes' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
-          {effectiveView === 'trade' && <div className="mb-5"><TradeTab /></div>}
           {effectiveView === 'codes' && <div className="mb-5"><CodesView /></div>}
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
@@ -584,17 +566,6 @@ export default function App() {
                 <div key={i} className="h-44 animate-pulse rounded-2xl bg-[var(--panel)]" />
               ))}
             </div>
-          ) : filters.view === 'garden' ? (
-            <GardenView
-              set={set}
-              tracking={activeTracking}
-              onOpen={(sp) => setDetailType(sp.typeId)}
-              canShare={!!user && !isShareView}
-              onShare={copyGardenLink}
-              onShareImage={isShareView ? null : exportGardenImage}
-              imageBusy={gardenExporting}
-              ownerName={isShareView ? gamertag : null}
-            />
           ) : visible.length === 0 ? (
             <p className="py-16 text-center text-sm text-[var(--muted)]">No sprites match your filters.</p>
           ) : filters.view === 'list' ? (
@@ -645,7 +616,7 @@ export default function App() {
           {/* Share & export — pulled up directly under the import card. */}
           {!isShareView &&
             (user ? (
-              <ShareBar onExport={exportImage} exporting={exporting} />
+              <ShareBar onExport={exportImage} exporting={exporting} onExportGarden={exportGardenImage} gardenExporting={gardenExporting} />
             ) : (
               <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
                 <h3 className="mb-2 font-display text-lg text-white">Share &amp; export</h3>
@@ -763,8 +734,6 @@ export default function App() {
             onToggleOwned={setOwned}
             onToggleMastered={setMastered}
             onSetLevel={setLevel}
-            onSetForTrade={setForTrade}
-            onSetWanted={setWanted}
             readOnly={readOnly}
           />
         )}

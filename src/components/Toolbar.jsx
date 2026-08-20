@@ -112,7 +112,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
 
         {/* Grid ↔ Quick-check list view — at the end. */}
         <div className="flex shrink-0 overflow-hidden rounded-xl border border-[var(--border)]">
-          {[['grid', '▦', 'Grid view'], ['list', '☰', 'Quick-check list — tick variants fast'], ['garden', '🌱', 'Sprite Garden (beta) — showcase the Sprites you own']].map(([v, icon, title]) => (
+          {[['grid', '▦', 'Grid view'], ['list', '☰', 'Quick-check list — tick variants fast']].map(([v, icon, title]) => (
             <button
               key={v}
               onClick={() => set({ view: v })}
