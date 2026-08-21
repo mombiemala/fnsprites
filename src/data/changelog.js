@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 21, 2026',
+    title: 'Lobby Hacks: two new codes + confirmed statuses',
+    summary:
+      'Refreshed the code list against the current confirmed set — added two codes and promoted several from “unverified” now that they’re verified.',
+    changes: [
+      { tag: 'Added', text: 'FINDITCHAT (2× Cheat Code Locators) and REACHYOURIMPOSSIBLE (Block Party loading screen).' },
+      { tag: 'Changed', text: 'OVERRIDEXP (40,000 XP) promoted from Unverified to Working; the CHISPAMBO / PERLIMPINPIN / ABGESTAUBT Sprite-Dust codes moved from Unverified to Regional (confirmed, but promo/locale-tied).' },
+    ],
+    why:
+      'The Override code drip is the fastest-moving thing on the site right now, so keeping the list matched to what’s actually live — and honest about which codes are region-locked — is the whole point of the page.',
+  },
+  {
     date: 'August 20, 2026',
     title: 'Lobby Hacks: codes grouped by reward + a clearer name',
     summary:

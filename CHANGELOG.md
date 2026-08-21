@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 21, 2026 — Lobby Hacks: two new codes + confirmed statuses
+
+- **Added:** `FINDITCHAT` (2× Cheat Code Locators, boosts) and `REACHYOURIMPOSSIBLE` (Block Party loading
+  screen, screens) to `LOBBY_CODES`.
+- **Changed:** `OVERRIDEXP` promoted `rumored` → `working`; `CHISPAMBO` / `PERLIMPINPIN` / `ABGESTAUBT`
+  (Sprite Dust) promoted `rumored` → `regional` (confirmed but promo/locale-tied); sources updated to
+  "community list."
+- **Why:** the Override code drip moves fast — the list is only useful if it matches what's live and stays
+  honest about which codes are region-locked.
+
+---
+
 ## August 20, 2026 — Lobby Hacks: codes grouped by reward + a clearer name
 
 - **Changed:** the 🔓 Codes tab → **Lobby Hacks** (app `TABS` label + SEO `NAV_LINKS`/footer/nav row), matching

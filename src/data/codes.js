@@ -58,15 +58,17 @@ export const LOBBY_CODES = [
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
   { code: 'TAKEYOURHEART', unlocks: '2× Extraction Accelerators (Persona 5 / Joker)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
   { code: 'SURVIVETHENIGHT', unlocks: '2× Cheat Code Locators (99 Nights)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
+  { code: 'FINDITCHAT', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', source: 'community list' },
+  { code: 'OVERRIDEXP', unlocks: '40,000 XP', type: 'reward', category: 'boosts', status: 'working', source: 'community list' },
   { code: 'O2OVERRIDE', unlocks: 'Llama supply + 5 portable extractors', type: 'reward', category: 'boosts', status: 'regional', region: 'O2 promo', source: 'GamesRadar' },
-  { code: 'OVERRIDEXP', unlocks: '40,000 XP', type: 'reward', category: 'boosts', status: 'rumored', source: 'aggregated summary' },
 
-  // --- 🔷 Sprite Dust ---
+  // --- 🔷 Sprite Dust (regional/promo campaigns — may be locale-locked) ---
   { code: 'MAGILUME', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'regional', region: 'Brazil (WhatsApp)', source: 'GamesRadar' },
-  { code: 'CHISPAMBO', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'rumored', region: 'regional', source: 'aggregated summary' },
-  { code: 'PERLIMPINPIN', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'rumored', region: 'regional', source: 'aggregated summary' },
-  { code: 'ABGESTAUBT', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'rumored', region: 'Germany', source: 'aggregated summary' },
+  { code: 'CHISPAMBO', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'regional', region: 'regional promo', source: 'community list' },
+  { code: 'PERLIMPINPIN', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'regional', region: 'regional promo', source: 'community list' },
+  { code: 'ABGESTAUBT', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'regional', region: 'Germany', source: 'community list' },
 
   // --- 🖼️ Loading screens ---
+  { code: 'REACHYOURIMPOSSIBLE', unlocks: 'Block Party loading screen', type: 'cosmetic', category: 'screens', status: 'working', source: 'community list' },
   { code: 'BEMOREALIEN', unlocks: '“Override Ready” loading screen', type: 'cosmetic', category: 'screens', status: 'regional', region: 'Alienware', source: 'GamesRadar' },
 ]
