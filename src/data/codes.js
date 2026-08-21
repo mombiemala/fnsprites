@@ -24,7 +24,7 @@ export const CODE_CATEGORIES = [
   { key: 'sprites', icon: '🧩', label: 'Cheatmaster Sprites', blurb: 'Permanent Sprite unlocks. Redeem one you already own for ~10,000 Sprite Dust.' },
   { key: 'gizmos', icon: '✨', label: 'Gizmos & effects', blurb: 'Lobby transforms and in-match gizmos.' },
   { key: 'boosts', icon: '⚡', label: 'Boosts & XP', blurb: 'Consumables, extractors and XP.' },
-  { key: 'dust', icon: '🔷', label: 'Sprite Dust', blurb: 'Instant Sprite Dust to summon the finishes you want.' },
+  { key: 'dust', icon: '🔷', label: 'Sprite Dust', blurb: 'Instant Sprite Dust — summon Sprites and fuel Loot Hacks.' },
   { key: 'screens', icon: '🖼️', label: 'Loading screens', blurb: 'Cosmetic lobby unlocks.' },
 ]
 

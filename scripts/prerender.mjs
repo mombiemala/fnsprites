@@ -266,6 +266,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
     <a href="/?bug=1">Report a bug</a>
     <a href="/tier-list">🏆 Tier list</a>
     <a href="/sprite-garden">🌱 Sprite Garden</a>
+    <a href="/sprite-dust">🔷 Sprite Dust</a>
     <a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a>
   </div></details>
 </nav>`
@@ -308,7 +309,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
 <nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
-<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/sprite-garden">🌱 Sprite Garden</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
+<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/sprite-garden">🌱 Sprite Garden</a><span class="sep">·</span><a href="/sprite-dust">🔷 Sprite Dust</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
 <p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Leaks &amp; datamines are credited to HYPEX, ShiinaBR, <a href="https://x.com/FN_Assist" target="_blank" rel="noreferrer">@FN_Assist</a> &amp; FNBRIntel, with tier &amp; farm-route context from <a href="https://punksprite.com" target="_blank" rel="noreferrer">punksprite</a> &amp; <a href="https://quackadex.com" target="_blank" rel="noreferrer">quackadex</a>. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
@@ -780,6 +781,74 @@ function spriteGardenPage() {
 ` + FOOT
 }
 
+// ---------- /sprite-dust guide page ----------
+// Override turned Sprite Dust from a cosmetic-summon currency into a loadout
+// economy (Loot Hacks). Outlets have guides; no tracker does — same gap as the
+// Garden guide. High-intent "sprite dust / loot hacks" queries.
+function spriteDustPage() {
+  const desc = `Fortnite Sprite Dust in Chapter 7 Season 4 “Override”, explained — how to earn it (extracting Sprites, duplicate Sprites, Lobby Hack codes), the new Loot Hacks that customise what drops from your chests, unlock/upgrade costs, the Loot Hack Override, and a spend strategy. Note: Dust resets each season.`
+  const steps = [
+    ['Open the Loot Hack tab', 'In the Lobby, click “Override,” then open the “Loot Hack” tab to see the Loot Items you can unlock with Sprite Dust.'],
+    ['Unlock a Loot Hack', 'Spend Dust to unlock an item (e.g. the Oni Shotgun starts at 500 Dust). Once unlocked it can drop from the chests you open in Battle Royale.'],
+    ['Upgrade it', 'Spend more Dust to upgrade — raising how often the item appears from your chests and its maximum rarity.'],
+    ['Guarantee it in-match', 'Use the “Loot Hack Override” match modifier to make your next Chest drop a Loot Hack item, so you can pull your boosted loadout early.'],
+  ]
+  const faqs = [
+    ['What is Sprite Dust used for in Season 4?', 'Three things: (1) summon a Sprite you’ve already extracted at the start of a match (rarer Sprites cost more), (2) upgrade a Sprite’s powers, and (3) the new Loot Hacks — spending Dust in the Lobby to customise what drops from your own chests in Battle Royale, including exclusive items you can’t find any other way.'],
+    ['How do I earn Sprite Dust?', 'Mainly by extracting Sprites in Battle Royale / Zero Build — drop them into a Portable Extractor (a Gizmo) or an Extraction Crate at an Extraction Site. You also get Dust from redeeming a duplicate Sprite you already own (worth a big chunk), and from certain Hack the Lobby codes that grant ~2,000 Dust each — see our Lobby Hacks page.'],
+    ['What are Loot Hacks?', 'Loot Hacks let you spend Sprite Dust to change what’s inside your chests. Unlocking one adds that item to your personal chest drop pool; upgrading it increases how often it appears and its max rarity. Some Loot Hack items are exclusive to the system. It’s a way to shape your loadout before a match even starts.'],
+    ['How much Dust does a Loot Hack cost?', 'It varies by item and tier. The Oni Shotgun, for example, was shown at 500 Dust to unlock, with more Dust needed for each upgrade. Higher tiers cost more but raise drop frequency and max rarity.'],
+    ['Does Sprite Dust carry over between seasons?', 'No — Sprite Dust resets at the season flip (along with Portable Extractors and Lucky Locators). Spend it before the season ends rather than hoarding it; your collected Sprites themselves are kept forever.'],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'Fortnite Sprite Dust & Loot Hacks Guide', description: desc, url: SITE + '/sprite-dust', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'HowTo', name: 'How to spend Sprite Dust on Loot Hacks', description: 'Unlock and upgrade Loot Hacks with Sprite Dust to customise your chest loot.',
+      step: steps.map(([name, text], i) => ({ '@type': 'HowToStep', position: i + 1, name, text })) },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ] }
+  const card = (title, body) => `<div class="card" style="padding:16px;margin:0 0 12px"><h2 style="font-size:16px;margin:0 0 6px">${title}</h2><div style="font-size:13.5px;color:var(--muted);line-height:1.65">${body}</div></div>`
+  return head({ title: `Fortnite Sprite Dust & Loot Hacks Guide — How to Earn & Spend It (Season 4 Override) | FN Sprite Tracker`, desc, canonical: SITE + '/sprite-dust', jsonld, active: '' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🔷 Fortnite Sprite Dust &amp; Loot Hacks — how it works</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:70ch">In Season 4 “Override,” Sprite Dust stopped being just a cosmetic-summon currency — it now shapes your loadout through <b class="" style="color:#cfe9dc">Loot Hacks</b>. Here’s how to earn it, what to spend it on, and how to get the most out of it.</p>
+    ${card('What Sprite Dust is now', 'The Sprite system’s currency. You still spend it to summon Sprites you’ve extracted (rarer ones cost more) and to upgrade their powers — but the headline in Override is <b style="color:#fff">Loot Hacks</b>: spending Dust to customise what drops from your own chests in Battle Royale.')}
+    <div class="card" style="padding:16px;margin:0 0 12px">
+      <h2 style="font-size:16px;margin:0 0 6px">How to earn it</h2>
+      <ul style="margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.75">
+        <li><b style="color:#fff">Extract Sprites</b> — the main source. Drop them in a Portable Extractor (a Gizmo) or an Extraction Crate at an Extraction Site in BR / Zero Build.</li>
+        <li><b style="color:#fff">Duplicate Sprites</b> — redeeming a Sprite you already own converts it to a big chunk of Dust.</li>
+        <li><b style="color:#fff">Lobby Hack codes</b> — several <a href="/codes" style="color:var(--brand)">Admin Panel codes</a> grant ~2,000 Dust each (one-time).</li>
+      </ul>
+    </div>
+    <div class="card" style="padding:16px;margin:0 0 12px">
+      <h2 style="font-size:16px;margin:0 0 6px">Spending Dust on Loot Hacks</h2>
+      <ol style="margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.75">${steps.map(([n, t]) => `<li><b style="color:#fff">${esc(n)}</b> — ${esc(t)}</li>`).join('')}</ol>
+    </div>
+    ${card('The Loot Hack Override', 'One of the new match Overrides, the <b style="color:#fff">Loot Hack Override</b> makes your next Chest drop a Loot Hack item. Pair it with a high-value unlock (a strong weapon you’ve boosted) to reliably pull your custom loadout early in a match.')}
+    <div class="card" style="padding:16px;margin:0 0 12px">
+      <h2 style="font-size:16px;margin:0 0 6px">Getting the most from your Dust</h2>
+      <ul style="margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.75">
+        <li>Treat Dust as a <b style="color:#fff">loadout economy</b>, not a cosmetic tax — extract Sprites every match to keep it flowing.</li>
+        <li><b style="color:#fff">Unlock one Loot Hack you’ll actually use</b> and upgrade it, rather than spreading Dust thin across many.</li>
+        <li>Higher upgrade tiers raise both <b style="color:#fff">drop frequency and max rarity</b> — the compounding payoff is on the items you already run.</li>
+        <li><b style="color:#fff">Spend before the season ends</b> — Dust resets at the flip; your Sprites don’t.</li>
+      </ul>
+    </div>
+    ${card('Heads-up: Dust resets each season', 'Sprite Dust, Portable Extractors and Lucky Locators all reset when the season changes. The Sprites you’ve collected are kept forever (and live on in your <a href="/sprite-garden" style="color:var(--brand)">Sprite Garden</a>), but the Dust economy starts fresh — so don’t hoard across a season flip.')}
+    <h2 style="font-size:16px;margin:22px 0 8px">Sprite Dust — FAQ</h2>
+    ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Compiled from Epic’s Season 4 “Override” notes and community guides; costs/mechanics can change as Epic tunes the system. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track your Sprite collection — free →</a>
+  </div>
+  <aside class="side">
+    ${ctaCard()}
+    ${supportCard()}
+  </aside>
+</div>
+` + FOOT
+}
+
 // ---------- /codes page ----------
 // Season 4 "Override" Hack-the-Lobby admin codes. High-intent SEO page; the codes
 // come from src/data/codes.js (shared with the in-app modal). Copy runs client-side.
@@ -853,6 +922,7 @@ function sitemap(types) {
     { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9' },
     { loc: SITE + '/sprite-garden', changefreq: 'weekly', priority: '0.8' },
+    { loc: SITE + '/sprite-dust', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
@@ -886,6 +956,8 @@ mkdirSync(resolve(DIST, 'codes'), { recursive: true })
 writeFileSync(resolve(DIST, 'codes', 'index.html'), codesPage())
 mkdirSync(resolve(DIST, 'sprite-garden'), { recursive: true })
 writeFileSync(resolve(DIST, 'sprite-garden', 'index.html'), spriteGardenPage())
+mkdirSync(resolve(DIST, 'sprite-dust'), { recursive: true })
+writeFileSync(resolve(DIST, 'sprite-dust', 'index.html'), spriteDustPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /sprite-garden + /news + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /sprite-garden + /sprite-dust + /news + sitemap.xml → dist/`)

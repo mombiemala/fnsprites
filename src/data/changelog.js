@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'New: a Sprite Dust & Loot Hacks guide',
+    summary:
+      'Override turned Sprite Dust into a loadout economy, so there’s now a guide covering how to earn it, the new Loot Hacks, costs, the Loot Hack Override, and a spend strategy.',
+    changes: [
+      { tag: 'Added', text: 'A prerendered /sprite-dust guide: what Dust does now, how to earn it (extracting Sprites, duplicates, Lobby codes), how Loot Hacks customise your chest loot, unlock/upgrade costs, the Loot Hack Override, a “get the most from your Dust” strategy, and a season-reset heads-up — with HowTo + FAQ structured data.' },
+      { tag: 'Added', text: 'Links to the guide from the footer + “⋯ More” menu (app & SEO), and refreshed the Lobby Hacks “Sprite Dust” category note to mention Loot Hacks.' },
+    ],
+    why:
+      'Dust used to be a cosmetic-summon currency; in Override it shapes your loadout via Loot Hacks, which changes how players should farm and spend it. Outlets cover this but no tracker does — the same competitor gap the Garden guide filled, and a natural companion to our Lobby Hacks (Dust codes) and checklist (duplicates → Dust).',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'New: the Community Garden Gallery 🌱',
     summary:
       'A new 🌱 Garden tab where you can share a screenshot of your in-game Sprite Garden, browse everyone else’s, and like your favourites.',

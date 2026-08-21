@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — New: a Sprite Dust & Loot Hacks guide
+
+- **Added:** a prerendered `/sprite-dust` guide (`spriteDustPage` in `prerender.mjs`) — what Dust does now,
+  earning it (extraction / duplicates / Lobby codes), how Loot Hacks customise chest loot, unlock/upgrade
+  costs, the Loot Hack Override, a spend strategy, and the season-reset caveat. `Article` + `HowTo` + `FAQPage`
+  JSON-LD; wired into the sitemap.
+- **Added:** `🔷 Sprite Dust` links in the app's `utilityLinks` + SEO "More" menu/footer; refreshed the Lobby
+  Hacks "Sprite Dust" category blurb to mention Loot Hacks.
+- **Why:** Override made Dust a loadout economy (Loot Hacks), changing how to farm/spend it. Outlets cover it,
+  no tracker does — same gap the Garden guide filled, and a companion to Lobby Hacks (Dust codes) + the checklist.
+
+---
+
 ## August 22, 2026 — New: the Community Garden Gallery 🌱
 
 - **Added:** a `🌱 Garden` tab (`GardenGallery.jsx`, app `TABS` + SEO `NAV_LINKS`/footer as `/?view=garden`):
