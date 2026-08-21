@@ -28,6 +28,18 @@ export const ANNOUNCEMENTS = [
     tone: 'event',
   },
   {
+    id: 'lobby-hack-dust-codes-2026-08-21',
+    emoji: '🔷',
+    message: 'More Lobby Hacks added — free Sprite Dust! H0p0nVC (those are zeros), MAGILUME, CHISPAMBO, PERLIMPINPIN & ABGESTAUBT each grant 2,000 Dust, plus new FINDITCHAT & REACHYOURIMPOSSIBLE. 20 codes total.',
+    link: '/codes',
+    linkLabel: 'Lobby Hacks',
+    start: '2026-08-21',
+    end: '2026-09-10',
+    source: 'Community',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'lobby-hack-codes-2026-08-20',
     emoji: '🔓',
     message: 'Hack the Lobby is live — enter Admin Panel codes to unlock Cheatmaster Sprites (Sonic = GOTTAGOFAST, Tails = IWANNAFLYHIGH, 8-Bit = 8BITBLAST, Jonesy = PLAY4ALL) + more rewards. Full list on the Lobby Hacks tab.',
