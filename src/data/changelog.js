@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'A richer Sprite Garden share-image',
+    summary:
+      'The “My Sprite Garden” export got a glow-up: it now shows your generation split, a rarity breakdown, completion %, and each Sprite “planted” with a soft ground shadow.',
+    changes: [
+      { tag: 'Added', text: 'Generation split (🟢 Override · 🏡 Runners) and a colored-dot rarity breakdown on the Garden poster, plus a completion % on the progress line.' },
+      { tag: 'Changed', text: 'Each Sprite now sits on a soft ground shadow so the poster reads like a real garden rather than a grid.' },
+    ],
+    why:
+      'The Garden just went live and people will be showing off their collections — a share-image that flexes the generation split and rarity mix (not just a count) is more brag-worthy and carries the tracker’s brand when it’s posted.',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'Sprite Garden is live + matching nav everywhere',
     summary:
       'The Sprite Garden opened, so the banner and news now say it’s live; and the SEO pages’ navigation now mirrors the app exactly.',

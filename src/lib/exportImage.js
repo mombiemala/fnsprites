@@ -492,6 +492,18 @@ export async function generateGardenImage({ gamertag, tracking = {}, shareUrl })
     )
   const masteredCount = owned.filter((s) => tracking[s.id]?.mastered).length
 
+  // Generation split (current "Override" vs legacy "Runners") + rarity mix — the
+  // richer stats that make the poster feel like a real garden ledger.
+  const GEN_BY_TYPE = Object.fromEntries(SPRITE_TYPES.map((t) => [t.name, t.gen]))
+  const overrideCount = owned.filter((s) => GEN_BY_TYPE[s.typeName] === 'c7s4').length
+  const runnersCount = owned.length - overrideCount
+  const rarityCounts = {}
+  owned.forEach((s) => { rarityCounts[s.rarity] = (rarityCounts[s.rarity] || 0) + 1 })
+  const rarityOrdered = Object.keys(rarityCounts).sort(
+    (a, b) => (GARDEN_RARITY_RANK[a] ?? 9) - (GARDEN_RARITY_RANK[b] ?? 9),
+  )
+  const pct = Math.round((owned.length / Math.max(1, releasedTotal)) * 100)
+
   const pad = 44
   const canvas = document.createElement('canvas')
   const gardenBg = (ctx, W, H) => {
@@ -527,7 +539,7 @@ export async function generateGardenImage({ gamertag, tracking = {}, shareUrl })
   const gridW = cols * D + (cols - 1) * gap
   const W = Math.max(720, gridW + pad * 2)
   const gridX0 = Math.round((W - gridW) / 2)
-  const gridTop = 250
+  const gridTop = 322
   const H = gridTop + rowsN * (tileH + gap) + 150
 
   canvas.width = W; canvas.height = H
@@ -553,7 +565,34 @@ export async function generateGardenImage({ gamertag, tracking = {}, shareUrl })
   pg.addColorStop(0, '#34d399'); pg.addColorStop(1, '#a7f3d0')
   ctx.fillStyle = pg; roundRect(ctx, pad, barY, Math.max(8, (owned.length / Math.max(1, releasedTotal)) * barW), 14, 7); ctx.fill()
   ctx.fillStyle = '#7fbf9a'; ctx.font = '700 14px Inter, sans-serif'
-  ctx.fillText(`${owned.length} / ${releasedTotal} of the collection planted`, pad, barY + 34)
+  ctx.fillText(`${owned.length} / ${releasedTotal} of the collection planted · ${pct}%`, pad, barY + 34)
+
+  // Generation split — the current "Override" gen vs the legacy "Runners" gen.
+  const genY = barY + 66
+  ctx.font = '700 15px Inter, sans-serif'
+  const genParts = []
+  if (overrideCount) genParts.push(['🟢', `${overrideCount} Override`, '#a7f3d0'])
+  if (runnersCount) genParts.push(['🏡', `${runnersCount} Runners`, '#8fbfa6'])
+  let gx = pad
+  genParts.forEach(([icon, label], i) => {
+    if (i) { ctx.fillStyle = '#3f5b4c'; ctx.fillText('·', gx, genY); gx += ctx.measureText('·').width + 8 }
+    const txt = `${icon} ${label}`
+    ctx.fillStyle = genParts[i][2]; ctx.fillText(txt, gx, genY)
+    gx += ctx.measureText(txt).width + 10
+  })
+
+  // Rarity breakdown — a colored-dot legend of what's planted.
+  const rarY = barY + 96
+  ctx.font = '700 14px Inter, sans-serif'
+  let rx = pad
+  rarityOrdered.forEach((rar) => {
+    ctx.fillStyle = RARITY_COLORS[rar] || '#888'
+    ctx.beginPath(); ctx.arc(rx + 5, rarY - 5, 5, 0, Math.PI * 2); ctx.fill()
+    rx += 16
+    const label = `${rarityCounts[rar]} ${rar}`
+    ctx.fillStyle = '#9fc9b3'; ctx.fillText(label, rx, rarY)
+    rx += ctx.measureText(label).width + 18
+  })
 
   // Preload owned sprite art.
   const loaded = {}
@@ -569,6 +608,12 @@ export async function generateGardenImage({ gamertag, tracking = {}, shareUrl })
     const cy = y + D / 2
     const r = D / 2
     const mastered = !!tracking[s.id]?.mastered
+
+    // Soft ground shadow — makes each Sprite read as "planted" on the island.
+    ctx.save()
+    ctx.fillStyle = 'rgba(0,0,0,0.28)'
+    ctx.beginPath(); ctx.ellipse(cx, y + D - 6, r * 0.62, r * 0.16, 0, 0, Math.PI * 2); ctx.fill()
+    ctx.restore()
 
     // Finish-tinted disc
     ctx.save()

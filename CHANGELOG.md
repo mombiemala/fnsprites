@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — A richer Sprite Garden share-image
+
+- **Added:** `generateGardenImage` (`exportImage.js`) now renders a generation split (🟢 Override · 🏡 Runners),
+  a colored-dot rarity breakdown, and a completion `%` on the progress line.
+- **Changed:** each Sprite disc gets a soft elliptical ground shadow so the poster reads like a planted garden;
+  grid pushed down (`gridTop` 250 → 322) to fit the new stat rows.
+- **Why:** the Garden is live and players will share collection shots — a poster that flexes the generation
+  split + rarity mix (not just a count) is more brag-worthy and carries the tracker brand when reposted.
+
+---
+
 ## August 22, 2026 — Sprite Garden is live + matching nav everywhere
 
 - **Changed:** the Sprite Garden banner (`announcements.js`, fresh id `sprite-garden-live-2026-08-22`) and news
