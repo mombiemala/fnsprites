@@ -14,12 +14,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 ## August 21, 2026 — Lobby Hacks: two new codes + confirmed statuses
 
 - **Added:** `FINDITCHAT` (2× Cheat Code Locators, boosts) and `REACHYOURIMPOSSIBLE` (Block Party loading
-  screen, screens) to `LOBBY_CODES`.
-- **Changed:** `OVERRIDEXP` promoted `rumored` → `working`; `CHISPAMBO` / `PERLIMPINPIN` / `ABGESTAUBT`
-  (Sprite Dust) promoted `rumored` → `regional` (confirmed but promo/locale-tied); sources updated to
-  "community list."
-- **Why:** the Override code drip moves fast — the list is only useful if it matches what's live and stays
-  honest about which codes are region-locked.
+  screen, screens) to `LOBBY_CODES` — a cross-source sweep confirms 19 codes total, matching our list.
+- **Added:** a `repeatable` flag + "↻ Reusable" badge (CodesView + prerender) on `DONTBLOCKME` /
+  `LETSBLOCKANDROLL` — the only re-triggerable codes.
+- **Changed:** `OVERRIDEXP` and the four Sprite-Dust codes (`MAGILUME` / `CHISPAMBO` / `PERLIMPINPIN` /
+  `ABGESTAUBT`) → `working` (outlets list them globally, no regional gate); only `O2OVERRIDE` + `BEMOREALIEN`
+  stay `regional`.
+- **Fixed:** `CODES_INTRO` rules — "most codes work once, Tetris codes reusable" replaces the blanket
+  "one-time use," which was wrong for the two repeatable codes.
+- **Why:** the Override code drip moves fast — the list is only useful if it matches what's live: the exact
+  count, which codes repeat, and which are genuinely region-locked. Cross-checked against multiple outlets +
+  the in-game list.
 
 ---
 

@@ -11,11 +11,13 @@ export const CHANGELOG = [
     summary:
       'Refreshed the code list against the current confirmed set — added two codes and promoted several from “unverified” now that they’re verified.',
     changes: [
-      { tag: 'Added', text: 'FINDITCHAT (2× Cheat Code Locators) and REACHYOURIMPOSSIBLE (Block Party loading screen).' },
-      { tag: 'Changed', text: 'OVERRIDEXP (40,000 XP) promoted from Unverified to Working; the CHISPAMBO / PERLIMPINPIN / ABGESTAUBT Sprite-Dust codes moved from Unverified to Regional (confirmed, but promo/locale-tied).' },
+      { tag: 'Added', text: 'FINDITCHAT (2× Cheat Code Locators) and REACHYOURIMPOSSIBLE (Block Party loading screen) — a cross-source sweep confirms 19 codes total, matching our list.' },
+      { tag: 'Added', text: 'A “↻ Reusable” badge on the two Tetris-block codes (DONTBLOCKME / LETSBLOCKANDROLL) — the only codes you can re-trigger; everything else is one-time.' },
+      { tag: 'Changed', text: 'OVERRIDEXP and the four Sprite-Dust codes (MAGILUME / CHISPAMBO / PERLIMPINPIN / ABGESTAUBT) are now marked Working — multiple outlets list them globally with no regional gate. Only the O2 and Alienware promos stay flagged Regional.' },
+      { tag: 'Fixed', text: 'Redemption rules now say most codes work once (and stay claimable all season) with the two Tetris codes reusable — the old blanket “one-time use” was wrong for those two.' },
     ],
     why:
-      'The Override code drip is the fastest-moving thing on the site right now, so keeping the list matched to what’s actually live — and honest about which codes are region-locked — is the whole point of the page.',
+      'The Override code drip is the fastest-moving thing on the site right now, so keeping the list matched to what’s actually live — the exact count, which codes repeat, and which are genuinely region-locked — is the whole point of the page. A cross-source check (multiple outlets + the in-game list) is how we keep it trustworthy.',
   },
   {
     date: 'August 20, 2026',

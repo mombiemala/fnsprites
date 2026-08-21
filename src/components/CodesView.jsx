@@ -135,6 +135,7 @@ export default function CodesView() {
                           {c.region ? `${c.region} · ` : ''}via {c.source}
                         </p>
                       </div>
+                      {c.repeatable && <span className="shrink-0 rounded bg-sky-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-sky-300" title="Reusable — re-trigger any time">↻ Reusable</span>}
                       <span className={`shrink-0 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${st.cls}`}>{st.label}</span>
                     </div>
                   )

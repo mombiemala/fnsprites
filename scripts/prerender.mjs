@@ -758,7 +758,7 @@ function codesPage() {
     const unlocks = href ? `<a href="${href}" style="color:#dcd2e6;text-decoration:underline;text-decoration-color:var(--border)">${esc(c.unlocks)}</a>` : `<b style="font-weight:600;color:#dcd2e6">${esc(c.unlocks)}</b>`
     return `<div class="grow" style="cursor:default">
       <span class="nm"><button class="codecopy" data-code="${esc(c.code)}" title="Copy ${esc(c.code)}" style="font-family:ui-monospace,Menlo,monospace;font-weight:800;font-size:13px;letter-spacing:.03em;color:#fff;background:var(--panel2);border:0;border-radius:8px;padding:6px 10px;cursor:pointer">${esc(c.code)}</button>
-        <span class="nt">${unlocks}<span class="badges"><span style="color:${col};background:${col}22">${lbl}</span>${c.region ? `<span style="color:var(--muted);background:transparent">${esc(c.region)}</span>` : ''}</span></span></span>
+        <span class="nt">${unlocks}<span class="badges"><span style="color:${col};background:${col}22">${lbl}</span>${c.repeatable ? `<span style="color:#7dd3fc;background:#7dd3fc22">↻ Reusable</span>` : ''}${c.region ? `<span style="color:var(--muted);background:transparent">${esc(c.region)}</span>` : ''}</span></span></span>
       <span class="src" style="grid-column:1/-1;margin-top:2px">via ${esc(c.source)}</span></div>`
   }
   const section = (cat) => {

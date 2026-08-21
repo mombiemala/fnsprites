@@ -3,9 +3,9 @@
 // Override's theme is "break the rules": in the Battle Royale lobby you open the
 // Admin Panel (the "…" / admin prompt, top-right), type a code, and Submit —
 // a "LOBBY HACK ACTIVATED!" screen confirms it, then you Claim/Equip. Codes are
-// one-time use per account, NOT case-sensitive (capitalization doesn't matter —
-// we show them in caps for readability), and stay
-// claimable until you redeem them. Some are tied to real-world / regional
+// NOT case-sensitive (capitalization doesn't matter — we show them in caps for
+// readability). Most work ONCE per account and stay claimable all season; the two
+// Tetris-block codes are the exception — they're reusable. Some are tied to regional
 // promos and EXPIRE when that campaign ends. Epic drips new codes out all season.
 //
 // Redeeming a Sprite code you already own grants Sprite Dust instead (~10,000).
@@ -33,9 +33,9 @@ export const CODES_INTRO = {
   how: 'In the Battle Royale lobby, open the Admin Panel (the admin/“…” prompt in the top-right), type a code (capitalization doesn’t matter), and hit Submit. A “LOBBY HACK ACTIVATED!” screen confirms it — then Claim/Equip your reward.',
   rules: [
     'Not case-sensitive — capitalization doesn’t matter (we show them in caps for readability).',
-    'One-time use per account; a code stays claimable until you redeem it.',
+    'Most codes work once and stay claimable all season; the two Tetris-block codes are reusable.',
     'Redeeming a Sprite you already own grants ~10,000 Sprite Dust instead.',
-    'Regional / promo codes expire when their campaign ends.',
+    'Regional / promo codes (e.g. O2, Alienware) can be locale-locked and expire when the campaign ends.',
   ],
 }
 
@@ -51,8 +51,10 @@ export const LOBBY_CODES = [
   { code: 'BORN2PLAY', unlocks: 'Cheatmaster Adventure Sprite', type: 'sprite', category: 'sprites', spriteId: 'adventure', status: 'working', source: 'PCGamesN' },
 
   // --- ✨ Gizmos & effects ---
-  { code: 'DONTBLOCKME', unlocks: 'Tetris-block transform effect', type: 'effect', category: 'gizmos', status: 'working', source: 'Loolo_WRLD' },
-  { code: 'LETSBLOCKANDROLL', unlocks: 'Tetris-block transform effect', type: 'effect', category: 'gizmos', status: 'working', source: 'Loolo_WRLD' },
+  // The two Tetris-block codes are the only REUSABLE codes — they re-trigger the
+  // transform every time instead of granting a one-time item.
+  { code: 'DONTBLOCKME', unlocks: 'Tetris-block transform effect', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, source: 'Loolo_WRLD' },
+  { code: 'LETSBLOCKANDROLL', unlocks: 'Tetris-block transform effect', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, source: 'Loolo_WRLD' },
   { code: 'PERFECTORDER', unlocks: '4× spicy-taco gizmos (Geno)', type: 'reward', category: 'gizmos', status: 'working', source: 'GamesRadar' },
 
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
@@ -62,11 +64,11 @@ export const LOBBY_CODES = [
   { code: 'OVERRIDEXP', unlocks: '40,000 XP', type: 'reward', category: 'boosts', status: 'working', source: 'community list' },
   { code: 'O2OVERRIDE', unlocks: 'Llama supply + 5 portable extractors', type: 'reward', category: 'boosts', status: 'regional', region: 'O2 promo', source: 'GamesRadar' },
 
-  // --- 🔷 Sprite Dust (regional/promo campaigns — may be locale-locked) ---
-  { code: 'MAGILUME', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'regional', region: 'Brazil (WhatsApp)', source: 'GamesRadar' },
-  { code: 'CHISPAMBO', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'regional', region: 'regional promo', source: 'community list' },
-  { code: 'PERLIMPINPIN', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'regional', region: 'regional promo', source: 'community list' },
-  { code: 'ABGESTAUBT', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'regional', region: 'Germany', source: 'community list' },
+  // --- 🔷 Sprite Dust (2,000 each; listed globally by outlets, no regional gate) ---
+  { code: 'MAGILUME', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list' },
+  { code: 'CHISPAMBO', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list' },
+  { code: 'PERLIMPINPIN', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list' },
+  { code: 'ABGESTAUBT', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list' },
 
   // --- 🖼️ Loading screens ---
   { code: 'REACHYOURIMPOSSIBLE', unlocks: 'Block Party loading screen', type: 'cosmetic', category: 'screens', status: 'working', source: 'community list' },
