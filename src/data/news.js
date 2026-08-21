@@ -10,6 +10,20 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-08-22',
+    when: 'Aug 22, 2026',
+    tag: 'upcoming',
+    tentative: true,
+    start: '2026-08-21',
+    end: '2026-08-25',
+    title: '🌱 Sprite Garden opens very soon — your collection gets a home',
+    sprites: ['peely'],
+    body: 'The Sprite Garden is almost here — an in-game countdown points to it opening within about half a day (around Aug 22). It’s a personal island getaway where your whole Sprite collection lives: every Season 3 “Runners” Sprite is preserved automatically, every new Override Sprite is added the moment you get it, and none are ever erased when they go down in a match. You can play with, arrange and showcase your Sprites, and visit friends’ gardens. It’s the “kept forever” promise made literal — your Season 3 collection stays displayable here even though the new generation has taken over Battle Royale. Epic hasn’t posted an exact go-live time, so we’ve tagged this Tentative and will confirm the moment it’s live. In the meantime you can preview your own layout with the 🌱 Sprite Garden image under Share & export.',
+    link: 'https://communities.epicgames.com/thread/new-generation-of-sprites-in-chapter-7-season-4-override/6zPu',
+    source: 'Epic Games (in-game countdown)',
+    official: true,
+  },
+  {
     ts: '2026-08-20',
     when: 'Aug 20, 2026',
     tag: 'update',

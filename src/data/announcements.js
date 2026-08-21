@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'sprite-garden-opening-2026-08-22',
+    emoji: '🌱',
+    message: 'The Sprite Garden opens very soon — an in-game countdown points to ~Aug 22. Every Season 3 Sprite is preserved there and every Override Sprite auto-added; play with, arrange & showcase your whole collection. Exact time isn’t posted yet — preview your layout with the Sprite Garden image under Share & export.',
+    link: '/?view=news',
+    linkLabel: 'Garden details',
+    start: '2026-08-21',
+    end: '2026-08-24',
+    source: 'Epic (in-game countdown)',
+    official: true,
+    tone: 'event',
+  },
+  {
     id: 'lobby-hack-codes-2026-08-20',
     emoji: '🔓',
     message: 'Hack the Lobby is live — enter Admin Panel codes to unlock Cheatmaster Sprites (Sonic = GOTTAGOFAST, Tails = IWANNAFLYHIGH, 8-Bit = 8BITBLAST, Jonesy = PLAY4ALL) + more rewards. Full list on the Lobby Hacks tab.',
