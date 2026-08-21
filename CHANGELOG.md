@@ -11,6 +11,24 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — New: the Community Garden Gallery 🌱
+
+- **Added:** a `🌱 Garden` tab (`GardenGallery.jsx`, app `TABS` + SEO `NAV_LINKS`/footer as `/?view=garden`):
+  upload a Sprite Garden screenshot + caption, browse a newest-first feed, and like posts.
+- **Added:** moderation — client-side pre-upload check (`imageModeration.js`: type/size/min-dim + a
+  conservative skin-tone heuristic), report → auto-hide at 3 reports, owner/maker delete.
+- **Added:** `gardenApi.js` (feed/upload/like/report/delete) + a link from the `/sprite-garden` guide.
+- **Security:** migration `garden_showcases_gallery` — `garden_showcases` / `garden_likes` / `garden_reports`
+  tables + a public `garden-showcases` storage bucket, all under RLS (insert-as-self, delete own-or-maker via
+  `auth.jwt()->>'email'`, one like/report per user). Counts maintained by SECURITY DEFINER triggers (execute
+  revoked from anon/authenticated); `garden_feed(int,int)` RPC returns only visible rows + `liked_by_me`.
+- **Why:** the Garden is where players build/decorate — showing it off is the natural next step, and no rival
+  tracker has a community gallery. Moderation is automatic-first so it stays safe without a manual queue.
+  (Chose a dependency-free heuristic over an nsfwjs/TF.js model — the model can't be reliably verified in CI
+  and adds significant bundle weight; report→auto-hide + delete is the real backstop.)
+
+---
+
 ## August 22, 2026 — A richer Sprite Garden share-image
 
 - **Added:** `generateGardenImage` (`exportImage.js`) now renders a generation split (🟢 Override · 🏡 Runners),

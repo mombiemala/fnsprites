@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'New: the Community Garden Gallery 🌱',
+    summary:
+      'A new 🌱 Garden tab where you can share a screenshot of your in-game Sprite Garden, browse everyone else’s, and like your favourites.',
+    changes: [
+      { tag: 'Added', text: 'A “🌱 Garden” tab: upload a screenshot of your Sprite Garden (with an optional caption), browse a newest-first gallery, and ♥ the ones you love.' },
+      { tag: 'Added', text: 'Moderation built in — uploads get a quick automatic check, anyone can report a post (it’s hidden automatically after a few reports), and you can delete your own posts (the maker can remove any).' },
+      { tag: 'Security', text: 'New Supabase tables + storage bucket for showcases, all under Row Level Security: you can only post as yourself, only delete your own (or the maker), and reports/likes are one-per-person. The feed is a security-definer RPC that only ever returns visible posts.' },
+    ],
+    why:
+      'The Sprite Garden is where players build and decorate — the natural next step is showing it off. No competing tracker has a community gallery, so this gives collectors a reason to come back and share, and it’s the social payoff for all the collection tracking. Moderation is automatic-first (check + report → auto-hide) so it doesn’t need a manual queue to stay safe.',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'A richer Sprite Garden share-image',
     summary:
       'The “My Sprite Garden” export got a glow-up: it now shows your generation split, a rarity breakdown, completion %, and each Sprite “planted” with a soft ground shadow.',

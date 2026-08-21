@@ -36,6 +36,7 @@ const BugReportModal = lazy(() => import('./components/BugReportModal'))
 const AboutModal = lazy(() => import('./components/AboutModal'))
 const ChangelogModal = lazy(() => import('./components/ChangelogModal'))
 const CodesView = lazy(() => import('./components/CodesView'))
+const GardenGallery = lazy(() => import('./components/GardenGallery'))
 const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
@@ -51,6 +52,7 @@ const TABS = [
   { id: 'sprites', label: '🧩 Sprites' },
   { id: 'codes', label: '🔓 Lobby Hacks' },
   { id: 'leaderboard', label: '🏆 Leaderboard' },
+  { id: 'garden', label: '🌱 Garden' },
   { id: 'news', label: '📰 News' },
   { id: 'stats', label: '📊 Stats' },
   { id: 'shop', label: '🛒 Item Shop' },
@@ -431,10 +433,11 @@ export default function App() {
         ariaLabel="Sections"
       />
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'codes' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'codes' || effectiveView === 'garden' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
           {effectiveView === 'codes' && <div className="mb-5"><CodesView /></div>}
+          {effectiveView === 'garden' && <div className="mb-5"><GardenGallery onRequireLogin={() => setShowAuth(true)} /></div>}
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}

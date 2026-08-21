@@ -235,6 +235,7 @@ const NAV_LINKS = [
   { key: 'sprites', href: '/sprites', label: '🧩 Sprites' },
   { key: 'codes', href: '/codes', label: '🔓 Lobby Hacks' },
   { key: 'leaderboard', href: '/?view=leaderboard', label: '🏆 Leaderboard' },
+  { key: 'garden', href: '/?view=garden', label: '🌱 Garden' },
   { key: 'news', href: '/news', label: '📰 News' },
   { key: 'stats', href: '/?view=stats', label: '📊 Stats' },
   { key: 'shop', href: '/?view=shop', label: '🛒 Item Shop' },
@@ -306,7 +307,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the same sections row, the utility/support row (modal links deep-link into
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
-<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
+<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
 <div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/sprite-garden">🌱 Sprite Garden</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
@@ -765,6 +766,7 @@ function spriteGardenPage() {
     ${card('How it works', 'Every Sprite you’ve collected is added automatically — Season 3 “Runners,” Season 4 “Override,” and future generations can all live in your Garden at once. Display them on pedestals and in buildings, watch them wander, pick one up to have it follow you, or send it back to your inventory. Interaction is the same as in Battle Royale: walk up and press the prompt. A Sprite that goes down in a match is never erased from your Garden.')}
     ${card('What to expect at launch', 'It’s mostly a showcase-and-hangout space to begin with — not a lot of objectives yet. Epic has said they plan to expand the Sprite Garden with future updates (new mechanics and bigger islands), so expect it to grow over the season.')}
     ${card('Season 3 vs Season 4 — what carries', 'The “kept forever” promise is made literal here: your Season 3 Sprites stay displayable in the Garden and your Collection even though the Override generation has taken over Battle Royale. Older-gen Sprites aren’t used in BR this season (Epic says they “may return down the line”). Use the <a href="/sprites" style="color:var(--brand)">Generation filter on our Sprites checklist</a> to see what’s current vs archived.')}
+    ${card('Show off your garden', 'Built something you’re proud of? Share a screenshot in our <a href="/?view=garden" style="color:var(--brand)">Community Garden Gallery</a> and browse everyone else’s — or generate a shareable “My Sprite Garden” poster of your whole collection from the app’s Share &amp; export bar.')}
     <h2 style="font-size:16px;margin:22px 0 8px">Sprite Garden — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
     <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Details are compiled from Epic’s Season 4 “Override” announcements and community guides; the Sprite Garden is evolving, so features may change. Not affiliated with Epic Games.</p>
