@@ -264,6 +264,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
     <a href="/?backup=1">Backup</a>
     <a href="/?bug=1">Report a bug</a>
     <a href="/codes">🔓 Lobby Hacks</a>
+    <a href="/sprite-garden">🌱 Sprite Garden</a>
     <a href="/tier-list">🏆 Tier list</a>
     <a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a>
   </div></details>
@@ -307,7 +308,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
 <nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
-<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/sprites">🗂️ Sprite database</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
+<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/sprite-garden">🌱 Sprite Garden</a><span class="sep">·</span><a href="/sprites">🗂️ Sprite database</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
 <p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Leaks &amp; datamines are credited to HYPEX, ShiinaBR, <a href="https://x.com/FN_Assist" target="_blank" rel="noreferrer">@FN_Assist</a> &amp; FNBRIntel, with tier &amp; farm-route context from <a href="https://punksprite.com" target="_blank" rel="noreferrer">punksprite</a> &amp; <a href="https://quackadex.com" target="_blank" rel="noreferrer">quackadex</a>. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
@@ -722,6 +723,62 @@ function tierListPage() {
 ` + FOOT
 }
 
+// ---------- /sprite-garden guide page ----------
+// The Sprite Garden is Override's UEFN social island where your whole collection
+// lives. Trackers (our competitors) are all pure checklists — none has a Garden
+// guide — so this factual how-it-works page targets a query they cede to outlets.
+function spriteGardenPage() {
+  const ISLAND = '4220-9404-7987'
+  const desc = `The Fortnite Sprite Garden explained — what it is, how to get in (Discovery menu / island code ${ISLAND}), how your Season 3 “Runners” and Season 4 “Override” Sprites are preserved and displayed, visiting friends’ gardens, and what to expect at launch.`
+  const steps = [
+    ['Open the Discovery menu', 'From the Battle Royale lobby, open the Discovery/Search menu — the Sprite Garden is listed there as an official experience.'],
+    ['Or enter the island code', `Search the island code ${ISLAND} in the Discovery menu to jump straight in.`],
+    ['Launch and look around', 'Load in — every Sprite you’ve collected is already there. Nothing to deposit or unlock; your collection populates automatically.'],
+  ]
+  const faqs = [
+    ['What is the Fortnite Sprite Garden?', 'It’s a personal island getaway added in Chapter 7 Season 4 “Override” — a calm, social space (a UEFN experience) where your whole Sprite collection lives. You can display and interact with your Sprites, and visit friends’ gardens or invite them to yours. It sits outside Battle Royale, so it’s about showing off and organising your collection rather than fighting.'],
+    ['How do I get into the Sprite Garden?', `Open the Discovery/Search menu from the lobby and pick the Sprite Garden, or enter the island code ${ISLAND}. The in-game Discovery menu is the most reliable route if a code ever changes.`],
+    ['Are my Season 3 Sprites kept in the Garden?', 'Yes. Every Season 3 “Runners” Sprite you collected is preserved automatically, and every new Season 4 “Override” Sprite is added the moment you get it. Sprites from past, present and future generations can all live in your Garden at once — and losing a Sprite in a match never removes it.'],
+    ['What can you actually do in the Sprite Garden?', 'Display Sprites on pedestals and in buildings, watch them wander the island, pick one up to have it follow you, or return it to your inventory. Interaction works like it does in Battle Royale — walk up and press the prompt. You can also drop into friends’ gardens or host them in yours.'],
+    ['Is there much to do at launch?', 'Not a lot yet — at launch it’s mostly a showcase-and-hangout space. Epic has said they plan to grow the Sprite Garden with future updates (more mechanics and expanded islands), so expect it to fill out over the season.'],
+    ['Can I use my Season 3 Sprites in Battle Royale now?', 'No — a new generation takes over Battle Royale each season, so Season 3 Sprites aren’t used in BR at launch (Epic says older generations “may return down the line”). They’re kept and displayable in the Sprite Garden and your Collection. Filter by generation on our Sprites checklist to see what’s current vs archived.'],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'Fortnite Sprite Garden Guide', description: desc, url: SITE + '/sprite-garden', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'HowTo', name: 'How to access the Fortnite Sprite Garden', description: `Get into the Sprite Garden from the Discovery menu or island code ${ISLAND}.`,
+      step: steps.map(([name, text], i) => ({ '@type': 'HowToStep', position: i + 1, name, text })) },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ] }
+  const card = (title, body) => `<div class="card" style="padding:16px;margin:0 0 12px"><h2 style="font-size:16px;margin:0 0 6px">${title}</h2><div style="font-size:13.5px;color:var(--muted);line-height:1.65">${body}</div></div>`
+  return head({ title: `Fortnite Sprite Garden Guide — How It Works, Island Code & What to Expect | FN Sprite Tracker`, desc, canonical: SITE + '/sprite-garden', jsonld, active: '' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🌱 Fortnite Sprite Garden — how it works</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:70ch">The Sprite Garden is Override’s new home for your whole Sprite collection — a calm, social island where every Sprite you’ve ever caught lives on, even the ones a new season retires from Battle Royale. Here’s what it is, how to get in, and what to expect.</p>
+    ${card('What it is', 'A personal island getaway (a UEFN experience) added in Chapter 7 Season 4 “Override.” Your entire Sprite collection lives here — display it, play with it, and visit friends’ gardens. It’s separate from Battle Royale, so it’s the showcase side of the Sprite system, not a combat mode.')}
+    <div class="card" style="padding:16px;margin:0 0 12px">
+      <h2 style="font-size:16px;margin:0 0 6px">How to get in</h2>
+      <p style="font-size:13.5px;color:var(--muted);margin:0 0 8px">Open the <b style="color:#fff">Discovery / Search menu</b> from the lobby and choose the Sprite Garden, or enter the island code:</p>
+      <p style="font-family:ui-monospace,Menlo,monospace;font-weight:800;font-size:18px;letter-spacing:.04em;color:#fff;background:var(--panel2);border-radius:10px;padding:10px 14px;display:inline-block;margin:0 0 8px">${ISLAND}</p>
+      <ol style="margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.7">${steps.map(([n, t]) => `<li><b style="color:#fff">${esc(n)}</b> — ${esc(t)}</li>`).join('')}</ol>
+      <p style="font-size:11px;color:var(--muted);margin:8px 0 0">The in-game Discovery menu is the most reliable route if the island code ever changes.</p>
+    </div>
+    ${card('How it works', 'Every Sprite you’ve collected is added automatically — Season 3 “Runners,” Season 4 “Override,” and future generations can all live in your Garden at once. Display them on pedestals and in buildings, watch them wander, pick one up to have it follow you, or send it back to your inventory. Interaction is the same as in Battle Royale: walk up and press the prompt. A Sprite that goes down in a match is never erased from your Garden.')}
+    ${card('What to expect at launch', 'It’s mostly a showcase-and-hangout space to begin with — not a lot of objectives yet. Epic has said they plan to expand the Sprite Garden with future updates (new mechanics and bigger islands), so expect it to grow over the season.')}
+    ${card('Season 3 vs Season 4 — what carries', 'The “kept forever” promise is made literal here: your Season 3 Sprites stay displayable in the Garden and your Collection even though the Override generation has taken over Battle Royale. Older-gen Sprites aren’t used in BR this season (Epic says they “may return down the line”). Use the <a href="/sprites" style="color:var(--brand)">Generation filter on our Sprites checklist</a> to see what’s current vs archived.')}
+    <h2 style="font-size:16px;margin:22px 0 8px">Sprite Garden — FAQ</h2>
+    ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Details are compiled from Epic’s Season 4 “Override” announcements and community guides; the Sprite Garden is evolving, so features may change. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track your Sprite collection — free →</a>
+  </div>
+  <aside class="side">
+    ${ctaCard()}
+    ${supportCard()}
+  </aside>
+</div>
+` + FOOT
+}
+
 // ---------- /codes page ----------
 // Season 4 "Override" Hack-the-Lobby admin codes. High-intent SEO page; the codes
 // come from src/data/codes.js (shared with the in-app modal). Copy runs client-side.
@@ -794,6 +851,7 @@ function sitemap(types) {
     { loc: SITE + '/sprites', changefreq: 'weekly', priority: '0.9' },
     { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9' },
+    { loc: SITE + '/sprite-garden', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
@@ -825,6 +883,8 @@ mkdirSync(resolve(DIST, 'news'), { recursive: true })
 writeFileSync(resolve(DIST, 'news', 'index.html'), newsPage())
 mkdirSync(resolve(DIST, 'codes'), { recursive: true })
 writeFileSync(resolve(DIST, 'codes', 'index.html'), codesPage())
+mkdirSync(resolve(DIST, 'sprite-garden'), { recursive: true })
+writeFileSync(resolve(DIST, 'sprite-garden', 'index.html'), spriteGardenPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /news + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /sprite-garden + /news + sitemap.xml → dist/`)

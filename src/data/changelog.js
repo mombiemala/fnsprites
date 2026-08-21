@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 21, 2026',
+    title: 'New: a Sprite Garden guide page',
+    summary:
+      'Added a dedicated Sprite Garden guide — what it is, how to get in (island code + Discovery menu), how your Season 3 & Override Sprites are preserved, and what to expect at launch.',
+    changes: [
+      { tag: 'Added', text: 'A prerendered /sprite-garden guide: what the Garden is, how to access it (island code 4220-9404-7987 or the Discovery menu), how it works (auto-added Sprites, display/wander/follow, combat-safe), what to expect at launch, and a full FAQ — with HowTo + FAQ structured data.' },
+      { tag: 'Added', text: 'Links to the guide from the footer, the “⋯ More” menu, and the Sprite Garden launch banner.' },
+    ],
+    why:
+      'Every “how the Sprite Garden works” guide online is a news outlet — none of the tracker competitors (spritechecklist, fnsprites.info, spritelocker) has one. A built-in, structured guide claims a high-intent query our direct rivals ignore, and it pairs naturally with the Garden share-image we already offer.',
+  },
+  {
+    date: 'August 21, 2026',
     title: 'Lobby Hacks: two new codes + confirmed statuses',
     summary:
       'Refreshed the code list against the current confirmed set — added two codes and promoted several from “unverified” now that they’re verified.',

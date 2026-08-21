@@ -18,9 +18,9 @@ export const ANNOUNCEMENTS = [
   {
     id: 'sprite-garden-opening-2026-08-22',
     emoji: '🌱',
-    message: 'The Sprite Garden opens very soon — an in-game countdown points to ~Aug 22. Every Season 3 Sprite is preserved there and every Override Sprite auto-added; play with, arrange & showcase your whole collection. Exact time isn’t posted yet — preview your layout with the Sprite Garden image under Share & export.',
-    link: '/?view=news',
-    linkLabel: 'Garden details',
+    message: 'The Sprite Garden opens very soon — an in-game countdown points to ~Aug 22. Every Season 3 Sprite is preserved there and every Override Sprite auto-added; play with, arrange & showcase your whole collection. New: our full how-it-works guide (island code + FAQ).',
+    link: '/sprite-garden',
+    linkLabel: 'Garden guide',
     start: '2026-08-21',
     end: '2026-08-24',
     source: 'Epic (in-game countdown)',

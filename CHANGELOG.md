@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 21, 2026 — New: a Sprite Garden guide page
+
+- **Added:** a prerendered `/sprite-garden` guide (`spriteGardenPage` in `prerender.mjs`) — what the Garden is,
+  how to access it (island code `4220-9404-7987` / Discovery menu), how it works (auto-added Sprites,
+  display/wander/follow, combat-safe), what to expect at launch, and a FAQ. Carries `Article` + `HowTo` +
+  `FAQPage` JSON-LD; wired into the sitemap.
+- **Added:** guide links from `FOOT` (footer sections + "More" menu) and the Sprite Garden launch banner
+  (`announcements.js` now points to `/sprite-garden`).
+- **Why:** every "how the Sprite Garden works" guide online is an outlet — no tracker competitor has one. A
+  built-in structured guide claims a high-intent query our rivals cede, and complements the Garden share-image.
+
+---
+
 ## August 21, 2026 — Lobby Hacks: two new codes + confirmed statuses
 
 - **Added:** `FINDITCHAT` (2× Cheat Code Locators, boosts), `REACHYOURIMPOSSIBLE` (Block Party loading
