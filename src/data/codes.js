@@ -33,6 +33,7 @@ export const CODES_INTRO = {
   how: 'In the Battle Royale lobby, open the Admin Panel (the admin/“…” prompt in the top-right), type a code (capitalization doesn’t matter), and hit Submit. A “LOBBY HACK ACTIVATED!” screen confirms it — then Claim/Equip your reward.',
   rules: [
     'Not case-sensitive — capitalization doesn’t matter (we show them in caps for readability).',
+    'A few codes mix letters and numbers (e.g. H0p0nVC — those are zeros, not the letter “O”). Type those exactly.',
     'Most codes work once and stay claimable all season; the two Tetris-block codes are reusable.',
     'Redeeming a Sprite you already own grants ~10,000 Sprite Dust instead.',
     'Regional / promo codes (e.g. O2, Alienware) can be locale-locked and expire when the campaign ends.',
@@ -64,11 +65,14 @@ export const LOBBY_CODES = [
   { code: 'OVERRIDEXP', unlocks: '40,000 XP', type: 'reward', category: 'boosts', status: 'working', source: 'community list' },
   { code: 'O2OVERRIDE', unlocks: 'Llama supply + 5 portable extractors', type: 'reward', category: 'boosts', status: 'regional', region: 'O2 promo', source: 'GamesRadar' },
 
-  // --- 🔷 Sprite Dust (2,000 each; listed globally by outlets, no regional gate) ---
-  { code: 'MAGILUME', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list' },
-  { code: 'CHISPAMBO', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list' },
-  { code: 'PERLIMPINPIN', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list' },
-  { code: 'ABGESTAUBT', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list' },
+  // --- 🔷 Sprite Dust (2,000 each) ---
+  // The four localized codes were posted by regional Fortnite accounts but are
+  // widely reported to redeem globally, so we keep them Working with an origin note.
+  { code: 'MAGILUME', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', region: 'Fortnite Brazil', source: 'community list' },
+  { code: 'CHISPAMBO', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', region: 'Fortnite Spain', source: 'community list' },
+  { code: 'PERLIMPINPIN', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', region: 'Fortnite France', source: 'community list' },
+  { code: 'ABGESTAUBT', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', region: 'Fortnite Germany', source: 'community list' },
+  { code: 'H0p0nVC', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list' },
 
   // --- 🖼️ Loading screens ---
   { code: 'REACHYOURIMPOSSIBLE', unlocks: 'Block Party loading screen', type: 'cosmetic', category: 'screens', status: 'working', source: 'community list' },

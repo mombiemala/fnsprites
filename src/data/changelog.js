@@ -11,9 +11,9 @@ export const CHANGELOG = [
     summary:
       'Refreshed the code list against the current confirmed set — added two codes and promoted several from “unverified” now that they’re verified.',
     changes: [
-      { tag: 'Added', text: 'FINDITCHAT (2× Cheat Code Locators) and REACHYOURIMPOSSIBLE (Block Party loading screen) — a cross-source sweep confirms 19 codes total, matching our list.' },
+      { tag: 'Added', text: 'FINDITCHAT (2× Cheat Code Locators), REACHYOURIMPOSSIBLE (Block Party loading screen) and H0p0nVC (2,000 Sprite Dust — those are zeros, not “O”) — a cross-source sweep confirms 20 codes total, matching our list.' },
       { tag: 'Added', text: 'A “↻ Reusable” badge on the two Tetris-block codes (DONTBLOCKME / LETSBLOCKANDROLL) — the only codes you can re-trigger; everything else is one-time.' },
-      { tag: 'Changed', text: 'OVERRIDEXP and the four Sprite-Dust codes (MAGILUME / CHISPAMBO / PERLIMPINPIN / ABGESTAUBT) are now marked Working — multiple outlets list them globally with no regional gate. Only the O2 and Alienware promos stay flagged Regional.' },
+      { tag: 'Changed', text: 'OVERRIDEXP and the four Sprite-Dust codes are now marked Working; the localized Dust codes show their origin (MAGILUME = Fortnite Brazil, CHISPAMBO = Spain, PERLIMPINPIN = France, ABGESTAUBT = Germany) — posted by regional accounts but widely reported to redeem globally. Only the O2 and Alienware promos stay Regional.' },
       { tag: 'Fixed', text: 'Redemption rules now say most codes work once (and stay claimable all season) with the two Tetris codes reusable — the old blanket “one-time use” was wrong for those two.' },
     ],
     why:
