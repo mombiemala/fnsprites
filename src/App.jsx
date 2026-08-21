@@ -170,6 +170,7 @@ export default function App() {
     { id: 'backup', label: 'Backup', onClick: () => setShowBackup(true) },
     { id: 'bug', label: 'Report a bug', onClick: () => setShowBug(true) },
     { id: 'tierlist', label: '🏆 Tier list', href: '/tier-list' },
+    { id: 'garden', label: '🌱 Sprite Garden', href: '/sprite-garden' },
     { id: 'coffee', label: '☕ Buy me a coffee', href: LINKS.buyMeACoffee },
   ]
 

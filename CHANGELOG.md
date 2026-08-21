@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — Sprite Garden is live + matching nav everywhere
+
+- **Changed:** the Sprite Garden banner (`announcements.js`, fresh id `sprite-garden-live-2026-08-22`) and news
+  item flipped to present-tense "it's LIVE" — island code + guide link, Tentative flag removed.
+- **Fixed:** SEO nav parity with the app — removed a duplicate `🔓 Lobby Hacks` from the prerender "⋯ More"
+  menu (already a primary tab) and a redundant `🗂️ Sprite database` footer link; aligned the utility order to
+  the app's `utilityLinks` (About · Changelog · Backup · Report a bug · 🏆 Tier list · 🌱 Sprite Garden ·
+  ☕ Buy me a coffee).
+- **Added:** `🌱 Sprite Garden` to the app's `utilityLinks` (More menu + footer) so the guide is reachable
+  in-app too.
+- **Why:** the nav should read identically whether a visitor lands on an SEO page from search or opens the app;
+  a duplicated/misordered menu looks broken. One shared utility set keeps the site feeling like one product.
+
+---
+
 ## August 21, 2026 — New: a Sprite Garden guide page
 
 - **Added:** a prerendered `/sprite-garden` guide (`spriteGardenPage` in `prerender.mjs`) — what the Garden is,

@@ -6,6 +6,19 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 22, 2026',
+    title: 'Sprite Garden is live + matching nav everywhere',
+    summary:
+      'The Sprite Garden opened, so the banner and news now say it’s live; and the SEO pages’ navigation now mirrors the app exactly.',
+    changes: [
+      { tag: 'Changed', text: 'The Sprite Garden launch banner and news item flipped to present-tense “it’s LIVE,” with the island code and a link to our guide (the Tentative timing note is gone).' },
+      { tag: 'Fixed', text: 'The SEO pages’ nav now matches the app: dropped a duplicate “Lobby Hacks” from the “⋯ More” menu (it’s already a primary tab) and a redundant “Sprite database” footer link, and aligned the utility order (About · Changelog · Backup · Report a bug · Tier list · Sprite Garden · Buy me a coffee).' },
+      { tag: 'Added', text: 'A “🌱 Sprite Garden” link in the app’s More menu + footer, so the guide is reachable in-app too (app ↔ SEO parity).' },
+    ],
+    why:
+      'Header/nav should read the same whether you land on an SEO page from search or open the app — a duplicated or differently-ordered menu looks broken and erodes trust. Aligning both to one utility set keeps the whole site feeling like one product.',
+  },
+  {
     date: 'August 21, 2026',
     title: 'New: a Sprite Garden guide page',
     summary:
