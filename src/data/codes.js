@@ -3,7 +3,8 @@
 // Override's theme is "break the rules": in the Battle Royale lobby you open the
 // Admin Panel (the "…" / admin prompt, top-right), type a code, and Submit —
 // a "LOBBY HACK ACTIVATED!" screen confirms it, then you Claim/Equip. Codes are
-// one-time use per account, case-SENSITIVE (enter exactly as written), and stay
+// one-time use per account, NOT case-sensitive (capitalization doesn't matter —
+// we show them in caps for readability), and stay
 // claimable until you redeem them. Some are tied to real-world / regional
 // promos and EXPIRE when that campaign ends. Epic drips new codes out all season.
 //
@@ -29,9 +30,9 @@ export const CODE_CATEGORIES = [
 
 export const CODES_INTRO = {
   title: 'Lobby Hacks — Admin Panel codes',
-  how: 'In the Battle Royale lobby, open the Admin Panel (the admin/“…” prompt in the top-right), type a code exactly as shown, and hit Submit. A “LOBBY HACK ACTIVATED!” screen confirms it — then Claim/Equip your reward.',
+  how: 'In the Battle Royale lobby, open the Admin Panel (the admin/“…” prompt in the top-right), type a code (capitalization doesn’t matter), and hit Submit. A “LOBBY HACK ACTIVATED!” screen confirms it — then Claim/Equip your reward.',
   rules: [
-    'Case-sensitive — type it EXACTLY (all caps as shown).',
+    'Not case-sensitive — capitalization doesn’t matter (we show them in caps for readability).',
     'One-time use per account; a code stays claimable until you redeem it.',
     'Redeeming a Sprite you already own grants ~10,000 Sprite Dust instead.',
     'Regional / promo codes expire when their campaign ends.',

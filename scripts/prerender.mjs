@@ -741,7 +741,7 @@ function codesPage() {
   // Rich results: CollectionPage + a FAQ (drives the "how/which code" answer box)
   // + an ItemList of the codes. Kept factual and dated.
   const faqs = [
-    ['What are Fortnite “Override” Hack the Lobby codes?', 'In Chapter 7 Season 4 “Override,” you enter admin-panel codes in the Battle Royale lobby to unlock Cheatmaster Sprites, gizmos and rewards. Open the Admin Panel (the “…”/admin prompt, top-right), type a code exactly as shown, and hit Submit — a “LOBBY HACK ACTIVATED!” screen confirms it.'],
+    ['What are Fortnite “Override” Hack the Lobby codes?', 'In Chapter 7 Season 4 “Override,” you enter admin-panel codes in the Battle Royale lobby to unlock Cheatmaster Sprites, gizmos and rewards. Open the Admin Panel (the “…”/admin prompt, top-right), type a code (capitalization doesn’t matter), and hit Submit — a “LOBBY HACK ACTIVATED!” screen confirms it.'],
     ['How do I redeem a Hack the Lobby code?', CODES_INTRO.how],
     ['Which code unlocks the Cheatmaster Sonic Sprite?', 'Enter GOTTAGOFAST in the lobby Admin Panel. Other Sprite codes: Tails = IWANNAFLYHIGH, 8-Bit Blaster = 8BITBLAST, Jonesy = PLAY4ALL, Adventure = BORN2PLAY.'],
     ['Do Fortnite lobby codes expire?', 'Sprite and reward codes stay claimable until you redeem them, but regional/promo codes expire when their campaign ends. Redeeming a Sprite you already own grants roughly 10,000 Sprite Dust instead.'],

@@ -20,6 +20,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   boosts · dust · screens) in both `CodesView` and the prerender `/codes` page, each with a count + blurb;
   `status` (working/regional/rumored) is now a per-code badge, and items sort working-first within a category.
 - **Changed:** launch announcement copy points to the "Lobby Hacks tab" instead of the old footer link.
+- **Fixed:** redemption rules said codes were "case-sensitive, type it exactly" — they are **not** case-sensitive
+  (`CODES_INTRO` header/rules + shared how-to + prerender FAQ). Corrected to "capitalization doesn't matter."
 - **Why:** players come for a specific reward (a Sprite, XP, Dust), so grouping by "what you get" — like
   fortnite.gg — scans faster than grouping by freshness; "Lobby Hacks" is the feature's real in-game name.
   Keeping the `/codes` URL preserves the canonical-codes SEO.

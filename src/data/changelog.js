@@ -14,6 +14,7 @@ export const CHANGELOG = [
       { tag: 'Changed', text: 'The 🔓 Codes tab (and the SEO /codes page) is now “Lobby Hacks,” matching Override’s in-game “Hack the Lobby / Admin Panel” language. The URL stays /codes.' },
       { tag: 'Changed', text: 'Codes are grouped by reward category (Cheatmaster Sprites · Gizmos & effects · Boosts & XP · Sprite Dust · Loading screens) with a per-category count and a one-line blurb; working codes sort to the top of each group.' },
       { tag: 'Changed', text: 'Working / Regional / Unverified is now a per-code badge rather than its own section, so an expiring or unverified code still sits in its reward bucket but stays clearly flagged.' },
+      { tag: 'Fixed', text: 'Corrected the redemption rules — Admin Panel codes are NOT case-sensitive; capitalization doesn’t matter (we just show them in caps for readability). The old copy wrongly said “case-sensitive, type it exactly.”' },
     ],
     why:
       'Players come to this page for a specific thing — a Sprite, or XP, or Dust — so grouping by “what you get” (the way fortnite.gg does) is faster to scan than grouping by freshness. “Lobby Hacks” is what the feature is actually called in-game, so the label should match; keeping the /codes URL preserves the SEO we just built.',
