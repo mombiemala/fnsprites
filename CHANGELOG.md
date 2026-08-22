@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — Gold Sprites are live 🥇
+
+- **Changed:** flipped `gold: U → R` for all 11 Override Sprites (sonic, tails, shadow, jazz, klombo,
+  bushranger, victorycrown, jonesy, blaster, killswitch, adventure) — Gold went live at Gold Hours (Aug 22).
+  `RELEASED_COUNT` is computed, so it picks up the +11 automatically; refreshed the now-stale "Gold is coming"
+  ability text + section comment.
+- **Added:** a Gold Hours event — a news item (`event` tag) + banner for the Aug 22 Power Hour (2–4 PM &
+  9–11 PM ET).
+- **Why:** the checklist must match what's actually obtainable, and a timely event belongs in the feed + banner.
+
+---
+
 ## August 22, 2026 — New: a Sprite Dust & Loot Hacks guide
 
 - **Added:** a prerendered `/sprite-dust` guide (`spriteDustPage` in `prerender.mjs`) — what Dust does now,

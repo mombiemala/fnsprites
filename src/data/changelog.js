@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'Gold Sprites are live 🥇',
+    summary:
+      'The Gold finish unlocked for the Season 4 “Override” Sprites at today’s Gold Hours, so every Override Sprite’s Gold variant is now marked live — plus a news item + banner for the event.',
+    changes: [
+      { tag: 'Changed', text: 'Flipped the Gold variant live for all 11 Override Sprites (Sonic, Tails, Shadow, Jazz Jackrabbit, Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch, Adventure). Each now has all three finishes: Normal, Gold & Cheatmaster.' },
+      { tag: 'Added', text: 'A Gold Hours event — a news item and a banner for the Aug 22 Power Hour (2–4 PM & 9–11 PM ET) that boosts Gold spawns.' },
+    ],
+    why:
+      'Gold went live at Gold Hours (Aug 22) but the tracker still showed those variants as “coming.” A checklist is only useful if it matches what’s actually obtainable, and a timely event belongs in the feed + banner where players look first.',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'New: a Sprite Dust & Loot Hacks guide',
     summary:
       'Override turned Sprite Dust into a loadout economy, so there’s now a guide covering how to earn it, the new Loot Hacks, costs, the Loot Hack Override, and a spend strategy.',

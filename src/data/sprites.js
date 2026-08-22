@@ -132,8 +132,8 @@ export const SPRITE_TYPES = [
   //   confirmed, so they stay Upcoming/Rumored until the Aug 20 staging flips
   //   them with real variants, rarities and abilities (don't auto-release guesses).
   { id: 'sonic', name: 'Sonic', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — the marquee Sonic collab (cube “backpack” redesign). Normal & Cheatmaster are live (Cheatmaster unlocks via the GOTTAGOFAST lobby code); Gold is still to come. Its exact in-game ability isn’t documented here yet.',
-    variants: { normal: R, gold: U, cheatmaster: R } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the marquee Sonic collab (cube “backpack” redesign). Normal, Gold & Cheatmaster are all live (Cheatmaster unlocks via the GOTTAGOFAST lobby code; Gold since Gold Hours, Aug 22). Its exact in-game ability isn’t documented here yet.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'pond', name: 'Pond', icon: '🐸', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Pine & Kiri): evolves egg → tadpole → frog, boosting movement speed & jump height and cutting fall damage as it grows. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
@@ -152,41 +152,42 @@ export const SPRITE_TYPES = [
 
   // ---- Override new-generation Sprites — LIVE in Chapter 7 Season 4, with
   //   official datamined art (Normal, Gold & the new "Cheatmaster" finish).
-  //   Normal & Cheatmaster are out (Cheatmaster via Hack-the-Lobby codes); Gold
-  //   is still rolling out, so it stays `U`. Exact in-game abilities aren't
+  //   Normal & Cheatmaster shipped at launch (Cheatmaster via Hack-the-Lobby
+  //   codes); Gold went live at Gold Hours (Aug 22), so all three are `R`. Exact
+  //   in-game abilities aren't
   //   documented yet, so ability text stays descriptive. Storm Scout is in the
   //   files but not yet obtainable, so it stays unreleased. The Sonic collab
   //   ships under the internal "NarrowFlea" codename: Sonic / Tails / Shadow. ----
   { id: 'tails', name: 'Tails', icon: '🦊', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — Tails (Sonic collab), cube redesign. Normal & Cheatmaster are live (Cheatmaster via the IWANNAFLYHIGH lobby code); Gold is coming. Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: U, cheatmaster: R } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Tails (Sonic collab), cube redesign. Normal & Cheatmaster are live (Cheatmaster via the IWANNAFLYHIGH lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'shadow', name: 'Shadow', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: U, cheatmaster: R } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'jazz', name: 'Jazz Jackrabbit', icon: '🐇', rarity: 'Legendary', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — Jazz Jackrabbit. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: U, cheatmaster: R } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Jazz Jackrabbit. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'klombo', name: 'Klombo', icon: '🦕', rarity: 'Mythic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — the Klombo creature. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: U, cheatmaster: R } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the Klombo creature. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'bushranger', name: 'Bush Ranger', icon: '🌿', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — a woodland Bush Ranger. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: U, cheatmaster: R } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — a woodland Bush Ranger. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'victorycrown', name: 'Crown', icon: '👑', rarity: 'Mythic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — the Crown. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: U, cheatmaster: R } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the Crown. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'jonesy', name: 'Jonesy', icon: '🕶️', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — Jonesy. Normal & Cheatmaster are live (Cheatmaster via the PLAY4ALL lobby code); Gold is coming. Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: U, cheatmaster: R } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Jonesy. Normal & Cheatmaster are live (Cheatmaster via the PLAY4ALL lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'blaster', name: '8-Bit Blaster', icon: '🎮', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — a retro handheld “8-Bit Blaster”. Normal & Cheatmaster are live (Cheatmaster via the 8BITBLAST lobby code); Gold is coming. Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: U, cheatmaster: R } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — a retro handheld “8-Bit Blaster”. Normal & Cheatmaster are live (Cheatmaster via the 8BITBLAST lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'killswitch', name: 'Killswitch', icon: '🎯', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — a tactical “Killswitch”. Normal & Cheatmaster are live; Gold is coming. Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: U, cheatmaster: R } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — a tactical “Killswitch”. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'adventure', name: 'Adventure', icon: '🧭', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — the Adventure Sprite. Normal & Cheatmaster are live (Cheatmaster via the BORN2PLAY lobby code); Gold is coming. Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: U, cheatmaster: R } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the Adventure Sprite. Normal & Cheatmaster are live (Cheatmaster via the BORN2PLAY lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'stormscout', name: 'Storm Scout', icon: '👿', rarity: 'Rare', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Datamined Season 4 “Override” Sprite — a horned “Storm Scout”, in Normal/Gold/Cheatmaster. In the files but not yet obtainable; ability not yet confirmed by Epic.',
     variants: { normal: U, gold: U, cheatmaster: U } },

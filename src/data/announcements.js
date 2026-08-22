@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'gold-hours-2026-08-22',
+    emoji: '🥇',
+    message: 'Gold Sprites are unlocked for Season 4 “Override” — Gold Hours today (Sat, Aug 22, 2–4 PM & 9–11 PM ET) boost Gold spawns. Every Override Sprite now has all three finishes: Normal, Gold & Cheatmaster.',
+    link: '/?view=news',
+    linkLabel: 'Event times',
+    start: '2026-08-22',
+    end: '2026-08-23',
+    source: 'Community + Epic',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'sprite-garden-live-2026-08-22',
     emoji: '🌱',
     message: 'The Sprite Garden is LIVE — your whole collection has a home. Every Season 3 Sprite is preserved and every Override Sprite auto-added; display, play with & showcase them, and visit friends’ gardens. New guide: how it works, the island code & FAQ.',
