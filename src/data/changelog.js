@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'Confirmed abilities + a mid-season update',
+    summary:
+      'Filled in confirmed abilities for several Override Sprites and reflected the new update that lets Sprites drop from Chests.',
+    changes: [
+      { tag: 'Added', text: 'Confirmed in-game abilities: Shadow (auto-reloads unequipped weapons), Jazz Jackrabbit (double-jump), Klombo (random item per level, consumes items to level), Killswitch (Hangtime — better airborne accuracy). Others stay “not documented yet” until confirmed.' },
+      { tag: 'Changed', text: 'Season 4 Sprites can now be found in Chests (a recent update) — updated the “where it comes from” text on Sprite pages and the chest-luck notes accordingly; Gold Sprites can now also come from Cheat Codes.' },
+      { tag: 'Added', text: 'A mid-season update news item (Sprites in Chests, Gold via Cheat Codes, and the wider BR balance changes) — flagged community-sourced until Epic’s notes confirm.' },
+    ],
+    why:
+      'A tracker lives or dies on accuracy: real abilities beat “TBC,” and if the game changes how Sprites are obtained (now including Chests), the pages that describe acquisition have to move with it — clearly marked unofficial where it’s still leak-sourced.',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'New code: GatherAndCraft (Cheatmaster Bush Ranger)',
     summary:
       'Added the GatherAndCraft Lobby Hack code, which unlocks the Cheatmaster Bush Ranger Sprite after a story quest.',

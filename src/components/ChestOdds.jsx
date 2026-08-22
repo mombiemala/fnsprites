@@ -93,7 +93,7 @@ export default function ChestOdds() {
       </h3>
       <p className="mb-3 text-[11px] leading-relaxed text-[var(--muted)]">
         Covers the Season 3 “Runners” Sprites, which come from <b className="text-white">Sprite Chests</b>. Season 4
-        “Override” Sprites aren’t random — they’re unlocked with <a href="/codes" className="font-bold text-[var(--brand)] hover:underline">Hack the Lobby codes</a>.
+        “Override” Sprites come from in-world Cheat Codes and <a href="/codes" className="font-bold text-[var(--brand)] hover:underline">Hack the Lobby codes</a> (and, since a recent update, Chests too) — no fixed odds published.
       </p>
 
       <label className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">Sprite</label>

@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — Confirmed abilities + a mid-season update
+
+- **Added:** confirmed abilities in `sprites.js` — Shadow (auto-reload unequipped weapons), Jazz Jackrabbit
+  (double-jump), Klombo (random item/level, consumes items to level), Killswitch (Hangtime). Remaining launch
+  Sprites keep placeholder text until confirmed.
+- **Changed:** S4 `spriteSource` + chest-luck notes (`ChestOdds.jsx` + prerender `chestLuckCard`) now say
+  Season 4 Sprites can be found in Chests (recent update) alongside Cheat Codes / Lobby codes; Gold via Cheat
+  Codes noted.
+- **Added:** a mid-season update news item (Sprites in Chests, Gold via Cheat Codes, BR balance) — `official:
+  false`, community-sourced (Fortnite Leaks) pending Epic's notes.
+- **Why:** accuracy — real abilities over "TBC," and acquisition copy must track gameplay changes, marked
+  unofficial where still leak-sourced.
+
+---
+
 ## August 22, 2026 — New code: GatherAndCraft (Cheatmaster Bush Ranger)
 
 - **Added:** `GatherAndCraft` → Cheatmaster Bush Ranger Sprite (`LOBBY_CODES`, `spriteId: 'bushranger'`).

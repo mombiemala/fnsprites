@@ -460,7 +460,7 @@ const chestSelectOptions = (selId) => ['Mythic', 'Legendary', 'Epic', 'Rare'].ma
 }).join('')
 const chestLuckCard = (selId) => `<div class="card sidecard chestcard">
 <h3 class="sh">🎲 Chest luck <span style="font-size:11px;color:var(--muted)">· Season 3</span></h3>
-<p class="sub" style="margin:2px 0 8px">Season 3 “Runners” Sprites come from Sprite Chests. Season 4 “Override” Sprites are unlocked with <a href="/codes">Hack the Lobby codes</a>, not chests.</p>
+<p class="sub" style="margin:2px 0 8px">Season 3 “Runners” Sprites come from Sprite Chests. Season 4 “Override” Sprites come from in-world Cheat Codes and <a href="/codes">Hack the Lobby codes</a> (and, since a recent update, Chests too) — no fixed odds published.</p>
 <label class="cl-lab">Sprite</label>
 <select class="cl-sel" aria-label="Pick a Sprite">${chestSelectOptions(RATED_MAP[selId] ? selId : undefined)}</select>
 <label class="cl-lab cl-finlab" style="display:none">Finish</label>

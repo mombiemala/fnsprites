@@ -162,13 +162,13 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — Tails (Sonic collab), cube redesign. Normal & Cheatmaster are live (Cheatmaster via the IWANNAFLYHIGH lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
     variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'shadow', name: 'Shadow', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: automatically reloads your unequipped weapons over time.',
     variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'jazz', name: 'Jazz Jackrabbit', icon: '🐇', rarity: 'Legendary', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — Jazz Jackrabbit. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Jazz Jackrabbit. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: unlocks a double‑jump.',
     variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'klombo', name: 'Klombo', icon: '🦕', rarity: 'Mythic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — the Klombo creature. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the Klombo creature. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: grants a random item at each level — but levelling it up consumes items.',
     variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'bushranger', name: 'Bush Ranger', icon: '🌿', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — a woodland Bush Ranger. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
@@ -183,7 +183,7 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — a retro handheld “8-Bit Blaster”. Normal & Cheatmaster are live (Cheatmaster via the 8BITBLAST lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
     variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'killswitch', name: 'Killswitch', icon: '🎯', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — a tactical “Killswitch”. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — a tactical “Killswitch”. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: grants Hangtime — improved accuracy when aiming while jumping or falling.',
     variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'adventure', name: 'Adventure', icon: '🧭', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Adventure Sprite. Normal & Cheatmaster are live (Cheatmaster via the BORN2PLAY lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
@@ -365,7 +365,7 @@ export function spriteSource(typeId) {
   // Code activities) + the Cheatmaster finish via Hack the Lobby codes — so the
   // chest-based default would be wrong for the new generation.
   const t = SPRITE_TYPES.find((x) => x.id === typeId)
-  if (t?.gen === 'c7s4') return 'A Chapter 7 Season 4 “Override” Sprite — earned through Season 4 play (in-world Cheat Code activities), not from Sprite Chests.'
+  if (t?.gen === 'c7s4') return 'A Chapter 7 Season 4 “Override” Sprite — earned through Season 4 play: activating in-world Cheat Codes, and (since a recent update) found in Chests too.'
   return 'Sprite Chests around the island — any chest can drop any Sprite (rarer ones less often), plus occasional mid-match spawns.'
 }
 
