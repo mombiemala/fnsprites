@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'New code: GatherAndCraft (Cheatmaster Bush Ranger)',
+    summary:
+      'Added the GatherAndCraft Lobby Hack code, which unlocks the Cheatmaster Bush Ranger Sprite after a story quest.',
+    changes: [
+      { tag: 'Added', text: 'GatherAndCraft → Cheatmaster Bush Ranger Sprite. It only works once you’ve reached stage 9 of the Wrixel “Get Crafty” story quest — noted on the code so people don’t think it’s dead.' },
+    ],
+    why:
+      'It’s a live Cheatmaster unlock, so it belongs in the list — and the quest prerequisite matters, otherwise players enter it early, see nothing, and assume the code is broken.',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'New: a Garden Layout Planner 📐',
     summary:
       'The 🌱 Garden tab now has a Planner alongside the Gallery — pick which Sprites to feature, order them, and export a numbered blueprint to recreate in‑game.',

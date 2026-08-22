@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — New code: GatherAndCraft (Cheatmaster Bush Ranger)
+
+- **Added:** `GatherAndCraft` → Cheatmaster Bush Ranger Sprite (`LOBBY_CODES`, `spriteId: 'bushranger'`).
+  Requires stage 9 of the Wrixel "Get Crafty" story quest — noted in the `unlocks` text so it doesn't read as
+  a dead code. 6 Cheatmaster Sprite codes now; 21 total.
+- **Why:** a live Cheatmaster unlock belongs in the list, and the quest prerequisite prevents "it didn't work"
+  confusion.
+
+---
+
 ## August 22, 2026 — New: a Garden Layout Planner 📐
 
 - **Added:** `GardenPlanner.jsx` — pick from owned Sprites, reorder, choose columns, live preview; plan
