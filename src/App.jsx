@@ -37,7 +37,7 @@ const BugReportModal = lazy(() => import('./components/BugReportModal'))
 const AboutModal = lazy(() => import('./components/AboutModal'))
 const ChangelogModal = lazy(() => import('./components/ChangelogModal'))
 const CodesView = lazy(() => import('./components/CodesView'))
-const GardenGallery = lazy(() => import('./components/GardenGallery'))
+const GardenHub = lazy(() => import('./components/GardenHub'))
 const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
@@ -439,7 +439,7 @@ export default function App() {
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
           {effectiveView === 'codes' && <div className="mb-5"><CodesView /></div>}
-          {effectiveView === 'garden' && <div className="mb-5"><GardenGallery onRequireLogin={() => setShowAuth(true)} /></div>}
+          {effectiveView === 'garden' && <div className="mb-5"><GardenHub onRequireLogin={() => setShowAuth(true)} /></div>}
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}

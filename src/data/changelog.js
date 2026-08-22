@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'New: a Garden Layout Planner 📐',
+    summary:
+      'The 🌱 Garden tab now has a Planner alongside the Gallery — pick which Sprites to feature, order them, and export a numbered blueprint to recreate in‑game.',
+    changes: [
+      { tag: 'Added', text: 'A Garden Layout Planner: choose from your owned Sprites, reorder them, pick a column count, and preview the arrangement live. Your plan is saved on your device.' },
+      { tag: 'Added', text: 'A “Download blueprint” export — a numbered poster (tiles + a layout-order legend) so you can recreate the layout in your in‑game Sprite Garden.' },
+      { tag: 'Changed', text: 'The 🌱 Garden tab is now a hub with a Gallery / Planner toggle.' },
+    ],
+    why:
+      'The in‑game Garden lets you build and arrange, but there’s no way to plan it outside the game. A planner that works off the Sprites you actually own — and exports a numbered blueprint — turns “what should my garden look like” into something you can sketch and share before you log in.',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'Pin a garden screenshot to your Trainer Card',
     summary:
       'You can now feature one Sprite Garden screenshot on your public profile — it shows as a cover banner on your shared Trainer Card.',

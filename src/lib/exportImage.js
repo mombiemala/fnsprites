@@ -653,6 +653,95 @@ export async function generateGardenImage({ gamertag, tracking = {}, shareUrl })
   return canvas.toDataURL('image/png')
 }
 
+// "Garden blueprint" export — the planner's chosen Sprites, in order, as
+// NUMBERED tiles plus a numbered legend, so a player can recreate the exact
+// layout in their in-game Sprite Garden. `items` is an ordered array of sprite
+// objects (from ALL_SPRITES); `cols` sets the grid width.
+export async function generateGardenBlueprint({ gamertag, items = [], cols = 4, shareUrl }) {
+  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.vercel.app/')
+  const canvas = document.createElement('canvas')
+  const pad = 44
+  const bg = (ctx, W, H) => { const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#12291f'); g.addColorStop(1, '#08120d'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H) }
+
+  const list = items.slice(0, 24)
+  if (list.length === 0) {
+    const W = 660, H = 360
+    canvas.width = W; canvas.height = H
+    const ctx = canvas.getContext('2d')
+    bg(ctx, W, H)
+    ctx.fillStyle = '#7fbf9a'; ctx.font = '700 18px Inter, sans-serif'; ctx.fillText('FN SPRITE TRACKER', pad, 52)
+    ctx.textAlign = 'center'; ctx.font = '800 60px Inter, sans-serif'; ctx.fillText('📐', W / 2, 180)
+    ctx.fillStyle = '#fff'; ctx.font = '800 30px Inter, sans-serif'; ctx.fillText('Empty garden plan', W / 2, 232)
+    ctx.fillStyle = '#9fc9b3'; ctx.font = '600 18px Inter, sans-serif'; ctx.fillText('Pick some Sprites to lay out your garden', W / 2, 266)
+    ctx.textAlign = 'left'
+    await drawExportFooter(ctx, { W, H, pad, url })
+    return canvas.toDataURL('image/png')
+  }
+
+  const C = Math.max(2, Math.min(6, cols))
+  const rowsN = Math.ceil(list.length / C)
+  const D = 130, gap = 18, labelH = 40, tileH = D + labelH
+  const gridW = C * D + (C - 1) * gap
+  const W = Math.max(720, gridW + pad * 2)
+  const gridX0 = Math.round((W - gridW) / 2)
+  const gridTop = 150
+  const legendRows = list.length
+  const legendTop = gridTop + rowsN * (tileH + gap) + 8
+  const H = legendTop + 28 + legendRows * 24 + 130
+
+  canvas.width = W; canvas.height = H
+  const ctx = canvas.getContext('2d')
+  ctx.textBaseline = 'alphabetic'
+  bg(ctx, W, H)
+
+  // Header
+  ctx.fillStyle = '#7fbf9a'; ctx.font = '700 18px Inter, sans-serif'; ctx.fillText('FN SPRITE TRACKER · GARDEN PLAN', pad, 52)
+  ctx.fillStyle = '#ffffff'; ctx.font = '800 40px Inter, sans-serif'
+  ctx.fillText(gamertag ? `${gamertag.toUpperCase()}’S GARDEN BLUEPRINT` : 'MY GARDEN BLUEPRINT', pad, 96)
+  ctx.fillStyle = '#9fc9b3'; ctx.font = '600 18px Inter, sans-serif'
+  ctx.fillText(`${list.length} Sprites · lay them out in this order`, pad, 124)
+
+  const loaded = {}
+  await Promise.all([...new Set(list.map((s) => s.image))].map(async (src) => { loaded[src] = await loadImage(src) }))
+
+  list.forEach((s, i) => {
+    const col = i % C, row = Math.floor(i / C)
+    const x = gridX0 + col * (D + gap), y = gridTop + row * (tileH + gap)
+    const cx = x + D / 2, cy = y + D / 2, r = D / 2
+    // ground shadow
+    ctx.save(); ctx.fillStyle = 'rgba(0,0,0,0.28)'; ctx.beginPath(); ctx.ellipse(cx, y + D - 6, r * 0.62, r * 0.16, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore()
+    // disc
+    ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.clip()
+    ctx.fillStyle = variantGradient(ctx, s.themeId, x, y, D, D); ctx.fillRect(x, y, D, D)
+    const img = loaded[s.image]; if (img) { const sz = D - 24; ctx.drawImage(img, x + 12, y + 12, sz, sz) }
+    ctx.restore()
+    ctx.beginPath(); ctx.arc(cx, cy, r - 1.5, 0, Math.PI * 2); ctx.lineWidth = 2.5; ctx.strokeStyle = 'rgba(167,243,208,0.45)'; ctx.stroke()
+    // number badge
+    ctx.fillStyle = '#34d399'; ctx.beginPath(); ctx.arc(x + 16, y + 16, 15, 0, Math.PI * 2); ctx.fill()
+    ctx.fillStyle = '#05170f'; ctx.font = '800 16px Inter, sans-serif'; ctx.textAlign = 'center'
+    ctx.fillText(String(i + 1), x + 16, y + 22); ctx.textAlign = 'left'
+    // label
+    ctx.textAlign = 'center'; ctx.fillStyle = '#eaf6ef'
+    drawFit(ctx, s.typeName, cx, y + D + 22, D - 4, '700', 15)
+    ctx.textAlign = 'left'
+  })
+
+  // Numbered legend
+  ctx.fillStyle = '#7fbf9a'; ctx.font = '700 14px Inter, sans-serif'
+  ctx.fillText('LAYOUT ORDER', pad, legendTop + 16)
+  ctx.font = '600 14px Inter, sans-serif'
+  list.forEach((s, i) => {
+    const ly = legendTop + 40 + i * 24
+    ctx.fillStyle = '#34d399'; ctx.font = '800 13px Inter, sans-serif'; ctx.fillText(`${i + 1}.`, pad, ly)
+    ctx.fillStyle = '#eaf6ef'; ctx.font = '600 14px Inter, sans-serif'
+    const finish = VARIANT_LABEL[s.themeId] || s.themeId
+    ctx.fillText(`${s.typeName}${s.themeId !== 'normal' ? ` — ${finish}` : ''}`, pad + 26, ly)
+  })
+
+  await drawExportFooter(ctx, { W, H, pad, url })
+  return canvas.toDataURL('image/png')
+}
+
 // A trade card: "For trade" column + "Looking for" column, with the gamertag
 // and creator code. `haves`/`wants` are arrays of {label, accent}.
 export function generateTradeImage({ gamertag, haves, wants }) {

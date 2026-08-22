@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — New: a Garden Layout Planner 📐
+
+- **Added:** `GardenPlanner.jsx` — pick from owned Sprites, reorder, choose columns, live preview; plan
+  persisted to `localStorage`. `generateGardenBlueprint` (`exportImage.js`) exports a numbered blueprint poster
+  (tiles + layout-order legend).
+- **Changed:** the 🌱 Garden tab is now `GardenHub.jsx` with a Gallery / Planner segmented toggle (App renders
+  the hub instead of the gallery directly).
+- **Why:** the in‑game Garden is build-it-yourself with no out-of-game planning; a planner off your owned
+  Sprites + an exportable numbered blueprint lets players sketch and share a layout before logging in.
+
+---
+
 ## August 22, 2026 — Pin a garden screenshot to your Trainer Card
 
 - **Added:** a `🌱 Garden screenshot` control in `ProfileModal` (upload/replace/remove via
