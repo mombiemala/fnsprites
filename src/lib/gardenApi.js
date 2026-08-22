@@ -78,3 +78,23 @@ export async function deleteGardenShowcase({ id, imagePath }) {
   if (error) throw error
   if (imagePath) await supabase.storage.from(BUCKET).remove([imagePath]).catch(() => {})
 }
+
+// Upload (into the same bucket, under the user's folder) a single screenshot to
+// feature on the player's public Trainer Card. Returns the storage path — the
+// caller saves it to profiles.garden_image_path via updateProfile.
+export async function uploadProfileGardenImage({ file }) {
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) throw new Error('Please log in.')
+  const verdict = await moderateImage(file)
+  if (!verdict.ok) throw new Error(verdict.reason)
+  const ext = file.type === 'image/png' ? 'png' : file.type === 'image/webp' ? 'webp' : 'jpg'
+  const path = `${user.id}/profile-${crypto.randomUUID()}.${ext}`
+  const { error } = await supabase.storage.from(BUCKET).upload(path, file, { contentType: file.type, upsert: false })
+  if (error) throw error
+  return path
+}
+
+// Remove a stored profile garden image (best-effort).
+export async function removeProfileGardenImage(path) {
+  if (path) await supabase.storage.from(BUCKET).remove([path]).catch(() => {})
+}

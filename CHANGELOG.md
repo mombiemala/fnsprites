@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — Pin a garden screenshot to your Trainer Card
+
+- **Added:** a `🌱 Garden screenshot` control in `ProfileModal` (upload/replace/remove via
+  `uploadProfileGardenImage`/`removeProfileGardenImage`), saved to `profiles.garden_image_path` and shown as a
+  cover banner on the shared `TrainerCard`.
+- **Security:** migration `profile_garden_image_v2` — new `profiles.garden_image_path` column (public display
+  field, images in the existing RLS-guarded `garden-showcases` bucket under the user's folder); recreated
+  `get_shared_profile` to return it.
+- **Why:** a lower-key alternative to the public gallery — a personal garden shot on your own shareable profile.
+
+---
+
 ## August 22, 2026 — Gold Sprites are live 🥇
 
 - **Changed:** flipped `gold: U → R` for all 11 Override Sprites (sonic, tails, shadow, jazz, klombo,

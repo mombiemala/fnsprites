@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'Pin a garden screenshot to your Trainer Card',
+    summary:
+      'You can now feature one Sprite Garden screenshot on your public profile — it shows as a cover banner on your shared Trainer Card.',
+    changes: [
+      { tag: 'Added', text: 'A “🌱 Garden screenshot” control in Profile — upload/replace/remove one screenshot; it appears as a cover banner atop your shared (?u=) Trainer Card.' },
+    ],
+    why:
+      'Not everyone wants to post to the public gallery, but a personal garden shot on your own shareable profile is a lower-key way to show off your build — and it makes shared Trainer Cards feel more personal.',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'Gold Sprites are live 🥇',
     summary:
       'The Gold finish unlocked for the Season 4 “Override” Sprites at today’s Gold Hours, so every Override Sprite’s Gold variant is now marked live — plus a news item + banner for the event.',

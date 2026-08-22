@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 import { useEscClose } from '../lib/useEscClose'
 import { supabase } from '../lib/supabase'
 import { ALL_SPRITES } from '../data/sprites'
+import { uploadProfileGardenImage, removeProfileGardenImage, gardenImageUrl } from '../lib/gardenApi'
 import SpriteArt from './SpriteArt'
 
 const SHOWCASE_MAX = 6
@@ -22,6 +23,44 @@ export default function ProfileModal({ onClose }) {
   const [savingProfile, setSavingProfile] = useState(false)
   const [busy, setBusy] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
+  const [gardenBusy, setGardenBusy] = useState(false)
+  const gardenFileRef = useRef(null)
+  const gardenUrl = profile?.garden_image_path ? gardenImageUrl(profile.garden_image_path) : null
+
+  // Garden screenshot is saved immediately (upload → save path), separate from
+  // the profile save-bar, so it doesn't complicate the dirty/unsaved tracking.
+  const onPickGarden = async (e) => {
+    const f = e.target.files?.[0]
+    if (!f) return
+    setGardenBusy(true)
+    try {
+      const oldPath = profile?.garden_image_path
+      const path = await uploadProfileGardenImage({ file: f })
+      const res = await updateProfile({ garden_image_path: path })
+      if (res.error) throw new Error(res.error)
+      if (oldPath && oldPath !== path) await removeProfileGardenImage(oldPath)
+      toast('Garden screenshot saved 🌱')
+    } catch (err) {
+      toast(err.message || 'Upload failed', 'error')
+    } finally {
+      setGardenBusy(false)
+      if (gardenFileRef.current) gardenFileRef.current.value = ''
+    }
+  }
+  const onRemoveGarden = async () => {
+    setGardenBusy(true)
+    try {
+      const oldPath = profile?.garden_image_path
+      const res = await updateProfile({ garden_image_path: null })
+      if (res.error) throw new Error(res.error)
+      if (oldPath) await removeProfileGardenImage(oldPath)
+      toast('Garden screenshot removed')
+    } catch (err) {
+      toast(err.message || 'Failed', 'error')
+    } finally {
+      setGardenBusy(false)
+    }
+  }
 
   const providers = user?.app_metadata?.providers || (user?.app_metadata?.provider ? [user.app_metadata.provider] : [])
 
@@ -218,6 +257,34 @@ export default function ProfileModal({ onClose }) {
               })}
             </div>
           )}
+        </div>
+
+        {/* Garden screenshot — one featured shot pinned to the public Trainer Card */}
+        <div className="mt-4 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] p-3">
+          <label className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">
+            🌱 Garden screenshot <span className="font-semibold normal-case text-[var(--muted)]/80">— featured on your shared profile</span>
+          </label>
+          <p className="mb-2 text-[11px] text-[var(--muted)]">
+            Pin one screenshot of your in‑game Sprite Garden to the top of your Trainer Card. Want it in the public feed too? Post it from the 🌱 Garden tab.
+          </p>
+          {gardenUrl ? (
+            <div className="flex items-center gap-3">
+              <img src={gardenUrl} alt="Your Sprite Garden" className="h-20 w-32 shrink-0 rounded-lg object-cover" />
+              <div className="flex flex-col gap-1.5">
+                <button onClick={() => gardenFileRef.current?.click()} disabled={gardenBusy} className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60">
+                  {gardenBusy ? 'Working…' : 'Replace'}
+                </button>
+                <button onClick={onRemoveGarden} disabled={gardenBusy} className="rounded-lg px-3 py-1.5 text-xs font-bold text-[var(--muted)] hover:text-rose-300 disabled:opacity-60">
+                  Remove
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button onClick={() => gardenFileRef.current?.click()} disabled={gardenBusy} className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-white hover:bg-[var(--border)] disabled:opacity-60">
+              {gardenBusy ? 'Uploading…' : '＋ Add garden screenshot'}
+            </button>
+          )}
+          <input ref={gardenFileRef} type="file" accept="image/png,image/jpeg,image/webp" onChange={onPickGarden} className="hidden" />
         </div>
 
         <p className="mt-4 rounded-lg bg-[var(--bg-2)] px-3 py-2 text-[11px] text-[var(--muted)]">

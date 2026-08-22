@@ -48,7 +48,7 @@ function StatsStrip({ epicUsername, epicPlatform }) {
 // collection. Avatar + gamertag + a couple of headline stats, earned badges,
 // and the player's hand-picked showcase sprites. All derived from public
 // display data (gamertag + showcase ids) and their public progress.
-export default function TrainerCard({ gamertag, owned = 0, total = 0, mastered = 0, tracking = null, showcaseIds = null, epicUsername = null, epicPlatform = null }) {
+export default function TrainerCard({ gamertag, owned = 0, total = 0, mastered = 0, tracking = null, showcaseIds = null, epicUsername = null, epicPlatform = null, gardenImageUrl = null }) {
   const pct = total ? Math.round((owned / total) * 100) : 0
   const showcase = (showcaseIds || [])
     .map((id) => SPRITE_BY_ID[id])
@@ -58,7 +58,14 @@ export default function TrainerCard({ gamertag, owned = 0, total = 0, mastered =
   const badges = deriveBadges({ owned, mastered, tracking })
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-[var(--brand)]/40 bg-gradient-to-br from-[var(--brand)]/12 to-[var(--panel)] p-4 sm:p-5">
+    <div className="overflow-hidden rounded-2xl border border-[var(--brand)]/40 bg-gradient-to-br from-[var(--brand)]/12 to-[var(--panel)]">
+      {/* Cover banner — the player's pinned Sprite Garden screenshot */}
+      {gardenImageUrl && (
+        <div className="aspect-[3/1] w-full overflow-hidden border-b border-[var(--border)] bg-black/30">
+          <img src={gardenImageUrl} alt={`${gamertag || 'Player'}’s Sprite Garden`} loading="lazy" className="h-full w-full object-cover" />
+        </div>
+      )}
+      <div className="p-4 sm:p-5">
       <div className="flex items-center gap-4">
         {/* Avatar — the first showcase sprite, or a generic badge */}
         <div className="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-2)] sm:h-20 sm:w-20">
@@ -112,6 +119,7 @@ export default function TrainerCard({ gamertag, owned = 0, total = 0, mastered =
           </div>
         </div>
       )}
+      </div>
     </div>
   )
 }

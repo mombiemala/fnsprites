@@ -8,6 +8,7 @@ import { generateCollectionImage, generateGardenImage, downloadDataUrl } from '.
 import CollectionSwitcher from './components/CollectionSwitcher'
 import SpriteCard from './components/SpriteCard'
 import TrainerCard from './components/TrainerCard'
+import { gardenImageUrl as resolveGardenUrl } from './lib/gardenApi'
 import { SpriteMark } from './components/Logo'
 import Toolbar from './components/Toolbar'
 import ShareBar from './components/ShareBar'
@@ -481,6 +482,7 @@ export default function App() {
                 showcaseIds={shared.profile.showcase_sprite_ids}
                 epicUsername={shared.profile.epic_username}
                 epicPlatform={shared.profile.epic_platform}
+                gardenImageUrl={shared.profile.garden_image_path ? resolveGardenUrl(shared.profile.garden_image_path) : null}
               />
               <p className="mt-2 px-1 text-xs text-[var(--muted)]">
                 Read-only view. <a href={window.location.pathname} className="font-bold text-[var(--brand)] underline">Track your own →</a>
