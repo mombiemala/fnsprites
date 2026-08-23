@@ -50,7 +50,7 @@ export const LOBBY_CODES = [
   { code: '8BITBLAST', unlocks: 'Cheatmaster 8-Bit Blaster Sprite', type: 'sprite', category: 'sprites', spriteId: 'blaster', status: 'working', source: 'Dexerto' },
   { code: 'PLAY4ALL', unlocks: 'Cheatmaster Jonesy Sprite', type: 'sprite', category: 'sprites', spriteId: 'jonesy', status: 'working', source: 'Dexerto' },
   { code: 'BORN2PLAY', unlocks: 'Cheatmaster Adventure Sprite', type: 'sprite', category: 'sprites', spriteId: 'adventure', status: 'working', source: 'PCGamesN' },
-  { code: 'GatherAndCraft', unlocks: 'Cheatmaster Bush Ranger Sprite — after Wrixel “Get Crafty” quest (stage 9)', type: 'sprite', category: 'sprites', spriteId: 'bushranger', status: 'working', source: 'allthings.how' },
+  { code: 'GatherAndCraft', unlocks: 'Cheatmaster Bush Ranger Sprite — after Wrixel “Get Crafty” quest (stage 9)', type: 'sprite', category: 'sprites', spriteId: 'bushranger', status: 'working', source: 'allthings.how', added: '2026-08-22' },
 
   // --- ✨ Gizmos & effects ---
   // The two Tetris-block codes are the only REUSABLE codes — they re-trigger the
@@ -62,7 +62,7 @@ export const LOBBY_CODES = [
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
   { code: 'TAKEYOURHEART', unlocks: '2× Extraction Accelerators (Persona 5 / Joker)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
   { code: 'SURVIVETHENIGHT', unlocks: '2× Cheat Code Locators (99 Nights)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
-  { code: 'FINDITCHAT', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', source: 'community list' },
+  { code: 'FINDITCHAT', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', source: 'community list', added: '2026-08-21' },
   { code: 'OVERRIDEXP', unlocks: '40,000 XP', type: 'reward', category: 'boosts', status: 'working', source: 'community list' },
   { code: 'O2OVERRIDE', unlocks: 'Llama supply + 5 portable extractors', type: 'reward', category: 'boosts', status: 'regional', region: 'O2 promo', source: 'GamesRadar' },
 
@@ -73,9 +73,9 @@ export const LOBBY_CODES = [
   { code: 'CHISPAMBO', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', region: 'Fortnite Spain', source: 'community list' },
   { code: 'PERLIMPINPIN', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', region: 'Fortnite France', source: 'community list' },
   { code: 'ABGESTAUBT', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', region: 'Fortnite Germany', source: 'community list' },
-  { code: 'H0p0nVC', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list' },
+  { code: 'H0p0nVC', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list', added: '2026-08-21' },
 
   // --- 🖼️ Loading screens ---
-  { code: 'REACHYOURIMPOSSIBLE', unlocks: 'Block Party loading screen', type: 'cosmetic', category: 'screens', status: 'working', source: 'community list' },
+  { code: 'REACHYOURIMPOSSIBLE', unlocks: 'Block Party loading screen', type: 'cosmetic', category: 'screens', status: 'working', source: 'community list', added: '2026-08-21' },
   { code: 'BEMOREALIEN', unlocks: '“Override Ready” loading screen', type: 'cosmetic', category: 'screens', status: 'regional', region: 'Alienware', source: 'GamesRadar' },
 ]

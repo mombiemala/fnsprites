@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'More abilities + a fresher codes page',
+    summary:
+      'Filled in three more confirmed Sprite abilities and the Cheat Code Chest tiers, and made the codes page signal freshness harder (new-this-week + verified dates + a bigger FAQ).',
+    changes: [
+      { tag: 'Added', text: 'Confirmed abilities: Tails (hover / slow descent), Jonesy (restores Health/Shield after taking damage), Crown (bonus Crown Wins on a Victory Royale). Plus the Cheat Code Chest colour tiers on the Sprite Dust guide — blue = Rare, purple = Epic, gold = Legendary.' },
+      { tag: 'Added', text: 'A “🆕 New this week” highlight on the codes page (and in-app), a per-code “verified <date>” line, and a bigger FAQ (how many codes, case-sensitivity, which give Dust, console/mobile) for richer search results.' },
+    ],
+    why:
+      'We rank #1 for the Sprites checklist but not yet for codes — that query is won on freshness and structured answers, so dated “verified/new” signals and a fuller FAQ are the right push. And real abilities keep beating “TBC.”',
+  },
+  {
+    date: 'August 22, 2026',
     title: '“Closest to complete” sort + free-sync callout',
     summary:
       'A new sort that floats the Sprite sets you’re nearest to finishing to the top, plus a clearer note that cloud sync is free here.',

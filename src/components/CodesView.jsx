@@ -14,6 +14,8 @@ const STATUS = {
 // Within a category, lead with the codes players can use right now.
 const STATUS_RANK = { working: 0, regional: 1, rumored: 2 }
 const byStatus = (a, b) => (STATUS_RANK[a.status] ?? 3) - (STATUS_RANK[b.status] ?? 3)
+// A code counts as "new" for ~a week after its `added` date.
+const isNewCode = (c) => c.added && (Date.now() - new Date(c.added).getTime()) <= 7 * 864e5
 
 const REDEEMED_KEY = 'fnsprites.codesRedeemed'
 const HIDE_KEY = 'fnsprites.codesHideRedeemed'
@@ -135,6 +137,7 @@ export default function CodesView() {
                           {c.region ? `${c.region} · ` : ''}via {c.source}
                         </p>
                       </div>
+                      {isNewCode(c) && <span className="shrink-0 rounded bg-sky-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-sky-300" title="Added in the last week">🆕 New</span>}
                       {c.repeatable && <span className="shrink-0 rounded bg-sky-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-sky-300" title="Reusable — re-trigger any time">↻ Reusable</span>}
                       <span className={`shrink-0 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${st.cls}`}>{st.label}</span>
                     </div>

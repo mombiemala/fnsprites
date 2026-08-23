@@ -159,7 +159,7 @@ export const SPRITE_TYPES = [
   //   files but not yet obtainable, so it stays unreleased. The Sonic collab
   //   ships under the internal "NarrowFlea" codename: Sonic / Tails / Shadow. ----
   { id: 'tails', name: 'Tails', icon: '🦊', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — Tails (Sonic collab), cube redesign. Normal & Cheatmaster are live (Cheatmaster via the IWANNAFLYHIGH lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Tails (Sonic collab), cube redesign. Normal & Cheatmaster are live (Cheatmaster via the IWANNAFLYHIGH lobby code); Gold is live too (Gold Hours, Aug 22). Ability: lets you hover — a glide / slow descent.',
     variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'shadow', name: 'Shadow', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: automatically reloads your unequipped weapons over time.',
@@ -174,10 +174,10 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — a woodland Bush Ranger. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
     variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'victorycrown', name: 'Crown', icon: '👑', rarity: 'Mythic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — the Crown. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the Crown. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: grants bonus Crown Wins when you earn a Victory Royale.',
     variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'jonesy', name: 'Jonesy', icon: '🕶️', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — Jonesy. Normal & Cheatmaster are live (Cheatmaster via the PLAY4ALL lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Jonesy. Normal & Cheatmaster are live (Cheatmaster via the PLAY4ALL lobby code); Gold is live too (Gold Hours, Aug 22). Ability: restores some Health or Shield after you take damage.',
     variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'blaster', name: '8-Bit Blaster', icon: '🎮', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — a retro handheld “8-Bit Blaster”. Normal & Cheatmaster are live (Cheatmaster via the 8BITBLAST lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',

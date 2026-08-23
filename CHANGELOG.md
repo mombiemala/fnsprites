@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — More abilities + a fresher codes page
+
+- **Added:** confirmed abilities in `sprites.js` — Tails (hover/slow descent), Jonesy (Health/Shield on
+  taking damage), Crown (bonus Crown Wins on a Victory Royale); Cheat Code Chest colour tiers (blue=Rare,
+  purple=Epic, gold=Legendary) on the `/sprite-dust` guide.
+- **Added:** codes-page freshness for SEO — `added` dates on the newest codes → a "🆕 New this week" badge +
+  count (prerender `/codes` and in-app `CodesView`), a per-code "verified <build date>" line, and 4 more FAQ
+  entries (total count, case-sensitivity, which codes give Dust, console/mobile) feeding `FAQPage` schema.
+- **Why:** we rank #1 for "override sprite checklist" but not for codes — a contested, freshness-driven query;
+  dated verified/new signals + a fuller FAQ are the right lever. Real abilities keep beating placeholders.
+
+---
+
 ## August 22, 2026 — "Closest to complete" sort + free-sync callout
 
 - **Added:** a `closest` sort option (`Toolbar` selects + `App` visible-list sort) — ranks Sprites by how few
