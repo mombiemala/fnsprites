@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'Upcoming codes — Gold Jonesy drops Aug 24',
+    summary:
+      'Codes can now be listed before their string is public — the leaked Gold Jonesy code shows as “Coming Aug 24” until it goes live.',
+    changes: [
+      { tag: 'Added', text: 'An “upcoming” code state: a code that’s announced but not yet public shows a “🔜 Coming <date>” placeholder (no copy button) instead of a redeemable string. First up: a Gold Jonesy Sprite code dropping Aug 24.' },
+    ],
+    why:
+      'Players want the heads-up the moment a code is announced, but we won’t publish a string nobody can redeem yet. The upcoming state gives the “it’s coming, and when” signal now, and we swap in the real code the day it drops.',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'More abilities + a fresher codes page',
     summary:
       'Filled in three more confirmed Sprite abilities and the Cheat Code Chest tiers, and made the codes page signal freshness harder (new-this-week + verified dates + a bigger FAQ).',

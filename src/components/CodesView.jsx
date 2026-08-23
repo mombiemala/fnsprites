@@ -10,9 +10,10 @@ const STATUS = {
   working: { label: 'Working', cls: 'bg-emerald-400/15 text-emerald-300' },
   regional: { label: 'Regional', cls: 'bg-amber-400/15 text-amber-300' },
   rumored: { label: 'Unverified', cls: 'bg-white/10 text-[var(--muted)]' },
+  upcoming: { label: 'Upcoming', cls: 'bg-sky-400/15 text-sky-300' },
 }
 // Within a category, lead with the codes players can use right now.
-const STATUS_RANK = { working: 0, regional: 1, rumored: 2 }
+const STATUS_RANK = { working: 0, regional: 1, rumored: 2, upcoming: 4 }
 const byStatus = (a, b) => (STATUS_RANK[a.status] ?? 3) - (STATUS_RANK[b.status] ?? 3)
 // A code counts as "new" for ~a week after its `added` date.
 const isNewCode = (c) => c.added && (Date.now() - new Date(c.added).getTime()) <= 7 * 864e5
@@ -54,7 +55,7 @@ export default function CodesView() {
     })
   }
   const setAll = (on) => {
-    const next = on ? new Set(LOBBY_CODES.map((c) => c.code)) : new Set()
+    const next = on ? new Set(LOBBY_CODES.filter((c) => c.code).map((c) => c.code)) : new Set()
     setRedeemed(next); saveRedeemed(next)
     toast(on ? 'Marked all codes redeemed' : 'Cleared redeemed codes')
   }
@@ -113,24 +114,35 @@ export default function CodesView() {
               <div className="flex flex-col gap-1.5">
                 {items.map((c) => {
                   const st = STATUS[c.status] || STATUS.rumored
-                  const done = redeemed.has(c.code)
+                  const upcoming = !c.code
+                  const done = !upcoming && redeemed.has(c.code)
                   return (
-                    <div key={c.code} className={`flex items-center gap-2 rounded-xl bg-[var(--bg-2)] p-2 ${done ? 'opacity-55' : ''}`}>
-                      <button
-                        onClick={() => toggleRedeem(c.code)}
-                        aria-pressed={done}
-                        title={done ? 'Redeemed — tap to unmark' : 'Mark as redeemed'}
-                        className={`grid h-6 w-6 shrink-0 place-items-center rounded-md border text-xs font-black ${done ? 'border-emerald-400 bg-emerald-400 text-black' : 'border-[var(--border)] bg-[var(--panel-2)] text-transparent hover:border-[var(--muted)]'}`}
-                      >
-                        ✓
-                      </button>
-                      <button
-                        onClick={() => copy(c.code)}
-                        title="Copy code"
-                        className={`shrink-0 rounded-lg bg-[var(--panel-2)] px-2.5 py-1.5 font-mono text-[13px] font-bold tracking-wide text-white transition-colors hover:bg-[var(--border)] ${done ? 'line-through decoration-[var(--muted)]' : ''}`}
-                      >
-                        {copied === c.code ? '✓ Copied' : c.code}
-                      </button>
+                    <div key={c.code || c.unlocks} className={`flex items-center gap-2 rounded-xl bg-[var(--bg-2)] p-2 ${done ? 'opacity-55' : ''}`}>
+                      {upcoming ? (
+                        <span className="grid h-6 w-6 shrink-0 place-items-center text-sm" title={`Drops ${c.eta}`}>🔜</span>
+                      ) : (
+                        <button
+                          onClick={() => toggleRedeem(c.code)}
+                          aria-pressed={done}
+                          title={done ? 'Redeemed — tap to unmark' : 'Mark as redeemed'}
+                          className={`grid h-6 w-6 shrink-0 place-items-center rounded-md border text-xs font-black ${done ? 'border-emerald-400 bg-emerald-400 text-black' : 'border-[var(--border)] bg-[var(--panel-2)] text-transparent hover:border-[var(--muted)]'}`}
+                        >
+                          ✓
+                        </button>
+                      )}
+                      {upcoming ? (
+                        <span className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2.5 py-1.5 text-[13px] font-bold text-sky-300" title={`Code drops ${c.eta}`}>
+                          Coming {c.eta}
+                        </span>
+                      ) : (
+                        <button
+                          onClick={() => copy(c.code)}
+                          title="Copy code"
+                          className={`shrink-0 rounded-lg bg-[var(--panel-2)] px-2.5 py-1.5 font-mono text-[13px] font-bold tracking-wide text-white transition-colors hover:bg-[var(--border)] ${done ? 'line-through decoration-[var(--muted)]' : ''}`}
+                        >
+                          {copied === c.code ? '✓ Copied' : c.code}
+                        </button>
+                      )}
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-sm font-semibold text-white">{c.unlocks}</p>
                         <p className="text-[10px] text-[var(--muted)]">

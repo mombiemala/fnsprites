@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — Upcoming codes — Gold Jonesy drops Aug 24
+
+- **Added:** an `upcoming` code status (`code: null` + `eta`) — renders "🔜 Coming <date>" (no copy button, no
+  redeem checkbox) in both `CodesView` and the prerender `/codes` page; sorted last within its category,
+  excluded from redeem-all and the working count; ItemList schema falls back to `unlocks` for the name.
+  First entry: Gold Jonesy Sprite, `eta: 'Aug 24'`. Cheatmaster count now derived separately so the Gold
+  outlier doesn't inflate it.
+- **Why:** surface a code the moment it's announced without publishing a string nobody can redeem yet; swap in
+  the real code when it drops.
+
+---
+
 ## August 22, 2026 — More abilities + a fresher codes page
 
 - **Added:** confirmed abilities in `sprites.js` — Tails (hover/slow descent), Jonesy (Health/Shield on

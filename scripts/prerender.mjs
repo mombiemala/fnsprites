@@ -855,16 +855,17 @@ function spriteDustPage() {
 // come from src/data/codes.js (shared with the in-app modal). Copy runs client-side.
 const CODES_SCRIPT = `<script>(function(){document.querySelectorAll('.codecopy').forEach(function(b){b.addEventListener('click',function(){var c=b.getAttribute('data-code');if(navigator.clipboard){navigator.clipboard.writeText(c).then(function(){var o=b.textContent;b.textContent='✓ Copied';setTimeout(function(){b.textContent=o},1400)})}})})})();</script>`
 function codesPage() {
-  const CST = { working: ['Working', '#34d399'], regional: ['Regional', '#fbbf24'], rumored: ['Unverified', '#8b93a7'] }
+  const CST = { working: ['Working', '#34d399'], regional: ['Regional', '#fbbf24'], rumored: ['Unverified', '#8b93a7'], upcoming: ['Upcoming', '#7dd3fc'] }
   const working = LOBBY_CODES.filter((c) => c.status === 'working').length
   const spriteCodes = LOBBY_CODES.filter((c) => c.type === 'sprite')
+  const cheatmasterCount = LOBBY_CODES.filter((c) => c.type === 'sprite' && c.code && /Cheatmaster/i.test(c.unlocks)).length
   // Build-time month + date, so the page self-dates on every deploy (a freshness
   // signal search engines reward for fast-moving "codes" queries).
   const monthLabel = new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })
   const spriteHref = (id) => { const t = SPRITE_TYPES.find((x) => x.id === id); return t ? `/sprite/${slug(t.name)}` : null }
   // Group by reward category (what you get), status stays a per-code badge. Within
   // a category, lead with the codes that work right now.
-  const statusRank = { working: 0, regional: 1, rumored: 2 }
+  const statusRank = { working: 0, regional: 1, rumored: 2, upcoming: 4 }
   // "New this week" — codes with an `added` date within 7 days of the build date.
   // A concrete freshness signal (for both readers and search) on a fast-moving page.
   const weekAgo = new Date(new Date(NEWS_TODAY + 'T12:00:00Z').getTime() - 7 * 864e5).toISOString().slice(0, 10)
@@ -879,7 +880,7 @@ function codesPage() {
     ['How do I redeem a Hack the Lobby code?', CODES_INTRO.how],
     ['Which code unlocks the Cheatmaster Sonic Sprite?', 'Enter GOTTAGOFAST in the lobby Admin Panel. Other Sprite codes: Tails = IWANNAFLYHIGH, 8-Bit Blaster = 8BITBLAST, Jonesy = PLAY4ALL, Adventure = BORN2PLAY.'],
     ['Do Fortnite lobby codes expire?', 'Sprite and reward codes stay claimable until you redeem them, but regional/promo codes expire when their campaign ends. Redeeming a Sprite you already own grants roughly 10,000 Sprite Dust instead.'],
-    [`How many Fortnite lobby codes are there right now?`, `As of ${monthLabel} there are ${LOBBY_CODES.length} known Hack the Lobby codes — ${working} confirmed working, including ${spriteCodes.length} that unlock Cheatmaster Sprites${newCount ? `, with ${newCount} added this week` : ''}. We update the list as Epic drops more.`],
+    [`How many Fortnite lobby codes are there right now?`, `As of ${monthLabel} there are ${LOBBY_CODES.length} known Hack the Lobby codes — ${working} confirmed working, including ${cheatmasterCount} that unlock Cheatmaster Sprites${newCount ? `, with ${newCount} added this week` : ''}. We update the list as Epic drops more.`],
     ['Are Fortnite admin panel codes case-sensitive?', 'No — capitalization doesn’t matter, so you don’t have to type them in all caps. Spelling does matter, though: a couple of codes mix letters and numbers (e.g. H0p0nVC uses zeros, not the letter “O”).'],
     ['Which lobby codes give free Sprite Dust?', `Several codes grant about 2,000 Sprite Dust each — ${dustCodes}. And redeeming a Sprite code for a Sprite you already own converts to roughly 10,000 Dust.`],
     ['Do the codes work on console and mobile?', 'Yes — the Admin Panel is in the Battle Royale lobby on every platform. Open the “…”/admin prompt in the top-right, type the code, and hit Submit.'],
@@ -888,14 +889,17 @@ function codesPage() {
     { '@type': 'CollectionPage', name: 'Fortnite Override Lobby Hack Codes', url: SITE + '/codes', description: desc, dateModified: NEWS_TODAY },
     { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
     { '@type': 'ItemList', name: 'Fortnite Override lobby codes', numberOfItems: LOBBY_CODES.length,
-      itemListElement: LOBBY_CODES.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.code, description: c.unlocks })) },
+      itemListElement: LOBBY_CODES.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.code || c.unlocks, description: c.unlocks })) },
   ] }
   const codeRow = (c) => {
     const [lbl, col] = CST[c.status] || CST.rumored
     const href = c.type === 'sprite' ? spriteHref(c.spriteId) : null
     const unlocks = href ? `<a href="${href}" style="color:#dcd2e6;text-decoration:underline;text-decoration-color:var(--border)">${esc(c.unlocks)}</a>` : `<b style="font-weight:600;color:#dcd2e6">${esc(c.unlocks)}</b>`
+    const codeEl = c.code
+      ? `<button class="codecopy" data-code="${esc(c.code)}" title="Copy ${esc(c.code)}" style="font-family:ui-monospace,Menlo,monospace;font-weight:800;font-size:13px;letter-spacing:.03em;color:#fff;background:var(--panel2);border:0;border-radius:8px;padding:6px 10px;cursor:pointer">${esc(c.code)}</button>`
+      : `<span title="Code drops ${esc(c.eta || 'soon')}" style="font-weight:800;font-size:13px;color:#7dd3fc;background:#7dd3fc22;border-radius:8px;padding:6px 10px">🔜 Coming ${esc(c.eta || 'soon')}</span>`
     return `<div class="grow" style="cursor:default">
-      <span class="nm"><button class="codecopy" data-code="${esc(c.code)}" title="Copy ${esc(c.code)}" style="font-family:ui-monospace,Menlo,monospace;font-weight:800;font-size:13px;letter-spacing:.03em;color:#fff;background:var(--panel2);border:0;border-radius:8px;padding:6px 10px;cursor:pointer">${esc(c.code)}</button>
+      <span class="nm">${codeEl}
         <span class="nt">${unlocks}<span class="badges">${isNew(c) ? `<span style="color:#7dd3fc;background:#7dd3fc22">🆕 New</span>` : ''}<span style="color:${col};background:${col}22">${lbl}</span>${c.repeatable ? `<span style="color:#7dd3fc;background:#7dd3fc22">↻ Reusable</span>` : ''}${c.region ? `<span style="color:var(--muted);background:transparent">${esc(c.region)}</span>` : ''}</span></span></span>
       <span class="src" style="grid-column:1/-1;margin-top:2px">via ${esc(c.source)} · verified ${NEWS_TODAY}</span></div>`
   }
@@ -911,7 +915,7 @@ function codesPage() {
 <div class="cols">
   <div class="main">
     <h1>Fortnite “Override” Lobby Hack codes (${monthLabel})</h1>
-    <p style="margin:2px 0 10px;font-size:12.5px;color:var(--muted)"><b style="color:#34d399">${working} working</b> · <b style="color:#fff">${spriteCodes.length} Cheatmaster Sprites</b>${newCount ? ` · <b style="color:#7dd3fc">${newCount} new this week</b>` : ''} · verified <b style="color:#fff">${NEWS_TODAY}</b> — we keep this list fresh as Epic drops more.</p>
+    <p style="margin:2px 0 10px;font-size:12.5px;color:var(--muted)"><b style="color:#34d399">${working} working</b> · <b style="color:#fff">${cheatmasterCount} Cheatmaster Sprites</b>${newCount ? ` · <b style="color:#7dd3fc">${newCount} new this week</b>` : ''} · verified <b style="color:#fff">${NEWS_TODAY}</b> — we keep this list fresh as Epic drops more.</p>
     <p class="lede" style="color:var(--muted);margin:0 0 14px;font-size:14px;max-width:70ch">${esc(CODES_INTRO.how)}</p>
     <div class="card" style="padding:14px;margin:0 0 8px"><b style="color:#fff;font-size:13px">Rules</b><ul style="margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:12.5px;line-height:1.7">${CODES_INTRO.rules.map((r) => `<li>${esc(r)}</li>`).join('')}</ul></div>
     ${CODE_CATEGORIES.map(section).join('')}

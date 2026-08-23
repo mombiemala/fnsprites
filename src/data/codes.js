@@ -11,7 +11,9 @@
 // Redeeming a Sprite code you already own grants Sprite Dust instead (~10,000).
 //
 // `status`: 'working' (widely reported live) · 'regional' (working but locale/
-//   campaign-locked, will expire) · 'rumored' (single-source, unverified).
+//   campaign-locked, will expire) · 'rumored' (single-source, unverified) ·
+//   'upcoming' (announced but the code string isn't public yet — set `eta` and
+//   leave `code` null; it renders "Coming <eta>" with no copy button).
 // `category` buckets a code by WHAT IT GIVES YOU (fortnite.gg-style grouping) —
 //   see CODE_CATEGORIES; status stays a per-code badge so freshness is still clear.
 // `spriteId` links a Cheatmaster Sprite unlock to its entry in the tracker.
@@ -51,6 +53,8 @@ export const LOBBY_CODES = [
   { code: 'PLAY4ALL', unlocks: 'Cheatmaster Jonesy Sprite', type: 'sprite', category: 'sprites', spriteId: 'jonesy', status: 'working', source: 'Dexerto' },
   { code: 'BORN2PLAY', unlocks: 'Cheatmaster Adventure Sprite', type: 'sprite', category: 'sprites', spriteId: 'adventure', status: 'working', source: 'PCGamesN' },
   { code: 'GatherAndCraft', unlocks: 'Cheatmaster Bush Ranger Sprite — after Wrixel “Get Crafty” quest (stage 9)', type: 'sprite', category: 'sprites', spriteId: 'bushranger', status: 'working', source: 'allthings.how', added: '2026-08-22' },
+  // Announced/leaked but the code string isn't public yet — renders "Coming Aug 24".
+  { code: null, unlocks: 'Gold Jonesy Sprite', type: 'sprite', category: 'sprites', spriteId: 'jonesy', status: 'upcoming', eta: 'Aug 24', added: '2026-08-22', source: 'leaks' },
 
   // --- ✨ Gizmos & effects ---
   // The two Tetris-block codes are the only REUSABLE codes — they re-trigger the
