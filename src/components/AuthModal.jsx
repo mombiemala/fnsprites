@@ -61,8 +61,11 @@ export default function AuthModal({ onClose }) {
             ✕
           </button>
         </div>
-        <p className="mb-4 text-sm text-[var(--muted)]">
+        <p className="mb-3 text-sm text-[var(--muted)]">
           Save your sprite collection to the cloud and sync across devices.
+        </p>
+        <p className="mb-4 flex items-center gap-1.5 rounded-lg bg-emerald-400/10 px-2.5 py-1.5 text-[11px] font-semibold text-emerald-300">
+          ✓ Free cloud sync — no paywall. Other trackers charge for this; here it’s free, forever.
         </p>
 
         <div className="mb-4 flex flex-col gap-2">

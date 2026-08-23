@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — "Closest to complete" sort + free-sync callout
+
+- **Added:** a `closest` sort option (`Toolbar` selects + `App` visible-list sort) — ranks Sprites by how few
+  variants their set (`typeId`) has left to own; in-progress sets first (fewest remaining on top), untouched
+  next, complete last. Completion measured over all obtainable variants, independent of active filters.
+- **Added:** a "free cloud sync — no paywall" callout in `AuthModal`.
+- **Why:** competitor parity/counter — one rival offers "closest set" chase prioritisation, another charges
+  $3.99 for cloud sync; a closest-to-complete sort is the most satisfying finish path, and flagging free sync
+  converts users who expect to pay.
+
+---
+
 ## August 22, 2026 — Confirmed abilities + a mid-season update
 
 - **Added:** confirmed abilities in `sprites.js` — Shadow (auto-reload unequipped weapons), Jazz Jackrabbit

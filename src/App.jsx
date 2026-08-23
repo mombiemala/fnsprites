@@ -268,6 +268,29 @@ export default function App() {
       list = [...list].sort((a, b) => a.typeName.localeCompare(b.typeName) || a.themeId.localeCompare(b.themeId))
     } else if (filters.sort === 'rarity') {
       list = [...list].sort((a, b) => (RARITY_RANK[a.rarity] - RARITY_RANK[b.rarity]) || a.typeName.localeCompare(b.typeName))
+    } else if (filters.sort === 'closest') {
+      // "Closest to complete" — rank each Sprite by how few variants its SET has
+      // left, so the sets you're nearest to finishing float to the top. Untouched
+      // sets follow; fully-complete sets sink to the bottom. Completion is measured
+      // over all obtainable variants of the type, independent of the active filters.
+      const stats = {}
+      for (const s of set.items) {
+        if (s.unreleased) continue
+        const t = (stats[s.typeId] ||= { total: 0, owned: 0 })
+        t.total++
+        if (activeTracking[s.id]?.owned) t.owned++
+      }
+      const score = (typeId) => {
+        const t = stats[typeId]
+        if (!t || t.owned === 0) return 2_000_000 // not started → after in-progress sets
+        const remaining = t.total - t.owned
+        if (remaining === 0) return 9_000_000 // complete → bottom
+        return remaining // in progress → top; fewer left ranks higher
+      }
+      list = [...list].sort((a, b) =>
+        (score(a.typeId) - score(b.typeId)) ||
+        a.typeName.localeCompare(b.typeName) ||
+        a.themeId.localeCompare(b.themeId))
     } else {
       // Default: newest generation first, so the new-season Sprites lead the
       // list; each generation keeps its natural roster order underneath.

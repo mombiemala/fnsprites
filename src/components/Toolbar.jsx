@@ -91,6 +91,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           className={`${selectCls} hidden shrink-0 sm:block`}
         >
           <option value="default">Default order</option>
+          <option value="closest">Closest to complete</option>
           <option value="name">Name A–Z</option>
           <option value="rarity">Rarity</option>
         </select>
@@ -164,6 +165,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
                 className={selectCls}
               >
                 <option value="default">Default order</option>
+                <option value="closest">Closest to complete</option>
                 <option value="name">Name A–Z</option>
                 <option value="rarity">Rarity</option>
               </select>

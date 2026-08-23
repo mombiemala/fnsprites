@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: '“Closest to complete” sort + free-sync callout',
+    summary:
+      'A new sort that floats the Sprite sets you’re nearest to finishing to the top, plus a clearer note that cloud sync is free here.',
+    changes: [
+      { tag: 'Added', text: 'A “Closest to complete” sort — ranks Sprites by how few variants their set has left, so the sets you can finish next lead the list (untouched sets follow; completed ones sink).' },
+      { tag: 'Added', text: 'A note on the sign-in dialog that cloud sync is free with no paywall — a nudge for anyone arriving from trackers that charge for it.' },
+    ],
+    why:
+      'Competitors added chase-prioritisation (“closest set”) and one charges for cloud sync. Both are easy wins to match/counter: a closest-to-complete sort is the most satisfying way to finish a collection, and calling out that sync is free converts people who expect to pay.',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'Confirmed abilities + a mid-season update',
     summary:
       'Filled in confirmed abilities for several Override Sprites and reflected the new update that lets Sprites drop from Chests.',
