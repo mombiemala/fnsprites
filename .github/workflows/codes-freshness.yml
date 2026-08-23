@@ -1,0 +1,37 @@
+name: Codes freshness redeploy
+
+# Keeps the build-time "verified / updated <date>" stamps on /codes, /news and the
+# guides current by triggering a periodic Vercel production rebuild. NEWS_TODAY in
+# scripts/prerender.mjs is computed at build time (new Date()), so a plain redeploy
+# refreshes those freshness signals even when no code content changed — a cheap,
+# durable SEO nudge for the fast-moving "codes" query.
+#
+# IMPORTANT: GitHub `schedule:` triggers only run from the repository's DEFAULT
+# branch. This file must live on `main` (the public fnsprites deploy repo's
+# default) for the schedule to fire.
+#
+# Required repository secret:
+#   VERCEL_DEPLOY_HOOK_URL — a Vercel Deploy Hook for the fnsprites production
+#   project (Vercel → Project → Settings → Git → Deploy Hooks → create hook on
+#   the production branch, copy the URL, add it as an Actions secret).
+
+on:
+  schedule:
+    - cron: '23 8 */2 * *' # every ~2 days at 08:23 UTC (off-peak minute)
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel production rebuild
+        run: |
+          if [ -z "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}" ]; then
+            echo "VERCEL_DEPLOY_HOOK_URL secret not set — nothing to trigger. Add it in repo Settings → Secrets → Actions."
+            exit 0
+          fi
+          curl -fsS -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}"
+          echo "Triggered a Vercel rebuild to refresh the build-date freshness stamps."

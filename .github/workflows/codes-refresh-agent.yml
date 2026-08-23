@@ -1,0 +1,75 @@
+name: Override codes refresh (agent)
+
+# Long-term, autonomous replacement for the session-only cron: sweeps the datamine
+# feeds + community aggregators and updates the Override Lobby Hack codes in
+# src/data/codes.js, then builds, commits and (on main) auto-deploys via Vercel.
+#
+# IMPORTANT:
+#   * GitHub `schedule:` only runs from the repository's DEFAULT branch — this file
+#     must be on `main` for the schedule to fire. Committing to main here = deploy
+#     (Vercel auto-builds the production branch).
+#   * Requires the repo secret ANTHROPIC_API_KEY. GITHUB_TOKEN is auto-provided.
+#   * This spends Anthropic API tokens on every run — that's the ongoing cost of
+#     the long-term automation.
+
+on:
+  schedule:
+    - cron: '41 7 */2 * *' # every ~2 days at 07:41 UTC (off-peak minute)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+  id-token: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          claude_args: >-
+            --allowedTools "Read,Write,Edit,Grep,Glob,Bash(npm:*),Bash(git:*),WebSearch,WebFetch"
+          prompt: |
+            You are running headless on a scheduled job in this repo (the live site —
+            commits to `main` auto-deploy via Vercel). Do a Fortnite Chapter 7 Season 4
+            "Override" Hack the Lobby / Admin Panel CODES refresh. Be accurate and
+            conservative; this edits a live site.
+
+            1. Sweep for new/changed codes:
+               - Datamine feeds (WebSearch) for upcoming/scheduled drops: HYPEX,
+                 ShiinaBR, @FN_Assist.
+               - Aggregators for confirmed working strings: Dexerto, GamesRadar,
+                 Nintendo Life, pcgamesn, samlover, progameguides, allthings.how.
+            2. Compare against src/data/codes.js (LOBBY_CODES) and update it:
+               - New confirmed code -> add with the right category/status/spriteId and
+                 an `added` date (today, YYYY-MM-DD).
+               - Announced but the string is NOT public yet -> add as status 'upcoming'
+                 with an `eta` and `code: null` (renders "Coming <eta>").
+               - Reality changed (an upcoming code went live, a regional code expired)
+                 -> update its status/eta and fill in the real string.
+               - NEVER invent a code string. Unverified strings stay 'upcoming' or
+                 'rumored'. Match the existing entry shape and comments exactly.
+            3. ONLY if something actually changed:
+               - Add a top (newest-first) entry to BOTH src/data/changelog.js and
+                 CHANGELOG.md, following the conventions in CLAUDE.md.
+               - Run: npm ci && npm run lint && npm run build  (all must pass). If the
+                 build fails, revert your edits (git checkout -- .) and open a GitHub
+                 Issue describing the failure instead of committing.
+               - Commit and push to main:
+                   git config user.email "actions@users.noreply.github.com"
+                   git config user.name "Codes Refresh Bot"
+                   git add -A
+                   git commit -m "chore(codes): automated Override codes refresh"
+                   git push origin HEAD:main
+            4. If nothing changed, do NOT commit — just finish with a one-line summary.
