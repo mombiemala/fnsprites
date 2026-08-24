@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — Gold Jonesy code revealed + Storm Scout ability
+
+- **Added:** the Gold Jonesy code string `JONESYISGOLDEN` (was a `code: null` placeholder) — now copyable with
+  an "Aug 24" badge (still `status: 'upcoming'` since it's date-locked). Badge label shows the `eta` for
+  upcoming codes (CodesView + prerender codeRow).
+- **Added:** Storm Scout's datamined ability (Overdrive from Storm damage; reveals upcoming Storm Circles at
+  max level) — still unreleased/`rumored`.
+- **Why:** show a public-but-date-locked code so people grab it early; datamined-but-labelled ability beats
+  "not confirmed."
+
+---
+
 ## August 22, 2026 — Upcoming codes — Gold Jonesy drops Aug 24
 
 - **Added:** an `upcoming` code status (`code: null` + `eta`) — renders "🔜 Coming <date>" (no copy button, no

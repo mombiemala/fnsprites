@@ -151,7 +151,7 @@ export default function CodesView() {
                       </div>
                       {isNewCode(c) && <span className="shrink-0 rounded bg-sky-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-sky-300" title="Added in the last week">🆕 New</span>}
                       {c.repeatable && <span className="shrink-0 rounded bg-sky-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-sky-300" title="Reusable — re-trigger any time">↻ Reusable</span>}
-                      <span className={`shrink-0 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${st.cls}`}>{st.label}</span>
+                      <span className={`shrink-0 rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${st.cls}`}>{c.status === 'upcoming' && c.eta ? c.eta : st.label}</span>
                     </div>
                   )
                 })}

@@ -53,8 +53,8 @@ export const LOBBY_CODES = [
   { code: 'PLAY4ALL', unlocks: 'Cheatmaster Jonesy Sprite', type: 'sprite', category: 'sprites', spriteId: 'jonesy', status: 'working', source: 'Dexerto' },
   { code: 'BORN2PLAY', unlocks: 'Cheatmaster Adventure Sprite', type: 'sprite', category: 'sprites', spriteId: 'adventure', status: 'working', source: 'PCGamesN' },
   { code: 'GatherAndCraft', unlocks: 'Cheatmaster Bush Ranger Sprite — after Wrixel “Get Crafty” quest (stage 9)', type: 'sprite', category: 'sprites', spriteId: 'bushranger', status: 'working', source: 'allthings.how', added: '2026-08-22' },
-  // Announced/leaked but the code string isn't public yet — renders "Coming Aug 24".
-  { code: null, unlocks: 'Gold Jonesy Sprite', type: 'sprite', category: 'sprites', spriteId: 'jonesy', status: 'upcoming', eta: 'Aug 24', added: '2026-08-22', source: 'leaks' },
+  // String is public but the code stays locked until Aug 24 — shown with an "Aug 24" badge.
+  { code: 'JONESYISGOLDEN', unlocks: 'Gold Jonesy Sprite — unlocks Aug 24', type: 'sprite', category: 'sprites', spriteId: 'jonesy', status: 'upcoming', eta: 'Aug 24', added: '2026-08-22', source: 'community list' },
 
   // --- ✨ Gizmos & effects ---
   // The two Tetris-block codes are the only REUSABLE codes — they re-trigger the

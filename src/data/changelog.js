@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'Gold Jonesy code revealed + Storm Scout ability',
+    summary:
+      'The Gold Jonesy code string is now public (JONESYISGOLDEN, unlocks Aug 24), and Storm Scout’s datamined ability is in.',
+    changes: [
+      { tag: 'Added', text: 'The Gold Jonesy code JONESYISGOLDEN is now shown (copyable), with an “Aug 24” badge since it stays locked until then.' },
+      { tag: 'Added', text: 'Storm Scout’s datamined ability — Overdrive from Storm damage, and reveals upcoming Storm Circles at max level. (Still not obtainable in-game yet.)' },
+    ],
+    why:
+      'Once a code string is public we show it even if it’s date-locked, so people can grab it early — the badge makes the unlock date clear. And a datamined-but-labelled ability beats “not confirmed yet.”',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'Upcoming codes — Gold Jonesy drops Aug 24',
     summary:
       'Codes can now be listed before their string is public — the leaked Gold Jonesy code shows as “Coming Aug 24” until it goes live.',

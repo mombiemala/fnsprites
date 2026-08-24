@@ -189,7 +189,7 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Adventure Sprite. Normal & Cheatmaster are live (Cheatmaster via the BORN2PLAY lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
     variants: { normal: R, gold: R, cheatmaster: R } },
   { id: 'stormscout', name: 'Storm Scout', icon: '👿', rarity: 'Rare', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — a horned “Storm Scout”, in Normal/Gold/Cheatmaster. In the files but not yet obtainable; ability not yet confirmed by Epic.',
+    ability: 'Datamined Season 4 “Override” Sprite — a horned “Storm Scout”, in Normal/Gold/Cheatmaster. Still in the files but not yet obtainable in-game. Ability (from directory data): grants Overdrive from Storm damage, and reveals upcoming Storm Circles at max level.',
     variants: { normal: U, gold: U, cheatmaster: U } },
 ]
 

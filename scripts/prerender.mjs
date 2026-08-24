@@ -892,7 +892,9 @@ function codesPage() {
       itemListElement: LOBBY_CODES.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.code || c.unlocks, description: c.unlocks })) },
   ] }
   const codeRow = (c) => {
-    const [lbl, col] = CST[c.status] || CST.rumored
+    const cst = CST[c.status] || CST.rumored
+    const col = cst[1]
+    const lbl = c.status === 'upcoming' && c.eta ? c.eta : cst[0]
     const href = c.type === 'sprite' ? spriteHref(c.spriteId) : null
     const unlocks = href ? `<a href="${href}" style="color:#dcd2e6;text-decoration:underline;text-decoration-color:var(--border)">${esc(c.unlocks)}</a>` : `<b style="font-weight:600;color:#dcd2e6">${esc(c.unlocks)}</b>`
     const codeEl = c.code
