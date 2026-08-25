@@ -175,6 +175,7 @@ export default function App() {
     { id: 'tierlist', label: '🏆 Tier list', href: '/tier-list' },
     { id: 'garden', label: '🌱 Sprite Garden', href: '/sprite-garden' },
     { id: 'dust', label: '🔷 Sprite Dust', href: '/sprite-dust' },
+    { id: 'events', label: '📅 Events', href: '/events' },
     { id: 'coffee', label: '☕ Buy me a coffee', href: LINKS.buyMeACoffee },
   ]
 

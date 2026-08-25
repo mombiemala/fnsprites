@@ -1,22 +1,22 @@
 # FN Sprite Tracker
 
 A fan-made Fortnite **sprite tracker** — track every sprite across all of its
-variants (Normal, Gold, Gummy, Galaxy, **Gem**, **Holofoil**, **Cube** & **Quack**,
-plus the special **Rift** line), see your collection and mastery progress, save it
-to the cloud, compare with other players, browse the live **Item Shop**, and look
-up any player's **Battle Royale stats**. Roster is current through the **v41.30 New
-Sprite Day (Jul 30)** and the **Aug 6 Gem drop** — **36 sprites / 140 released variants, all
-currently obtainable**: Ironmouse is back, the full nine-Sprite **Gem** line is
-live, and every Zero Point finish (**Cube, Holofoil & Quack Zero Point**) is
-obtainable. Chapter 7 Season 3 **"Runners"** ends **Aug 19**; Season 4
-**"Override"** launches **Aug 20** with a whole new generation of Sprites and a
-**Sprite Garden**. Epic has confirmed **Sprites are kept forever** — but note the
-nuance: a new generation takes over **Battle Royale** in S4, so your Season 3
-Sprites are **preserved and displayed** (in the Sprite Garden + your Collection)
-rather than used in BR matches at launch (older gens "may return down the line"),
-and **Sprite Dust & Gizmos reset** at the season flip. Leaked/unconfirmed content
-(the **"Gaming Legends"** collab roster, exact event times, next-gen sprite names)
-is flagged **Rumored** until Epic confirms.
+finishes (Normal, Gold, Gummy, Galaxy, **Gem**, **Holofoil**, **Cube**, **Quack**,
+and the Season 4 **Cheatmaster**), see your collection and mastery progress, save it
+to the cloud, compare with other players, browse the live **Item Shop**, and look up
+any player's **Battle Royale stats**. Current through **Chapter 7 Season 4 "Override"**
+(**v42.00**, Aug 2026) — **151 released variants** across two generations: the
+Season 3 **"Runners"** roster (kept forever in the **Sprite Garden**) and the new
+**Override** generation — Sonic, Tails, Shadow, Jazz Jackrabbit, Klombo, Bush Ranger,
+Crown, Jonesy, 8-Bit Blaster, Killswitch & Adventure — in **Normal, Gold &
+Cheatmaster** (Gold went live at Gold Hours, Aug 22). Epic confirmed **Sprites are
+kept forever**, but a new generation takes over **Battle Royale** each season: older
+-gen Sprites are **preserved and displayed** (Sprite Garden + Collection) rather than
+used in BR ("may return down the line"), and **Sprite Dust & Gizmos reset** at the
+flip. Season 4 also adds **Hack the Lobby codes**, **Loot Hacks** (spend Sprite Dust
+to customise your chest loot), and a social **Sprite Garden** island. Leaked/
+unconfirmed content (upcoming Sprites, unannounced codes, exact event times) is
+flagged **Rumored / Upcoming** until confirmed.
 
 > Not affiliated with Epic Games. Support the maker with **Creator Code: MOMBIE**
 > in the Fortnite Item Shop. #EpicPartner
@@ -34,10 +34,18 @@ is flagged **Rumored** until Epic confirms.
   The Adventurer**), all filed under the `c7s4` generation. All
   leaked/upcoming content is clearly flagged **Rumored** so leaks never read as
   fact — each news item shows its source and whether it's official.
-- **Sprite Garden (beta)** — a showcase view (🌱, next to Grid/List) that lays out
-  the Sprites you own as circular, finish-tinted tiles grouped by **generation**,
-  mirroring the in-game **Sprite Garden** arriving in Chapter 7 Season 4. Deep-linkable
-  via `?view=garden`.
+- **🌱 Sprite Garden hub** — a **Community Gallery** where players upload screenshots
+  of their in-game garden, browse a feed and like favourites (moderated: pre-upload
+  check → report/auto-hide → owner/maker delete), plus a **Layout Planner** that turns
+  your owned Sprites into a numbered **blueprint** to recreate in-game. A shareable
+  **"My Sprite Garden" poster** export lives in Share & export.
+- **🔓 Lobby Hacks** — the season's **Hack the Lobby / Admin Panel codes** as a
+  first-class tab and a canonical `/codes` page: grouped by reward, per-code copy,
+  redeemed-tracking, a **"new this week"** highlight + verified dates, and `upcoming`
+  codes shown *before* their string drops.
+- **Guides (SEO)** — prerendered explainers competitors don't have: **Sprite Garden**
+  (`/sprite-garden`), **Sprite Dust & Loot Hacks** (`/sprite-dust`), **Events schedule**
+  (`/events`) and the **Tier list** (`/tier-list`), each with FAQ/HowTo structured data.
 - **Upcoming & leaked** — a card that lists every unreleased/datamined sprite
   sorted by its leaked release date, with a live **countdown** (“in 8 days”),
   tap-to-open. All clearly badged **Rumored**.
@@ -80,13 +88,10 @@ is flagged **Rumored** until Epic confirms.
   and every variant with its in-game **bonus** (e.g. Gummy = +10% Sprite Dust).
 - **Leaderboard & Flex Score** — a rarity-weighted ranking of public
   collections, plus a **compare** view (what you both have / each are missing).
-- **Trade matches (🔁 Trade tab)** — Fortnite has no in-game trading, so it's
-  player-to-player. Flag spare duplicates **🔁 For trade** and the ones you want
-  **🎯 Want** on any sprite, and the matcher finds public players whose spares line
-  up with your wishlist (and vice-versa): **what they can give you** / **what you
-  can give them**, ranked by overlap. A one-tap **copy of their Discord handle**
-  lets you DM to arrange the swap — connections happen on Discord, not here. Set
-  your own handle (and opt into match notifications) in Profile.
+- **Trade (dormant)** — the 🔁 Trade tab is currently **hidden**. Fortnite has no
+  in-game trading, and it's a niche competitors skip; the matching data
+  (`for_trade`/`wanted` + `find_trade_matches` RPC) is kept in place so it's easy to
+  revive if a community forms.
 - **Player Stats** — look up any player's Battle Royale stats by Epic display
   name (or PSN/Xbox): wins, win rate, K/D, kills, matches, top-10/25, hours, and a
   solo/duo/squad breakdown. Requires the target's match history to be public. The
@@ -100,13 +105,9 @@ is flagged **Rumored** until Epic confirms.
   — big render, description, set/series/season, shop history, and every item
   bundled in the offer. Pulls live from the free public
   [fortnite-api.com](https://fortnite-api.com).
-- **Cosmetics (beta)** — a proof-of-concept that browses the newest Fortnite
-  cosmetics with a local-only wishlist, trialling cosmetic tracking alongside
-  Sprites.
 - **News & events** — a feed that auto-detects Fortnite's current live build,
-  alongside a curated events layer (Catch-Up Day, Gold & Gummy Hours, and weekly
-  Mastery Mondays / Power Hours). (Epic's in-game news is pulled in when they post
-  any, but that panel is mostly retired, so the events are the real content.)
+  alongside a curated events layer (Gold/Gem/Shiny Hours, New Sprite Day, weekly
+  Mastery Mondays / Power Hours), summarised on the **`/events` schedule page**.
   Every item shows
   its **source** and whether it's **official** (Epic) or **unofficial** (with a
   **Tentative** badge for unconfirmed dates), and live events pin to the top. A

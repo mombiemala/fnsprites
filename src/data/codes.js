@@ -55,6 +55,9 @@ export const LOBBY_CODES = [
   { code: 'GatherAndCraft', unlocks: 'Cheatmaster Bush Ranger Sprite — after Wrixel “Get Crafty” quest (stage 9)', type: 'sprite', category: 'sprites', spriteId: 'bushranger', status: 'working', source: 'allthings.how', added: '2026-08-22' },
   // String is public but the code stays locked until Aug 24 — shown with an "Aug 24" badge.
   { code: 'JONESYISGOLDEN', unlocks: 'Gold Jonesy Sprite — unlocks Aug 24', type: 'sprite', category: 'sprites', spriteId: 'jonesy', status: 'upcoming', eta: 'Aug 24', added: '2026-08-22', source: 'community list' },
+  // Single-source so far (match the Gold/Cheatmaster naming patterns) — verify in-game.
+  { code: 'GILDEDJACKRABBIT', unlocks: 'Gold Jazz Jackrabbit Sprite', type: 'sprite', category: 'sprites', spriteId: 'jazz', status: 'rumored', added: '2026-08-22', source: 'community/leaks' },
+  { code: 'ULTIMATELIFEFORM', unlocks: 'Cheatmaster Shadow Sprite', type: 'sprite', category: 'sprites', spriteId: 'shadow', status: 'rumored', added: '2026-08-22', source: 'community/leaks' },
 
   // --- ✨ Gizmos & effects ---
   // The two Tetris-block codes are the only REUSABLE codes — they re-trigger the

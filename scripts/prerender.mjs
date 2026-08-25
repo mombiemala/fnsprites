@@ -267,6 +267,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
     <a href="/tier-list">🏆 Tier list</a>
     <a href="/sprite-garden">🌱 Sprite Garden</a>
     <a href="/sprite-dust">🔷 Sprite Dust</a>
+    <a href="/events">📅 Events</a>
     <a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a>
   </div></details>
 </nav>`
@@ -309,7 +310,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
 <nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
-<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/sprite-garden">🌱 Sprite Garden</a><span class="sep">·</span><a href="/sprite-dust">🔷 Sprite Dust</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
+<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/sprite-garden">🌱 Sprite Garden</a><span class="sep">·</span><a href="/sprite-dust">🔷 Sprite Dust</a><span class="sep">·</span><a href="/events">📅 Events</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
 <p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Leaks &amp; datamines are credited to HYPEX, ShiinaBR, <a href="https://x.com/FN_Assist" target="_blank" rel="noreferrer">@FN_Assist</a> &amp; FNBRIntel, with tier &amp; farm-route context from <a href="https://punksprite.com" target="_blank" rel="noreferrer">punksprite</a> &amp; <a href="https://quackadex.com" target="_blank" rel="noreferrer">quackadex</a>. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
@@ -850,6 +851,68 @@ function spriteDustPage() {
 ` + FOOT
 }
 
+// ---------- /events guide page ----------
+// Sprite events schedule (Power Hours, New Sprite Day, Mastery Monday, finish
+// hours, Sprite Spree Week). Outlets rank for "power hour times / sprite events";
+// no tracker has a schedule page — same blue-ocean play as the other guides. The
+// evergreen cadence is the durable SEO; recent/upcoming pulls from the news feed.
+function spriteEventsPage() {
+  const desc = `Fortnite Sprite events schedule for Chapter 7 Season 4 “Override” — what Power Hours, New Sprite Day, Mastery Monday, Shiny/Gold/Gem finish hours and Sprite Spree Week are, the usual times (about 2 PM & 9 PM ET), and the current live & upcoming events.`
+  const recurring = [
+    ['⚡ Power Hours', 'Most days', 'A featured Sprite or finish spawns far more often for ~2 hours — usually around 2 PM ET (11 AM PT) and again 9 PM ET (6 PM PT), often with bonus starting items. The single best window to farm a specific Sprite.'],
+    ['🆕 New Sprite Day', 'Thursdays', 'New Sprites and/or finishes are added to the pool, with boosted spawns of the fresh arrivals during that day’s Power Hours.'],
+    ['⭐ Mastery Monday', 'Mondays', '2× Sprite Dust and 2× Sprite XP, boosted Sprite spawns, and extra Portable Extractors — the day to level and master Sprites.'],
+    ['✨ Shiny Hours', 'Saturdays', 'Boosted spawns of the rare finishes (Gold, Gummy, Galaxy, Holofoil) plus bonus items — a weekend shiny-hunting window.'],
+    ['🎨 Finish Power Hours', 'Rotating', 'A specific finish is boosted for the hour — Gold Hours, Gem Hours, Holo Hours, Cube Hours, Galaxy Hours — the fastest way to fill in a finish column.'],
+    ['💫 Sprite Spree Week', 'Seasonal', 'A themed multi-day event featuring a different Sprite finish every day (e.g. Mythic → Galaxy → Holo → Cube → Gem), each for 24 hours.'],
+  ]
+  const faqs = [
+    ['What time are Fortnite Sprite Power Hours?', 'Power Hours usually run twice a day — around 2 PM ET (11 AM PT) and again 9 PM ET (6 PM PT) — for roughly two hours each. Exact times shift week to week, so check the live News feed / banner in the app for the current day.'],
+    ['When is New Sprite Day in Fortnite?', 'New Sprites and finishes typically drop on Thursdays, with boosted spawns of the new arrivals during that day’s Power Hours.'],
+    ['What is Mastery Monday?', 'A weekly Monday event with 2× Sprite Dust and XP, boosted spawns and extra Portable Extractors — the best day to level up and master Sprites.'],
+    ['How do I get Gold Sprites fast?', 'During Gold Hours (a finish Power Hour), Gold variant spawns are boosted. Season 4 Gold Sprites unlocked at the first Gold Hours on Aug 22 — track your Gold column on our Sprites checklist.'],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'Fortnite Sprite Events Schedule', description: desc, url: SITE + '/events', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ] }
+  const evName = (n) => esc(n.title || '')
+  const events = NEWS.filter((n) => n.tag === 'event').sort((a, b) => (b.ts || '').localeCompare(a.ts || '')).slice(0, 8)
+  const eventRows = events.length
+    ? `<div class="grows">${events.map((n) => `<div class="grow" style="cursor:default">
+        <span class="nm"><span class="nt"><b style="font-weight:700;color:#dcd2e6">${evName(n)}</b>
+          <span class="badges"><span style="color:var(--muted);background:transparent">${esc(n.when || '')}</span>${n.official ? '<span style="color:#34d399;background:#34d39922">official</span>' : '<span style="color:#8b93a7;background:#8b93a722">unofficial</span>'}</span></span></span>
+        ${n.source ? `<span class="src" style="grid-column:1/-1;margin-top:2px">via ${esc(n.source)}</span>` : ''}</div>`).join('')}</div>`
+    : `<p style="font-size:13px;color:var(--muted)">No dated events right now — check back, or see the <a href="/news" style="color:var(--brand)">News feed</a>.</p>`
+  const card = (icon, title, when, body) => `<div class="card" style="padding:14px 16px;margin:0 0 10px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+      <h2 style="font-size:15px;margin:0">${icon} ${esc(title)}</h2>
+      <span style="font-size:12px;color:var(--muted);font-weight:700">${esc(when)}</span>
+    </div>
+    <p style="margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.6">${esc(body)}</p></div>`
+  return head({ title: `Fortnite Sprite Events Schedule — Power Hours, New Sprite Day & Times (Season 4 Override) | FN Sprite Tracker`, desc, canonical: SITE + '/events', jsonld, active: 'news' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>📅 Fortnite Sprite events schedule</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:70ch">Sprite spawns spike during timed events — Power Hours, New Sprite Day, finish hours and more. Here’s what each event is, the usual times, and what’s live right now.</p>
+    <h2 style="font-size:16px;margin:18px 0 8px">Recurring events &amp; typical times</h2>
+    ${recurring.map(([t, w, b]) => { const [icon, ...rest] = t.split(' '); return card(icon, rest.join(' '), w, b) }).join('')}
+    <h2 style="font-size:16px;margin:22px 0 8px">Live &amp; recent events</h2>
+    <p style="margin:0 0 8px;font-size:12px;color:var(--muted)">Pulled from our news feed — see <a href="/news" style="color:var(--brand)">News</a> for the full timeline and the announcement banner for what’s live today.</p>
+    ${eventRows}
+    <h2 style="font-size:16px;margin:22px 0 8px">Sprite events — FAQ</h2>
+    ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Event times are community/Epic-sourced and shift week to week — always confirm the day’s schedule in-game or via the app’s live banner. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track the Sprites you catch — free →</a>
+  </div>
+  <aside class="side">
+    ${ctaCard()}
+    ${supportCard()}
+  </aside>
+</div>
+` + FOOT
+}
+
 // ---------- /codes page ----------
 // Season 4 "Override" Hack-the-Lobby admin codes. High-intent SEO page; the codes
 // come from src/data/codes.js (shared with the in-app modal). Copy runs client-side.
@@ -940,6 +1003,7 @@ function sitemap(types) {
     { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9' },
     { loc: SITE + '/sprite-garden', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/sprite-dust', changefreq: 'weekly', priority: '0.8' },
+    { loc: SITE + '/events', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
@@ -975,6 +1039,8 @@ mkdirSync(resolve(DIST, 'sprite-garden'), { recursive: true })
 writeFileSync(resolve(DIST, 'sprite-garden', 'index.html'), spriteGardenPage())
 mkdirSync(resolve(DIST, 'sprite-dust'), { recursive: true })
 writeFileSync(resolve(DIST, 'sprite-dust', 'index.html'), spriteDustPage())
+mkdirSync(resolve(DIST, 'events'), { recursive: true })
+writeFileSync(resolve(DIST, 'events', 'index.html'), spriteEventsPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /sprite-garden + /sprite-dust + /news + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /sprite-garden + /sprite-dust + /events + /news + sitemap.xml → dist/`)

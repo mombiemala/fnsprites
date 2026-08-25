@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — New: a Sprite Events schedule page + more codes
+
+- **Added:** a prerendered `/events` schedule page (`spriteEventsPage` in `prerender.mjs`) — recurring events
+  (Power Hours, New Sprite Day, Mastery Monday, Shiny/finish hours, Sprite Spree Week) + typical times, a
+  live/recent list derived from `NEWS` (`tag: 'event'`), and an FAQ; `Article` + `FAQPage` JSON-LD; sitemap +
+  footer/More menu + app `utilityLinks` (📅 Events).
+- **Added:** `GILDEDJACKRABBIT` (Gold Jazz Jackrabbit) and `ULTIMATELIFEFORM` (Cheatmaster Shadow) as
+  `status: 'rumored'` — single-source, pending in-game confirmation.
+- **Changed:** README refreshed to Season 4 — 151 variants, Override roster, Garden hub (gallery + planner),
+  Lobby Hacks, guides; dropped the stale Rift/Trade-tab/Cosmetics copy.
+- **Why:** "power hour times / sprite events" is a contested query no tracker owns — a schedule page is the
+  next blue-ocean guide; new codes listed honestly until confirmed.
+
+---
+
 ## August 22, 2026 — Gold Jonesy code revealed + Storm Scout ability
 
 - **Added:** the Gold Jonesy code string `JONESYISGOLDEN` (was a `code: null` placeholder) — now copyable with
