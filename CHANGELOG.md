@@ -17,8 +17,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   (Power Hours, New Sprite Day, Mastery Monday, Shiny/finish hours, Sprite Spree Week) + typical times, a
   live/recent list derived from `NEWS` (`tag: 'event'`), and an FAQ; `Article` + `FAQPage` JSON-LD; sitemap +
   footer/More menu + app `utilityLinks` (📅 Events).
-- **Added:** `GILDEDJACKRABBIT` (Gold Jazz Jackrabbit) and `ULTIMATELIFEFORM` (Cheatmaster Shadow) as
-  `status: 'rumored'` — single-source, pending in-game confirmation.
+- **Added:** `GILDEDJACKRABBIT` (Gold Jazz Jackrabbit), `ULTIMATELIFEFORM` (Cheatmaster Shadow) and
+  `BERRYGLITCH` (Cheatmaster Klombo) as `status: 'rumored'` — single-source, pending in-game confirmation.
 - **Changed:** README refreshed to Season 4 — 151 variants, Override roster, Garden hub (gallery + planner),
   Lobby Hacks, guides; dropped the stale Rift/Trade-tab/Cosmetics copy.
 - **Why:** "power hour times / sprite events" is a contested query no tracker owns — a schedule page is the

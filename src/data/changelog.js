@@ -12,7 +12,7 @@ export const CHANGELOG = [
       'Added an Events guide (Power Hours, New Sprite Day, finish hours, times) and two more sprite codes; refreshed the README to Season 4.',
     changes: [
       { tag: 'Added', text: 'A prerendered /events schedule page: what each recurring event is (Power Hours, New Sprite Day, Mastery Monday, Shiny/finish hours, Sprite Spree Week), the usual times (~2 PM & 9 PM ET), a live/recent-events list from the news feed, and an FAQ — with Article + FAQPage structured data. Linked from the footer + More menu (app & SEO).' },
-      { tag: 'Added', text: 'Two more Sprite codes flagged Unverified pending in-game confirmation: GILDEDJACKRABBIT (Gold Jazz Jackrabbit) and ULTIMATELIFEFORM (Cheatmaster Shadow).' },
+      { tag: 'Added', text: 'More Sprite codes flagged Unverified pending in-game confirmation: GILDEDJACKRABBIT (Gold Jazz Jackrabbit), ULTIMATELIFEFORM (Cheatmaster Shadow) and BERRYGLITCH (Cheatmaster Klombo).' },
     ],
     why:
       'Outlets rank for “fortnite power hour times / sprite events schedule” but no tracker has a schedule page — the same blue-ocean guide play as codes/garden/dust. New codes go in flagged honestly until confirmed.',

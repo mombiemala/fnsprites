@@ -58,6 +58,7 @@ export const LOBBY_CODES = [
   // Single-source so far (match the Gold/Cheatmaster naming patterns) — verify in-game.
   { code: 'GILDEDJACKRABBIT', unlocks: 'Gold Jazz Jackrabbit Sprite', type: 'sprite', category: 'sprites', spriteId: 'jazz', status: 'rumored', added: '2026-08-22', source: 'community/leaks' },
   { code: 'ULTIMATELIFEFORM', unlocks: 'Cheatmaster Shadow Sprite', type: 'sprite', category: 'sprites', spriteId: 'shadow', status: 'rumored', added: '2026-08-22', source: 'community/leaks' },
+  { code: 'BERRYGLITCH', unlocks: 'Cheatmaster Klombo Sprite', type: 'sprite', category: 'sprites', spriteId: 'klombo', status: 'rumored', added: '2026-08-22', source: 'community/leaks' },
 
   // --- ✨ Gizmos & effects ---
   // The two Tetris-block codes are the only REUSABLE codes — they re-trigger the
