@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 22, 2026',
+    title: 'New: a full Sprite Abilities list',
+    summary:
+      'Added an /abilities page — every Sprite and what it actually does, split by generation, so you can see effects at a glance.',
+    changes: [
+      { tag: 'Added', text: 'A prerendered /abilities page: a table of every released Sprite with its rarity and in‑game ability, grouped by generation (Override current vs Runners), each linking to its full page. Article + FAQPage structured data; linked from the footer + More menu (app & SEO).' },
+      { tag: 'Added', text: 'FAQ clarifying that a Sprite’s finish (Gold, Cheatmaster) doesn’t change its ability, and how abilities scale with Mastery.' },
+    ],
+    why:
+      '“What does X Sprite do / Fortnite sprite abilities” is a high-intent query owned by outlets — no tracker has an abilities list. It leverages the ability data we just confirmed and adds internal links to every Sprite page.',
+  },
+  {
+    date: 'August 22, 2026',
     title: 'New: a Sprite Events schedule page + more codes',
     summary:
       'Added an Events guide (Power Hours, New Sprite Day, finish hours, times) and two more sprite codes; refreshed the README to Season 4.',

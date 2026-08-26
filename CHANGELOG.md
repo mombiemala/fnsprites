@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 22, 2026 — New: a full Sprite Abilities list
+
+- **Added:** a prerendered `/abilities` page (`spriteAbilitiesPage` in `prerender.mjs`) — a table of every
+  released Sprite (rarity + cleaned ability text, extracted from the roster's `ability` field), grouped by
+  generation, each row linking to the Sprite page. `Article` + `FAQPage` JSON-LD; sitemap + footer/More menu +
+  app `utilityLinks` (⚡ Abilities).
+- **Why:** "what does X Sprite do / fortnite sprite abilities" is an outlet-owned query no tracker covers;
+  leverages the confirmed ability data and adds internal links to every Sprite page.
+
+---
+
 ## August 22, 2026 — New: a Sprite Events schedule page + more codes
 
 - **Added:** a prerendered `/events` schedule page (`spriteEventsPage` in `prerender.mjs`) — recurring events
