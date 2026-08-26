@@ -813,7 +813,7 @@ function spriteDustPage() {
   <div class="main">
     <h1>🔷 Fortnite Sprite Dust &amp; Loot Hacks — how it works</h1>
     <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:70ch">In Season 4 “Override,” Sprite Dust stopped being just a cosmetic-summon currency — it now shapes your loadout through <b class="" style="color:#cfe9dc">Loot Hacks</b>. Here’s how to earn it, what to spend it on, and how to get the most out of it.</p>
-    ${card('What Sprite Dust is now', 'The Sprite system’s currency. You still spend it to summon Sprites you’ve extracted (rarer ones cost more) and to upgrade their powers — but the headline in Override is <b style="color:#fff">Loot Hacks</b>: spending Dust to customise what drops from your own chests in Battle Royale.')}
+    ${card('What Sprite Dust is now', 'The Sprite system’s currency. You still spend it to summon Sprites you’ve extracted (rarer ones cost more) and to upgrade their powers — Season 4 also <b style="color:#fff">lowered the Dust cost to summon rare Sprites/variants</b> and cut the summon button-hold time. But the headline in Override is <b style="color:#fff">Loot Hacks</b>: spending Dust to customise what drops from your own chests in Battle Royale.')}
     <div class="card" style="padding:16px;margin:0 0 12px">
       <h2 style="font-size:16px;margin:0 0 6px">How to earn it</h2>
       <ul style="margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.75">
