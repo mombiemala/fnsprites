@@ -10,6 +10,19 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-08-27',
+    when: 'Aug 27, 2026',
+    tag: 'upcoming',
+    tentative: true,
+    start: '2026-08-24',
+    end: '2026-08-28',
+    title: '🆕 New Sprite Day — Thursday, Aug 27',
+    body: 'The next New Sprite Day lands Thursday, Aug 27. Top candidates for the drop: the datamined Storm Scout (Overdrive from Storm damage; reveals upcoming Storm Circles at max level) and the Cheatmaster Jazz Jackrabbit. The five Design-a-Sprite winners (Pond, Bullet, Honey, Dumpster Dive, X-Ray) are confirmed for later in the season, dates unannounced. We’ll flip each one live in the tracker the moment it’s confirmed in-game — check back Thursday.',
+    link: 'https://beebom.com/fortnite-sprite-events-schedule/',
+    source: 'Community + datamines',
+    official: false,
+  },
+  {
     ts: '2026-08-22',
     when: 'Aug 22, 2026',
     tag: 'update',
