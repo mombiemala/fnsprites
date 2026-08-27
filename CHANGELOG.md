@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 27, 2026 — Rethought collection filters
+
+- **Changed:** promoted ownership to a one-tap segmented control (`All / Missing / Owned`) beside search in
+  `Toolbar.jsx`, instead of one of three lookalike dropdowns.
+- **Added:** `activeChips(filters)` renders each applied panel filter as a removable chip under the result count,
+  each carrying the patch that clears just that filter — the active state is always visible.
+- **Changed:** generation / rarity / variant now render as consistent `Chip` rows inside a `⚙ Filters` panel
+  (rarity colour-coded via `RARITY_COLORS`), with `groupBy` + Hide mastered / Show unreleased toggles; sort is
+  inline on desktop and inside the panel on mobile. All filter keys are preserved, so no `App.jsx` logic changed.
+- **Fixed:** the toolbar wraps cleanly on narrow screens rather than the old dropdown row overflowing on phones.
+- **Why:** the old three-dropdown row buried ownership (the most-used filter) and hid applied filters behind a
+  count badge. Surfacing ownership and the active-filter chips makes the current state obvious and cuts taps,
+  especially on mobile.
+
+---
+
 ## August 27, 2026 — Tidier nav: a Guides hub
 
 - **Added:** a `/guides` hub (`guidesPage` + `GUIDES` list) linking every reference page (codes, garden, dust,

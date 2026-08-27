@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'August 27, 2026',
+    title: 'Rethought collection filters',
+    summary:
+      'The Collection filters got a cleaner, more obvious layout — Owned/Missing is now one tap, and whatever you’ve filtered is always visible as removable chips.',
+    changes: [
+      { tag: 'Changed', text: 'Owned/Missing/All is now a one-tap segmented control right next to search — no more digging through a dropdown for the filter people use most.' },
+      { tag: 'Added', text: 'Active filters now show as removable chips under the count (tap the ✕ to clear just that one), so it’s always clear what’s narrowing your list.' },
+      { tag: 'Changed', text: 'Generation, rarity and variant moved into a tidy “⚙ Filters” panel as consistent chips (rarity chips are colour-coded); grouping + Hide mastered/Show unreleased live there too. Sort sits inline on desktop and inside the panel on mobile.' },
+      { tag: 'Fixed', text: 'The whole toolbar now wraps cleanly on small screens instead of the old three-dropdown row crowding out on phones.' },
+    ],
+    why:
+      'The old row was three identical dropdowns — ownership (the #1 filter) was buried as just one of them, and applied filters hid behind a count badge. Promoting ownership and surfacing active filters as chips makes the current state obvious at a glance and cuts taps, especially on mobile.',
+  },
+  {
+    date: 'August 27, 2026',
     title: 'Tidier nav: a Guides hub',
     summary:
       'All the reference pages now live under a single “Guides” link with a hub page, instead of crowding the menu one-by-one.',
