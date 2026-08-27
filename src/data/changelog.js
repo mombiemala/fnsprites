@@ -9,15 +9,16 @@ export const CHANGELOG = [
     date: 'August 27, 2026',
     title: 'Rethought collection filters',
     summary:
-      'The Collection filters got a cleaner, more obvious layout — Owned/Missing is now one tap, and whatever you’ve filtered is always visible as removable chips.',
+      'The Collection filters got a cleaner, more obvious layout — Owned/Missing is one tap, rarity/generation/variant are all visible up front, and whatever you’ve filtered shows as removable chips.',
     changes: [
       { tag: 'Changed', text: 'Owned/Missing/All is now a one-tap segmented control right next to search — no more digging through a dropdown for the filter people use most.' },
-      { tag: 'Added', text: 'Active filters now show as removable chips under the count (tap the ✕ to clear just that one), so it’s always clear what’s narrowing your list.' },
-      { tag: 'Changed', text: 'Generation, rarity and variant moved into a tidy “⚙ Filters” panel as consistent chips (rarity chips are colour-coded); grouping + Hide mastered/Show unreleased live there too. Sort sits inline on desktop and inside the panel on mobile.' },
-      { tag: 'Fixed', text: 'The whole toolbar now wraps cleanly on small screens instead of the old three-dropdown row crowding out on phones.' },
+      { tag: 'Added', text: 'Rarity, Generation and Variant now sit in an always-visible quick-filter strip (colour-coded rarity chips; variant chips show your owned count and scroll sideways on phones) — the main filters no longer hide behind a button.' },
+      { tag: 'Added', text: 'Active filters show as removable chips under the count (tap the ✕ to clear just that one), so it’s always clear what’s narrowing your list.' },
+      { tag: 'Changed', text: 'Slimmed the search box and pushed sort/view to the right, freeing room for the filter chips. The “⚙ Options” button now only holds the occasional stuff — grouping, Hide mastered, Show unreleased (and sort on mobile).' },
+      { tag: 'Fixed', text: 'The whole toolbar wraps cleanly on small screens instead of the old three-dropdown row crowding out on phones.' },
     ],
     why:
-      'The old row was three identical dropdowns — ownership (the #1 filter) was buried as just one of them, and applied filters hid behind a count badge. Promoting ownership and surfacing active filters as chips makes the current state obvious at a glance and cuts taps, especially on mobile.',
+      'The old row was three identical dropdowns — ownership (the #1 filter) was buried as one of them, and every other filter hid behind a button. Surfacing ownership, rarity, generation and variant directly (and shrinking search to make room) means you can narrow your collection at a glance without hunting through menus — the whole point of a checklist tool.',
   },
   {
     date: 'August 27, 2026',
