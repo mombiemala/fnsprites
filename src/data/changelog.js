@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 27, 2026',
+    title: 'New Sprite Day + Gold Jonesy code live',
+    summary:
+      'New Sprite Day added four Cheat Master Sprites to the map, and the Gold Jonesy code unlocked — the tracker now reflects both.',
+    changes: [
+      { tag: 'Changed', text: 'The Gold Jonesy code JONESYISGOLDEN flipped from “Aug 24” upcoming to Working now that it’s unlocked.' },
+      { tag: 'Changed', text: 'Updated the New Sprite Day news item to what actually dropped — four Cheat Master Sprites on the map (headlined by the ultra-rare Cheatmaster Klombo), with the previously code-locked Cheat Master Sprites now also in the loot pool. Storm Scout + the Design-a-Sprite winners are still to come.' },
+    ],
+    why:
+      'The feed and codes list are only useful if they match the live game — a code that unlocked and a Sprite Day that landed both need reflecting the day they happen.',
+  },
+  {
     date: 'August 22, 2026',
     title: 'New: a full Sprite Abilities list',
     summary:

@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 27, 2026 — New Sprite Day + Gold Jonesy code live
+
+- **Changed:** `JONESYISGOLDEN` flipped `upcoming` (Aug 24 badge) → `working` now that it's unlocked; dropped
+  the `eta`/"unlocks Aug 24" copy.
+- **Changed:** the New Sprite Day news item now reflects the actual drop — four Cheat Master Sprites on the map
+  (ultra-rare Cheatmaster Klombo), previously code-locked Cheat Master Sprites joining the loot pool; retagged
+  `upcoming`→`sprites`, removed `tentative`. Storm Scout + Design-a-Sprite winners still pending.
+- **Why:** the codes list and feed must match the live game the day things change.
+
+---
+
 ## August 22, 2026 — New: a full Sprite Abilities list
 
 - **Added:** a prerendered `/abilities` page (`spriteAbilitiesPage` in `prerender.mjs`) — a table of every
