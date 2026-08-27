@@ -836,6 +836,7 @@ function spriteDustPage() {
         <li><b style="color:#fff">Unlock one Loot Hack you’ll actually use</b> and upgrade it, rather than spreading Dust thin across many.</li>
         <li>Higher upgrade tiers raise both <b style="color:#fff">drop frequency and max rarity</b> — the compounding payoff is on the items you already run.</li>
         <li><b style="color:#fff">Spend before the season ends</b> — Dust resets at the flip; your Sprites don’t.</li>
+        <li><b style="color:#fff">Changed your mind? Refund it.</b> Epic lets you reset your Loot Hack upgrades to reclaim the Sprite Dust and re-spend it elsewhere — so experimenting is low-risk.</li>
       </ul>
     </div>
     ${card('Heads-up: Dust resets each season', 'Sprite Dust, Portable Extractors and Lucky Locators all reset when the season changes. The Sprites you’ve collected are kept forever (and live on in your <a href="/sprite-garden" style="color:var(--brand)">Sprite Garden</a>), but the Dust economy starts fresh — so don’t hoard across a season flip.')}
