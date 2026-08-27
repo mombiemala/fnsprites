@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'August 27, 2026',
+    title: 'New: a Season Transition FAQ',
+    summary:
+      'Straight answers to the Season 4 switch — why Dust reset, whether old Sprites still count, and whether Loot Hacks are pay-to-win.',
+    changes: [
+      { tag: 'Added', text: 'A prerendered /season-transition FAQ meeting the season-flip questions head-on: why Sprite Dust reset (and that you can refund Loot Hack upgrades), whether Season 3 Sprites still count, why old Sprites aren’t used in BR, what carries over vs resets, and the “pay-to-win?” question (Dust is earned, not bought). FAQPage structured data; linked from footer + More menu.' },
+    ],
+    why:
+      'The season change drove real player confusion and complaints — those are high-intent question searches. An honest FAQ both helps players and turns the grumbling into traffic no competitor is capturing.',
+  },
+  {
+    date: 'August 27, 2026',
     title: 'New Sprite Day + Gold Jonesy code live',
     summary:
       'New Sprite Day added four Cheat Master Sprites to the map, and the Gold Jonesy code unlocked — the tracker now reflects both.',

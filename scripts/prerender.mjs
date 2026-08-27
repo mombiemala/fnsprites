@@ -269,6 +269,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
     <a href="/sprite-garden">🌱 Sprite Garden</a>
     <a href="/sprite-dust">🔷 Sprite Dust</a>
     <a href="/events">📅 Events</a>
+    <a href="/season-transition">❓ Season FAQ</a>
     <a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a>
   </div></details>
 </nav>`
@@ -311,7 +312,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
 <nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
-<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/abilities">⚡ Abilities</a><span class="sep">·</span><a href="/sprite-garden">🌱 Sprite Garden</a><span class="sep">·</span><a href="/sprite-dust">🔷 Sprite Dust</a><span class="sep">·</span><a href="/events">📅 Events</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
+<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/abilities">⚡ Abilities</a><span class="sep">·</span><a href="/sprite-garden">🌱 Sprite Garden</a><span class="sep">·</span><a href="/sprite-dust">🔷 Sprite Dust</a><span class="sep">·</span><a href="/events">📅 Events</a><span class="sep">·</span><a href="/season-transition">❓ Season FAQ</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
 <p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Leaks &amp; datamines are credited to HYPEX, ShiinaBR, <a href="https://x.com/FN_Assist" target="_blank" rel="noreferrer">@FN_Assist</a> &amp; FNBRIntel, with tier &amp; farm-route context from <a href="https://punksprite.com" target="_blank" rel="noreferrer">punksprite</a> &amp; <a href="https://quackadex.com" target="_blank" rel="noreferrer">quackadex</a>. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
@@ -971,6 +972,42 @@ function spriteAbilitiesPage() {
 ` + FOOT
 }
 
+// ---------- /season-transition FAQ page ----------
+// Meets the season-flip complaints/confusion head-on (Dust reset, do old Sprites
+// count, pay-to-win) — high-intent question queries, and it turns grumbling into
+// traffic. FAQPage-heavy for rich results.
+function seasonTransitionPage() {
+  const desc = `Fortnite Season 4 “Override” sprite FAQ — why your Sprite Dust reset, whether your Season 3 Sprites still count, why old Sprites aren’t usable in Battle Royale, what carries over between seasons, and whether Loot Hacks are pay-to-win.`
+  const faqs = [
+    ['Why did my Sprite Dust reset in Season 4?', 'Sprite Dust is a per-season currency, so it resets at each season flip — along with Portable Extractors and Lucky Locators. It’s “seasonal housekeeping,” not a bug. The Sprites you’ve collected are NOT reset — only the spendable currency and consumables. If you spent Dust on Loot Hacks you regret, Epic lets you reset those upgrades to refund the Dust.'],
+    ['Do my Season 3 “Runners” Sprites still count?', 'Yes — every Sprite you’ve collected is kept forever. Your Season 3 roster is preserved in your Collection and in the new Sprite Garden, and it still shows up as Sprite Mastery Pod Back Bling styles and Guardian Outfit pilots. Nothing you earned is lost.'],
+    ['Why can’t I use my old Sprites in Battle Royale this season?', 'Each season starts a new generation of Sprites that takes over Battle Royale. So the Season 4 “Override” generation is what you find and use in BR now, while your Season 3 Sprites are kept and displayed rather than used in matches. Epic has said older generations “may return down the line.”'],
+    ['What carries over between seasons, and what resets?', 'Carries over: the Sprites you’ve collected and their Mastery. Resets: Sprite Dust, Portable Extractors and Lucky Locators (the spendable currency and consumables). Think of it as keeping your collection but starting the season’s economy fresh.'],
+    ['Are Loot Hacks pay-to-win?', 'Loot Hacks let you spend Sprite Dust to customise what drops from your own chests. The key point: Sprite Dust is earned by playing (extracting Sprites, duplicates, some codes) — it isn’t bought with real money, so it’s a progression system, not a paid advantage. And you can reset upgrades to reclaim your Dust, so it’s low-risk to experiment.'],
+    ['How do I get Sprites in Season 4 vs Season 3?', 'Season 3 “Runners” Sprites came from Sprite Chests. Season 4 “Override” Sprites come from in-world Cheat Codes / Cheat Code Chests (blue = Rare, purple = Epic, gold = Legendary), a recent update also lets Sprites drop from regular Chests, and Hack the Lobby codes unlock specific ones. The new Cheatmaster finish is code/quest-unlocked; Gold went live at Gold Hours.'],
+    ['Will there be more Sprite generations?', 'Yes — Epic has said a new generation of Sprites arrives with each season, and the Sprite system is permanent. Your collection carries across all of them in the Sprite Garden, even as the Battle Royale generation rotates.'],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'Fortnite Sprites — Season 4 Transition FAQ', description: desc, url: SITE + '/season-transition', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ] }
+  return head({ title: `Fortnite Sprites Season 4 FAQ — Why Did My Dust Reset & Do Old Sprites Count? | FN Sprite Tracker`, desc, canonical: SITE + '/season-transition', jsonld, active: '' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🔄 Fortnite Sprites — Season 4 transition FAQ</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:70ch">Season 4 “Override” changed a lot about Sprites — a new generation, a Dust reset, Loot Hacks. Here are straight answers to the questions (and complaints) players have about the switch.</p>
+    ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
+    <div class="card" style="padding:14px 16px;margin:16px 0 0">
+      <p style="margin:0;font-size:13px;color:var(--muted)">More detail: the <a href="/sprite-dust" style="color:var(--brand)">Sprite Dust &amp; Loot Hacks guide</a>, the <a href="/sprite-garden" style="color:var(--brand)">Sprite Garden guide</a>, and filter your <a href="/sprites" style="color:var(--brand)">checklist</a> by generation to see what’s current vs archived.</p>
+    </div>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Based on Epic’s Season 4 “Override” announcements + patch notes. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track your collection across every generation — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 // ---------- /codes page ----------
 // Season 4 "Override" Hack-the-Lobby admin codes. High-intent SEO page; the codes
 // come from src/data/codes.js (shared with the in-app modal). Copy runs client-side.
@@ -1063,6 +1100,7 @@ function sitemap(types) {
     { loc: SITE + '/sprite-garden', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/sprite-dust', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/events', changefreq: 'daily', priority: '0.8' },
+    { loc: SITE + '/season-transition', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
@@ -1102,6 +1140,8 @@ mkdirSync(resolve(DIST, 'events'), { recursive: true })
 writeFileSync(resolve(DIST, 'events', 'index.html'), spriteEventsPage())
 mkdirSync(resolve(DIST, 'abilities'), { recursive: true })
 writeFileSync(resolve(DIST, 'abilities', 'index.html'), spriteAbilitiesPage())
+mkdirSync(resolve(DIST, 'season-transition'), { recursive: true })
+writeFileSync(resolve(DIST, 'season-transition', 'index.html'), seasonTransitionPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /sprite-garden + /sprite-dust + /events + /abilities + /news + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + sitemap.xml → dist/`)

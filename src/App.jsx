@@ -177,6 +177,7 @@ export default function App() {
     { id: 'garden', label: '🌱 Sprite Garden', href: '/sprite-garden' },
     { id: 'dust', label: '🔷 Sprite Dust', href: '/sprite-dust' },
     { id: 'events', label: '📅 Events', href: '/events' },
+    { id: 'seasonfaq', label: '❓ Season FAQ', href: '/season-transition' },
     { id: 'coffee', label: '☕ Buy me a coffee', href: LINKS.buyMeACoffee },
   ]
 

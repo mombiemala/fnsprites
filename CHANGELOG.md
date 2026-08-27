@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 27, 2026 — New: a Season Transition FAQ
+
+- **Added:** a prerendered `/season-transition` FAQ (`seasonTransitionPage`) answering the season-flip
+  questions/complaints — Dust reset (+ the Loot Hack refund), do S3 Sprites still count, why old Sprites aren't
+  BR-usable, what carries over vs resets, "pay-to-win?" (Dust is earned). `Article` + `FAQPage` JSON-LD;
+  sitemap + footer/More menu + app `utilityLinks` (❓ Season FAQ).
+- **Why:** the season change drove real confusion — high-intent question searches; an honest FAQ helps players
+  and captures traffic no competitor targets.
+
+---
+
 ## August 27, 2026 — New Sprite Day + Gold Jonesy code live
 
 - **Changed:** `JONESYISGOLDEN` flipped `upcoming` (Aug 24 badge) → `working` now that it's unlocked; dropped
