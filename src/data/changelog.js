@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'August 27, 2026',
+    title: 'Tidier nav: a Guides hub',
+    summary:
+      'All the reference pages now live under a single “Guides” link with a hub page, instead of crowding the menu one-by-one.',
+    changes: [
+      { tag: 'Added', text: 'A /guides hub page linking every reference page (Lobby Hacks, Sprite Garden, Sprite Dust, Events, Abilities, Tier list, Season FAQ) with a one-line description each.' },
+      { tag: 'Changed', text: 'The footer + “⋯ More” menu now show one “📖 Guides” link instead of six separate ones — cleaner nav, same pages a tap away.' },
+    ],
+    why:
+      'As the guide pages grew, listing each in the menu made it long and noisy. A single Guides entry + a hub page declutters the nav and gives the guides an internal-linking home (good for SEO too).',
+  },
+  {
+    date: 'August 27, 2026',
     title: 'New: a Season Transition FAQ',
     summary:
       'Straight answers to the Season 4 switch — why Dust reset, whether old Sprites still count, and whether Loot Hacks are pay-to-win.',

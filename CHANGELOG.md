@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 27, 2026 — Tidier nav: a Guides hub
+
+- **Added:** a `/guides` hub (`guidesPage` + `GUIDES` list) linking every reference page (codes, garden, dust,
+  events, abilities, tier list, season FAQ) with a blurb; `CollectionPage` + `ItemList` JSON-LD; in sitemap.
+- **Changed:** collapsed the six per-guide links in the app `utilityLinks`, SEO "⋯ More" menu and footer into a
+  single `📖 Guides` link. The individual pages stay live (reachable via `/guides`, cross-links, sitemap).
+- **Why:** the growing guide list made the menu long; one Guides entry + a hub declutters nav and gives the
+  guides an internal-linking home.
+
+---
+
 ## August 27, 2026 — New: a Season Transition FAQ
 
 - **Added:** a prerendered `/season-transition` FAQ (`seasonTransitionPage`) answering the season-flip

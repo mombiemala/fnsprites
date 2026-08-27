@@ -264,12 +264,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
     <a href="/?changelog=1">Changelog</a>
     <a href="/?backup=1">Backup</a>
     <a href="/?bug=1">Report a bug</a>
-    <a href="/tier-list">🏆 Tier list</a>
-    <a href="/abilities">⚡ Abilities</a>
-    <a href="/sprite-garden">🌱 Sprite Garden</a>
-    <a href="/sprite-dust">🔷 Sprite Dust</a>
-    <a href="/events">📅 Events</a>
-    <a href="/season-transition">❓ Season FAQ</a>
+    <a href="/guides">📖 Guides</a>
     <a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a>
   </div></details>
 </nav>`
@@ -312,7 +307,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
 <nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
-<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/tier-list">🏆 Tier list</a><span class="sep">·</span><a href="/abilities">⚡ Abilities</a><span class="sep">·</span><a href="/sprite-garden">🌱 Sprite Garden</a><span class="sep">·</span><a href="/sprite-dust">🔷 Sprite Dust</a><span class="sep">·</span><a href="/events">📅 Events</a><span class="sep">·</span><a href="/season-transition">❓ Season FAQ</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
+<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/guides">📖 Guides</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
 <p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Leaks &amp; datamines are credited to HYPEX, ShiinaBR, <a href="https://x.com/FN_Assist" target="_blank" rel="noreferrer">@FN_Assist</a> &amp; FNBRIntel, with tier &amp; farm-route context from <a href="https://punksprite.com" target="_blank" rel="noreferrer">punksprite</a> &amp; <a href="https://quackadex.com" target="_blank" rel="noreferrer">quackadex</a>. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
@@ -1008,6 +1003,41 @@ function seasonTransitionPage() {
 ` + FOOT
 }
 
+// ---------- /guides hub page ----------
+// One home for the reference pages — declutters the nav (a single "Guides" link
+// replaces the per-guide links) and gives the guides an internal-linking hub.
+const GUIDES = [
+  ['/codes', '🔓', 'Lobby Hacks (codes)', 'Every Hack the Lobby / Admin Panel code and what it unlocks — grouped by reward, with copy & redeemed-tracking.'],
+  ['/sprite-garden', '🌱', 'Sprite Garden', 'What the Garden is, how to get in (island code), how it works, and what to expect.'],
+  ['/sprite-dust', '🔷', 'Sprite Dust & Loot Hacks', 'How to earn Dust, how Loot Hacks customise your chest loot, costs, and a spend strategy.'],
+  ['/events', '📅', 'Events schedule', 'Power Hours, New Sprite Day, Mastery Monday & finish hours — what they are and the usual times.'],
+  ['/abilities', '⚡', 'Sprite abilities', 'Every Sprite and what its ability actually does, split by generation.'],
+  ['/tier-list', '🏆', 'Tier list', 'Every released Sprite ranked S–C by how strong its ability is.'],
+  ['/season-transition', '❓', 'Season transition FAQ', 'Why your Dust reset, whether old Sprites still count, and the pay-to-win question.'],
+]
+function guidesPage() {
+  const desc = `Fortnite Sprite guides — Lobby Hack codes, the Sprite Garden, Sprite Dust & Loot Hacks, the events schedule, Sprite abilities, the tier list, and the Season 4 transition FAQ. Everything beyond the checklist, in one place.`
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'CollectionPage', name: 'Fortnite Sprite Guides', url: SITE + '/guides', description: desc, dateModified: NEWS_TODAY },
+    { '@type': 'ItemList', name: 'Fortnite Sprite guides', numberOfItems: GUIDES.length,
+      itemListElement: GUIDES.map(([href, , title], i) => ({ '@type': 'ListItem', position: i + 1, name: title, url: SITE + href })) },
+  ] }
+  const cards = GUIDES.map(([href, icon, title, blurb]) => `<a class="card" href="${href}" style="display:block;padding:16px;margin:0 0 10px;text-decoration:none">
+    <div style="font-size:15px;font-weight:800;color:#fff">${icon} ${esc(title)} <span style="color:var(--brand)">→</span></div>
+    <div style="margin-top:3px;font-size:13px;color:var(--muted);line-height:1.55">${esc(blurb)}</div></a>`).join('')
+  return head({ title: `Fortnite Sprite Guides — Codes, Garden, Dust, Events, Abilities & More | FN Sprite Tracker`, desc, canonical: SITE + '/guides', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>📖 Fortnite Sprite guides</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:70ch">Everything beyond the checklist — the codes, the Garden, the Dust economy, the event schedule, abilities and more.</p>
+    ${cards}
+    <a class="bigcta" href="/">Track your Sprite collection — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 // ---------- /codes page ----------
 // Season 4 "Override" Hack-the-Lobby admin codes. High-intent SEO page; the codes
 // come from src/data/codes.js (shared with the in-app modal). Copy runs client-side.
@@ -1094,6 +1124,7 @@ function sitemap(types) {
   const urls = [
     { loc: SITE + '/', changefreq: 'daily', priority: '1.0' },
     { loc: SITE + '/sprites', changefreq: 'weekly', priority: '0.9' },
+    { loc: SITE + '/guides', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9' },
@@ -1142,6 +1173,8 @@ mkdirSync(resolve(DIST, 'abilities'), { recursive: true })
 writeFileSync(resolve(DIST, 'abilities', 'index.html'), spriteAbilitiesPage())
 mkdirSync(resolve(DIST, 'season-transition'), { recursive: true })
 writeFileSync(resolve(DIST, 'season-transition', 'index.html'), seasonTransitionPage())
+mkdirSync(resolve(DIST, 'guides'), { recursive: true })
+writeFileSync(resolve(DIST, 'guides', 'index.html'), guidesPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /guides + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + sitemap.xml → dist/`)
