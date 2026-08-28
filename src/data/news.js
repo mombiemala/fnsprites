@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-08-28',
+    when: 'Aug 28, 2026',
+    tag: 'upcoming',
+    title: '🔮 Leaked: 6 more Sprites in the files + a Fortnitemares variant',
+    sprites: ['meowscles', 'overshield', 'squibbly'],
+    body: 'A fresh datamine (leakers Krowe & FNBRIntel) turned up six more Override Sprites sitting in the Chapter 7 Season 4 files: Meowscles, Overshield, Squibbly, Cube, Headshot and a collab codenamed “BodySlam”. Overshield and Squibbly look to have extra variant support. None have release dates and Epic hasn’t shown their abilities or rarities yet, so we’ve added all six to the tracker as unreleased/rumored — you can see what’s coming without it counting toward your total. Looking further out, a “TrickTreat” Sprite variant is expected to land with Fortnitemares 2026 (starts Oct 1), likely one of the last Override variants before the season ends Oct 31. All of this is leak-only — treat it as tentative until Epic confirms.',
+    link: 'https://www.vice.com/en/article/fortnite-chapter-7-season-4-sprites-variants-leak/',
+    source: 'Vice / Krowe & FNBRIntel',
+    official: false,
+    tentative: true,
+  },
+  {
     ts: '2026-08-27',
     when: 'Aug 27, 2026',
     tag: 'sprites',

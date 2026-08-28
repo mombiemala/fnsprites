@@ -191,6 +191,30 @@ export const SPRITE_TYPES = [
   { id: 'stormscout', name: 'Storm Scout', icon: '👿', rarity: 'Rare', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Datamined Season 4 “Override” Sprite — a horned “Storm Scout”, in Normal/Gold/Cheatmaster. Still in the files but not yet obtainable in-game. Ability (from directory data): grants Overdrive from Storm damage, and reveals upcoming Storm Circles at max level.',
     variants: { normal: U, gold: U, cheatmaster: U } },
+
+  // ---- Second datamine wave — six more Override Sprites found in the C7S4 files
+  //   by leakers Krowe & FNBRIntel. No release dates yet, and Epic hasn't shown
+  //   abilities or rarities, so those stay placeholders/unconfirmed. Squibbly &
+  //   Overshield are noted to have extra variant support; BodySlam (a codename)
+  //   looks like a collab crossover. All unreleased until Epic ships them. ----
+  { id: 'meowscles', name: 'Meowscles', icon: '🐱', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — Meowscles. Found in the files (Krowe & FNBRIntel) but not yet obtainable; ability & rarity not revealed by Epic — TBC.',
+    variants: { normal: U } },
+  { id: 'overshield', name: 'Overshield', icon: '🛡️', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — Overshield. The files hint at broader variant support than a single finish. Not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
+    variants: { normal: U } },
+  { id: 'squibbly', name: 'Squibbly', icon: '🫧', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — Squibbly, which appears to support multiple special variants. Still in the files, not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
+    variants: { normal: U } },
+  { id: 'cube', name: 'Cube', icon: '🟪', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — the Cube (Kevin). Found in the C7S4 files but not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
+    variants: { normal: U } },
+  { id: 'headshot', name: 'Headshot', icon: '🔻', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — codenamed “Headshot” (a Gold finish has been spotted in the files). Not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
+    variants: { normal: U } },
+  { id: 'bodyslam', name: 'BodySlam', icon: '🤼', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — internal codename “BodySlam”, which appears to be a collab crossover. Not yet obtainable; real name, ability & rarity all TBC. (Krowe & FNBRIntel)',
+    variants: { normal: U } },
 ]
 
 export const RARITY_ORDER = ['Rare', 'Epic', 'Legendary', 'Mythic']

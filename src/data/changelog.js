@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 28, 2026',
+    title: 'Six more leaked Sprites + a Fortnitemares heads-up',
+    summary:
+      'A fresh datamine surfaced six more Override Sprites in the files — they’re now in the tracker as unreleased, plus a news note on the Fortnitemares variant coming in October.',
+    changes: [
+      { tag: 'Added', text: 'Meowscles, Overshield, Squibbly, Cube, Headshot and the “BodySlam” collab codename — six datamined Season 4 Sprites (via leakers Krowe & FNBRIntel) added as unreleased/rumored. They show in the checklist so you can see what’s coming, but don’t count toward your total until Epic ships them.' },
+      { tag: 'Added', text: 'A News item on the second datamine wave and the “TrickTreat” Sprite variant expected with Fortnitemares 2026 (Oct 1) — tagged unofficial + tentative, with a source.' },
+    ],
+    why:
+      'A sprite checklist is only as useful as it is current, and “what’s coming next” is exactly what collectors search for. Adding leaked Sprites as clearly-marked unreleased entries (abilities/rarity TBC, never counted as owned) keeps us ahead of the datamine cycle without overstating what’s confirmed.',
+  },
+  {
     date: 'August 27, 2026',
     title: 'Rethought collection filters',
     summary:

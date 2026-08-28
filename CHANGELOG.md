@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 28, 2026 — Six more leaked Sprites + a Fortnitemares heads-up
+
+- **Added:** six datamined Season 4 Sprites to `sprites.js` as `released: false, rumored: true` — `meowscles`,
+  `overshield`, `squibbly`, `cube`, `headshot`, `bodyslam` (via leakers Krowe & FNBRIntel). Abilities/rarity are
+  placeholders marked TBC; `variants: { normal: U }`, so `RELEASED_COUNT` is unaffected and they never count as owned.
+- **Added:** a `NEWS` item (tag `upcoming`, `official: false`, `tentative: true`) covering the second datamine wave
+  and the leaked `TrickTreat` variant tied to Fortnitemares 2026 (Oct 1 → season ends Oct 31).
+- **Why:** "what's coming next" is what sprite collectors search for. Adding leaked Sprites as clearly-marked
+  unreleased entries keeps the checklist ahead of the datamine cycle without overstating what Epic has confirmed.
+
+---
+
 ## August 27, 2026 — Rethought collection filters
 
 - **Changed:** promoted ownership to a one-tap segmented control (`All / Missing / Owned`) beside search in
