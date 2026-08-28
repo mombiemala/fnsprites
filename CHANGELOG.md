@@ -24,6 +24,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   season (for now); it still scales abilities to full at Lv5, and a mastery questline/Back Bling is signalled;
   (2) a Sprite only needs to be *collected* (any level) to appear in the Sprite Garden, not mastered. Tightened
   the "what carries over" answer to say Mastery *levels* carry, avoiding the read that mastery still pays out.
+- **Added:** a tentative `NEWS` item (tag `upcoming`, `official: false`, `tentative: true`) noting that Sprite
+  Mastery rewards — a mastery questline and a new Mastery Back Bling — are leaked to return later in Override.
 - **Why:** "what's coming next" is what sprite collectors search for. Adding leaked Sprites as clearly-marked
   unreleased entries keeps the checklist ahead of the datamine cycle without overstating what Epic has confirmed.
 

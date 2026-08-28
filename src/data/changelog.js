@@ -15,6 +15,7 @@ export const CHANGELOG = [
       { tag: 'Added', text: 'A News item on the second datamine wave and the “TrickTreat” Sprite variant expected with Fortnitemares 2026 (Oct 1) — tagged unofficial + tentative, with a source.' },
       { tag: 'Added', text: 'Credited two more datamine sources in the footer — Loolo (@Loolo_WRLD), a sprite-focused leaker, and Krowe — so the people whose finds feed the tracker get named.' },
       { tag: 'Added', text: 'Two Season-Transition FAQ answers from Loolo’s clarifications: mastering Sprites gives no reward this season (for now) — it still powers up abilities, and a mastery questline/Back Bling is signalled — and a Sprite only needs to be collected (any level) to appear in your Garden, not mastered.' },
+      { tag: 'Added', text: 'A tentative News item flagging that Sprite Mastery rewards (a mastery questline + a new Mastery Back Bling) are leaked to return later in Override — so players wondering why maxing Sprites feels empty know rewards are coming.' },
     ],
     why:
       'A sprite checklist is only as useful as it is current, and “what’s coming next” is exactly what collectors search for. Adding leaked Sprites as clearly-marked unreleased entries (abilities/rarity TBC, never counted as owned) keeps us ahead of the datamine cycle without overstating what’s confirmed.',
