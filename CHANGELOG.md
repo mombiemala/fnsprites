@@ -18,6 +18,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   placeholders marked TBC; `variants: { normal: U }`, so `RELEASED_COUNT` is unaffected and they never count as owned.
 - **Added:** a `NEWS` item (tag `upcoming`, `official: false`, `tentative: true`) covering the second datamine wave
   and the leaked `TrickTreat` variant tied to Fortnitemares 2026 (Oct 1 → season ends Oct 31).
+- **Added:** two datamine sources to the footer credits (App.jsx + prerender.mjs, kept in sync) — Loolo
+  (`@Loolo_WRLD`, sprite-focused) and Krowe, the latter now cited in the new sprite entries.
 - **Why:** "what's coming next" is what sprite collectors search for. Adding leaked Sprites as clearly-marked
   unreleased entries keeps the checklist ahead of the datamine cycle without overstating what Epic has confirmed.
 
