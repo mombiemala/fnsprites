@@ -20,6 +20,10 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   and the leaked `TrickTreat` variant tied to Fortnitemares 2026 (Oct 1 → season ends Oct 31).
 - **Added:** two datamine sources to the footer credits (App.jsx + prerender.mjs, kept in sync) — Loolo
   (`@Loolo_WRLD`, sprite-focused) and Krowe, the latter now cited in the new sprite entries.
+- **Added:** two `/season-transition` FAQ entries from Loolo's clarifications — (1) mastering gives no reward this
+  season (for now); it still scales abilities to full at Lv5, and a mastery questline/Back Bling is signalled;
+  (2) a Sprite only needs to be *collected* (any level) to appear in the Sprite Garden, not mastered. Tightened
+  the "what carries over" answer to say Mastery *levels* carry, avoiding the read that mastery still pays out.
 - **Why:** "what's coming next" is what sprite collectors search for. Adding leaked Sprites as clearly-marked
   unreleased entries keeps the checklist ahead of the datamine cycle without overstating what Epic has confirmed.
 
