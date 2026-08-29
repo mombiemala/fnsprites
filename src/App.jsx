@@ -64,7 +64,7 @@ const DEFAULT_FILTERS = {
   theme: 'all',
   rarity: 'all',
   ownership: 'all',
-  generation: 'all',
+  generation: [], // multiselect: empty = all seasons
   hideMastered: false,
   showUnreleased: true,
   groupBy: 'none',
@@ -77,6 +77,9 @@ const RARITY_RANK = { Rare: 0, Epic: 1, Legendary: 2, Mythic: 3 }
 // season's Sprites to the top of the lists.
 const GEN_RANK = Object.fromEntries(GENERATIONS.map((g, i) => [g.id, i]))
 const genRank = (s) => GEN_RANK[s.gen || GENERATIONS[0].id] ?? 0
+// Default-order bucket: current-season released first, then current-season
+// unreleased, then older seasons (each newest-first, released before upcoming).
+const defaultRank = (s) => (GENERATIONS.length - 1 - genRank(s)) * 2 + (s.unreleased ? 1 : 0)
 
 function useShareTarget() {
   return useMemo(() => new URLSearchParams(window.location.search).get('u'), [])
@@ -251,7 +254,7 @@ export default function App() {
       if (!filters.showUnreleased && s.unreleased) return false
       if (filters.theme !== 'all' && s.themeId !== filters.theme) return false
       if (filters.rarity !== 'all' && s.rarity !== filters.rarity) return false
-      if (filters.generation !== 'all' && (s.gen || 'c7s3') !== filters.generation) return false
+      if (filters.generation.length && !filters.generation.includes(s.gen || 'c7s3')) return false
       const st = activeTracking[s.id]
       if (filters.ownership === 'owned' && !st?.owned) return false
       if (filters.ownership === 'unowned' && st?.owned) return false
@@ -290,11 +293,12 @@ export default function App() {
         a.typeName.localeCompare(b.typeName) ||
         a.themeId.localeCompare(b.themeId))
     } else {
-      // Default: newest generation first, so the new-season Sprites lead the
-      // list; each generation keeps its natural roster order underneath.
+      // Default: current-season released Sprites lead, then the current season's
+      // unreleased/upcoming ones, then older seasons — each keeping its natural
+      // roster order underneath.
       list = list
         .map((s, i) => [s, i])
-        .sort((a, b) => (genRank(b[0]) - genRank(a[0])) || (a[1] - b[1]))
+        .sort((a, b) => (defaultRank(a[0]) - defaultRank(b[0])) || (a[1] - b[1]))
         .map(([s]) => s)
     }
     return list
@@ -325,11 +329,14 @@ export default function App() {
   // must preserve them.
   const FILTER_KEYS = ['search', 'theme', 'rarity', 'ownership', 'generation', 'hideMastered', 'showUnreleased', 'groupBy']
   const hasActiveFilters = useMemo(
-    () => FILTER_KEYS.some((k) => filters[k] !== DEFAULT_FILTERS[k]),
+    () => FILTER_KEYS.some((k) => {
+      const d = DEFAULT_FILTERS[k]
+      return Array.isArray(d) ? filters[k].length > 0 : filters[k] !== d
+    }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [filters]
   )
-  const clearFilters = () => setFilters((f) => ({ ...DEFAULT_FILTERS, sort: f.sort, view: f.view }))
+  const clearFilters = () => setFilters((f) => ({ ...DEFAULT_FILTERS, generation: [], sort: f.sort, view: f.view }))
 
 
   // Bulk quick-add: acts on the released sprites currently shown, so filtering to

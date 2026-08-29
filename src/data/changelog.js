@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'August 29, 2026',
+    title: 'Collection filters, take three',
+    summary:
+      'Season is now a multi-select, ownership is a tidy dropdown, grouping + toggles are out in the open, and the default order puts what you can catch now first.',
+    changes: [
+      { tag: 'Changed', text: 'Default sort reworked: current-season released Sprites lead, then the current season’s unreleased/upcoming ones, then last season — so what you can actually catch right now sits at the top, with what’s coming just below.' },
+      { tag: 'Changed', text: 'Season (generation) is now a multi-select dropdown — pick Override, Runners, or both — instead of a row of chips, which frees up horizontal space.' },
+      { tag: 'Changed', text: 'Ownership moved from a segmented control to a compact “All / Owned / Missing” dropdown.' },
+      { tag: 'Changed', text: 'Grouping and the Hide-mastered / Show-unreleased toggles are now always visible instead of tucked behind an “Options” button.' },
+    ],
+    why:
+      'Two dropdowns (season + ownership) take far less room than chip rows, which let the grouping and toggles come out of hiding without crowding the bar. And the default order should answer “what can I get right now?” first — released current-season Sprites lead, upcoming ones follow, older seasons last.',
+  },
+  {
+    date: 'August 29, 2026',
     title: 'Storm Scout is live',
     summary:
       'New Sprite Day added the Storm Scout Sprite — it’s flipped from leaked to released in the tracker, with its confirmed ability.',

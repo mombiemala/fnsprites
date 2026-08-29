@@ -1,34 +1,10 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { THEMES } from '../data/themes'
 import { RARITY_ORDER, RARITY_COLORS, GENERATIONS } from '../data/sprites'
 import Tooltip from './Tooltip'
 
-// The secondary "⚙ Options" panel now holds only grouping + the toggles —
-// generation, rarity and variant live in the always-visible quick-filter strip,
-// so they're not gated behind the button. These defaults drive the button badge.
-const OPTION_DEFAULTS = {
-  groupBy: 'none',
-  hideMastered: false,
-  showUnreleased: true,
-}
-
 const selectCls =
   'rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-sm text-white outline-none focus:border-[var(--brand)]'
-
-// A pill in a segmented control.
-function Seg({ active, onClick, children, title, color }) {
-  return (
-    <button
-      onClick={onClick}
-      title={title}
-      aria-pressed={active}
-      className={`px-3 py-2 text-xs font-bold transition-colors ${active ? 'text-black' : 'bg-[var(--panel)] text-[var(--muted)] hover:text-white'}`}
-      style={active ? { background: color || 'var(--brand)' } : undefined}
-    >
-      {children}
-    </button>
-  )
-}
 
 function Chip({ active, onClick, children, color, title }) {
   return (
@@ -45,13 +21,59 @@ function Chip({ active, onClick, children, color, title }) {
   )
 }
 
-// Human labels for the currently-applied panel filters, each with the patch that
-// clears just that one — rendered as removable chips so what's active is visible.
+// Season / generation multiselect — a dropdown of checkboxes (empty = all seasons).
+function SeasonSelect({ selected, onChange }) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+  useEffect(() => {
+    if (!open) return
+    const onDoc = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false) }
+    document.addEventListener('mousedown', onDoc)
+    return () => document.removeEventListener('mousedown', onDoc)
+  }, [open])
+  const toggle = (id) => onChange(selected.includes(id) ? selected.filter((x) => x !== id) : [...selected, id])
+  const summary =
+    selected.length === 0 ? 'All seasons'
+    : selected.length === 1 ? (GENERATIONS.find((g) => g.id === selected[0])?.sub || selected[0])
+    : `${selected.length} seasons`
+  return (
+    <div ref={ref} className="relative shrink-0">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        title="Filter by season (pick one or more)"
+        className={`${selectCls} flex items-center gap-1.5`}
+      >
+        <span className="text-[var(--muted)]">Season:</span>
+        <span className="font-semibold">{summary}</span>
+        <span className="text-[var(--muted)]">▾</span>
+      </button>
+      {open && (
+        <div className="absolute left-0 z-40 mt-1 min-w-[200px] rounded-xl border border-[var(--border)] bg-[var(--panel)] p-1.5 shadow-xl">
+          {GENERATIONS.map((g) => (
+            <label key={g.id} className="flex cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-sm text-white hover:bg-[var(--panel-2)]">
+              <input type="checkbox" checked={selected.includes(g.id)} onChange={() => toggle(g.id)} />
+              <span>{g.sub}<span className="text-[var(--muted)]">{g.current ? ' · now' : g.legacy ? ' · last season' : ''}</span></span>
+            </label>
+          ))}
+          {selected.length > 0 && (
+            <button onClick={() => onChange([])} className="mt-1 w-full rounded-lg px-2 py-1 text-left text-[11px] font-bold text-[var(--muted)] hover:text-white">
+              Clear seasons
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// Human labels for the currently-applied filters, each with the patch that clears
+// just that one — rendered as removable chips so what's active stays visible.
 function activeChips(filters) {
   const chips = []
-  if (filters.generation !== 'all') {
-    const g = GENERATIONS.find((x) => x.id === filters.generation)
-    chips.push({ label: g ? g.sub : filters.generation, clear: { generation: 'all' } })
+  for (const gid of filters.generation) {
+    const g = GENERATIONS.find((x) => x.id === gid)
+    chips.push({ label: g ? g.sub : gid, clear: { generation: filters.generation.filter((x) => x !== gid) } })
   }
   if (filters.rarity !== 'all') chips.push({ label: filters.rarity, clear: { rarity: 'all' } })
   if (filters.theme !== 'all') {
@@ -66,15 +88,11 @@ function activeChips(filters) {
 
 export default function Toolbar({ filters, setFilters, themeStats, count, total, onClear, hasActiveFilters }) {
   const set = (patch) => setFilters((f) => ({ ...f, ...patch }))
-  const [open, setOpen] = useState(false)
-
-  const optionCount = Object.entries(OPTION_DEFAULTS).filter(([k, v]) => filters[k] !== v).length
   const chips = activeChips(filters)
 
   return (
     <div className="flex flex-col gap-3">
-      {/* Primary row: a compact search, the key Owned/Missing control, then the
-          view/sort/options cluster pushed right. Wraps cleanly on phones. */}
+      {/* Primary controls: search · ownership · season · sort · view. */}
       <div className="flex flex-wrap items-center gap-2">
         <input
           value={filters.search}
@@ -84,16 +102,19 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           className="w-full rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-sm text-white placeholder:text-[var(--muted)] outline-none focus:border-[var(--brand)] sm:w-56"
         />
 
-        {/* Ownership — the #1 filter, a one-tap segmented control. */}
-        <div className="flex shrink-0 overflow-hidden rounded-xl border border-[var(--border)]">
-          <Seg active={filters.ownership === 'all'} onClick={() => set({ ownership: 'all' })} title="Show all sprites">All</Seg>
-          <Seg active={filters.ownership === 'unowned'} onClick={() => set({ ownership: 'unowned' })} title="Only the sprites you're missing">Missing</Seg>
-          <Seg active={filters.ownership === 'owned'} onClick={() => set({ ownership: 'owned' })} title="Only the sprites you own">Owned</Seg>
-        </div>
+        {/* Ownership — a compact dropdown. */}
+        <select value={filters.ownership} onChange={(e) => set({ ownership: e.target.value })} title="Show owned, missing, or all sprites" className={`${selectCls} shrink-0`}>
+          <option value="all">All sprites</option>
+          <option value="owned">Owned</option>
+          <option value="unowned">Missing</option>
+        </select>
+
+        {/* Season — a multiselect dropdown. */}
+        <SeasonSelect selected={filters.generation} onChange={(g) => set({ generation: g })} />
 
         <div className="flex items-center gap-2 sm:ml-auto">
-          {/* Sort — inline on desktop, in the Options panel on mobile. */}
-          <select value={filters.sort} onChange={(e) => set({ sort: e.target.value })} title="Sort order" className={`${selectCls} hidden shrink-0 sm:block`}>
+          {/* Sort. */}
+          <select value={filters.sort} onChange={(e) => set({ sort: e.target.value })} title="Sort order" className={`${selectCls} shrink-0`}>
             <option value="default">Default order</option>
             <option value="closest">Closest to complete</option>
             <option value="name">Name A–Z</option>
@@ -115,47 +136,17 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
               </button>
             ))}
           </div>
-
-          {/* Options — grouping, mastered/unreleased toggles, mobile sort. */}
-          <button
-            onClick={() => setOpen((o) => !o)}
-            aria-expanded={open}
-            title="More options — grouping, hide mastered, show unreleased"
-            className={`flex shrink-0 items-center gap-1.5 rounded-xl border px-3 py-2 text-sm font-bold transition-colors ${
-              open || optionCount > 0
-                ? 'border-[var(--brand)] bg-[var(--brand)]/10 text-white'
-                : 'border-[var(--border)] bg-[var(--panel)] text-white hover:border-[var(--brand)]'
-            }`}
-          >
-            ⚙ <span className="hidden sm:inline">Options</span>
-            {optionCount > 0 && (
-              <span className="grid h-4 min-w-4 place-items-center rounded-full bg-[var(--brand)] px-1 text-[10px] font-extrabold text-black">{optionCount}</span>
-            )}
-            <span className="text-[var(--muted)]">{open ? '▲' : '▼'}</span>
-          </button>
         </div>
       </div>
 
-      {/* Always-visible quick filters — the main narrowing controls (rarity,
-          generation, variant) surfaced up front, no button click needed. */}
+      {/* Rarity + Variant quick filters — always visible. */}
       <div className="flex flex-col gap-2">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
-          <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">Rarity</span>
-            <Chip active={filters.rarity === 'all'} onClick={() => set({ rarity: 'all' })} title="Any rarity">Any</Chip>
-            {RARITY_ORDER.map((r) => (
-              <Chip key={r} active={filters.rarity === r} color={RARITY_COLORS[r]} onClick={() => set({ rarity: r })} title={r}>{r}</Chip>
-            ))}
-          </div>
-          <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">Gen</span>
-            <Chip active={filters.generation === 'all'} onClick={() => set({ generation: 'all' })} title="All generations">All</Chip>
-            {GENERATIONS.map((g) => (
-              <Chip key={g.id} active={filters.generation === g.id} onClick={() => set({ generation: g.id })} title={`${g.name}${g.current ? ' (current)' : g.legacy ? ' (legacy)' : ''}`}>
-                {g.sub}{g.current ? ' ·now' : g.legacy ? ' ·old' : ''}
-              </Chip>
-            ))}
-          </div>
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">Rarity</span>
+          <Chip active={filters.rarity === 'all'} onClick={() => set({ rarity: 'all' })} title="Any rarity">Any</Chip>
+          {RARITY_ORDER.map((r) => (
+            <Chip key={r} active={filters.rarity === r} color={RARITY_COLORS[r]} onClick={() => set({ rarity: r })} title={r}>{r}</Chip>
+          ))}
         </div>
 
         {/* Variant — the signature filter (9 themes with owned counts); scrolls
@@ -176,8 +167,26 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
         </div>
       </div>
 
-      {/* Count + active-filter chips (each removable) + clear. Applied filters are
-          always visible here instead of hidden behind a badge. */}
+      {/* Options — grouping + toggles, kept in the open (not hidden behind a button). */}
+      <div className="flex flex-wrap items-center gap-2">
+        <select value={filters.groupBy} onChange={(e) => set({ groupBy: e.target.value })} title="Group sprites" className={selectCls}>
+          <option value="none">No grouping</option>
+          <option value="theme">Group by theme</option>
+          <option value="rarity">Group by rarity</option>
+          <option value="tier">Group by tier</option>
+          <option value="sprite">Group by sprite</option>
+        </select>
+        <label className="flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-xs font-semibold text-[var(--muted)]">
+          <input type="checkbox" checked={filters.hideMastered} onChange={(e) => set({ hideMastered: e.target.checked })} />
+          Hide mastered
+        </label>
+        <label className="flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-xs font-semibold text-[var(--muted)]">
+          <input type="checkbox" checked={filters.showUnreleased} onChange={(e) => set({ showUnreleased: e.target.checked })} />
+          Show unreleased
+        </label>
+      </div>
+
+      {/* Count + active-filter chips (each removable) + clear. */}
       <div className="flex flex-wrap items-center gap-2">
         <span className="text-xs font-semibold text-[var(--muted)]">
           Showing <span className="text-white">{count}</span>{typeof total === 'number' ? ` of ${total}` : ''} sprites
@@ -198,41 +207,6 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           </button>
         )}
       </div>
-
-      {/* Options panel — grouping + toggles (and sort on mobile). The narrowing
-          filters live in the always-visible strip above, so this stays lean. */}
-      {open && (
-        <div className="flex flex-col gap-3 rounded-xl border border-[var(--border)] bg-[var(--panel)] p-3">
-          {/* Sort is inline on desktop; surface it here for mobile. */}
-          <div className="sm:hidden">
-            <p className="mb-1.5 text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">Sort</p>
-            <select value={filters.sort} onChange={(e) => set({ sort: e.target.value })} title="Sort order" className={`${selectCls} w-full`}>
-              <option value="default">Default order</option>
-              <option value="closest">Closest to complete</option>
-              <option value="name">Name A–Z</option>
-              <option value="rarity">Rarity</option>
-            </select>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            <select value={filters.groupBy} onChange={(e) => set({ groupBy: e.target.value })} title="Group sprites" className={selectCls}>
-              <option value="none">No grouping</option>
-              <option value="theme">Group by theme</option>
-              <option value="rarity">Group by rarity</option>
-              <option value="tier">Group by tier</option>
-              <option value="sprite">Group by sprite</option>
-            </select>
-            <label className="flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-xs font-semibold text-[var(--muted)]">
-              <input type="checkbox" checked={filters.hideMastered} onChange={(e) => set({ hideMastered: e.target.checked })} />
-              Hide mastered
-            </label>
-            <label className="flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-xs font-semibold text-[var(--muted)]">
-              <input type="checkbox" checked={filters.showUnreleased} onChange={(e) => set({ showUnreleased: e.target.checked })} />
-              Show unreleased
-            </label>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 29, 2026 — Collection filters, take three
+
+- **Changed:** default sort reworked in `App.jsx` via `defaultRank(s)` — current-season released first, then
+  current-season unreleased, then older seasons (each keeping natural roster order). Replaces the old
+  newest-generation-first-only ordering.
+- **Changed:** `filters.generation` is now an **array** (multi-select), not a string. `DEFAULT_FILTERS.generation`
+  is `[]` (= all seasons); filter logic is `generation.length && !generation.includes(gen)`; `hasActiveFilters`
+  and `clearFilters` are array-aware. New `SeasonSelect` checkbox-dropdown component in `Toolbar.jsx`.
+- **Changed:** ownership is a `<select>` (All / Owned / Missing) instead of a segmented chip control.
+- **Changed:** grouping select + Hide-mastered / Show-unreleased toggles are always visible; removed the
+  collapsible "⚙ Options" panel (and its `open` state / `OPTION_DEFAULTS` badge).
+- **Why:** dropdowns for season + ownership free the space that let the options come out of hiding, and the
+  default order should surface what's catchable now (released current-season) ahead of upcoming and older seasons.
+
+---
+
 ## August 29, 2026 — Storm Scout is live
 
 - **Changed:** `stormscout` flipped from `released: false, rumored: true` to `released: true` with
