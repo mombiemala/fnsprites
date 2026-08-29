@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 29, 2026 — Storm Scout is live
+
+- **Changed:** `stormscout` flipped from `released: false, rumored: true` to `released: true` with
+  `variants: { normal: R, gold: R, cheatmaster: R }` — New Sprite Day (Aug 29) shipped all three finishes.
+  `RELEASED_COUNT` ticks up by one.
+- **Changed:** filled in the ability from HYPEX — after 10 Storm damage: Overdrive + unlimited Energy; reveals
+  upcoming Storm Circles at max level.
+- **Added:** a `NEWS` item for the Aug 29 New Sprite Day drop (Storm Scout + the day's Power Hour); edited the
+  Aug 27 item so it no longer lists Storm Scout as "still to come."
+- **Why:** the checklist should reflect what's catchable the day it lands. Storm Scout was pre-loaded as a
+  datamined entry, so release day is just a flag flip — no scramble, and the tracker is accurate same-day.
+
+---
+
 ## August 28, 2026 — Six more leaked Sprites + a Fortnitemares heads-up
 
 - **Added:** six datamined Season 4 Sprites to `sprites.js` as `released: false, rumored: true` — `meowscles`,

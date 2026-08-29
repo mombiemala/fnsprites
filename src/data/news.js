@@ -10,6 +10,19 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-08-29',
+    when: 'Aug 29, 2026',
+    tag: 'sprites',
+    start: '2026-08-29',
+    end: '2026-09-01',
+    title: '⛈️ New Sprite Day — Storm Scout is live (3 finishes)',
+    sprites: ['stormscout'],
+    body: 'The datamined Storm Scout Sprite went live at today’s New Sprite Day reset (~9 AM ET) in all three finishes — Normal, Gold and Cheatmaster — so we’ve flipped it to released in the tracker. Per HYPEX, its ability triggers after you take 10 Storm damage: you get Overdrive and unlimited Energy (great for surviving or rotating through the Storm), and at max level it also reveals upcoming Storm Circles — genuinely strong for late-game rotations. Also today: a Power Hour runs 2–4 PM & 9–11 PM ET with boosted spawns, and Cheatmaster Sprites remain in the regular loot pool with an increased Cheat-Code spawn rate all day. The five Design-a-Sprite winners are still to come.',
+    link: 'https://www.vice.com/en/article/fortnite-storm-scout-sprites-august-29/',
+    source: 'Vice / HYPEX',
+    official: false,
+  },
+  {
     ts: '2026-08-28',
     when: 'Aug 28, 2026',
     tag: 'upcoming',
@@ -40,7 +53,7 @@ export const NEWS = [
     end: '2026-09-01',
     title: '🆕 New Sprite Day — 4 Cheat Master Sprites live',
     sprites: ['klombo'],
-    body: 'This week’s New Sprite Day (Aug 27, ~9 AM ET reset) adds four Cheat Master Sprites to the map — headlined by the ultra-rare Cheatmaster Klombo — and the Cheat Master Sprites that were previously locked behind Lobby Hack codes now also appear in the loot pool, so you can catch them in-match rather than only via a code. Also this week: the Gold Jonesy code (JONESYISGOLDEN) unlocked on Aug 24, and the week wraps with a Sonic-themed Power Hours on Saturday, Aug 29. Storm Scout and the five Design-a-Sprite winners are still to come.',
+    body: 'This week’s New Sprite Day (Aug 27, ~9 AM ET reset) adds four Cheat Master Sprites to the map — headlined by the ultra-rare Cheatmaster Klombo — and the Cheat Master Sprites that were previously locked behind Lobby Hack codes now also appear in the loot pool, so you can catch them in-match rather than only via a code. Also this week: the Gold Jonesy code (JONESYISGOLDEN) unlocked on Aug 24, and the week wraps with a Power Hour on Saturday, Aug 29 — the same day Storm Scout drops. The five Design-a-Sprite winners are still to come.',
     link: 'https://beebom.com/fortnite-sprite-events-schedule/',
     source: 'Community + Epic',
     official: false,

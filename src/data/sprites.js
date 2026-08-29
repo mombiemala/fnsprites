@@ -188,9 +188,9 @@ export const SPRITE_TYPES = [
   { id: 'adventure', name: 'Adventure', icon: '🧭', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Adventure Sprite. Normal & Cheatmaster are live (Cheatmaster via the BORN2PLAY lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
     variants: { normal: R, gold: R, cheatmaster: R } },
-  { id: 'stormscout', name: 'Storm Scout', icon: '👿', rarity: 'Rare', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — a horned “Storm Scout”, in Normal/Gold/Cheatmaster. Still in the files but not yet obtainable in-game. Ability (from directory data): grants Overdrive from Storm damage, and reveals upcoming Storm Circles at max level.',
-    variants: { normal: U, gold: U, cheatmaster: U } },
+  { id: 'stormscout', name: 'Storm Scout', icon: '👿', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — a horned “Storm Scout”, live since New Sprite Day (Aug 29) in all three finishes (Normal · Gold · Cheatmaster). Ability (per HYPEX): after you take 10 Storm damage it grants Overdrive and unlimited Energy — great for surviving or rotating through the Storm — and at max level it reveals upcoming Storm Circles.',
+    variants: { normal: R, gold: R, cheatmaster: R } },
 
   // ---- Second datamine wave — six more Override Sprites found in the C7S4 files
   //   by leakers Krowe & FNBRIntel. No release dates yet, and Epic hasn't shown
