@@ -14,6 +14,7 @@ export const CHANGELOG = [
       { tag: 'Changed', text: 'Storm Scout moved from unreleased/rumored to released, with all three finishes (Normal · Gold · Cheatmaster) live — bumping the released-variant count.' },
       { tag: 'Changed', text: 'Filled in Storm Scout’s ability from HYPEX: after 10 Storm damage it grants Overdrive + unlimited Energy, and reveals upcoming Storm Circles at max level.' },
       { tag: 'Added', text: 'A News item for today’s New Sprite Day drop (Storm Scout + the Aug 29 Power Hour), and tidied the Aug 27 item that had listed Storm Scout as “still to come.”' },
+      { tag: 'Added', text: 'A “coming next” News item for the five Design-a-Sprite contest winners (Pond, Bullet, Honey, Dumpster Dive, X-Ray) with their as-designed abilities — the next confirmed additions, arriving in a mid-season update.' },
     ],
     why:
       'The tracker’s job is to reflect what’s actually catchable the moment it lands. Storm Scout was pre-loaded as a datamined entry; flipping it live on New Sprite Day (rather than waiting) keeps the checklist accurate the same day players can catch it.',

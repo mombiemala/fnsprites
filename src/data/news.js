@@ -23,6 +23,18 @@ export const NEWS = [
     official: false,
   },
   {
+    ts: '2026-08-29',
+    when: 'Aug 29, 2026',
+    tag: 'upcoming',
+    title: '🎨 Coming next: the 5 Design-a-Sprite winners',
+    sprites: ['pond', 'bullet', 'honey'],
+    body: 'With Storm Scout now live, the next confirmed additions are the five community Design-a-Sprite contest winners, which Epic has said arrive in a mid-season Override update: Pond (egg → tadpole → frog, boosting movement/jump and cutting fall damage as it grows), Bullet (ammo boxes give extra ammo), Honey (spawns a beehive that swarms whoever damages you), Dumpster Dive (a raccoon that finds you loot when you hide in dumpsters), and X-Ray (reveals nearby players like the old medallion). All five are already in the tracker as unreleased so you can see what’s coming — abilities are as-designed and Epic may tweak them, and there’s no exact date yet. We’ll flip each to live and drop in its art the day it lands.',
+    link: 'https://beebom.com/fortnite-sprite-events-schedule/',
+    source: 'Epic (Design-a-Sprite) + community',
+    official: false,
+    tentative: true,
+  },
+  {
     ts: '2026-08-28',
     when: 'Aug 28, 2026',
     tag: 'upcoming',

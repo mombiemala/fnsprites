@@ -20,6 +20,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   upcoming Storm Circles at max level.
 - **Added:** a `NEWS` item for the Aug 29 New Sprite Day drop (Storm Scout + the day's Power Hour); edited the
   Aug 27 item so it no longer lists Storm Scout as "still to come."
+- **Added:** a "coming next" `NEWS` item (tag `upcoming`, tentative) for the five Design-a-Sprite winners (Pond,
+  Bullet, Honey, Dumpster Dive, X-Ray) — the next confirmed additions, already pre-loaded as unreleased entries.
 - **Why:** the checklist should reflect what's catchable the day it lands. Storm Scout was pre-loaded as a
   datamined entry, so release day is just a flag flip — no scramble, and the tracker is accurate same-day.
 
