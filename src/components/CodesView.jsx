@@ -117,7 +117,7 @@ export default function CodesView() {
                   const upcoming = !c.code
                   const done = !upcoming && redeemed.has(c.code)
                   return (
-                    <div key={c.code || c.unlocks} className={`flex items-center gap-2 rounded-xl bg-[var(--bg-2)] p-2 ${done ? 'opacity-55' : ''}`}>
+                    <div key={c.code || c.unlocks} className={`flex flex-wrap items-center gap-2 rounded-xl bg-[var(--bg-2)] p-2 ${done ? 'opacity-55' : ''}`}>
                       {upcoming ? (
                         <span className="grid h-6 w-6 shrink-0 place-items-center text-sm" title={`Drops ${c.eta}`}>🔜</span>
                       ) : (

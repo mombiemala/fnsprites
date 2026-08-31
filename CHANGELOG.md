@@ -11,6 +11,24 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 31, 2026 — Mobile pass: reach every control & see all content
+
+- **Fixed:** `GardenPlanner.jsx` — the per-tile move/remove controls were `opacity-0 group-hover:opacity-100`
+  (hover-only), so unreachable on touch. Now `opacity-100` by default with hover-reveal gated behind
+  `[@media(hover:hover)]` so desktop keeps the clean hover behaviour.
+- **Fixed:** `CodesView.jsx` code row and `.grow .badges` in `prerender.mjs` now `flex-wrap`, so the
+  New/Reusable/status/region badges wrap instead of overflowing narrow screens (app + `/codes`).
+- **Fixed:** `AboutModal`, `AuthModal`, `BackupModal`, `BugReportModal`, `WelcomeModal` panels gained
+  `max-h-[90vh] overflow-y-auto` (matching the other modals) so a tall dialog scrolls instead of pushing its
+  header/✕ off-screen on short/landscape viewports.
+- **Fixed:** `ProfileModal.jsx` delete-confirm row is now `flex-wrap … gap-2` so it doesn't overflow at 320px.
+- Audited and already fine (no change): StatsTab + `/abilities` tables (scroll-wrapped), prerender responsive
+  `@media(max-width:640px)` grids, OverflowNav, and the rest of the grids/cards (all collapse appropriately).
+- **Why:** most players check the tracker on a phone; these were the spots where a control was untappable or
+  content ran off the edge.
+
+---
+
 ## August 31, 2026 — Mobile filters: tuck the details away
 
 - **Changed:** on mobile (`< sm`), the secondary collection filters (season, sort, rarity, variant, grouping,

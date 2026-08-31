@@ -292,7 +292,7 @@ export default function ProfileModal({ onClose }) {
         </p>
 
         {/* Actions */}
-        <div className="mt-5 flex items-center justify-between pt-4">
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-2 pt-4">
           <button onClick={async () => { await signOut(); onClose() }} title="Sign out of your account" className="rounded-xl bg-[var(--panel-2)] px-4 py-2 text-xs font-bold text-white hover:bg-[var(--border)]">
             Sign out
           </button>

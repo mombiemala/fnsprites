@@ -7,6 +7,20 @@
 export const CHANGELOG = [
   {
     date: 'August 31, 2026',
+    title: 'Mobile pass: reach every control & see all content',
+    summary:
+      'A sweep for phone usability — fixed a Garden Planner control you couldn’t tap, badges that overflowed, and a few modals that could push their close button off-screen.',
+    changes: [
+      { tag: 'Fixed', text: 'Garden Planner: the move/remove buttons on each planted Sprite were hover-only, so on a phone you couldn’t reorder or remove Sprites at all. They now stay visible on touch devices (still reveal-on-hover on desktop).' },
+      { tag: 'Fixed', text: 'Lobby Hacks: code rows and their badges (New / Reusable / status / region) now wrap instead of overflowing off the side of narrow screens — in both the app and the /codes page.' },
+      { tag: 'Fixed', text: 'About, Log-in, Backup, Report-a-bug and Welcome dialogs now cap their height and scroll on small/landscape phones, so the header and ✕ close button can’t get pushed off-screen.' },
+      { tag: 'Fixed', text: 'Profile: the delete-account confirm row wraps on the smallest phones instead of overflowing.' },
+    ],
+    why:
+      'A tracker is only useful if you can actually operate it on the device you play on — and most players check it on a phone. These were the spots where a control was unreachable or content ran off the edge; everything else audited clean.',
+  },
+  {
+    date: 'August 31, 2026',
     title: 'Mobile filters: tuck the details away',
     summary:
       'On phones, the collection filters now collapse behind a “⚙ Filters” toggle so you reach your Sprites right away. Desktop is unchanged.',

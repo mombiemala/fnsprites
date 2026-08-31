@@ -126,7 +126,7 @@ export default function GardenPlanner() {
                     <div key={s.id} className="group relative grid aspect-square place-items-center overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--panel)]">
                       <SpriteArt sprite={s} className="h-full w-full" />
                       <span className="absolute left-0 top-0 grid h-4 w-4 place-items-center rounded-br-lg bg-[var(--brand)] text-[9px] font-extrabold text-black">{i + 1}</span>
-                      <div className="absolute inset-x-0 bottom-0 flex justify-center gap-1 bg-black/50 p-0.5 opacity-0 transition-opacity group-hover:opacity-100">
+                      <div className="absolute inset-x-0 bottom-0 flex justify-center gap-1 bg-black/50 p-0.5 opacity-100 transition-opacity [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100">
                         <button onClick={() => move(i, -1)} title="Move earlier" className="text-[10px] text-white hover:text-[var(--brand)]">◀</button>
                         <button onClick={() => toggle(s.id)} title="Remove" className="text-[10px] text-white hover:text-rose-300">✕</button>
                         <button onClick={() => move(i, 1)} title="Move later" className="text-[10px] text-white hover:text-[var(--brand)]">▶</button>

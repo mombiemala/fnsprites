@@ -183,7 +183,7 @@ footer.foot{margin-top:48px;border-top:1px solid var(--border);padding-top:24px;
 .grow .nm{display:flex;align-items:center;gap:8px;min-width:0}
 .grow .nm .ic{font-size:18px;line-height:1;flex:0 0 auto}.grow .nm .nt{min-width:0}
 .grow .nm .nt b{display:block;font-size:13.5px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.grow .badges{display:flex;gap:4px;margin-top:3px}
+.grow .badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
 .grow .badges span{font-size:9px;font-weight:800;text-transform:uppercase;padding:1px 5px;border-radius:4px;line-height:1.5}
 .grow .tier{text-align:right}@media(min-width:640px){.grow .tier{text-align:left}}
 .grow .tier span{font-size:10px;font-weight:800;padding:2px 6px;border-radius:5px}
