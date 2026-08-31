@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-08-31',
+    when: 'Aug 31, 2026',
+    tag: 'event',
+    start: '2026-08-31',
+    end: '2026-09-01',
+    title: '⭐ Mastery Monday — 2× Sprite Dust & XP today',
+    body: 'It’s Cheat Code Monday (Mastery Monday): for the next 24 hours you earn 2× Sprite Dust and 2× Sprite XP, with boosted Sprite spawns and extra Portable Extractors. It’s the best day of the week to level and master Sprites and to stock up on Dust for summons and Loot Hacks. Coming up this week: New Sprite Day on Thursday (Sep 3) is set to add three of the Design-a-Sprite contest winners, and Saturday (Sep 5) brings a Cheat Master Power Hour.',
+    link: 'https://beebom.com/fortnite-sprite-events-schedule/',
+    source: 'Community + Epic',
+    official: false,
+  },
+  {
     ts: '2026-08-29',
     when: 'Aug 29, 2026',
     tag: 'sprites',
