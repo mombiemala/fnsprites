@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 30, 2026 — Copy your missing list
+
+- **Added:** a `📋 Copy missing` button in the collection action bar (`App.jsx`). Builds a shareable text list of
+  the released Sprites you don't own — grouped by Sprite with the missing variant names, a total count, and a
+  `fnsprites.vercel.app` backlink — and writes it to the clipboard.
+- **Added:** the list honours the active season/rarity/variant/search filters but ignores the ownership dropdown
+  (`missingList` recomputed from `set.items`, excluding `unreleased` and owned), so it always yields "what I still
+  need" within the current view.
+- **Why:** trade/collection posts on Discord and Reddit start with "here's what I'm missing," and hand-typing that
+  is the friction. A one-tap, filter-aware missing list makes sharing instant, feeds our own trade board, and
+  closes the one feature gap a rival checklist (spritechecklist.com) had over us — free, on our side.
+
+---
+
 ## August 29, 2026 — Collection filters, take three
 
 - **Changed:** default sort reworked in `App.jsx` via `defaultRank(s)` — current-season released first, then

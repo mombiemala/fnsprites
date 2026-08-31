@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 30, 2026',
+    title: 'Copy your missing list',
+    summary:
+      'One tap copies a clean, shareable text list of the Sprites you still need — perfect for trade posts, Discord and Reddit.',
+    changes: [
+      { tag: 'Added', text: 'A “📋 Copy missing” button in the collection action bar: copies the released Sprites you don’t own yet, grouped by Sprite with the exact variants you’re missing, plus a count and a link back to the tracker.' },
+      { tag: 'Added', text: 'It respects your active filters (season, rarity, variant, search) but always lists what’s missing regardless of the ownership dropdown — so “Override + Gold” gives you just those missing Golds, ready to paste.' },
+    ],
+    why:
+      'Collectors hunt the last few variants by asking around in Discord/Reddit/trade threads, and typing out “what I still need” by hand is the annoying part. A one-tap, filter-aware missing list makes that share instant — and it feeds our own trade board. It’s also the one thing a rival checklist had that we didn’t; now we do, free.',
+  },
+  {
     date: 'August 29, 2026',
     title: 'Collection filters, take three',
     summary:

@@ -361,6 +361,45 @@ export default function App() {
     toast(`Unmarked ${bulkTargets.length} sprite${bulkTargets.length === 1 ? '' : 's'}`)
   }
 
+  // "Copy missing" — a shareable text list of the released Sprites you don't own
+  // yet, honouring the active season/rarity/variant/search filters (but NOT the
+  // ownership dropdown — missing is missing). Great for trade posts / Discord.
+  const missingList = (() => {
+    const q = filters.search.trim().toLowerCase()
+    return set.items.filter((s) => {
+      if (s.unreleased) return false
+      if (activeTracking[s.id]?.owned) return false
+      if (filters.theme !== 'all' && s.themeId !== filters.theme) return false
+      if (filters.rarity !== 'all' && s.rarity !== filters.rarity) return false
+      if (filters.generation.length && !filters.generation.includes(s.gen || 'c7s3')) return false
+      if (q) {
+        const hay = `${s.typeName} ${set.variantMap[s.themeId]?.name} ${s.rarity}`.toLowerCase()
+        if (!hay.includes(q)) return false
+      }
+      return true
+    })
+  })()
+  const buildMissingText = () => {
+    const byType = new Map()
+    for (const s of missingList) {
+      if (!byType.has(s.typeId)) byType.set(s.typeId, { name: s.typeName, variants: [] })
+      byType.get(s.typeId).variants.push(set.variantMap[s.themeId]?.name || s.themeId)
+    }
+    const lines = [...byType.values()].map((t) => `• ${t.name}: ${t.variants.join(', ')}`)
+    const n = missingList.length
+    const who = gamertag ? `${gamertag}'s ` : 'My '
+    return `${who}missing Fortnite Sprites (${n} left):\n${lines.join('\n')}\n\nTracked free on fnsprites.vercel.app`
+  }
+  const copyMissing = async () => {
+    if (!missingList.length) { toast('Nothing missing here — nice! 🎉'); return }
+    try {
+      await navigator.clipboard.writeText(buildMissingText())
+      toast(`Copied ${missingList.length} missing Sprite${missingList.length === 1 ? '' : 's'} 📋`)
+    } catch {
+      toast('Couldn’t copy — check clipboard permissions')
+    }
+  }
+
   // First-run onboarding gate. While it's showing we suppress the standalone
   // bulk bar and the sidebar import card, so a new visitor sees ONE clear card
   // (with both shortcuts inside it) instead of three stacked prompts.
@@ -578,23 +617,34 @@ export default function App() {
                 <b className="text-white">{bulkOwnedCount}</b> of <b className="text-white">{bulkTargets.length}</b> shown owned
                 {hasActiveFilters && <span className="ml-1 text-[var(--brand)]">· filtered</span>}
               </span>
-              {bulkAllOwned ? (
-                <button
-                  onClick={unmarkAllShown}
-                  title="Unmark every sprite currently shown as not owned"
-                  className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
-                >
-                  Unmark all shown
-                </button>
-              ) : (
-                <button
-                  onClick={markAllShown}
-                  title="Marks every released sprite currently shown as owned"
-                  className="rounded-lg bg-[var(--brand)] px-3 py-1.5 text-xs font-extrabold text-black transition-opacity hover:opacity-90"
-                >
-                  ✓ Mark all {bulkTargets.length} shown owned
-                </button>
-              )}
+              <div className="flex items-center gap-2">
+                {missingList.length > 0 && (
+                  <button
+                    onClick={copyMissing}
+                    title="Copy a shareable list of the Sprites you're missing (respects your filters) — paste into Discord, Reddit or a trade post"
+                    className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-white transition-colors hover:bg-[var(--border)]"
+                  >
+                    📋 Copy missing ({missingList.length})
+                  </button>
+                )}
+                {bulkAllOwned ? (
+                  <button
+                    onClick={unmarkAllShown}
+                    title="Unmark every sprite currently shown as not owned"
+                    className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
+                  >
+                    Unmark all shown
+                  </button>
+                ) : (
+                  <button
+                    onClick={markAllShown}
+                    title="Marks every released sprite currently shown as owned"
+                    className="rounded-lg bg-[var(--brand)] px-3 py-1.5 text-xs font-extrabold text-black transition-opacity hover:opacity-90"
+                  >
+                    ✓ Mark all {bulkTargets.length} shown owned
+                  </button>
+                )}
+              </div>
             </div>
           )}
           {isShareView && shareLoading ? (
