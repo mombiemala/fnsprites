@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## August 31, 2026 — Mobile filters: tuck the details away
+
+- **Changed:** on mobile (`< sm`), the secondary collection filters (season, sort, rarity, variant, grouping,
+  Hide-mastered / Show-unreleased) collapse into a `⚙ Filters` toggle in `Toolbar.jsx` — with a `panelCount`
+  badge of active filters. Search, ownership and view stay in the always-visible top row.
+- **Changed:** the count + removable active-filter chips row stays visible even when the panel is closed.
+- Desktop (`sm+`) is unchanged — everything stays inline via responsive `hidden`/`sm:flex` classes; season & sort
+  are duplicated into the mobile panel (each `SeasonSelect` instance keeps its own dropdown state).
+- **Why:** always-inline filters read well on a wide screen but bury the sprite grid on a phone. Collapsing the
+  secondary controls on mobile only keeps them one tap away without a long scroll to reach the Sprites.
+
+---
+
 ## August 30, 2026 — Copy your missing list
 
 - **Added:** a `📋 Copy missing` button in the collection action bar (`App.jsx`). Builds a shareable text list of

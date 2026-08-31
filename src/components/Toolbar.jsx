@@ -89,10 +89,21 @@ function activeChips(filters) {
 export default function Toolbar({ filters, setFilters, themeStats, count, total, onClear, hasActiveFilters }) {
   const set = (patch) => setFilters((f) => ({ ...f, ...patch }))
   const chips = activeChips(filters)
+  // Mobile only: the secondary filters collapse behind a "Filters" toggle so the
+  // sprite grid is reachable without a long scroll. Desktop shows them inline.
+  const [panelOpen, setPanelOpen] = useState(false)
+  const panelCount =
+    (filters.generation.length ? 1 : 0) +
+    (filters.rarity !== 'all' ? 1 : 0) +
+    (filters.theme !== 'all' ? 1 : 0) +
+    (filters.groupBy !== 'none' ? 1 : 0) +
+    (filters.hideMastered ? 1 : 0) +
+    (!filters.showUnreleased ? 1 : 0)
 
   return (
     <div className="flex flex-col gap-3">
-      {/* Primary controls: search · ownership · season · sort · view. */}
+      {/* Primary controls: search · ownership · season · sort · view. On mobile,
+          season & sort drop into the collapsible panel and a Filters toggle appears. */}
       <div className="flex flex-wrap items-center gap-2">
         <input
           value={filters.search}
@@ -109,17 +120,38 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           <option value="unowned">Missing</option>
         </select>
 
-        {/* Season — a multiselect dropdown. */}
-        <SeasonSelect selected={filters.generation} onChange={(g) => set({ generation: g })} />
+        {/* Season — a multiselect dropdown. Desktop keeps it inline; on mobile it
+            moves into the Filters panel below. */}
+        <div className="hidden shrink-0 sm:block">
+          <SeasonSelect selected={filters.generation} onChange={(g) => set({ generation: g })} />
+        </div>
 
         <div className="flex items-center gap-2 sm:ml-auto">
-          {/* Sort. */}
-          <select value={filters.sort} onChange={(e) => set({ sort: e.target.value })} title="Sort order" className={`${selectCls} shrink-0`}>
+          {/* Sort — inline on desktop; in the Filters panel on mobile. */}
+          <select value={filters.sort} onChange={(e) => set({ sort: e.target.value })} title="Sort order" className={`${selectCls} hidden shrink-0 sm:block`}>
             <option value="default">Default order</option>
             <option value="closest">Closest to complete</option>
             <option value="name">Name A–Z</option>
             <option value="rarity">Rarity</option>
           </select>
+
+          {/* Mobile-only: toggle the Filters panel. */}
+          <button
+            onClick={() => setPanelOpen((o) => !o)}
+            aria-expanded={panelOpen}
+            title="Show filters — season, rarity, variant, grouping"
+            className={`flex shrink-0 items-center gap-1.5 rounded-xl border px-3 py-2 text-sm font-bold transition-colors sm:hidden ${
+              panelOpen || panelCount > 0
+                ? 'border-[var(--brand)] bg-[var(--brand)]/10 text-white'
+                : 'border-[var(--border)] bg-[var(--panel)] text-white'
+            }`}
+          >
+            ⚙ Filters
+            {panelCount > 0 && (
+              <span className="grid h-4 min-w-4 place-items-center rounded-full bg-[var(--brand)] px-1 text-[10px] font-extrabold text-black">{panelCount}</span>
+            )}
+            <span className="text-[var(--muted)]">{panelOpen ? '▲' : '▼'}</span>
+          </button>
 
           {/* Grid ↔ Quick-check list view. */}
           <div className="flex shrink-0 overflow-hidden rounded-xl border border-[var(--border)]">
@@ -139,7 +171,20 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
         </div>
       </div>
 
-      {/* Rarity + Variant quick filters — always visible. */}
+      {/* Secondary filters — inline on desktop, collapsible on mobile. */}
+      <div className={`${panelOpen ? 'flex' : 'hidden'} flex-col gap-3 sm:flex`}>
+      {/* Season + Sort — mobile only (desktop keeps them in the top row). */}
+      <div className="flex flex-wrap items-center gap-2 sm:hidden">
+        <SeasonSelect selected={filters.generation} onChange={(g) => set({ generation: g })} />
+        <select value={filters.sort} onChange={(e) => set({ sort: e.target.value })} title="Sort order" className={`${selectCls} shrink-0`}>
+          <option value="default">Default order</option>
+          <option value="closest">Closest to complete</option>
+          <option value="name">Name A–Z</option>
+          <option value="rarity">Rarity</option>
+        </select>
+      </div>
+
+      {/* Rarity + Variant quick filters. */}
       <div className="flex flex-col gap-2">
         <div className="flex flex-wrap items-center gap-1.5">
           <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">Rarity</span>
@@ -184,6 +229,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           <input type="checkbox" checked={filters.showUnreleased} onChange={(e) => set({ showUnreleased: e.target.checked })} />
           Show unreleased
         </label>
+      </div>
       </div>
 
       {/* Count + active-filter chips (each removable) + clear. */}

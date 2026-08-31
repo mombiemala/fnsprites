@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'August 31, 2026',
+    title: 'Mobile filters: tuck the details away',
+    summary:
+      'On phones, the collection filters now collapse behind a “⚙ Filters” toggle so you reach your Sprites right away. Desktop is unchanged.',
+    changes: [
+      { tag: 'Changed', text: 'On mobile, season/sort/rarity/variant/grouping and the toggles fold into a collapsible Filters panel (with a badge showing how many are active) — search, ownership and view stay up top, so the grid is one glance away instead of a long scroll.' },
+      { tag: 'Changed', text: 'Applied-filter chips still show under the count even when the panel is closed, so you always know what’s narrowing your list.' },
+    ],
+    why:
+      'Surfacing every filter inline reads well on a wide screen but buries the actual Sprites on a phone. Collapsing the secondary controls on mobile (only) keeps the power-user options one tap away without making the small screen scroll past a wall of controls first.',
+  },
+  {
     date: 'August 30, 2026',
     title: 'Copy your missing list',
     summary:
