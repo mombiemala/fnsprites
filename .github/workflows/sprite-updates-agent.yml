@@ -73,6 +73,7 @@ jobs:
           # -> Workspaces -> your workspace; id looks like wrkspc_...). Harmless to
           # leave set even for keys that don't need it.
           anthropic_workspace_id: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}
+          show_full_output: true # TEMP: surface the API error again; revert once green.
           claude_args: |
             --max-turns 40
             --allowedTools "Read,Edit,Write,Glob,Grep,Bash,WebSearch,WebFetch"
