@@ -1,0 +1,146 @@
+name: Sprite updates scout (agentic)
+
+# Scheduled autonomous sweep: an agent reads the machine-readable Fortnite sources
+# (Epic Communities + fortnite.com/news + fortnite-api.com, fortnite.gg, and the
+# datamine/community feeds), compares them against the tracker's data, and opens a
+# REVIEW PULL REQUEST with any proposed updates to codes / sprites / news (+ the
+# changelog). It NEVER edits the live site directly — a human reviews and merges.
+# This is the "catch new codes/sprites/events within a day" automation.
+#
+# GATING: the whole job no-ops unless the ANTHROPIC_API_KEY repo secret is set, so
+# it's safe to merge now and activate later by adding the secret
+# (repo Settings -> Secrets and variables -> Actions -> New repository secret).
+#
+# COST: it runs the agent once a day. Dial the cadence up/down via the cron below.
+#
+# NOTE: GitHub `schedule:` only fires from the repository's DEFAULT branch, so this
+# is effective on mombiemala/fnsprites (default `main`). It rides along harmlessly
+# on other branches (just won't be scheduled there).
+
+on:
+  schedule:
+    - cron: '40 14 * * *' # daily at 14:40 UTC (~10:40 AM ET — after the daily Sprite reset)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: sprite-updates-agent
+  cancel-in-progress: false
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Guard — require ANTHROPIC_API_KEY
+        id: guard
+        env:
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "ANTHROPIC_API_KEY not set — skipping the agentic sweep. Add it in repo Settings -> Secrets -> Actions to activate."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.guard.outputs.run == 'true'
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        if: steps.guard.outputs.run == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps (so the agent can lint/build)
+        if: steps.guard.outputs.run == 'true'
+        run: npm ci
+
+      - name: Run the update scout
+        if: steps.guard.outputs.run == 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: |
+            --max-turns 40
+            --allowedTools "Read,Edit,Write,Glob,Grep,Bash,WebSearch,WebFetch"
+          prompt: |
+            You are the FN Sprite Tracker's automated update scout. Read the repo's
+            CLAUDE.md first and follow its conventions exactly (especially the
+            changelog habit and where data lives).
+
+            GOAL: Sweep the sources below, compare what they report against the
+            tracker's current data, and make accurate, conservative edits IN THE
+            WORKING TREE. Do NOT push, commit, or open a PR yourself — a later CI
+            step handles that. Be honest: cite a source for everything you add, mark
+            anything unconfirmed as rumored/tentative, and NEVER invent a code, a
+            reward, an ability, or a release date. If nothing credible has changed,
+            make NO edits — an empty result is the correct, expected outcome.
+
+            SOURCES (priority order):
+            1. Epic official — https://communities.epicgames.com (Fortnite Override
+               threads), https://www.fortnite.com/news , https://fortnite-api.com
+               (cosmetics/news JSON). Epic-sourced items are official.
+            2. fortnite.gg — /news, /sprites, /lobby-hacks (fast aggregator).
+            3. Datamine/community — reputable leakers (HYPEX, ShiinaBR,
+               Loolo/@Loolo_WRLD, FNBRIntel, Krowe) as reported by outlets, and
+               https://github.com/topics/fortnite-sprites . These are unofficial, and
+               tentative when a date/detail isn't locked.
+
+            WHAT TO CHANGE (only these files):
+            - src/data/codes.js — new Lobby Hack / Admin Panel codes, matching the
+              existing row shape. status 'working' only if Epic or an outlet confirms
+              it, else 'rumored'. Never guess a reward. Don't duplicate existing codes.
+            - src/data/sprites.js — add newly datamined Sprites (released:false,
+              rumored:true, gen:'c7s4', abilities/rarity TBC), or flip an existing
+              rumored Sprite to released:true with real variants ONLY when a source
+              confirms it dropped. RELEASED_COUNT is computed — never hardcode counts.
+            - src/data/news.js — new events (Cheat Code Day / Update Day / Power Hours
+              / New Sprite Day), leaks and updates. Use the start/end live-window
+              pattern for live events; set official/tentative per the source; newest
+              first.
+            - Then update BOTH src/data/changelog.js and CHANGELOG.md per CLAUDE.md,
+              but only for genuinely notable changes — skip routine recurring-event pins.
+
+            VERIFY: run `npm run lint` and `npm run build`; both MUST pass before you
+            finish. Leave a short summary of what you changed and why (with sources).
+
+      - name: Open or refresh the review PR
+        if: steps.guard.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          # Ignore churn in build output / installed deps — only data & changelog matter.
+          git add -A src/data CHANGELOG.md
+          if git diff --cached --quiet; then
+            echo "No data/changelog changes — nothing to review. (Correct when there's no news.)"
+            exit 0
+          fi
+          BRANCH=bot/sprite-updates
+          git config user.name "sprite-scout-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git commit -m "chore(data): automated sprite/codes/events sweep"
+          git push -f origin "$BRANCH"
+          open_count="$(gh pr list --head "$BRANCH" --state open --json number --jq 'length')"
+          if [ "$open_count" != "0" ]; then
+            echo "Review PR already open — force-pushed the refresh onto it."
+            exit 0
+          fi
+          printf '%s\n' \
+            "Automated daily sweep of the Fortnite sources (Epic Communities + fortnite.com/news + fortnite-api.com, fortnite.gg, datamine feeds)." \
+            "" \
+            "**Review before merging.** The agent proposes conservative, sourced edits to \`src/data/codes.js\`, \`src/data/sprites.js\` and \`src/data/news.js\` (+ changelog). Check the sources and the official/tentative flags, fix anything off, then merge. Merging \`main\` auto-deploys to fnsprites.vercel.app." \
+            "" \
+            "This branch is reused each run; close the PR to dismiss a batch." \
+            > /tmp/pr-body.md
+          gh pr create --base "$BASE" --head "$BRANCH" \
+            --title "Automated sprite/codes/events sweep — review & merge" \
+            --body-file /tmp/pr-body.md
