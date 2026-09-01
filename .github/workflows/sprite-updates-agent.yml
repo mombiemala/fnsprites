@@ -65,15 +65,17 @@ jobs:
 
       - name: Run the update scout
         if: steps.guard.outputs.run == 'true'
+        # RECOMMENDED FIX for the '400 anthropic-workspace-id is required' error:
+        # use a STANDARD (non-identity-linked) Anthropic API key — it carries its
+        # workspace implicitly and needs none of the below. If you must keep an
+        # identity-linked key, set the ANTHROPIC_WORKSPACE_ID secret (wrkspc_...);
+        # it's passed both as the action input and as an env var for good measure.
         uses: anthropics/claude-code-action@v1
+        env:
+          ANTHROPIC_WORKSPACE_ID: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # Identity-linked / workspace-scoped API keys require the workspace id.
-          # Add repo secret ANTHROPIC_WORKSPACE_ID (console.anthropic.com -> Settings
-          # -> Workspaces -> your workspace; id looks like wrkspc_...). Harmless to
-          # leave set even for keys that don't need it.
           anthropic_workspace_id: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}
-          show_full_output: true # TEMP: surface the API error again; revert once green.
           claude_args: |
             --max-turns 40
             --allowedTools "Read,Edit,Write,Glob,Grep,Bash,WebSearch,WebFetch"
