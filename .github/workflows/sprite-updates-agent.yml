@@ -68,7 +68,11 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          show_full_output: true # TEMP: surface the underlying API error for diagnosis; revert after.
+          # Identity-linked / workspace-scoped API keys require the workspace id.
+          # Add repo secret ANTHROPIC_WORKSPACE_ID (console.anthropic.com -> Settings
+          # -> Workspaces -> your workspace; id looks like wrkspc_...). Harmless to
+          # leave set even for keys that don't need it.
+          anthropic_workspace_id: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}
           claude_args: |
             --max-turns 40
             --allowedTools "Read,Edit,Write,Glob,Grep,Bash,WebSearch,WebFetch"
