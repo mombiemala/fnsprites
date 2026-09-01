@@ -73,9 +73,14 @@ jobs:
         uses: anthropics/claude-code-action@v1
         env:
           ANTHROPIC_WORKSPACE_ID: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}
+          # Workaround: inject the workspace id as a raw request header, since the
+          # action's anthropic_workspace_id input isn't reaching the API for
+          # identity-linked keys.
+          ANTHROPIC_CUSTOM_HEADERS: "anthropic-workspace-id: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}"
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           anthropic_workspace_id: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}
+          show_full_output: true # TEMP: confirm the header workaround; revert once green.
           claude_args: |
             --max-turns 40
             --allowedTools "Read,Edit,Write,Glob,Grep,Bash,WebSearch,WebFetch"
