@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 1, 2026 — Design-a-Sprite: Bullet → Onigiri, X-Ray drops Thursday
+
+- **Changed:** replaced the `bullet` Sprite with `onigiri` in `sprites.js` — Epic swapped Enorull's original Bullet
+  concept for their Onigiri Sprite. Updated the two `news.js` items that referenced Bullet.
+- **Added:** a `NEWS` item (official, tentative) for the reveal — X-Ray (Avila215) and Onigiri (Enorull) arrive
+  Thu Sep 3 as the first two of five Design-a-Sprite winners.
+- **Why:** the tracker has to match what's actually in-game; when Epic swaps/renames a Sprite, the roster follows
+  immediately so the checklist doesn't send collectors chasing one that no longer exists.
+- Source: [Fortnite on X](https://x.com/Fortnite/status/2094460290801050006) · [Vice — Sep 3 sprites](https://www.vice.com/en/article/new-fortnite-sprites-added-september-3/)
+
+---
+
 ## August 31, 2026 — Mobile pass: reach every control & see all content
 
 - **Fixed:** `GardenPlanner.jsx` — the per-tile move/remove controls were `opacity-0 group-hover:opacity-100`

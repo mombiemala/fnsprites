@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-01',
+    when: 'Sep 1, 2026',
+    tag: 'upcoming',
+    title: '🍙 New Sprite Day Thursday — X-Ray & Onigiri incoming',
+    sprites: ['xray', 'onigiri'],
+    body: 'Epic has confirmed Thursday’s (Sep 3) New Sprite Day drops the first two of the five Design-a-Sprite contest winners at the ~9 AM ET reset: X-Ray (by Avila215 — reveals players and objects through walls for a short time) and Onigiri (by Enorull). One change to note: Epic swapped Enorull’s original “Bullet” winner for their Onigiri Sprite, so we’ve updated the roster — Bullet is out, Onigiri is in. More winners follow later this week. Both are pre-loaded as unreleased; we’ll flip them live with art on Thursday.',
+    link: 'https://x.com/Fortnite/status/2094460290801050006',
+    source: 'Epic (Fortnite / X)',
+    official: true,
+    tentative: true,
+  },
+  {
     ts: '2026-08-31',
     when: 'Aug 31, 2026',
     tag: 'event',
@@ -39,8 +51,8 @@ export const NEWS = [
     when: 'Aug 29, 2026',
     tag: 'upcoming',
     title: '🎨 Coming next: the 5 Design-a-Sprite winners',
-    sprites: ['pond', 'bullet', 'honey'],
-    body: 'With Storm Scout now live, the next confirmed additions are the five community Design-a-Sprite contest winners, which Epic has said arrive in a mid-season Override update: Pond (egg → tadpole → frog, boosting movement/jump and cutting fall damage as it grows), Bullet (ammo boxes give extra ammo), Honey (spawns a beehive that swarms whoever damages you), Dumpster Dive (a raccoon that finds you loot when you hide in dumpsters), and X-Ray (reveals nearby players like the old medallion). All five are already in the tracker as unreleased so you can see what’s coming — abilities are as-designed and Epic may tweak them, and there’s no exact date yet. We’ll flip each to live and drop in its art the day it lands.',
+    sprites: ['pond', 'onigiri', 'honey'],
+    body: 'The five community Design-a-Sprite contest winners arrive through Override, and the first two — X-Ray and Onigiri — land Thursday, Sep 3. The full set: Pond (egg → tadpole → frog, boosting movement/jump and cutting fall damage as it grows), Onigiri (by Enorull — Epic swapped their original “Bullet” concept for this one), Honey (spawns a beehive that swarms whoever damages you), Dumpster Dive (a raccoon that finds you loot when you hide in dumpsters), and X-Ray (reveals players and objects through walls for a short time). All are in the tracker as unreleased so you can see what’s coming — abilities are as-designed and Epic may tweak them. We flip each to live and drop in its art the day it lands.',
     link: 'https://beebom.com/fortnite-sprite-events-schedule/',
     source: 'Epic (Design-a-Sprite) + community',
     official: false,
@@ -577,7 +589,7 @@ export const NEWS = [
     when: 'Winners revealed Aug 2026',
     tag: 'sprites',
     title: 'Design-a-Sprite winners revealed — 5 community Sprites next season',
-    body: 'Epic has revealed the winners of its “Design-a-Sprite” contest (20,000+ entries) — five fan-made Sprites will be built into the game, each with its designer’s concept: Pond (Pine & Kiri) evolves egg → tadpole → frog, boosting speed & jump height and cutting fall damage; Bullet (Enorull) makes ammo boxes give extra ammo; Honey (Conejito_sam) spawns a beehive that swarms whoever damages you; Dumpster Dive (StinkyPrincessGoose) is a raccoon that finds loot when you hide in dumpsters; and X-Ray (Avila215) reveals nearby players like the old medallion. They arrive in a mid-season update during Chapter 7 Season 4 “Override” (abilities as designed — Epic may tweak them), and will be added to the tracker once they’re in-game.',
+    body: 'Epic has revealed the winners of its “Design-a-Sprite” contest (20,000+ entries) — five fan-made Sprites will be built into the game, each with its designer’s concept: Pond (Pine & Kiri) evolves egg → tadpole → frog, boosting speed & jump height and cutting fall damage; Bullet (Enorull) makes ammo boxes give extra ammo; Honey (Conejito_sam) spawns a beehive that swarms whoever damages you; Dumpster Dive (StinkyPrincessGoose) is a raccoon that finds loot when you hide in dumpsters; and X-Ray (Avila215) reveals nearby players like the old medallion. (Update: Epic later swapped Enorull’s Bullet for their Onigiri Sprite.) They arrive in a mid-season update during Chapter 7 Season 4 “Override” (abilities as designed — Epic may tweak them), and will be added to the tracker once they’re in-game.',
     link: 'https://beebom.com/fortnite-design-a-sprite-winners-revealed/',
     source: 'Beebom',
     official: false,

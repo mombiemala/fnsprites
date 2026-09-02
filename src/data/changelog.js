@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 1, 2026',
+    title: 'Design-a-Sprite: Bullet → Onigiri, X-Ray drops Thursday',
+    summary:
+      'Epic confirmed the first two Design-a-Sprite winners land Thursday (Sep 3) — and swapped one of them — so the roster and news now match.',
+    changes: [
+      { tag: 'Changed', text: 'Replaced the “Bullet” Sprite with “Onigiri” — Epic swapped Enorull’s original Bullet concept for their Onigiri Sprite. Bullet is out of the roster, Onigiri is in (unreleased until it drops).' },
+      { tag: 'Added', text: 'A News item for the official reveal: X-Ray (by Avila215 — sees players/objects through walls) and Onigiri (by Enorull) arrive Thursday, Sep 3, as the first two of the five Design-a-Sprite winners.' },
+    ],
+    why:
+      'The whole value of the tracker is matching what’s actually in the game — when Epic renames or swaps a Sprite, our roster has to follow immediately, or the checklist misleads collectors chasing a Sprite that no longer exists.',
+  },
+  {
     date: 'August 31, 2026',
     title: 'Mobile pass: reach every control & see all content',
     summary:
