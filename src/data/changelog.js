@@ -6,6 +6,17 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 2, 2026',
+    title: 'Slimmed down the collection Breakdown',
+    summary:
+      'The Breakdown card is now just the numbers that matter — Collection %, Mastery %, Dust to complete, and what you’re closest to finishing.',
+    changes: [
+      { tag: 'Changed', text: 'Cut the “By rarity” and “By theme” progress rings, the per-rarity Dust split, and the badges row from the Breakdown. It now shows the three headline stats plus the “closest to completing” nudge.' },
+    ],
+    why:
+      'With a fresh Override season most of those rings sit near-empty, so the card had grown into a wall of mostly-blank progress dials. The per-theme completion is already right there on the Variant filter chips, so the rings were redundant on top of noisy — the slim version reads at a glance.',
+  },
+  {
     date: 'September 1, 2026',
     title: 'Design-a-Sprite: Bullet → Onigiri, X-Ray drops Thursday',
     summary:

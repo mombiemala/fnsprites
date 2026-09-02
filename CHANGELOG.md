@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 2, 2026 — Slimmed down the collection Breakdown
+
+- **Changed:** `StatsBreakdown.jsx` now renders only the three headline stats (Collection %, Mastery %, Dust to
+  complete) plus the "closest to completing" nudge. Removed the By-rarity and By-theme progress rings, the
+  per-rarity Dust split, and the badges row (dropped the `Ring` component and the now-unused computed fields).
+- **Why:** a fresh Override season leaves most of those rings near-empty, so the card had become a wall of blank
+  dials; per-theme completion already shows on the Variant filter chips, so the rings were redundant.
+
+---
+
 ## September 1, 2026 — Design-a-Sprite: Bullet → Onigiri, X-Ray drops Thursday
 
 - **Changed:** replaced the `bullet` Sprite with `onigiri` in `sprites.js` — Epic swapped Enorull's original Bullet
