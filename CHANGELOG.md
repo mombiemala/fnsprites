@@ -11,6 +11,14 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 3, 2026 — Crown gets its official Loot Hacker art
+
+- **Added:** `victorycrown_loothacker.webp` — Epic’s official Loot Hacker icon for the Crown Sprite, replacing the
+  generated blue-circuit fallback. Crown now has all four finish icons (Normal, Gold, Cheat Master, Loot Hacker).
+- **Why:** Crown wasn’t in the first datamined-art batch, so its Loot Hacker finish had been on the fallback render.
+
+---
+
 ## September 3, 2026 — “How Sprites work” refreshed for Override; header, footer & README current
 
 - **Changed:** `spriteGuide.js` (the single source for the in-app + static `/sprites#how-sprites-work` guide) now

@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 3, 2026',
+    title: 'Crown gets its official Loot Hacker art',
+    changes: [
+      { tag: 'Added', text: 'Wired in Epic’s official Loot Hacker (blue circuit) icon for the Crown Sprite, replacing the generated fallback. Crown now has all four finish icons — Normal, Gold, Cheat Master and Loot Hacker.' },
+    ],
+    summary: 'The last Loot Hacker icon we were missing — Crown’s — is now the official one.',
+    why: 'Crown wasn’t in the first datamined-art batch, so its Loot Hacker finish had been showing the generated blue-circuit fallback; the real icon brings it in line with the rest of the roster.',
+  },
+  {
+    date: 'September 3, 2026',
     title: '“How Sprites work” refreshed for Override; header, footer & README current',
     changes: [
       { tag: 'Changed', text: 'The “How Sprites work” guide now leads with the current Override season — Sprites come from in-world Cheat Codes and Hack the Lobby codes (plus chests) — and covers the two Season 4 finishes (Cheat Master, Loot Hacker). Season 3’s chest-farming is kept but framed as the archived “Runners” generation.' },
