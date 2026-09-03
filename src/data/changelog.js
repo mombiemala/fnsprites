@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 3, 2026',
+    title: 'New-season cleanup: trimmed News feed & collapsed the Season 3 chest calc',
+    summary:
+      'Two tidy-ups for the Override season — the News feed now leads with current-season updates, and the old Season 3 chest-luck calculator folds away until you want it.',
+    changes: [
+      { tag: 'Changed', text: 'News & Updates now shows the Override-era feed by default (Aug 20 onward) with a “Show N older updates (Season 3 & launch)” toggle at the bottom. Any tag filter or search still spans the full history, so nothing is hidden from a lookup.' },
+      { tag: 'Changed', text: 'The “Chest luck · Season 3” calculator is now collapsed by default — it’s a legacy Season 3 (Runners) tool, so it shows a one-line summary and expands on tap instead of taking up the sidebar.' },
+    ],
+    why:
+      'With Override the current season, the feed had grown into a ~50-item wall led by last-season news, and the chest-odds calc only applies to the old Runners Sprites (Override Sprites come from Cheat Codes, not fixed-odds chests). Collapsing the legacy pieces keeps the current season front-and-centre without deleting anything collectors might still want.',
+  },
+  {
     date: 'September 2, 2026',
     title: 'Slimmed down the collection Breakdown',
     summary:

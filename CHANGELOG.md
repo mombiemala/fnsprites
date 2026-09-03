@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 3, 2026 — New-season cleanup: trimmed News feed & collapsed the Season 3 chest calc
+
+- **Changed:** `NewsFeed.jsx` now leads with the Override-era feed (items dated Aug 20 2026 onward) and collapses
+  pre-Override history behind a "Show N older updates (Season 3 & launch)" toggle. Any active tag filter or search
+  query still spans the full timeline, so nothing is hidden from a lookup.
+- **Changed:** `ChestOdds.jsx` ("Chest luck · Season 3") is now collapsed by default — it shows a one-line legacy
+  summary and expands on tap, instead of always occupying the sidebar.
+- **Why:** with Override the current season, the feed had grown into a ~50-item wall led by last-season news, and the
+  chest-odds calc only applies to the old Runners Sprites (Override Sprites come from Cheat Codes, not fixed-odds
+  chests). Collapsing the legacy pieces keeps the current season front-and-centre without deleting anything.
+
+---
+
 ## September 2, 2026 — Slimmed down the collection Breakdown
 
 - **Changed:** `StatsBreakdown.jsx` now renders only the three headline stats (Collection %, Mastery %, Dust to

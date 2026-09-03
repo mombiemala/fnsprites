@@ -38,6 +38,9 @@ const fmtPct = (x) => {
 export default function ChestOdds() {
   const [typeId, setTypeId] = useState(RATED[0]?.id)
   const [finish, setFinish] = useState('normal')
+  // Collapsed by default now that Override (Season 4) is the current season —
+  // this is a legacy Season-3 tool, so it stays out of the way until asked for.
+  const [open, setOpen] = useState(false)
   const type = RATED.find((t) => t.id === typeId) || RATED[0]
 
   // Finishes this Sprite actually has AND that are currently obtainable (a
@@ -85,13 +88,25 @@ export default function ChestOdds() {
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
-      <h3 className="mb-1 flex items-center gap-1.5 font-display text-lg text-white">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex w-full items-center gap-1.5 font-display text-lg text-white"
+      >
         🎲 Chest luck <span className="text-xs font-bold text-[var(--muted)]">· Season 3</span>
         <Tooltip content="Odds of pulling a Sprite from a Sprite Chest, treating each chest as an independent draw. The base (Normal) rate is community-estimated; picking a special finish multiplies it by a rough finish-rarity estimate (Epic doesn't publish finish odds).">
           <span className="grid h-4 w-4 cursor-help place-items-center rounded-full bg-[var(--panel-2)] text-[10px] text-[var(--muted)]" aria-label="How this is calculated">ⓘ</span>
         </Tooltip>
-      </h3>
-      <p className="mb-3 text-[11px] leading-relaxed text-[var(--muted)]">
+        <span className={`ml-auto text-sm text-[var(--muted)] transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true">▾</span>
+      </button>
+      {!open && (
+        <p className="mt-1 text-[11px] leading-relaxed text-[var(--muted)]">
+          Legacy chest-odds calculator for the Season 3 “Runners” Sprites. Tap to expand.
+        </p>
+      )}
+      {open && (
+      <>
+      <p className="mb-3 mt-1 text-[11px] leading-relaxed text-[var(--muted)]">
         Covers the Season 3 “Runners” Sprites, which come from <b className="text-white">Sprite Chests</b>. Season 4
         “Override” Sprites come from in-world Cheat Codes and <a href="/codes" className="font-bold text-[var(--brand)] hover:underline">Hack the Lobby codes</a> (and, since a recent update, Chests too) — no fixed odds published.
       </p>
@@ -174,6 +189,8 @@ export default function ChestOdds() {
       <p className="mt-3 text-[10px] leading-relaxed text-[var(--muted)]">
         Base (Normal-form) rates are community-estimated — Epic doesn’t publish official odds. Special-finish odds multiply that base by a rough finish-rarity estimate and are approximate, not measured.
       </p>
+      </>
+      )}
     </div>
   )
 }

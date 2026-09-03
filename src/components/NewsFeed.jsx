@@ -20,6 +20,7 @@ export default function NewsFeed() {
   const [live, setLive] = useState([])
   const [filter, setFilter] = useState('all')
   const [query, setQuery] = useState('')
+  const [showOlder, setShowOlder] = useState(false)
 
   // Auto-pull the current build + official in-game news once on mount.
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function NewsFeed() {
     return () => { cancelled = true }
   }, [])
 
-  const items = useMemo(() => {
+  const { items, olderCount } = useMemo(() => {
     // A curated item with a start/end window is "live now" while today falls
     // inside it — those get pinned to the very top so a currently-running event
     // leads the feed. After the window passes it drops back to its normal group.
@@ -67,8 +68,20 @@ export default function NewsFeed() {
         `${n.title} ${n.body || ''} ${n.source || ''} ${NEWS_TAGS[n.tag]?.label || ''}`.toLowerCase().includes(q),
       )
     }
-    return merged
-  }, [live, filter, query])
+    // With no filter/query active, collapse pre-Override history (before the
+    // Aug 20 2026 Chapter 7 Season 4 launch) behind a "show older" toggle so the
+    // feed leads with current-season news instead of a 50-item wall. Any active
+    // filter or search spans the full timeline so nothing is hidden from a lookup.
+    const CUTOFF = 20260820
+    if (filter === 'all' && !q) {
+      const older = merged.filter((n) => dateNum(n) < CUTOFF)
+      if (!showOlder && older.length) {
+        return { items: merged.filter((n) => dateNum(n) >= CUTOFF), olderCount: older.length }
+      }
+      return { items: merged, olderCount: older.length }
+    }
+    return { items: merged, olderCount: 0 }
+  }, [live, filter, query, showOlder])
 
   const today = new Date().toISOString().slice(0, 10)
 
@@ -187,6 +200,16 @@ export default function NewsFeed() {
           )
         })}
       </div>
+
+      {(olderCount > 0 || showOlder) && (
+        <button
+          onClick={() => setShowOlder((v) => !v)}
+          className="mt-3 w-full rounded-lg border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
+        >
+          {showOlder ? 'Show fewer' : `Show ${olderCount} older update${olderCount === 1 ? '' : 's'} (Season 3 & launch)`}
+        </button>
+      )}
+
       <p className="mt-3 text-[10px] text-[var(--muted)]">
         Live build auto-detected from fortnite-api.com; news &amp; events are curated, each with its source shown. Not affiliated with Epic Games.
       </p>
