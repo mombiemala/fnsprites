@@ -48,7 +48,6 @@ const TYPES = {
   adventurer: { c: ['#e8cfa0', '#c8974a', '#7a5220'], feat: '#3aa0ff' },
   pond: { c: ['#bdf0c0', '#5ac86a', '#2b7a3a'], feat: '#ffffff' },
   onigiri: { c: ['#ffffff', '#eef1f6', '#c2c8d4'], feat: '#2a2f3a' },
-  knight: { c: ['#eef2f8', '#9aa4b8', '#5a6478'], feat: '#3a4256' },
   megaman: { c: ['#bfe4ff', '#2a7cff', '#123a9e'], feat: '#eaf4ff' },
   honey: { c: ['#ffe6a0', '#f5b81f', '#b8801c'], feat: '#7a5220' },
   dumpster: { c: ['#cfd6e0', '#8b93a7', '#4a5265'], feat: '#1a2138' },
@@ -257,9 +256,6 @@ function Features({ id, fc, gid }) {
     case 'xray':
       // Ribcage scan lines.
       return <g stroke={fc} strokeWidth="2" opacity="0.7" fill="none" strokeLinecap="round"><path d="M50 40 v26" /><path d="M40 46 h20 M38 54 h24 M40 62 h20" /></g>
-    case 'knight':
-      // Helmet: a brow band with a vertical visor slit + a small crest plume.
-      return <><path d="M30 24 q20 -8 40 0 l0 6 q-20 -6 -40 0 Z" fill={fc} opacity="0.6" /><path d="M50 10 q-5 -9 0 -11 q5 2 0 11 Z" fill="#c8324a" /><rect x="48.5" y="42" width="3" height="16" rx="1.5" fill={fc} opacity="0.45" /></>
     case 'megaman':
       // Robot helmet dome + a little ear-pod on each side.
       return <><path d="M28 34 q22 -22 44 0 l0 4 q-22 -12 -44 0 Z" fill={fc} opacity="0.55" /><circle cx="26" cy="50" r="4.5" fill={fc} opacity="0.6" /><circle cx="74" cy="50" r="4.5" fill={fc} opacity="0.6" /></>

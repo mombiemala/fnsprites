@@ -18,6 +18,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 - **Added:** identified the datamined hooded/eye-patched icon (codename `Dwarf`) as **Loot Hacker Adventure** and
   copied it to `adventure_loothacker.webp`; updated `adventure`’s ability to the confirmed “upgrades a random item in
   your inventory each Level Up” (+ found near high/mountainous areas).
+- **Fixed:** removed the placeholder `knight` Sprite (and its now-unused vector art) — the “third Sprite” outlets
+  called Knight-themed was Overshield (shield/armor look), already in the roster. Removes a phantom entry from counts.
 - **Why:** Fortnite.GG lists Overshield and Mega Man without an “unreleased” flag → obtainable, so they’re flipped
   live. The mystery asset was Adventure’s Loot Hacker finish, which also confirmed Adventure’s real ability.
 

@@ -12,6 +12,7 @@ export const CHANGELOG = [
       { tag: 'Changed', text: 'Overshield flipped to released — Normal, Gold and Cheat Master are obtainable now (its Loot Hacker finish stays unreleased).' },
       { tag: 'Changed', text: 'Mega Man flipped to released (Normal finish).' },
       { tag: 'Added', text: 'Identified the mystery hooded, eye-patched datamined icon as the Loot Hacker Adventure finish, and wired its real art in. Also filled in Adventure’s confirmed ability — “upgrades a random item in your inventory each Level Up” — and that it’s found near high, mountainous areas.' },
+      { tag: 'Fixed', text: 'Removed the placeholder “Knight” entry — the “third Sprite” some outlets described that way was just Overshield (its shield/armor look), which is already in the roster. No more phantom Sprite in the count.' },
     ],
     summary:
       'Two datamined Sprites (Overshield, Mega Man) are confirmed obtainable and now show as released, and the last unidentified icon turned out to be Adventure’s Loot Hacker finish.',

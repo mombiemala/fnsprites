@@ -149,13 +149,6 @@ export const SPRITE_TYPES = [
   { id: 'xray', name: 'X-Ray', icon: '🩻', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players (and objects) through walls, like the old medallion did. Live since Sep 3 (New Sprite Day, v41.10) as one of the first two contest winners, alongside Onigiri. Normal is live; Gold & Cheatmaster finishes are datamined (art shown) but not confirmed obtainable yet.',
     variants: { normal: R, gold: U, cheatmaster: U, loothacker: U } },
-  // Third Sprite reportedly added in the same Sep 3 (v41.10) drop, separate from
-  // the two Design-a-Sprite winners. Knight-themed, but Epic hasn't published its
-  // name, rarity, ability or finishes — kept as a live placeholder (tentative)
-  // pending confirmation, refined as details surface. (Vice, multiple outlets.)
-  { id: 'knight', name: 'Knight', icon: '⚔️', rarity: 'Epic', dropRate: null, released: true, tentative: true, gen: 'c7s4',
-    ability: 'A third, Knight-themed Sprite reported live alongside X-Ray & Onigiri in the Sep 3 (v41.10) update. Name, rarity, ability and finishes are all still unconfirmed by Epic — this is a placeholder we’ll refine as details surface. Normal finish assumed live.',
-    variants: { normal: R } },
 
   // ---- Override new-generation Sprites — LIVE in Chapter 7 Season 4, with
   //   official datamined art (Normal, Gold & the new "Cheatmaster" finish).
