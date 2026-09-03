@@ -52,7 +52,7 @@ export const LOBBY_CODES = [
   { code: '8BITBLAST', unlocks: 'Cheatmaster 8-Bit Blaster Sprite', type: 'sprite', category: 'sprites', spriteId: 'blaster', status: 'working', source: 'Dexerto' },
   { code: 'PLAY4ALL', unlocks: 'Cheatmaster Jonesy Sprite', type: 'sprite', category: 'sprites', spriteId: 'jonesy', status: 'working', source: 'Dexerto' },
   { code: 'BORN2PLAY', unlocks: 'Cheatmaster Adventure Sprite', type: 'sprite', category: 'sprites', spriteId: 'adventure', status: 'working', source: 'PCGamesN' },
-  { code: 'GatherAndCraft', unlocks: 'Cheatmaster Bush Ranger Sprite — after Wrixel “Get Crafty” quest (stage 9)', type: 'sprite', category: 'sprites', spriteId: 'bushranger', status: 'working', source: 'allthings.how', added: '2026-08-22' },
+  { code: 'GatherAndCraft', unlocks: 'Cheatmaster Bush Ranger Sprite — after the “Get Crafty” quest (stage 4 of 5)', type: 'sprite', category: 'sprites', spriteId: 'bushranger', status: 'working', source: 'allthings.how', added: '2026-08-22' },
   { code: 'JONESYISGOLDEN', unlocks: 'Gold Jonesy Sprite', type: 'sprite', category: 'sprites', spriteId: 'jonesy', status: 'working', added: '2026-08-22', source: 'community list' },
   // Single-source so far (match the Gold/Cheatmaster naming patterns) — verify in-game.
   { code: 'GILDEDJACKRABBIT', unlocks: 'Gold Jazz Jackrabbit Sprite', type: 'sprite', category: 'sprites', spriteId: 'jazz', status: 'rumored', added: '2026-08-22', source: 'community/leaks' },
@@ -70,10 +70,15 @@ export const LOBBY_CODES = [
   { code: 'TAKEYOURHEART', unlocks: '2× Extraction Accelerators (Persona 5 / Joker)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
   { code: 'SURVIVETHENIGHT', unlocks: '2× Cheat Code Locators (99 Nights)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
   { code: 'FINDITCHAT', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', source: 'community list', added: '2026-08-21' },
+  { code: 'INVALIDCHEAT', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', source: 'community list', added: '2026-09-03' },
+  { code: 'CHATWHEREDOYOUFINDTHEKEY', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', source: 'community list', added: '2026-09-03' },
   { code: 'OVERRIDEXP', unlocks: '40,000 XP', type: 'reward', category: 'boosts', status: 'working', source: 'community list' },
   { code: 'O2OVERRIDE', unlocks: 'Llama supply + 5 portable extractors', type: 'reward', category: 'boosts', status: 'regional', region: 'O2 promo', source: 'GamesRadar' },
 
-  // --- 🔷 Sprite Dust (2,000 each) ---
+  // --- 🔷 Sprite Dust ---
+  // The bigger Geno code also grants an Outfit style, and is gated behind the Geno
+  // quests + a specific "let Geno eliminate you" step, so we note the condition.
+  { code: 'YOURTHOUGHTSAREMINE', unlocks: '5,000 Sprite Dust + Void Master Geno Outfit style — after finishing the Geno story quests, shoot Geno’s shield and let him eliminate you', type: 'reward', category: 'dust', status: 'working', source: 'community list', added: '2026-09-03' },
   // The four localized codes were posted by regional Fortnite accounts but are
   // widely reported to redeem globally, so we keep them Working with an origin note.
   { code: 'MAGILUME', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', region: 'Fortnite Brazil', source: 'community list' },

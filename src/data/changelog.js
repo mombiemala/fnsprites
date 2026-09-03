@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'September 3, 2026',
+    title: 'Three new Lobby Hack codes',
+    changes: [
+      { tag: 'Added', text: 'YOURTHOUGHTSAREMINE — 5,000 Sprite Dust + a Void Master Geno Outfit style (claimable after the Geno story quests, then shooting Geno’s shield and letting him eliminate you).' },
+      { tag: 'Added', text: 'CHATWHEREDOYOUFINDTHEKEY — 2× Extraction Accelerators; and INVALIDCHEAT — 2× Cheat Code Locators.' },
+      { tag: 'Fixed', text: 'Corrected GatherAndCraft’s requirement — it unlocks after stage 4 of 5 of the “Get Crafty” quest (was listed as stage 9).' },
+    ],
+    summary: 'Added the latest Admin Panel codes, including the Geno one that also grants an Outfit style.',
+    why: 'Codes are the main way to grab Cheat Master Sprites and Sprite Dust in Override, so the Lobby Hacks list is one of the most time-sensitive things to keep current.',
+  },
+  {
+    date: 'September 3, 2026',
     title: 'Crown gets its official Loot Hacker art',
     changes: [
       { tag: 'Added', text: 'Wired in Epic’s official Loot Hacker (blue circuit) icon for the Crown Sprite, replacing the generated fallback. Crown now has all four finish icons — Normal, Gold, Cheat Master and Loot Hacker.' },

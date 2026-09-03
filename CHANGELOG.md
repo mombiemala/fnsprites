@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 3, 2026 — Three new Lobby Hack codes
+
+- **Added:** `YOURTHOUGHTSAREMINE` (5,000 Sprite Dust + Void Master Geno Outfit style — after the Geno quests, shoot
+  Geno’s shield and let him eliminate you), `CHATWHEREDOYOUFINDTHEKEY` (2× Extraction Accelerators) and
+  `INVALIDCHEAT` (2× Cheat Code Locators) to `src/data/codes.js`.
+- **Fixed:** `GatherAndCraft`’s requirement corrected to stage 4 of 5 of the “Get Crafty” quest (was stage 9).
+- **Why:** codes are the primary way to earn Cheat Master Sprites and Sprite Dust in Override, so the Lobby Hacks
+  list is one of the most time-sensitive parts of the tracker to keep current.
+
+---
+
 ## September 3, 2026 — Crown gets its official Loot Hacker art
 
 - **Added:** `victorycrown_loothacker.webp` — Epic’s official Loot Hacker icon for the Crown Sprite, replacing the
