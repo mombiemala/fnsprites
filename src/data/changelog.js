@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'September 3, 2026',
+    title: 'X-Ray & Onigiri are live (first Design-a-Sprite winners)',
+    summary:
+      'Today’s New Sprite Day (v41.10) shipped the first two community Design-a-Sprite winners, so both are now flipped to released in the tracker.',
+    changes: [
+      { tag: 'Added', text: 'X-Ray (by Avila215 — reveals nearby players and objects through walls) and Onigiri (by Enorull) are now released and checkable. Both start with the Normal finish; other finishes may follow.' },
+      { tag: 'Changed', text: 'News feed: the “X-Ray & Onigiri incoming” item flipped to a live “are live” item pinned for the day, and the “Coming next” Design-a-Sprite item now lists only the three still to come (Pond, Honey, Dumpster Dive).' },
+    ],
+    why:
+      'These were pre-loaded as unreleased with a plan to flip them the day they dropped — verified live via Epic’s own post before releasing, and kept to the confirmed Normal finish rather than guessing at gold/holofoil lines. Reports also mention a third, still-unnamed “Knight” Sprite in the same update; it’s held out until Epic details its name and power.',
+  },
+  {
+    date: 'September 3, 2026',
     title: 'New-season cleanup: trimmed News feed & collapsed the Season 3 chest calc',
     summary:
       'Two tidy-ups for the Override season — the News feed now leads with current-season updates, and the old Season 3 chest-luck calculator folds away until you want it.',

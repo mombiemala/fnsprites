@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 3, 2026 — X-Ray & Onigiri are live (first Design-a-Sprite winners)
+
+- **Added:** flipped `xray` and `onigiri` to `released: true` in `sprites.js` — the first two Design-a-Sprite contest
+  winners shipped in today's v41.10 New Sprite Day. Both are Normal-finish only for now (`variants: { normal: R }`);
+  extra finishes can be added when confirmed.
+- **Changed:** `news.js` — the "incoming" item became a pinned live "are live" item; the "Coming next" Design-a-Sprite
+  item now lists only Pond, Honey and Dumpster Dive.
+- **Why:** verified live via Epic's own post before releasing, and stuck to the confirmed Normal finish rather than
+  guessing gold/holofoil lines. A third, still-unnamed "Knight" Sprite was reported in the same update — held out
+  until Epic details its name and power.
+
+---
+
 ## September 3, 2026 — New-season cleanup: trimmed News feed & collapsed the Season 3 chest calc
 
 - **Changed:** `NewsFeed.jsx` now leads with the Override-era feed (items dated Aug 20 2026 onward) and collapses
