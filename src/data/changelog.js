@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'September 3, 2026',
+    title: 'Official art for X-Ray & Onigiri, plus a datamined Mega Man',
+    summary:
+      'Dropped in Epic’s real icons for the two new Design-a-Sprite winners (they’d been on our fallback art), and added the Mega Man collab Sprite found in the files.',
+    changes: [
+      { tag: 'Added', text: 'Official Epic icons for X-Ray and Onigiri — Normal (live) plus their datamined Gold & Cheatmaster finishes (art shown, flagged not-yet-obtainable until Epic confirms). These replace the app’s generated fallback art for both.' },
+      { tag: 'Added', text: 'Mega Man (Capcom collab) as a datamined upcoming Sprite, with its official icon — found under the internal codename “ImprovedSlide” (his signature slide). Ability & rarity TBC.' },
+      { tag: 'Added', text: 'Overshield now shows its datamined Gold & Cheatmaster finish art alongside Normal.' },
+    ],
+    why:
+      'Epic’s real icons read far better than our stylized fallbacks, and X-Ray/Onigiri were the only live Sprites still on fallback art. The roster’s art pipeline already auto-uses public/sprites/<id>_<finish>.webp and falls back to vector, so this was a drop-in. Two more finds from the same datamine — a separate blue “Hacker” finish across the roster, and an unidentified hooded Sprite — are being held until they’re confirmed and named.',
+  },
+  {
+    date: 'September 3, 2026',
     title: 'Onigiri gets its own art',
     summary:
       'Onigiri now draws as a proper rice ball instead of the generic fallback blob it inherited when it replaced Bullet.',

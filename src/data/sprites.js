@@ -138,8 +138,8 @@ export const SPRITE_TYPES = [
     ability: 'Design-a-Sprite winner (by Pine & Kiri): evolves egg → tadpole → frog, boosting movement speed & jump height and cutting fall damage as it grows. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
   { id: 'onigiri', name: 'Onigiri', icon: '🍙', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v41.10) as one of the first two contest winners, alongside X-Ray. Exact in-game ability not yet detailed by Epic; Normal finish is out now, other finishes may follow.',
-    variants: { normal: R } },
+    ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v41.10) as one of the first two contest winners, alongside X-Ray. Exact in-game ability not yet detailed by Epic. Normal is live; Gold & Cheatmaster finishes are datamined (art shown) but not confirmed obtainable yet.',
+    variants: { normal: R, gold: U, cheatmaster: U } },
   { id: 'honey', name: 'Honey', icon: '🍯', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Conejito_sam): spawns a beehive that swarms whoever damages you. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
@@ -147,7 +147,14 @@ export const SPRITE_TYPES = [
     ability: 'Design-a-Sprite winner (by StinkyPrincessGoose): a raccoon that finds you loot when you hide in dumpsters. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
   { id: 'xray', name: 'X-Ray', icon: '🩻', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players (and objects) through walls, like the old medallion did. Live since Sep 3 (New Sprite Day, v41.10) as one of the first two contest winners, alongside Onigiri. Normal finish is out now, other finishes may follow.',
+    ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players (and objects) through walls, like the old medallion did. Live since Sep 3 (New Sprite Day, v41.10) as one of the first two contest winners, alongside Onigiri. Normal is live; Gold & Cheatmaster finishes are datamined (art shown) but not confirmed obtainable yet.',
+    variants: { normal: R, gold: U, cheatmaster: U } },
+  // Third Sprite reportedly added in the same Sep 3 (v41.10) drop, separate from
+  // the two Design-a-Sprite winners. Knight-themed, but Epic hasn't published its
+  // name, rarity, ability or finishes — kept as a live placeholder (tentative)
+  // pending confirmation, refined as details surface. (Vice, multiple outlets.)
+  { id: 'knight', name: 'Knight', icon: '⚔️', rarity: 'Epic', dropRate: null, released: true, tentative: true, gen: 'c7s4',
+    ability: 'A third, Knight-themed Sprite reported live alongside X-Ray & Onigiri in the Sep 3 (v41.10) update. Name, rarity, ability and finishes are all still unconfirmed by Epic — this is a placeholder we’ll refine as details surface. Normal finish assumed live.',
     variants: { normal: R } },
 
   // ---- Override new-generation Sprites — LIVE in Chapter 7 Season 4, with
@@ -201,7 +208,10 @@ export const SPRITE_TYPES = [
     ability: 'Datamined Season 4 “Override” Sprite — Meowscles. Found in the files (Krowe & FNBRIntel) but not yet obtainable; ability & rarity not revealed by Epic — TBC.',
     variants: { normal: U } },
   { id: 'overshield', name: 'Overshield', icon: '🛡️', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — Overshield. The files hint at broader variant support than a single finish. Not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
+    ability: 'Datamined Season 4 “Override” Sprite — Overshield, with a full finish set in the files (Normal · Gold · Cheatmaster art all datamined). Not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
+    variants: { normal: U, gold: U, cheatmaster: U } },
+  { id: 'megaman', name: 'Mega Man', icon: '🔵', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — the Mega Man collab (Capcom), under the internal codename “ImprovedSlide” (Mega Man’s signature slide). Official icon is in the files; not yet obtainable, and its in-game ability & rarity aren’t confirmed by Epic — TBC.',
     variants: { normal: U } },
   { id: 'squibbly', name: 'Squibbly', icon: '🫧', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Datamined Season 4 “Override” Sprite — Squibbly, which appears to support multiple special variants. Still in the files, not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',

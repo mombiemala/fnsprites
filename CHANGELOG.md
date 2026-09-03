@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 3, 2026 — Official art for X-Ray & Onigiri, plus a datamined Mega Man
+
+- **Added:** official Epic `.webp` icons for `xray` and `onigiri` (Normal live; Gold & Cheatmaster finishes datamined —
+  art shown, variants flagged `U` until confirmed obtainable). Files land in `public/sprites/<id>_<finish>.webp`, which
+  the roster's `image` field already points at (vector art stays as the fallback).
+- **Added:** `megaman` — the Mega Man (Capcom) collab Sprite, datamined under the codename “ImprovedSlide”; official
+  icon wired, marked rumored/unreleased, ability & rarity TBC.
+- **Added:** `overshield` now carries its datamined Gold & Cheatmaster finish art too.
+- **Why:** Epic's real icons beat the generated fallbacks and X-Ray/Onigiri were the only live Sprites still on
+  vector. The art pipeline auto-resolves `public/sprites/<id>_<finish>.webp` with a vector fallback, so this was a
+  drop-in. Also spotted in the same asset drop: a distinct blue “Hacker” finish (separate from the green Cheatmaster)
+  across the roster, and an unidentified hooded Sprite (codename “Dwarf”) — both held pending confirmation/naming.
+
+---
+
 ## September 3, 2026 — Onigiri gets its own art
 
 - **Added:** a hand-drawn `onigiri` treatment in `SpriteArt.jsx` — rice-white palette with a dark nori band and an
