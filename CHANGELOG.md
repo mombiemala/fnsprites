@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 3, 2026 — Overshield & Mega Man go live; Adventure’s Loot Hacker art + ability
+
+- **Changed:** `overshield` → `released: true`, variants `{ normal: R, gold: R, cheatmaster: R, loothacker: U }`
+  (Loot Hacker stays unreleased). `megaman` → `released: true`, `{ normal: R }`.
+- **Added:** identified the datamined hooded/eye-patched icon (codename `Dwarf`) as **Loot Hacker Adventure** and
+  copied it to `adventure_loothacker.webp`; updated `adventure`’s ability to the confirmed “upgrades a random item in
+  your inventory each Level Up” (+ found near high/mountainous areas).
+- **Why:** Fortnite.GG lists Overshield and Mega Man without an “unreleased” flag → obtainable, so they’re flipped
+  live. The mystery asset was Adventure’s Loot Hacker finish, which also confirmed Adventure’s real ability.
+
+---
+
 ## September 3, 2026 — New “Loot Hacker” finish (datamined, unreleased)
 
 - **Added:** a `loothacker` theme in `themes.js` (blue circuit/hologram, `rumored`+`noSummon`) and a `loothacker: U`

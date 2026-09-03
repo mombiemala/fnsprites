@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'September 3, 2026',
+    title: 'Overshield & Mega Man go live; Adventure’s Loot Hacker art + ability',
+    changes: [
+      { tag: 'Changed', text: 'Overshield flipped to released — Normal, Gold and Cheat Master are obtainable now (its Loot Hacker finish stays unreleased).' },
+      { tag: 'Changed', text: 'Mega Man flipped to released (Normal finish).' },
+      { tag: 'Added', text: 'Identified the mystery hooded, eye-patched datamined icon as the Loot Hacker Adventure finish, and wired its real art in. Also filled in Adventure’s confirmed ability — “upgrades a random item in your inventory each Level Up” — and that it’s found near high, mountainous areas.' },
+    ],
+    summary:
+      'Two datamined Sprites (Overshield, Mega Man) are confirmed obtainable and now show as released, and the last unidentified icon turned out to be Adventure’s Loot Hacker finish.',
+    why:
+      'Cross-checked against the community tracker (Fortnite.GG): Overshield and Mega Man show without an “unreleased” flag, so they’re live. The hooded eye-patched art was “Loot Hacker Adventure,” which also handed us Adventure’s real ability — so we replaced the placeholder text with the confirmed one.',
+  },
+  {
+    date: 'September 3, 2026',
     title: 'New “Loot Hacker” finish added (datamined, unreleased)',
     summary:
       'Added the second Override finish — Loot Hacker — across the Season 4 roster, marked unreleased, with Epic’s real icons for it.',
