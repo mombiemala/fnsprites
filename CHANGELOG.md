@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 3, 2026 — Onigiri gets its own art
+
+- **Added:** a hand-drawn `onigiri` treatment in `SpriteArt.jsx` — rice-white palette with a dark nori band and an
+  umeboshi dot — in the same kawaii, non-IP vein as the other Sprites.
+- **Fixed:** Onigiri was rendering as the generic purple fallback blob (no motif) because the `TYPES`/`Features` maps
+  still held the removed `bullet` entry. Replaced Bullet's orphaned art with Onigiri's.
+- **Why:** sprite art is keyed per `typeId`, so when Bullet was swapped for Onigiri the new Sprite had no drawing.
+  X-Ray already had its ribcage motif; this brings Onigiri to parity so both new Sprites render correctly everywhere.
+
+---
+
 ## September 3, 2026 — X-Ray & Onigiri are live (first Design-a-Sprite winners)
 
 - **Added:** flipped `xray` and `onigiri` to `released: true` in `sprites.js` — the first two Design-a-Sprite contest

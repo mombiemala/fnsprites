@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'September 3, 2026',
+    title: 'Onigiri gets its own art',
+    summary:
+      'Onigiri now draws as a proper rice ball instead of the generic fallback blob it inherited when it replaced Bullet.',
+    changes: [
+      { tag: 'Added', text: 'A hand-drawn Onigiri sprite treatment — rice-white body with a dark nori (seaweed) wrap and a little umeboshi dot — matching the kawaii, non-IP style of the other Sprites.' },
+      { tag: 'Fixed', text: 'Onigiri was falling through to the generic purple fallback art (no motif) because the art map still carried the removed “Bullet” entry. Swapped Bullet’s orphaned art for Onigiri’s.' },
+    ],
+    why:
+      'When Epic swapped Bullet for Onigiri we updated the roster and released it live, but the vector art is keyed per type — so Onigiri had no drawing and rendered as a blank blob. X-Ray already had its ribcage motif; this brings Onigiri to parity so both new Sprites read correctly on cards, modals and share images.',
+  },
+  {
+    date: 'September 3, 2026',
     title: 'X-Ray & Onigiri are live (first Design-a-Sprite winners)',
     summary:
       'Today’s New Sprite Day (v41.10) shipped the first two community Design-a-Sprite winners, so both are now flipped to released in the tracker.',

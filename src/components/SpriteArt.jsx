@@ -47,7 +47,7 @@ const TYPES = {
   victorycrown: { c: ['#ffe9a8', '#ffcf4d', '#cf9a20'], feat: '#ff5566' },
   adventurer: { c: ['#e8cfa0', '#c8974a', '#7a5220'], feat: '#3aa0ff' },
   pond: { c: ['#bdf0c0', '#5ac86a', '#2b7a3a'], feat: '#ffffff' },
-  bullet: { c: ['#ffe6a0', '#e0a83c', '#9a6a12'], feat: '#5a4a2a' },
+  onigiri: { c: ['#ffffff', '#eef1f6', '#c2c8d4'], feat: '#2a2f3a' },
   honey: { c: ['#ffe6a0', '#f5b81f', '#b8801c'], feat: '#7a5220' },
   dumpster: { c: ['#cfd6e0', '#8b93a7', '#4a5265'], feat: '#1a2138' },
   xray: { c: ['#d0faff', '#46d0e0', '#1f8fae'], feat: '#ffffff' },
@@ -238,9 +238,10 @@ function Features({ id, fc, gid }) {
     case 'pond':
       // Frog eye-bumps on top (egg → tadpole → frog).
       return <g><circle cx="40" cy="20" r="8" fill={bodyFill} stroke="rgba(0,0,0,.25)" strokeWidth="1.5" /><circle cx="60" cy="20" r="8" fill={bodyFill} stroke="rgba(0,0,0,.25)" strokeWidth="1.5" /><circle cx="40" cy="20" r="3.4" fill={INK} /><circle cx="60" cy="20" r="3.4" fill={INK} /></g>
-    case 'bullet':
-      // A stacked-ammo chevron emblem.
-      return <g fill="none" stroke={fc} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity="0.85"><path d="M42 48 l8 6 8-6 M42 58 l8 6 8-6" /></g>
+    case 'onigiri':
+      // Rice ball: a dark nori (seaweed) band wrapping the base + a little
+      // salmon-pink umeboshi dot. Reads as onigiri while keeping the kawaii face.
+      return <><path d="M26 72 q24 9 48 0 l0 4 q-4 12 -24 12 q-20 0 -24 -12 Z" fill={fc} /><ellipse cx="50" cy="30" rx="3.4" ry="3" fill="#ff8080" opacity="0.85" /></>
     case 'honey':
       // A honeycomb cluster.
       return <g fill="none" stroke={fc} strokeWidth="2" opacity="0.6"><path d="M46 40 l6 0 3 5 -3 5 -6 0 -3-5 Z" /><path d="M55 45 l6 0 3 5 -3 5 -6 0 -3-5 Z" /><path d="M46 50 l6 0 3 5 -3 5 -6 0 -3-5 Z" /></g>
