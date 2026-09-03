@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 3, 2026 — “How Sprites work” refreshed for Override; header, footer & README current
+
+- **Changed:** `spriteGuide.js` (the single source for the in-app + static `/sprites#how-sprites-work` guide) now
+  leads with the Override season — Cheat Codes / Hack the Lobby codes (plus chests) — and covers the Cheat Master and
+  Loot Hacker finishes; Season 3 chest-farming is kept but framed as the archived “Runners” generation.
+- **Changed:** the tagline under the logo (app `App.jsx` + static `prerender.mjs`) now reads “Chapter 7 Season 4:
+  Override” instead of the stale `v41.30 (Jul 30, 2026)` fallback (the app still shows the live build when detected).
+- **Changed:** footer art-credit (app + static, mirrored) and `README.md` brought current — Season 4 uses Epic’s
+  official datamined icons; README counts/roster updated (160 released variants; Season 4 is live, not “Upcoming”;
+  Bullet→Onigiri; X-Ray, Onigiri, Overshield, Mega Man listed).
+- **Why:** a new season means the guide and chrome should describe how Sprites are obtained now, not last season, and
+  the whole site should tell one current story.
+
+---
+
 ## September 3, 2026 — Overshield & Mega Man go live; Adventure’s Loot Hacker art + ability
 
 - **Changed:** `overshield` → `released: true`, variants `{ normal: R, gold: R, cheatmaster: R, loothacker: U }`

@@ -455,7 +455,7 @@ export default function App() {
             </button>
           </h1>
           <p className="mt-1 text-xs text-[var(--muted)] sm:text-sm">
-            {set.released} released variants · {liveBuild ? `v${liveBuild} live` : 'v41.30 (Jul 30, 2026)'}
+            {set.released} released variants · {liveBuild ? `v${liveBuild} live` : 'Chapter 7 Season 4: Override'}
           </p>
         </div>
         {!authLoading &&
@@ -787,7 +787,7 @@ export default function App() {
           <p className="mx-auto mt-2 max-w-3xl opacity-80">
             Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from{' '}
             <a className="underline" href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>;
-            some variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), while real-person collab sprites (Vini Jr., Pollo) use Epic&apos;s official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.
+            the Season 4 “Override” roster uses Epic&apos;s official datamined icons (Normal, Gold, Cheat Master &amp; Loot Hacker); some Season 3 variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), and real-person collab sprites (Vini Jr., Pollo) use Epic&apos;s official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.
           </p>
           <p className="mx-auto mt-2 max-w-3xl opacity-80">
             Roster, themes &amp; drop rates cross-referenced from{' '}

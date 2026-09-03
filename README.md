@@ -2,14 +2,16 @@
 
 A fan-made Fortnite **sprite tracker** — track every sprite across all of its
 finishes (Normal, Gold, Gummy, Galaxy, **Gem**, **Holofoil**, **Cube**, **Quack**,
-and the Season 4 **Cheatmaster**), see your collection and mastery progress, save it
-to the cloud, compare with other players, browse the live **Item Shop**, and look up
-any player's **Battle Royale stats**. Current through **Chapter 7 Season 4 "Override"**
-(**v42.00**, Aug 2026) — **151 released variants** across two generations: the
-Season 3 **"Runners"** roster (kept forever in the **Sprite Garden**) and the new
-**Override** generation — Sonic, Tails, Shadow, Jazz Jackrabbit, Klombo, Bush Ranger,
-Crown, Jonesy, 8-Bit Blaster, Killswitch & Adventure — in **Normal, Gold &
-Cheatmaster** (Gold went live at Gold Hours, Aug 22). Epic confirmed **Sprites are
+the Season 4 **Cheat Master**, and the datamined **Loot Hacker**), see your collection
+and mastery progress, save it to the cloud, compare with other players, browse the live
+**Item Shop**, and look up any player's **Battle Royale stats**. Current through
+**Chapter 7 Season 4 "Override"** (Sep 2026, New Sprite Day) — **160 released variants**
+across two generations: the Season 3 **"Runners"** roster (kept forever in the **Sprite
+Garden**) and the live **Override** generation — Sonic, Tails, Shadow, Jazz Jackrabbit,
+Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch, Adventure, Storm Scout,
+Overshield, Mega Man, and the first two **Design-a-Sprite** winners **X-Ray & Onigiri** —
+in **Normal, Gold & Cheat Master**, with a datamined **Loot Hacker** finish flagged
+unreleased across the roster. Epic confirmed **Sprites are
 kept forever**, but a new generation takes over **Battle Royale** each season: older
 -gen Sprites are **preserved and displayed** (Sprite Garden + Collection) rather than
 used in BR ("may return down the line"), and **Sprite Dust & Gizmos reset** at the
@@ -23,16 +25,17 @@ flagged **Rumored / Upcoming** until confirmed.
 
 ## Features
 
-- **Accurate roster** — every released sprite & variant, current through **v41.30**
-  and the **Aug 6 Gem drop** (**36 sprites / 140 released variants, all obtainable**): the
-  full Gem line, Cube, Holofoil & Quack (a Sprite Mastery reward), Ironmouse back
-  from the vault, and every Zero Point finish live. The next generation —
-  Chapter 7 Season 4 **"Override"** — is previewed as **Upcoming/Rumored**: the
-  five Epic-confirmed **Design-a-Sprite** winners (Pond, Bullet, Honey, Dumpster
-  Dive, X-Ray), the trailer-confirmed headliner **Sonic**, plus the datamined
-  lineup (**Tails, Jazz Jackrabbit, Klombo, Bushranger, Killswitch, Victory Crown,
-  The Adventurer**), all filed under the `c7s4` generation. All
-  leaked/upcoming content is clearly flagged **Rumored** so leaks never read as
+- **Accurate roster** — every released sprite & variant, current through the
+  **Sep 3 New Sprite Day** (**41 sprites / 160 released variants**). The current
+  generation, **Chapter 7 Season 4 "Override,"** is **live**: Sonic, Tails, Shadow,
+  Jazz Jackrabbit, Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch,
+  Adventure, Storm Scout, Overshield, Mega Man, plus the first two **Design-a-Sprite**
+  winners **X-Ray & Onigiri** — in Normal, Gold & Cheat Master, with the datamined
+  **Loot Hacker** finish flagged unreleased across the roster. The Season 3
+  **"Runners"** roster (the full Gem line, Cube, Holofoil & Quack, Ironmouse back from
+  the vault, every Zero Point finish) is kept forever in the **Sprite Garden**.
+  Still-datamined Sprites (Pond, Honey, Dumpster Dive, Meowscles, Squibbly, Cube,
+  Headshot, BodySlam) are previewed as **Upcoming/Rumored** so leaks never read as
   fact — each news item shows its source and whether it's official.
 - **🌱 Sprite Garden hub** — a **Community Gallery** where players upload screenshots
   of their in-game garden, browse a feed and like favourites (moderated: pre-upload
@@ -50,16 +53,17 @@ flagged **Rumored / Upcoming** until confirmed.
   sorted by its leaked release date, with a live **countdown** (“in 8 days”),
   tap-to-open. All clearly badged **Rumored**.
 - **Consistent sprite art** — each variant is a per-variant image
-  (`public/sprites/<id>_<variant>.png`, 512×512, transparent). **Sprite images are
-  © Epic Games, Inc.**, used for identification only; base identities are sourced
-  from [UltronCore/sprite-tracker](https://github.com/UltronCore/sprite-tracker).
-  Because official art doesn't exist for every finish, the variant renders are
-  produced through **one shared image-to-image pipeline** (Google Gemini) from
-  each sprite's Normal, so a given finish (Gold, Gummy, Holofoil, Cube…) looks the
-  **same material on every sprite** rather than drifting per-sprite. Real-person
-  and licensed collab sprites (e.g. **Vini Jr.** / Vinícius Júnior, **Pollo**) use
-  Epic's **official in-game art** with the background removed — never an
-  AI-fabricated likeness. A generated SVG fallback covers any missing image.
+  (`public/sprites/<id>_<variant>.png`; Season 4 **Override** art ships as `.webp`).
+  **Sprite images are © Epic Games, Inc.**, used for identification only; base
+  identities are sourced from [UltronCore/sprite-tracker](https://github.com/UltronCore/sprite-tracker),
+  and the Season 4 Override roster uses Epic's **official datamined icons** (Normal,
+  Gold, Cheat Master & Loot Hacker). Where official art doesn't exist for a finish,
+  the variant renders are produced through **one shared image-to-image pipeline**
+  (Google Gemini) from each sprite's Normal, so a given finish (Gold, Gummy,
+  Holofoil, Cube…) looks the **same material on every sprite** rather than drifting
+  per-sprite. Real-person and licensed collab sprites (e.g. **Vini Jr.** / Vinícius
+  Júnior, **Pollo**) use Epic's **official in-game art** with the background removed —
+  never an AI-fabricated likeness. A generated SVG fallback covers any missing image.
 - **Track ownership, levels & mastery** — mark a variant owned, then set its
   **level 1–5** (level 5 = mastered) right on the grid card or in the detail
   view, with a `Lv 3/5` readout. Works instantly as a guest (saved in your

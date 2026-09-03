@@ -3,9 +3,10 @@
 // the static /sprites page via scripts/prerender.mjs). Keeping it here means the
 // two surfaces never drift. `**bold**` spans are rendered by each consumer.
 export const SPRITE_GUIDE = [
-  { h: '✨ Getting Sprites', body: [
-    'Sprites mostly come from **Sprite Chests** around the island (a few also spawn mid-match). Rarer ones — Zero Point, Grim Reaper, Burnt Peanut — have very low drop rates, which is why trading duplicates is popular.',
+  { h: '✨ Getting Sprites (Season 4: Override)', body: [
+    'This season is **Chapter 7 Season 4 “Override.”** Its Sprites come from **in-world Cheat Codes** you activate around the map and **Hack the Lobby codes** you enter from the lobby — and many still drop from **Sprite Chests** too. Entering a Sprite’s **Hack the Lobby code** unlocks its **Cheat Master** finish.',
     '**Any chest can drop any Sprite** — rarity sets the odds, not the location. Chests glow blue with a pink crystal; turn on **Visualized Sounds** to spot them. Busiest farm is **Sinister Strip** (4 chests); Wonkeeland, Calamari Canyon, Heatwave Harbor & Shaken Sanctuary have 3 each.',
+    'Older **Season 3 “Runners”** Sprites (Zero Point, Grim Reaper, Burnt Peanut and friends) came from Sprite Chests too, but they’re now archived in your **Sprite Garden** — Override is the generation you collect and use in Battle Royale this season. Rarer Sprites have very low drop rates, which is why trading duplicates stays popular.',
   ] },
   { h: '⚠️ Extract it, or you lose it', body: [
     'A Sprite **isn’t yours until you Extract it.** If you’re eliminated before extracting, it’s gone. Extract at an **Extraction Site** or with a **Portable Extractor** (a Mastery reward). Only extracted Sprites count toward your collection.',
@@ -21,7 +22,8 @@ export const SPRITE_GUIDE = [
     'In this tracker, marking a variant **★ Mastered** = you’ve extracted it at Lv 5.',
   ] },
   { h: '🎨 Variants & forms', body: [
-    'Each Sprite comes in variant finishes — Normal, Gold, Gummy, Galaxy, and newer Gem / Holofoil / Cube / Quack — each stacking a small **bonus** on top of the Sprite’s ability. Re-summoning a variant you’ve traded away costs **Sprite Dust**.',
+    'Each Sprite comes in variant finishes — **Normal, Gold, Gummy, Galaxy, Gem, Holofoil, Cube** and **Quack** — each stacking a small **bonus** on top of the Sprite’s ability. Re-summoning a variant you’ve traded away costs **Sprite Dust**.',
+    'Season 4 “Override” adds two finishes of its own: **Cheat Master** (the green code finish — unlocked with a Hack the Lobby code, not summoned) and **Loot Hacker** (the blue circuit finish — datamined and not released yet).',
   ] },
   { h: '🔁 Trading', body: [
     'There’s **no official trade menu** — trades happen in-game by dropping a Sprite for another player to pick up and **co-extract**. Rule of thumb: **don’t drop first**, use quiet/bot lobbies, and stick to **vouched** partners.',
