@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'September 3, 2026',
+    title: 'New “Loot Hacker” finish added (datamined, unreleased)',
+    summary:
+      'Added the second Override finish — Loot Hacker — across the Season 4 roster, marked unreleased, with Epic’s real icons for it.',
+    changes: [
+      { tag: 'Added', text: 'A “Loot Hacker” finish (blue circuit / hologram look) alongside Normal, Gold and Cheat Master on the Chapter 7 Season 4 Sprites. It’s datamined and not yet obtainable, so every Loot Hacker variant shows as unreleased — matching community trackers.' },
+      { tag: 'Added', text: 'Official Loot Hacker icons for 13 Sprites (X-Ray, Onigiri, Sonic, Tails, Shadow, Jazz, Klombo, Bush Ranger, Jonesy, 8-Bit, Killswitch, Storm Scout, Overshield); the rest use a generated blue-circuit fallback until their art lands.' },
+    ],
+    why:
+      'Loot Hacker is a real, separate finish in the Season 4 files (distinct from the green Cheat Master), and it kept showing up in datamines. Adding it now — clearly flagged unreleased with unlock TBC — means the collection totals and variant filters already account for it, and it simply flips to “obtainable” the day Epic ships it, no scramble. How it’s unlocked isn’t confirmed yet, so we don’t assert a method.',
+  },
+  {
+    date: 'September 3, 2026',
     title: 'Official art for X-Ray & Onigiri, plus a datamined Mega Man',
     summary:
       'Dropped in Epic’s real icons for the two new Design-a-Sprite winners (they’d been on our fallback art), and added the Mega Man collab Sprite found in the files.',

@@ -17,22 +17,38 @@ const OUT = 'docs/sprite-updates-draft.md'
 
 // Lines worth surfacing to the curator — sprites, codes and events.
 const KEYWORDS =
-  /(sprite|cheat code|cheat master|cheatmaster|lobby hack|admin panel|power hour|new sprite day|cheat code day|update day|sprite dust|gizmo|gilded|golden|mastery monday|override)/i
+  /(sprite|creature|cheat code|cheat master|cheatmaster|loot hacker|loothacker|lobby hack|admin panel|power hour|new sprite day|cheat code day|update day|sprite dust|gizmo|gilded|golden|mastery monday|override)/i
+
+// Filenames/paths in the datamine repo worth flagging — the game files behind new
+// Sprites & finishes (this is the extraction layer that gives fortnite.gg its edge).
+const DATAMINE_FILE_RE = /(creature|sprite|cheatmaster|hacker|winner[a-z]?)/i
+
+// Public Fortnite datamine repo — commits fortnite-api-style JSON diffs every patch.
+// We read its recent commits via the keyless GitHub API (60 req/hr unauth is plenty
+// for a thrice-weekly run) and surface changed files that look Sprite-related.
+const DATAMINE_REPO = 'Fortnite-Datamining/Fortnite-Datamining'
 
 const SOURCES = {
   apiAes: 'https://fortnite-api.com/v2/aes',
   apiNews: 'https://fortnite-api.com/v2/news/br?language=en',
   apiNewCosmetics: 'https://fortnite-api.com/v2/cosmetics/new',
+  datamineCommits: `https://api.github.com/repos/${DATAMINE_REPO}/commits?per_page=12`,
   patchNotes: 'https://www.fortnite.com/news',
   epicCommunities: 'https://communities.epicgames.com',
   fortniteGG: 'https://fortnite.gg/lobby-hacks',
 }
 
+// GitHub API calls use the built-in Actions token when present (still keyless — it's
+// injected by the workflow) to avoid the 60/hr unauthenticated rate limit.
+const GH_TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || ''
+
 async function getJson(url, ms = 15000) {
   const ctrl = new AbortController()
   const t = setTimeout(() => ctrl.abort(), ms)
+  const headers = { 'user-agent': 'fnsprites-updates-bot' }
+  if (GH_TOKEN && url.startsWith('https://api.github.com/')) headers.authorization = `Bearer ${GH_TOKEN}`
   try {
-    const res = await fetch(url, { signal: ctrl.signal, headers: { 'user-agent': 'fnsprites-updates-bot' } })
+    const res = await fetch(url, { signal: ctrl.signal, headers })
     if (!res.ok) return { error: `HTTP ${res.status}` }
     return { data: await res.json() }
   } catch (e) {
@@ -131,7 +147,47 @@ async function main() {
     ),
   )
 
-  // 4) Best-effort HTML text extraction from patch notes / aggregators. These are
+  // 4) Datamine repo — the extraction layer. Read the repo's recent commits (each
+  //    is usually a per-patch diff) and, for the newest few, list changed files that
+  //    look Sprite-related. New Sprites/finishes show up here as file adds before the
+  //    mirror APIs surface them as "cosmetics" — this is what keeps us near fortnite.gg.
+  const commits = await getJson(SOURCES.datamineCommits)
+  if (commits.error || !Array.isArray(commits.data)) {
+    parts.push(section('Datamine repo — recent commits', `- ⚠️ Could not read ${DATAMINE_REPO} commits (${commits.error || 'unexpected response'}).`))
+  } else {
+    const recent = commits.data.slice(0, 12)
+    const commitLines = recent.map((c) => {
+      const msg = (c.commit?.message || '').split('\n')[0].slice(0, 100)
+      const when = (c.commit?.author?.date || '').slice(0, 10)
+      return `- ${when ? `\`${when}\` ` : ''}${msg}${c.html_url ? ` — ${c.html_url}` : ''}`
+    })
+    // For the newest few commits, pull the file list and flag Sprite-related paths.
+    const fileHits = new Set()
+    for (const c of recent.slice(0, 5)) {
+      if (!c.sha) continue
+      const detail = await getJson(`https://api.github.com/repos/${DATAMINE_REPO}/commits/${c.sha}`)
+      for (const f of detail.data?.files || []) {
+        if (f.filename && DATAMINE_FILE_RE.test(f.filename)) fileHits.add(`${f.status === 'added' ? '🆕 ' : ''}${f.filename}`)
+      }
+    }
+    parts.push(
+      section(
+        'Datamine repo — recent commits',
+        commitLines.length ? commitLines.join('\n') : '- _(no recent commits)_',
+      ),
+    )
+    parts.push(
+      section(
+        'Datamine repo — Sprite-related file changes (newest 5 commits)',
+        fileHits.size
+          ? [...fileHits].slice(0, 40).map((s) => `- ${s}`).join('\n') +
+            `\n\n_New \`Creature_Sprite\` / \`Cheatmaster\` / \`Hacker\` / \`Winner*\` files usually mean a new Sprite or finish — cross-check against \`src/data/sprites.js\`._`
+          : '- _(no Sprite-related file changes in the newest commits)_',
+      ),
+    )
+  }
+
+  // 5) Best-effort HTML text extraction from patch notes / aggregators. These are
   //    often JS-rendered, so a thin result means "open the page and check manually".
   for (const [label, url] of [
     ['Fortnite patch notes', SOURCES.patchNotes],
@@ -154,10 +210,10 @@ async function main() {
   const header =
     `# Sprite / codes / events — updates draft\n\n` +
     `> Auto-generated by \`.github/workflows/sprite-updates-agent.yml\` from public\n` +
-    `> sources (fortnite-api.com, fortnite.com/news, fortnite.gg). **Not a source of\n` +
-    `> truth** — review each candidate, confirm it, then fold anything real into the\n` +
-    `> data files. This scans machine-readable feeds; Epic's Instagram-only reveals\n` +
-    `> still need a human. (The commit date is when this ran.)\n\n` +
+    `> sources (fortnite-api.com, a Fortnite datamine repo's commit feed, fortnite.com/news,\n` +
+    `> fortnite.gg). **Not a source of truth** — review each candidate, confirm it, then\n` +
+    `> fold anything real into the data files. This scans machine-readable feeds; Epic's\n` +
+    `> Instagram-only reveals still need a human. (The commit date is when this ran.)\n\n` +
     `## Curator checklist\n\n` +
     `- [ ] New Lobby Hack code? Add to \`src/data/codes.js\` (status 'working' only if\n` +
     `      Epic/an outlet confirms it, else 'rumored'; never guess a reward)\n` +

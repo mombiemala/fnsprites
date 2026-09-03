@@ -1,7 +1,7 @@
 name: Sprite updates scout
 
-# Scheduled research aid: pulls public Fortnite sources (fortnite-api.com,
-# fortnite.com/news, fortnite.gg), surfaces anything that looks like a new Sprite,
+# Scheduled research aid: pulls public Fortnite sources (fortnite-api.com, a Fortnite
+# datamine repo's commit feed, fortnite.com/news, fortnite.gg), surfaces anything that looks like a new Sprite,
 # Lobby Hack code or Sprite event, and opens a REVIEW PULL REQUEST with
 # docs/sprite-updates-draft.md. It NEVER edits the live site — a human reviews the
 # draft and folds real updates into src/data/{codes,sprites,news}.js. No API key,
@@ -35,6 +35,8 @@ jobs:
           node-version: 20
 
       - name: Build the draft
+        env:
+          GITHUB_TOKEN: ${{ github.token }} # keyless: raises the GitHub API rate limit for the datamine-repo commit reads
         run: node scripts/fetch-sprite-updates.mjs
 
       - name: Open or refresh the review PR

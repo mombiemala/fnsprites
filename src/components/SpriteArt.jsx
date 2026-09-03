@@ -84,6 +84,10 @@ function treatment(themeId, type, gid, hgid) {
     case 'quack':
       return { stops: ['#fff0a8', '#ffd23f', '#e0962a'], feat: '#e0962a',
         overlay: <ellipse cx="42" cy="40" rx="14" ry="9" fill="#fff" opacity="0.35" /> }
+    case 'loothacker':
+      // Blue circuit / hologram wash (distinct from Cheatmaster's green).
+      return { stops: ['#7fc4ff', '#2a6cf0', '#1a1f6b'], feat: '#eaf4ff',
+        overlay: <g stroke="#bfe4ff" strokeWidth="1" opacity="0.3" fill="none"><path d="M28 40 h14 v10 h16 M30 62 h20 v-8 M60 30 v18 h12 M50 70 v-10 h16" /><g fill="#bfe4ff"><circle cx="42" cy="40" r="1.6" /><circle cx="58" cy="50" r="1.6" /><circle cx="50" cy="60" r="1.6" /><circle cx="72" cy="48" r="1.6" /></g></g> }
     default: // normal
       return { stops: [l, b, s], feat: type.feat, overlay: null }
   }

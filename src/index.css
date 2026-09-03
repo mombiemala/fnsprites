@@ -157,6 +157,15 @@
       linear-gradient(rgba(65, 240, 138, 0.10) 1px, transparent 1px) 0 0 / 100% 6px,
       linear-gradient(135deg, #12351f, #0f2a3a 45%, #2a0f3a 100%);
   }
+  /* Loot Hacker — the second Season 4 "Override" finish: a blue circuit-board /
+     hologram wash (distinct from Cheatmaster's green). A faint grid over a
+     cyan → indigo gradient. */
+  .theme-loothacker {
+    background:
+      linear-gradient(rgba(74, 163, 255, 0.10) 1px, transparent 1px) 0 0 / 12px 12px,
+      linear-gradient(90deg, rgba(74, 163, 255, 0.10) 1px, transparent 1px) 0 0 / 12px 12px,
+      linear-gradient(135deg, #0f2540, #122a52 45%, #241b52 100%);
+  }
 
   /* ---------- Collectible-card treatment (redesign) ----------
      Frames each sprite like a trading card: a rarity-tinted foil edge, a

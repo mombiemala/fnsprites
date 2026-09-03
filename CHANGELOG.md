@@ -11,6 +11,27 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 3, 2026 — New “Loot Hacker” finish (datamined, unreleased)
+
+- **Added:** a `loothacker` theme in `themes.js` (blue circuit/hologram, `rumored`+`noSummon`) and a `loothacker: U`
+  variant on all 15 Season 4 Sprites that carry the Gold/Cheat Master finishes, so it reads as a fourth finish —
+  unreleased everywhere (parity with community trackers), unlock TBC. Added `theme-loothacker` card CSS and a
+  `loothacker` vector fallback in `SpriteArt.jsx`.
+- **Added:** 13 official Loot Hacker `.webp` icons (`public/sprites/<id>_loothacker.webp`) for X-Ray, Onigiri, Sonic,
+  Tails, Shadow, Jazz, Klombo, Bush Ranger, Jonesy, 8-Bit, Killswitch, Storm Scout, Overshield.
+- **Why:** Loot Hacker is a genuinely separate Season 4 finish (blue) from the green Cheat Master — confirmed by the
+  datamined assets. Modeling it now (flagged unreleased) means collection totals and variant filters already account
+  for it and it just flips to obtainable when Epic ships it. Unlock method isn't confirmed, so none is asserted.
+
+### Tooling (internal)
+
+- **Changed:** `scripts/fetch-sprite-updates.mjs` (the scheduled scout) now also reads a Fortnite **datamine repo's
+  commit feed** via the keyless GitHub API and flags changed files matching `Creature_Sprite`/`Cheatmaster`/`Hacker`/
+  `Winner*` — the extraction layer that surfaces new Sprites/finishes before mirror APIs do. Uses the Actions
+  `GITHUB_TOKEN` (still keyless) to avoid the unauth rate limit.
+
+---
+
 ## September 3, 2026 — Official art for X-Ray & Onigiri, plus a datamined Mega Man
 
 - **Added:** official Epic `.webp` icons for `xray` and `onigiri` (Normal live; Gold & Cheatmaster finishes datamined —
