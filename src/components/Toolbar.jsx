@@ -32,6 +32,10 @@ function SeasonSelect({ selected, onChange }) {
     return () => document.removeEventListener('mousedown', onDoc)
   }, [open])
   const toggle = (id) => onChange(selected.includes(id) ? selected.filter((x) => x !== id) : [...selected, id])
+  // Display order: current season first, then the rest newest-first. (GENERATIONS
+  // stays in chronological order for the default-sort logic — this only reorders
+  // the dropdown so the season players are actually in leads the list.)
+  const orderedGens = [...GENERATIONS].reverse().sort((a, b) => (b.current ? 1 : 0) - (a.current ? 1 : 0))
   const summary =
     selected.length === 0 ? 'All seasons'
     : selected.length === 1 ? (GENERATIONS.find((g) => g.id === selected[0])?.sub || selected[0])
@@ -50,7 +54,7 @@ function SeasonSelect({ selected, onChange }) {
       </button>
       {open && (
         <div className="absolute left-0 z-40 mt-1 min-w-[200px] rounded-xl border border-[var(--border)] bg-[var(--panel)] p-1.5 shadow-xl">
-          {GENERATIONS.map((g) => (
+          {orderedGens.map((g) => (
             <label key={g.id} className="flex cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-sm text-white hover:bg-[var(--panel-2)]">
               <input type="checkbox" checked={selected.includes(g.id)} onChange={() => toggle(g.id)} />
               <span>{g.sub}<span className="text-[var(--muted)]">{g.current ? ' · now' : g.legacy ? ' · last season' : ''}</span></span>

@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 4, 2026 — Filters: current season leads the Season dropdown
+
+- **Changed:** `Toolbar.jsx` — the Season filter dropdown lists the current season (Override) first, then older
+  seasons newest-first (was oldest-first). Only the dropdown display order changed; `GENERATIONS` stays chronological
+  so the default sprite sort is unaffected.
+- **Why:** most people filtering by season want the current one, so it should be the first tap.
+
+---
+
 ## September 4, 2026 — Filters: hide variant chips that don’t apply to the selected season
 
 - **Changed:** `Toolbar.jsx` — when exactly one season is selected, the Rarity and Variant chip rows show only the

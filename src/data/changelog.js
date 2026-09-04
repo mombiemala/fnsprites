@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 4, 2026',
+    title: 'Filters: current season leads the Season dropdown',
+    changes: [
+      { tag: 'Changed', text: 'The Season filter dropdown now lists the current season (Override) first, then older seasons newest-first — instead of oldest-first. The underlying data order is unchanged, so the default sprite sort is unaffected.' },
+    ],
+    summary: 'Small filter tweak — the season you’re actually playing is at the top of the dropdown.',
+    why: 'Most people filtering by season want the current one, so it should be the first tap rather than scrolling past archived seasons.',
+  },
+  {
+    date: 'September 4, 2026',
     title: 'Filters: hide variant chips that don’t apply to the selected season',
     changes: [
       { tag: 'Changed', text: 'When exactly one season is selected in the collection filters, the Rarity and Variant chip rows now show only the finishes that actually exist in that generation. Pick Season 4 “Override” and the Variant row drops to Normal · Gold · Cheat Master · Loot Hacker; pick Season 3 “Runners” and it shows the classic finishes (Gummy, Galaxy, Gem, Holofoil, Cube, Quack) with no Cheat Master/Loot Hacker. With all seasons (or 2+) selected, every chip stays.' },
