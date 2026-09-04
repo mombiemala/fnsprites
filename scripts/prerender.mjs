@@ -299,7 +299,7 @@ const CHEST_SCRIPT = `<script>window.__RATED=${JSON.stringify(RATED_MAP)};(funct
 
 // Runtime for the /sprites "how to get every Sprite" board: client-side sort,
 // filter and search over the pre-rendered rows. No-ops on pages without #how-to-get.
-const GUIDE_SCRIPT = `<script>(function(){var b=document.getElementById('how-to-get');if(!b)return;var grows=b.querySelector('.grows'),rows=[].slice.call(b.querySelectorAll('.grow')),search=b.querySelector('#gsearch'),empty=b.querySelector('#gempty');var sort='easiest',filter='all';function num(v,f){return v===''||v==null?f:parseFloat(v)}var S={easiest:function(a,b){var sa=a.dataset.status==='available'?0:1,sb=b.dataset.status==='available'?0:1;return sa-sb||num(b.dataset.p,-1)-num(a.dataset.p,-1)||(+a.dataset.rank)-(+b.dataset.rank)},rarest:function(a,b){return (+b.dataset.rank)-(+a.dataset.rank)||num(a.dataset.p,2)-num(b.dataset.p,2)},dust:function(a,b){return num(a.dataset.dust,Infinity)-num(b.dataset.dust,Infinity)},az:function(a,b){return a.dataset.name<b.dataset.name?-1:a.dataset.name>b.dataset.name?1:0}};function apply(){var q=(search.value||'').trim().toLowerCase();var shown=rows.filter(function(r){if(filter!=='all'&&r.dataset.status!==filter)return false;if(q&&r.dataset.search.indexOf(q)===-1)return false;return true;});rows.forEach(function(r){r.style.display='none'});shown.sort(S[sort]);shown.forEach(function(r){r.style.display='';grows.appendChild(r)});empty.style.display=shown.length?'none':'';empty.textContent=q?('No Sprites match \\u201C'+search.value.trim()+'\\u201D.'):'No Sprites match this filter.';}b.querySelectorAll('[data-sort]').forEach(function(el){el.addEventListener('click',function(){sort=el.dataset.sort;b.querySelectorAll('[data-sort]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});b.querySelectorAll('[data-filter]').forEach(function(el){el.addEventListener('click',function(){filter=el.dataset.filter;b.querySelectorAll('[data-filter]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});search.addEventListener('input',apply);apply();})();</script>`
+const GUIDE_SCRIPT = `<script>(function(){var b=document.getElementById('how-to-get');if(!b)return;var grows=b.querySelector('.grows'),rows=[].slice.call(b.querySelectorAll('.grow')),search=b.querySelector('#gsearch'),empty=b.querySelector('#gempty');var sort='season',filter='all';function num(v,f){return v===''||v==null?f:parseFloat(v)}var S={season:function(a,b){return (+a.dataset.gen)-(+b.dataset.gen)||((a.dataset.status==='available'?0:1)-(b.dataset.status==='available'?0:1))||(+b.dataset.rank)-(+a.dataset.rank)},easiest:function(a,b){var sa=a.dataset.status==='available'?0:1,sb=b.dataset.status==='available'?0:1;return sa-sb||num(b.dataset.p,-1)-num(a.dataset.p,-1)||(+a.dataset.rank)-(+b.dataset.rank)},rarest:function(a,b){return (+b.dataset.rank)-(+a.dataset.rank)||num(a.dataset.p,2)-num(b.dataset.p,2)},dust:function(a,b){return num(a.dataset.dust,Infinity)-num(b.dataset.dust,Infinity)},az:function(a,b){return a.dataset.name<b.dataset.name?-1:a.dataset.name>b.dataset.name?1:0}};function apply(){var q=(search.value||'').trim().toLowerCase();var shown=rows.filter(function(r){if(filter!=='all'&&r.dataset.status!==filter)return false;if(q&&r.dataset.search.indexOf(q)===-1)return false;return true;});rows.forEach(function(r){r.style.display='none'});shown.sort(S[sort]);shown.forEach(function(r){r.style.display='';grows.appendChild(r)});empty.style.display=shown.length?'none':'';empty.textContent=q?('No Sprites match \\u201C'+search.value.trim()+'\\u201D.'):'No Sprites match this filter.';}b.querySelectorAll('[data-sort]').forEach(function(el){el.addEventListener('click',function(){sort=el.dataset.sort;b.querySelectorAll('[data-sort]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});b.querySelectorAll('[data-filter]').forEach(function(el){el.addEventListener('click',function(){filter=el.dataset.filter;b.querySelectorAll('[data-filter]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});search.addEventListener('input',apply);apply();})();</script>`
 
 // Runtime for the /news feed: client-side tag filter + search over the
 // pre-rendered cards. No-ops on pages without #newsfeed.
@@ -494,6 +494,11 @@ const STATUS_META = {
   vaulted: { label: 'Vaulted', color: '#ef4444' },
 }
 const RARITY_RANK = Object.fromEntries(RARITY_ORDER.map((r, i) => [r, i]))
+// Generation display rank: current season = 0, then older seasons newest-first.
+// Used to order the board so the season players are actually in leads.
+const GEN_RANK = Object.fromEntries(
+  [...GENERATIONS].reverse().sort((a, b) => (b.current ? 1 : 0) - (a.current ? 1 : 0)).map((g, i) => [g.id, i]),
+)
 
 function buildGuideRows() {
   return SPRITE_TYPES.map((t) => {
@@ -501,13 +506,14 @@ function buildGuideRows() {
     const released = !!live?.released
     const vaulted = !!(t.vaulted || live?.vaulted)
     const p = parseRate(t.dropRate)
+    const gen = t.gen || 'c7s3'
     return {
       id: t.id, name: t.name, icon: t.icon || '🧩', rarity: t.rarity,
       tier: spriteTier(t.id), dropRate: t.dropRate, p,
       avg: p ? Math.round(1 / p) : null,
       dust: dustCost(t.rarity, 'normal'), source: spriteSource(t.id),
       status: vaulted ? 'vaulted' : released ? 'available' : 'upcoming',
-      released,
+      released, gen, genRank: GEN_RANK[gen] ?? 9,
       // Released Sprites and the datamined Season 4 roster each have a static page.
       hasPage: released || t.gen === 'c7s4',
     }
@@ -520,7 +526,7 @@ function guideRow(r) {
   const tm = r.tier ? TIER_META[r.tier] : null
   const href = r.hasPage ? `/sprite/${slug(r.name)}` : `/?sprite=${encodeURIComponent(r.id)}`
   return `<a class="grow" href="${href}" title="Open ${esc(r.name)}"`
-    + ` data-status="${r.status}" data-p="${r.p ?? ''}" data-rank="${RARITY_RANK[r.rarity] ?? 0}"`
+    + ` data-status="${r.status}" data-p="${r.p ?? ''}" data-rank="${RARITY_RANK[r.rarity] ?? 0}" data-gen="${r.genRank}"`
     + ` data-dust="${r.dust ?? ''}" data-name="${esc(r.name.toLowerCase())}" data-search="${esc(`${r.name} ${r.rarity}`.toLowerCase())}">`
     + `<span class="nm"><span class="ic">${esc(r.icon)}</span><span class="nt"><b>${esc(r.name)}</b>`
     + `<span class="badges"><span style="color:${rc};background:${rc}22">${esc(r.rarity)}</span>`
@@ -533,8 +539,12 @@ function guideRow(r) {
 
 function guideBoard() {
   const rows = buildGuideRows()
+  // Base HTML order: current season first (older seasons after), so crawlers and a
+  // no-JS render lead with the current-season roster. The client 'season' sort keeps
+  // this order and refines it (available-first, then rarity).
+  rows.sort((a, b) => a.genRank - b.genRank)
   const available = rows.filter((r) => r.status === 'available').length
-  const SORTS = [['easiest', 'Easiest'], ['rarest', 'Rarest'], ['dust', 'Cheapest Dust'], ['az', 'A–Z']]
+  const SORTS = [['season', 'Season'], ['easiest', 'Easiest'], ['rarest', 'Rarest'], ['dust', 'Cheapest Dust'], ['az', 'A–Z']]
   const FILTERS = [['all', 'All'], ['available', 'Available'], ['upcoming', 'Upcoming'], ['vaulted', 'Vaulted']]
   return `<section class="board" id="how-to-get">
 <div class="bar"><div class="search"><span class="mag">🔍</span><input type="search" id="gsearch" placeholder="Search Sprites by name…" aria-label="Search Sprites by name"></div></div>

@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 4, 2026',
+    title: '/sprites board now leads with the current season',
+    changes: [
+      { tag: 'Changed', text: 'The Sprites checklist board defaults to a new “Season” sort (current season first, older seasons after), and the underlying HTML is ordered the same way so search crawlers and no-JS views also lead with Override. Easiest / Rarest / Cheapest Dust / A–Z are still one tap away.' },
+    ],
+    summary: 'The static Sprites board opens on the current-season roster instead of mixing seasons by drop rate.',
+    why: 'The season you’re actually playing should be what you see first; the old default (“Easiest”) intermixed archived Season 3 Sprites with current ones.',
+  },
+  {
+    date: 'September 4, 2026',
     title: 'Fixed the static Lobby Hacks (/codes) page layout',
     changes: [
       { tag: 'Fixed', text: 'The prerendered /codes page was reusing the Sprites board’s 5-column grid, so every code row had a big empty gap and read as broken. Code rows now use a dedicated flex layout — copy button, reward + source, then status/New/Reusable badges — matching the in-app Lobby Hacks tab.' },

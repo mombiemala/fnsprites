@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 4, 2026 — /sprites board leads with the current season
+
+- **Changed:** `prerender.mjs` — added a `GEN_RANK` (current season first) and a new default **“Season”** sort on the
+  `/sprites` board; base HTML rows are also sorted current-season-first (via `data-gen`) so crawlers/no-JS lead with
+  Override. Easiest/Rarest/Cheapest Dust/A–Z remain.
+- **Why:** the current-season roster should be what people see first, rather than the old “Easiest” default mixing
+  archived Season 3 Sprites in by drop rate.
+
+---
+
 ## September 4, 2026 — Fixed the static Lobby Hacks (/codes) page layout
 
 - **Fixed:** `prerender.mjs` — the `/codes` page reused the Sprites board’s 5-column `.grow` grid, leaving each code
