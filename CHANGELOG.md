@@ -11,6 +11,14 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 4, 2026 — Lobby Hacks: redemption progress + copy-all-unredeemed
+
+- **Added:** `CodesView.jsx` — a redemption progress bar (X/N · %) and a “Copy unredeemed (N)” button that copies
+  every not-yet-redeemed code at once.
+- **Why:** with ~28 codes and growing, a progress bar + batch copy makes “what do I still need?” a single action.
+
+---
+
 ## September 4, 2026 — New-season focus: achievable progress & no dead-end recommendations
 
 - **Fixed:** `NextToChase.jsx` recommends only current-season Sprites (`gen === CURRENT_GEN`), so it never suggests an

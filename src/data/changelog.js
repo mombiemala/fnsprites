@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 4, 2026',
+    title: 'Lobby Hacks: redemption progress bar & copy-all-unredeemed',
+    changes: [
+      { tag: 'Added', text: 'A redemption progress bar (X/N · %) at the top of the Lobby Hacks tab, and a “📋 Copy unredeemed (N)” button that copies every code you haven’t marked redeemed yet — so you can grab the whole batch and work through them.' },
+    ],
+    summary: 'See your code-redemption progress at a glance and copy all the ones you still need in one tap.',
+    why: 'With ~28 codes and more each week, tracking what’s left was tedious; a progress bar plus a copy-all-unredeemed button turns “which do I still need?” into one action.',
+  },
+  {
+    date: 'September 4, 2026',
     title: 'New-season focus: achievable progress & no dead-end recommendations',
     changes: [
       { tag: 'Fixed', text: '“Next to chase” now only recommends current-season Sprites you can actually obtain — it no longer points you at archived Season 3 Sprites that can’t be caught anymore.' },

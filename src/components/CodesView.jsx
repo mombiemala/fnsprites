@@ -64,7 +64,24 @@ export default function CodesView() {
   }
 
   const working = LOBBY_CODES.filter((c) => c.status === 'working').length
-  const redeemedCount = LOBBY_CODES.filter((c) => redeemed.has(c.code)).length
+  // Codes with an actual string (exclude "upcoming" ones whose code isn't public).
+  const copyable = LOBBY_CODES.filter((c) => c.code)
+  const redeemedCount = copyable.filter((c) => redeemed.has(c.code)).length
+  const pct = copyable.length ? Math.round((redeemedCount / copyable.length) * 100) : 0
+  const unredeemedCodes = copyable.filter((c) => !redeemed.has(c.code)).map((c) => c.code)
+
+  const copyAllUnredeemed = () => {
+    if (!unredeemedCodes.length) { toast('Every code is redeemed — nothing to copy 🎉'); return }
+    const text = unredeemedCodes.join('\n')
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).then(
+        () => toast(`Copied ${unredeemedCodes.length} unredeemed code${unredeemedCodes.length === 1 ? '' : 's'} — paste them one at a time`),
+        () => toast('Couldn’t copy — try copying codes individually', 'error'),
+      )
+    } else {
+      toast('Copy not supported here — copy codes individually')
+    }
+  }
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4 sm:p-6">
@@ -87,6 +104,17 @@ export default function CodesView() {
         </ul>
       </div>
 
+      {/* Redemption progress */}
+      <div className="mt-3">
+        <div className="mb-1 flex items-center justify-between text-[11px] font-bold text-[var(--muted)]">
+          <span>Redeemed <span className="text-white">{redeemedCount}/{copyable.length}</span></span>
+          <span className={pct === 100 ? 'text-emerald-300' : 'text-[var(--brand)]'}>{pct}%</span>
+        </div>
+        <div className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--bg-2)]">
+          <div className="h-full rounded-full bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] transition-all" style={{ width: `${pct}%` }} />
+        </div>
+      </div>
+
       {/* Redeemed-tracking toolbar */}
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
         <label className="flex items-center gap-2 text-xs font-semibold text-[var(--muted)]">
@@ -94,6 +122,7 @@ export default function CodesView() {
           Hide redeemed
         </label>
         <div className="flex items-center gap-2">
+          <button onClick={copyAllUnredeemed} title="Copy every code you haven't redeemed yet" className="rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]" disabled={!unredeemedCodes.length}>📋 Copy unredeemed{unredeemedCodes.length ? ` (${unredeemedCodes.length})` : ''}</button>
           <button onClick={() => setAll(true)} title="Mark every code as redeemed" className="rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]">✓ Redeem all</button>
           <button onClick={() => setAll(false)} title="Clear all redeemed marks" className="rounded-lg bg-[var(--panel-2)] px-2.5 py-1 text-[11px] font-bold text-[var(--muted)] hover:text-white">Clear</button>
         </div>
