@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 4, 2026 — “Today” hub with a live event countdown
+
+- **Added:** `TodayHub.jsx` at the top of the collection — a live ticking countdown to the next weekly event
+  (Mastery Monday / Power Hours, computed in ET with a “Live” state during the window) plus a “N new codes this week”
+  nudge that opens Lobby Hacks. Wired into `App.jsx` (non-share view).
+- **Why:** events run on a fixed weekly cadence and codes drop mid-week; a glanceable countdown + new-codes nudge up
+  top makes the app worth opening daily — engagement a static checklist can’t match.
+
+---
+
 ## September 4, 2026 — Lobby Hacks: redemption progress + copy-all-unredeemed
 
 - **Added:** `CodesView.jsx` — a redemption progress bar (X/N · %) and a “Copy unredeemed (N)” button that copies

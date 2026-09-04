@@ -15,6 +15,7 @@ import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
 import StatsBreakdown from './components/StatsBreakdown'
 import NextToChase from './components/NextToChase'
+import TodayHub from './components/TodayHub'
 import QuickCheckList from './components/QuickCheckList'
 import ChestOdds from './components/ChestOdds'
 import OverflowNav from './components/OverflowNav'
@@ -565,6 +566,9 @@ export default function App() {
           )}
         </div>
       )}
+
+      {/* Today — timely daily glance: next event countdown + new codes. */}
+      {!isShareView && <TodayHub onGo={goToSection} />}
 
       {/* Full-width filters bar (sticks to the top on scroll) */}
       <div className="sticky top-0 z-30 -mx-4 mb-5 border-b border-[var(--border)] bg-[#0c0f1a]/85 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">

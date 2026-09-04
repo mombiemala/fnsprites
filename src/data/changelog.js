@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 4, 2026',
+    title: '“Today” hub — live event countdown at the top of your collection',
+    changes: [
+      { tag: 'Added', text: 'A “Today” card at the top of the collection with a live, ticking countdown to the next weekly Sprite event (Mastery Monday / Power Hours, computed in ET) — it flips to a red “Live” badge while an event is on — plus a one-tap nudge showing how many Lobby Hack codes were added this week.' },
+    ],
+    summary: 'A glanceable daily card: when the next event drops (with a live countdown) and whether there are new codes to grab.',
+    why: 'Sprite events run on a fixed weekly cadence and codes drop through the week, but you had to dig into News/Lobby Hacks to see what’s timely. Surfacing a live countdown and a new-codes nudge up top makes the app worth opening every day — the kind of engagement a static checklist can’t match.',
+  },
+  {
+    date: 'September 4, 2026',
     title: 'Lobby Hacks: redemption progress bar & copy-all-unredeemed',
     changes: [
       { tag: 'Added', text: 'A redemption progress bar (X/N · %) at the top of the Lobby Hacks tab, and a “📋 Copy unredeemed (N)” button that copies every code you haven’t marked redeemed yet — so you can grab the whole batch and work through them.' },
