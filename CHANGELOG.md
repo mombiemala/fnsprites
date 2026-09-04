@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 3, 2026 — Sprites now work in Ranked; build number corrected to v42.10
+
+- **Added:** news item — Sprites now appear in Ranked with abilities disabled (Epic in-game news).
+- **Fixed:** corrected the Sep 3 update’s build to **v42.10** (datamine-confirmed via the scout) — outlets had said
+  “v41.10,” which is actually the older Season 3 build. Updated the `xray`/`onigiri` ability notes and the news item.
+- **Changed:** the New Sprite Day news item now notes Overshield & Mega Man also went live, and drops the stale
+  “unnamed Knight Sprite” line (it was Overshield).
+- **Why:** the upgraded scout’s auto-draft (PR) surfaced Epic’s Ranked note and the real build string; folding those
+  in keeps competitive info and patch references accurate.
+
+---
+
 ## September 3, 2026 — Three new Lobby Hack codes
 
 - **Added:** `YOURTHOUGHTSAREMINE` (5,000 Sprite Dust + Void Master Geno Outfit style — after the Geno quests, shoot

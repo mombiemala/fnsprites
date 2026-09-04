@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'September 3, 2026',
+    title: 'Sprites now work in Ranked; build number corrected to v42.10',
+    changes: [
+      { tag: 'Added', text: 'News item: Sprites now appear in Ranked too, with their abilities disabled to keep competition even (from Epic’s in-game news).' },
+      { tag: 'Fixed', text: 'Corrected the Sep 3 update’s build number to v42.10 (datamine-confirmed via the scout) — outlets had called it “v41.10,” which is actually the older Season 3 build. Updated the X-Ray/Onigiri sprite notes and news item accordingly.' },
+      { tag: 'Changed', text: 'Refreshed the New Sprite Day news item — it now notes Overshield & Mega Man also went live that update, and drops the old “unnamed Knight Sprite” line (that turned out to be Overshield).' },
+    ],
+    summary: 'Folded in the real finds from the scout’s auto-draft — the Ranked change and the correct build number.',
+    why: 'The scout surfaced Epic’s in-game note that Sprites are now Ranked-eligible (abilities off), and the datamined build string (v42.10) settled the version outlets had wrong — both worth getting right since players make competitive and “what patch” decisions on them.',
+  },
+  {
+    date: 'September 3, 2026',
     title: 'Three new Lobby Hack codes',
     changes: [
       { tag: 'Added', text: 'YOURTHOUGHTSAREMINE — 5,000 Sprite Dust + a Void Master Geno Outfit style (claimable after the Geno story quests, then shooting Geno’s shield and letting him eliminate you).' },
@@ -93,7 +104,7 @@ export const CHANGELOG = [
     date: 'September 3, 2026',
     title: 'X-Ray & Onigiri are live (first Design-a-Sprite winners)',
     summary:
-      'Today’s New Sprite Day (v41.10) shipped the first two community Design-a-Sprite winners, so both are now flipped to released in the tracker.',
+      'Today’s New Sprite Day (v42.10) shipped the first two community Design-a-Sprite winners, so both are now flipped to released in the tracker.',
     changes: [
       { tag: 'Added', text: 'X-Ray (by Avila215 — reveals nearby players and objects through walls) and Onigiri (by Enorull) are now released and checkable. Both start with the Normal finish; other finishes may follow.' },
       { tag: 'Changed', text: 'News feed: the “X-Ray & Onigiri incoming” item flipped to a live “are live” item pinned for the day, and the “Coming next” Design-a-Sprite item now lists only the three still to come (Pond, Honey, Dumpster Dive).' },
