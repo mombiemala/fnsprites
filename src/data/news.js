@@ -35,6 +35,18 @@ export const NEWS = [
     official: true,
   },
   {
+    ts: '2026-09-05',
+    when: 'Sep 5, 2026',
+    tag: 'event',
+    start: '2026-09-05',
+    end: '2026-09-06',
+    title: '⚡ This weekend: Power Hours (Saturday, Sep 5)',
+    body: 'The week wraps with Cheat Master Sprite Power Hours on Saturday, Sep 5 — 1-UP Tokens, boosted Sprite spawns and Portable Extractors — in the usual two 2-hour windows (2–4 PM & 9–11 PM ET). A strong window to farm Cheat Master Sprites and close gaps in your collection before the week resets.',
+    link: 'https://www.instagram.com/fortnite/',
+    source: 'Epic (Fortnite Instagram)',
+    official: true,
+  },
+  {
     ts: '2026-08-31',
     when: 'Aug 31, 2026',
     tag: 'event',
