@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 4, 2026',
+    title: 'Fixed the static Lobby Hacks (/codes) page layout',
+    changes: [
+      { tag: 'Fixed', text: 'The prerendered /codes page was reusing the Sprites board’s 5-column grid, so every code row had a big empty gap and read as broken. Code rows now use a dedicated flex layout — copy button, reward + source, then status/New/Reusable badges — matching the in-app Lobby Hacks tab.' },
+    ],
+    summary: 'The SEO Lobby Hacks page now lays out its code rows cleanly instead of inheriting the sprite grid.',
+    why: 'The static page and the app share the codes data but not their markup; the static rows had borrowed the sprite board’s grid columns, which don’t fit a code row. A purpose-built row makes the SEO page match the app.',
+  },
+  {
+    date: 'September 4, 2026',
     title: 'Filters: current season leads the Season dropdown',
     changes: [
       { tag: 'Changed', text: 'The Season filter dropdown now lists the current season (Override) first, then older seasons newest-first — instead of oldest-first. The underlying data order is unchanged, so the default sprite sort is unaffected.' },

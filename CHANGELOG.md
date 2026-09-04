@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 4, 2026 — Fixed the static Lobby Hacks (/codes) page layout
+
+- **Fixed:** `prerender.mjs` — the `/codes` page reused the Sprites board’s 5-column `.grow` grid, leaving each code
+  row with empty columns (looked broken). Added a dedicated `.crow` flex layout (copy button · reward + source ·
+  status/New/Reusable badges) mirroring the in-app CodesView, and switched `codeRow`/`section` to it.
+- **Why:** the app and static page share codes data but not markup; the static rows had borrowed grid columns meant
+  for sprite rows.
+
+---
+
 ## September 4, 2026 — Filters: current season leads the Season dropdown
 
 - **Changed:** `Toolbar.jsx` — the Season filter dropdown lists the current season (Override) first, then older

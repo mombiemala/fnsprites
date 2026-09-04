@@ -191,6 +191,16 @@ footer.foot{margin-top:48px;border-top:1px solid var(--border);padding-top:24px;
 .grow .drop b,.grow .dust b{color:#fff;font-weight:700}.grow .drop small,.grow .dust small{display:block;font-size:10px;color:var(--muted)}
 .grow .src{grid-column:1/-1;font-size:11px;line-height:1.5;color:var(--muted)}
 @media(min-width:640px){.grow .src{grid-column:auto;margin:0}}
+/* /codes rows — a simple flex layout (NOT the sprite board's grid): copy button,
+   reward + source, then badges. Mirrors the in-app CodesView row. */
+.crows{display:flex;flex-direction:column;gap:6px}
+.crow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--bg2);border:1px solid transparent;border-radius:12px;padding:9px 10px;transition:background .15s,border-color .15s}
+.crow:hover{background:var(--panel2);border-color:var(--brand)}
+.crow .cmeta{flex:1 1 160px;min-width:0}
+.crow .cmeta .cunlock{font-size:13px;font-weight:600;color:#dcd2e6}
+.crow .csrc{display:block;font-size:10px;color:var(--muted);margin-top:2px}
+.crow .cbadges{display:flex;flex-wrap:wrap;gap:4px;flex-shrink:0}
+.crow .cbadges span{font-size:9px;font-weight:800;text-transform:uppercase;padding:2px 6px;border-radius:4px;line-height:1.5}
 .board .empty{display:none;text-align:center;padding:16px;border-radius:12px;background:var(--bg2);color:var(--muted);font-size:13px}
 .board .fine{margin:12px 0 0;font-size:10.5px;line-height:1.5;color:var(--muted)}
 /* /news feed — mirrors the in-app NewsFeed: tag chips + search over card rows. */
@@ -1086,14 +1096,13 @@ function codesPage() {
     const col = cst[1]
     const lbl = c.status === 'upcoming' && c.eta ? c.eta : cst[0]
     const href = c.type === 'sprite' ? spriteHref(c.spriteId) : null
-    const unlocks = href ? `<a href="${href}" style="color:#dcd2e6;text-decoration:underline;text-decoration-color:var(--border)">${esc(c.unlocks)}</a>` : `<b style="font-weight:600;color:#dcd2e6">${esc(c.unlocks)}</b>`
+    const unlocks = href ? `<a class="cunlock" href="${href}" style="text-decoration:underline;text-decoration-color:var(--border)">${esc(c.unlocks)}</a>` : `<span class="cunlock">${esc(c.unlocks)}</span>`
     const codeEl = c.code
-      ? `<button class="codecopy" data-code="${esc(c.code)}" title="Copy ${esc(c.code)}" style="font-family:ui-monospace,Menlo,monospace;font-weight:800;font-size:13px;letter-spacing:.03em;color:#fff;background:var(--panel2);border:0;border-radius:8px;padding:6px 10px;cursor:pointer">${esc(c.code)}</button>`
-      : `<span title="Code drops ${esc(c.eta || 'soon')}" style="font-weight:800;font-size:13px;color:#7dd3fc;background:#7dd3fc22;border-radius:8px;padding:6px 10px">🔜 Coming ${esc(c.eta || 'soon')}</span>`
-    return `<div class="grow" style="cursor:default">
-      <span class="nm">${codeEl}
-        <span class="nt">${unlocks}<span class="badges">${isNew(c) ? `<span style="color:#7dd3fc;background:#7dd3fc22">🆕 New</span>` : ''}<span style="color:${col};background:${col}22">${lbl}</span>${c.repeatable ? `<span style="color:#7dd3fc;background:#7dd3fc22">↻ Reusable</span>` : ''}${c.region ? `<span style="color:var(--muted);background:transparent">${esc(c.region)}</span>` : ''}</span></span></span>
-      <span class="src" style="grid-column:1/-1;margin-top:2px">via ${esc(c.source)} · verified ${NEWS_TODAY}</span></div>`
+      ? `<button class="codecopy" data-code="${esc(c.code)}" title="Copy ${esc(c.code)}" style="font-family:ui-monospace,Menlo,monospace;font-weight:800;font-size:13px;letter-spacing:.03em;color:#fff;background:var(--panel2);border:0;border-radius:8px;padding:6px 10px;cursor:pointer;flex-shrink:0">${esc(c.code)}</button>`
+      : `<span title="Code drops ${esc(c.eta || 'soon')}" style="font-weight:800;font-size:13px;color:#7dd3fc;background:#7dd3fc22;border-radius:8px;padding:6px 10px;flex-shrink:0">🔜 Coming ${esc(c.eta || 'soon')}</span>`
+    return `<div class="crow">${codeEl}
+      <span class="cmeta">${unlocks}<span class="csrc">${c.region ? `${esc(c.region)} · ` : ''}via ${esc(c.source)} · verified ${NEWS_TODAY}</span></span>
+      <span class="cbadges">${isNew(c) ? `<span style="color:#7dd3fc;background:#7dd3fc22">🆕 New</span>` : ''}<span style="color:${col};background:${col}22">${lbl}</span>${c.repeatable ? `<span style="color:#7dd3fc;background:#7dd3fc22">↻ Reusable</span>` : ''}</span></div>`
   }
   const section = (cat) => {
     const items = LOBBY_CODES.filter((c) => c.category === cat.key)
@@ -1101,7 +1110,7 @@ function codesPage() {
     if (!items.length) return ''
     return `<h2 style="font-size:16px;margin:20px 0 4px">${cat.icon} ${esc(cat.label)} <span style="color:var(--muted);font-weight:600;font-size:13px">· ${items.length}</span></h2>
       <p style="margin:0 0 8px;font-size:12px;color:var(--muted)">${esc(cat.blurb)}</p>
-      <div class="grows">${items.map(codeRow).join('')}</div>`
+      <div class="crows">${items.map(codeRow).join('')}</div>`
   }
   return head({ title: `Fortnite Override Lobby Hack Codes (${monthLabel}) — Admin Panel Cheat Codes | FN Sprite Tracker`, desc, canonical: SITE + '/codes', jsonld, active: 'news' }) + `
 <div class="cols">
