@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 4, 2026 — Last-season Sprites marked “Archived”; Chest Luck framed as history
+
+- **Changed:** Season 3 “Runners” Sprites now carry an **`archived`** status (not `available`) on both boards
+  (`SpriteGuide.jsx` + `prerender.mjs`). Their drop rate & Dust render muted + “last season” (final numbers kept for
+  reference), the “How to get” reads “Archived — kept in your Sprite Garden (last season),” an **Archived** filter was
+  added, and the “obtainable right now” count now excludes them (`archived = released && gen !== CURRENT_GEN`).
+- **Changed:** the Chest Luck calculator (`ChestOdds.jsx` + `chestLuckCard` in `prerender.mjs`) is reframed as a
+  last-season reference — final estimated odds for the archived Season 3 chest Sprites, noting Override Sprites come
+  from Cheat Codes / Hack the Lobby codes, not fixed-odds chests.
+- **Why:** Override took over BR, so Season 3 Sprites can’t be farmed and their rate/Dust planning numbers are moot;
+  de-emphasizing them (and marking them Archived) stops the site implying they’re still obtainable while keeping the
+  history.
+
+---
+
 ## September 4, 2026 — SEO page nav matches the app
 
 - **Changed:** `prerender.mjs` — on desktop the static-page top nav now shows all sections inline with **no** “⋯ More”

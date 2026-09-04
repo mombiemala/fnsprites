@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import {
   SPRITE_TYPES, SPRITE_BY_ID, RELEASED_COUNT,
-  RARITY_COLORS, RARITY_ORDER, TIER_META, TIER_ORDER, GENERATIONS,
+  RARITY_COLORS, RARITY_ORDER, TIER_META, TIER_ORDER, GENERATIONS, CURRENT_GEN,
   dustCost, spriteTier, spriteScaling, spriteSource,
 } from '../src/data/sprites.js'
 import { THEME_MAP, FINISH_ODDS_FACTOR } from '../src/data/themes.js'
@@ -471,7 +471,7 @@ const chestSelectOptions = (selId) => ['Mythic', 'Legendary', 'Epic', 'Rare'].ma
 }).join('')
 const chestLuckCard = (selId) => `<div class="card sidecard chestcard">
 <h3 class="sh">🎲 Chest luck <span style="font-size:11px;color:var(--muted)">· Season 3</span></h3>
-<p class="sub" style="margin:2px 0 8px">Season 3 “Runners” Sprites come from Sprite Chests. Season 4 “Override” Sprites come from in-world Cheat Codes and <a href="/codes">Hack the Lobby codes</a> (and, since a recent update, Chests too) — no fixed odds published.</p>
+<p class="sub" style="margin:2px 0 8px">A last-season reference — final estimated odds for the archived Season 3 “Runners” Sprites (Sprite Chests). They’re kept in your Sprite Garden but aren’t obtainable in BR now. Season 4 “Override” Sprites come from in-world Cheat Codes and <a href="/codes">Hack the Lobby codes</a>, not fixed-odds chests.</p>
 <label class="cl-lab">Sprite</label>
 <select class="cl-sel" aria-label="Pick a Sprite">${chestSelectOptions(RATED_MAP[selId] ? selId : undefined)}</select>
 <label class="cl-lab cl-finlab" style="display:none">Finish</label>
@@ -494,6 +494,7 @@ const supportCard = () => `<div class="card sidecard supportcard"><h3 class="sh"
 const STATUS_META = {
   available: { label: 'Available', color: '#34d399' },
   upcoming: { label: 'Upcoming', color: '#3da9fc' },
+  archived: { label: 'Archived', color: '#8b93a7' },
   vaulted: { label: 'Vaulted', color: '#ef4444' },
 }
 const RARITY_RANK = Object.fromEntries(RARITY_ORDER.map((r, i) => [r, i]))
@@ -510,13 +511,17 @@ function buildGuideRows() {
     const vaulted = !!(t.vaulted || live?.vaulted)
     const p = parseRate(t.dropRate)
     const gen = t.gen || 'c7s3'
+    // Archived = a released Sprite from a past generation: kept in the Sprite
+    // Garden but not obtainable in BR now, so its rate/Dust are last-season history.
+    const archived = released && gen !== CURRENT_GEN
     return {
       id: t.id, name: t.name, icon: t.icon || '🧩', rarity: t.rarity,
       tier: spriteTier(t.id), dropRate: t.dropRate, p,
       avg: p ? Math.round(1 / p) : null,
-      dust: dustCost(t.rarity, 'normal'), source: spriteSource(t.id),
-      status: vaulted ? 'vaulted' : released ? 'available' : 'upcoming',
-      released, gen, genRank: GEN_RANK[gen] ?? 9,
+      dust: dustCost(t.rarity, 'normal'),
+      source: archived ? 'Archived — kept in your Sprite Garden (last season)' : spriteSource(t.id),
+      status: vaulted ? 'vaulted' : archived ? 'archived' : released ? 'available' : 'upcoming',
+      released, archived, gen, genRank: GEN_RANK[gen] ?? 9,
       // Released Sprites and the datamined Season 4 roster each have a static page.
       hasPage: released || t.gen === 'c7s4',
     }
@@ -535,8 +540,8 @@ function guideRow(r) {
     + `<span class="badges"><span style="color:${rc};background:${rc}22">${esc(r.rarity)}</span>`
     + `<span style="color:${st.color};background:${st.color}22">${st.label}</span></span></span></span>`
     + `<span class="tier">${tm ? `<span style="color:${tm.color};background:${tm.color}22" title="${esc(tm.blurb || '')}">${esc(tm.label)}</span>` : '<small style="color:var(--muted)">—</small>'}</span>`
-    + `<span class="drop">${r.p ? `<b>${esc(r.dropRate)}</b><small>~${fmt(r.avg)} chests</small>` : '<small>rate TBD</small>'}</span>`
-    + `<span class="dust">${r.dust != null ? `<b>${fmt(r.dust)}</b><small>dust</small>` : '<small>—</small>'}</span>`
+    + `<span class="drop"${r.archived ? ' title="Last-season figure — no longer obtainable"' : ''}>${r.p ? `<b${r.archived ? ' style="color:var(--muted)"' : ''}>${esc(r.dropRate)}</b><small>${r.archived ? 'last season' : `~${fmt(r.avg)} chests`}</small>` : '<small>rate TBD</small>'}</span>`
+    + `<span class="dust"${r.archived ? ' title="Last-season figure — no longer obtainable"' : ''}>${r.dust != null ? `<b${r.archived ? ' style="color:var(--muted)"' : ''}>${fmt(r.dust)}</b><small>${r.archived ? 'dust · last season' : 'dust'}</small>` : '<small>—</small>'}</span>`
     + `<span class="src">${esc(r.source)}</span></a>`
 }
 
@@ -548,7 +553,7 @@ function guideBoard() {
   rows.sort((a, b) => a.genRank - b.genRank)
   const available = rows.filter((r) => r.status === 'available').length
   const SORTS = [['season', 'Season'], ['easiest', 'Easiest'], ['rarest', 'Rarest'], ['dust', 'Cheapest Dust'], ['az', 'A–Z']]
-  const FILTERS = [['all', 'All'], ['available', 'Available'], ['upcoming', 'Upcoming'], ['vaulted', 'Vaulted']]
+  const FILTERS = [['all', 'All'], ['available', 'Available'], ['upcoming', 'Upcoming'], ['archived', 'Archived'], ['vaulted', 'Vaulted']]
   return `<section class="board" id="how-to-get">
 <div class="bar"><div class="search"><span class="mag">🔍</span><input type="search" id="gsearch" placeholder="Search Sprites by name…" aria-label="Search Sprites by name"></div></div>
 <div class="bar">

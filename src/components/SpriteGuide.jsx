@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import {
   SPRITE_TYPES, SPRITE_BY_ID, RARITY_COLORS, RARITY_ORDER,
-  TIER_META, dustCost, spriteSource, spriteTier,
+  TIER_META, dustCost, spriteSource, spriteTier, CURRENT_GEN,
 } from '../data/sprites'
 
 // Base (Normal) drop-rate string → probability, or null when unpublished.
@@ -21,7 +21,12 @@ function buildRows() {
     const released = !!live?.released
     const vaulted = !!(t.vaulted || live?.vaulted)
     const p = parseRate(t.dropRate)
-    const status = vaulted ? 'vaulted' : released ? 'available' : 'upcoming'
+    const gen = t.gen || 'c7s3'
+    // Released Sprites from a past generation are "archived" — kept in your Sprite
+    // Garden but no longer obtainable in Battle Royale, so their drop rate & Dust
+    // are last-season history rather than something you can act on now.
+    const archived = released && gen !== CURRENT_GEN
+    const status = vaulted ? 'vaulted' : archived ? 'archived' : released ? 'available' : 'upcoming'
     return {
       id: t.id,
       name: t.name,
@@ -32,8 +37,9 @@ function buildRows() {
       p,
       avgChests: p ? Math.round(1 / p) : null,
       dust: dustCost(t.rarity, 'normal'),
-      source: spriteSource(t.id),
+      source: archived ? 'Archived — kept in your Sprite Garden (last season)' : spriteSource(t.id),
       status,
+      archived,
     }
   })
 }
@@ -41,6 +47,7 @@ function buildRows() {
 const STATUS_META = {
   available: { label: 'Available', color: '#34d399' },
   upcoming: { label: 'Upcoming', color: '#3da9fc' },
+  archived: { label: 'Archived', color: '#8b93a7' },
   vaulted: { label: 'Vaulted', color: '#ef4444' },
 }
 
@@ -56,7 +63,7 @@ const SORTS = {
   az: (a, b) => a.name.localeCompare(b.name),
 }
 const SORT_LABELS = { easiest: 'Easiest', rarest: 'Rarest', dust: 'Cheapest Dust', az: 'A–Z' }
-const FILTERS = { all: 'All', available: 'Available', upcoming: 'Upcoming', vaulted: 'Vaulted' }
+const FILTERS = { all: 'All', available: 'Available', upcoming: 'Upcoming', archived: 'Archived', vaulted: 'Vaulted' }
 
 export default function SpriteGuide() {
   const [sort, setSort] = useState('easiest')
@@ -183,12 +190,13 @@ export default function SpriteGuide() {
                 )}
               </div>
 
-              {/* Drop / chests */}
-              <div className="text-right text-xs">
+              {/* Drop / chests — de-emphasized for archived (last-season) Sprites; the
+                  number stays as historical reference, just muted + "last season". */}
+              <div className="text-right text-xs" title={r.archived ? 'Last-season figure — this Sprite is no longer obtainable' : undefined}>
                 {r.p ? (
                   <>
-                    <div className="font-semibold text-white">{r.dropRate}</div>
-                    <div className="text-[10px] text-[var(--muted)]">~{fmt(r.avgChests)} chests</div>
+                    <div className={`font-semibold ${r.archived ? 'text-[var(--muted)]' : 'text-white'}`}>{r.dropRate}</div>
+                    <div className="text-[10px] text-[var(--muted)]">{r.archived ? 'last season' : `~${fmt(r.avgChests)} chests`}</div>
                   </>
                 ) : (
                   <span className="text-[10px] text-[var(--muted)]">rate TBD</span>
@@ -196,9 +204,9 @@ export default function SpriteGuide() {
               </div>
 
               {/* Dust */}
-              <div className="text-right text-xs">
-                {r.dust != null ? <span className="font-semibold text-white">{fmt(r.dust)}</span> : <span className="text-[10px] text-[var(--muted)]">—</span>}
-                <div className="text-[10px] text-[var(--muted)]">dust</div>
+              <div className="text-right text-xs" title={r.archived ? 'Last-season figure — this Sprite is no longer obtainable' : undefined}>
+                {r.dust != null ? <span className={`font-semibold ${r.archived ? 'text-[var(--muted)]' : 'text-white'}`}>{fmt(r.dust)}</span> : <span className="text-[10px] text-[var(--muted)]">—</span>}
+                <div className="text-[10px] text-[var(--muted)]">{r.archived ? 'dust · last season' : 'dust'}</div>
               </div>
 
               {/* How to get */}

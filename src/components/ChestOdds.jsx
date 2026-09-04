@@ -107,8 +107,10 @@ export default function ChestOdds() {
       {open && (
       <>
       <p className="mb-3 mt-1 text-[11px] leading-relaxed text-[var(--muted)]">
-        Covers the Season 3 “Runners” Sprites, which come from <b className="text-white">Sprite Chests</b>. Season 4
-        “Override” Sprites come from in-world Cheat Codes and <a href="/codes" className="font-bold text-[var(--brand)] hover:underline">Hack the Lobby codes</a> (and, since a recent update, Chests too) — no fixed odds published.
+        A <b className="text-white">last-season reference.</b> These are the final community-estimated odds for the
+        archived Season 3 “Runners” Sprites, which came from <b className="text-white">Sprite Chests</b> — they’re kept
+        in your Sprite Garden but can’t be obtained in Battle Royale now. Season 4 “Override” Sprites come from in-world
+        Cheat Codes and <a href="/codes" className="font-bold text-[var(--brand)] hover:underline">Hack the Lobby codes</a>, not fixed-odds chests — so this calculator doesn’t apply to them.
       </p>
 
       <label className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">Sprite</label>

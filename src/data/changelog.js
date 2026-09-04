@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'September 4, 2026',
+    title: 'Last-season Sprites marked “Archived”; Chest Luck framed as history',
+    changes: [
+      { tag: 'Changed', text: 'Season 3 “Runners” Sprites now show an “Archived” status (not “Available”) on both the in-app and static Sprites boards — they’re kept in your Sprite Garden but can’t be obtained in Battle Royale now. Their “How to get” reads “Archived — kept in your Sprite Garden (last season).”' },
+      { tag: 'Changed', text: 'Archived Sprites’ drop rate & Dust are de-emphasized (muted, labelled “last season”) — the final community numbers are kept for reference, but they’re no longer presented as something to act on. Added an “Archived” filter, and the “obtainable right now” count now excludes them.' },
+      { tag: 'Changed', text: 'The Chest Luck calculator is reframed as a last-season reference: final estimated odds for the archived Season 3 chest Sprites, with a clear note that Override Sprites come from Cheat Codes / Hack the Lobby codes, not fixed-odds chests.' },
+    ],
+    summary: 'The last season’s Sprites are clearly archived now — their rates/Dust are history, and Chest Luck is labelled as a Season 3 reference.',
+    why: 'Override took over Battle Royale, so Season 3 Sprites can’t be farmed anymore and their drop-rate/Dust planning numbers are moot. Keeping the final figures but visibly de-emphasizing them (and marking the Sprites Archived) stops the site implying you can still chase them, while preserving the history for reference.',
+  },
+  {
+    date: 'September 4, 2026',
     title: 'SEO page nav now matches the app',
     changes: [
       { tag: 'Changed', text: 'On the static (SEO) pages, the top navigation now matches the app on desktop — all sections show inline with no “⋯ More” button (the utility links live in the footer, same as the app); the More menu only appears on narrow screens. Also aligned the nav pill size/padding to the app’s.' },
