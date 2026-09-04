@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 4, 2026 — Filters: hide variant chips that don’t apply to the selected season
+
+- **Changed:** `Toolbar.jsx` — when exactly one season is selected, the Rarity and Variant chip rows show only the
+  finishes that exist in that generation (derived from `SPRITE_TYPES`). Season 4 → Normal · Gold · Cheat Master · Loot
+  Hacker; Season 3 → the classic finishes (no Cheat Master/Loot Hacker). All-seasons or 2+ selected shows everything.
+- **Why:** Cheat Master/Loot Hacker are Season 4-only and Gummy/Galaxy/Gem/Holofoil/Cube/Quack are Season 3-only, so
+  the combined chip row let you pick a variant that always returned zero results. Scoping to the selected season keeps
+  the row short and every chip meaningful. (Any already-applied filter that no longer fits stays removable via its
+  active-filter chip.)
+
+---
+
 ## September 3, 2026 — Guide: where to find Cheat Codes (farming spots)
 
 - **Added:** a “Where to find Cheat Codes” section to `spriteGuide.js` (in-app + static `/sprites`) — densest POIs

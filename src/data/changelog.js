@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 4, 2026',
+    title: 'Filters: hide variant chips that don’t apply to the selected season',
+    changes: [
+      { tag: 'Changed', text: 'When exactly one season is selected in the collection filters, the Rarity and Variant chip rows now show only the finishes that actually exist in that generation. Pick Season 4 “Override” and the Variant row drops to Normal · Gold · Cheat Master · Loot Hacker; pick Season 3 “Runners” and it shows the classic finishes (Gummy, Galaxy, Gem, Holofoil, Cube, Quack) with no Cheat Master/Loot Hacker. With all seasons (or 2+) selected, every chip stays.' },
+    ],
+    summary: 'Season-aware filter chips — no more tapping a Variant that can’t exist in the season you’re viewing.',
+    why: 'Cheat Master and Loot Hacker are Season 4-only finishes and the older Gummy/Galaxy/Gem/Holofoil/Cube/Quack lines are Season 3-only, so showing all of them at once let you pick a filter that always returns zero sprites. Scoping the chips to the selected season keeps the row short and every option meaningful.',
+  },
+  {
     date: 'September 3, 2026',
     title: 'Guide: where to find Cheat Codes (farming spots)',
     changes: [

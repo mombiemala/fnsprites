@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { THEMES } from '../data/themes'
-import { RARITY_ORDER, RARITY_COLORS, GENERATIONS } from '../data/sprites'
+import { RARITY_ORDER, RARITY_COLORS, GENERATIONS, SPRITE_TYPES } from '../data/sprites'
 import Tooltip from './Tooltip'
 
 const selectCls =
@@ -89,6 +89,25 @@ function activeChips(filters) {
 export default function Toolbar({ filters, setFilters, themeStats, count, total, onClear, hasActiveFilters }) {
   const set = (patch) => setFilters((f) => ({ ...f, ...patch }))
   const chips = activeChips(filters)
+
+  // When exactly ONE season is selected, only show the rarity/variant chips that
+  // actually exist in that generation — e.g. Season 3 has no Cheat Master/Loot
+  // Hacker, Season 4 has no Gummy/Galaxy/Gem/Holofoil/Cube/Quack. With 0 (all) or
+  // 2+ seasons selected, every chip stays visible.
+  const singleGen = filters.generation.length === 1 ? filters.generation[0] : null
+  const { validRarity, validTheme } = useMemo(() => {
+    if (!singleGen) return { validRarity: null, validTheme: null }
+    const rarities = new Set()
+    const themes = new Set()
+    for (const t of SPRITE_TYPES) {
+      if ((t.gen || 'c7s3') !== singleGen) continue
+      rarities.add(t.rarity)
+      for (const k of Object.keys(t.variants || {})) themes.add(k)
+    }
+    return { validRarity: rarities, validTheme: themes }
+  }, [singleGen])
+  const shownRarities = RARITY_ORDER.filter((r) => !validRarity || validRarity.has(r))
+  const shownThemes = THEMES.filter((t) => !validTheme || validTheme.has(t.id))
   // Mobile only: the secondary filters collapse behind a "Filters" toggle so the
   // sprite grid is reachable without a long scroll. Desktop shows them inline.
   const [panelOpen, setPanelOpen] = useState(false)
@@ -189,7 +208,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
         <div className="flex flex-wrap items-center gap-1.5">
           <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">Rarity</span>
           <Chip active={filters.rarity === 'all'} onClick={() => set({ rarity: 'all' })} title="Any rarity">Any</Chip>
-          {RARITY_ORDER.map((r) => (
+          {shownRarities.map((r) => (
             <Chip key={r} active={filters.rarity === r} color={RARITY_COLORS[r]} onClick={() => set({ rarity: r })} title={r}>{r}</Chip>
           ))}
         </div>
@@ -199,7 +218,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
         <div className="-mx-1 flex items-center gap-1.5 overflow-x-auto px-1 pb-0.5 [&>*]:shrink-0">
           <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">Variant</span>
           <Chip active={filters.theme === 'all'} onClick={() => set({ theme: 'all' })} title="All variant themes">All</Chip>
-          {THEMES.map((t) => {
+          {shownThemes.map((t) => {
             const st = themeStats?.[t.id]
             return (
               <Tooltip key={t.id} content={t.bonus} below>
