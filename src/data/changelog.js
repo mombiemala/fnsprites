@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 4, 2026',
+    title: 'SEO page nav now matches the app',
+    changes: [
+      { tag: 'Changed', text: 'On the static (SEO) pages, the top navigation now matches the app on desktop — all sections show inline with no “⋯ More” button (the utility links live in the footer, same as the app); the More menu only appears on narrow screens. Also aligned the nav pill size/padding to the app’s.' },
+    ],
+    summary: 'The prerendered pages’ top nav lines up with the app instead of always showing an extra “More” menu.',
+    why: 'The static pages always rendered a “⋯ More” dropdown even on desktop, where the app shows none — a visible inconsistency between the SEO pages and the app. Matching it keeps the whole site feeling like one product.',
+  },
+  {
+    date: 'September 4, 2026',
     title: '/sprites board now leads with the current season',
     changes: [
       { tag: 'Changed', text: 'The Sprites checklist board defaults to a new “Season” sort (current season first, older seasons after), and the underlying HTML is ordered the same way so search crawlers and no-JS views also lead with Override. Easiest / Rarest / Cheapest Dust / A–Z are still one tap away.' },

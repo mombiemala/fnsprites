@@ -76,8 +76,11 @@ header.site{display:flex;align-items:flex-start;justify-content:space-between;ga
 .cta{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#000;font-weight:800;padding:9px 16px;border-radius:12px;font-size:13px;white-space:nowrap}
 .crumbs{font-size:12px;color:var(--muted);margin-bottom:16px}.crumbs a{color:var(--muted)}
 .nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:18px}
-.nav a,.nav .more>summary{display:inline-flex;align-items:center;background:var(--panel2);color:var(--muted);padding:9px 14px;border-radius:12px;font-size:13px;font-weight:700;line-height:1;white-space:nowrap;transition:color .15s}
+.nav a,.nav .more>summary{display:inline-flex;align-items:center;background:var(--panel2);color:var(--muted);padding:8px 12px;border-radius:12px;font-size:12px;font-weight:700;line-height:1;white-space:nowrap;transition:color .15s}
 .nav a:hover{color:#fff}.nav a.on{background:var(--brand);color:#000}
+/* Match the app: on desktop all sections fit inline with no "⋯ More" (utility
+   links live in the footer); the More menu only appears on narrow screens. */
+@media(min-width:640px){.nav .more{display:none}}
 .nav .more{position:relative;list-style:none}
 .nav .more>summary{list-style:none;cursor:pointer;user-select:none}
 .nav .more>summary::-webkit-details-marker{display:none}.nav .more>summary::marker{content:''}

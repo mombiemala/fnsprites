@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 4, 2026 — SEO page nav matches the app
+
+- **Changed:** `prerender.mjs` — on desktop the static-page top nav now shows all sections inline with **no** “⋯ More”
+  (utilities live in the footer, like the app); the More menu only appears on narrow screens (`@media` hide at
+  ≥640px). Aligned nav pill padding/font-size to the app (8px 12px / 12px).
+- **Why:** the SEO pages always rendered a “⋯ More” dropdown even on desktop, where the app shows none — a visible
+  inconsistency between the static pages and the app.
+
+---
+
 ## September 4, 2026 — /sprites board leads with the current season
 
 - **Changed:** `prerender.mjs` — added a `GEN_RANK` (current season first) and a new default **“Season”** sort on the
