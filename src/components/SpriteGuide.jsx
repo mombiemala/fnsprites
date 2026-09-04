@@ -1,8 +1,13 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import {
   SPRITE_TYPES, SPRITE_BY_ID, RARITY_COLORS, RARITY_ORDER,
   TIER_META, dustCost, spriteSource, spriteTier, CURRENT_GEN,
 } from '../data/sprites'
+import { fetchTierResults } from '../lib/tierVotes'
+
+// Colors for community-voted tiers (S–D) shown on Override rows that have no
+// settled static tier yet.
+const COMM_TIER_COLOR = { S: '#f6c945', A: '#34d399', B: '#3da9fc', C: '#a99fb8', D: '#8b93a7' }
 
 // Base (Normal) drop-rate string → probability, or null when unpublished.
 function parseRate(s) {
@@ -70,6 +75,9 @@ export default function SpriteGuide() {
   const [filter, setFilter] = useState('all')
   const [q, setQ] = useState('')
   const allRows = useMemo(() => buildRows(), [])
+  // Community tier votes (for current-season Sprites that have no settled tier yet).
+  const [community, setCommunity] = useState({})
+  useEffect(() => { fetchTierResults().then(setCommunity).catch(() => {}) }, [])
   // Monday = Mastery Monday (2× Sprite Dust & XP). getDay(): 0 Sun … 1 Mon.
   const isMasteryMonday = new Date().getDay() === 1
 
@@ -181,10 +189,15 @@ export default function SpriteGuide() {
                 </div>
               </div>
 
-              {/* Tier */}
+              {/* Tier — static meta tier, or (for Override Sprites with no settled
+                  tier yet) the community-voted consensus. */}
               <div className="text-right sm:text-left">
                 {tm ? (
                   <span className="rounded px-1.5 py-0.5 text-[10px] font-extrabold" style={{ color: tm.color, background: `${tm.color}22` }} title={tm.blurb}>{tm.label}</span>
+                ) : community[r.id]?.total ? (
+                  <span className="rounded px-1.5 py-0.5 text-[10px] font-extrabold" style={{ color: COMM_TIER_COLOR[community[r.id].consensus], background: `${COMM_TIER_COLOR[community[r.id].consensus]}22` }} title={`Community-voted tier — ${community[r.id].total} vote${community[r.id].total === 1 ? '' : 's'}. Open the Sprite to vote.`}>
+                    {community[r.id].consensus} <span className="opacity-70">· 🗳️</span>
+                  </span>
                 ) : (
                   <span className="text-[10px] text-[var(--muted)]">—</span>
                 )}

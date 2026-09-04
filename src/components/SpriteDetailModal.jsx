@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { SPRITE_TYPES, ALL_SPRITES, SPRITE_BY_ID, RARITY_COLORS, dustCost, spriteSource, spriteScaling, spriteTier, TIER_META, GEN_MAP } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
+import TierVote from './TierVote'
 import { useEscClose } from '../lib/useEscClose'
 import { useAuth } from '../context/authStore'
 
@@ -118,6 +119,12 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
           <p className="mt-3 rounded-xl bg-[var(--bg-2)] px-3 py-2 text-sm text-[var(--text)]/90">
             <span className="font-bold text-[var(--brand)]">Ability{type.rumored ? ' (rumored)' : ''}:</span> {type.ability}
           </p>
+        )}
+
+        {/* Community tier voting — only for current-season released Sprites, whose
+            competitive meta isn't settled yet (archived Sprites keep their fixed tier). */}
+        {type.released && GEN_MAP[type.gen || 'c7s3']?.current && (
+          <TierVote typeId={type.id} typeName={type.name} />
         )}
 
         {scaling && (

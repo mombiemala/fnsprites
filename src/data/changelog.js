@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 4, 2026',
+    title: 'Community tier voting for the new Override Sprites',
+    changes: [
+      { tag: 'Added', text: 'Logged-in players can now vote S/A/B/C/D on each current-season (Override) Sprite, right in its detail view — with a live consensus tier, a vote-distribution bar, and one vote per account (tap your vote again to remove it). The community consensus also shows on the Sprites board for Override Sprites that don’t have a settled tier yet.' },
+      { tag: 'Security', text: 'New Supabase table (sprite_tier_votes) with row-level security so you can only read/write your own votes; results are served through a definer function that returns vote counts only — never who voted.' },
+    ],
+    summary: 'A community-built tier list for the Sprites whose meta hasn’t settled — vote in the detail view, watch the consensus form.',
+    why: 'The static tier list only covers the settled Season 3 meta, leaving Override Sprites Unranked. Letting players vote turns that gap into a living, community-driven ranking — an interactive, sticky feature the copycat checklist sites don’t have, and it fills real content (the current season’s tiers) as the meta develops.',
+  },
+  {
+    date: 'September 4, 2026',
     title: '“Today” hub — live event countdown at the top of your collection',
     changes: [
       { tag: 'Added', text: 'A “Today” card at the top of the collection with a live, ticking countdown to the next weekly Sprite event (Mastery Monday / Power Hours, computed in ET) — it flips to a red “Live” badge while an event is on — plus a one-tap nudge showing how many Lobby Hack codes were added this week.' },

@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 4, 2026 — Community tier voting for Override Sprites
+
+- **Added:** logged-in players vote S/A/B/C/D on each current-season Sprite in its detail view (`TierVote.jsx` in
+  `SpriteDetailModal.jsx`) — live consensus + distribution, one vote/account, tap-again to remove. The consensus also
+  shows on the app Sprites board (`SpriteGuide.jsx`) for Override Sprites with no settled tier. Client lib:
+  `src/lib/tierVotes.js`.
+- **Security:** new `public.sprite_tier_votes` table with RLS (read/write your own rows only); public results come
+  from a `security definer` `sprite_tier_results()` RPC that returns vote **counts only** (no user identity) — same
+  pattern as the existing `leaderboard`/`garden_feed` aggregates.
+- **Why:** the static tier list only covers the settled Season 3 meta, so Override is Unranked; community voting turns
+  that gap into a living ranking — an interactive feature the copycat checklist sites lack.
+
+---
+
 ## September 4, 2026 — “Today” hub with a live event countdown
 
 - **Added:** `TodayHub.jsx` at the top of the collection — a live ticking countdown to the next weekly event
