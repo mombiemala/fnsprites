@@ -8,6 +8,11 @@ export const SPRITE_GUIDE = [
     '**Any chest can drop any Sprite** — rarity sets the odds, not the location. Chests glow blue with a pink crystal; turn on **Visualized Sounds** to spot them. Busiest farm is **Sinister Strip** (4 chests); Wonkeeland, Calamari Canyon, Heatwave Harbor & Shaken Sanctuary have 3 each.',
     'Older **Season 3 “Runners”** Sprites (Zero Point, Grim Reaper, Burnt Peanut and friends) came from Sprite Chests too, but they’re now archived in your **Sprite Garden** — Override is the generation you collect and use in Battle Royale this season. Rarer Sprites have very low drop rates, which is why trading duplicates stays popular.',
   ] },
+  { h: '🔓 Where to find Cheat Codes', body: [
+    'Override Cheat Codes are **panels sprayed on walls, floors and ceilings** around the island — not Chests. Their spots are **randomized every match**, so there’s no fixed map to memorise; instead, drop where they’re densest and use the tools below.',
+    'Densest POIs to farm: **Cluster Coast** is the standout (60+ potential Cheat Code spawns), with **Chopped Shop**, **Battlewoods** and **Sunken Shores** (the Tetris-redesigned POI) also code-heavy — expect more contests at these spots.',
+    'Two things make hunting fast: turn on **Visualize Sound Effects** so codes flag on your HUD, and carry an **Override Gizmo / Cheat Code Locator** to ping the nearest one. Interact with a panel to enter its code and unlock that Sprite. (Farm spots are community-sourced and can shift as Epic re-tunes the map.)',
+  ] },
   { h: '⚠️ Extract it, or you lose it', body: [
     'A Sprite **isn’t yours until you Extract it.** If you’re eliminated before extracting, it’s gone. Extract at an **Extraction Site** or with a **Portable Extractor** (a Mastery reward). Only extracted Sprites count toward your collection.',
   ] },

@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 3, 2026',
+    title: 'Guide: where to find Cheat Codes (farming spots)',
+    changes: [
+      { tag: 'Added', text: 'A “Where to find Cheat Codes” section in the How Sprites work guide — the densest POIs (Cluster Coast is the standout, plus Chopped Shop, Battlewoods and Sunken Shores), and the fast-hunt tips (Visualize Sound Effects + the Override Gizmo / Cheat Code Locator). Shows both in-app and on the static /sprites page.' },
+    ],
+    summary: 'Added Cheat Code farming guidance — which POIs to drop at, since Override unlocks Sprites from in-world codes.',
+    why: 'People asked for a “cheat code map,” but Epic randomizes code spots every match, so a pin-map would be wrong next game. The honest, useful version is the density hotspots plus the Locator/Visualize-Sounds workflow — same approach as our Sprite Chest farm tips.',
+  },
+  {
+    date: 'September 3, 2026',
     title: 'Sprites now work in Ranked; build number corrected to v42.10',
     changes: [
       { tag: 'Added', text: 'News item: Sprites now appear in Ranked too, with their abilities disabled to keep competition even (from Epic’s in-game news).' },

@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 3, 2026 — Guide: where to find Cheat Codes (farming spots)
+
+- **Added:** a “Where to find Cheat Codes” section to `spriteGuide.js` (in-app + static `/sprites`) — densest POIs
+  (Cluster Coast, Chopped Shop, Battlewoods, Sunken Shores) and the fast-hunt tips (Visualize Sound Effects + the
+  Override Gizmo / Cheat Code Locator).
+- **Why:** a literal cheat-code pin-map isn’t possible — Epic randomizes code spots every match — so the accurate,
+  useful version is density hotspots + the locator workflow, mirroring our Sprite Chest farm tips.
+
+---
+
 ## September 3, 2026 — Sprites now work in Ranked; build number corrected to v42.10
 
 - **Added:** news item — Sprites now appear in Ranked with abilities disabled (Epic in-game news).
