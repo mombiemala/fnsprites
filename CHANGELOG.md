@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 4, 2026 — X-Ray & Onigiri: Gold & Cheat Master finishes live
+
+- **Changed:** `sprites.js` — `xray` and `onigiri` variants → `{ normal: R, gold: R, cheatmaster: R, loothacker: U }`
+  (Gold + Cheat Master confirmed obtainable in-game; Loot Hacker still unreleased). Released variant count 160 → 164;
+  README counts updated.
+- **Changed:** header tagline now stamps the current build (`v42.10 · Sep 3, 2026`) in both the app and static pages;
+  the app still swaps in the live build when detected (and the static pages upgrade it via the news API on load).
+- **Why:** the two Sep 3 winners launched Normal-only, so Gold/Cheat Master were held as datamined; they're now live
+  (verified in-game and against Fortnite.GG), so they're flipped obtainable.
+
+---
+
 ## September 4, 2026 — Community tier voting for Override Sprites
 
 - **Added:** logged-in players vote S/A/B/C/D on each current-season Sprite in its detail view (`TierVote.jsx` in

@@ -5,7 +5,7 @@ finishes (Normal, Gold, Gummy, Galaxy, **Gem**, **Holofoil**, **Cube**, **Quack*
 the Season 4 **Cheat Master**, and the datamined **Loot Hacker**), see your collection
 and mastery progress, save it to the cloud, compare with other players, browse the live
 **Item Shop**, and look up any player's **Battle Royale stats**. Current through
-**Chapter 7 Season 4 "Override"** (Sep 2026, New Sprite Day) — **160 released variants**
+**Chapter 7 Season 4 "Override"** (Sep 2026, New Sprite Day) — **164 released variants**
 across two generations: the Season 3 **"Runners"** roster (kept forever in the **Sprite
 Garden**) and the live **Override** generation — Sonic, Tails, Shadow, Jazz Jackrabbit,
 Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch, Adventure, Storm Scout,
@@ -26,7 +26,7 @@ flagged **Rumored / Upcoming** until confirmed.
 ## Features
 
 - **Accurate roster** — every released sprite & variant, current through the
-  **Sep 3 New Sprite Day** (**41 sprites / 160 released variants**). The current
+  **Sep 3 New Sprite Day** (**41 sprites / 164 released variants**). The current
   generation, **Chapter 7 Season 4 "Override,"** is **live**: Sonic, Tails, Shadow,
   Jazz Jackrabbit, Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch,
   Adventure, Storm Scout, Overshield, Mega Man, plus the first two **Design-a-Sprite**

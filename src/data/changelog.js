@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 4, 2026',
+    title: 'X-Ray & Onigiri: Gold and Cheat Master finishes are live',
+    changes: [
+      { tag: 'Changed', text: 'Flipped X-Ray’s and Onigiri’s Gold and Cheat Master finishes to released — both are now obtainable in-game (confirmed live), joining their Normal finish. Their Loot Hacker finish stays unreleased. Released variant count is now 164.' },
+      { tag: 'Changed', text: 'The header line under the logo now stamps the current build — v42.10 · Sep 3, 2026 — and the app still swaps in the live build number when it detects one.' },
+    ],
+    summary: 'The two newest Design-a-Sprite winners now have their Gold and Cheat Master finishes obtainable.',
+    why: 'X-Ray and Onigiri launched Sep 3 with only their Normal finish confirmed, so we’d held Gold/Cheat Master as datamined-but-unreleased; they’re now live in-game, so they’re flipped to obtainable (verified in-game and against community trackers).',
+  },
+  {
+    date: 'September 4, 2026',
     title: 'Community tier voting for the new Override Sprites',
     changes: [
       { tag: 'Added', text: 'Logged-in players can now vote S/A/B/C/D on each current-season (Override) Sprite, right in its detail view — with a live consensus tier, a vote-distribution bar, and one vote per account (tap your vote again to remove it). The community consensus also shows on the Sprites board for Override Sprites that don’t have a settled tier yet.' },

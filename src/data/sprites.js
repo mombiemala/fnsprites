@@ -138,8 +138,8 @@ export const SPRITE_TYPES = [
     ability: 'Design-a-Sprite winner (by Pine & Kiri): evolves egg → tadpole → frog, boosting movement speed & jump height and cutting fall damage as it grows. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
   { id: 'onigiri', name: 'Onigiri', icon: '🍙', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside X-Ray. Exact in-game ability not yet detailed by Epic. Normal is live; Gold & Cheatmaster finishes are datamined (art shown) but not confirmed obtainable yet.',
-    variants: { normal: R, gold: U, cheatmaster: U, loothacker: U } },
+    ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside X-Ray. Exact in-game ability not yet detailed by Epic. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is datamined but not released yet.',
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: U } },
   { id: 'honey', name: 'Honey', icon: '🍯', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Conejito_sam): spawns a beehive that swarms whoever damages you. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
@@ -147,8 +147,8 @@ export const SPRITE_TYPES = [
     ability: 'Design-a-Sprite winner (by StinkyPrincessGoose): a raccoon that finds you loot when you hide in dumpsters. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
   { id: 'xray', name: 'X-Ray', icon: '🩻', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players (and objects) through walls, like the old medallion did. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside Onigiri. Normal is live; Gold & Cheatmaster finishes are datamined (art shown) but not confirmed obtainable yet.',
-    variants: { normal: R, gold: U, cheatmaster: U, loothacker: U } },
+    ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players (and objects) through walls, like the old medallion did. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside Onigiri. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is datamined but not released yet.',
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: U } },
 
   // ---- Override new-generation Sprites — LIVE in Chapter 7 Season 4, with
   //   official datamined art (Normal, Gold & the new "Cheatmaster" finish).
