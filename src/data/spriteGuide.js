@@ -5,7 +5,7 @@
 export const SPRITE_GUIDE = [
   { h: '✨ Getting Sprites (Season 4: Override)', body: [
     'This season is **Chapter 7 Season 4 “Override.”** Its Sprites come from **in-world Cheat Codes** you activate around the map and **Hack the Lobby codes** you enter from the lobby — and many still drop from **Sprite Chests** too. Entering a Sprite’s **Hack the Lobby code** unlocks its **Cheat Master** finish.',
-    '**Any chest can drop any Sprite** — rarity sets the odds, not the location. Chests glow blue with a pink crystal; turn on **Visualized Sounds** to spot them. Busiest farm is **Sinister Strip** (4 chests); Wonkeeland, Calamari Canyon, Heatwave Harbor & Shaken Sanctuary have 3 each.',
+    '**Any chest can drop any Sprite** — rarity sets the odds, not the location. Chests glow blue with a pink crystal; turn on **Visualize Sound Effects** to spot them. Land at a **busy named POI** and clear its chests — the more loot a spot has, the more Sprite Chests you’ll find. (For Override’s in-world Cheat Codes, see the farming spots below.)',
     'Older **Season 3 “Runners”** Sprites (Zero Point, Grim Reaper, Burnt Peanut and friends) came from Sprite Chests too, but they’re now archived in your **Sprite Garden** — Override is the generation you collect and use in Battle Royale this season. Rarer Sprites have very low drop rates, which is why trading duplicates stays popular.',
   ] },
   { h: '🔓 Where to find Cheat Codes', body: [

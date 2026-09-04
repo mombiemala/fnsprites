@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 4, 2026 — New-season focus: achievable progress & no dead-end recommendations
+
+- **Fixed:** `NextToChase.jsx` recommends only current-season Sprites (`gen === CURRENT_GEN`), so it never suggests an
+  archived Season 3 Sprite you can’t obtain.
+- **Added:** `StatsBreakdown.jsx` leads with a “This season” completion % (reachable 100%) beside the all-time
+  collection %; Dust-to-finish and the “closest to completing” nudge are computed on the current season too.
+- **Changed:** `spriteGuide.js` — dropped the stale Season 3 chest-farm POIs; gives evergreen chest advice + points to
+  the Override Cheat Code farming spots.
+- **Changed:** `prerender.mjs` tier-list — clarifies the S–C rankings are the settled Season 3 “Runners” meta (now
+  archived), with Override Unranked until it settles.
+- **Why:** with Season 3 archived, an unreachable 100% and “chase this” pointing at unobtainable Sprites are
+  discouraging/misleading; anchoring on the current season keeps progress motivating and recommendations valid.
+
+---
+
 ## September 4, 2026 — Last-season Sprites marked “Archived”; Chest Luck framed as history
 
 - **Changed:** Season 3 “Runners” Sprites now carry an **`archived`** status (not `available`) on both boards

@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'September 4, 2026',
+    title: 'New-season focus: achievable progress & no dead-end recommendations',
+    changes: [
+      { tag: 'Fixed', text: '“Next to chase” now only recommends current-season Sprites you can actually obtain — it no longer points you at archived Season 3 Sprites that can’t be caught anymore.' },
+      { tag: 'Added', text: 'The Breakdown now leads with a “🌩️ This season” completion % — a number you can actually reach 100% on — alongside the all-time collection %. Dust-to-finish and the “closest to completing” nudge are now current-season too, so they’re always achievable.' },
+      { tag: 'Changed', text: 'The “How Sprites work” guide no longer lists last-season chest-farm POIs (Sinister Strip, Wonkeeland…); it gives evergreen chest advice and points to the current Override Cheat Code farming spots.' },
+      { tag: 'Changed', text: 'The Tier list now says its S–C rankings are the settled Season 3 “Runners” meta (those Sprites are archived in the Sprite Garden), with Override Sprites Unranked until their meta settles.' },
+    ],
+    summary: 'Made progress and recommendations reflect what’s actually obtainable this season, and cleared the last stale Season 3 references.',
+    why: 'With Season 3 archived, a collection % that can never hit 100% and a “chase this” that points at unobtainable Sprites are discouraging and misleading. Leading with an achievable current-season number — and only recommending things you can still get — keeps the app motivating; the guide and tier list get the same last-season cleanup.',
+  },
+  {
+    date: 'September 4, 2026',
     title: 'Last-season Sprites marked “Archived”; Chest Luck framed as history',
     changes: [
       { tag: 'Changed', text: 'Season 3 “Runners” Sprites now show an “Archived” status (not “Available”) on both the in-app and static Sprites boards — they’re kept in your Sprite Garden but can’t be obtained in Battle Royale now. Their “How to get” reads “Archived — kept in your Sprite Garden (last season).”' },

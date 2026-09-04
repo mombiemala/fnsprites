@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { ALL_SPRITES } from '../data/sprites'
+import { ALL_SPRITES, CURRENT_GEN } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
 
@@ -12,7 +12,10 @@ const rate = (s) => parseFloat(s.dropRate)
 // they're closest to completing, and the most common (easiest to run into) miss.
 export default function NextToChase({ tracking, onOpen }) {
   const picks = useMemo(() => {
-    const released = ALL_SPRITES.filter((s) => !s.unreleased)
+    // Only current-season Sprites are worth "chasing" — archived past-gen Sprites
+    // are kept in the Sprite Garden but can't be obtained in Battle Royale now, so
+    // recommending one would send the player after something they can't get.
+    const released = ALL_SPRITES.filter((s) => !s.unreleased && s.gen === CURRENT_GEN)
     const missing = released.filter((s) => !tracking[s.id]?.owned)
     if (!missing.length) return null
 
@@ -59,7 +62,7 @@ export default function NextToChase({ tracking, onOpen }) {
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
       <h3 className="font-display text-lg text-white">🎯 Next to chase</h3>
       {!picks ? (
-        <p className="mt-2 text-sm text-[var(--muted)]">You’ve caught them all — full collection! 🎉</p>
+        <p className="mt-2 text-sm text-[var(--muted)]">You’ve caught every Sprite obtainable this season! 🎉</p>
       ) : (
         <div className="mt-3 flex flex-col gap-2">
           {picks.map(({ key, tag, sprite, note }) => {

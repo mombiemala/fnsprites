@@ -735,7 +735,7 @@ function tierListPage() {
 <div class="cols">
   <div class="main">
     <h1>Fortnite Sprites tier list</h1>
-    <p class="lede" style="color:var(--muted);margin:6px 0 18px;font-size:14px;max-width:70ch">Every released Sprite ranked <b>S → C</b> by how strong its ability is — with what it does and how to get it. Rarity is how <i>hard</i> a Sprite is to find; tier is how <i>good</i> it is once you have it. Season 4 “Override” Sprites sit in <b>Unranked</b> until the meta settles.</p>
+    <p class="lede" style="color:var(--muted);margin:6px 0 18px;font-size:14px;max-width:70ch">Every released Sprite ranked <b>S → C</b> by how strong its ability is — with what it does and how to get it. Rarity is how <i>hard</i> a Sprite is to find; tier is how <i>good</i> it is once you have it. The current S–C rankings are the settled <b>Season 3 “Runners”</b> meta (those Sprites are now archived in the <a href="/sprite-garden" style="color:var(--brand)">Sprite Garden</a>); the new <b>Season 4 “Override”</b> Sprites sit in <b>Unranked</b> until their meta settles — we’ll rank them as the community tests them.</p>
     ${byTier.map(section).join('')}
     ${unrankedSection}
     <p class="fine" style="margin-top:6px;font-size:11px;color:var(--muted)">Tiers are a community/meta snapshot (cross-referenced from GAMES.GG, PlayerAuctions &amp; Destructoid) — opinion-based and shifting; not official Epic rankings. Tap any Sprite for its full page.</p>
