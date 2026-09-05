@@ -91,7 +91,7 @@ function spriteCard(type) {
           el('div', { display: 'flex', fontSize: 44, fontWeight: 800, color: '#ffffff' }, String(v)),
           el('div', { display: 'flex', fontSize: 22, color: '#9aa4bf', marginTop: 4 }, k),
         ]))),
-      el('div', { display: 'flex', fontSize: 26, color: '#9aa4bf' }, `Drop rate, Dust & chest odds → fnsprites.vercel.app/sprite/${slug(type.name)}`),
+      el('div', { display: 'flex', fontSize: 26, color: '#9aa4bf' }, `Drop rate, Dust & chest odds → fnsprites.app/sprite/${slug(type.name)}`),
     ]),
   ])
 }
@@ -145,7 +145,7 @@ export default async function handler(req) {
       }, tagline(player)),
     ]),
     el('div', { display: 'flex', fontSize: 28, color: '#9aa4bf' },
-      player ? 'See the full collection → fnsprites.vercel.app' : 'Collect, compare & complete → fnsprites.vercel.app'),
+      player ? 'See the full collection → fnsprites.app' : 'Collect, compare & complete → fnsprites.app'),
   ])
 
   return new ImageResponse(card, {

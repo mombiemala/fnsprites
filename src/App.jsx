@@ -389,7 +389,7 @@ export default function App() {
     const lines = [...byType.values()].map((t) => `• ${t.name}: ${t.variants.join(', ')}`)
     const n = missingList.length
     const who = gamertag ? `${gamertag}'s ` : 'My '
-    return `${who}missing Fortnite Sprites (${n} left):\n${lines.join('\n')}\n\nTracked free on fnsprites.vercel.app`
+    return `${who}missing Fortnite Sprites (${n} left):\n${lines.join('\n')}\n\nTracked free on fnsprites.app`
   }
   const copyMissing = async () => {
     if (!missingList.length) { toast('Nothing missing here — nice! 🎉'); return }

@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 5, 2026 — New home: fnsprites.app
+
+- **Changed:** custom domain — the site moves from `fnsprites.vercel.app` to **`fnsprites.app`**. Updated every
+  hardcoded URL: `SITE` in `scripts/prerender.mjs` (canonicals, sitemap, OG), `index.html` (`og:url`/`og:image`/
+  `twitter:image`/canonical/JSON-LD), `public/robots.txt` sitemap, `middleware.js` + `api/og.js` OG fallbacks,
+  the share-caption/QR backlinks in `src/App.jsx` and `src/lib/exportImage.js`, and the Sprite Garden news link.
+  (Share links derive their origin from `window.location`, so they follow automatically.)
+- **Why:** a `*.vercel.app` subdomain can't accrue search authority, can't be verified cleanly in Search Console,
+  and blocks AdSense. `fnsprites.app` keeps the brand + the "sprite" keyword and gives the tracker real SEO footing.
+  Vercel 301-redirects the old address once the custom domain is primary, so no link equity is lost.
+- **Ops (not in code):** domain bought on Cloudflare Registrar; add it in Vercel (Settings → Domains, set Production),
+  add the DNS records in Cloudflare **DNS-only**, add `https://fnsprites.app` to Supabase Auth redirect URLs, and
+  verify the domain + submit the sitemap in Google Search Console. See `docs/SEO-DOMAIN-PLAN.md`.
+
+---
+
 ## September 4, 2026 — X-Ray & Onigiri: Gold & Cheat Master finishes live
 
 - **Changed:** `sprites.js` — `xray` and `onigiri` variants → `{ normal: R, gold: R, cheatmaster: R, loothacker: U }`

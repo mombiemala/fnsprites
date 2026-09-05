@@ -154,7 +154,7 @@ export const NEWS = [
     title: '🌱 Sprite Garden is LIVE — your collection has a home',
     sprites: ['peely'],
     body: 'The Sprite Garden is here — a personal island getaway where your whole Sprite collection lives. Every Season 3 “Runners” Sprite is preserved automatically, every new Override Sprite is added the moment you get it, and none are ever erased when they go down in a match. You can display Sprites on pedestals and around the island, pick one up to have it follow you, and visit friends’ gardens or invite them to yours. It’s the “kept forever” promise made literal — your Season 3 collection stays displayable here even though the new generation has taken over Battle Royale. Get in from the lobby’s Discovery menu or with island code 4220-9404-7987 — full walkthrough on our new Sprite Garden guide. You can also grab a shareable snapshot of your layout with the 🌱 Sprite Garden image under Share & export.',
-    link: 'https://fnsprites.vercel.app/sprite-garden',
+    link: 'https://fnsprites.app/sprite-garden',
     source: 'FN Sprite Tracker',
     official: true,
   },

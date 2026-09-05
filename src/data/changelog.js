@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 5, 2026',
+    title: 'New home: fnsprites.app',
+    changes: [
+      { tag: 'Changed', text: 'The tracker is moving to its own domain — fnsprites.app — instead of the fnsprites.vercel.app address. Every link, share image, and QR code now points at the new home; the old address redirects, so anything you’ve already shared keeps working.' },
+    ],
+    summary: 'A proper home of our own at fnsprites.app — cleaner to share, and it can actually rank in search.',
+    why: 'A *.vercel.app subdomain can’t build search ranking or be verified as our own property (and it blocks ad approval). Moving to fnsprites.app keeps the brand and the “sprite” keyword while giving the tracker real SEO footing — the biggest single discoverability upgrade we can make. The old URL 301-redirects so we keep every existing link and share.',
+  },
+  {
     date: 'September 4, 2026',
     title: 'X-Ray & Onigiri: Gold and Cheat Master finishes are live',
     changes: [

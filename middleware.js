@@ -13,8 +13,8 @@ import { next } from '@vercel/edge'
 // untouched, so there's no recursion.
 export const config = { matcher: '/' }
 
-const GENERIC_IMG = 'https://fnsprites.vercel.app/og-image.png'
-const GENERIC_URL = 'content="https://fnsprites.vercel.app/"'
+const GENERIC_IMG = 'https://fnsprites.app/og-image.png'
+const GENERIC_URL = 'content="https://fnsprites.app/"'
 
 export default async function middleware(request) {
   try {

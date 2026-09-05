@@ -20,7 +20,7 @@ import { SPRITE_GUIDE } from '../src/data/spriteGuide.js'
 import { NEWS, NEWS_TAGS } from '../src/data/news.js'
 import { CODES_INTRO, CODE_CATEGORIES, LOBBY_CODES } from '../src/data/codes.js'
 
-const SITE = 'https://fnsprites.vercel.app'
+const SITE = 'https://fnsprites.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
 
 // ---------- helpers ----------

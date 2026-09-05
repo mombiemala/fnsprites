@@ -133,7 +133,7 @@ function drawFit(ctx, text, x, y, maxW, weight, size, minSize = 11) {
 // — not just the five Locker columns). Works for guests and signed-in users
 // alike since it reads the active `tracking` map it's handed.
 export async function generateMissingImage({ gamertag, tracking = {}, theme = 'midnight', shareUrl }) {
-  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.vercel.app/')
+  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.app/')
 
   const releasedTotal = ALL_SPRITES.filter((s) => s.released).length
   const ownedTotal = ALL_SPRITES.filter((s) => s.released && tracking[s.id]?.owned).length
@@ -254,7 +254,7 @@ export async function generateMissingImage({ gamertag, tracking = {}, theme = 'm
 
 // Shared footer (QR + app name + link + creator code) for the export cards.
 async function drawExportFooter(ctx, { W, H, pad, url }) {
-  let host = 'fnsprites.vercel.app'
+  let host = 'fnsprites.app'
   try { host = new URL(url).host } catch { /* keep default */ }
   let qrImg = null
   try {
@@ -284,7 +284,7 @@ async function drawExportFooter(ctx, { W, H, pad, url }) {
 export async function generateCollectionImage({ gamertag, tracking, mode = 'collection', theme = 'midnight', shareUrl }) {
   if (mode === 'missing') return generateMissingImage({ gamertag, tracking, theme, shareUrl })
   const missing = false
-  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.vercel.app/')
+  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.app/')
   const rows = SPRITE_TYPES.filter((t) => t.released)
 
   // Build the grid + counts, and collect images to preload.
@@ -427,7 +427,7 @@ export async function generateCollectionImage({ gamertag, tracking, mode = 'coll
   // Footer — a scannable QR (encodes the share link) on the right, and the app
   // name + readable URL + creator code on the left, so anyone who sees the image
   // can get straight back to the app.
-  let host = 'fnsprites.vercel.app'
+  let host = 'fnsprites.app'
   try { host = new URL(url).host } catch { /* keep default */ }
 
   let qrImg = null
@@ -480,7 +480,7 @@ const GARDEN_RARITY_RANK = { Mythic: 0, Legendary: 1, Epic: 2, Rare: 3 }
 // Garden view. Reads the active `tracking` map, so it works for guests and
 // signed-in users alike.
 export async function generateGardenImage({ gamertag, tracking = {}, shareUrl }) {
-  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.vercel.app/')
+  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.app/')
   const releasedTotal = ALL_SPRITES.filter((s) => s.released).length
   const owned = ALL_SPRITES
     .filter((s) => s.released && tracking[s.id]?.owned)
@@ -658,7 +658,7 @@ export async function generateGardenImage({ gamertag, tracking = {}, shareUrl })
 // layout in their in-game Sprite Garden. `items` is an ordered array of sprite
 // objects (from ALL_SPRITES); `cols` sets the grid width.
 export async function generateGardenBlueprint({ gamertag, items = [], cols = 4, shareUrl }) {
-  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.vercel.app/')
+  const url = shareUrl || (typeof window !== 'undefined' ? `${window.location.origin}${window.location.pathname}` : 'https://fnsprites.app/')
   const canvas = document.createElement('canvas')
   const pad = 44
   const bg = (ctx, W, H) => { const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, '#12291f'); g.addColorStop(1, '#08120d'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H) }

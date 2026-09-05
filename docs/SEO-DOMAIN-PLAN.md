@@ -1,6 +1,6 @@
 # SEO landing + custom-domain plan
 
-**Status:** draft · July 6, 2026
+**Status:** ✅ domain chosen — `fnsprites.app` (bought on Cloudflare, Sep 5, 2026) · orig. draft July 6, 2026
 **Owner:** mombie
 **TL;DR:** The product is already ahead of competitors on features — the gap is
 **discovery**. Rivals rank because they own keyword domains and ship
@@ -44,23 +44,30 @@ Availability + pricing checked via Vercel Domains on July 6, 2026:
 | `spritedex.gg` | ✅ available | $129.99 | "SpriteDex" brand (Dilly already uses the term) |
 | `spritechest.gg` | ✅ available | $129.99 | thematic, in-game term |
 
-**Recommendation**
-- **If budget allows (~$130/yr): `spritetracker.gg`** as the primary. It's the
-  cleanest keyword+brand combo and the `.gg` reads as *the* Fortnite/gaming
-  space.
-- **Budget path (~$11): `sprite-tracker.com`** for the exact-match keyword, or
-  **`fnsprites.app`** to preserve the existing brand.
-- Regardless, **grab `fnsprites.app` ($10) as a cheap brand/redirect** so the
-  name we've been sharing resolves.
+**Decision (Sep 5, 2026):** went with **`fnsprites.app`** — bought on **Cloudflare
+Registrar** (at-cost ~$10/yr, free WHOIS privacy). It preserves the "fnsprites"
+brand we've been sharing (keeps existing brand searches + backlink equity), keeps
+the "sprite" keyword in the domain, and `.app` forces HTTPS. The `.gg` options
+were passed over on cost ($130/yr) and because Cloudflare Registrar doesn't sell
+`.gg`. Hosting stays on **Vercel** (free Hobby tier; the `api/stats.js` key proxy
+already runs there), with DNS pointed from Cloudflare.
 
-**Setup (Vercel):**
-1. Buy the domain (Vercel Domains, or any registrar → point nameservers/`A`/`CNAME` to Vercel).
-2. Add it to the `fnsprites` project → set as the **Production Domain**.
-3. **301-redirect** `fnsprites.vercel.app` → the new domain (Vercel does this
-   automatically once a custom prod domain is set) so we don't split ranking.
-4. Update every hardcoded URL: `og:url`, canonical, sitemap, `manifest`,
-   Supabase OAuth redirect allow-list, share-link origin (already derived from
-   `window.location`, so those are fine), README.
+**Setup (Cloudflare registrar → Vercel host):**
+1. ✅ Domain bought on Cloudflare (`fnsprites.app`).
+2. In the Vercel `fnsprites` project → **Settings → Domains → Add** `fnsprites.app`
+   (and `www.fnsprites.app`). Vercel shows the DNS records it wants.
+3. In **Cloudflare → DNS**, add those records **"DNS only" (grey cloud)** so Vercel
+   serves + issues SSL directly (no double-proxy). Apex `A`/`ALIAS` → Vercel,
+   `www` `CNAME` → `cname.vercel-dns.com` (use whatever Vercel displays).
+4. Set `fnsprites.app` as the **Production Domain** in Vercel → it auto-**301s**
+   `fnsprites.vercel.app` → `fnsprites.app` so we don't split ranking.
+5. ✅ Hardcoded URLs updated in code: `SITE` (prerender), `og:url`, canonical,
+   sitemap/robots, JSON-LD, middleware/`api/og` OG fallbacks, share-caption
+   backlinks. (Share-link origin derives from `window.location`, so it follows
+   automatically.)
+6. Add `https://fnsprites.app` to the **Supabase Auth → URL Configuration** redirect
+   allow-list (Site URL + redirect URLs) so OAuth login keeps working on the new host.
+7. Verify `fnsprites.app` in **Google Search Console**, submit `sitemap.xml`.
 
 ---
 
