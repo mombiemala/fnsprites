@@ -1,6 +1,11 @@
-import QRCode from 'qrcode'
 import { SPRITE_TYPES, ALL_SPRITES, RARITY_COLORS } from '../data/sprites'
 import { CREATOR_CODE } from './supabase'
+
+// qrcode (~a few tens of KB) is only needed when an export actually renders its
+// QR code. Load it lazily so it stays out of the initial JS bundle (and out of
+// every chunk that imports this module) until the user triggers an export.
+let _qrPromise
+const loadQR = () => (_qrPromise ||= import('qrcode').then((m) => m.default))
 
 // Whether a given `<type>_<variant>` is actually live — sourced from the built
 // sprite list so it respects date-gated forms (e.g. Holofoil auto-releases via
@@ -258,7 +263,7 @@ async function drawExportFooter(ctx, { W, H, pad, url }) {
   try { host = new URL(url).host } catch { /* keep default */ }
   let qrImg = null
   try {
-    const qrData = await QRCode.toDataURL(url, { margin: 1, width: 240, color: { dark: '#0a0f1eff', light: '#ffffffff' } })
+    const qrData = await (await loadQR()).toDataURL(url, { margin: 1, width: 240, color: { dark: '#0a0f1eff', light: '#ffffffff' } })
     qrImg = await loadImage(qrData)
   } catch { /* QR is a nicety */ }
   if (qrImg) {
@@ -432,7 +437,7 @@ export async function generateCollectionImage({ gamertag, tracking, mode = 'coll
 
   let qrImg = null
   try {
-    const qrData = await QRCode.toDataURL(url, { margin: 1, width: 240, color: { dark: '#0a0f1eff', light: '#ffffffff' } })
+    const qrData = await (await loadQR()).toDataURL(url, { margin: 1, width: 240, color: { dark: '#0a0f1eff', light: '#ffffffff' } })
     qrImg = await loadImage(qrData)
   } catch { /* QR is a nicety — skip if it fails */ }
 
