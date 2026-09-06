@@ -1219,12 +1219,74 @@ function cheatMasterPage() {
   <div class="main">
     <h1>😎 Cheat Master Sprites</h1>
     <p class="lede" style="color:var(--muted);margin:6px 0 14px;font-size:14px;max-width:70ch">Every Fortnite <b style="color:#fff">Cheat Master</b> Sprite — the Season 4 “Override” premium finish — with which are live, which are datamined, and the code that unlocks each. <b style="color:#fff">${liveCount} live</b> as of ${esc(monthLabel)}.</p>
-    <div class="card" style="padding:12px 14px;margin:0 0 14px"><p style="margin:0;font-size:12.5px;color:var(--muted);line-height:1.6">To unlock one, enter its ${L('/codes', 'Hack the Lobby code')} in the lobby Admin Panel, and catch ${L('/events', 'Power Hours')} for boosted Cheat Master spawns. New to Sprites? Start with the ${L('/faq', 'FAQ')} or the full ${L('/sprites', 'checklist')}.</p></div>
+    <div class="card" style="padding:12px 14px;margin:0 0 14px"><p style="margin:0;font-size:12.5px;color:var(--muted);line-height:1.6">To unlock one, enter its ${L('/codes', 'Hack the Lobby code')} in the lobby Admin Panel, and catch ${L('/events', 'Power Hours')} for boosted Cheat Master spawns — full walkthrough in ${L('/how-to-get-cheat-master-sprites', 'How to get Cheat Master Sprites')}. New to Sprites? Start with the ${L('/faq', 'FAQ')} or the full ${L('/sprites', 'checklist')}.</p></div>
     ${cm.map(row).join('')}
     <h2 style="font-size:16px;margin:22px 0 8px">Cheat Master Sprites — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
     <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Datamined finishes are labelled and flip to Live when Epic releases them. Not affiliated with Epic Games.</p>
     <a class="bigcta" href="/">Track your Cheat Master Sprites — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT.replace('</body></html>', `${CODES_SCRIPT}</body></html>`)
+}
+
+// ---------- /how-to-get-cheat-master-sprites guide ----------
+// Prose + step walkthrough for the exact "how to get cheat master sprites"
+// query (distinct from the /cheat-master-sprites list hub). HowTo + FAQPage
+// schema for step-rich results; reuses the /codes copy-button script.
+function howToCheatMasterPage() {
+  const monthLabel = new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const workingCodes = LOBBY_CODES.filter((c) => c.type === 'sprite' && c.code && c.status === 'working')
+  const steps = [
+    ['Open the Admin Panel', 'In the Battle Royale lobby, open the Admin Panel — the “…” / admin prompt in the top-right of the lobby screen.'],
+    ['Enter a Cheat Master code', 'Type the Hack the Lobby code for the Sprite you want — for example, GOTTAGOFAST for the Cheat Master Sonic. Spelling matters; capitalisation doesn’t.'],
+    ['Hit Submit', 'Submit the code — a “LOBBY HACK ACTIVATED!” screen confirms it worked.'],
+    ['Equip it from your collection', 'The Cheat Master Sprite is added to your Sprite collection. Redeeming a code for a Sprite you already own converts to roughly 10,000 Sprite Dust instead.'],
+  ]
+  const codeRow = (c) => `<div class="card" style="display:flex;align-items:center;gap:10px;padding:10px 14px;margin:0 0 8px">
+      <button class="codecopy" data-code="${esc(c.code)}" title="Copy ${esc(c.code)}" style="font-family:ui-monospace,Menlo,monospace;font-weight:800;font-size:12px;color:#fff;background:var(--panel2);border:0;border-radius:8px;padding:6px 10px;cursor:pointer;flex-shrink:0">${esc(c.code)}</button>
+      <span style="flex:1;min-width:0;font-size:13px;color:var(--text)">${esc(c.unlocks || 'Cheat Master Sprite')}</span></div>`
+  const faqs = [
+    ['How do you get Cheat Master Sprites in Fortnite?', `Enter a Hack the Lobby code in the Battle Royale lobby Admin Panel: open the panel, type the code (spelling matters, capitalisation doesn’t) and hit Submit. Their spawns are also boosted during Power Hours. The current codes are listed above.`],
+    ['What is the code for the Cheat Master Sonic Sprite?', `Enter GOTTAGOFAST in the lobby Admin Panel to unlock the Cheat Master Sonic Sprite.`],
+    ['Are Cheat Master Sprite codes free?', `Yes — the codes are free and, unless a promo code says otherwise, stay claimable until you redeem them. Cheat Master Sprites cost no money.`],
+    ['Where can I see every Cheat Master Sprite?', `The full list — live and datamined, with each unlock code — is on the ${L('/cheat-master-sprites', 'Cheat Master Sprites')} page.`],
+  ]
+  const desc = `How to get Cheat Master Sprites in Fortnite (Season 4 “Override”): enter Hack the Lobby codes in the lobby Admin Panel, find in-world Cheat Codes, and use Power Hours boosts. Step-by-step, with the current working codes (${workingCodes.length} as of ${monthLabel}).`
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'HowTo', name: 'How to get Cheat Master Sprites in Fortnite', description: desc,
+      step: steps.map(([n, t], i) => ({ '@type': 'HowToStep', position: i + 1, name: n, text: t })) },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '') } })) },
+  ] }
+  return head({ title: `How to Get Cheat Master Sprites in Fortnite (Season 4 Override) | FN Sprite Tracker`, desc, canonical: SITE + '/how-to-get-cheat-master-sprites', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🔓 How to get Cheat Master Sprites</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:70ch">Cheat Master is the Season 4 “Override” premium Sprite finish. There are two ways to get them — redeeming <b style="color:#fff">Hack the Lobby codes</b> and rolling <b style="color:#fff">in-world Cheat Codes</b> — plus Power Hours boosts. Here’s exactly how.</p>
+
+    <h2 style="font-size:17px;margin:18px 0 8px">Method 1 — Redeem a Hack the Lobby code (fastest)</h2>
+    <ol style="margin:6px 0 14px;padding-left:20px;line-height:1.7;font-size:14px">${steps.map(([n, t]) => `<li><b>${esc(n)}.</b> ${esc(t)}</li>`).join('')}</ol>
+    ${workingCodes.length ? `<h3 style="font-size:14px;margin:14px 0 8px">Working Cheat Master codes (${workingCodes.length}) — tap to copy</h3>${workingCodes.map(codeRow).join('')}<p style="margin:6px 0 0;font-size:12px;color:var(--muted)">More reward codes and the latest additions are on the ${L('/codes', 'Lobby Hacks page')}.</p>` : ''}
+
+    <h2 style="font-size:17px;margin:22px 0 8px">Method 2 — Find in-world Cheat Codes</h2>
+    <p style="font-size:14px;line-height:1.6">Out in matches you can pick up <b>Cheat Codes</b> and cash them in to roll Override Sprites, including Cheat Master finishes. Use <b>Visualize Sound Effects</b> to hear their pickup cue and check the current farming hotspots in the ${L('/sprites', 'How Sprites work guide')}. Epic randomises their spots each match, so it’s about volume, not a fixed map pin.</p>
+
+    <h2 style="font-size:17px;margin:22px 0 8px">Power Hours — boosted Cheat Master spawns</h2>
+    <p style="font-size:14px;line-height:1.6">During <b>Power Hours</b> events, Cheat Master Sprite spawns are boosted — the best windows to chase the rarer ones. See the recurring times on the ${L('/events', 'events schedule')}.</p>
+
+    <h2 style="font-size:17px;margin:22px 0 8px">Tips</h2>
+    <ul style="margin:6px 0 0;padding-left:18px;line-height:1.7;font-size:14px">
+      <li>Codes aren’t case-sensitive, but <b>spelling is</b> — a few mix letters and numbers (zeros, not the letter “O”).</li>
+      <li>Redeeming a code for a Sprite you already own gives ~10,000 <b>Sprite Dust</b> instead — never wasted.</li>
+      <li>See which Cheat Master Sprites are live vs still datamined on the ${L('/cheat-master-sprites', 'Cheat Master Sprites list')}.</li>
+    </ul>
+
+    <h2 style="font-size:16px;margin:22px 0 8px">How to get Cheat Master Sprites — FAQ</h2>
+    ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Codes are community-sourced and change through the season — verify in-game. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track the Cheat Master Sprites you unlock — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
 </div>
@@ -1237,6 +1299,7 @@ function cheatMasterPage() {
 const GUIDES = [
   ['/codes', '🔓', 'Lobby Hacks (codes)', 'Every Hack the Lobby / Admin Panel code and what it unlocks — grouped by reward, with copy & redeemed-tracking.'],
   ['/cheat-master-sprites', '😎', 'Cheat Master Sprites', 'Every Cheat Master finish — which are live, which are datamined, and the code that unlocks each.'],
+  ['/how-to-get-cheat-master-sprites', '🧭', 'How to get Cheat Master Sprites', 'Step-by-step: redeem lobby codes, find Cheat Codes, and use Power Hours to unlock Cheat Master finishes.'],
   ['/sprite-garden', '🌱', 'Sprite Garden', 'What the Garden is, how to get in (island code), how it works, and what to expect.'],
   ['/sprite-dust', '🔷', 'Sprite Dust & Loot Hacks', 'How to earn Dust, how Loot Hacks customise your chest loot, costs, and a spend strategy.'],
   ['/events', '📅', 'Events schedule', 'Power Hours, New Sprite Day, Mastery Monday & finish hours — what they are and the usual times.'],
@@ -1460,6 +1523,7 @@ function sitemap(types) {
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9' },
     { loc: SITE + '/cheat-master-sprites', changefreq: 'weekly', priority: '0.8' },
+    { loc: SITE + '/how-to-get-cheat-master-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/sprite-garden', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/sprite-dust', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/events', changefreq: 'daily', priority: '0.8' },
@@ -1514,6 +1578,8 @@ mkdirSync(resolve(DIST, 'rarest-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'rarest-sprites', 'index.html'), rarestPage())
 mkdirSync(resolve(DIST, 'cheat-master-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'cheat-master-sprites', 'index.html'), cheatMasterPage())
+mkdirSync(resolve(DIST, 'how-to-get-cheat-master-sprites'), { recursive: true })
+writeFileSync(resolve(DIST, 'how-to-get-cheat-master-sprites', 'index.html'), howToCheatMasterPage())
 mkdirSync(resolve(DIST, 'privacy'), { recursive: true })
 writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())

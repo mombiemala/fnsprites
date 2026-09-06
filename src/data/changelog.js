@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 6, 2026',
+    title: '“How to get Cheat Master Sprites” guide',
+    changes: [
+      { tag: 'Added', text: 'A step-by-step guide (in Guides, and at /how-to-get-cheat-master-sprites) walking through both ways to unlock Cheat Master Sprites — redeeming Hack the Lobby codes (with the current working codes, tap-to-copy) and rolling in-world Cheat Codes — plus Power Hours boosts and tips.' },
+    ],
+    summary: 'A plain how-to for unlocking Cheat Master Sprites, start to finish — the companion to the Cheat Master list.',
+    why: '“How to get cheat master sprites” is asked as a how-to, not a list, so it deserves its own step-by-step page (with step-rich markup) alongside the roster hub — together they cover both the “which” and the “how” of that search.',
+  },
+  {
+    date: 'September 6, 2026',
     title: 'Cheat Master Sprites hub',
     changes: [
       { tag: 'Added', text: 'A “Cheat Master Sprites” page (in Guides, and at /cheat-master-sprites) listing every Sprite with a Cheat Master finish — which are live vs datamined, the exact code that unlocks each (tap to copy), and a link to every Sprite. Kept in sync with the roster automatically.' },

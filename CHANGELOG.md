@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 6, 2026 — “How to get Cheat Master Sprites” guide
+
+- **Added:** a step-by-step guide at `/how-to-get-cheat-master-sprites` (prerendered, in the `/guides` hub + sitemap,
+  cross-linked from the Cheat Master hub). Covers Method 1 (redeem Hack the Lobby codes — with the current working
+  codes, tap-to-copy via `CODES_SCRIPT`), Method 2 (in-world Cheat Codes), Power Hours boosts, and tips. `HowTo` +
+  `FAQPage` JSON-LD (step-rich results). Working codes pulled from `LOBBY_CODES`.
+- **Why:** the query is a how-to, not a list — it deserves its own step-by-step page with `HowTo` markup alongside the
+  `/cheat-master-sprites` roster hub, so we cover both the "which" and the "how."
+
+---
+
 ## September 6, 2026 — Cheat Master Sprites hub
 
 - **Added:** a per-finish hub at `/cheat-master-sprites` (prerendered, in the `/guides` hub + sitemap, cross-linked
