@@ -1086,7 +1086,7 @@ function faqPage() {
   const faqs = [
     ['How many Fortnite Sprites are there?', `As of ${monthLabel} there are <b>${RELEASED_COUNT} released Sprite variants</b> — ${typeCount} Sprite characters, each in several finishes — across two generations: the Season 3 “Runners” roster and the current Season 4 “Override” generation (${overrideCount} characters so far). Epic adds more most seasons, and this tracker updates as they drop. Browse them all on the ${L('/sprites', 'Sprites checklist')}.`],
     ['How do you get Sprites in Fortnite?', `In Season 4 “Override” you unlock Sprites mainly by entering Hack the Lobby (Admin Panel) codes in the Battle Royale lobby and by finding in-world Cheat Codes during matches. Earlier “Runners”-generation Sprites dropped from chests. See the full list on the ${L('/codes', 'Lobby Hacks page')} and the how-to on the ${L('/sprites', 'Sprites guide')}.`],
-    ['What is a Cheat Master Sprite?', `Cheat Master is a special Season 4 finish — a flashier, rarer version of an Override Sprite. You unlock them with specific lobby codes (for example, GOTTAGOFAST for the Cheat Master Sonic), and their spawns are boosted during Power Hours. See which codes unlock them on the ${L('/codes', 'Lobby Hacks page')} and when on the ${L('/events', 'events schedule')}.`],
+    ['What is a Cheat Master Sprite?', `Cheat Master is a special Season 4 finish — a flashier, rarer version of an Override Sprite. You unlock them with specific lobby codes (for example, GOTTAGOFAST for the Cheat Master Sonic), and their spawns are boosted during Power Hours. See the full ${L('/cheat-master-sprites', 'list of Cheat Master Sprites')}, which codes unlock them on the ${L('/codes', 'Lobby Hacks page')}, and when on the ${L('/events', 'events schedule')}.`],
     ['What is the Loot Hacker finish?', `Loot Hacker is a datamined Override finish that Epic has not released yet. Each Sprite shows whether it is slated to get one, and we flip it to obtainable the moment it goes live. More on finishes and Dust in the ${L('/sprite-dust', 'Dust and Loot Hacks guide')}.`],
     ['What are the rarest Fortnite Sprites?', `Rarity comes down to drop rate and finish. See every Sprite ranked rarest-first on the ${L('/rarest-sprites', 'rarest Sprites')} page, sort the full checklist by rarity on the ${L('/sprites', 'Sprites page')}, and check how strong each one is on the ${L('/tier-list', 'tier list')}.`],
     ['What is the best Sprite in Fortnite?', `“Best” depends on the ability. Our ${L('/tier-list', 'tier list')} ranks every Sprite S–C by how useful its ability is (based on the settled Season 3 meta), and logged-in players vote on the newer Override Sprites so you can watch the community consensus form.`],
@@ -1180,11 +1180,63 @@ function rarestPage() {
 ` + FOOT
 }
 
+// ---------- /cheat-master-sprites hub ----------
+// Per-finish hub for the high-intent "cheat master sprites" / "all cheat master
+// sprites" queries. Lists every Sprite that has a Cheat Master finish (live or
+// datamined) with its unlock code, straight from the shared data. CollectionPage
+// + ItemList + FAQPage schema; reuses the /codes copy-button script.
+function cheatMasterPage() {
+  const monthLabel = new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const cm = SPRITE_TYPES.filter((t) => 'cheatmaster' in t.variants).map((t) => {
+    const v = SPRITE_BY_ID[`${t.id}_cheatmaster`]
+    return { t, released: !!v?.released, vaulted: !!v?.vaulted, code: LOBBY_CODES.find((c) => c.spriteId === t.id && c.code) }
+  }).sort((a, b) => (a.released ? 0 : 1) - (b.released ? 0 : 1) || a.t.name.localeCompare(b.t.name))
+  const liveCount = cm.filter((x) => x.released).length
+  const row = ({ t, released, vaulted, code }) => {
+    const st = vaulted ? ['Vaulted', '#fca5a5'] : released ? ['Live', '#34d399'] : ['Datamined', '#8b93a7']
+    return `<div class="card" style="display:flex;align-items:center;gap:10px;padding:11px 14px;margin:0 0 8px">
+      <span style="font-size:22px;flex-shrink:0">${esc(t.icon || '🧩')}</span>
+      <span style="flex:1;min-width:0"><a href="/sprite/${slug(t.name)}" style="color:#fff;font-weight:700;text-decoration:none">${esc(t.name)}</a><span style="display:block;font-size:12px;color:var(--muted)">${esc(t.rarity)} · Cheat Master finish</span></span>
+      ${code ? `<button class="codecopy" data-code="${esc(code.code)}" title="Copy ${esc(code.code)}" style="font-family:ui-monospace,Menlo,monospace;font-weight:800;font-size:12px;color:#fff;background:var(--panel2);border:0;border-radius:8px;padding:6px 10px;cursor:pointer;flex-shrink:0">${esc(code.code)}</button>` : `<span style="font-size:11px;color:var(--muted);flex-shrink:0">via Cheat Codes</span>`}
+      <span style="color:${st[1]};background:${st[1]}22;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;flex-shrink:0">${st[0]}</span></div>`
+  }
+  const faqs = [
+    ['What are Cheat Master Sprites in Fortnite?', `Cheat Master is the special Season 4 “Override” finish — a flashier, rarer version of an Override Sprite. Each one keeps its base Sprite’s ability and adds the finish’s own upgraded look.`],
+    ['How do you get Cheat Master Sprites?', `Most unlock with a specific Hack the Lobby code entered in the Battle Royale lobby Admin Panel (see the ${L('/codes', 'full code list')}), and their spawns are boosted during ${L('/events', 'Power Hours')} events. Enter the code — spelling matters, capitalisation doesn’t — and hit Submit.`],
+    ['Which Cheat Master Sprites are out now?', `As of ${monthLabel}, ${liveCount} Cheat Master Sprites are live${cm.length > liveCount ? `, with ${cm.length - liveCount} more datamined and on the way` : ''}. The full list is above, each linking to its Sprite page.`],
+    ['Do Cheat Master Sprites cost money?', `No — like every Sprite, they’re free to unlock through gameplay and lobby codes. FN Sprite Tracker is free and fan-made too.`],
+  ]
+  const desc = `Every Fortnite Cheat Master Sprite (Season 4 “Override”) in one list — which are live, which are datamined, and the Hack the Lobby code that unlocks each. ${liveCount} live as of ${monthLabel}. Free & fan-made.`
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'CollectionPage', name: 'Cheat Master Sprites (Fortnite Season 4 Override)', url: SITE + '/cheat-master-sprites', description: desc, dateModified: NEWS_TODAY },
+    { '@type': 'ItemList', name: 'Fortnite Cheat Master Sprites', numberOfItems: cm.length,
+      itemListElement: cm.map(({ t }, i) => ({ '@type': 'ListItem', position: i + 1, name: `${t.name} (Cheat Master)`, url: SITE + `/sprite/${slug(t.name)}` })) },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '') } })) },
+  ] }
+  return head({ title: `Cheat Master Sprites (Fortnite Season 4 Override) — Full List & Codes | FN Sprite Tracker`, desc, canonical: SITE + '/cheat-master-sprites', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>😎 Cheat Master Sprites</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 14px;font-size:14px;max-width:70ch">Every Fortnite <b style="color:#fff">Cheat Master</b> Sprite — the Season 4 “Override” premium finish — with which are live, which are datamined, and the code that unlocks each. <b style="color:#fff">${liveCount} live</b> as of ${esc(monthLabel)}.</p>
+    <div class="card" style="padding:12px 14px;margin:0 0 14px"><p style="margin:0;font-size:12.5px;color:var(--muted);line-height:1.6">To unlock one, enter its ${L('/codes', 'Hack the Lobby code')} in the lobby Admin Panel, and catch ${L('/events', 'Power Hours')} for boosted Cheat Master spawns. New to Sprites? Start with the ${L('/faq', 'FAQ')} or the full ${L('/sprites', 'checklist')}.</p></div>
+    ${cm.map(row).join('')}
+    <h2 style="font-size:16px;margin:22px 0 8px">Cheat Master Sprites — FAQ</h2>
+    ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Datamined finishes are labelled and flip to Live when Epic releases them. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track your Cheat Master Sprites — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT.replace('</body></html>', `${CODES_SCRIPT}</body></html>`)
+}
+
 // ---------- /guides hub page ----------
 // One home for the reference pages — declutters the nav (a single "Guides" link
 // replaces the per-guide links) and gives the guides an internal-linking hub.
 const GUIDES = [
   ['/codes', '🔓', 'Lobby Hacks (codes)', 'Every Hack the Lobby / Admin Panel code and what it unlocks — grouped by reward, with copy & redeemed-tracking.'],
+  ['/cheat-master-sprites', '😎', 'Cheat Master Sprites', 'Every Cheat Master finish — which are live, which are datamined, and the code that unlocks each.'],
   ['/sprite-garden', '🌱', 'Sprite Garden', 'What the Garden is, how to get in (island code), how it works, and what to expect.'],
   ['/sprite-dust', '🔷', 'Sprite Dust & Loot Hacks', 'How to earn Dust, how Loot Hacks customise your chest loot, costs, and a spend strategy.'],
   ['/events', '📅', 'Events schedule', 'Power Hours, New Sprite Day, Mastery Monday & finish hours — what they are and the usual times.'],
@@ -1407,6 +1459,7 @@ function sitemap(types) {
     { loc: SITE + '/rarest-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9' },
+    { loc: SITE + '/cheat-master-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/sprite-garden', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/sprite-dust', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/events', changefreq: 'daily', priority: '0.8' },
@@ -1459,9 +1512,11 @@ mkdirSync(resolve(DIST, 'faq'), { recursive: true })
 writeFileSync(resolve(DIST, 'faq', 'index.html'), faqPage())
 mkdirSync(resolve(DIST, 'rarest-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'rarest-sprites', 'index.html'), rarestPage())
+mkdirSync(resolve(DIST, 'cheat-master-sprites'), { recursive: true })
+writeFileSync(resolve(DIST, 'cheat-master-sprites', 'index.html'), cheatMasterPage())
 mkdirSync(resolve(DIST, 'privacy'), { recursive: true })
 writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + 404 + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /cheat-master-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + 404 + sitemap.xml → dist/`)

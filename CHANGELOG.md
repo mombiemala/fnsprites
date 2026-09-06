@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 6, 2026 — Cheat Master Sprites hub
+
+- **Added:** a per-finish hub at `/cheat-master-sprites` (prerendered, in the `/guides` hub + sitemap, cross-linked
+  from `/faq`). Lists every Sprite with a `cheatmaster` variant, live-first, with a Live/Datamined/Vaulted status, a
+  copy-to-clipboard unlock code (reuses `CODES_SCRIPT`), and a link to each Sprite page. `CollectionPage` + `ItemList`
+  + `FAQPage` JSON-LD; data derived from `SPRITE_TYPES` + `LOBBY_CODES` so it self-syncs.
+- **Why:** "cheat master sprites" is a high-volume Season 4 query whose answer was split across the codes list and
+  individual Sprite pages — one hub answers it directly and funnels players into the codes + per-Sprite pages.
+
+---
+
 ## September 6, 2026 — Technical SEO & Core Web Vitals polish (Tier 1)
 
 - **Added:** a real **404 page** (`notFoundPage()` → `dist/404.html`, served by Vercel for unmatched routes) linking back

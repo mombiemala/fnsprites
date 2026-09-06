@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 6, 2026',
+    title: 'Cheat Master Sprites hub',
+    changes: [
+      { tag: 'Added', text: 'A “Cheat Master Sprites” page (in Guides, and at /cheat-master-sprites) listing every Sprite with a Cheat Master finish — which are live vs datamined, the exact code that unlocks each (tap to copy), and a link to every Sprite. Kept in sync with the roster automatically.' },
+    ],
+    summary: 'One place to see every Cheat Master Sprite and how to unlock it — live now vs coming, with copy-ready codes.',
+    why: '“Cheat Master Sprites” is one of the most-searched Season 4 terms, and the info was scattered across the codes list and individual Sprites. A single hub answers it directly, gives players a copy-a-code shortcut, and links out to each Sprite and the codes page.',
+  },
+  {
+    date: 'September 6, 2026',
     title: 'Behind-the-scenes SEO & speed polish',
     changes: [
       { tag: 'Added', text: 'A proper “page not found” page that points you back to the tracker, checklist, codes and FAQ instead of a dead end.' },
