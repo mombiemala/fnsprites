@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 6, 2026 — Privacy policy + AdSense groundwork
+
+- **Added:** a static **Privacy Policy** at `/privacy` (prerendered via `scripts/prerender.mjs`, linked from both the
+  app footer `src/App.jsx` and the static `FOOT`). Discloses the optional Supabase account, saved collection, Vercel
+  cookieless analytics, Google AdSense advertising, processors, and the visitor's choices. Added to `sitemap.xml`.
+- **Added:** **Google AdSense** loader (`ca-pub-…`) in the `<head>` of both the SPA shell (`index.html`) and every
+  prerendered page (`ADSENSE` const injected in the shared `head()`), so the code is present sitewide for review + serving.
+- **Why:** the tracker has real monthly running costs and Epic's Fan Content Policy requires fan sites to stay free, so
+  ads (not paywalls) are the sustainable route. AdSense also requires an owned domain (done: `fnsprites.app`) and a
+  published privacy policy — both now in place before any ad units go live.
+
+---
+
 ## September 5, 2026 — New home: fnsprites.app
 
 - **Changed:** custom domain — the site moves from `fnsprites.vercel.app` to **`fnsprites.app`**. Updated every

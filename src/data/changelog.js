@@ -6,6 +6,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 6, 2026',
+    title: 'Privacy policy + ads to keep the tracker free',
+    changes: [
+      { tag: 'Added', text: 'A proper Privacy Policy page (linked in the footer) that spells out exactly what the app handles — the optional account, your saved collection, cookieless analytics, and ads — plus how to see or delete your data.' },
+      { tag: 'Added', text: 'Google AdSense is now wired in across the app and every guide/SEO page. Ads help cover the running costs (database, tools) so the tracker stays completely free — no paywalls, ever.' },
+    ],
+    summary: 'Groundwork for keeping FN Sprite Tracker free and self-sustaining: a clear privacy policy and unobtrusive ads.',
+    why: 'Running the tracker has real monthly costs, and Epic’s Fan Content rules require fan sites to stay free — so ads (not paywalls) are the right way to sustain it. Ad networks also require an owned domain and a published privacy policy, both of which are now in place, so this is the honest, compliant foundation before any ads actually appear.',
+  },
+  {
     date: 'September 5, 2026',
     title: 'New home: fnsprites.app',
     changes: [

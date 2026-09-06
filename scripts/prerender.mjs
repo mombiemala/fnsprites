@@ -23,6 +23,11 @@ import { CODES_INTRO, CODE_CATEGORIES, LOBBY_CODES } from '../src/data/codes.js'
 const SITE = 'https://fnsprites.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
 
+// Google AdSense loader — kept identical to the one in index.html so every
+// prerendered SEO page carries the ad code too (AdSense verifies + serves on
+// all pages, not just the SPA shell).
+const ADSENSE = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3458906019268790" crossorigin="anonymous"></script>'
+
 // ---------- helpers ----------
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 const slug = (name) => String(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
@@ -262,6 +267,7 @@ function head({ title, desc, canonical, jsonld, ogImage, active = 'sprites' }) {
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${canonical}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+${ADSENSE}
 <meta property="og:type" content="article"><meta property="og:site_name" content="FN Sprite Tracker">
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${canonical}"><meta property="og:image" content="${esc(img)}">
@@ -320,7 +326,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
 <nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
-<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/guides">📖 Guides</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
+<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/guides">📖 Guides</a><span class="sep">·</span><a href="/privacy">Privacy</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; the Season 4 “Override” roster uses Epic's official datamined icons (Normal, Gold, Cheat Master &amp; Loot Hacker); some Season 3 variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), and real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
 <p>Roster, themes &amp; drop rates cross-referenced from <a href="https://fortnite.gg/sprites" target="_blank" rel="noreferrer">fortnite.gg</a>, <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore</a> &amp; the <a href="https://fortnite.fandom.com/wiki/Sprites" target="_blank" rel="noreferrer">Fortnite Wiki</a>. Upcoming/leaked sprites &amp; forms are labelled <b>Rumored</b> until Epic confirms; gameplay tiers are a community/meta snapshot (<a href="https://games.gg" target="_blank" rel="noreferrer">GAMES.GG</a>, <a href="https://www.playerauctions.com" target="_blank" rel="noreferrer">PlayerAuctions</a>, <a href="https://www.destructoid.com" target="_blank" rel="noreferrer">Destructoid</a>). News &amp; events from official Fortnite patch notes, <a href="https://communities.epicgames.com" target="_blank" rel="noreferrer">Epic communities</a> &amp; <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>, with some event details cross-referenced from community trackers (<a href="https://www.vice.com" target="_blank" rel="noreferrer">Vice</a>, <a href="https://beebom.com" target="_blank" rel="noreferrer">Beebom</a>, <a href="https://allthings.how" target="_blank" rel="noreferrer">AllThings.How</a>, <a href="https://www.hotspawn.com" target="_blank" rel="noreferrer">Hotspawn</a>, <a href="https://insider-gaming.com" target="_blank" rel="noreferrer">Insider Gaming</a>) — each event shows its source and whether it's official. Leaks &amp; datamines are credited to HYPEX, ShiinaBR, <a href="https://x.com/FN_Assist" target="_blank" rel="noreferrer">@FN_Assist</a>, FNBRIntel, <a href="https://x.com/Loolo_WRLD" target="_blank" rel="noreferrer">Loolo</a> &amp; Krowe, with tier &amp; farm-route context from <a href="https://punksprite.com" target="_blank" rel="noreferrer">punksprite</a> &amp; <a href="https://quackadex.com" target="_blank" rel="noreferrer">quackadex</a>. Item Shop, cosmetics &amp; player stats come from <a href="https://fortnite-api.com" target="_blank" rel="noreferrer">fortnite-api.com</a>. Drop rates are community estimates cross-referenced from player-tracking projects (<a href="https://accountshark.net/blog/fortnite-chapter-7-season-3-sprites" target="_blank" rel="noreferrer">AccountShark</a> &amp; <a href="https://games.gg/fortnite" target="_blank" rel="noreferrer">GAMES.GG</a>) — Epic hasn't published official rates. Built with React, Vite &amp; Supabase.</p>
@@ -1148,6 +1154,79 @@ function codesPage() {
 ` + FOOT.replace('</body></html>', `${CODES_SCRIPT}</body></html>`)
 }
 
+// ---------- /privacy page ----------
+// Static privacy policy. Required for Google AdSense approval and generally good
+// practice: it discloses the account/collection data we handle, our processors
+// (Supabase, Vercel, Google AdSense) and the visitor's choices. Written to be
+// accurate to what the app actually does — review before relying on it legally.
+function privacyPage() {
+  const updated = 'September 6, 2026'
+  const desc = 'How FN Sprite Tracker handles your data — the optional account, your saved collection, cookieless analytics, Google AdSense advertising, and your choices. Fan-made and free; not affiliated with Epic Games.'
+  const jsonld = { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Privacy Policy — FN Sprite Tracker', url: SITE + '/privacy', description: desc, dateModified: '2026-09-06' }
+  return head({ title: 'Privacy Policy | FN Sprite Tracker', desc, canonical: SITE + '/privacy', jsonld, active: '' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>Privacy Policy</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:72ch">Last updated: <b>${updated}</b>. FN Sprite Tracker is a free, fan-made Fortnite Sprite collection tracker. This page explains what information the site handles, who it's shared with, and the choices you have.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Who runs this site</h2>
+    <p>FN Sprite Tracker (<b>fnsprites.app</b>) is an independent fan project — it is <b>not affiliated with, endorsed by, or sponsored by Epic Games, Inc.</b> Questions about this policy or your data: <a href="mailto:dontbemad@gmail.com">dontbemad@gmail.com</a>.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Information we collect</h2>
+    <ul style="margin:6px 0 0;padding-left:18px;line-height:1.75;font-size:14px">
+      <li><b>Account information (optional).</b> You can use the tracker without an account. If you choose to sign in (via Google, through our authentication provider Supabase), we receive your email address, display name and profile avatar so we can save your collection to your account and show it across devices.</li>
+      <li><b>Your collection &amp; activity.</b> The Sprites you mark as owned, your tier votes, your Sprite Garden layout, your chosen display name, and (if you use the stats feature) the Fortnite gamertag you look up.</li>
+      <li><b>Data stored on your device.</b> Your collection and preferences are saved in your browser's local storage so the app works even without an account; a session token is stored there when you're signed in.</li>
+      <li><b>Usage analytics.</b> We use Vercel Web Analytics, which is privacy-friendly and <b>does not use cookies</b> or build cross-site visitor profiles — it reports aggregate page views only.</li>
+      <li><b>Advertising data.</b> We show ads through Google AdSense, which may set cookies and use device identifiers (see “Advertising” below).</li>
+      <li><b>Player-stats lookups.</b> If you use the stats feature, the gamertag you enter is sent to a third-party Fortnite stats API to fetch public in-game statistics.</li>
+    </ul>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Cookies &amp; similar technologies</h2>
+    <p>We don't set our own advertising or tracking cookies. The cookies/identifiers on this site come from your sign-in session (stored in local storage) and from Google AdSense when ads are served. You can control or clear these through your browser settings.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Advertising (Google AdSense)</h2>
+    <ul style="margin:6px 0 0;padding-left:18px;line-height:1.75;font-size:14px">
+      <li>Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites.</li>
+      <li>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to this site and/or other sites on the Internet.</li>
+      <li>You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noreferrer">Google Ads Settings</a>. You can also opt out of some third-party vendors' use of cookies for personalized ads at <a href="https://www.aboutads.info" target="_blank" rel="noreferrer">aboutads.info</a>.</li>
+      <li>For more on how Google uses data from sites that use its services, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noreferrer">Google's Privacy &amp; Terms</a>.</li>
+    </ul>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">How we use information</h2>
+    <p>To run the tracker and save your collection, to power public features you opt into (leaderboard, shared profiles, the Garden feed and community tier-vote counts), to understand aggregate usage so we can improve the app, to display ads that keep the site free, and to respond to bug reports or messages you send us.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">How information is shared</h2>
+    <p>We do <b>not</b> sell your personal information. We share data only with the service providers that run the site: <b>Supabase</b> (authentication &amp; database), <b>Vercel</b> (hosting &amp; cookieless analytics), <b>Google AdSense</b> (advertising), and a Fortnite stats API for gamertag lookups you initiate. Public features show only what you choose to share; community tier results are shown as aggregate vote counts and never reveal who voted.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Your choices &amp; rights</h2>
+    <ul style="margin:6px 0 0;padding-left:18px;line-height:1.75;font-size:14px">
+      <li>Use the tracker without an account — your data then stays only in your own browser.</li>
+      <li>Keep your profile/collection private in the app's profile settings.</li>
+      <li>Export or clear your local data via the in-app Backup tools, and clear your browser storage at any time.</li>
+      <li>Request access to, or deletion of, the data tied to your account by emailing <a href="mailto:dontbemad@gmail.com">dontbemad@gmail.com</a>.</li>
+      <li>Opt out of personalized ads using the links in the Advertising section above.</li>
+    </ul>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Data retention &amp; security</h2>
+    <p>Account data is kept while your account is active and deleted on request. We rely on our providers' industry-standard security; no method of transmission or storage is completely secure.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Children's privacy</h2>
+    <p>This site is not directed to children under 13 (or the minimum age required in your country), and we do not knowingly collect personal information from them. If you believe a child has provided us data, contact us and we'll remove it.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Changes to this policy</h2>
+    <p>We may update this policy as the site evolves. We'll revise the “Last updated” date above when we do.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Contact</h2>
+    <p>Questions or requests: <a href="mailto:dontbemad@gmail.com">dontbemad@gmail.com</a>.</p>
+
+    <a class="bigcta" href="/">← Back to the Sprite tracker</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 // ---------- sitemap ----------
 function sitemap(types) {
   const urls = [
@@ -1162,6 +1241,7 @@ function sitemap(types) {
     { loc: SITE + '/events', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/season-transition', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
+    { loc: SITE + '/privacy', changefreq: 'yearly', priority: '0.3' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
     { loc: SITE + '/?view=stats', changefreq: 'weekly', priority: '0.6' },
@@ -1204,6 +1284,8 @@ mkdirSync(resolve(DIST, 'season-transition'), { recursive: true })
 writeFileSync(resolve(DIST, 'season-transition', 'index.html'), seasonTransitionPage())
 mkdirSync(resolve(DIST, 'guides'), { recursive: true })
 writeFileSync(resolve(DIST, 'guides', 'index.html'), guidesPage())
+mkdirSync(resolve(DIST, 'privacy'), { recursive: true })
+writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /guides + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /guides + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + sitemap.xml → dist/`)

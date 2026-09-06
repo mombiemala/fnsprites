@@ -177,6 +177,7 @@ export default function App() {
     { id: 'backup', label: 'Backup', onClick: () => setShowBackup(true) },
     { id: 'bug', label: 'Report a bug', onClick: () => setShowBug(true) },
     { id: 'guides', label: '📖 Guides', href: '/guides' },
+    { id: 'privacy', label: 'Privacy', href: '/privacy' },
     { id: 'coffee', label: '☕ Buy me a coffee', href: LINKS.buyMeACoffee },
   ]
 
