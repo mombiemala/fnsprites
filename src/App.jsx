@@ -24,6 +24,8 @@ import HowSpritesWork from './components/HowSpritesWork'
 import WelcomeModal from './components/WelcomeModal'
 import AnnouncementBar from './components/AnnouncementBar'
 import SaveStatusPill from './components/SaveStatusPill'
+import AdSlot from './components/AdSlot'
+import { AD_SLOTS } from './lib/ads'
 
 // Lazy-loaded: heavy tabs + on-demand modals are code-split so the initial
 // (Collection) load stays lean; each is fetched the first time it's opened.
@@ -750,6 +752,11 @@ export default function App() {
       </div>
         </>
       )}
+
+      {/* Dormant ad placement — renders nothing until VITE_ADS_ENABLED=true and a
+          real AdSlot id is set (see src/components/AdSlot.jsx). Placed above the
+          footer so it never pushes the primary content around. */}
+      {!isShareView && <AdSlot slot={AD_SLOTS.collectionBottom} />}
 
       <footer className="mt-12 border-t border-[var(--border)] pt-6 text-center text-xs text-[var(--muted)]">
         {/* Sections — mirrors the primary top nav so every section is reachable
