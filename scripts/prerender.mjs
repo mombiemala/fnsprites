@@ -980,7 +980,7 @@ function spriteEventsPage() {
 // "fortnite sprite abilities / what they do" and internally links to each Sprite
 // page. Ability text is cleaned out of the roster's descriptive `ability` field.
 function spriteAbilitiesPage() {
-  const desc = `Every Fortnite Sprite and what it does — a full abilities list for Chapter 7 Season 4 “Override” and the Season 3 “Runners” generation, with each Sprite's rarity and effect. Finishes (Gold, Cheatmaster) don't change a Sprite's ability.`
+  const desc = `Every Fortnite Sprite and what it does — a full abilities list for Chapter 7 Season 4 “Override” and the Season 3 “Runners” generation, with each Sprite's rarity, effect, and what it's best used for (rotations, healing, looting, fights & scouting). Finishes (Gold, Cheatmaster) don't change a Sprite's ability.`
   // Pull a concise ability out of the roster's descriptive text.
   const cleanAbility = (t) => {
     const a = t.ability || ''
@@ -989,36 +989,51 @@ function spriteAbilitiesPage() {
     if (/not documented|not yet confirmed|isn’t documented|not confirmed/i.test(a)) return 'Not confirmed yet'
     return a
   }
+  // "Best used for" — classified from the Sprite's own ability text (playstyle
+  // category), so it's accurate to what the ability actually does and self-syncs.
+  const bestFor = (t) => {
+    const a = (t.ability || '').toLowerCase()
+    if (/heal|health|shield|\bhp\b|lifesteal|regen|revive|overshield/.test(a)) return ['Survival & clutch heals', '#34d399']
+    if (/reveal|scan|detect|radar|x-?ray|\bmark\b|locate|spot|vision|see through|wallhack|sense|track/.test(a)) return ['Scouting & map info', '#7dd3fc']
+    if (/loot|chest|upgrade|craft|material|\bmats\b|gold bar|harvest|extract|\bitem/.test(a)) return ['Fast looting & upgrades', '#fbbf24']
+    if (/slide|jump|dash|speed|sprint|glide|launch|mobility|movement|run faster|leap|bounce|redeploy|fly/.test(a)) return ['Rotations & repositioning', '#a78bfa']
+    if (/damage|\bdps\b|headshot|reload|fire rate|\baim\b|weapon|\bcrit|shots?\b/.test(a)) return ['Aggressive fights', '#f87171']
+    if (/wall|cover|\btrap|decoy|invisib|stealth|hide|smoke|barrier/.test(a)) return ['Defense & utility', '#93c5fd']
+    return ['Utility pick', '#9aa4bf']
+  }
   const released = SPRITE_TYPES.filter((t) => t.released)
   const byRarity = (a, b) => (RARITY_ORDER.indexOf(b.rarity) - RARITY_ORDER.indexOf(a.rarity)) || a.name.localeCompare(b.name)
   const override = released.filter((t) => t.gen === 'c7s4').sort(byRarity)
   const runners = released.filter((t) => t.gen !== 'c7s4').sort(byRarity)
   const row = (t) => {
     const rc = RARITY_COLORS[t.rarity] || '#a99fb8'
+    const bf = bestFor(t)
     return `<tr style="border-top:1px solid var(--border)">
       <td style="padding:8px 8px;white-space:nowrap"><a href="/sprite/${slug(t.name)}" style="color:#fff;font-weight:600;text-decoration:none">${esc(t.icon || '🧩')} ${esc(t.name)}</a></td>
       <td style="padding:8px 8px"><span style="color:${rc};font-weight:600">${esc(t.rarity)}</span></td>
-      <td style="padding:8px 8px;color:var(--muted);line-height:1.5">${esc(cleanAbility(t))}</td></tr>`
+      <td style="padding:8px 8px;color:var(--muted);line-height:1.5">${esc(cleanAbility(t))}</td>
+      <td style="padding:8px 8px;white-space:nowrap"><span style="color:${bf[1]};background:${bf[1]}22;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px">${bf[0]}</span></td></tr>`
   }
   const table = (label, sub, types) => types.length ? `<h2 style="font-size:16px;margin:20px 0 6px">${esc(label)} <span style="color:var(--muted);font-weight:600;font-size:13px">· ${types.length}</span></h2>
     <p style="margin:0 0 8px;font-size:12px;color:var(--muted)">${esc(sub)}</p>
     <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px">
-      <thead><tr style="text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em"><th style="padding:6px 8px">Sprite</th><th style="padding:6px 8px">Rarity</th><th style="padding:6px 8px">Ability</th></tr></thead>
+      <thead><tr style="text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.04em"><th style="padding:6px 8px">Sprite</th><th style="padding:6px 8px">Rarity</th><th style="padding:6px 8px">Ability</th><th style="padding:6px 8px">Best used for</th></tr></thead>
       <tbody>${types.map(row).join('')}</tbody></table></div>` : ''
   const faqs = [
     ['Does a Sprite’s finish (Gold, Cheatmaster) change its ability?', 'No — every finish of a Sprite shares the same ability; the finish is cosmetic. The Cheatmaster finish’s only perk is that you can button-mash the inputs on in-world Cheat Codes to activate them instantly, rather than following the arrow sequence.'],
     ['How do Sprite abilities get stronger?', 'Abilities scale as you level a Sprite with Sprite XP (Mastery). Higher levels typically extend the effect — longer reveal durations, bigger boosts, or extra effects at max level.'],
     ['Which Sprite has the best ability?', 'It depends on your playstyle, and it shifts with the meta — see our tier list for a strength ranking. Rarity is how hard a Sprite is to get; the ability is what it does once you have it.'],
+    ['What’s the best Sprite for rotating, healing or looting?', 'Use the “Best used for” column above — each Sprite is tagged by playstyle (rotations & repositioning, survival & clutch heals, fast looting & upgrades, aggressive fights, or scouting & map info) so you can pick one that fits how you play. For a raw strength ranking, see the tier list.'],
   ]
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'Article', headline: 'Fortnite Sprite Abilities — Full List', description: desc, url: SITE + '/abilities', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
     { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
   ] }
-  return head({ title: `Fortnite Sprite Abilities — What Every Sprite Does (Season 4 Override) | FN Sprite Tracker`, desc, canonical: SITE + '/abilities', jsonld, active: 'sprites' }) + `
+  return head({ title: `Fortnite Sprite Abilities & What They're Best For (Season 4 Override) | FN Sprite Tracker`, desc, canonical: SITE + '/abilities', jsonld, active: 'sprites' }) + `
 <div class="cols">
   <div class="main">
     <h1>🧩 Fortnite Sprite abilities — what each one does</h1>
-    <p class="lede" style="color:var(--muted);margin:6px 0 14px;font-size:14px;max-width:70ch">Every released Sprite and its in-game effect. A Sprite’s ability is the same across all its finishes (Gold, Cheatmaster, etc.) — the finish is cosmetic. Tap any Sprite for its full page.</p>
+    <p class="lede" style="color:var(--muted);margin:6px 0 14px;font-size:14px;max-width:70ch">Every released Sprite and its in-game effect, plus a quick <b style="color:#fff">“best used for”</b> tag — rotations, healing, looting, fights or scouting — so you can pick for your playstyle. A Sprite’s ability is the same across all its finishes (Gold, Cheatmaster, etc.); the finish is cosmetic. Tap any Sprite for its full page.</p>
     ${table('Season 4 — Override (current)', 'The new generation, used in Battle Royale this season. Some abilities are still being confirmed.', override)}
     ${table('Season 3 — Runners (Sprite Garden)', 'Kept forever in the Sprite Garden & your Collection, but not used in Battle Royale this season.', runners)}
     <h2 style="font-size:16px;margin:22px 0 8px">Sprite abilities — FAQ</h2>

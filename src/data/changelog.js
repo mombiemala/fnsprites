@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 6, 2026',
+    title: 'Abilities: “Best used for” tags',
+    changes: [
+      { tag: 'Added', text: 'The Sprite abilities list now tags each Sprite with what it’s best used for — rotations & repositioning, survival & clutch heals, fast looting & upgrades, aggressive fights, or scouting & map info — so you can pick a Sprite that fits your playstyle at a glance. Tags are derived from each Sprite’s actual ability.' },
+    ],
+    summary: 'A playstyle tag on every ability, so “which Sprite should I run?” has a fast answer.',
+    why: 'The abilities list said what each Sprite does but not when to use it. Classifying by playstyle (from the real ability text, so it stays accurate) makes the page far more useful for deciding what to equip — and answers “best Sprite for [rotating/healing/looting]” searches.',
+  },
+  {
+    date: 'September 6, 2026',
     title: 'Gold Sprites hub',
     changes: [
       { tag: 'Added', text: 'A “Gold Sprites” page (in Guides, and at /gold-sprites) listing every Sprite with a Gold finish, sorted current-season first, showing which Golds are obtainable now vs archived (kept in the Garden), with a link to each Sprite. Stays in sync with the roster.' },

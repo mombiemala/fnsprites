@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 6, 2026 — Abilities “Best used for” tags
+
+- **Added:** the `/abilities` page (`spriteAbilitiesPage()`) gains a **“Best used for”** column — a playstyle tag
+  (rotations, survival/heals, looting, fights, scouting, defense, utility) classified from each Sprite's own ability
+  text via a keyword matcher, so it's accurate and self-syncs. Title/description/lede updated + a new FAQ; targets
+  "best Sprite for [rotating/healing/looting]" queries.
+- **Why:** the list said *what* each Sprite does but not *when to use it*; a data-derived playstyle tag makes it a
+  decision tool without inventing unverifiable gameplay specifics.
+
+---
+
 ## September 6, 2026 — Gold Sprites hub
 
 - **Added:** a per-finish hub at `/gold-sprites` (prerendered, in the `/guides` hub + sitemap). Lists every Sprite with a
