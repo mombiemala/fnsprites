@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 6, 2026 — Sprite FAQ page
+
+- **Added:** a general **Sprites FAQ** at `/faq` (prerendered via `scripts/prerender.mjs`, listed in the `/guides`
+  hub and the sitemap). ~14 Q&As covering counts, how to get Sprites in Override, Cheat Master / Loot Hacker finishes,
+  rarest Sprites, leveling, Sprite Dust, Ranked, and the Garden — with `FAQPage` JSON-LD for rich results and heavy
+  internal linking to every other page. Counts (variant/character totals, working-code count) pull from live data so
+  they self-update.
+- **Why:** targets the high-volume plain-language question cluster with one non-thin, schema-rich page (vs. many thin
+  doorway pages Google penalizes), and strengthens internal-link equity across the guide pages while the site indexes.
+
+---
+
 ## September 6, 2026 — Privacy policy + AdSense groundwork
 
 - **Added:** a static **Privacy Policy** at `/privacy` (prerendered via `scripts/prerender.mjs`, linked from both the

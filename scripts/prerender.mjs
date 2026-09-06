@@ -1039,6 +1039,59 @@ function seasonTransitionPage() {
 ` + FOOT
 }
 
+// ---------- /faq page ----------
+// General "everything people ask about Sprites" FAQ — distinct from the
+// season-transition FAQ (transition-specific) and the /codes FAQ (code-specific).
+// Targets the high-volume informational question cluster with FAQPage schema for
+// rich results, and cross-links every other page for internal-link equity.
+// Answers pull live counts so they self-update as the roster grows.
+function faqPage() {
+  const monthLabel = new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+  const typeCount = SPRITE_TYPES.filter((t) => t.released).length
+  const overrideCount = SPRITE_TYPES.filter((t) => t.released && t.gen === CURRENT_GEN).length
+  const workingCodes = LOBBY_CODES.filter((c) => c.status === 'working').length
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  // [question, answerHTML] — answerHTML may contain inline links (rendered as-is);
+  // the JSON-LD strips tags for a clean plain-text answer.
+  const faqs = [
+    ['How many Fortnite Sprites are there?', `As of ${monthLabel} there are <b>${RELEASED_COUNT} released Sprite variants</b> — ${typeCount} Sprite characters, each in several finishes — across two generations: the Season 3 “Runners” roster and the current Season 4 “Override” generation (${overrideCount} characters so far). Epic adds more most seasons, and this tracker updates as they drop. Browse them all on the ${L('/sprites', 'Sprites checklist')}.`],
+    ['How do you get Sprites in Fortnite?', `In Season 4 “Override” you unlock Sprites mainly by entering Hack the Lobby (Admin Panel) codes in the Battle Royale lobby and by finding in-world Cheat Codes during matches. Earlier “Runners”-generation Sprites dropped from chests. See the full list on the ${L('/codes', 'Lobby Hacks page')} and the how-to on the ${L('/sprites', 'Sprites guide')}.`],
+    ['What is a Cheat Master Sprite?', `Cheat Master is a special Season 4 finish — a flashier, rarer version of an Override Sprite. You unlock them with specific lobby codes (for example, GOTTAGOFAST for the Cheat Master Sonic), and their spawns are boosted during Power Hours. See which codes unlock them on the ${L('/codes', 'Lobby Hacks page')} and when on the ${L('/events', 'events schedule')}.`],
+    ['What is the Loot Hacker finish?', `Loot Hacker is a datamined Override finish that Epic has not released yet. Each Sprite shows whether it is slated to get one, and we flip it to obtainable the moment it goes live. More on finishes and Dust in the ${L('/sprite-dust', 'Dust and Loot Hacks guide')}.`],
+    ['What are the rarest Fortnite Sprites?', `Rarity comes down to drop rate and finish. You can sort the full checklist by rarity and see per-Sprite drop-rate estimates on the ${L('/sprites', 'Sprites page')}, and how strong each one is on the ${L('/tier-list', 'tier list')}.`],
+    ['What is the best Sprite in Fortnite?', `“Best” depends on the ability. Our ${L('/tier-list', 'tier list')} ranks every Sprite S–C by how useful its ability is (based on the settled Season 3 meta), and logged-in players vote on the newer Override Sprites so you can watch the community consensus form.`],
+    ['How do you level up and master a Sprite?', `Use a Sprite in matches to level it up; its ability gets stronger at each level, up to Level 5. The ${L('/abilities', 'abilities guide')} shows exactly what every Sprite does and how it scales.`],
+    ['What is Sprite Dust and how do you get it?', `Sprite Dust is the currency behind finishes and Loot Hacks. You earn it through play and from certain lobby codes, and redeeming a code for a Sprite you already own converts to Dust instead. The ${L('/sprite-dust', 'Dust and Loot Hacks guide')} covers earning and spending it.`],
+    ['Are Fortnite Sprites free?', `Yes — every Sprite is obtainable through normal gameplay and free lobby codes, with no paywall to collect them (${workingCodes} codes are working right now). FN Sprite Tracker is free and fan-made too.`],
+    ['Do Sprites work in Ranked?', `Sprites appear in Ranked, but their abilities are disabled there — so in Ranked they are purely cosmetic, and only give gameplay effects in regular modes.`],
+    ['Can you still get the Season 3 Sprites?', `No — the Season 3 “Runners” Sprites are archived and can no longer be obtained in Battle Royale. Any you already collected are kept forever in your ${L('/sprite-garden', 'Sprite Garden')}. The ${L('/season-transition', 'season-transition FAQ')} explains the switch.`],
+    ['What is the Sprite Garden?', `The Sprite Garden is a personal island where your whole collection lives and stays displayable forever, even after a Sprite’s generation rotates out of Battle Royale. The ${L('/sprite-garden', 'Garden guide')} has the island code and how it works.`],
+    ['When do new Fortnite Sprites come out?', `New Sprites usually arrive on “New Sprite Day” each season, with finish hours and Power Hours events in between. The ${L('/events', 'events schedule')} lists the recurring events and their usual times, and the ${L('/news', 'news feed')} tracks the latest drops.`],
+    ['Is FN Sprite Tracker made by Epic Games?', `No. FN Sprite Tracker is an independent, fan-made project — not affiliated with, endorsed by, or sponsored by Epic Games. Roster and rates are community-cross-referenced and clearly labelled when unconfirmed.`],
+  ]
+  const plain = (a) => a.replace(/<[^>]+>/g, '')
+  const desc = `Answers to the most-asked Fortnite Sprite questions: how many Sprites there are (${RELEASED_COUNT} variants), how to get them in Season 4 “Override,” what Cheat Master and Loot Hacker finishes are, the rarest Sprites, leveling, Sprite Dust, Ranked, and the Sprite Garden.`
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'WebPage', name: 'Fortnite Sprites FAQ', url: SITE + '/faq', description: desc, dateModified: NEWS_TODAY },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: plain(a) } })) },
+  ] }
+  return head({ title: `Fortnite Sprites FAQ — How Many, How to Get Them, Rarities & Finishes | FN Sprite Tracker`, desc, canonical: SITE + '/faq', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>❓ Fortnite Sprites — Frequently Asked Questions</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:70ch">Quick, straight answers to the most-searched questions about Fortnite Sprites — how many there are, how to unlock them, what the finishes mean, and where they go each season.</p>
+    ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
+    <div class="card" style="padding:14px 16px;margin:16px 0 0">
+      <p style="margin:0;font-size:13px;color:var(--muted)">More: ${L('/guides', 'all guides')} · ${L('/sprites', 'the checklist')} · ${L('/codes', 'Lobby Hacks')} · ${L('/tier-list', 'tier list')} · ${L('/sprite-dust', 'Dust & Loot Hacks')}</p>
+    </div>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Fan-made · not affiliated with Epic Games. Counts and rates are community-cross-referenced.</p>
+    <a class="bigcta" href="/">Track every Sprite you own — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 // ---------- /guides hub page ----------
 // One home for the reference pages — declutters the nav (a single "Guides" link
 // replaces the per-guide links) and gives the guides an internal-linking hub.
@@ -1049,6 +1102,7 @@ const GUIDES = [
   ['/events', '📅', 'Events schedule', 'Power Hours, New Sprite Day, Mastery Monday & finish hours — what they are and the usual times.'],
   ['/abilities', '⚡', 'Sprite abilities', 'Every Sprite and what its ability actually does, split by generation.'],
   ['/tier-list', '🏆', 'Tier list', 'Every released Sprite ranked S–C by how strong its ability is.'],
+  ['/faq', '🙋', 'Sprite FAQ', 'Quick answers to the most-asked Fortnite Sprite questions — counts, how to get them, finishes, rarities and more.'],
   ['/season-transition', '❓', 'Season transition FAQ', 'Why your Dust reset, whether old Sprites still count, and the pay-to-win question.'],
 ]
 function guidesPage() {
@@ -1233,6 +1287,7 @@ function sitemap(types) {
     { loc: SITE + '/', changefreq: 'daily', priority: '1.0' },
     { loc: SITE + '/sprites', changefreq: 'weekly', priority: '0.9' },
     { loc: SITE + '/guides', changefreq: 'weekly', priority: '0.7' },
+    { loc: SITE + '/faq', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9' },
@@ -1284,8 +1339,10 @@ mkdirSync(resolve(DIST, 'season-transition'), { recursive: true })
 writeFileSync(resolve(DIST, 'season-transition', 'index.html'), seasonTransitionPage())
 mkdirSync(resolve(DIST, 'guides'), { recursive: true })
 writeFileSync(resolve(DIST, 'guides', 'index.html'), guidesPage())
+mkdirSync(resolve(DIST, 'faq'), { recursive: true })
+writeFileSync(resolve(DIST, 'faq', 'index.html'), faqPage())
 mkdirSync(resolve(DIST, 'privacy'), { recursive: true })
 writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /guides + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + sitemap.xml → dist/`)

@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 6, 2026',
+    title: 'New Sprite FAQ page',
+    changes: [
+      { tag: 'Added', text: 'A dedicated Fortnite Sprites FAQ (in Guides, and at /faq) with straight answers to the most-asked questions — how many Sprites there are, how to get them in Override, what Cheat Master and Loot Hacker finishes are, the rarest Sprites, leveling, Sprite Dust, whether they work in Ranked, and the Sprite Garden. Counts stay accurate automatically from the live roster.' },
+    ],
+    summary: 'One page that answers the questions players (and Google) ask most about Sprites — and points you to the right guide for each.',
+    why: 'People search these questions in plain language, and a single well-structured FAQ (with rich-result markup) can answer a whole cluster of those searches at once — bringing in new players while the site builds its search presence. It also cross-links every guide, so newcomers land somewhere useful.',
+  },
+  {
+    date: 'September 6, 2026',
     title: 'Privacy policy + ads to keep the tracker free',
     changes: [
       { tag: 'Added', text: 'A proper Privacy Policy page (linked in the footer) that spells out exactly what the app handles — the optional account, your saved collection, cookieless analytics, and ads — plus how to see or delete your data.' },
