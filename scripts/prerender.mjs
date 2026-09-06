@@ -348,6 +348,35 @@ function spritePage(type, others) {
     .filter((tid) => THEME_MAP[tid])
     .map((tid) => ({ tid, name: THEME_MAP[tid].name, bonus: THEME_MAP[tid].bonus, accent: THEME_MAP[tid].accent, released: !!SPRITE_BY_ID[`${type.id}_${tid}`]?.released, vaulted: !!SPRITE_BY_ID[`${type.id}_${tid}`]?.vaulted }))
 
+  // Generation-aware "How to get" block — built from this Sprite's own data
+  // (its lobby code, generation, finish availability, release date) so every
+  // page's block is unique and genuinely useful, not templated boilerplate.
+  const gen = type.gen || 'c7s3'
+  const archived = type.released && gen !== CURRENT_GEN
+  const spriteCodes = LOBBY_CODES.filter((c) => c.spriteId === type.id)
+  const workingCode = spriteCodes.find((c) => c.status === 'working')
+  const liveFinishes = variants.filter((v) => v.released).map((v) => v.name)
+  const soonFinishes = variants.filter((v) => !v.released && !v.vaulted).map((v) => v.name)
+  const UL = 'style="margin:8px 0 0;padding-left:18px;line-height:1.7;font-size:14px"'
+  let howToHtml
+  if (!type.released) {
+    howToHtml = `<p><b>${esc(name)}</b> ${type.rumored ? 'is a leaked / rumored Sprite' : 'is an upcoming Sprite'} that <b>isn’t obtainable yet</b>.${type.releaseDate ? ` It’s expected around <b>${esc(fmtLeak(type.releaseDate))}</b> — unconfirmed, since Epic hasn’t officially announced it.` : ''} When it drops we’ll post its exact unlock method here.</p>
+  <p style="color:var(--muted);font-size:13px">New Sprites usually arrive on New Sprite Day and, in Season 4, unlock via lobby codes — keep an eye on the <a href="/codes">Lobby Hack codes</a> and the <a href="/news">news feed</a>.</p>`
+  } else if (archived) {
+    howToHtml = `<p><b>${esc(name)}</b> is a <b>Season 3 “Runners”</b> Sprite, and that generation has been <b>archived</b> — it can no longer be pulled from Sprite Chests in Battle Royale.${p ? ` It originally dropped at about <b>${esc(type.dropRate)}</b> per chest (${esc(type.rarity)}) — roughly 1 in ${fmt(1 / p)}.` : ''}</p>
+  <ul ${UL}>
+    <li><b>Already own it?</b> ${esc(name)} is kept forever in your <a href="/sprite-garden">Sprite Garden</a> and stays displayable, even though its generation rotated out of Battle Royale.</li>
+    <li><b>Not in your collection?</b> It isn’t obtainable right now. Epic has said archived Sprites may return in a later rotation — details in the <a href="/season-transition">season-transition FAQ</a>.</li>
+  </ul>`
+  } else {
+    const steps = []
+    if (workingCode) steps.push(`Open the <b>Admin Panel</b> in the Battle Royale lobby, type the Hack the Lobby code <b>${esc(workingCode.code)}</b> (spelling matters; capitalisation doesn’t) and hit Submit to unlock ${esc(workingCode.unlocks || `the ${name} Sprite`)}. Every current code is on the <a href="/codes">Lobby Hacks page</a>.`)
+    steps.push(`Find <b>Cheat Codes</b> out in matches, then cash one in to roll Override Sprites — see the current farming hotspots in the <a href="/sprites#how-sprites-work">How Sprites work</a> guide.`)
+    if (liveFinishes.length) steps.push(`Obtainable finishes right now: <b>${liveFinishes.map(esc).join(', ')}</b>${soonFinishes.length ? ` — with <b>${soonFinishes.map(esc).join(', ')}</b> datamined but not yet released.` : '.'}`)
+    howToHtml = `<p><b>${esc(name)}</b> is part of the <b>current Season 4 “Override”</b> generation, so you can unlock it right now:</p>
+  <ul ${UL}>${steps.map((s) => `<li>${s}</li>`).join('')}</ul>${!workingCode && source ? `\n  <p style="color:var(--muted);font-size:13px">${esc(source)}</p>` : ''}`
+  }
+
   // New-generation (Season 4 "Override") Sprites carry a season qualifier so they
   // rank for the high-intent "Override" queries the whole field is chasing.
   const s4 = type.gen === 'c7s4'
@@ -418,8 +447,8 @@ function spritePage(type, others) {
 <div class="cols">
   <div class="main">
 <h2>How to get the ${esc(name)} Sprite</h2>
-<p>${esc(source)}${p ? ` As a ${type.rarity}, at ${type.dropRate} per chest you'll typically need to open Sprite Chests at volume — or pick one up through a trade.` : ''}</p>
-${oddsTable}
+${howToHtml}
+${archived ? '' : oddsTable}
 ${type.ability ? `<h2>Ability &amp; leveling</h2><div class="card"><p style="margin:0">${esc(type.ability)}${scaling ? ` <span style="color:var(--muted)">${esc(scaling)}</span>` : ''} Reaches full effect at <b>Level 5 (Mastered)</b>. Community-reported — Epic doesn't publish exact figures.</p></div>` : ''}
 
 <h2>${esc(name)} variants</h2>

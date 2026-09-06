@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 6, 2026',
+    title: 'Per-Sprite “How to get” sections',
+    changes: [
+      { tag: 'Added', text: 'Every Sprite page now has a tailored “How to get” block instead of a one-liner. Override Sprites show the exact Hack the Lobby code and steps (plus Cheat-Code farming and which finishes are live vs datamined); archived Season 3 Sprites explain they’re kept in your Garden but no longer droppable, with their final drop rate; and upcoming Sprites show their expected date. Each block is built from that Sprite’s own data.' },
+    ],
+    summary: 'Clear, specific unlock instructions on every Sprite page — the right answer for that exact Sprite, whether it’s from a code, archived, or still coming.',
+    why: 'Players (and search engines) ask “how do I get [Sprite]” one Sprite at a time, and a generic answer helped no one. Generating each block from the Sprite’s real data — its code, generation and finish status — makes every page genuinely useful and distinct, which is also what earns each one its own search traffic.',
+  },
+  {
+    date: 'September 6, 2026',
     title: 'Rarest Sprites ranking',
     changes: [
       { tag: 'Added', text: 'A “Rarest Fortnite Sprites” page (in Guides, and at /rarest-sprites) that ranks every Sprite with a known drop rate from rarest to most common — with the odds (e.g. ~1 in N chests), rarity, generation, and a link to each Sprite. Built straight from the same drop-rate data the checklist uses, so it stays in sync.' },

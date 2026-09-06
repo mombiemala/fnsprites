@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 6, 2026 — Per-Sprite “How to get” blocks
+
+- **Changed:** each per-Sprite page (`spritePage()` in `scripts/prerender.mjs`) now renders a generation-aware
+  **“How to get”** block from that Sprite’s own data instead of a single templated line:
+  - **Override (current-gen):** step list with the Sprite’s working Hack the Lobby code (from `LOBBY_CODES`) +
+    Admin Panel steps, Cheat-Code farming, and live-vs-datamined finish availability.
+  - **Archived Season 3:** archived notice, kept-in-Garden note, and the final historical drop rate; the
+    chest-odds table is suppressed so it doesn’t read as still-obtainable.
+  - **Upcoming/rumored:** not-yet-obtainable notice with the expected date, linking to codes + news.
+- **Why:** "how to get [Sprite]" is searched one Sprite at a time; deriving each block from the Sprite’s real
+  data (code, generation, finishes) makes every page uniquely useful — which is what earns each its own long-tail
+  traffic — rather than thin, duplicated boilerplate.
+
+---
+
 ## September 6, 2026 — Rarest Sprites ranking
 
 - **Added:** a **Rarest Fortnite Sprites** listicle at `/rarest-sprites` (prerendered, in the `/guides` hub + sitemap,
