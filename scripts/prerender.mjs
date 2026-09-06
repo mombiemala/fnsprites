@@ -1058,7 +1058,7 @@ function faqPage() {
     ['How do you get Sprites in Fortnite?', `In Season 4 “Override” you unlock Sprites mainly by entering Hack the Lobby (Admin Panel) codes in the Battle Royale lobby and by finding in-world Cheat Codes during matches. Earlier “Runners”-generation Sprites dropped from chests. See the full list on the ${L('/codes', 'Lobby Hacks page')} and the how-to on the ${L('/sprites', 'Sprites guide')}.`],
     ['What is a Cheat Master Sprite?', `Cheat Master is a special Season 4 finish — a flashier, rarer version of an Override Sprite. You unlock them with specific lobby codes (for example, GOTTAGOFAST for the Cheat Master Sonic), and their spawns are boosted during Power Hours. See which codes unlock them on the ${L('/codes', 'Lobby Hacks page')} and when on the ${L('/events', 'events schedule')}.`],
     ['What is the Loot Hacker finish?', `Loot Hacker is a datamined Override finish that Epic has not released yet. Each Sprite shows whether it is slated to get one, and we flip it to obtainable the moment it goes live. More on finishes and Dust in the ${L('/sprite-dust', 'Dust and Loot Hacks guide')}.`],
-    ['What are the rarest Fortnite Sprites?', `Rarity comes down to drop rate and finish. You can sort the full checklist by rarity and see per-Sprite drop-rate estimates on the ${L('/sprites', 'Sprites page')}, and how strong each one is on the ${L('/tier-list', 'tier list')}.`],
+    ['What are the rarest Fortnite Sprites?', `Rarity comes down to drop rate and finish. See every Sprite ranked rarest-first on the ${L('/rarest-sprites', 'rarest Sprites')} page, sort the full checklist by rarity on the ${L('/sprites', 'Sprites page')}, and check how strong each one is on the ${L('/tier-list', 'tier list')}.`],
     ['What is the best Sprite in Fortnite?', `“Best” depends on the ability. Our ${L('/tier-list', 'tier list')} ranks every Sprite S–C by how useful its ability is (based on the settled Season 3 meta), and logged-in players vote on the newer Override Sprites so you can watch the community consensus form.`],
     ['How do you level up and master a Sprite?', `Use a Sprite in matches to level it up; its ability gets stronger at each level, up to Level 5. The ${L('/abilities', 'abilities guide')} shows exactly what every Sprite does and how it scales.`],
     ['What is Sprite Dust and how do you get it?', `Sprite Dust is the currency behind finishes and Loot Hacks. You earn it through play and from certain lobby codes, and redeeming a code for a Sprite you already own converts to Dust instead. The ${L('/sprite-dust', 'Dust and Loot Hacks guide')} covers earning and spending it.`],
@@ -1092,6 +1092,64 @@ function faqPage() {
 ` + FOOT
 }
 
+// ---------- /rarest-sprites page ----------
+// A ranked listicle for the high-volume "rarest Fortnite Sprites" query. Ranks
+// every released Sprite that has a known drop rate, rarest first, straight from
+// the same data the checklist uses. ItemList + FAQPage schema for rich results;
+// links out to each Sprite page + the checklist/tier-list for internal equity.
+function rarestPage() {
+  const GEN_LABEL = Object.fromEntries([...GENERATIONS].map((g) => [g.id, `${g.name.replace(/^Chapter 7 /, '')} “${g.sub}”`]))
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  // Released Sprites with a parseable drop rate, rarest (lowest chance) first.
+  const rated = SPRITE_TYPES
+    .map((t) => {
+      const p = parseRate(t.dropRate)
+      const released = !!SPRITE_BY_ID[`${t.id}_normal`]?.released
+      return p && released ? { t, p } : null
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.p - b.p)
+  const rarest = rated[0]
+  const medal = (i) => ['🥇', '🥈', '🥉'][i] || `#${i + 1}`
+  const rows = rated.map(({ t, p }, i) => {
+    const gen = t.gen || 'c7s3'
+    const archived = gen !== CURRENT_GEN
+    const tint = RARITY_TINT[t.rarity] || RARITY_COLORS[t.rarity] || '#a99fb8'
+    return `<a class="card" href="/sprite/${slug(t.name)}" title="Open ${esc(t.name)}" style="display:flex;align-items:center;gap:12px;padding:12px 14px;margin:0 0 8px;text-decoration:none">
+      <span style="min-width:34px;font-size:16px;font-weight:800;color:var(--muted);text-align:center">${medal(i)}</span>
+      <span style="font-size:22px;flex-shrink:0">${esc(t.icon || '🧩')}</span>
+      <span style="flex:1;min-width:0"><b style="color:#fff">${esc(t.name)}</b><span style="display:block;font-size:12px;color:var(--muted)">${esc(t.rarity)} · ${esc(GEN_LABEL[gen] || gen)}${archived ? ' · Archived' : ''}</span></span>
+      <span style="text-align:right;flex-shrink:0"><b style="color:${tint}">${esc(t.dropRate)}</b><small style="display:block;color:var(--muted)">~1 in ${fmt(Math.round(1 / p))}</small></span></a>`
+  }).join('')
+  const faqs = [
+    ['What is the rarest Fortnite Sprite?', `By drop rate, the rarest Sprite is ${rarest.t.name} (${rarest.t.rarity}) at just ${rarest.t.dropRate} — roughly 1 in ${fmt(Math.round(1 / rarest.p))} chests. The full ranking is below.`],
+    ['How are the rarest Sprites ranked?', `By in-chest drop rate — the lower the chance, the rarer. These are community-estimated figures from the Season 3 “Runners” chest era; Epic has never published official Sprite drop rates.`],
+    ['Can you still get the rarest Sprites?', `These rankings are from the Season 3 chest era, which is now archived — those Sprites stay displayable in your Sprite Garden but can’t be pulled from chests anymore. Season 4 “Override” Sprites come from lobby codes instead, so their rarity is about which codes you’ve found.`],
+  ]
+  const desc = `The rarest Fortnite Sprites ranked by drop rate — from ${rarest.t.name} (${rarest.t.dropRate}, about 1 in ${fmt(Math.round(1 / rarest.p))}) on down. Every Sprite's rarity and odds, with links to the full checklist and tier list. Free & fan-made.`
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'WebPage', name: 'Rarest Fortnite Sprites', url: SITE + '/rarest-sprites', description: desc, dateModified: NEWS_TODAY },
+    { '@type': 'ItemList', name: 'Rarest Fortnite Sprites (by drop rate)', numberOfItems: rated.length,
+      itemListElement: rated.map(({ t }, i) => ({ '@type': 'ListItem', position: i + 1, name: t.name, url: SITE + `/sprite/${slug(t.name)}` })) },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ] }
+  return head({ title: `Rarest Fortnite Sprites — Every Sprite Ranked by Drop Rate | FN Sprite Tracker`, desc, canonical: SITE + '/rarest-sprites', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>💎 Rarest Fortnite Sprites</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 14px;font-size:14px;max-width:70ch">Every Fortnite Sprite with a known drop rate, ranked from rarest to most common. The rarest is <b style="color:#fff">${esc(rarest.t.name)}</b> at just ${esc(rarest.t.dropRate)} — roughly <b style="color:#fff">1 in ${fmt(Math.round(1 / rarest.p))}</b> chests.</p>
+    <div class="card" style="padding:12px 14px;margin:0 0 14px"><p style="margin:0;font-size:12.5px;color:var(--muted);line-height:1.6">These are community-estimated drop rates from the Season 3 “Runners” chest era (Epic never published official rates), now ${L('/season-transition', 'archived')} and kept in your ${L('/sprite-garden', 'Sprite Garden')}. Season 4 ${L('/codes', '“Override” Sprites come from lobby codes')} instead of random drops. Compare abilities on the ${L('/tier-list', 'tier list')}, or see the full ${L('/sprites', 'checklist')}.</p></div>
+    ${rows}
+    <h2 style="font-size:16px;margin:22px 0 8px">Rarest Fortnite Sprites — FAQ</h2>
+    ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Drop rates are community estimates cross-referenced from player-tracking projects — Epic hasn’t published official Sprite rates. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track which rare Sprites you own — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 // ---------- /guides hub page ----------
 // One home for the reference pages — declutters the nav (a single "Guides" link
 // replaces the per-guide links) and gives the guides an internal-linking hub.
@@ -1102,6 +1160,7 @@ const GUIDES = [
   ['/events', '📅', 'Events schedule', 'Power Hours, New Sprite Day, Mastery Monday & finish hours — what they are and the usual times.'],
   ['/abilities', '⚡', 'Sprite abilities', 'Every Sprite and what its ability actually does, split by generation.'],
   ['/tier-list', '🏆', 'Tier list', 'Every released Sprite ranked S–C by how strong its ability is.'],
+  ['/rarest-sprites', '💎', 'Rarest Sprites', 'Every Sprite ranked by drop rate — the rarest Fortnite Sprites and how the odds compare.'],
   ['/faq', '🙋', 'Sprite FAQ', 'Quick answers to the most-asked Fortnite Sprite questions — counts, how to get them, finishes, rarities and more.'],
   ['/season-transition', '❓', 'Season transition FAQ', 'Why your Dust reset, whether old Sprites still count, and the pay-to-win question.'],
 ]
@@ -1289,6 +1348,7 @@ function sitemap(types) {
     { loc: SITE + '/guides', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/faq', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
+    { loc: SITE + '/rarest-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9' },
     { loc: SITE + '/sprite-garden', changefreq: 'weekly', priority: '0.8' },
@@ -1341,8 +1401,10 @@ mkdirSync(resolve(DIST, 'guides'), { recursive: true })
 writeFileSync(resolve(DIST, 'guides', 'index.html'), guidesPage())
 mkdirSync(resolve(DIST, 'faq'), { recursive: true })
 writeFileSync(resolve(DIST, 'faq', 'index.html'), faqPage())
+mkdirSync(resolve(DIST, 'rarest-sprites'), { recursive: true })
+writeFileSync(resolve(DIST, 'rarest-sprites', 'index.html'), rarestPage())
 mkdirSync(resolve(DIST, 'privacy'), { recursive: true })
 writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + sitemap.xml → dist/`)

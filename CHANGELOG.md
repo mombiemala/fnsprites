@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 6, 2026 — Rarest Sprites ranking
+
+- **Added:** a **Rarest Fortnite Sprites** listicle at `/rarest-sprites` (prerendered, in the `/guides` hub + sitemap,
+  cross-linked from `/faq`). Ranks every released Sprite with a parseable drop rate rarest-first (medals for the top 3),
+  showing the rate, ~1-in-N odds, rarity and generation, each linking to its Sprite page. `ItemList` + `FAQPage` JSON-LD
+  for rich results. Data comes from the shared `SPRITE_TYPES` drop rates via the existing `parseRate`, so it self-syncs.
+- **Why:** "rarest Fortnite Sprites" is a high-volume query and we already hold the drop-rate data — one ranked,
+  schema-rich page answers it directly and funnels collectors into the checklist and per-Sprite pages.
+
+---
+
 ## September 6, 2026 — Sprite FAQ page
 
 - **Added:** a general **Sprites FAQ** at `/faq` (prerendered via `scripts/prerender.mjs`, listed in the `/guides`

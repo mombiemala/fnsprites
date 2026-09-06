@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 6, 2026',
+    title: 'Rarest Sprites ranking',
+    changes: [
+      { tag: 'Added', text: 'A “Rarest Fortnite Sprites” page (in Guides, and at /rarest-sprites) that ranks every Sprite with a known drop rate from rarest to most common — with the odds (e.g. ~1 in N chests), rarity, generation, and a link to each Sprite. Built straight from the same drop-rate data the checklist uses, so it stays in sync.' },
+    ],
+    summary: 'A ranked rundown of the rarest Sprites and their odds — the answer to “what’s the rarest Fortnite Sprite?” in one page.',
+    why: '“Rarest Fortnite Sprites” is a popular search with the odds scattered across other sites; we already hold the drop-rate data, so a single ranked, schema-marked page answers it directly, pulls in collectors, and links them into the checklist and per-Sprite pages.',
+  },
+  {
+    date: 'September 6, 2026',
     title: 'New Sprite FAQ page',
     changes: [
       { tag: 'Added', text: 'A dedicated Fortnite Sprites FAQ (in Guides, and at /faq) with straight answers to the most-asked questions — how many Sprites there are, how to get them in Override, what Cheat Master and Loot Hacker finishes are, the rarest Sprites, leveling, Sprite Dust, whether they work in Ranked, and the Sprite Garden. Counts stay accurate automatically from the live roster.' },
