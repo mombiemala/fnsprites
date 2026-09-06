@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 6, 2026',
+    title: 'Extraction how-to + a leveling-buff heads-up',
+    changes: [
+      { tag: 'Added', text: 'The “How Sprites work” guide now spells out how to extract cleanly — equip the Sprite to your back before the match ends, and walk up and press Extract rather than throwing it into the crate (thrown Sprites could register as the wrong type). Plus what to do if an extraction misfires: file an in-game bug report — Epic has granted missing Sprites back.' },
+      { tag: 'Added', text: 'News: a Sept 4 tuning update makes extracting a duplicate Sprite grant XP to the Sprites you already own, speeding up Mastery across your roster (flagged unofficial pending patch notes).' },
+    ],
+    summary: 'Clearer extraction guidance so Sprites don’t slip away, plus a heads-up on the faster duplicate-leveling change.',
+    why: 'Players keep hitting “I extracted it but didn’t get it,” and the confirmed causes are avoidable (Sprite left in inventory, or thrown into the crate) — so the guide now prevents it and says how to recover a genuine misfire. The leveling change is worth surfacing but isn’t in a standalone Epic post, so it’s marked unofficial.',
+  },
+  {
+    date: 'September 6, 2026',
     title: 'Abilities: “Best used for” tags',
     changes: [
       { tag: 'Added', text: 'The Sprite abilities list now tags each Sprite with what it’s best used for — rotations & repositioning, survival & clutch heals, fast looting & upgrades, aggressive fights, or scouting & map info — so you can pick a Sprite that fits your playstyle at a glance. Tags are derived from each Sprite’s actual ability.' },

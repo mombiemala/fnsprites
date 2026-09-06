@@ -15,6 +15,8 @@ export const SPRITE_GUIDE = [
   ] },
   { h: '⚠️ Extract it, or you lose it', body: [
     'A Sprite **isn’t yours until you Extract it.** If you’re eliminated before extracting, it’s gone. Extract at an **Extraction Site** or with a **Portable Extractor** (a Mastery reward). Only extracted Sprites count toward your collection.',
+    '**Extract it cleanly:** the Sprite must be **equipped to your back before the match ends** — one left sitting in your inventory won’t extract. Then **walk up to the Extraction crate and press Extract; don’t throw or drop it in** — thrown Sprites can register as the wrong type (they were turning into Water Sprites, so Epic disabled throw-to-extract).',
+    '**Extracted one but it never showed up?** It happens — Epic has had confirmed extraction misfires (a Sprite popping onto the ground instead of extracting, or not being granted) and **granted the Sprite back**. File an **in-game bug report**; missing extractions are usually made good.',
   ] },
   { h: '⬆️ Leveling (1 → 5)', body: [
     'A Sprite gets stronger as it levels, up to **Lv 5**. You earn level points by:',

@@ -35,6 +35,16 @@ export const NEWS = [
     official: true,
   },
   {
+    ts: '2026-09-04',
+    when: 'Sep 4, 2026',
+    tag: 'update',
+    title: '⬆️ Leveling buff — duplicate Sprites now feed XP to ones you own',
+    body: 'A Sept 4 tuning update makes leveling faster: extracting a duplicate Sprite now grants Sprite XP to the Sprites already in your collection, not just the duplicate — so every repeat pull chips away at Mastery across your roster. Great news if you’re grinding toward the Quack milestone rewards. Reported by community outlets rather than a standalone Epic post, so treat the specifics as unofficial until patch notes confirm.',
+    link: 'https://www.vice.com/en/article/fortnite-sprites-easier-level-up-update/',
+    source: 'Vice',
+    official: false,
+  },
+  {
     ts: '2026-09-05',
     when: 'Sep 5, 2026',
     tag: 'event',

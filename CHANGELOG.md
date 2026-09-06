@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 6, 2026 — Extraction how-to + leveling news
+
+- **Added:** expanded the “⚠️ Extract it, or you lose it” section in `src/data/spriteGuide.js` (shared by the in-app
+  HowSpritesWork card + the static `/sprites` page) with clean-extraction steps (equip to back before match end; walk
+  up and press Extract, don’t throw it into the crate → Water-Sprite mis-registration) and misfire recovery (file an
+  in-game bug report; Epic has back-granted missing Sprites).
+- **Added:** `src/data/news.js` — a Sept 4 “duplicate Sprites now grant XP to ones you own” leveling-buff item, marked
+  `official: false` (outlet-sourced, no standalone Epic post yet).
+- **Why:** the confirmed causes of “extracted but didn’t receive it” (Sprite in inventory; thrown into the crate) are
+  avoidable, so the guide now prevents them and covers recovery; the leveling change is useful but unconfirmed by Epic.
+
+---
+
 ## September 6, 2026 — Abilities “Best used for” tags
 
 - **Added:** the `/abilities` page (`spriteAbilitiesPage()`) gains a **“Best used for”** column — a playstyle tag
