@@ -6,7 +6,8 @@ A fan-made Fortnite sprite-collection tracker (React 19 + Vite + Tailwind + Supa
 
 - **Develop** on branch **`sprite-tracker`** in `mombiemala/hello-portfolio`.
 - **Deploy** the public site by pushing that branch to **`mombiemala/fnsprites`** main
-  → Vercel auto-builds **fnsprites.vercel.app**:
+  → Vercel auto-builds and serves the live site at **fnsprites.app** (the
+  project URL `fnsprites.vercel.app` still works and 301-redirects there):
   ```
   git fetch origin sprite-tracker && git push fnsprites sprite-tracker:main
   ```
@@ -58,4 +59,4 @@ A fan-made Fortnite sprite-collection tracker (React 19 + Vite + Tailwind + Supa
 ## First task after deploy
 
 Verify the live site: confirm the import card, `👍` vouch buttons, `Lv` dots, and the newest
-Changelog entries all show on fnsprites.vercel.app.
+Changelog entries all show on fnsprites.app.
