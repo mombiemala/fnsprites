@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Speed up the first connections to the origins we hit on load (Core Web Vitals). -->
+    <link rel="preconnect" href="https://cjfproobzmqafdojzzsy.supabase.co" crossorigin />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin />
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
     <meta
       name="description"
       content="The Fortnite Sprites checklist & tracker for Chapter 7 Season 4 'Override' — the new generation of Sprites, Cheatmaster & Gold finishes, Hack the Lobby codes, drop rates, and trades. Save your collection, compare with friends, and see who owns what. Free & fan-made."
@@ -49,6 +53,34 @@
         "description": "The Fortnite Sprites checklist and tracker for Chapter 7 Season 4 'Override' — the new generation of Sprites, Cheatmaster and Gold finishes, Hack the Lobby codes, drop rates and trades. Save your collection, compare with friends. Free and fan-made.",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "isAccessibleForFree": true
+      }
+    </script>
+    <!-- Site-level entity: brand Organization + WebSite with a search action so
+         Google can offer a sitelinks search box and a brand knowledge panel. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "FN Sprite Tracker",
+            "url": "https://fnsprites.app/",
+            "logo": "https://fnsprites.app/og-image.png"
+          },
+          {
+            "@type": "WebSite",
+            "name": "FN Sprite Tracker",
+            "url": "https://fnsprites.app/",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://fnsprites.app/sprites?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          }
+        ]
       }
     </script>
     <!-- First-paint fallback: real, crawlable content shown instantly before the

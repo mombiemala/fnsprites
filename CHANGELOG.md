@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 6, 2026 — Technical SEO & Core Web Vitals polish (Tier 1)
+
+- **Added:** a real **404 page** (`notFoundPage()` → `dist/404.html`, served by Vercel for unmatched routes) linking back
+  to the key pages.
+- **Added:** site-level **`WebSite` + `Organization` + `SearchAction`** JSON-LD in `index.html` (sitelinks search box +
+  brand entity eligibility), and wired **`/sprites?q=`** so the search target actually filters (GUIDE_SCRIPT reads the
+  `q` param) — makes the SearchAction valid and gives deep-linkable Sprite search.
+- **Changed:** `sitemap.xml` now emits **`<lastmod>`** (build date) per URL; added `preconnect`/`dns-prefetch` to Supabase
+  (app) and Google AdSense (all pages) for faster first connections.
+- **Why:** all invisible, pure-upside — better discoverability (rich results, sitelinks searchbox, fresher crawl signals)
+  and Core Web Vitals (connection latency) with zero change to content or experience.
+
+---
+
 ## September 6, 2026 — Per-Sprite “How to get” blocks
 
 - **Changed:** each per-Sprite page (`spritePage()` in `scripts/prerender.mjs`) now renders a generation-aware

@@ -267,6 +267,7 @@ function head({ title, desc, canonical, jsonld, ogImage, active = 'sprites' }) {
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${canonical}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin><link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 ${ADSENSE}
 <meta property="og:type" content="article"><meta property="og:site_name" content="FN Sprite Tracker">
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
@@ -308,7 +309,7 @@ const CHEST_SCRIPT = `<script>window.__RATED=${JSON.stringify(RATED_MAP)};(funct
 
 // Runtime for the /sprites "how to get every Sprite" board: client-side sort,
 // filter and search over the pre-rendered rows. No-ops on pages without #how-to-get.
-const GUIDE_SCRIPT = `<script>(function(){var b=document.getElementById('how-to-get');if(!b)return;var grows=b.querySelector('.grows'),rows=[].slice.call(b.querySelectorAll('.grow')),search=b.querySelector('#gsearch'),empty=b.querySelector('#gempty');var sort='season',filter='all';function num(v,f){return v===''||v==null?f:parseFloat(v)}var S={season:function(a,b){return (+a.dataset.gen)-(+b.dataset.gen)||((a.dataset.status==='available'?0:1)-(b.dataset.status==='available'?0:1))||(+b.dataset.rank)-(+a.dataset.rank)},easiest:function(a,b){var sa=a.dataset.status==='available'?0:1,sb=b.dataset.status==='available'?0:1;return sa-sb||num(b.dataset.p,-1)-num(a.dataset.p,-1)||(+a.dataset.rank)-(+b.dataset.rank)},rarest:function(a,b){return (+b.dataset.rank)-(+a.dataset.rank)||num(a.dataset.p,2)-num(b.dataset.p,2)},dust:function(a,b){return num(a.dataset.dust,Infinity)-num(b.dataset.dust,Infinity)},az:function(a,b){return a.dataset.name<b.dataset.name?-1:a.dataset.name>b.dataset.name?1:0}};function apply(){var q=(search.value||'').trim().toLowerCase();var shown=rows.filter(function(r){if(filter!=='all'&&r.dataset.status!==filter)return false;if(q&&r.dataset.search.indexOf(q)===-1)return false;return true;});rows.forEach(function(r){r.style.display='none'});shown.sort(S[sort]);shown.forEach(function(r){r.style.display='';grows.appendChild(r)});empty.style.display=shown.length?'none':'';empty.textContent=q?('No Sprites match \\u201C'+search.value.trim()+'\\u201D.'):'No Sprites match this filter.';}b.querySelectorAll('[data-sort]').forEach(function(el){el.addEventListener('click',function(){sort=el.dataset.sort;b.querySelectorAll('[data-sort]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});b.querySelectorAll('[data-filter]').forEach(function(el){el.addEventListener('click',function(){filter=el.dataset.filter;b.querySelectorAll('[data-filter]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});search.addEventListener('input',apply);apply();})();</script>`
+const GUIDE_SCRIPT = `<script>(function(){var b=document.getElementById('how-to-get');if(!b)return;var grows=b.querySelector('.grows'),rows=[].slice.call(b.querySelectorAll('.grow')),search=b.querySelector('#gsearch'),empty=b.querySelector('#gempty');var sort='season',filter='all';function num(v,f){return v===''||v==null?f:parseFloat(v)}var S={season:function(a,b){return (+a.dataset.gen)-(+b.dataset.gen)||((a.dataset.status==='available'?0:1)-(b.dataset.status==='available'?0:1))||(+b.dataset.rank)-(+a.dataset.rank)},easiest:function(a,b){var sa=a.dataset.status==='available'?0:1,sb=b.dataset.status==='available'?0:1;return sa-sb||num(b.dataset.p,-1)-num(a.dataset.p,-1)||(+a.dataset.rank)-(+b.dataset.rank)},rarest:function(a,b){return (+b.dataset.rank)-(+a.dataset.rank)||num(a.dataset.p,2)-num(b.dataset.p,2)},dust:function(a,b){return num(a.dataset.dust,Infinity)-num(b.dataset.dust,Infinity)},az:function(a,b){return a.dataset.name<b.dataset.name?-1:a.dataset.name>b.dataset.name?1:0}};function apply(){var q=(search.value||'').trim().toLowerCase();var shown=rows.filter(function(r){if(filter!=='all'&&r.dataset.status!==filter)return false;if(q&&r.dataset.search.indexOf(q)===-1)return false;return true;});rows.forEach(function(r){r.style.display='none'});shown.sort(S[sort]);shown.forEach(function(r){r.style.display='';grows.appendChild(r)});empty.style.display=shown.length?'none':'';empty.textContent=q?('No Sprites match \\u201C'+search.value.trim()+'\\u201D.'):'No Sprites match this filter.';}b.querySelectorAll('[data-sort]').forEach(function(el){el.addEventListener('click',function(){sort=el.dataset.sort;b.querySelectorAll('[data-sort]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});b.querySelectorAll('[data-filter]').forEach(function(el){el.addEventListener('click',function(){filter=el.dataset.filter;b.querySelectorAll('[data-filter]').forEach(function(x){x.classList.toggle('on',x===el)});apply();});});search.addEventListener('input',apply);try{var _q=new URLSearchParams(location.search).get('q');if(_q){search.value=_q}}catch(e){}apply();})();</script>`
 
 // Runtime for the /news feed: client-side tag filter + search over the
 // pre-rendered cards. No-ops on pages without #newsfeed.
@@ -1369,6 +1370,32 @@ function privacyPage() {
 ` + FOOT
 }
 
+// ---------- 404 page ----------
+// A real not-found page (Vercel serves /404.html for unmatched routes) — keeps
+// lost visitors and crawlers on-site with links back to the key pages, instead
+// of a dead-end. Returns a 404 status via Vercel, so it won't get indexed.
+function notFoundPage() {
+  const links = [
+    ['/', '🏠', 'Collection tracker'],
+    ['/sprites', '🧩', 'All Sprites (checklist)'],
+    ['/codes', '🔓', 'Lobby Hack codes'],
+    ['/rarest-sprites', '💎', 'Rarest Sprites'],
+    ['/faq', '🙋', 'Sprite FAQ'],
+    ['/guides', '📖', 'All guides'],
+  ]
+  return head({ title: 'Page not found (404) | FN Sprite Tracker', desc: 'That page doesn’t exist. Jump back to the Fortnite Sprite tracker, checklist, codes, rarest Sprites or FAQ.', canonical: SITE + '/404', active: '' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>404 — that Sprite wandered off</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:60ch">We couldn’t find that page. Here’s the way back:</p>
+    <div class="related">${links.map(([href, icon, label]) => `<a href="${href}">${icon} ${esc(label)}</a>`).join('')}</div>
+    <a class="bigcta" href="/">Back to the Sprite tracker →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 // ---------- sitemap ----------
 function sitemap(types) {
   const urls = [
@@ -1391,7 +1418,7 @@ function sitemap(types) {
     { loc: SITE + '/?view=stats', changefreq: 'weekly', priority: '0.6' },
     ...types.map((t) => ({ loc: `${SITE}/sprite/${slug(t.name)}`, changefreq: 'weekly', priority: '0.8' })),
   ]
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u.loc}</loc><changefreq>${u.changefreq}</changefreq><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>\n`
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${u.lastmod || NEWS_TODAY}</lastmod><changefreq>${u.changefreq}</changefreq><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>\n`
 }
 
 // ---------- write ----------
@@ -1434,6 +1461,7 @@ mkdirSync(resolve(DIST, 'rarest-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'rarest-sprites', 'index.html'), rarestPage())
 mkdirSync(resolve(DIST, 'privacy'), { recursive: true })
 writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
+writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + 404 + sitemap.xml → dist/`)

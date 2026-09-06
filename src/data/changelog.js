@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'September 6, 2026',
+    title: 'Behind-the-scenes SEO & speed polish',
+    changes: [
+      { tag: 'Added', text: 'A proper “page not found” page that points you back to the tracker, checklist, codes and FAQ instead of a dead end.' },
+      { tag: 'Added', text: 'Search-engine plumbing so Google can show a search box and brand info for the site (WebSite/Organization data), plus deep-linkable Sprite search — fnsprites.app/sprites?q=sonic jumps straight to a filtered list.' },
+      { tag: 'Changed', text: 'The sitemap now stamps each page’s last-updated date, and the app pre-connects to its data/ad hosts on load for a faster first paint.' },
+    ],
+    summary: 'Invisible groundwork that helps the site get found and load faster — no change to how anything looks or works.',
+    why: 'These are pure-upside, behind-the-scenes wins: they improve discoverability (rich results, a sitelinks search box, fresher crawl signals) and Core Web Vitals (faster connections) without touching the content or the experience.',
+  },
+  {
+    date: 'September 6, 2026',
     title: 'Per-Sprite “How to get” sections',
     changes: [
       { tag: 'Added', text: 'Every Sprite page now has a tailored “How to get” block instead of a one-liner. Override Sprites show the exact Hack the Lobby code and steps (plus Cheat-Code farming and which finishes are live vs datamined); archived Season 3 Sprites explain they’re kept in your Garden but no longer droppable, with their final drop rate; and upcoming Sprites show their expected date. Each block is built from that Sprite’s own data.' },
