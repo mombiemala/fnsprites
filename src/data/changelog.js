@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 6, 2026',
+    title: 'Gold Sprites hub',
+    changes: [
+      { tag: 'Added', text: 'A “Gold Sprites” page (in Guides, and at /gold-sprites) listing every Sprite with a Gold finish, sorted current-season first, showing which Golds are obtainable now vs archived (kept in the Garden), with a link to each Sprite. Stays in sync with the roster.' },
+    ],
+    summary: 'One place for every Gold Sprite — what’s earnable this season and what’s archived from last.',
+    why: '“Gold sprites” is a common finish search, and Gold spans both generations, so the page is generation-aware: it points players at the Golds they can still get now and is honest about the archived ones — no dead-end chasing.',
+  },
+  {
+    date: 'September 6, 2026',
     title: '“How to get Cheat Master Sprites” guide',
     changes: [
       { tag: 'Added', text: 'A step-by-step guide (in Guides, and at /how-to-get-cheat-master-sprites) walking through both ways to unlock Cheat Master Sprites — redeeming Hack the Lobby codes (with the current working codes, tap-to-copy) and rolling in-world Cheat Codes — plus Power Hours boosts and tips.' },

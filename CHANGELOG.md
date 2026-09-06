@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 6, 2026 — Gold Sprites hub
+
+- **Added:** a per-finish hub at `/gold-sprites` (prerendered, in the `/guides` hub + sitemap). Lists every Sprite with a
+  `gold` variant, sorted current-gen first (via `GEN_RANK`), with a generation-aware status (Live now / Archived /
+  Datamined / Vaulted) and a link to each Sprite. `CollectionPage` + `ItemList` + `FAQPage` JSON-LD; data from
+  `SPRITE_TYPES` so it self-syncs. Surfaces the Gold perk from `THEME_MAP.gold`.
+- **Why:** "gold sprites" is a common finish query and Gold spans both generations — the page steers players to the
+  Golds obtainable now and is honest about archived ones, avoiding dead-end chasing.
+
+---
+
 ## September 6, 2026 — “How to get Cheat Master Sprites” guide
 
 - **Added:** a step-by-step guide at `/how-to-get-cheat-master-sprites` (prerendered, in the `/guides` hub + sitemap,
