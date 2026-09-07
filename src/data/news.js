@@ -46,6 +46,16 @@ export const NEWS = [
     official: true,
   },
   {
+    ts: '2026-09-07',
+    when: 'Sep 7, 2026',
+    tag: 'bug',
+    title: '⚠️ Known issue — extracted a Sprite but didn’t get it?',
+    body: 'If a Sprite you extracted doesn’t show up in your collection, it’s a known and mostly avoidable issue — and recoverable. Two things fix the common causes: make sure the Sprite is equipped to your back before the match ends (one left sitting in your inventory won’t extract), and walk up to the Extraction crate and press Extract — don’t throw or drop it in, since thrown Sprites could register as the wrong type. If it still doesn’t appear, file an in-game bug report: Epic has confirmed extraction misfires (a Sprite popping onto the ground instead of extracting, or not being granted) and granted the Sprite back. Full steps are in our How Sprites work guide on the Sprites page.',
+    link: 'https://www.epicgames.com/help/en-US/c-Category_Fortnite',
+    source: 'Epic support',
+    official: true,
+  },
+  {
     ts: '2026-09-03',
     when: 'Sep 3, 2026',
     tag: 'update',

@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 7, 2026',
+    title: 'Known Issue notice — Sprite extraction',
+    changes: [
+      { tag: 'Added', text: 'A “Known Issue” card in News for when an extracted Sprite doesn’t land in your collection — the quick fixes (equip it to your back before the match ends; walk up and press Extract, don’t throw it in) and how to recover a genuine misfire (file an in-game bug report; Epic has granted Sprites back).' },
+    ],
+    summary: 'A visible heads-up for the “extracted but didn’t get it” issue, with the fix and recovery steps.',
+    why: 'Players keep hitting this without knowing it’s avoidable and recoverable; surfacing it in News (not just the guide) puts the fix in front of them when it’s top of mind.',
+  },
+  {
+    date: 'September 7, 2026',
     title: 'Fresh codes + this week’s events',
     changes: [
       { tag: 'Added', text: 'Three new Lobby Hack codes: WHEREISTHEDUSTYTREE and DUSTINTHEWIND (5,000 Sprite Dust each, confirmed in-game) and NOPROLLAMA (a Llama Supply Drop gizmo — heads-up, this one expires Sep 14).' },

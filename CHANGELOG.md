@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 7, 2026 — Known Issue notice (Sprite extraction)
+
+- **Added:** `news.js` — a `tag: 'bug'` ("Known Issue") item for the "extracted a Sprite but didn't get it" problem, with
+  the avoidable causes (Sprite left in inventory; thrown into the crate) and recovery (file an in-game bug report; Epic
+  back-grants). Complements the guide section; `NEWS_TAGS.bug` already renders a red "Known Issue" chip/filter.
+- **Why:** surfaces the fix in the News feed where players look when it happens, not only buried in the guide.
+
+---
+
 ## September 7, 2026 — Fresh codes + this week’s events
 
 - **Added:** `codes.js` — `WHEREISTHEDUSTYTREE` and `DUSTINTHEWIND` (5,000 Sprite Dust each, `status: working`,
