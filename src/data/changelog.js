@@ -6,6 +6,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 7, 2026',
+    title: 'Fresh codes + this week’s events',
+    changes: [
+      { tag: 'Added', text: 'Two new Lobby Hack codes: WHEREISTHEDUSTYTREE (5,000 Sprite Dust, confirmed in-game) and NOPROLLAMA (a Llama Supply Drop gizmo — heads-up, this one expires Sep 14).' },
+      { tag: 'Added', text: 'This week’s events in News: Mastery Monday today (2× Sprite XP & Dust, with mastered Sprites set to auto-unlock an upcoming Sprite Back Bling), New Sprites Day on Sep 10 (the Loot Hacker finish goes live — 14 variants), and Power Hours on Sep 12 (Gold & Cheat Master boosted).' },
+    ],
+    summary: 'Today’s Mastery Monday, two new codes, and a look at the Loot Hacker drop (Sep 10) and Friday’s Power Hours.',
+    why: 'Codes and events are the most time-sensitive thing players check, so keeping them current on the day keeps the tracker the fastest place to see what’s live — and gives a heads-up on the Loot Hacker finishes going live Sep 10 so collectors can plan.',
+  },
+  {
     date: 'September 6, 2026',
     title: 'Extraction how-to + a leveling-buff heads-up',
     changes: [

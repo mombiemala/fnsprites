@@ -65,6 +65,7 @@ export const LOBBY_CODES = [
   { code: 'DONTBLOCKME', unlocks: 'Tetris-block transform effect', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, source: 'Loolo_WRLD' },
   { code: 'LETSBLOCKANDROLL', unlocks: 'Tetris-block transform effect', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, source: 'Loolo_WRLD' },
   { code: 'PERFECTORDER', unlocks: '4× spicy-taco gizmos (Geno)', type: 'reward', category: 'gizmos', status: 'working', source: 'GamesRadar' },
+  { code: 'NOPROLLAMA', unlocks: 'Llama Supply Drop Gizmo (calls a boosted llama supply drop) — redeemable Sep 7–14 only', type: 'reward', category: 'gizmos', status: 'working', added: '2026-09-07', source: 'The Click / FortniteFNLK' },
 
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
   { code: 'TAKEYOURHEART', unlocks: '2× Extraction Accelerators (Persona 5 / Joker)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
@@ -79,6 +80,7 @@ export const LOBBY_CODES = [
   // The bigger Geno code also grants an Outfit style, and is gated behind the Geno
   // quests + a specific "let Geno eliminate you" step, so we note the condition.
   { code: 'YOURTHOUGHTSAREMINE', unlocks: '5,000 Sprite Dust + Void Master Geno Outfit style — after finishing the Geno story quests, shoot Geno’s shield and let him eliminate you', type: 'reward', category: 'dust', status: 'working', source: 'community list', added: '2026-09-03' },
+  { code: 'WHEREISTHEDUSTYTREE', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-07', source: 'confirmed in-game' },
   // The four localized codes were posted by regional Fortnite accounts but are
   // widely reported to redeem globally, so we keep them Working with an origin note.
   { code: 'MAGILUME', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', region: 'Fortnite Brazil', source: 'community list' },

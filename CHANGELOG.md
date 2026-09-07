@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 7, 2026 — Fresh codes + this week’s events
+
+- **Added:** `codes.js` — `WHEREISTHEDUSTYTREE` (5,000 Sprite Dust, `status: working`, confirmed in-game) and
+  `NOPROLLAMA` (Llama Supply Drop gizmo, redeemable Sep 7–14 — expiry noted in the unlock text).
+- **Added:** `news.js` — Mastery Monday (Sep 7, live: 2× XP/Dust + Sprite Back Bling tie-in), New Sprites Day
+  (Sep 10: Loot Hacker finish live, 14 variants, `tag: upcoming`), Power Hours (Sep 12: Gold/Cheat Master boosted,
+  `tag: upcoming`). All official-sourced.
+- **Why:** codes/events are the freshest-traffic, most time-sensitive content; keeping them same-day keeps the tracker
+  the fastest place to see what's live, and pre-announces the Sep 10 Loot Hacker drop.
+- **Heads-up (not yet done):** on Sep 10 the `loothacker` variants in `sprites.js` (currently `U`) should flip to
+  released; leaving them unreleased until confirmed live.
+
+---
+
 ## September 6, 2026 — Extraction how-to + leveling news
 
 - **Added:** expanded the “⚠️ Extract it, or you lose it” section in `src/data/spriteGuide.js` (shared by the in-app
