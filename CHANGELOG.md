@@ -13,8 +13,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ## September 7, 2026 — Fresh codes + this week’s events
 
-- **Added:** `codes.js` — `WHEREISTHEDUSTYTREE` (5,000 Sprite Dust, `status: working`, confirmed in-game) and
-  `NOPROLLAMA` (Llama Supply Drop gizmo, redeemable Sep 7–14 — expiry noted in the unlock text).
+- **Added:** `codes.js` — `WHEREISTHEDUSTYTREE` and `DUSTINTHEWIND` (5,000 Sprite Dust each, `status: working`,
+  confirmed in-game) and `NOPROLLAMA` (Llama Supply Drop gizmo, redeemable Sep 7–14 — expiry noted in the unlock text).
 - **Added:** `news.js` — Mastery Monday (Sep 7, live: 2× XP/Dust + Sprite Back Bling tie-in), New Sprites Day
   (Sep 10: Loot Hacker finish live, 14 variants, `tag: upcoming`), Power Hours (Sep 12: Gold/Cheat Master boosted,
   `tag: upcoming`). All official-sourced.
