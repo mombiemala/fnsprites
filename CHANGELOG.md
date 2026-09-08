@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 8, 2026 — Two more Lobby Hack codes
+
+- **Added:** `codes.js` — `InsertCoinToContinue` (Arcade Machine transformation) and `BRB` (Toilet transformation),
+  `category: 'gizmos'`, `status: 'working'` — the two transform codes missing vs community trackers; verified against
+  outlets (GamesRadar/allthings.how/Beebom).
+- **Why:** a cross-check of a community code list surfaced two working gizmo codes we lacked; added so the list is complete.
+
+---
+
 ## September 7, 2026 — Known Issue notice (Sprite extraction)
 
 - **Added:** `news.js` — a `tag: 'bug'` ("Known Issue") item for the "extracted a Sprite but didn't get it" problem, with

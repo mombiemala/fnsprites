@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 8, 2026',
+    title: 'Two more Lobby Hack codes',
+    changes: [
+      { tag: 'Added', text: 'InsertCoinToContinue (Arcade Machine lobby transformation) and BRB (Toilet lobby transformation) — two fun gizmo codes, both confirmed. That brings the tracked list level with the community trackers.' },
+    ],
+    summary: 'Added the two transformation codes we were missing, so the Lobby Hacks list is complete against the community trackers.',
+    why: 'A cross-check against a community code list turned up two gizmo transforms we didn’t have; verified against outlets and added so players aren’t missing any working codes.',
+  },
+  {
     date: 'September 7, 2026',
     title: 'Known Issue notice — Sprite extraction',
     changes: [

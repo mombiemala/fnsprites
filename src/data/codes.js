@@ -65,6 +65,8 @@ export const LOBBY_CODES = [
   { code: 'DONTBLOCKME', unlocks: 'Tetris-block transform effect', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, source: 'Loolo_WRLD' },
   { code: 'LETSBLOCKANDROLL', unlocks: 'Tetris-block transform effect', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, source: 'Loolo_WRLD' },
   { code: 'PERFECTORDER', unlocks: '4× spicy-taco gizmos (Geno)', type: 'reward', category: 'gizmos', status: 'working', source: 'GamesRadar' },
+  { code: 'InsertCoinToContinue', unlocks: 'Arcade Machine lobby transformation', type: 'effect', category: 'gizmos', status: 'working', added: '2026-09-08', source: 'GamesRadar / community list' },
+  { code: 'BRB', unlocks: 'Toilet lobby transformation', type: 'effect', category: 'gizmos', status: 'working', added: '2026-09-08', source: 'GamesRadar / community list' },
   { code: 'NOPROLLAMA', unlocks: 'Llama Supply Drop Gizmo (calls a boosted llama supply drop) — redeemable Sep 7–14 only', type: 'reward', category: 'gizmos', status: 'working', added: '2026-09-07', source: 'The Click / FortniteFNLK' },
 
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
