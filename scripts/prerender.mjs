@@ -434,7 +434,7 @@ function spritePage(type, others) {
     <tr><td>Coin-flip (50% chance)</td><td class="v">${fmt(chestsFor(p, 0.5))}</td></tr>
     <tr><td>Likely (90% chance)</td><td class="v">${fmt(chestsFor(p, 0.9))}</td></tr>
     <tr><td>Almost sure (99% chance)</td><td class="v">${fmt(chestsFor(p, 0.99))}</td></tr>
-  </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Modeled as independent draws at the base rate. Run your own numbers in the live <a href="/">Chest luck calculator →</a></p></div>` : ''
+  </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Modeled as independent draws at the base rate. Run your own numbers in the <a href="/drop-rate-calculator">Sprite drop-rate calculator →</a></p></div>` : ''
 
   return head({ title, desc, canonical: url, jsonld, ogImage: `${SITE}/api/og?sprite=${encodeURIComponent(type.id)}` }) + `
 <section class="hero" style="background:linear-gradient(135deg,${tint}22,var(--panel))">
@@ -1359,6 +1359,46 @@ function goldPage() {
 ` + FOOT
 }
 
+// ---------- /drop-rate-calculator page ----------
+// Dedicated SEO landing for the "fortnite sprite drop rate calculator" query.
+// Reuses the interactive Chest Luck widget (chestLuckCard + CHEST_SCRIPT, which
+// FOOT already wires in) as the hero, wrapped in explainer prose + FAQ/WebApp
+// schema. Odds cover the Season 3 chest-drop era (Override uses Cheat Codes).
+function dropRateCalcPage() {
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const faqs = [
+    ['How do Fortnite Sprite drop rates work?', 'Each Sprite has a base drop chance per Sprite Chest set by its rarity — the rarer the Sprite, the lower the chance. Any chest can drop any Sprite and the odds are identical everywhere, so location doesn’t change your chances. Special finishes (Gold and friends) are rarer still, multiplying that base rate down.'],
+    ['How many Sprite Chests do I need to get a specific Sprite?', 'Use the calculator above — pick a Sprite and it shows the average chests plus how many you’d open for a 50%, 90% or 99% chance. It models each chest as an independent draw at the base rate (for example, a 1% Sprite averages ~100 chests, ~69 for a coin-flip 50% chance and ~458 for 99%).'],
+    ['Do Sprite drop rates depend on location or POI?', 'No. Drop rates are global by rarity — any Sprite Chest anywhere has the same odds. Landing at a busy POI just means more chests to open, not better per-chest odds.'],
+    ['What’s the rarest Fortnite Sprite?', `Sprites like Grim Reaper and Zero Point have the lowest drop rates of all. See the full ranking on the ${L('/rarest-sprites', 'rarest Sprites')} page.`],
+    ['Do Season 4 “Override” Sprites have drop rates?', `Not chest-based ones — Override Sprites unlock from in-world Cheat Codes and ${L('/codes', 'Hack the Lobby codes')}, not fixed-odds Sprite Chests. This calculator covers the Season 3 “Runners” chest-drop era (final community estimates).`],
+  ]
+  const desc = 'Free Fortnite Sprite drop-rate calculator — pick any Sprite and finish to see its drop rate, average Sprite Chests, and how many chests you need for a 50%, 90% or 99% chance. Community-estimated odds, fan-made.'
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'WebApplication', name: 'Fortnite Sprite Drop Rate Calculator', url: SITE + '/drop-rate-calculator', applicationCategory: 'GameApplication', operatingSystem: 'Web', description: desc, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, isAccessibleForFree: true },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]+>/g, '') } })) },
+  ] }
+  return head({ title: `Fortnite Sprite Drop Rate Calculator — Odds & Chests to Get Any Sprite | FN Sprite Tracker`, desc, canonical: SITE + '/drop-rate-calculator', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🎲 Fortnite Sprite Drop Rate Calculator</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 14px;font-size:14px;max-width:70ch">Work out your real odds of pulling any Fortnite Sprite from Sprite Chests. Pick a Sprite (and finish) to see its drop rate, the average number of chests, and how many chests you need for a <b style="color:#fff">50%, 90% or 99%</b> chance.</p>
+    ${chestLuckCard()}
+    <h2 style="font-size:17px;margin:20px 0 8px">How Sprite drop rates work</h2>
+    <p style="font-size:14px;line-height:1.6">Every Sprite has a base drop chance per Sprite Chest, set by its <b>rarity</b> — Rare Sprites are common, Mythics like Zero Point are brutally rare. The odds are the same in every chest and every location, so there’s no secret spot; landing somewhere with more chests just gives you more rolls. The calculator treats each chest as an <b>independent draw</b> at the base rate: a “50% chance” is the point where about half of players would have it, and “99%” is where almost everyone would.</p>
+    <h2 style="font-size:17px;margin:20px 0 8px">Season 4 “Override” — Cheat Codes, not chests</h2>
+    <p style="font-size:14px;line-height:1.6">Season 4 “Override” Sprites don’t drop from chests at fixed odds — you unlock them from in-world Cheat Codes and ${L('/codes', 'Hack the Lobby codes')}. So this calculator reflects the Season 3 “Runners” chest-drop era (now archived, kept in your ${L('/sprite-garden', 'Sprite Garden')}) — the final community-estimated odds. For Override, see the ${L('/how-to-get-cheat-master-sprites', 'how-to-get guide')} instead.</p>
+    <p style="font-size:14px;line-height:1.6">Want the numbers side by side? See every Sprite ranked by drop rate on the ${L('/rarest-sprites', 'rarest Sprites')} page, or browse the full ${L('/sprites', 'checklist')}.</p>
+    <h2 style="font-size:16px;margin:22px 0 8px">Drop rate calculator — FAQ</h2>
+    ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Drop rates are community estimates — Epic doesn’t publish official Sprite odds. Special-finish odds multiply the base rate by a rough rarity estimate. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track the Sprites you pull — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 // ---------- /guides hub page ----------
 // One home for the reference pages — declutters the nav (a single "Guides" link
 // replaces the per-guide links) and gives the guides an internal-linking hub.
@@ -1373,6 +1413,7 @@ const GUIDES = [
   ['/abilities', '⚡', 'Sprite abilities', 'Every Sprite and what its ability actually does, split by generation.'],
   ['/tier-list', '🏆', 'Tier list', 'Every released Sprite ranked S–C by how strong its ability is.'],
   ['/rarest-sprites', '💎', 'Rarest Sprites', 'Every Sprite ranked by drop rate — the rarest Fortnite Sprites and how the odds compare.'],
+  ['/drop-rate-calculator', '🎲', 'Drop rate calculator', 'Pick a Sprite to see its drop rate and how many chests you need for a 50 / 90 / 99% chance.'],
   ['/faq', '🙋', 'Sprite FAQ', 'Quick answers to the most-asked Fortnite Sprite questions — counts, how to get them, finishes, rarities and more.'],
   ['/season-transition', '❓', 'Season transition FAQ', 'Why your Dust reset, whether old Sprites still count, and the pay-to-win question.'],
 ]
@@ -1587,6 +1628,7 @@ function sitemap(types) {
     { loc: SITE + '/faq', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/rarest-sprites', changefreq: 'weekly', priority: '0.8' },
+    { loc: SITE + '/drop-rate-calculator', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9' },
     { loc: SITE + '/cheat-master-sprites', changefreq: 'weekly', priority: '0.8' },
@@ -1644,6 +1686,8 @@ mkdirSync(resolve(DIST, 'faq'), { recursive: true })
 writeFileSync(resolve(DIST, 'faq', 'index.html'), faqPage())
 mkdirSync(resolve(DIST, 'rarest-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'rarest-sprites', 'index.html'), rarestPage())
+mkdirSync(resolve(DIST, 'drop-rate-calculator'), { recursive: true })
+writeFileSync(resolve(DIST, 'drop-rate-calculator', 'index.html'), dropRateCalcPage())
 mkdirSync(resolve(DIST, 'cheat-master-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'cheat-master-sprites', 'index.html'), cheatMasterPage())
 mkdirSync(resolve(DIST, 'how-to-get-cheat-master-sprites'), { recursive: true })
@@ -1655,4 +1699,4 @@ writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + 404 + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + 404 + sitemap.xml → dist/`)

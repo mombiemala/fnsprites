@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 10, 2026 — Drop Rate Calculator page
+
+- **Added:** `/drop-rate-calculator` (prerendered, in `/guides` hub + sitemap) — reuses the interactive Chest Luck
+  widget (`chestLuckCard` + `CHEST_SCRIPT`) as the hero, wrapped in explainer prose + FAQ, with `WebApplication` +
+  `FAQPage` JSON-LD. Repointed the per-Sprite "run your own numbers" link to it; cross-links `/rarest-sprites`,
+  `/sprites`, `/codes`.
+- **Why:** targets "fortnite sprite drop rate calculator" (a term PunkSprite ranks for) by turning an in-app sidebar
+  tool into an indexable page — low effort (logic already existed), reinforces the drop-rate content cluster.
+
+---
+
 ## September 10, 2026 — News: Halloween Sprite leak (Fortnitemares 2026)
 
 - **Added:** `news.js` — a `tag: 'upcoming'`, `tentative: true`, `official: false` item on the datamined Halloween

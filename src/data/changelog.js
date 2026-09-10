@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 10, 2026',
+    title: 'Drop Rate Calculator page',
+    changes: [
+      { tag: 'Added', text: 'A dedicated Sprite Drop Rate Calculator (in Guides, and at /drop-rate-calculator) — pick any Sprite and finish to see its drop rate, the average number of chests, and how many chests you need for a 50%, 90% or 99% chance, with a plain explainer of how the odds work.' },
+    ],
+    summary: 'Your own page for the “how many chests do I need?” question — interactive odds for any Sprite.',
+    why: '“Fortnite sprite drop rate calculator” is a real search with strong competitors, and we already had the calculator logic — giving it its own page turns an in-app sidebar tool into an indexable, linkable feature and reinforces the drop-rate content cluster (rarest Sprites, per-Sprite pages).',
+  },
+  {
+    date: 'September 10, 2026',
     title: 'News: Halloween Sprite leak (Fortnitemares 2026)',
     changes: [
       { tag: 'Added', text: 'A News item on the datamined Halloween “Trick or Treat” Sprite variant tied to Fortnitemares 2026 (~Oct 1) — clearly flagged as an unconfirmed leak, with a source link. We’ll add it to the roster if/when Epic confirms it.' },
