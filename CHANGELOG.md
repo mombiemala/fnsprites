@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 10, 2026 — Friends-only trade matcher
+
+- **Added:** a **Trade matches** sub-view in the Friends tab (`src/components/Friends.jsx` → `TradesView`). For each
+  matched friend it shows the Sprites **they’d give you** (their `for_trade` ∩ your `wanted`) and the ones **you’d give
+  them** (your `for_trade` ∩ their `wanted`), flags true two-way matches, and surfaces the friend’s Discord handle to
+  coordinate the swap.
+- **Security:** new `SECURITY DEFINER` RPC `friend_trade_matches()` — same shape/logic as `find_trade_matches()` but the
+  partner set is limited to the caller’s friends (public profiles only). Wired via `fetchFriendTradeMatches` in
+  `src/context/AuthContext.jsx`.
+- **Why:** compare answers “who has what”; the matcher answers “who can I swap with right now?” Scoping to friends keeps it
+  high-signal and reuses the `for_trade`/`wanted` flags players already set. (The global `find_trade_matches` RPC existed
+  but was never surfaced in the UI — this is the first trade-matching surface to ship.)
+
+---
+
 ## September 10, 2026 — Friends (save players & compare in one tap)
 
 - **Added:** a **Friends** mode on the Leaderboard (`src/components/Leaderboard.jsx` toggle → `src/components/Friends.jsx`).

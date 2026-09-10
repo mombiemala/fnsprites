@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 10, 2026',
+    title: 'Friends-only trade matcher',
+    changes: [
+      { tag: 'Added', text: 'A “Trade matches” view inside the Friends tab: it lines up your friends’ spare Sprites (marked For trade) against your Wanted list — and yours against theirs — and shows exactly which Sprites each of you could hand over, with a ✓ flag on true two-way matches. Their Discord handle shows on the card so you can coordinate the swap.' },
+    ],
+    summary: 'See at a glance which of your friends you can actually trade with — no more scrolling two collections side by side.',
+    why: 'Compare tells you who has what; the trade matcher answers the next question — “who can I swap with right now?” Scoping it to friends keeps it high-signal (people you’d actually trade with) and reuses the for-trade/wanted flags players already set, so it’s useful the moment you mark a few spares.',
+  },
+  {
+    date: 'September 10, 2026',
     title: 'Friends — save players and compare in one tap',
     changes: [
       { tag: 'Added', text: 'A Friends tab on the Leaderboard: save any player and see them ranked by the same Flex Score, each with a one-tap Compare. Add friends by searching their gamertag, by tapping ★ next to anyone on the global board, or from the “Add friend” button on a shared collection link.' },

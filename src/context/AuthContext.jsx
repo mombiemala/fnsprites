@@ -327,6 +327,14 @@ export function AuthProvider({ children }) {
     return data || []
   }, [user])
 
+  // Two-way trade matches restricted to your friends (Postgres RPC).
+  const fetchFriendTradeMatches = useCallback(async () => {
+    if (!user) return []
+    const { data, error } = await supabase.rpc('friend_trade_matches')
+    if (error) return []
+    return data || []
+  }, [user])
+
   // Search public players by gamertag so you can add a friend by name.
   const searchPlayers = useCallback(async (q) => {
     if (!q || q.trim().length < 2) return []
@@ -387,6 +395,7 @@ export function AuthProvider({ children }) {
     fetchSpriteHolders,
     friendIds,
     fetchFriends,
+    fetchFriendTradeMatches,
     searchPlayers,
     addFriend,
     removeFriend,
