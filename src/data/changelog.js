@@ -10,6 +10,7 @@ export const CHANGELOG = [
     title: 'Community ownership — “owned by X% of collectors”',
     changes: [
       { tag: 'Added', text: 'Each released Sprite’s detail view now shows how common it is across the community — “owned by X% of collectors” (and “mastered by Y%”), so you can see at a glance which Sprites are rare flexes vs. everyone-has-it. Percentages only appear once there’s a big enough sample.' },
+      { tag: 'Added', text: 'The same community-ownership number is now baked into each Sprite’s public page — a stat tile plus a “How many people have this Sprite?” answer — so the rarity shows up in search results too.' },
       { tag: 'Security', text: 'The numbers come from a new definer function that returns vote-style aggregate counts only — never who owns what. Your individual collection stays private (row-level security unchanged).' },
     ],
     summary: 'Real community rarity: see what share of collectors actually own each Sprite — a stat no other tracker shows.',

@@ -28,6 +28,39 @@ const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
 // all pages, not just the SPA shell).
 const ADSENSE = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3458906019268790" crossorigin="anonymous"></script>'
 
+// Build-time community ownership aggregates, baked into per-Sprite pages for SEO
+// ("how many people have X"). Calls the same privacy-safe RPC the app uses (counts
+// only). Degrades gracefully: if Supabase is unreachable during the build (e.g. a
+// sandboxed CI with no egress) or the sample is small, pages simply omit the stat.
+const OWN_MIN = 10
+const OWNERSHIP = await (async () => {
+  const url = process.env.VITE_SUPABASE_URL || 'https://cjfproobzmqafdojzzsy.supabase.co'
+  const key = process.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_LrNHfVEfZPCyMQtei5Jeug_9QcQft1E'
+  try {
+    const res = await fetch(`${url}/rest/v1/rpc/sprite_ownership_stats`, {
+      method: 'POST',
+      headers: { apikey: key, authorization: `Bearer ${key}`, 'content-type': 'application/json' },
+      body: '{}',
+    })
+    if (!res.ok) return null
+    const rows = await res.json()
+    if (!Array.isArray(rows)) return null
+    const owners = {}, masters = {}
+    let total = 0
+    for (const r of rows) {
+      if (r.sprite_id === '__collectors__') { total = Number(r.owners) || 0; continue }
+      owners[r.sprite_id] = Number(r.owners) || 0
+      masters[r.sprite_id] = Number(r.masters) || 0
+    }
+    return total >= OWN_MIN ? { total, owners, masters } : null
+  } catch {
+    return null
+  }
+})()
+console.log(OWNERSHIP
+  ? `ownership stats: baked in (${OWNERSHIP.total} collectors)`
+  : 'ownership stats: unavailable at build — per-Sprite pages omit the stat')
+
 // ---------- helpers ----------
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 const slug = (name) => String(name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
@@ -344,6 +377,15 @@ function spritePage(type, others) {
   const tier = spriteTier(type.id)
   const scaling = spriteScaling(type.id)
   const source = spriteSource(type.id)
+  // Baked community ownership (from the build-time OWNERSHIP fetch; null if the
+  // build couldn't reach Supabase or the sample was too small). Uses the Normal
+  // finish as the proxy for "has this Sprite."
+  const ownN = OWNERSHIP && type.released ? OWNERSHIP.owners[`${type.id}_normal`] : undefined
+  const own = ownN != null ? {
+    pct: Math.round((ownN / OWNERSHIP.total) * 100),
+    mpct: Math.round(((OWNERSHIP.masters[`${type.id}_normal`] || 0) / OWNERSHIP.total) * 100),
+    total: OWNERSHIP.total,
+  } : null
 
   const variants = Object.keys(type.variants)
     .filter((tid) => THEME_MAP[tid])
@@ -405,6 +447,8 @@ function spritePage(type, others) {
   faqs.push([`Is the ${name} Sprite usable in Battle Royale?`, s4
     ? `Yes — ${name} is part of the current Season 4 “Override” generation, so you can equip and use it in Battle Royale this season.`
     : `${name} is a Season 3 “Runners” Sprite. It's kept forever in your collection and the in-game Sprite Garden, but the Season 4 “Override” generation took over Battle Royale — so older-generation Sprites aren't used in BR matches this season (Epic says they may return later).`])
+  if (own) faqs.push([`How many people have the ${name} Sprite?`,
+    `Among collectors tracking their collection on FN Sprite Tracker, about ${own.pct}% own ${name}${own.mpct ? ` and ${own.mpct}% have mastered it` : ''} — based on ${own.total} tracked collectors, and it grows as more players join.`])
 
   const jsonld = {
     '@context': 'https://schema.org',
@@ -423,6 +467,7 @@ function spritePage(type, others) {
   const stats = [
     p ? [type.dropRate, 'Drop rate / chest'] : ['—', 'Drop rate'],
     p ? [`~${fmt(1 / p)}`, 'Avg chests'] : [tier ? `${tier}-Tier` : '—', 'Tier'],
+    own ? [`${own.pct}%`, 'Collectors own it'] : null,
     dustN != null ? [fmt(dustN), 'Dust (Normal)'] : null,
     dustV != null ? [fmt(dustV), 'Dust (variant)'] : null,
   ].filter(Boolean)

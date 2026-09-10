@@ -19,6 +19,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 - **Security:** new `public.sprite_ownership_stats()` — `SECURITY DEFINER`, `STABLE`, returns `(sprite_id, owners,
   masters)` as distinct-user COUNTS plus a `__collectors__` total row; granted to anon+authenticated. No user identity
   is exposed (same pattern as `sprite_tier_results`); `sprite_progress` RLS unchanged.
+- **Added (SEO bake):** `scripts/prerender.mjs` fetches the RPC at build time and bakes the ownership % into each
+  per-Sprite page (a "Collectors own it" stat tile + a "How many people have the X Sprite?" FAQ). Degrades gracefully —
+  if the build can't reach Supabase (e.g. a no-egress sandbox), pages just omit the stat. Populates on Vercel builds.
 - **Why:** drop rate = the odds; community ownership = how rare a Sprite actually is in practice. A sticky, differentiating
   signal computed from data we already hold, privacy-safe, that competitors don't offer.
 
