@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'new-sprite-day-loot-hacker-2026-09-10',
+    emoji: '🔵',
+    message: 'New Sprite Day is LIVE (Sep 10) — the Loot Hacker finish dropped: 14 new Loot Hacker Sprite variants (15 incl. the Crown), each adding a +20% (1.2×) chance of Loot Hack items from Chests. All 15 are marked released in the tracker.',
+    link: '/?view=news',
+    linkLabel: 'What dropped',
+    start: '2026-09-10',
+    end: '2026-09-12',
+    source: 'Epic / Vice',
+    official: true,
+    tone: 'event',
+  },
+  {
     id: 'gold-hours-2026-08-22',
     emoji: '🥇',
     message: 'Gold Sprites are unlocked for Season 4 “Override” — Gold Hours today (Sat, Aug 22, 2–4 PM & 9–11 PM ET) boost Gold spawns. Every Override Sprite now has all three finishes: Normal, Gold & Cheatmaster.',
