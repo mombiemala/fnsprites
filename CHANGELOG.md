@@ -11,6 +11,24 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 10, 2026 — Friends (save players & compare in one tap)
+
+- **Added:** a **Friends** mode on the Leaderboard (`src/components/Leaderboard.jsx` toggle → `src/components/Friends.jsx`).
+  Saved players are ranked by the same Flex Score as the global board, each with a one-tap **Compare** (reuses the existing
+  `CompareModal`). Add friends three ways: gamertag search, the **★** toggle on any global-board row, or the **Add friend**
+  button on a shared collection view (`?u=…`) in `src/App.jsx`.
+- **Added:** friends persist to the account and load on sign-in (`src/context/AuthContext.jsx`: `friendIds`, `fetchFriends`,
+  `searchPlayers`, `addFriend`, `removeFriend`). Shared avatar/badges extracted to `src/components/PlayerAvatar.jsx`.
+- **Security:** new `public.friends` table (`user_id`, `friend_id`) with RLS so a user only sees/manages **their own** rows.
+  New `SECURITY DEFINER` RPCs `my_friends()` (friend list + public scores, same rarity weighting as `leaderboard()`) and
+  `search_public_profiles(q)` (gamertag search over **public** profiles only). A private friend returns zeroed stats +
+  `is_public=false`, and compare is gated on the existing public-collection read path — no new data is exposed.
+- **Why:** compare already worked but forced you to re-find people each time. Friends makes it a persistent, sticky loop — the
+  social hook rival trackers use — while reusing our public-profile + privacy model so it's safe by default (no reciprocal
+  consent, no notifications; it's a private shortlist).
+
+---
+
 ## September 10, 2026 — Loot Hacker finishes live (New Sprites Day)
 
 - **Added:** the Sep 10 update shipped the Loot Hacker "Override" finish — 14 new Loot Hacker variants (15 incl. the

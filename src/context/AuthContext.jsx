@@ -27,6 +27,10 @@ function saveLocal(tracking) {
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null)
   const [profile, setProfile] = useState(null)
+  // Set of user_ids the signed-in player has saved as friends. Loaded on login
+  // for fast membership checks (the ★ toggle on leaderboard rows). The detailed
+  // list (scores, counts) is fetched on demand by the Friends panel.
+  const [friendIds, setFriendIds] = useState(() => new Set())
   const [tracking, setTracking] = useState(() => loadLocal())
   const [authLoading, setAuthLoading] = useState(true)
   const [syncing, setSyncing] = useState(false)
@@ -48,6 +52,7 @@ export function AuthProvider({ children }) {
       if (!s) {
         // Reset cloud-tied state on sign-out; keep local tracking for guests.
         setProfile(null)
+        setFriendIds(new Set())
         mergedOnce.current = false
       }
     })
@@ -60,11 +65,14 @@ export function AuthProvider({ children }) {
     let cancelled = false
     const run = async () => {
       setSyncing(true)
-      const [{ data: prof }, { data: rows }] = await Promise.all([
+      const [{ data: prof }, { data: rows }, { data: friendRows }] = await Promise.all([
         supabase.from('profiles').select('*').eq('id', user.id).maybeSingle(),
         supabase.from('sprite_progress').select('*').eq('user_id', user.id).eq('collection', ACTIVE_COLLECTION_ID),
+        supabase.from('friends').select('friend_id').eq('user_id', user.id),
       ])
       if (cancelled) return
+
+      setFriendIds(new Set((friendRows || []).map((r) => r.friend_id)))
 
       const cloudMap = rowsToMap(rows)
 
@@ -310,6 +318,55 @@ export function AuthProvider({ children }) {
     return data || []
   }, [])
 
+  // --- Friends (save players to compare with) ---
+  // The detailed list (gamertag, score, owned/mastered) for the Friends panel.
+  const fetchFriends = useCallback(async () => {
+    if (!user) return []
+    const { data, error } = await supabase.rpc('my_friends')
+    if (error) return []
+    return data || []
+  }, [user])
+
+  // Search public players by gamertag so you can add a friend by name.
+  const searchPlayers = useCallback(async (q) => {
+    if (!q || q.trim().length < 2) return []
+    const { data, error } = await supabase.rpc('search_public_profiles', { q: q.trim() })
+    if (error) return []
+    return (data || []).filter((r) => r.user_id !== user?.id)
+  }, [user])
+
+  const addFriend = useCallback(async (friendId) => {
+    if (!user || !friendId || friendId === user.id) return { error: 'Invalid' }
+    // Optimistic — the ★ flips immediately, roll back on error.
+    setFriendIds((prev) => new Set(prev).add(friendId))
+    const { error } = await supabase.from('friends').insert({ user_id: user.id, friend_id: friendId })
+    if (error) {
+      setFriendIds((prev) => {
+        const next = new Set(prev)
+        next.delete(friendId)
+        return next
+      })
+      return { error: error.message }
+    }
+    return { ok: true }
+  }, [user])
+
+  const removeFriend = useCallback(async (friendId) => {
+    if (!user || !friendId) return { error: 'Invalid' }
+    const prevHad = friendIds.has(friendId)
+    setFriendIds((prev) => {
+      const next = new Set(prev)
+      next.delete(friendId)
+      return next
+    })
+    const { error } = await supabase.from('friends').delete().eq('user_id', user.id).eq('friend_id', friendId)
+    if (error && prevHad) {
+      setFriendIds((prev) => new Set(prev).add(friendId))
+      return { error: error.message }
+    }
+    return { ok: true }
+  }, [user, friendIds])
+
   const value = {
     session,
     user,
@@ -328,6 +385,11 @@ export function AuthProvider({ children }) {
     findTradeMatches,
     fetchLeaderboard,
     fetchSpriteHolders,
+    friendIds,
+    fetchFriends,
+    searchPlayers,
+    addFriend,
+    removeFriend,
     signUp,
     signIn,
     signInWithProvider,

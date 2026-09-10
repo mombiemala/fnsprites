@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'September 10, 2026',
+    title: 'Friends — save players and compare in one tap',
+    changes: [
+      { tag: 'Added', text: 'A Friends tab on the Leaderboard: save any player and see them ranked by the same Flex Score, each with a one-tap Compare. Add friends by searching their gamertag, by tapping ★ next to anyone on the global board, or from the “Add friend” button on a shared collection link.' },
+      { tag: 'Added', text: 'Your friends list syncs to your account, so it follows you across devices.' },
+      { tag: 'Security', text: 'Friends are stored under row-level security — you can only ever see and manage your own list, and a friend’s collection is only readable if their profile is public (a private friend shows as 🔒 with compare disabled). Nobody is notified or “followed back” — it’s just your private shortlist.' },
+    ],
+    summary: 'Keep a shortlist of players and jump straight into a collection comparison — no more hunting the leaderboard each time.',
+    why: 'Compare already existed, but you had to re-find people every time. Friends turns one-off comparisons into a persistent, sticky loop — the social hook competing trackers lean on — while reusing our existing public-collection + privacy model so it stays safe by default.',
+  },
+  {
+    date: 'September 10, 2026',
     title: 'Loot Hacker finishes are live (New Sprites Day)',
     changes: [
       { tag: 'Added', text: 'The Sep 10 update added the Loot Hacker “Override” finish to the loot pool — 14 new Loot Hacker Sprite variants (15 incl. the already-out Crown) are now marked released across Klombo, Jackrabbit, Killswitch, Tails, Sonic, Shadow, 8-Bit, Bush Ranger, Adventure, Jonesy, Storm Scout, X-Ray, Onigiri and Overshield. The released-variant count moves from 164 to 179.' },

@@ -122,7 +122,7 @@ function TabLoading() {
 }
 
 export default function App() {
-  const { user, profile, tracking, setOwned, setMastered, setLevel, bulkOwn, syncing, cloudStatus, authLoading } = useAuth()
+  const { user, profile, tracking, setOwned, setMastered, setLevel, bulkOwn, syncing, cloudStatus, authLoading, friendIds, addFriend, removeFriend } = useAuth()
   const { toast } = useToast()
   const shareTarget = useShareTarget()
 
@@ -508,7 +508,7 @@ export default function App() {
 
       {(effectiveView === 'leaderboard' || effectiveView === 'codes' || effectiveView === 'garden' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
-          {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard /></div>}
+          {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard onSignIn={() => setShowAuth(true)} /></div>}
           {effectiveView === 'codes' && <div className="mb-5"><CodesView /></div>}
           {effectiveView === 'garden' && <div className="mb-5"><GardenHub onRequireLogin={() => setShowAuth(true)} /></div>}
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
@@ -555,9 +555,28 @@ export default function App() {
                 epicPlatform={shared.profile.epic_platform}
                 gardenImageUrl={shared.profile.garden_image_path ? resolveGardenUrl(shared.profile.garden_image_path) : null}
               />
-              <p className="mt-2 px-1 text-xs text-[var(--muted)]">
-                Read-only view. <a href={window.location.pathname} className="font-bold text-[var(--brand)] underline">Track your own →</a>
-              </p>
+              <div className="mt-2 flex flex-wrap items-center gap-2 px-1">
+                {user && shareTarget !== user.id && (
+                  friendIds.has(shareTarget) ? (
+                    <button
+                      onClick={async () => { await removeFriend(shareTarget); toast('Removed from friends') }}
+                      className="rounded-lg bg-[var(--panel-2)] px-3 py-1.5 text-xs font-bold text-amber-300 hover:bg-[var(--border)]"
+                    >
+                      ★ Friend — remove
+                    </button>
+                  ) : (
+                    <button
+                      onClick={async () => { const r = await addFriend(shareTarget); toast(r?.error ? 'Couldn’t add friend' : `Added ${shared.profile.gamertag || 'player'} to friends`) }}
+                      className="rounded-lg bg-[var(--brand)] px-3 py-1.5 text-xs font-bold text-black hover:opacity-90"
+                    >
+                      ☆ Add friend
+                    </button>
+                  )
+                )}
+                <p className="text-xs text-[var(--muted)]">
+                  Read-only view. <a href={window.location.pathname} className="font-bold text-[var(--brand)] underline">Track your own →</a>
+                </p>
+              </div>
             </>
           ) : (
             <div className="rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-4">

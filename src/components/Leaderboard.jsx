@@ -2,43 +2,35 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '../context/authStore'
 import Tooltip from './Tooltip'
 import CompareModal from './CompareModal'
-import { deriveBadges } from '../lib/badges'
-import { SPRITE_BY_ID } from '../data/sprites'
-import { THEME_MAP } from '../data/themes'
-import SpriteArt from './SpriteArt'
+import Friends from './Friends'
+import { PlayerAvatar, PlayerBadges } from './PlayerAvatar'
 
 const MEDALS = ['🥇', '🥈', '🥉']
 const RING = ['#fbbf24', '#cbd5e1', '#e0954a'] // gold · silver · bronze
 
-// A player's avatar = their first showcase Sprite (from the leaderboard RPC), as
-// a circular finish-tinted disc. Falls back to a generic mark if they haven't
-// picked a showcase yet.
-function Avatar({ id, size = 44, ring }) {
-  const s = id ? SPRITE_BY_ID[id] : null
-  const theme = s ? THEME_MAP[s.themeId] : null
+// ★ add / remove a player as a friend. Optimistic toggle backed by AuthContext.
+function FriendStar({ userId, gamertag, className = '' }) {
+  const { friendIds, addFriend, removeFriend } = useAuth()
+  const isFriend = friendIds.has(userId)
   return (
-    <span
-      className={`grid shrink-0 place-items-center overflow-hidden sprite-art ${theme?.className || 'theme-normal'}`}
-      style={{ width: size, height: size, borderRadius: '50%', boxShadow: ring ? `0 0 0 3px ${ring}` : undefined }}
+    <button
+      onClick={() => (isFriend ? removeFriend(userId) : addFriend(userId))}
+      title={isFriend ? `Remove ${gamertag || 'player'} from friends` : `Add ${gamertag || 'player'} as a friend`}
+      aria-label={isFriend ? 'Remove friend' : 'Add friend'}
+      aria-pressed={isFriend}
+      className={`shrink-0 rounded-lg px-1.5 py-1 text-sm transition-colors ${isFriend ? 'text-amber-300 hover:text-amber-200' : 'text-[var(--muted)] hover:text-white'} ${className}`}
     >
-      {s ? <SpriteArt sprite={s} /> : <span style={{ fontSize: size * 0.5 }}>🧩</span>}
-    </span>
+      {isFriend ? '★' : '☆'}
+    </button>
   )
 }
 
-function Badges({ owned, mastered, max = 3 }) {
-  return deriveBadges({ owned, mastered }).slice(0, max).map((b) => (
-    <Tooltip key={b.id} content={`${b.label} — ${b.desc}`}>
-      <span className="shrink-0 cursor-help text-sm" aria-label={b.label}>{b.icon}</span>
-    </Tooltip>
-  ))
-}
-
-export default function Leaderboard() {
-  const { user, fetchLeaderboard } = useAuth()
+export default function Leaderboard({ onSignIn }) {
+  const { user, fetchLeaderboard, friendIds } = useAuth()
   const [rows, setRows] = useState(null)
   const [loading, setLoading] = useState(true)
   const [compare, setCompare] = useState(null)
+  const [mode, setMode] = useState('global') // 'global' | 'friends'
 
   const load = async () => {
     setLoading(true)
@@ -78,11 +70,31 @@ export default function Leaderboard() {
             <span className="grid h-4 w-4 cursor-help place-items-center rounded-full bg-[var(--panel-2)] text-[10px] text-[var(--muted)]" aria-label="How scoring works">ⓘ</span>
           </Tooltip>
         </h3>
-        {rows !== null && (
+        {mode === 'global' && rows !== null && (
           <button onClick={load} title="Reload the leaderboard" className="text-xs font-bold text-[var(--muted)] hover:text-white">↻ Refresh</button>
         )}
       </div>
 
+      {/* Global · Friends toggle */}
+      <div className="mb-4 inline-flex rounded-xl bg-[var(--bg-2)] p-1 text-xs font-bold">
+        <button
+          onClick={() => setMode('global')}
+          className={`rounded-lg px-3 py-1.5 transition-colors ${mode === 'global' ? 'bg-[var(--brand)] text-black' : 'text-[var(--muted)] hover:text-white'}`}
+        >
+          🏆 Global
+        </button>
+        <button
+          onClick={() => setMode('friends')}
+          className={`rounded-lg px-3 py-1.5 transition-colors ${mode === 'friends' ? 'bg-[var(--brand)] text-black' : 'text-[var(--muted)] hover:text-white'}`}
+        >
+          👥 Friends{user && friendIds.size ? ` (${friendIds.size})` : ''}
+        </button>
+      </div>
+
+      {mode === 'friends' ? (
+        <Friends onSignIn={onSignIn} />
+      ) : (
+        <>
       {rows === null && loading && (
         <div className="space-y-1">
           <div className="mb-3 grid grid-cols-3 items-end gap-2">
@@ -116,7 +128,7 @@ export default function Leaderboard() {
                   >
                     <div className={first ? 'text-2xl' : 'text-xl'}>{MEDALS[p.rank]}</div>
                     <div className="mt-1">
-                      <Avatar id={p.avatar} size={first ? 64 : 48} ring={RING[p.rank]} />
+                      <PlayerAvatar id={p.avatar} size={first ? 64 : 48} ring={RING[p.rank]} />
                     </div>
                     <a href={`?u=${p.user_id}`} className="mt-2 flex max-w-full items-center gap-1 truncate text-sm font-bold text-white hover:text-[var(--brand)]">
                       <span className="truncate">{p.gamertag || 'Anonymous'}</span>
@@ -125,16 +137,19 @@ export default function Leaderboard() {
                     <div className="text-[10px] text-[var(--muted)]">{p.owned} owned · {p.mastered}★</div>
                     <div className="mt-1 flex items-center gap-1">
                       {me && <span className="text-[10px] font-bold text-[var(--brand)]">you</span>}
-                      <Badges owned={p.owned} mastered={p.mastered} max={first ? 3 : 2} />
+                      <PlayerBadges owned={p.owned} mastered={p.mastered} max={first ? 3 : 2} />
                     </div>
                     {canCompare(p) && (
-                      <button
-                        onClick={() => setCompare({ userId: p.user_id, gamertag: p.gamertag })}
-                        title={`Compare with ${p.gamertag || 'this player'}`}
-                        className="mt-2 rounded-lg bg-[var(--panel-2)] px-2 py-1 text-[10px] font-bold text-white hover:bg-[var(--border)]"
-                      >
-                        ⚖ Compare
-                      </button>
+                      <div className="mt-2 flex items-center gap-1">
+                        <button
+                          onClick={() => setCompare({ userId: p.user_id, gamertag: p.gamertag })}
+                          title={`Compare with ${p.gamertag || 'this player'}`}
+                          className="rounded-lg bg-[var(--panel-2)] px-2 py-1 text-[10px] font-bold text-white hover:bg-[var(--border)]"
+                        >
+                          ⚖ Compare
+                        </button>
+                        <FriendStar userId={p.user_id} gamertag={p.gamertag} />
+                      </div>
                     )}
                   </div>
                 )
@@ -153,12 +168,12 @@ export default function Leaderboard() {
                       className={`flex items-center gap-3 rounded-xl px-3 py-2 ${me ? 'bg-[var(--brand)]/15' : 'bg-[var(--bg-2)]'}`}
                     >
                       <span className="w-6 shrink-0 text-center text-sm font-extrabold text-[var(--muted)]">{r.rank + 1}</span>
-                      <Avatar id={r.avatar} size={32} />
+                      <PlayerAvatar id={r.avatar} size={32} />
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-1.5">
                           <a href={`?u=${r.user_id}`} className="truncate text-sm font-bold text-white hover:text-[var(--brand)]">{r.gamertag || 'Anonymous'}</a>
                           {me && <span className="shrink-0 text-[10px] text-[var(--brand)]">you</span>}
-                          <Badges owned={r.owned} mastered={r.mastered} max={2} />
+                          <PlayerBadges owned={r.owned} mastered={r.mastered} max={2} />
                         </div>
                         <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-[var(--panel-2)]">
                           <div className="h-full rounded-full" style={{ width: `${pct}%`, background: 'linear-gradient(90deg,var(--brand),var(--brand-2))' }} />
@@ -166,13 +181,16 @@ export default function Leaderboard() {
                       </div>
                       <span className="hidden shrink-0 text-[11px] text-[var(--muted)] sm:inline">{r.owned} owned · {r.mastered}★</span>
                       {canCompare(r) && (
-                        <button
-                          onClick={() => setCompare({ userId: r.user_id, gamertag: r.gamertag })}
-                          title={`Compare your collection with ${r.gamertag || 'this player'}`}
-                          className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]"
-                        >
-                          ⚖
-                        </button>
+                        <>
+                          <button
+                            onClick={() => setCompare({ userId: r.user_id, gamertag: r.gamertag })}
+                            title={`Compare your collection with ${r.gamertag || 'this player'}`}
+                            className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]"
+                          >
+                            ⚖
+                          </button>
+                          <FriendStar userId={r.user_id} gamertag={r.gamertag} />
+                        </>
                       )}
                       <span className="w-14 shrink-0 text-right font-display text-base text-[var(--brand)]">{Math.round(r.score)}</span>
                     </div>
@@ -182,10 +200,12 @@ export default function Leaderboard() {
             )}
 
             <p className="mt-3 text-[11px] text-[var(--muted)]">
-              Ranked by a rarity-weighted score (Mythic 20 · Legendary 8 · Epic 3 · Rare 1, +50% for mastered). Only public collections appear — set yours public in Profile to join.
+              Ranked by a rarity-weighted score (Mythic 20 · Legendary 8 · Epic 3 · Rare 1, +50% for mastered). Only public collections appear — set yours public in Profile to join. Tap ★ to save a player to your Friends tab.
             </p>
           </>
         )
+      )}
+        </>
       )}
 
       {compare && (
