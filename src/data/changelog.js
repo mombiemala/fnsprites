@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 10, 2026',
+    title: 'Loot Hacks rotation tracker',
+    changes: [
+      { tag: 'Added', text: 'A Loot Hacks card in the sidebar and a new /loot-hacks guide page: the current rotating weapons you buy with Sprite Dust to bias your own chest loot (Caduceus Staff, Scorpion’s Combat Kit, Wrecker Revolver, Deadeye AR, Holo Twister AR), how the unlock/upgrade system works, and a countdown to the next refresh (~Sep 17).' },
+      { tag: 'Added', text: 'The top announcement bar now flags New Sprite Day when it’s live (it was missing today’s Loot Hacker launch).' },
+    ],
+    summary: 'Track the weekly Loot Hack rotation — what’s worth your Sprite Dust right now, and when it changes.',
+    why: 'Loot Hacks are a core Season 4 Dust sink players actively ask “what’s good this week?” about, and rival guides (The Click, accountshark) rank for it. We already track Sprites and codes; adding the rotation rounds out the Dust economy and opens a fresh, fast-moving SEO surface. Costs are kept qualitative because Epic doesn’t publish exact per-tier numbers — verified-only, same as codes.',
+  },
+  {
+    date: 'September 10, 2026',
     title: 'Friends-only trade matcher',
     changes: [
       { tag: 'Added', text: 'A “Trade matches” view inside the Friends tab: it lines up your friends’ spare Sprites (marked For trade) against your Wanted list — and yours against theirs — and shows exactly which Sprites each of you could hand over, with a ✓ flag on true two-way matches. Their Discord handle shows on the card so you can coordinate the swap.' },

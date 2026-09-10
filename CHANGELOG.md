@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 10, 2026 — Loot Hacks rotation tracker
+
+- **Added:** the rotating Loot Hacks (weapons bought with Sprite Dust to bias your personal chest loot) are now tracked —
+  new data module `src/data/lootHacks.js` (`LOOT_HACK_ROTATION`, `LOOT_HACK_META`, `LOOT_HACK_HOW`), a sidebar card
+  `src/components/LootHacks.jsx` with a next-refresh countdown, and a prerendered **/loot-hacks** SEO page
+  (`scripts/prerender.mjs` → `lootHacksPage()`, in GUIDES + sitemap). Current rotation (v42.10, Sep 3 → ~Sep 17): Caduceus
+  Staff, Scorpion’s Combat Kit, Wrecker Revolver, Deadeye AR, Holo Twister AR.
+- **Added:** the announcement bar now surfaces New Sprite Day (`src/data/announcements.js`) — today’s Loot Hacker launch
+  had no banner.
+- **Why:** Loot Hacks are a live Season 4 Dust sink players ask “what’s good this week?” about, and rival guides rank for
+  it. Distinct search intent from `/sprite-dust` (the Dust economy), so a dedicated page complements rather than
+  cannibalizes. Per-tier Dust costs are kept qualitative — Epic doesn’t publish them — matching our verified-only rule.
+  The rotation refreshes ~weekly, so a scheduled check-in keeps it current.
+
+---
+
 ## September 10, 2026 — Friends-only trade matcher
 
 - **Added:** a **Trade matches** sub-view in the Friends tab (`src/components/Friends.jsx` → `TradesView`). For each

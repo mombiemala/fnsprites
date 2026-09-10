@@ -19,6 +19,7 @@ import { THEME_MAP, FINISH_ODDS_FACTOR } from '../src/data/themes.js'
 import { SPRITE_GUIDE } from '../src/data/spriteGuide.js'
 import { NEWS, NEWS_TAGS } from '../src/data/news.js'
 import { CODES_INTRO, CODE_CATEGORIES, LOBBY_CODES } from '../src/data/codes.js'
+import { LOOT_HACK_ROTATION, LOOT_HACK_META, LOOT_HACK_HOW } from '../src/data/lootHacks.js'
 
 const SITE = 'https://fnsprites.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -1447,8 +1448,60 @@ function dropRateCalcPage() {
 // ---------- /guides hub page ----------
 // One home for the reference pages — declutters the nav (a single "Guides" link
 // replaces the per-guide links) and gives the guides an internal-linking hub.
+// ---------- /loot-hacks page ----------
+// The CURRENT rotating Loot Hack weapons (bought with Sprite Dust to bias your
+// own chest loot) + how the system works + next refresh date. Self-dates on
+// every deploy. Distinct intent from /sprite-dust (the Dust economy) — this page
+// targets "current/this week's Fortnite Loot Hacks" and cross-links Dust.
+function lootHacksPage() {
+  const monthLabel = new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })
+  const fmt = (d) => new Date(d + 'T12:00:00Z').toLocaleString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
+  const names = LOOT_HACK_ROTATION.map((i) => i.name).join(', ')
+  const desc = `The current Fortnite Loot Hacks (${monthLabel}, ${LOOT_HACK_META.patch}) — spend Sprite Dust to add these weapons to your chest loot pool: ${names}. How Loot Hacks & upgrades work, and when they next refresh (${fmt(LOOT_HACK_META.nextRefresh)}).`
+  const faqs = [
+    ['What are Fortnite Loot Hacks?', 'Loot Hacks let you spend Sprite Dust in the Override/Loot Hack menu to add a specific weapon to your PERSONAL chest loot pool in Battle Royale — so the item shows up more reliably in the chests you open. It’s separate from the “Loot Hacker” Sprite finish.'],
+    ['What are the current Loot Hacks?', `As of ${monthLabel} (${LOOT_HACK_META.patch}) the rotation is: ${names}. Loot Hacks rotate roughly weekly — the in-game Loot Hack screen shows the exact refresh timer.`],
+    ['How much Sprite Dust do Loot Hacks cost?', 'Each item unlocks at Level 1 and can be upgraded up to Level 6, with each tier costing more Dust and raising how often (and at what rarity) it appears in your chests. Epic doesn’t publish exact per-tier numbers and they differ per weapon, so budget for the unlock plus climbing upgrade costs. You can reset upgrades to reclaim Dust.'],
+    ['How do I earn Sprite Dust for Loot Hacks?', 'Catch and extract Sprites, redeem duplicate Sprite codes (a Sprite you already own converts to Dust), and use certain Admin Panel / Lobby Hack codes — several grant free Dust.'],
+    ['When do Fortnite Loot Hacks refresh?', `The set rotates roughly weekly. This rotation started ${fmt(LOOT_HACK_META.rotationStart)} and is expected to refresh around ${fmt(LOOT_HACK_META.nextRefresh)} — the in-game timer is the authority.`],
+    ['Are Loot Hacks pay-to-win?', 'No — Sprite Dust is earned by playing, not bought with real money, so Loot Hacks are a progression system rather than a paid advantage. And you can reset upgrades to reclaim Dust.'],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'Fortnite Loot Hacks — Current Rotation & How They Work', description: desc, url: SITE + '/loot-hacks', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+    { '@type': 'ItemList', name: 'Current Fortnite Loot Hacks', numberOfItems: LOOT_HACK_ROTATION.length,
+      itemListElement: LOOT_HACK_ROTATION.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name })) },
+  ] }
+  const rows = LOOT_HACK_ROTATION.map((it) => `<div class="card" style="display:flex;gap:12px;align-items:center;padding:12px 14px;margin:0 0 8px">
+    <span style="font-size:20px">🔫</span>
+    <div style="min-width:0">
+      <div style="font-size:14px;font-weight:800;color:#fff">${esc(it.name)}</div>
+      <div style="font-size:12px;color:var(--muted)">${esc(it.role)}${it.note ? ` — ${esc(it.note)}` : ''}</div>
+    </div></div>`).join('')
+  return head({ title: `Fortnite Loot Hacks (${monthLabel}) — Current Rotation & Sprite Dust Costs | FN Sprite Tracker`, desc, canonical: SITE + '/loot-hacks', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🎯 Fortnite Loot Hacks — current rotation</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 14px;font-size:14px;max-width:70ch">Spend <b style="color:var(--brand)">Sprite Dust</b> to add these weapons to your own Battle Royale chest loot pool. The set rotates roughly weekly — this one (${LOOT_HACK_META.patch}) runs from ${fmt(LOOT_HACK_META.rotationStart)} and is expected to refresh around <b>${fmt(LOOT_HACK_META.nextRefresh)}</b> (the in-game timer is the authority).</p>
+    ${rows}
+    <h2 style="font-size:16px;color:#fff;margin:18px 0 8px">How Loot Hacks work</h2>
+    <ul style="margin:0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.7">
+      ${LOOT_HACK_HOW.map((h) => `<li>${esc(h)}</li>`).join('')}
+    </ul>
+    <div class="card" style="padding:14px 16px;margin:16px 0 0">
+      <p style="margin:0;font-size:13px;color:var(--muted)">Related: the <a href="/sprite-dust" style="color:var(--brand)">Sprite Dust &amp; spend-strategy guide</a>, <a href="/codes" style="color:var(--brand)">Lobby Hack codes</a> (some grant free Dust), and the <a href="/events" style="color:var(--brand)">events schedule</a> (Dust-boost days).</p>
+    </div>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Rotation tracked from ${esc(LOOT_HACK_META.source)}. Costs vary per weapon/tier and aren’t published by Epic; the in-game menu shows exact figures. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track your Sprite collection — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 const GUIDES = [
   ['/codes', '🔓', 'Lobby Hacks (codes)', 'Every Hack the Lobby / Admin Panel code and what it unlocks — grouped by reward, with copy & redeemed-tracking.'],
+  ['/loot-hacks', '🎯', 'Loot Hacks (this week)', 'The current rotating Loot Hack weapons you buy with Sprite Dust, how upgrades work, and when they next refresh.'],
   ['/cheat-master-sprites', '😎', 'Cheat Master Sprites', 'Every Cheat Master finish — which are live, which are datamined, and the code that unlocks each.'],
   ['/how-to-get-cheat-master-sprites', '🧭', 'How to get Cheat Master Sprites', 'Step-by-step: redeem lobby codes, find Cheat Codes, and use Power Hours to unlock Cheat Master finishes.'],
   ['/gold-sprites', '🥇', 'Gold Sprites', 'Every Gold finish — which are obtainable now vs archived, by generation, with a link to each Sprite.'],
@@ -1681,6 +1734,7 @@ function sitemap(types) {
     { loc: SITE + '/gold-sprites', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/sprite-garden', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/sprite-dust', changefreq: 'weekly', priority: '0.8' },
+    { loc: SITE + '/loot-hacks', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/events', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/season-transition', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
@@ -1719,6 +1773,8 @@ mkdirSync(resolve(DIST, 'sprite-garden'), { recursive: true })
 writeFileSync(resolve(DIST, 'sprite-garden', 'index.html'), spriteGardenPage())
 mkdirSync(resolve(DIST, 'sprite-dust'), { recursive: true })
 writeFileSync(resolve(DIST, 'sprite-dust', 'index.html'), spriteDustPage())
+mkdirSync(resolve(DIST, 'loot-hacks'), { recursive: true })
+writeFileSync(resolve(DIST, 'loot-hacks', 'index.html'), lootHacksPage())
 mkdirSync(resolve(DIST, 'events'), { recursive: true })
 writeFileSync(resolve(DIST, 'events', 'index.html'), spriteEventsPage())
 mkdirSync(resolve(DIST, 'abilities'), { recursive: true })
@@ -1744,4 +1800,4 @@ writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /events + /abilities + /season-transition + /news + /privacy + 404 + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /events + /abilities + /season-transition + /news + /privacy + 404 + sitemap.xml → dist/`)

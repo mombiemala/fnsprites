@@ -18,6 +18,7 @@ import NextToChase from './components/NextToChase'
 import TodayHub from './components/TodayHub'
 import QuickCheckList from './components/QuickCheckList'
 import ChestOdds from './components/ChestOdds'
+import LootHacks from './components/LootHacks'
 import OverflowNav from './components/OverflowNav'
 import UpcomingSprites from './components/UpcomingSprites'
 import HowSpritesWork from './components/HowSpritesWork'
@@ -765,6 +766,8 @@ export default function App() {
           {!isShareView && <UpcomingSprites onOpen={setDetailType} />}
 
           {!isShareView && <ChestOdds />}
+
+          {!isShareView && <LootHacks />}
 
           {!isShareView && <SupportBanner />}
         </aside>
