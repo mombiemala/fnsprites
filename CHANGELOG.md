@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 10, 2026 — Community ownership stats ("owned by X% of collectors")
+
+- **Added:** each released Sprite's detail view shows "owned by X% of collectors" (+ "mastered by Y%") from community
+  aggregates — `src/components/OwnershipStat.jsx` + `src/lib/ownershipStats.js` (memoized session fetch), wired into
+  `SpriteDetailModal.jsx`. Gated on a minimum sample (`MIN_COLLECTORS`) to avoid noise.
+- **Security:** new `public.sprite_ownership_stats()` — `SECURITY DEFINER`, `STABLE`, returns `(sprite_id, owners,
+  masters)` as distinct-user COUNTS plus a `__collectors__` total row; granted to anon+authenticated. No user identity
+  is exposed (same pattern as `sprite_tier_results`); `sprite_progress` RLS unchanged.
+- **Why:** drop rate = the odds; community ownership = how rare a Sprite actually is in practice. A sticky, differentiating
+  signal computed from data we already hold, privacy-safe, that competitors don't offer.
+
+---
+
 ## September 10, 2026 — Drop Rate Calculator page
 
 - **Added:** `/drop-rate-calculator` (prerendered, in `/guides` hub + sitemap) — reuses the interactive Chest Luck

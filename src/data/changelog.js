@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 10, 2026',
+    title: 'Community ownership — “owned by X% of collectors”',
+    changes: [
+      { tag: 'Added', text: 'Each released Sprite’s detail view now shows how common it is across the community — “owned by X% of collectors” (and “mastered by Y%”), so you can see at a glance which Sprites are rare flexes vs. everyone-has-it. Percentages only appear once there’s a big enough sample.' },
+      { tag: 'Security', text: 'The numbers come from a new definer function that returns vote-style aggregate counts only — never who owns what. Your individual collection stays private (row-level security unchanged).' },
+    ],
+    summary: 'Real community rarity: see what share of collectors actually own each Sprite — a stat no other tracker shows.',
+    why: 'Drop rates tell you the odds; community ownership tells you how rare a Sprite really is in practice — a genuinely useful, sticky signal we can compute from data we already have (privacy-safe, counts only) that competitors can’t easily replicate.',
+  },
+  {
+    date: 'September 10, 2026',
     title: 'Drop Rate Calculator page',
     changes: [
       { tag: 'Added', text: 'A dedicated Sprite Drop Rate Calculator (in Guides, and at /drop-rate-calculator) — pick any Sprite and finish to see its drop rate, the average number of chests, and how many chests you need for a 50%, 90% or 99% chance, with a plain explainer of how the odds work.' },

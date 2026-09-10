@@ -3,6 +3,7 @@ import { SPRITE_TYPES, ALL_SPRITES, SPRITE_BY_ID, RARITY_COLORS, dustCost, sprit
 import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
 import TierVote from './TierVote'
+import OwnershipStat from './OwnershipStat'
 import { useEscClose } from '../lib/useEscClose'
 import { useAuth } from '../context/authStore'
 
@@ -120,6 +121,10 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
             <span className="font-bold text-[var(--brand)]">Ability{type.rumored ? ' (rumored)' : ''}:</span> {type.ability}
           </p>
         )}
+
+        {/* Community ownership — how many collectors have this Sprite (aggregate,
+            privacy-safe). Shown only for released Sprites with enough of a sample. */}
+        {type.released && <OwnershipStat typeId={type.id} />}
 
         {/* Community tier voting — only for current-season released Sprites, whose
             competitive meta isn't settled yet (archived Sprites keep their fixed tier). */}
