@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 10, 2026',
+    title: 'News: Halloween Sprite leak (Fortnitemares 2026)',
+    changes: [
+      { tag: 'Added', text: 'A News item on the datamined Halloween “Trick or Treat” Sprite variant tied to Fortnitemares 2026 (~Oct 1) — clearly flagged as an unconfirmed leak, with a source link. We’ll add it to the roster if/when Epic confirms it.' },
+    ],
+    summary: 'A heads-up on the leaked Halloween Sprite, labelled as a rumor with its source.',
+    why: 'Players are already asking about a Halloween Sprite; surfacing the leak (clearly marked unofficial, with a source) answers the question early without treating it as fact.',
+  },
+  {
     date: 'September 8, 2026',
     title: 'Two more Lobby Hack codes',
     changes: [

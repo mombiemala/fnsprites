@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 10, 2026 — News: Halloween Sprite leak (Fortnitemares 2026)
+
+- **Added:** `news.js` — a `tag: 'upcoming'`, `tentative: true`, `official: false` item on the datamined Halloween
+  "Trick or Treat" Sprite variant tied to Fortnitemares 2026 (~Oct 1), with a source link (The Click). Flagged as a
+  leak; not added to the roster until Epic confirms.
+- **Why:** answers the recurring "Halloween sprite?" question early with a clearly-labelled, sourced rumor.
+
+---
+
 ## September 8, 2026 — Two more Lobby Hack codes
 
 - **Added:** `codes.js` — `InsertCoinToContinue` (Arcade Machine transformation) and `BRB` (Toilet transformation),

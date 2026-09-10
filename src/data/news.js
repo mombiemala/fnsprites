@@ -10,6 +10,17 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-10',
+    when: 'Sep 10, 2026',
+    tag: 'upcoming',
+    tentative: true,
+    title: '🎃 Leak — a Halloween “Trick or Treat” Sprite for Fortnitemares 2026?',
+    body: 'Datamines point to a Halloween “Trick or Treat” Sprite variant (internal name “TrickTreat”) arriving with Fortnitemares 2026 — expected around Oct 1, and likely one of Season 4 “Override’s” final variant drops before the season ends Oct 31. Leak imagery so far points to an X-Ray Trick-or-Treat variant, though it’s unconfirmed which base Sprite gets it and its ability isn’t in the files yet. Epic hasn’t announced it — treat this as a leak until confirmed, and we’ll add it to the roster the moment it’s official.',
+    link: 'https://www.theclick.gg/fortnitemares-2026-leaks/',
+    source: 'The Click (leak)',
+    official: false,
+  },
+  {
     ts: '2026-09-12',
     when: 'Sep 12, 2026',
     tag: 'upcoming',
