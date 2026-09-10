@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 10, 2026 — Loot Hacker finishes live (New Sprites Day)
+
+- **Added:** the Sep 10 update shipped the Loot Hacker "Override" finish — 14 new Loot Hacker variants (15 incl. the
+  already-out Crown) flipped from unreleased to released in `src/data/sprites.js` (Klombo, Jackrabbit, Killswitch, Tails,
+  Sonic, Shadow, 8-Bit, Bush Ranger, Adventure, Jonesy, Storm Scout, X-Ray, Onigiri, Overshield). `RELEASED_COUNT` is
+  derived, so the released-variant total moves 164 → 179 automatically (README updated to match).
+- **Changed:** `src/data/themes.js` — Loot Hacker theme is no longer `rumored`, and its `bonus` now states the confirmed
+  perk: holding a Loot Hacker Sprite gives a +20% (1.2×) chance of Loot Hack items from Chests.
+- **Changed:** `src/data/news.js` — the "New Sprites Day" item now reads live (present tense), tagged `sprites`.
+- **Why:** we track datamined finishes as unreleased for parity with the community; the instant Epic ships them we flip to
+  released so the roster, counts and per-Sprite/SEO pages match what players see in game.
+
+---
+
 ## September 10, 2026 — Community ownership stats ("owned by X% of collectors")
 
 - **Added:** each released Sprite's detail view shows "owned by X% of collectors" (+ "mastered by Y%") from community

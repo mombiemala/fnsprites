@@ -24,12 +24,11 @@ export const THEMES = [
   // same idea via `mastery`.)
   { id: 'cheatmaster', name: 'Cheatmaster', short: 'Ch', className: 'theme-cheatmaster', accent: '#41f08a', bonus: 'Season 4 “Override” finish — unlocked by a Hack the Lobby code, not summoned. Bonus not yet confirmed by Epic (datamined).', rumored: true, noSummon: true },
   // Loot Hacker — a second Chapter 7 Season 4 "Override" finish (blue circuit /
-  // hologram theme), distinct from the green Cheatmaster. Datamined in the C7S4
-  // files but NOT yet released — every Loot Hacker variant is unreleased right
-  // now (parity with community trackers), and how it's unlocked isn't confirmed.
-  // `rumored: true` keeps it from auto-releasing; `noSummon: true` keeps it out of
+  // hologram theme), distinct from the green Cheatmaster. Went live in the
+  // Sep 10, 2026 update: 14 new Loot Hacker variants entered the loot pool
+  // (15 incl. the already-out Crown). `noSummon: true` keeps it out of
   // "Dust to complete" math (it isn't a Dust summon).
-  { id: 'loothacker', name: 'Loot Hacker', short: 'LH', className: 'theme-loothacker', accent: '#4aa3ff', bonus: 'Season 4 “Override” finish (datamined) — not yet released. How it’s unlocked isn’t confirmed by Epic.', rumored: true, noSummon: true },
+  { id: 'loothacker', name: 'Loot Hacker', short: 'LH', className: 'theme-loothacker', accent: '#4aa3ff', bonus: 'Season 4 “Override” finish. Holding a Loot Hacker Sprite gives a +20% (1.2×) chance of Loot Hack items from Chests.', noSummon: true },
 ]
 
 export const THEME_MAP = Object.fromEntries(THEMES.map((t) => [t.id, t]))

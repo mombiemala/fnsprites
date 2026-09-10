@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'September 10, 2026',
+    title: 'Loot Hacker finishes are live (New Sprites Day)',
+    changes: [
+      { tag: 'Added', text: 'The Sep 10 update added the Loot Hacker “Override” finish to the loot pool — 14 new Loot Hacker Sprite variants (15 incl. the already-out Crown) are now marked released across Klombo, Jackrabbit, Killswitch, Tails, Sonic, Shadow, 8-Bit, Bush Ranger, Adventure, Jonesy, Storm Scout, X-Ray, Onigiri and Overshield. The released-variant count moves from 164 to 179.' },
+      { tag: 'Changed', text: 'The Loot Hacker theme is no longer flagged as a rumor/datamine, and its perk is now confirmed: holding a Loot Hacker Sprite gives a +20% (1.2×) chance of Loot Hack items from Chests.' },
+      { tag: 'Changed', text: 'The “New Sprites Day” News item now reads as live, listing the finishes that dropped.' },
+    ],
+    summary: 'Loot Hacker went live — 14 new finishes flipped to released (15 with Crown), theme perk confirmed.',
+    why: 'These were tracked as datamined/unreleased for parity; the moment Epic shipped them we flip them to released so the roster, counts and per-Sprite pages match what players actually see in game.',
+  },
+  {
+    date: 'September 10, 2026',
     title: 'Community ownership — “owned by X% of collectors”',
     changes: [
       { tag: 'Added', text: 'Each released Sprite’s detail view now shows how common it is across the community — “owned by X% of collectors” (and “mastered by Y%”), so you can see at a glance which Sprites are rare flexes vs. everyone-has-it. Percentages only appear once there’s a big enough sample.' },
