@@ -1,5 +1,6 @@
 import { THEME_MAP } from '../data/themes'
 import { RARITY_COLORS } from '../data/sprites'
+import { incomingForSprite, daysUntil } from '../data/incoming'
 import SpriteArt from './SpriteArt'
 
 export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMastered, onSetLevel, onOpen, readOnly }) {
@@ -8,6 +9,17 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
   const mastered = !!state?.mastered
   const level = state?.level || 0
   const edge = RARITY_COLORS[sprite.rarity] || '#3a3350'
+  // Confirmed-and-dated upcoming Sprite? Show a "Coming <date>" badge instead of
+  // the generic "soon" (heads-up / "you heard it here first").
+  const incoming = incomingForSprite(sprite)
+  const comingLabel = incoming
+    ? (() => {
+        const d = daysUntil(incoming.dropsOn)
+        if (d <= 0) return 'coming today'
+        if (d === 1) return 'coming tomorrow'
+        return `coming ${new Date(incoming.dropsOn + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}`
+      })()
+    : null
 
   return (
     <div className={`sc-card group ${owned ? 'is-owned' : 'sprite-locked'}`} style={{ '--edge': edge }}>
@@ -29,6 +41,10 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
           {sprite.vaulted ? (
             <span title="Vaulted — currently unavailable" className="sc-badge absolute left-1.5 top-1.5 z-[5] bg-red-500/85 text-white">
               vaulted
+            </span>
+          ) : comingLabel ? (
+            <span title={`${incoming.title} — ${incoming.confirmedDate ? 'drops' : 'expected'} soon (confirmed, not yet live)`} className="sc-badge absolute left-1.5 top-1.5 z-[5] bg-[var(--brand)]/90 font-bold text-black">
+              {comingLabel}
             </span>
           ) : sprite.unreleased && (
             <span title="Coming soon — not yet released" className="sc-badge absolute left-1.5 top-1.5 z-[5] bg-black/60 text-white/85 ring-1 ring-white/20">

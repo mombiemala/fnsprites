@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'September 11, 2026',
+    title: '“You heard it here first” — early heads-up for confirmed drops',
+    changes: [
+      { tag: 'Added', text: 'A “Heads up” spotlight at the top of the tracker that surfaces confirmed, dated things before they’re live — each with a countdown (e.g. next Loot Hack rotation, and the Chapter 7 Season 5 flip). You get the early word without us pretending something’s catchable when it isn’t.' },
+      { tag: 'Added', text: 'A “Coming <date>” badge on any upcoming Sprite named in the heads-up feed, right on its checklist card — so you can spot what’s about to drop while you browse.' },
+      { tag: 'Changed', text: 'Kept the line firm: only confirmed + sourced + dated items get the heads-up treatment; pure leaks still show as “Rumored,” and nothing is marked released until it’s actually live.' },
+    ],
+    summary: 'An early-warning spotlight for confirmed drops — the first-mover “heard it here first” feel, without sacrificing accuracy.',
+    why: 'Players love being early, and being first with reliable heads-ups builds loyalty and repeat visits. The catch is trust: we deliberately do NOT flip things to “released” early (that would tell players something’s catchable when it isn’t). A distinct “Coming <date>” state gives the first-mover experience while keeping the checklist honest — and the leak-watch feeds it as drops get confirmed.',
+  },
+  {
+    date: 'September 11, 2026',
     title: 'Currency pass — docs, tagline & this weekend’s Power Hours',
     changes: [
       { tag: 'Changed', text: 'Brought the README current with everything shipped this week: the Loot Hacker finish is live (no longer “datamined/unreleased”), the new Friends + trade-matcher and Loot Hacks tracker are documented, and the database section now lists the friends table and the new RPCs.' },

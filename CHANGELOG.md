@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 11, 2026 — "You heard it here first" (early heads-up for confirmed drops)
+
+- **Added:** `src/data/incoming.js` — a curated feed of confirmed, dated, not-yet-live drops (with helpers
+  `daysUntil`, `activeIncoming`, `incomingForSprite`), seeded with the next Loot Hack rotation and the Season 5 flip.
+- **Added:** `src/components/HeadsUp.jsx` — a "Heads up — you heard it here first" spotlight at the top of the tracker
+  (`src/App.jsx`) with per-item countdowns; renders only when something's upcoming.
+- **Added:** a "Coming <date>" badge on unreleased Sprites named in the feed (`src/components/SpriteCard.jsx`) — replaces
+  the generic "soon" for confirmed-dated ones.
+- **Why:** being reliably early builds loyalty, but we deliberately do NOT flip Sprites to `released` before they're live
+  (that would imply they're catchable). A distinct "Coming <date>" state delivers the first-mover feel while keeping the
+  checklist accurate. Only confirmed + sourced + dated items qualify; pure leaks stay "Rumored." The Season 5 leak-watch
+  and daily rotation watch feed this as drops get confirmed.
+
+---
+
 ## September 11, 2026 — Currency pass (docs, tagline, weekend event)
 
 - **Changed:** README brought current — Loot Hacker finish is live (was "datamined/unreleased"); Friends + trade-matcher,

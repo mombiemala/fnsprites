@@ -21,6 +21,7 @@ import ChestOdds from './components/ChestOdds'
 import LootHacks from './components/LootHacks'
 import SeasonCountdown from './components/SeasonCountdown'
 import SafetyNote from './components/SafetyNote'
+import HeadsUp from './components/HeadsUp'
 import OverflowNav from './components/OverflowNav'
 import UpcomingSprites from './components/UpcomingSprites'
 import HowSpritesWork from './components/HowSpritesWork'
@@ -591,6 +592,9 @@ export default function App() {
           )}
         </div>
       )}
+
+      {/* Heads up — confirmed, dated things coming before they're live. */}
+      {!isShareView && <HeadsUp />}
 
       {/* Today — timely daily glance: next event countdown + new codes. */}
       {!isShareView && <TodayHub onGo={goToSection} />}
