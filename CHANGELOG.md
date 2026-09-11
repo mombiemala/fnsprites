@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 11, 2026 — Fix: Sep 12 Power Hours note (no "new" variants)
+
+- **Fixed:** the Sep 12 Power Hours item (`src/data/news.js`) and top banner (`src/data/announcements.js`) claimed Cheat
+  Master Storm Scout & Gold Onigiri were "new variants joining the island." They're already released (verified: all
+  Onigiri/Storm Scout Normal/Gold/Cheat Master variants are `released:true` — Gold + Cheat Master rolled out in August),
+  so the note now describes the event accurately as boosted Gold & Cheat Master spawns for completing finishes.
+- **Why:** a source called them "added," but our roster already (correctly) had them live. The live event note at the top
+  of the page is the last place to repeat a loose secondhand claim.
+
+---
+
 ## September 11, 2026 — Season 4 end date confirmed (Nov 1)
 
 - **Changed:** `src/data/season.js` `endConfirmed: true` and `src/data/incoming.js` Season 5 entry `confirmedDate: true`

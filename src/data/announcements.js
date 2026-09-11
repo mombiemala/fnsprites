@@ -18,7 +18,7 @@ export const ANNOUNCEMENTS = [
   {
     id: 'power-hours-2026-09-12',
     emoji: '⚡',
-    message: 'Power Hours — Sat, Sep 12 (2–4 PM & 9–11 PM ET): boosted Gold & Cheat Master Sprite spawns and supercharged Overdrive Grenades. Two new variants join the island — Cheat Master Storm Scout & Gold Onigiri — plus 1-Up Tokens & Portable Extractors in Chests.',
+    message: 'Power Hours — Sat, Sep 12 (2–4 PM & 9–11 PM ET): boosted Gold & Cheat Master Sprite spawns and supercharged Overdrive Grenades — a strong window to fill in premium finishes you’re missing, plus 1-Up Tokens & Portable Extractors in Chests.',
     link: '/?view=news',
     linkLabel: 'Event details',
     start: '2026-09-11',

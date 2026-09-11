@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 11, 2026',
+    title: 'Fix: Sep 12 Power Hours note (no “new” variants)',
+    changes: [
+      { tag: 'Fixed', text: 'The Sep 12 Power Hours item and top banner had claimed Cheat Master Storm Scout & Gold Onigiri were “new variants joining the island.” They’re actually already released (Gold went live for all Override Sprites in August; their Cheat Master finishes too), so the note now correctly describes the event as boosted Gold & Cheat Master spawns — a good window to complete finishes you’re missing.' },
+    ],
+    summary: 'Corrected the weekend event note — those finishes were already out; the event just boosts them.',
+    why: 'A source described the variants as “added,” but our roster (correctly) already had them released. Accuracy matters most on the live event note at the top of the page — better to describe exactly what the event does than repeat a loose secondhand claim.',
+  },
+  {
+    date: 'September 11, 2026',
     title: 'Season 4 end date confirmed — Nov 1',
     changes: [
       { tag: 'Changed', text: 'Season 4 “Override” now shows a confirmed end date of Nov 1, 2026 (the date on Epic’s in-game Battle Pass page) instead of an estimate — so the season-end countdown and the transition FAQ drop the “~/estimated” hedging.' },
