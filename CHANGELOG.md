@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 11, 2026 — How to trade Sprites + Sprite-Swap island codes
+
+- **Added:** `src/data/tradeHubs.js` — the drop-and-extract steps, a safety checklist, and community Sprite-Swap island
+  codes (name/code/creator/note/source).
+- **Added:** a prerendered **/how-to-trade-sprites** guide (`scripts/prerender.mjs` → `tradeGuidePage()`, in GUIDES +
+  sitemap) with HowTo + FAQPage JSON-LD — targets the "can you trade Sprites / how to trade Sprites" query.
+- **Added:** `src/components/TradeHowTo.jsx` — collapsible steps + tap-to-copy island codes, shown inside
+  Friends → Trade matches (both empty and populated states) so a match leads straight to completing the swap.
+- **Why:** Fortnite has no official trade UI; players complete swaps via drop-and-extract on community islands. Our
+  matcher stopped at "who to trade with" — this covers the how and where, an underserved high-intent topic, and sets up a
+  future first-party trade-hub island.
+
+---
+
 ## September 11, 2026 — "You heard it here first" (early heads-up for confirmed drops)
 
 - **Added:** `src/data/incoming.js` — a curated feed of confirmed, dated, not-yet-live drops (with helpers

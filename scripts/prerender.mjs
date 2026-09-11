@@ -21,6 +21,7 @@ import { NEWS, NEWS_TAGS } from '../src/data/news.js'
 import { CODES_INTRO, CODE_CATEGORIES, LOBBY_CODES } from '../src/data/codes.js'
 import { LOOT_HACK_ROTATION, LOOT_HACK_META, LOOT_HACK_HOW } from '../src/data/lootHacks.js'
 import { SEASON } from '../src/data/season.js'
+import { TRADE_STEPS, TRADE_SAFETY, SPRITE_SWAP_ISLANDS, ISLAND_HOWTO } from '../src/data/tradeHubs.js'
 
 const SITE = 'https://fnsprites.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -1504,9 +1505,60 @@ function lootHacksPage() {
 ` + FOOT
 }
 
+// ---------- /how-to-trade-sprites page ----------
+// Sprites have no official trade UI — this covers the community drop-&-extract
+// method + the Sprite-Swap islands people meet on. High-intent, underserved query.
+function tradeGuidePage() {
+  const desc = `How to trade Fortnite Sprites: the community drop-and-extract method (Fortnite has no official trade button), a safety checklist so you don’t get scammed, and the Sprite-Swap island codes players meet on to swap.`
+  const faqs = [
+    ['Can you trade Sprites in Fortnite?', 'Not with an official trade button — Fortnite has no built-in Sprite trading. Players use a community “drop and extract” method: you each drop the Sprite you’re trading in a match, pick up the other person’s, then extract it at an Extraction Site to bind it to your account. Epic acknowledges this is how trading works and warns it can’t recover Sprites lost to scams.'],
+    ['How does the drop-and-extract Sprite trade work?', TRADE_STEPS.join(' ')],
+    ['Do you need a spare Sprite to trade?', 'Yes — Fortnite requires you to have another Sprite available before you can drop the one you’re trading, so bring at least two.'],
+    ['Is Sprite trading safe / can I get scammed?', 'It can be risky since there’s no official escrow. Only an extracted Sprite is permanently yours, Epic can’t recover losses, and you should be wary of “drop yours first” pressure. Trading on a proximity-chat Sprite-Swap island with someone you can talk to lowers the risk.'],
+    ['Where do people trade Sprites?', `On community “Sprite-Swap” islands — safe hubs (often 16-player, with chat and collection viewing) built to meet and run the drop-and-extract. ${ISLAND_HOWTO} Current community islands include ${SPRITE_SWAP_ISLANDS.map((i) => `${i.name} (${i.code})`).join(', ')}. They’re community-run, so codes can change — verify in-game.`],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'HowTo', name: 'How to trade Sprites in Fortnite (drop & extract)', description: desc, url: SITE + '/how-to-trade-sprites', dateModified: NEWS_TODAY,
+      step: TRADE_STEPS.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, text: s })) },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ] }
+  const islandRows = SPRITE_SWAP_ISLANDS.map((isl) => `<div class="card" style="display:flex;gap:10px;align-items:center;padding:10px 12px;margin:0 0 8px">
+    <div style="min-width:0;flex:1">
+      <div style="font-size:14px;font-weight:800;color:#fff">${esc(isl.name)}</div>
+      <div style="font-size:12px;color:var(--muted)">${esc(isl.note)} · by ${esc(isl.creator)}</div>
+    </div>
+    <code style="font-size:13px;font-weight:800;color:var(--brand);white-space:nowrap">${esc(isl.code)}</code></div>`).join('')
+  return head({ title: `How to Trade Fortnite Sprites — Drop & Extract + Sprite-Swap Islands | FN Sprite Tracker`, desc, canonical: SITE + '/how-to-trade-sprites', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🔁 How to trade Fortnite Sprites</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:70ch">Fortnite has no official Sprite trade button — but you can still swap Sprites with the community <b>drop-and-extract</b> method. Here’s exactly how, how to stay safe, and where to meet other traders.</p>
+    <h2 style="font-size:17px;color:#fff;margin:18px 0 8px">The drop-and-extract method</h2>
+    <ol style="margin:0;padding-left:20px;color:var(--muted);font-size:14px;line-height:1.7">
+      ${TRADE_STEPS.map((s) => `<li>${esc(s)}</li>`).join('')}
+    </ol>
+    <h2 style="font-size:17px;color:#fff;margin:20px 0 8px">Stay safe (don’t get scammed)</h2>
+    <ul style="margin:0;padding-left:20px;color:var(--muted);font-size:14px;line-height:1.7">
+      ${TRADE_SAFETY.map((s) => `<li>${esc(s)}</li>`).join('')}
+    </ul>
+    <h2 style="font-size:17px;color:#fff;margin:20px 0 8px">Where to trade — Sprite-Swap islands</h2>
+    <p style="color:var(--muted);font-size:13px;margin:0 0 10px">${esc(ISLAND_HOWTO)} These are community-run islands (not ours) — codes can change, so verify in-game.</p>
+    ${islandRows}
+    <div class="card" style="padding:14px 16px;margin:16px 0 0">
+      <p style="margin:0;font-size:13px;color:var(--muted)">Line up a trade first: sign in and use <a href="/" style="color:var(--brand)">Friends → Trade matches</a> to see who has the Sprites you want (and wants your spares), then meet on an island to swap.</p>
+    </div>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Method per Epic’s Fortnite support + community trackers. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track & match your Sprite trades — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 const GUIDES = [
   ['/codes', '🔓', 'Lobby Hacks (codes)', 'Every Hack the Lobby / Admin Panel code and what it unlocks — grouped by reward, with copy & redeemed-tracking.'],
   ['/loot-hacks', '🎯', 'Loot Hacks (this week)', 'The current rotating Loot Hack weapons you buy with Sprite Dust, how upgrades work, and when they next refresh.'],
+  ['/how-to-trade-sprites', '🔁', 'How to trade Sprites', 'The drop-&-extract method (Fortnite has no trade button), a scam-safety checklist, and the Sprite-Swap island codes to meet on.'],
   ['/cheat-master-sprites', '😎', 'Cheat Master Sprites', 'Every Cheat Master finish — which are live, which are datamined, and the code that unlocks each.'],
   ['/how-to-get-cheat-master-sprites', '🧭', 'How to get Cheat Master Sprites', 'Step-by-step: redeem lobby codes, find Cheat Codes, and use Power Hours to unlock Cheat Master finishes.'],
   ['/gold-sprites', '🥇', 'Gold Sprites', 'Every Gold finish — which are obtainable now vs archived, by generation, with a link to each Sprite.'],
@@ -1740,6 +1792,7 @@ function sitemap(types) {
     { loc: SITE + '/sprite-garden', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/sprite-dust', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/loot-hacks', changefreq: 'weekly', priority: '0.8' },
+    { loc: SITE + '/how-to-trade-sprites', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/events', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/season-transition', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
@@ -1780,6 +1833,8 @@ mkdirSync(resolve(DIST, 'sprite-dust'), { recursive: true })
 writeFileSync(resolve(DIST, 'sprite-dust', 'index.html'), spriteDustPage())
 mkdirSync(resolve(DIST, 'loot-hacks'), { recursive: true })
 writeFileSync(resolve(DIST, 'loot-hacks', 'index.html'), lootHacksPage())
+mkdirSync(resolve(DIST, 'how-to-trade-sprites'), { recursive: true })
+writeFileSync(resolve(DIST, 'how-to-trade-sprites', 'index.html'), tradeGuidePage())
 mkdirSync(resolve(DIST, 'events'), { recursive: true })
 writeFileSync(resolve(DIST, 'events', 'index.html'), spriteEventsPage())
 mkdirSync(resolve(DIST, 'abilities'), { recursive: true })
@@ -1805,4 +1860,4 @@ writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /events + /abilities + /season-transition + /news + /privacy + 404 + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /privacy + 404 + sitemap.xml → dist/`)

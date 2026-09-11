@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 11, 2026',
+    title: 'How to trade Sprites + Sprite-Swap island codes',
+    changes: [
+      { tag: 'Added', text: 'A “How to trade Sprites” guide (/how-to-trade-sprites) covering the community drop-and-extract method — Fortnite has no official trade button — with a scam-safety checklist and the community Sprite-Swap island codes to meet on.' },
+      { tag: 'Added', text: 'The same steps + tap-to-copy island codes now show right inside Friends → Trade matches, so a matched trade has a clear path to completion.' },
+    ],
+    summary: 'Turns a trade match into an actual completed swap: how the drop-and-extract works, how to stay safe, and where to meet.',
+    why: '“Can you trade Sprites / how to trade Sprites” is a real, underserved search, and our trade-matcher left off exactly where players get stuck — the in-game swap. Documenting the drop-and-extract (and surfacing trusted meeting islands) closes that loop and pairs naturally with the matcher.',
+  },
+  {
+    date: 'September 11, 2026',
     title: '“You heard it here first” — early heads-up for confirmed drops',
     changes: [
       { tag: 'Added', text: 'A “Heads up” spotlight at the top of the tracker that surfaces confirmed, dated things before they’re live — each with a countdown (e.g. next Loot Hack rotation, and the Chapter 7 Season 5 flip). You get the early word without us pretending something’s catchable when it isn’t.' },

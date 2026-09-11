@@ -3,6 +3,7 @@ import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 import { PlayerAvatar, PlayerBadges } from './PlayerAvatar'
 import CompareModal from './CompareModal'
+import TradeHowTo from './TradeHowTo'
 import SpriteArt from './SpriteArt'
 import { SPRITE_BY_ID, RARITY_COLORS } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
@@ -245,15 +246,19 @@ function TradesView({ trades }) {
   }
   if (trades.length === 0) {
     return (
-      <div className="rounded-xl bg-[var(--bg-2)] px-3 py-6 text-center text-sm text-[var(--muted)]">
-        No trade matches among your friends yet.
-        <span className="mt-1 block text-xs">
-          Mark your spare Sprites <b className="text-amber-300">For trade</b> and the ones you’re after <b className="text-[var(--brand)]">Wanted</b> — matches appear when a friend’s spares line up with your wants.
-        </span>
-      </div>
+      <>
+        <div className="rounded-xl bg-[var(--bg-2)] px-3 py-6 text-center text-sm text-[var(--muted)]">
+          No trade matches among your friends yet.
+          <span className="mt-1 block text-xs">
+            Mark your spare Sprites <b className="text-amber-300">For trade</b> and the ones you’re after <b className="text-[var(--brand)]">Wanted</b> — matches appear when a friend’s spares line up with your wants.
+          </span>
+        </div>
+        <TradeHowTo />
+      </>
     )
   }
   return (
+    <>
     <div className="space-y-2">
       {trades.map((t) => {
         const twoWay = t.they_give.length > 0 && t.i_give.length > 0
@@ -284,5 +289,7 @@ function TradesView({ trades }) {
         )
       })}
     </div>
+    <TradeHowTo />
+    </>
   )
 }
