@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 11, 2026 — Season 5 prep (end-of-season countdown & transition answers)
+
+- **Added:** `src/data/season.js` — a single source of truth for season timing (current season, estimated end
+  `2026-11-01` w/ `endConfirmed:false`, next season, and keeps-vs-resets), plus `daysUntilSeasonEnd()`.
+- **Added:** `src/components/SeasonCountdown.jsx` — a sidebar card that appears only within ~60 days of the flip: days
+  left + a what-you-keep vs. what-resets summary, linking to the transition guide.
+- **Added:** two forward-looking FAQs on the `/season-transition` page (`scripts/prerender.mjs`) — "when does Season 4
+  end?" and "will my Override Sprites carry over?" — both fed by `season.js` and surfaced in FAQPage JSON-LD.
+- **Added:** a transition banner in `src/data/announcements.js` scheduled for Oct 24 – Nov 2 (Sprites safe in the Garden;
+  Dust/consumables reset; spend Dust first).
+- **Why:** season ends spike anxious, high-intent searches ("when does the season end / do I lose my Sprites?"). We know
+  the pattern and rough date, so answering early captures that interest and reassures collectors ahead of any leaks.
+  Exact date + Season 5 details fill in via a ramping leak-watch as the flip nears.
+
+---
+
 ## September 11, 2026 — Pruned three unverified lobby codes
 
 - **Removed:** three single-source "leaked" codes from `src/data/codes.js` — `GILDEDJACKRABBIT` (Gold Jazz Jackrabbit),

@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'September 11, 2026',
+    title: 'Season 5 prep — end-of-season countdown & transition answers',
+    changes: [
+      { tag: 'Added', text: 'A “Season ending” countdown card that appears in the run-up to the flip: how long Season 4 “Override” has left (est. ~Nov 1), and a clear what-you-keep vs. what-resets summary. Reads from a single season-timing source we can update the moment Epic confirms the date.' },
+      { tag: 'Added', text: 'The /season-transition guide now answers the forward-looking questions — when Season 4 ends, and whether your Override Sprites carry over (they do).' },
+      { tag: 'Added', text: 'A heads-up banner scheduled for late October: your Sprites are safe in the Garden across the flip; only Dust/consumables reset — so spend Dust first.' },
+    ],
+    summary: 'Getting ahead of the Season 4 → 5 flip: a countdown, clear “what carries over” answers, and a reassurance banner timed for the transition.',
+    why: 'Season ends drive a big, anxious traffic spike (“when does the season end? do I lose my Sprites?”). We know the pattern and the rough date, so we can answer it early and calmly — capturing the search interest and reassuring collectors — well before leaks even land. Details fill in via a ramping leak-watch as the date nears.',
+  },
+  {
+    date: 'September 11, 2026',
     title: 'Pruned three unverified lobby codes',
     changes: [
       { tag: 'Removed', text: 'Dropped three long-unconfirmed “leaked” lobby codes (GILDEDJACKRABBIT, ULTIMATELIFEFORM, BERRYGLITCH). They were single-source from Aug 22 and never got corroborated — they don’t appear on Fortnite.GG or other trackers three weeks on, so they were most likely never real.' },

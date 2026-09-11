@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'season4-ending-2026-10',
+    emoji: '⏳',
+    message: 'Season 4 “Override” is wrapping up (est. ~Nov 1) and Chapter 7 Season 5 is next. Don’t worry — every Sprite you’ve collected is kept forever in your Collection & Sprite Garden. Only Sprite Dust, Extractors & Locators reset, so spend your Dust before the flip.',
+    link: '/season-transition',
+    linkLabel: 'What carries over',
+    start: '2026-10-24',
+    end: '2026-11-02',
+    source: 'Community + Epic pattern',
+    official: false,
+    tone: 'alert',
+  },
+  {
     id: 'new-sprite-day-loot-hacker-2026-09-10',
     emoji: '🔵',
     message: 'New Sprite Day is LIVE (Sep 10) — the Loot Hacker finish dropped: 14 new Loot Hacker Sprite variants (15 incl. the Crown), each adding a +20% (1.2×) chance of Loot Hack items from Chests. All 15 are marked released in the tracker.',

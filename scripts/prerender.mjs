@@ -20,6 +20,7 @@ import { SPRITE_GUIDE } from '../src/data/spriteGuide.js'
 import { NEWS, NEWS_TAGS } from '../src/data/news.js'
 import { CODES_INTRO, CODE_CATEGORIES, LOBBY_CODES } from '../src/data/codes.js'
 import { LOOT_HACK_ROTATION, LOOT_HACK_META, LOOT_HACK_HOW } from '../src/data/lootHacks.js'
+import { SEASON } from '../src/data/season.js'
 
 const SITE = 'https://fnsprites.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -1098,7 +1099,10 @@ function spriteAbilitiesPage() {
 // traffic. FAQPage-heavy for rich results.
 function seasonTransitionPage() {
   const desc = `Fortnite Season 4 “Override” sprite FAQ — why your Sprite Dust reset, whether your Season 3 Sprites still count, why old Sprites aren’t usable in Battle Royale, what carries over between seasons, and whether Loot Hacks are pay-to-win.`
+  const seasonEnd = new Date(SEASON.endEstimate + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
   const faqs = [
+    [`When does Fortnite Chapter 7 Season 4 “Override” end?`, `${SEASON.current.label} “${SEASON.name}” is expected to end around ${seasonEnd}${SEASON.endConfirmed ? '' : ' (community estimate — Epic usually confirms the exact date about two weeks out)'}, with ${SEASON.next.label} following right after. When it flips, a new generation of Sprites takes over Battle Royale — but everything you’ve collected is kept. Spend or reset your Sprite Dust before the flip so it isn’t wasted (Dust resets; Sprites don’t).`],
+    ['Will my Season 4 “Override” Sprites carry over to the next season?', 'Yes. Just like your Season 3 Sprites carried into Season 4, every Sprite you collect in Override is kept forever — preserved in your Collection and the Sprite Garden. The next season starts a new generation for Battle Royale, but nothing you’ve earned is lost.'],
     ['Why did my Sprite Dust reset in Season 4?', 'Sprite Dust is a per-season currency, so it resets at each season flip — along with Portable Extractors and Lucky Locators. It’s “seasonal housekeeping,” not a bug. The Sprites you’ve collected are NOT reset — only the spendable currency and consumables. If you spent Dust on Loot Hacks you regret, Epic lets you reset those upgrades to refund the Dust.'],
     ['Do my Season 3 “Runners” Sprites still count?', 'Yes — every Sprite you’ve collected is kept forever. Your Season 3 roster is preserved in your Collection and in the new Sprite Garden, and it still shows up as Sprite Mastery Pod Back Bling styles and Guardian Outfit pilots. Nothing you earned is lost.'],
     ['Why can’t I use my old Sprites in Battle Royale this season?', 'Each season starts a new generation of Sprites that takes over Battle Royale. So the Season 4 “Override” generation is what you find and use in BR now, while your Season 3 Sprites are kept and displayed rather than used in matches. Epic has said older generations “may return down the line.”'],
