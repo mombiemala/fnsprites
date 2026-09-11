@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 11, 2026',
+    title: 'Season 4 end date confirmed — Nov 1',
+    changes: [
+      { tag: 'Changed', text: 'Season 4 “Override” now shows a confirmed end date of Nov 1, 2026 (the date on Epic’s in-game Battle Pass page) instead of an estimate — so the season-end countdown and the transition FAQ drop the “~/estimated” hedging.' },
+    ],
+    summary: 'The season-end countdown is now on Epic’s confirmed Nov 1 date, not a guess.',
+    why: 'Epic’s Battle Pass page states the season (and Pass) end on Nov 1, corroborated across trackers — solid enough to present as confirmed. Firming it up makes the countdown trustworthy heading into the flip; Season 5 theme/sprite details still aren’t leaked and stay off the site until sourced.',
+  },
+  {
+    date: 'September 11, 2026',
     title: 'How to trade Sprites + Sprite-Swap island codes',
     changes: [
       { tag: 'Added', text: 'A “How to trade Sprites” guide (/how-to-trade-sprites) covering the community drop-and-extract method — Fortnite has no official trade button — with a scam-safety checklist and the community Sprite-Swap island codes to meet on.' },

@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 11, 2026 — Season 4 end date confirmed (Nov 1)
+
+- **Changed:** `src/data/season.js` `endConfirmed: true` and `src/data/incoming.js` Season 5 entry `confirmedDate: true`
+  — Nov 1, 2026 is the date on Epic's in-game Battle Pass page (corroborated across season-countdown trackers), so the
+  countdown card and `/season-transition` FAQ now present it as confirmed rather than estimated.
+- **Why:** solid enough to drop the hedging; makes the run-up to the flip trustworthy. Season 5 theme/sprite leaks still
+  aren't out and stay off the site until sourced (leak-watch continues).
+
+---
+
 ## September 11, 2026 — How to trade Sprites + Sprite-Swap island codes
 
 - **Added:** `src/data/tradeHubs.js` — the drop-and-extract steps, a safety checklist, and community Sprite-Swap island

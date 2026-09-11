@@ -11,14 +11,15 @@ export const SEASON = {
     label: 'Chapter 7 Season 4',
     start: '2026-08-20',
   },
-  // Community/outlet estimate (Fortnite.GG, Vice) — not yet Epic-confirmed.
+  // Nov 1 is the date shown on Epic's in-game Battle Pass page (Season 4 / the
+  // Pass both end then), corroborated across season-countdown trackers.
   endEstimate: '2026-11-01',
-  endConfirmed: false,
+  endConfirmed: true,
   next: {
     label: 'Chapter 7 Season 5',
     startEstimate: '2026-11-01',
   },
-  source: 'Fortnite.GG / Vice',
+  source: 'Epic (Battle Pass end date)',
   sourceUrl: 'https://fortnite.gg/season-countdown',
 }
 
