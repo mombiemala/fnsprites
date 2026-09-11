@@ -4,16 +4,16 @@
 
 A fan-made Fortnite **sprite tracker** — track every sprite across all of its
 finishes (Normal, Gold, Gummy, Galaxy, **Gem**, **Holofoil**, **Cube**, **Quack**,
-the Season 4 **Cheat Master**, and the datamined **Loot Hacker**), see your collection
-and mastery progress, save it to the cloud, compare with other players, browse the live
-**Item Shop**, and look up any player's **Battle Royale stats**. Current through
+and the Season 4 **Cheat Master** & **Loot Hacker**), see your collection
+and mastery progress, save it to the cloud, **add friends and compare or trade-match**
+with them, browse the live **Item Shop**, and look up any player's **Battle Royale stats**. Current through
 **Chapter 7 Season 4 "Override"** (Sep 2026, New Sprite Day) — **179 released variants**
 across two generations: the Season 3 **"Runners"** roster (kept forever in the **Sprite
 Garden**) and the live **Override** generation — Sonic, Tails, Shadow, Jazz Jackrabbit,
 Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch, Adventure, Storm Scout,
 Overshield, Mega Man, and the first two **Design-a-Sprite** winners **X-Ray & Onigiri** —
-in **Normal, Gold & Cheat Master**, with a datamined **Loot Hacker** finish flagged
-unreleased across the roster. Epic confirmed **Sprites are
+in **Normal, Gold, Cheat Master & Loot Hacker** (the **Loot Hacker** finish went live
+Sep 10, 2026 — 15 variants). Epic confirmed **Sprites are
 kept forever**, but a new generation takes over **Battle Royale** each season: older
 -gen Sprites are **preserved and displayed** (Sprite Garden + Collection) rather than
 used in BR ("may return down the line"), and **Sprite Dust & Gizmos reset** at the
@@ -32,8 +32,8 @@ flagged **Rumored / Upcoming** until confirmed.
   generation, **Chapter 7 Season 4 "Override,"** is **live**: Sonic, Tails, Shadow,
   Jazz Jackrabbit, Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch,
   Adventure, Storm Scout, Overshield, Mega Man, plus the first two **Design-a-Sprite**
-  winners **X-Ray & Onigiri** — in Normal, Gold & Cheat Master, with the datamined
-  **Loot Hacker** finish flagged unreleased across the roster. The Season 3
+  winners **X-Ray & Onigiri** — in Normal, Gold, Cheat Master & **Loot Hacker** (the
+  Loot Hacker finish went live Sep 10, 2026). The Season 3
   **"Runners"** roster (the full Gem line, Cube, Holofoil & Quack, Ironmouse back from
   the vault, every Zero Point finish) is kept forever in the **Sprite Garden**.
   Still-datamined Sprites (Pond, Honey, Dumpster Dive, Meowscles, Squibbly, Cube,
@@ -94,10 +94,19 @@ flagged **Rumored / Upcoming** until confirmed.
   and every variant with its in-game **bonus** (e.g. Gummy = +10% Sprite Dust).
 - **Leaderboard & Flex Score** — a rarity-weighted ranking of public
   collections, plus a **compare** view (what you both have / each are missing).
-- **Trade (dormant)** — the 🔁 Trade tab is currently **hidden**. Fortnite has no
-  in-game trading, and it's a niche competitors skip; the matching data
-  (`for_trade`/`wanted` + `find_trade_matches` RPC) is kept in place so it's easy to
-  revive if a community forms.
+- **Friends** — save any player (gamertag search, ★ on the leaderboard, or the
+  "Add friend" button on a shared collection), see them ranked by the same Flex
+  Score, and **compare in one tap**. A **Trade matches** view lines up your spares
+  (`for_trade`) against a friend's `wanted` list (and vice-versa) and flags two-way
+  matches, with their Discord to coordinate. Backed by RLS + security-definer RPCs
+  (`my_friends`, `friend_trade_matches`, `search_public_profiles`) so a private
+  friend's collection is never exposed.
+- **Loot Hacks tracker** — the current rotating Loot Hack weapons you buy with
+  Sprite Dust to bias your chest loot, with a next-refresh countdown card and a
+  `/loot-hacks` guide page; refreshed each rotation.
+- **Community ownership** — each released Sprite shows "owned by X% of collectors"
+  (and mastered by Y%), from privacy-safe aggregate counts (`sprite_ownership_stats`
+  RPC), baked into the per-Sprite SEO pages too.
 - **Player Stats** — look up any player's Battle Royale stats by Epic display
   name (or PSN/Xbox): wins, win rate, K/D, kills, matches, top-10/25, hours, and a
   solo/duo/squad breakdown. Requires the target's match history to be public. The
@@ -234,15 +243,19 @@ Database schema (applied via migrations):
   is revoked at the DB level, so `epic_username` is never exposed unless the owner
   opts into public stats.
 - `sprite_progress` — `(user_id, sprite_id)` with `owned` / `mastered` flags plus
-  `for_trade` / `wanted` (which power the **🔁 Trade tab** — flag a spare or a
-  want and the matcher pairs you with other public players).
+  `for_trade` / `wanted` (which power the **Friends → Trade matches** view — flag a
+  spare or a want and the matcher pairs you with your friends).
   Readable when the owning profile is public (or it's your own); owner-writable.
+- `friends` — `(user_id, friend_id)`, RLS so you only ever see/manage your own
+  rows (a one-directional "save to compare" model — no reciprocal consent).
 - `bug_reports` — insert-only feedback backup.
 
-Key RPCs: `leaderboard`; `find_trade_matches(uuid)` — a **security-definer**
-function that returns two-way matches (partner `gamertag` + `discord`, `they_give`,
-`i_give`) across **public** profiles only, so raw collections are never exposed to
-the client.
+Key RPCs (all **security-definer**, public profiles only, so raw collections are never
+exposed): `leaderboard`; `my_friends()` — your saved friends with the same Flex Score;
+`friend_trade_matches()` — two-way trade matches limited to your friends (`gamertag` +
+`discord`, `they_give`, `i_give`); `search_public_profiles(text)` — gamertag search to
+add friends; `find_trade_matches(uuid)` — the global (all public players) variant;
+`sprite_ownership_stats()` — privacy-safe aggregate ownership counts.
 
 (Some older tables are kept in place, non-destructively but unused by the app: the
 legacy trading **hub** — `trade_posts` / `trade_vouches` (the current Trade tab

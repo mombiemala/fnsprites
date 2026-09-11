@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'power-hours-2026-09-12',
+    emoji: '⚡',
+    message: 'Power Hours — Sat, Sep 12 (2–4 PM & 9–11 PM ET): boosted Gold & Cheat Master Sprite spawns and supercharged Overdrive Grenades. Two new variants join the island — Cheat Master Storm Scout & Gold Onigiri — plus 1-Up Tokens & Portable Extractors in Chests.',
+    link: '/?view=news',
+    linkLabel: 'Event details',
+    start: '2026-09-11',
+    end: '2026-09-13',
+    source: 'The Click',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'season4-ending-2026-10',
     emoji: '⏳',
     message: 'Season 4 “Override” is wrapping up (est. ~Nov 1) and Chapter 7 Season 5 is next. Don’t worry — every Sprite you’ve collected is kept forever in your Collection & Sprite Garden. Only Sprite Dust, Extractors & Locators reset, so spend your Dust before the flip.',

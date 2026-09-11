@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'September 11, 2026',
+    title: 'Currency pass — docs, tagline & this weekend’s Power Hours',
+    changes: [
+      { tag: 'Changed', text: 'Brought the README current with everything shipped this week: the Loot Hacker finish is live (no longer “datamined/unreleased”), the new Friends + trade-matcher and Loot Hacks tracker are documented, and the database section now lists the friends table and the new RPCs.' },
+      { tag: 'Changed', text: 'The header tagline (in-app and on the SEO pages) no longer hard-codes “v42.10 · Sep 3” — the static pages now self-date to the build so they never go stale.' },
+      { tag: 'Added', text: 'This weekend’s event is detailed: Power Hours Sat, Sep 12 (2–4 PM & 9–11 PM ET) — boosted Gold & Cheat Master spawns, supercharged Overdrive, plus the Cheat Master Storm Scout & Gold Onigiri variants joining the island. Announcement banner added.' },
+    ],
+    summary: 'A tidy-up so the docs and header match what’s actually live, plus full details on Saturday’s Power Hours.',
+    why: 'After a busy week (Loot Hacker live, Friends, trade matcher, Loot Hacks, season prep) the README and tagline had drifted; keeping them honest matters for trust and for anyone reading the repo. Self-dating the tagline stops it going stale again.',
+  },
+  {
+    date: 'September 11, 2026',
     title: 'Scam-safety PSA for players',
     changes: [
       { tag: 'Added', text: 'A dismissible “Watch out for scams” card warning about the two Fortnite scams going around — fake “you won a prize, claim here” DMs and “check your locker value” sites/Discords that phish your Epic login — with the safe-play basics (never enter your Epic password on a random site, don’t click sketchy links or join random Discords).' },

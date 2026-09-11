@@ -462,7 +462,7 @@ export default function App() {
             </button>
           </h1>
           <p className="mt-1 text-xs text-[var(--muted)] sm:text-sm">
-            {set.released} released variants · {liveBuild ? `v${liveBuild} live` : 'v42.10 · Sep 3, 2026'}
+            {set.released} released variants · {liveBuild ? `v${liveBuild} live` : 'Season 4 “Override”'}
           </p>
         </div>
         {!authLoading &&

@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 11, 2026 — Currency pass (docs, tagline, weekend event)
+
+- **Changed:** README brought current — Loot Hacker finish is live (was "datamined/unreleased"); Friends + trade-matcher,
+  Loot Hacks tracker and community-ownership documented; DB section adds the `friends` table and the `my_friends` /
+  `friend_trade_matches` / `search_public_profiles` / `sprite_ownership_stats` RPCs.
+- **Changed:** header tagline no longer hard-codes "v42.10 · Sep 3, 2026" — `scripts/prerender.mjs` now self-dates to the
+  build date, and the in-app fallback (`src/App.jsx`) reads "Season 4 Override" when no live build is detected.
+- **Added:** Sep 12 Power Hours details in `src/data/news.js` (times 2–4 & 9–11 PM ET, Cheat Master Storm Scout & Gold
+  Onigiri joining the island, 1-Up Tokens/Extractors) + a weekend announcement banner in `src/data/announcements.js`.
+- **Why:** a busy week (Loot Hacker live, Friends, trade matcher, Loot Hacks, season prep) left the README and tagline
+  drifting; keeping them honest matters for trust and the repo. Self-dating the tagline stops it going stale again.
+
+---
+
 ## September 11, 2026 — Scam-safety PSA
 
 - **Added:** `src/components/SafetyNote.jsx` — a dismissible sidebar card warning about the two current Fortnite scams

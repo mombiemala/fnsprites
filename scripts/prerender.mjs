@@ -311,7 +311,7 @@ ${ADSENSE}
 <meta name="twitter:description" content="${esc(desc)}"><meta name="twitter:image" content="${esc(img)}">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 <style>${CSS}</style></head><body><div class="wrap">
-<header class="site"><div class="hgroup"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><p class="tagline">${RELEASED_COUNT} released variants · v42.10 · Sep 3, 2026</p></div><a class="cta" href="/">Log in to save</a></header>
+<header class="site"><div class="hgroup"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><p class="tagline">${RELEASED_COUNT} released variants · Season 4 “Override” · updated ${new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</p></div><a class="cta" href="/">Log in to save</a></header>
 <nav class="nav" aria-label="Sections">
   ${NAV_LINKS.map((l) => `<a href="${l.href}"${l.key === active ? ' class="on" aria-current="page"' : ''}>${l.label}</a>`).join('\n  ')}
   <details class="more"><summary>⋯ More <span class="mcaret">▾</span></summary><div class="moremenu">
