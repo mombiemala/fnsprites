@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'September 11, 2026',
+    title: 'Scam-safety PSA for players',
+    changes: [
+      { tag: 'Added', text: 'A dismissible “Watch out for scams” card warning about the two Fortnite scams going around — fake “you won a prize, claim here” DMs and “check your locker value” sites/Discords that phish your Epic login — with the safe-play basics (never enter your Epic password on a random site, don’t click sketchy links or join random Discords).' },
+      { tag: 'Added', text: 'A matching safety Q on the FAQ page, and a plain trust statement: FN Sprite Tracker is fan-made and will never DM you or ask for your Epic/Fortnite password — any tracker account here is separate from your Epic login.' },
+      { tag: 'Fixed', text: 'FAQ “What is the Loot Hacker finish?” now reflects that it went live Sep 10 (it still said “not released yet”), and distinguishes the Loot Hacker Sprite finish from the Sprite-Dust Loot Hacks.' },
+    ],
+    summary: 'A player-safety heads-up about account-phishing scams, plus a clear promise about what we’ll never ask for.',
+    why: 'Account-theft scams spike around big seasons, and as a third-party site that offers sign-in we have a responsibility to warn players and to be explicit that we never ask for Epic credentials — that protects users and reinforces we’re a legit, safe tool.',
+  },
+  {
+    date: 'September 11, 2026',
     title: 'Season 5 prep — end-of-season countdown & transition answers',
     changes: [
       { tag: 'Added', text: 'A “Season ending” countdown card that appears in the run-up to the flip: how long Season 4 “Override” has left (est. ~Nov 1), and a clear what-you-keep vs. what-resets summary. Reads from a single season-timing source we can update the moment Epic confirms the date.' },

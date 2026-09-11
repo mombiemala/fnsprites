@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 11, 2026 — Scam-safety PSA
+
+- **Added:** `src/components/SafetyNote.jsx` — a dismissible sidebar card warning about the two current Fortnite scams
+  (fake "you won a prize" DMs and "check your locker value" sites/Discords that phish Epic logins), plus the safe-play
+  basics. States plainly the tracker never DMs players or asks for an Epic password (a trust signal for a third-party
+  sign-in site). Dismissal remembered via localStorage.
+- **Added:** a matching player-safety FAQ on `/faq` (`scripts/prerender.mjs`) for evergreen reach + FAQPage schema.
+- **Fixed:** the `/faq` "What is the Loot Hacker finish?" answer said "not released yet" — updated to reflect the Sep 10
+  launch and to distinguish the Loot Hacker *Sprite finish* from the Sprite-Dust *Loot Hacks* weapons.
+- **Why:** account-theft scams spike around big seasons; as a fan site that offers sign-in we should warn players and be
+  explicit we never ask for Epic credentials — protecting users and reinforcing that we're a legit tool.
+
+---
+
 ## September 11, 2026 — Season 5 prep (end-of-season countdown & transition answers)
 
 - **Added:** `src/data/season.js` — a single source of truth for season timing (current season, estimated end

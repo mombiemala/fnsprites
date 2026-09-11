@@ -20,6 +20,7 @@ import QuickCheckList from './components/QuickCheckList'
 import ChestOdds from './components/ChestOdds'
 import LootHacks from './components/LootHacks'
 import SeasonCountdown from './components/SeasonCountdown'
+import SafetyNote from './components/SafetyNote'
 import OverflowNav from './components/OverflowNav'
 import UpcomingSprites from './components/UpcomingSprites'
 import HowSpritesWork from './components/HowSpritesWork'
@@ -773,6 +774,8 @@ export default function App() {
           {!isShareView && <LootHacks />}
 
           {!isShareView && <SupportBanner />}
+
+          {!isShareView && <SafetyNote />}
         </aside>
       </div>
         </>
