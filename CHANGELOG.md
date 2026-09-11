@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 11, 2026 — Pruned three unverified lobby codes
+
+- **Removed:** three single-source "leaked" codes from `src/data/codes.js` — `GILDEDJACKRABBIT` (Gold Jazz Jackrabbit),
+  `ULTIMATELIFEFORM` (Cheat Master Shadow), `BERRYGLITCH` (Cheat Master Klombo). Added Aug 22 as `rumored`, never
+  corroborated, and absent from Fortnite.GG and other aggregators ~3 weeks later — pruned as likely fake.
+- **Why:** a codes list is only useful if it's trustworthy. We flag rumors rather than delete by default, but codes that
+  stay unverified for weeks and show up nowhere else are noise; removing them keeps the page honest.
+
+---
+
 ## September 10, 2026 — Loot Hacks rotation tracker
 
 - **Added:** the rotating Loot Hacks (weapons bought with Sprite Dust to bias your personal chest loot) are now tracked —

@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 11, 2026',
+    title: 'Pruned three unverified lobby codes',
+    changes: [
+      { tag: 'Removed', text: 'Dropped three long-unconfirmed “leaked” lobby codes (GILDEDJACKRABBIT, ULTIMATELIFEFORM, BERRYGLITCH). They were single-source from Aug 22 and never got corroborated — they don’t appear on Fortnite.GG or other trackers three weeks on, so they were most likely never real.' },
+    ],
+    summary: 'Cleaned out three stale rumored codes that never panned out, so the list stays trustworthy.',
+    why: 'A codes list is only useful if players can trust it. We flag rumors rather than delete them by default, but codes that stay unverified for weeks and appear nowhere else are more likely noise than signal — pruning them keeps the page honest.',
+  },
+  {
     date: 'September 10, 2026',
     title: 'Loot Hacks rotation tracker',
     changes: [
