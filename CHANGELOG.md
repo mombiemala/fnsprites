@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 12, 2026 — Friends & trade matcher surfaced
+
+- **Changed:** the Leaderboard tab is now "🏆 Leaderboard & Friends" (`src/App.jsx` TABS + `scripts/prerender.mjs`
+  NAV_LINKS + FOOT), so the friends list and trade matcher have nav presence.
+- **Added:** deep links — `Leaderboard.jsx` reads `?tab=friends|trades` to open the Friends panel, and `Friends.jsx`
+  reads `?tab=trades` to open the Trade matches sub-view; the `/how-to-trade-sprites` guide links to
+  `/?view=leaderboard&tab=trades` directly.
+- **Why:** the trade matcher was buried behind two unlabelled toggles while our own guide told users to go there — nav
+  label + deep links make it findable.
+
+---
+
 ## September 12, 2026 — Mobile: progress & Next-to-chase above the grid
 
 - **Changed:** `src/App.jsx` — on mobile, `StatsBreakdown` + `NextToChase` are hoisted above the Sprite grid (a

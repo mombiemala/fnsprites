@@ -294,7 +294,7 @@ const NAV_LINKS = [
   { key: 'collection', href: '/', label: 'Collection' },
   { key: 'sprites', href: '/sprites', label: '🧩 Sprites' },
   { key: 'codes', href: '/codes', label: '🔓 Lobby Hacks' },
-  { key: 'leaderboard', href: '/?view=leaderboard', label: '🏆 Leaderboard' },
+  { key: 'leaderboard', href: '/?view=leaderboard', label: '🏆 Leaderboard & Friends' },
   { key: 'garden', href: '/?view=garden', label: '🌱 Garden' },
   { key: 'news', href: '/news', label: '📰 News' },
   { key: 'stats', href: '/?view=stats', label: '📊 Stats' },
@@ -368,7 +368,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the same sections row, the utility/support row (modal links deep-link into
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
-<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
+<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard &amp; Friends</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
 <div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/guides">📖 Guides</a><span class="sep">·</span><a href="/privacy">Privacy</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <details><summary>Credits, sources &amp; disclaimers <span class="fcaret">›</span></summary>
@@ -1553,7 +1553,7 @@ function tradeGuidePage() {
     <p style="color:var(--muted);font-size:13px;margin:0 0 10px">${esc(ISLAND_HOWTO)} These are community-run islands (not ours) — codes can change, so verify in-game.</p>
     ${islandRows}
     <div class="card" style="padding:14px 16px;margin:16px 0 0">
-      <p style="margin:0;font-size:13px;color:var(--muted)">Line up a trade first: sign in and use <a href="/" style="color:var(--brand)">Friends → Trade matches</a> to see who has the Sprites you want (and wants your spares), then meet on an island to swap.</p>
+      <p style="margin:0;font-size:13px;color:var(--muted)">Line up a trade first: sign in and use <a href="/?view=leaderboard&amp;tab=trades" style="color:var(--brand)">Friends → Trade matches</a> to see who has the Sprites you want (and wants your spares), then meet on an island to swap.</p>
     </div>
     <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Method per Epic’s Fortnite support + community trackers. Not affiliated with Epic Games.</p>
     <a class="bigcta" href="/">Track & match your Sprite trades — free →</a>

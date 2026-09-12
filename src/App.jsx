@@ -59,7 +59,7 @@ const TABS = [
   { id: 'collection', label: 'Collection' },
   { id: 'sprites', label: '🧩 Sprites' },
   { id: 'codes', label: '🔓 Lobby Hacks' },
-  { id: 'leaderboard', label: '🏆 Leaderboard' },
+  { id: 'leaderboard', label: '🏆 Leaderboard & Friends' },
   { id: 'garden', label: '🌱 Garden' },
   { id: 'news', label: '📰 News' },
   { id: 'stats', label: '📊 Stats' },

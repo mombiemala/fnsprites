@@ -36,7 +36,15 @@ function SpriteRow({ ids }) {
 export default function Friends({ onSignIn }) {
   const { user, friendIds, fetchFriends, fetchFriendTradeMatches, searchPlayers, addFriend, removeFriend } = useAuth()
   const { toast } = useToast()
-  const [view, setView] = useState('list') // 'list' | 'trades'
+  // ?tab=trades deep-links straight to the trade matcher (e.g. from the
+  // /how-to-trade-sprites guide).
+  const [view, setView] = useState(() => {
+    try {
+      return new URLSearchParams(window.location.search).get('tab') === 'trades' ? 'trades' : 'list'
+    } catch {
+      return 'list'
+    }
+  })
   const [rows, setRows] = useState(null)
   const [trades, setTrades] = useState(null)
   const [compare, setCompare] = useState(null)

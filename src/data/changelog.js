@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 12, 2026',
+    title: 'Friends & trade matcher are now easy to find',
+    changes: [
+      { tag: 'Changed', text: 'The Leaderboard tab is now “🏆 Leaderboard & Friends,” so saving friends and the trade matcher aren’t hidden behind an unlabelled toggle anymore.' },
+      { tag: 'Added', text: 'Deep links: /?view=leaderboard&tab=friends opens straight to your Friends list, and &tab=trades jumps right into Trade matches — and the “How to trade Sprites” guide now links directly there instead of just saying where to look.' },
+    ],
+    summary: 'Friends and the trade matcher are discoverable in the nav and one click away from the trading guide.',
+    why: 'These are among the stickiest features but were buried three levels deep with no nav label — our own trade guide pointed people to a path they couldn’t find. Naming it in the nav and adding deep links closes that gap.',
+  },
+  {
+    date: 'September 12, 2026',
     title: 'Mobile: progress & Next-to-chase moved above the grid',
     changes: [
       { tag: 'Changed', text: 'On phones, your Collection %/Mastery breakdown and the “Next to chase” pick now sit right above the Sprite grid instead of all the way at the bottom below the entire roster — so the most useful cards are reachable without scrolling past everything. On desktop they stay in the sidebar as before.' },

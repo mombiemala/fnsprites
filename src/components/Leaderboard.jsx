@@ -30,7 +30,17 @@ export default function Leaderboard({ onSignIn }) {
   const [rows, setRows] = useState(null)
   const [loading, setLoading] = useState(true)
   const [compare, setCompare] = useState(null)
-  const [mode, setMode] = useState('global') // 'global' | 'friends'
+  // Deep-linkable: ?tab=friends or ?tab=trades opens straight to the Friends
+  // panel (the trade matcher lives there), so /how-to-trade-sprites etc. can
+  // link right to it instead of it being buried behind two toggles.
+  const [mode, setMode] = useState(() => {
+    try {
+      const t = new URLSearchParams(window.location.search).get('tab')
+      return t === 'friends' || t === 'trades' ? 'friends' : 'global'
+    } catch {
+      return 'global'
+    }
+  })
 
   const load = async () => {
     setLoading(true)
