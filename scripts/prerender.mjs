@@ -1665,7 +1665,7 @@ function codesPage() {
       <p style="margin:0 0 8px;font-size:12px;color:var(--muted)">${esc(cat.blurb)}</p>
       <div class="crows">${items.map(codeRow).join('')}</div>`
   }
-  return head({ title: `Fortnite Override Lobby Hack Codes (${monthLabel}) — Admin Panel Cheat Codes | FN Sprite Tracker`, desc, canonical: SITE + '/codes', jsonld, active: 'news' }) + `
+  return head({ title: `Fortnite Override Lobby Hack Codes (${monthLabel}) — Admin Panel Cheat Codes | FN Sprite Tracker`, desc, canonical: SITE + '/codes', jsonld, active: 'codes' }) + `
 <div class="cols">
   <div class="main">
     <h1>Fortnite “Override” Lobby Hack codes (${monthLabel})</h1>

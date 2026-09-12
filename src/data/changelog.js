@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 12, 2026',
+    title: 'Fix: /codes page highlighted the wrong nav item',
+    changes: [
+      { tag: 'Fixed', text: 'On the Lobby Hacks (/codes) guide page, the top nav was highlighting “News” instead of “Lobby Hacks.” Now the correct tab is marked active.' },
+    ],
+    summary: 'Small nav-highlight fix on the codes page.',
+    why: 'A UX pass caught the wrong active-nav key on /codes — a quick correctness fix so the highlighted tab matches the page you’re on.',
+  },
+  {
+    date: 'September 12, 2026',
     title: 'SEO pages: collapsible footer credits',
     changes: [
       { tag: 'Changed', text: 'The long credits/sources/disclaimers block in the footer of the static guide & Sprite pages is now tucked into a “Credits, sources & disclaimers” expander — matching the app footer — so those pages end cleanly instead of with a wall of attribution text. It’s plain HTML (no JavaScript), so it still works on the prerendered pages.' },
