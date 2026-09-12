@@ -145,7 +145,7 @@ export default function Friends({ onSignIn }) {
       </div>
 
       {view === 'trades' ? (
-        <TradesView trades={trades} />
+        <TradesView friendTrades={trades} />
       ) : (
         <>
           {/* Add a friend by gamertag */}
@@ -242,9 +242,53 @@ export default function Friends({ onSignIn }) {
   )
 }
 
-// Trade matches limited to friends: for each matched friend, the Sprites they'd
-// give you (they marked for-trade & you want) and the ones you'd give them.
-function TradesView({ trades }) {
+// Trade matches: for each matching player, the Sprites they'd give you (they
+// marked for-trade & you want) and the ones you'd give them. Two scopes —
+// "Friends" (your saved list) and "Everyone" (the public Want Board: any public
+// player whose spares line up with your wants, and vice-versa).
+function TradesView({ friendTrades }) {
+  const { findTradeMatches } = useAuth()
+  const [scope, setScope] = useState('friends') // 'friends' | 'everyone'
+  const [publicTrades, setPublicTrades] = useState(null)
+
+  // Lazily fetch the public board the first time "Everyone" is opened.
+  useEffect(() => {
+    if (scope !== 'everyone' || publicTrades !== null) return
+    let cancelled = false
+    ;(async () => {
+      const t = await findTradeMatches()
+      if (!cancelled) setPublicTrades(t)
+    })()
+    return () => { cancelled = true }
+  }, [scope, publicTrades, findTradeMatches])
+
+  const trades = scope === 'friends' ? friendTrades : publicTrades
+
+  return (
+    <>
+      <div className="mb-3 inline-flex rounded-lg bg-[var(--bg-2)] p-0.5 text-[11px] font-bold">
+        <button
+          onClick={() => setScope('friends')}
+          className={`rounded-md px-2.5 py-1 transition-colors ${scope === 'friends' ? 'bg-[var(--panel-2)] text-white' : 'text-[var(--muted)] hover:text-white'}`}
+        >
+          👥 Friends
+        </button>
+        <button
+          onClick={() => setScope('everyone')}
+          className={`rounded-md px-2.5 py-1 transition-colors ${scope === 'everyone' ? 'bg-[var(--panel-2)] text-white' : 'text-[var(--muted)] hover:text-white'}`}
+          title="Match with any public collector — the community Want Board"
+        >
+          🌐 Everyone
+        </button>
+      </div>
+      <TradeList trades={trades} scope={scope} />
+    </>
+  )
+}
+
+// Renders a set of trade-match cards (or the loading / empty state) + the
+// how-to-trade helper. Shared by both scopes.
+function TradeList({ trades, scope }) {
   if (trades === null) {
     return (
       <div className="space-y-2">
@@ -256,9 +300,9 @@ function TradesView({ trades }) {
     return (
       <>
         <div className="rounded-xl bg-[var(--bg-2)] px-3 py-6 text-center text-sm text-[var(--muted)]">
-          No trade matches among your friends yet.
+          {scope === 'everyone' ? 'No public trade matches right now.' : 'No trade matches among your friends yet.'}
           <span className="mt-1 block text-xs">
-            Mark your spare Sprites <b className="text-amber-300">For trade</b> and the ones you’re after <b className="text-[var(--brand)]">Wanted</b> — matches appear when a friend’s spares line up with your wants.
+            Mark your spare Sprites <b className="text-amber-300">For trade</b> and the ones you’re after <b className="text-[var(--brand)]">Wanted</b> — matches appear when {scope === 'everyone' ? 'any public collector’s' : 'a friend’s'} spares line up with your wants.
           </span>
         </div>
         <TradeHowTo />

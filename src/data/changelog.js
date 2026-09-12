@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 12, 2026',
+    title: 'Public Want Board — trade-match with any collector',
+    changes: [
+      { tag: 'Added', text: 'Trade matches now has a “👥 Friends / 🌐 Everyone” toggle. “Everyone” is a community Want Board: it lines up your Wanted list against every public collector’s spares (and your spares against their wants), not just your friends — with their Discord to coordinate. Mark Sprites For trade / Wanted and you show up for others too.' },
+    ],
+    summary: 'Find a trade with anyone in the community, not only your friends — a public Want Board built on the trade matcher.',
+    why: 'Friends-only matching is high-signal but small; opening it to all public collectors is the biggest trade differentiator rivals lean on. The matching + privacy were already in place (a global matcher existed but was never surfaced), so this is mostly making an existing capability visible.',
+  },
+  {
+    date: 'September 12, 2026',
     title: 'Friends & trade matcher are now easy to find',
     changes: [
       { tag: 'Changed', text: 'The Leaderboard tab is now “🏆 Leaderboard & Friends,” so saving friends and the trade matcher aren’t hidden behind an unlabelled toggle anymore.' },

@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 12, 2026 — Public Want Board (Everyone trade matches)
+
+- **Added:** a "👥 Friends / 🌐 Everyone" scope toggle in Trade matches (`src/components/Friends.jsx` — `TradesView`
+  refactored, shared `TradeList`). "Everyone" calls the existing global `find_trade_matches` RPC (via `findTradeMatches`
+  in AuthContext) to match your Wanted list against **all public collectors'** spares and vice-versa — a community Want
+  Board with each partner's Discord to coordinate.
+- **Why:** friends-only matching is high-signal but small; the global matcher + privacy already existed (public profiles
+  only, security-definer) but was never surfaced — this exposes the biggest trade differentiator with no new schema.
+- **Deferred:** trade *reputation* (vouches) — needs a careful anti-abuse design; tracked as a follow-up.
+
+---
+
 ## September 12, 2026 — Dev: roster cross-check advisory (`npm run verify-roster`)
 
 - **Added:** `scripts/verify-roster.mjs` + `verify-roster` npm script — a non-blocking advisory that diffs Sprite-related
