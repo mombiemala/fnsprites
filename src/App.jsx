@@ -617,6 +617,15 @@ export default function App() {
       <div className="lg:flex lg:items-start lg:gap-6">
         {/* Main column: grid */}
         <div className="min-w-0 lg:flex-1">
+          {/* Mobile only: hoist progress + next-to-chase above the grid, so the
+              most useful sidebar cards aren't buried below the whole roster on
+              phones. On desktop these live in the sidebar (hidden here via lg:hidden). */}
+          {!isShareView && (
+            <div className="mb-4 flex flex-col gap-4 lg:hidden">
+              <StatsBreakdown tracking={activeTracking} />
+              <NextToChase tracking={activeTracking} onOpen={setDetailType} />
+            </div>
+          )}
           {showOnboarding && (
             <div className="mb-4 rounded-2xl border border-[var(--brand)]/40 bg-[var(--brand)]/10 p-4">
               <div className="flex items-start justify-between gap-3">
@@ -751,8 +760,12 @@ export default function App() {
               </div>
             ))}
 
-          {/* Breakdown — the single stats hub (Collection %, Mastery %, Dust, rings). */}
-          <StatsBreakdown tracking={activeTracking} />
+          {/* Breakdown — the single stats hub (Collection %, Mastery %, Dust, rings).
+              On own view it's hoisted above the grid on mobile, so here it's
+              desktop-only; in a shared view (no hoist) it shows on all sizes. */}
+          <div className={isShareView ? '' : 'hidden lg:block'}>
+            <StatsBreakdown tracking={activeTracking} />
+          </div>
 
           {/* Small guide nudge for signed-in players — links to the guide that now
               lives on the /sprites landing page (the modal + nav item were removed). */}
@@ -767,13 +780,15 @@ export default function App() {
             </a>
           )}
 
-          {!isShareView && <NextToChase tracking={activeTracking} onOpen={setDetailType} />}
+          {!isShareView && (
+            <div className="hidden lg:block">
+              <NextToChase tracking={activeTracking} onOpen={setDetailType} />
+            </div>
+          )}
 
           {!isShareView && <UpcomingSprites onOpen={setDetailType} />}
 
           {!isShareView && <SeasonCountdown />}
-
-          {!isShareView && <ChestOdds />}
 
           {!isShareView && <LootHacks />}
 

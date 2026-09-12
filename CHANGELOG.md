@@ -11,6 +11,25 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 12, 2026 — Mobile: progress & Next-to-chase above the grid
+
+- **Changed:** `src/App.jsx` — on mobile, `StatsBreakdown` + `NextToChase` are hoisted above the Sprite grid (a
+  `lg:hidden` block at the top of the main column); the sidebar copies are `hidden lg:block` (own view) so they don't
+  double-render. In a shared view the breakdown still shows in the sidebar on all sizes.
+- **Changed:** removed the legacy Season-3 `ChestOdds` card from the Collection sidebar (kept on `/sprites` +
+  `/drop-rate-calculator`).
+- **Why:** the sidebar rendered below the entire grid on phones, burying the most useful cards; hoisting fixes the biggest
+  mobile issue, and dropping the last-season odds card declutters the rail.
+
+---
+
+## September 12, 2026 — Fix: /codes highlighted the wrong nav item
+
+- **Fixed:** `scripts/prerender.mjs` `codesPage()` passed `active:'news'`, so the Lobby Hacks page lit up the News tab —
+  corrected to `active:'codes'`.
+
+---
+
 ## September 12, 2026 — SEO pages: collapsible footer credits
 
 - **Changed:** the long credits/sources/disclaimers block in the prerendered footer (`scripts/prerender.mjs` `FOOT` +

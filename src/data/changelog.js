@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 12, 2026',
+    title: 'Mobile: progress & Next-to-chase moved above the grid',
+    changes: [
+      { tag: 'Changed', text: 'On phones, your Collection %/Mastery breakdown and the “Next to chase” pick now sit right above the Sprite grid instead of all the way at the bottom below the entire roster — so the most useful cards are reachable without scrolling past everything. On desktop they stay in the sidebar as before.' },
+      { tag: 'Changed', text: 'Removed the last-season Chest-luck (drop-odds) card from the Collection sidebar — it’s a Season 3 tool and already lives on the Sprites board and the /drop-rate-calculator page. Declutters the rail.' },
+    ],
+    summary: 'Mobile players see their progress and next target first; the collection sidebar is a bit leaner.',
+    why: 'On a phone the sidebar rendered below the whole grid, so the genuinely useful cards (progress, next-to-chase) were effectively unreachable. Hoisting them up top fixes the single biggest mobile issue, and dropping the legacy Season-3 odds card trims sidebar noise.',
+  },
+  {
+    date: 'September 12, 2026',
     title: 'Fix: /codes page highlighted the wrong nav item',
     changes: [
       { tag: 'Fixed', text: 'On the Lobby Hacks (/codes) guide page, the top nav was highlighting “News” instead of “Lobby Hacks.” Now the correct tab is marked active.' },
