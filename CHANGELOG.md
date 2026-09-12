@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 12, 2026 — SEO pages: collapsible footer credits
+
+- **Changed:** the long credits/sources/disclaimers block in the prerendered footer (`scripts/prerender.mjs` `FOOT` +
+  `.foot details/summary` CSS) is now inside a `<details>` "Credits, sources & disclaimers" expander, matching the app
+  footer. Pure HTML, so it works on static pages with no JS.
+- **Why:** keep the attribution (licensing/sources) but stop it dominating the bottom of every guide/Sprite page.
+
+---
+
 ## September 12, 2026 — Content audit (Loot Hacker prose caught up to live)
 
 - **Fixed:** a site-wide accuracy pass found hand-written descriptions still calling the Loot Hacker finish "datamined /

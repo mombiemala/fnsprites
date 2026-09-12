@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 12, 2026',
+    title: 'SEO pages: collapsible footer credits',
+    changes: [
+      { tag: 'Changed', text: 'The long credits/sources/disclaimers block in the footer of the static guide & Sprite pages is now tucked into a “Credits, sources & disclaimers” expander — matching the app footer — so those pages end cleanly instead of with a wall of attribution text. It’s plain HTML (no JavaScript), so it still works on the prerendered pages.' },
+    ],
+    summary: 'The SEO-page footer credits now collapse behind a tap, like the app footer.',
+    why: 'The attribution block is important to keep (licensing + sources) but it dominated the bottom of every guide page. Collapsing it — the way the app already does — keeps the footer tidy without losing the credits.',
+  },
+  {
+    date: 'September 12, 2026',
     title: 'Content audit — Loot Hacker prose caught up to live',
     changes: [
       { tag: 'Fixed', text: 'A site-wide accuracy pass found several hand-written descriptions still calling the Loot Hacker finish “datamined / not released yet” even though it went live Sep 10. Fixed on the Onigiri, X-Ray, Adventure and Overshield Sprite pages, in the in-app “How Sprites work” guide, and in a stale code note — Loot Hacker now reads as live everywhere (the release flags were already correct).' },
