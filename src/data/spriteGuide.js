@@ -30,7 +30,7 @@ export const SPRITE_GUIDE = [
   ] },
   { h: '🎨 Variants & forms', body: [
     'Each Sprite comes in variant finishes — **Normal, Gold, Gummy, Galaxy, Gem, Holofoil, Cube** and **Quack** — each stacking a small **bonus** on top of the Sprite’s ability. Re-summoning a variant you’ve traded away costs **Sprite Dust**.',
-    'Season 4 “Override” adds two finishes of its own: **Cheat Master** (the green code finish — unlocked with a Hack the Lobby code, not summoned) and **Loot Hacker** (the blue circuit finish — datamined and not released yet).',
+    'Season 4 “Override” adds two finishes of its own: **Cheat Master** (the green code finish — unlocked with a Hack the Lobby code, not summoned) and **Loot Hacker** (the blue circuit finish — live since Sep 10, 2026; holding one gives a +20% chance of Loot Hack items from Chests).',
   ] },
   { h: '🔁 Trading', body: [
     'There’s **no official trade menu** — trades happen in-game by dropping a Sprite for another player to pick up and **co-extract**. Rule of thumb: **don’t drop first**, use quiet/bot lobbies, and stick to **vouched** partners.',

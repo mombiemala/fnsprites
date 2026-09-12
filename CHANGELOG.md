@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 12, 2026 — Content audit (Loot Hacker prose caught up to live)
+
+- **Fixed:** a site-wide accuracy pass found hand-written descriptions still calling the Loot Hacker finish "datamined /
+  not released yet" post-launch (Sep 10). Updated `src/data/sprites.js` (Onigiri, X-Ray, Adventure, Overshield),
+  `src/data/spriteGuide.js`, and a stale comment in `src/data/themes.js` — Loot Hacker reads as live everywhere; release
+  flags were already correct.
+- **Changed:** `src/data/news.js` — Sep 12 Power Hours item retagged `event` / "today" (was `upcoming`).
+- **Why:** flipping Loot Hacker live updated the flags but not older prose; the audit is for catching exactly that drift.
+
+---
+
 ## September 11, 2026 — Fix: Sep 12 Power Hours note (no "new" variants)
 
 - **Fixed:** the Sep 12 Power Hours item (`src/data/news.js`) and top banner (`src/data/announcements.js`) claimed Cheat

@@ -55,8 +55,8 @@ export const FINISH_ODDS_FACTOR = {
   // Cheatmaster odds aren't known yet — null keeps it out of the Chest-luck picker
   // until Epic (or the community) surfaces a roll rate.
   cheatmaster: null,
-  // Loot Hacker isn't a chest pull (and is still unreleased) — null keeps it out
-  // of the Chest-luck picker.
+  // Loot Hacker is live (Sep 10) but Epic/the community haven't surfaced a roll
+  // rate for it — null keeps it out of the Chest-luck picker until one does.
   loothacker: null,
   rift: 0.05,
 }

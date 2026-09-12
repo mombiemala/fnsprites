@@ -6,6 +6,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 12, 2026',
+    title: 'Content audit — Loot Hacker prose caught up to live',
+    changes: [
+      { tag: 'Fixed', text: 'A site-wide accuracy pass found several hand-written descriptions still calling the Loot Hacker finish “datamined / not released yet” even though it went live Sep 10. Fixed on the Onigiri, X-Ray, Adventure and Overshield Sprite pages, in the in-app “How Sprites work” guide, and in a stale code note — Loot Hacker now reads as live everywhere (the release flags were already correct).' },
+      { tag: 'Changed', text: 'The Sep 12 Power Hours item now reads “today” (it was still tagged upcoming).' },
+    ],
+    summary: 'Swept the whole site so every mention of the Loot Hacker finish matches reality (it’s live).',
+    why: 'When we flipped Loot Hacker live on Sep 10 the release flags updated, but some prose written before launch still said “not released yet.” An accuracy audit is exactly for catching that drift — the descriptions now match the roster.',
+  },
+  {
     date: 'September 11, 2026',
     title: 'Fix: Sep 12 Power Hours note (no “new” variants)',
     changes: [
