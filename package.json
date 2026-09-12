@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "fetch:art": "node scripts/fetch-sprite-art.mjs",
-    "art:missing": "node scripts/fetch-sprite-art.mjs --list-missing"
+    "art:missing": "node scripts/fetch-sprite-art.mjs --list-missing",
+    "verify-roster": "node scripts/verify-roster.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",

@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 12, 2026 — Dev: roster cross-check advisory (`npm run verify-roster`)
+
+- **Added:** `scripts/verify-roster.mjs` + `verify-roster` npm script — a non-blocking advisory that diffs Sprite-related
+  file changes in the `Fortnite-Datamining/Fortnite-Datamining` repo against our roster (`src/data/sprites.js`) and writes
+  `docs/roster-diff.md` flagging datamined Sprite tokens we don't recognise. Candidates for a human, never auto-edits.
+- **Not wired into `build`** and fully graceful — if the datamine source is unreachable (no-egress sandbox, GitHub
+  hiccup) it writes a "skipped" note and exits 0, so it can never break a build/deploy. Reuses the datamine plumbing from
+  `fetch-sprite-updates.mjs`. (Verdict from the API spike: fortnite-api.com has no Sprite data — the datamine repo is the
+  real structured source.) Internal tooling only, so no in-app changelog entry.
+
+---
+
 ## September 12, 2026 — Friends & trade matcher surfaced
 
 - **Changed:** the Leaderboard tab is now "🏆 Leaderboard & Friends" (`src/App.jsx` TABS + `scripts/prerender.mjs`
