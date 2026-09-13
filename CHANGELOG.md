@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 13, 2026 — Content-accuracy pass (stale pre-launch copy)
+
+- **Fixed:** `src/data/themes.js` — the `cheatmaster` finish `bonus` said "not yet confirmed by Epic (datamined)"; it's
+  been live since the Aug 20 launch. Reworded to "Season 4 Override premium finish — unlocked per-Sprite by a specific
+  Hack the Lobby code, cosmetic (keeps the base ability)." The `rumored: true` flag is **kept intentionally** — it's the
+  release-gate that stops the whole finish auto-releasing across the roster (same for `cube`, whose comment was also
+  refreshed to note it shipped in Season 3 and is archived).
+- **Fixed:** `src/data/sprites.js` — removed leftover "leaked / unconfirmed until Epic's patch notes" prose on shipped,
+  now-archived Season 3 collabs (John Wick `SPRITE_SOURCE`, Air ability), and rewrote the stale Season-3-era top comment /
+  "Datamined (NOT yet released)" grouping header to describe the date-gate reality.
+- **Verified unchanged:** RELEASED_COUNT still derives to **179**; changelog files in sync; `prerender.mjs` has no
+  hard-coded counts/dates and no "Season 5" text; only the (accurate) lobby-codes banner is active today.
+- **Why:** the date-gate/flip logic had outrun some hand-written descriptions, so live content still read as speculative.
+  Release flags and counts were already correct — this was wording only.
+
+---
+
 ## September 13, 2026 — Merge three top-of-page banners into one compact card
 
 - **Changed:** new `src/components/TopStatus.jsx` merges the announcement bar (`AnnouncementBar`), the "Today"

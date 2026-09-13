@@ -11,18 +11,20 @@ export const THEMES = [
   { id: 'galaxy', name: 'Galaxy', short: 'Gx', className: 'theme-galaxy', accent: '#7b61ff', bonus: '+30% ammo when looting' },
   { id: 'gem', name: 'Gem', short: 'Ge', className: 'theme-gem', accent: '#27e0c4', bonus: 'Take 30% less fall damage (stacks with the Sprite’s base ability). Live from New Sprite Day, Aug 6, 2026.' },
   { id: 'holofoil', name: 'Holofoil', short: 'H', className: 'theme-holofoil', accent: '#c44dff', bonus: '+5% squad chance to find rare (Gold/Gummy/Galaxy) Sprites from chests' },
-  // Event date is Epic-confirmed (Jul 23), but which Sprites get Cube each wave is
-  // still unconfirmed AND `rumored: true` is what keeps the leaked-Sprite loop from
-  // auto-releasing Cube early — so it stays true until each wave actually lands.
+  // Cube shipped in waves during Season 3 (from Jul 23) and is now archived like
+  // the rest of that generation. `rumored: true` is kept as a release-GATE so only
+  // the Sprites with an explicit Cube variant count as having it, rather than the
+  // form auto-releasing across the whole roster.
   { id: 'cube', name: 'Cube', short: 'Cu', className: 'theme-cube', accent: '#8a2be2', bonus: 'Overdrive (speed boost) while you’re in the Storm.', rumored: true },
   { id: 'quack', name: 'Quack', short: 'Qk', className: 'theme-quack', accent: '#ffcf4d', bonus: 'Shares 50% of the XP it earns with every other Sprite in your match — levels your collection faster. Earned via Sprite Mastery rewards, not from chests.', mastery: true },
-  // Cheatmaster — the Chapter 7 Season 4 "Override" finish (glitch/pixel theme).
-  // Datamined; its bonus and roll odds aren't confirmed yet, so `rumored: true`
-  // keeps it from auto-releasing (and reads as leaked) until Epic reveals it.
-  // `noSummon`: unlocked another way (a Hack-the-Lobby code), not by spending
-  // Sprite Dust — so it's excluded from "Dust to complete" math. (Quack is the
-  // same idea via `mastery`.)
-  { id: 'cheatmaster', name: 'Cheatmaster', short: 'Ch', className: 'theme-cheatmaster', accent: '#41f08a', bonus: 'Season 4 “Override” finish — unlocked by a Hack the Lobby code, not summoned. Bonus not yet confirmed by Epic (datamined).', rumored: true, noSummon: true },
+  // Cheatmaster — the Chapter 7 Season 4 "Override" premium finish (glitch/pixel
+  // theme). LIVE since the Aug 20 launch, but unlocked PER-SPRITE by specific
+  // Hack-the-Lobby codes (Sonic = GOTTAGOFAST, etc.), so `rumored: true` stays as a
+  // release-GATE: only Sprites with a confirmed code / explicit release count as
+  // live, rather than the whole finish auto-releasing across the roster. `noSummon`:
+  // it's code-unlocked, not Dust-summoned, so it's excluded from summon math.
+  // (Quack is the same idea via `mastery`.)
+  { id: 'cheatmaster', name: 'Cheatmaster', short: 'Ch', className: 'theme-cheatmaster', accent: '#41f08a', bonus: 'Season 4 “Override” premium finish — unlocked per-Sprite by a specific Hack the Lobby code, not Dust-summoned. A cosmetic finish: it keeps the Sprite’s base ability.', rumored: true, noSummon: true },
   // Loot Hacker — a second Chapter 7 Season 4 "Override" finish (blue circuit /
   // hologram theme), distinct from the green Cheatmaster. Went live in the
   // Sep 10, 2026 update: 14 new Loot Hacker variants entered the loot pool

@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 13, 2026',
+    title: 'Content accuracy pass — Cheatmaster finish no longer reads as “unconfirmed”',
+    changes: [
+      { tag: 'Fixed', text: 'The Cheatmaster finish description still said its bonus was “not yet confirmed by Epic (datamined)” — left over from before launch. It’s been live all season, so it now correctly reads as the Season 4 “Override” premium finish: unlocked per-Sprite by a specific Hack the Lobby code, cosmetic (keeps the Sprite’s base ability).' },
+      { tag: 'Fixed', text: 'Cleaned up leftover “leaked / unconfirmed until Epic’s patch notes” wording on Season 3 collab Sprites (John Wick, Air) that have long since shipped and are now archived — their descriptions now say so plainly.' },
+    ],
+    summary: 'Swept the roster and finishes for stale pre-launch “leaked/unconfirmed” copy and corrected it to match what’s actually live.',
+    why: 'Some hand-written descriptions were written while a finish or Sprite was still datamined, and the release logic outran the prose — so live content still read as speculative. A quick audit caught the Cheatmaster finish (the most visible one) plus a few archived Season 3 collabs; the counts and release flags were already correct, this was just wording.',
+  },
+  {
+    date: 'September 13, 2026',
     title: 'Tidier top of page — three stacked banners merged into one compact card',
     changes: [
       { tag: 'Changed', text: 'The event announcement, the “Today” event countdown, and the “Heads up — you heard it here first” upcoming feed used to be three separate full-width blocks stacked down the page. They’re now one small card at the top: a slim dismissible announcement line, the live/next event + new-codes row, and upcoming drops shown as compact chips (hover for details). Much less scrolling before you reach your collection.' },

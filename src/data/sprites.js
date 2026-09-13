@@ -2,16 +2,17 @@ import { THEME_MAP } from './themes.js'
 
 // Fortnite sprite roster. Variant sets, themes (incl. the Rift line) and
 // released/unreleased flags are aligned with the community tracker
-// UltronCore/sprite-tracker; the Striker/Fishy/Aura/Boss/Grim Reaper sprites
-// went live in the Jun 25, 2026 update. Wick/Drifter/Ice/Seven/Air/Batman/
-// Spider-Man are datamined and not yet released (flagged `rumored` — leaked,
-// unconfirmed; several carry a leaked `releaseDate`).
-// Holofoil rolls out in WAVES, not all at once: Water/Fire/Ghost/King/Striker
-// (Jul 9) and Air/Seven/Batman (Jul 16) have it; Earth, Duck, Dream, Demon, Punk,
-// Zero Point, Fishy, Aura, Boss & Grim are still to come (their holofoil stays U).
-// Seven, Air & Batman are part of the ~Jul 16 DC Summer update; the new Cube &
-// Quack forms are on the whole roster. All new variants are flagged unreleased
-// until they go live, and their abilities/bonuses can change before launch.
+// UltronCore/sprite-tracker. Historical note: the Season 3 "Runners" roster
+// (incl. the DC "Hot Bat Summer" Sprites — Seven, Air, Batman on Jul 16, and
+// John Wick's Springfield Reloaded exclusive on Jul 30) has all shipped and is
+// now ARCHIVED — kept in the Collection & Sprite Garden but not obtainable in
+// Battle Royale since Chapter 7 Season 4 "Override" took over on Aug 20.
+// The date-gate loop below auto-flips any past-dated leaked Sprite/variant to
+// released, so entries that still read `released:false` here but carry a past
+// `releaseDate` are effectively released at runtime.
+// The only genuinely-unreleased types are the datamined Season 4 "Override"
+// Sprites (Pond, Honey, Dumpster, Meowscles, Squibbly, Cube, Headshot, BodySlam),
+// still flagged `rumored` until Epic ships each — their abilities can change.
 //
 // `dropRate` is the base (Normal) chance from a Sprite Chest. Epic does NOT
 // publish official rates — these are COMMUNITY ESTIMATES cross-referenced from
@@ -100,16 +101,17 @@ export const SPRITE_TYPES = [
     ability: 'Found in Relic Chests: when your health drops critically low, regenerate over time while gaining Cloak and low gravity — health restored grows each level (60 → 70 → 80 → 90 → 100 HP at Lv 5). VTuber collab. Accidentally released early ahead of v41.30 and briefly vaulted, then re-enabled on Aug 4, 2026 (Ironmouse’s VTuber debut anniversary) — available again as of Aug 4. If you collected it during its short early window, it returns to your collection automatically at the level you last had it. A brief extraction bug right after the return was hotfixed by Epic on Aug 5.',
     variants: { normal: R } },
 
-  // ---- Datamined / upcoming (NOT yet released). `rumored` = leaked/unconfirmed;
-  //      abilities & exact variant lines can change before launch. ----
+  // ---- Season 3 collab Sprites with a past `releaseDate`: the date-gate loop
+  //      below auto-flips these to released at runtime. They shipped on the dates
+  //      shown and are now ARCHIVED (kept, not obtainable in BR this season). ----
   { id: 'wick', name: 'John Wick', icon: '🔫', rarity: 'Mythic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-30',
-    ability: 'Knocking or eliminating a player reveals nearby enemies on the map — the mark lasts longer each level (3 → 3.5 → 4 → 4.5 → 5s at Lv 5). Exclusive to Springfield Reloaded (The Simpsons on Reload).',
+    ability: 'Knocking or eliminating a player reveals nearby enemies on the map — the mark lasts longer each level (3 → 3.5 → 4 → 4.5 → 5s at Lv 5). Was a Springfield Reloaded (The Simpsons on Reload) exclusive.',
     variants: { normal: U } },
   { id: 'seven', name: 'Seven', icon: '7️⃣', rarity: 'Epic', dropRate: null, released: true,
     ability: 'Reveals enemy foot trails on the map for your whole squad — duration ramps by level (10 → 15 → 20 → 25 → 30s at max). The Seven faction collab, live in the Jul 16 (v41.20) update.',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
   { id: 'air', name: 'Air', icon: '🌬️', rarity: 'Epic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
-    ability: 'A movement Sprite — increases sprint speed & jump height and removes fall damage. On Epic’s Jul 16 New Sprite Day schedule (DC Summer); power not fully confirmed by Epic.',
+    ability: 'A movement Sprite — increases sprint speed & jump height and removes fall damage. A DC “Hot Bat Summer” Sprite, live in the Jul 16 (v41.20) update.',
     variants: { normal: U, gold: U, gummy: U, galaxy: U, holofoil: U } },
   { id: 'batman', name: 'Batman', icon: '🦇', rarity: 'Mythic', dropRate: null, released: false, rumored: true, releaseDate: '2026-07-16',
     ability: 'Deploy the Bat Cape midair for a glide / slow descent. DC “Hot Bat Summer” collab Sprite (Mythic), in Gold, Gummy, Galaxy & Holofoil, plus a Cube variant from New Sprite Day (Jul 23). Live in the Jul 16 (v41.20) update.',
@@ -384,7 +386,7 @@ const SPRITE_SOURCE = {
   grim: 'Sprite Chests — spawns almost exclusively here (no mid-match spawns).',
   peanut: 'Extremely rare — a lucky Sprite Chest find.',
   zeropoint: 'Sprite Chests — Mythic, so very rare from any single chest.',
-  wick: 'Leaked as exclusive to The Simpsons Fortnite Reload — reveal it on the Springfield map with the new Reload Portable Extractor, eliminate a player already carrying it, or find it in Reload chests. Unconfirmed until Epic’s patch notes.',
+  wick: 'A Springfield Reloaded (The Simpsons on Reload) exclusive Mythic — was revealed on the Springfield map with the Reload Portable Extractor, taken from a carrier you eliminated, or found in Reload chests. That was a Season 3 event, so John Wick is now archived: kept in your Collection & Sprite Garden, but not obtainable in Battle Royale this season.',
 }
 export function spriteSource(typeId) {
   if (SPRITE_SOURCE[typeId]) return SPRITE_SOURCE[typeId]
