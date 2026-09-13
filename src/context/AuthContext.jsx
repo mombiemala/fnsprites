@@ -31,6 +31,8 @@ export function AuthProvider({ children }) {
   // for fast membership checks (the ★ toggle on leaderboard rows). The detailed
   // list (scores, counts) is fetched on demand by the Friends panel.
   const [friendIds, setFriendIds] = useState(() => new Set())
+  // user_ids the signed-in player has vouched for (trade reputation button state).
+  const [vouchedIds, setVouchedIds] = useState(() => new Set())
   const [tracking, setTracking] = useState(() => loadLocal())
   const [authLoading, setAuthLoading] = useState(true)
   const [syncing, setSyncing] = useState(false)
@@ -53,6 +55,7 @@ export function AuthProvider({ children }) {
         // Reset cloud-tied state on sign-out; keep local tracking for guests.
         setProfile(null)
         setFriendIds(new Set())
+        setVouchedIds(new Set())
         mergedOnce.current = false
       }
     })
@@ -65,14 +68,16 @@ export function AuthProvider({ children }) {
     let cancelled = false
     const run = async () => {
       setSyncing(true)
-      const [{ data: prof }, { data: rows }, { data: friendRows }] = await Promise.all([
+      const [{ data: prof }, { data: rows }, { data: friendRows }, { data: vouchRows }] = await Promise.all([
         supabase.from('profiles').select('*').eq('id', user.id).maybeSingle(),
         supabase.from('sprite_progress').select('*').eq('user_id', user.id).eq('collection', ACTIVE_COLLECTION_ID),
         supabase.from('friends').select('friend_id').eq('user_id', user.id),
+        supabase.from('trade_vouches').select('vouchee_id').eq('voucher_id', user.id),
       ])
       if (cancelled) return
 
       setFriendIds(new Set((friendRows || []).map((r) => r.friend_id)))
+      setVouchedIds(new Set((vouchRows || []).map((r) => r.vouchee_id)))
 
       const cloudMap = rowsToMap(rows)
 
@@ -359,6 +364,46 @@ export function AuthProvider({ children }) {
     return { ok: true }
   }, [user])
 
+  // --- Trade reputation (vouches) ---
+  // Reputation for a set of players (batched): id -> { credible_count, tier }.
+  const fetchReputation = useCallback(async (uids) => {
+    const list = [...new Set((uids || []).filter(Boolean))]
+    if (!list.length) return {}
+    const { data, error } = await supabase.rpc('trade_reputation_batch', { uids: list })
+    if (error) return {}
+    const map = {}
+    for (const r of data || []) map[r.user_id] = { count: r.credible_count, tier: r.tier }
+    return map
+  }, [])
+
+  // Public list of who vouched for a player (for the Trainer Card).
+  const fetchVouchers = useCallback(async (uid) => {
+    if (!uid) return []
+    const { data, error } = await supabase.rpc('vouchers_for', { uid })
+    if (error) return []
+    return data || []
+  }, [])
+
+  // Vouch for a player you've added as a friend (Phase 1 gate). Optimistic.
+  const addVouch = useCallback(async (targetId, note = null) => {
+    if (!user || !targetId || targetId === user.id) return { error: 'invalid' }
+    setVouchedIds((prev) => new Set(prev).add(targetId))
+    const { data, error } = await supabase.rpc('vouch_add', { target: targetId, p_note: note })
+    if (error || data !== 'ok') {
+      setVouchedIds((prev) => { const n = new Set(prev); n.delete(targetId); return n })
+      return { error: error?.message || data || 'failed' }
+    }
+    return { ok: true }
+  }, [user])
+
+  const removeVouch = useCallback(async (targetId) => {
+    if (!user || !targetId) return { error: 'invalid' }
+    setVouchedIds((prev) => { const n = new Set(prev); n.delete(targetId); return n })
+    const { error } = await supabase.from('trade_vouches').delete().eq('voucher_id', user.id).eq('vouchee_id', targetId)
+    if (error) { setVouchedIds((prev) => new Set(prev).add(targetId)); return { error: error.message } }
+    return { ok: true }
+  }, [user])
+
   const removeFriend = useCallback(async (friendId) => {
     if (!user || !friendId) return { error: 'Invalid' }
     const prevHad = friendIds.has(friendId)
@@ -399,6 +444,11 @@ export function AuthProvider({ children }) {
     searchPlayers,
     addFriend,
     removeFriend,
+    vouchedIds,
+    fetchReputation,
+    fetchVouchers,
+    addVouch,
+    removeVouch,
     signUp,
     signIn,
     signInWithProvider,

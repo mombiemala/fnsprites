@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 13, 2026 — Trade reputation (Phase 1: vouches)
+
+- **Added:** vouch for friends you've traded with; reputation shows as a tier badge (🤝 Trusted / ✅ Verified / ⭐ Top
+  trader) on Friends rows and trade-match cards. New `src/components/RepBadge.jsx`; wired through `AuthContext`
+  (`vouchedIds`, `addVouch`, `removeVouch`, `fetchReputation`, `fetchVouchers`) and `Friends.jsx`.
+- **Security/DB:** repurposed the (empty) legacy `trade_vouches` table — RLS (own-row select/delete; **no insert policy**,
+  so all vouches go through the gated definer fn), plus RPCs `vouch_add` (friend-gated, ≤5/24h, no self, public target),
+  `trade_reputation_batch` (count of **credible** vouchers only: voucher public + account ≥72h + owns ≥10 sprites → tier),
+  and `vouchers_for`.
+- **Why:** the public Want Board makes trust matter; reputation is a count of credible vouchers (not a gameable star
+  average), positive-only (no retaliation downvotes), Sybil-barred, and friend-gated. Trade-confirmation gate + collusion
+  capping are the planned Phase 2.
+
+---
+
 ## September 12, 2026 — Public Want Board (Everyone trade matches)
 
 - **Added:** a "👥 Friends / 🌐 Everyone" scope toggle in Trade matches (`src/components/Friends.jsx` — `TradesView`

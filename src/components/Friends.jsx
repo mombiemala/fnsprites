@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 import { PlayerAvatar, PlayerBadges } from './PlayerAvatar'
+import RepBadge from './RepBadge'
 import CompareModal from './CompareModal'
 import TradeHowTo from './TradeHowTo'
 import SpriteArt from './SpriteArt'
@@ -34,8 +35,20 @@ function SpriteRow({ ids }) {
 // surfaces two-way trade matches limited to your friends. One-directional
 // "save to compare" model.
 export default function Friends({ onSignIn }) {
-  const { user, friendIds, fetchFriends, fetchFriendTradeMatches, searchPlayers, addFriend, removeFriend } = useAuth()
+  const { user, friendIds, fetchFriends, fetchFriendTradeMatches, searchPlayers, addFriend, removeFriend, fetchReputation, vouchedIds, addVouch, removeVouch } = useAuth()
   const { toast } = useToast()
+
+  const toggleVouch = async (targetId, name) => {
+    if (vouchedIds.has(targetId)) {
+      await removeVouch(targetId)
+    } else {
+      const res = await addVouch(targetId)
+      toast(res?.error ? (res.error === 'not_friend' ? 'Add them as a friend first' : 'Couldn’t vouch') : `Vouched for ${name || 'player'}`)
+    }
+    // refresh this player's rep after a change
+    const m = await fetchReputation([targetId])
+    setRep((prev) => ({ ...prev, ...m }))
+  }
   // ?tab=trades deep-links straight to the trade matcher (e.g. from the
   // /how-to-trade-sprites guide).
   const [view, setView] = useState(() => {
@@ -47,6 +60,7 @@ export default function Friends({ onSignIn }) {
   })
   const [rows, setRows] = useState(null)
   const [trades, setTrades] = useState(null)
+  const [rep, setRep] = useState({}) // user_id -> { count, tier }
   const [compare, setCompare] = useState(null)
 
   // Add-friend search
@@ -69,6 +83,17 @@ export default function Friends({ onSignIn }) {
     })()
     return () => { cancelled = true }
   }, [user, fetchFriends])
+
+  // Load trade reputation for the friends shown (badges).
+  useEffect(() => {
+    if (!rows?.length) return
+    let cancelled = false
+    ;(async () => {
+      const m = await fetchReputation(rows.map((r) => r.user_id))
+      if (!cancelled) setRep((prev) => ({ ...prev, ...m }))
+    })()
+    return () => { cancelled = true }
+  }, [rows, fetchReputation])
 
   // Load trade matches lazily the first time the Trades sub-view is opened.
   useEffect(() => {
@@ -203,6 +228,7 @@ export default function Friends({ onSignIn }) {
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5">
                       <a href={`?u=${r.user_id}`} className="truncate text-sm font-bold text-white hover:text-[var(--brand)]">{r.gamertag || 'Anonymous'}</a>
+                      <RepBadge rep={rep[r.user_id]} />
                       {r.is_public ? <PlayerBadges owned={r.owned} mastered={r.mastered} max={2} /> : (
                         <span className="shrink-0 text-[10px] text-[var(--muted)]">🔒 private</span>
                       )}
@@ -220,6 +246,14 @@ export default function Friends({ onSignIn }) {
                       ⚖ Compare
                     </button>
                   )}
+                  <button
+                    onClick={() => toggleVouch(r.user_id, r.gamertag)}
+                    title={vouchedIds.has(r.user_id) ? 'Remove your vouch' : 'Vouch — you’ve traded safely with them'}
+                    aria-pressed={vouchedIds.has(r.user_id)}
+                    className={`shrink-0 rounded-lg px-2 py-1 text-[11px] font-bold ${vouchedIds.has(r.user_id) ? 'bg-emerald-400/15 text-emerald-300' : 'bg-[var(--panel-2)] text-white hover:bg-[var(--border)]'}`}
+                  >
+                    {vouchedIds.has(r.user_id) ? '✓ Vouched' : '🤝 Vouch'}
+                  </button>
                   <button
                     onClick={() => handleRemove(r)}
                     title="Remove friend"
@@ -289,6 +323,18 @@ function TradesView({ friendTrades }) {
 // Renders a set of trade-match cards (or the loading / empty state) + the
 // how-to-trade helper. Shared by both scopes.
 function TradeList({ trades, scope }) {
+  const { fetchReputation } = useAuth()
+  const [rep, setRep] = useState({})
+  useEffect(() => {
+    if (!trades?.length) return
+    let cancelled = false
+    ;(async () => {
+      const m = await fetchReputation(trades.map((t) => t.partner_id))
+      if (!cancelled) setRep(m)
+    })()
+    return () => { cancelled = true }
+  }, [trades, fetchReputation])
+
   if (trades === null) {
     return (
       <div className="space-y-2">
@@ -318,6 +364,7 @@ function TradeList({ trades, scope }) {
           <div key={t.partner_id} className="rounded-xl border border-[var(--border)] bg-[var(--bg-2)] p-3">
             <div className="mb-2 flex items-center gap-2">
               <a href={`?u=${t.partner_id}`} className="text-sm font-bold text-white hover:text-[var(--brand)]">{t.gamertag || 'Anonymous'}</a>
+              <RepBadge rep={rep[t.partner_id]} />
               {twoWay && <span className="rounded-full bg-emerald-400/15 px-2 py-0.5 text-[10px] font-bold text-emerald-300">✓ Two-way match</span>}
               {t.discord && (
                 <span className="ml-auto flex items-center gap-1 rounded-full bg-[#5865F2]/15 px-2 py-0.5 text-[10px] font-bold text-[#aab4ff]" title="Coordinate the trade on Discord">

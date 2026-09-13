@@ -6,6 +6,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 13, 2026',
+    title: 'Trade reputation — vouch for traders you trust',
+    changes: [
+      { tag: 'Added', text: 'You can now 🤝 vouch for a friend you’ve traded with. A trader’s reputation shows as a badge (🤝 Trusted → ✅ Verified → ⭐ Top trader) on their Friends row and on trade-match cards, so you can tell trustworthy traders at a glance.' },
+      { tag: 'Security', text: 'A vouch only counts toward reputation if it’s from a credible account — public, at least 3 days old, and owning 10+ Sprites — so throwaway accounts can’t inflate anyone. You can only vouch for friends (max 5/day), it’s positive-only (no downvotes to abuse), and you can remove your vouch anytime. Counts are served by definer functions; nobody’s raw vouch list is exposed.' },
+    ],
+    summary: 'A hard-to-game trust signal for trading: vouch for friends, and see who the community trusts.',
+    why: 'Opening trades to the whole community (the Want Board) makes trust matter more. Reputation is deliberately a count of credible vouchers, not a star average — averages are trivially gamed and stars invite retaliation. The Sybil bar + friend gate + positive-only design keep it honest; a stronger trade-confirmation gate is the planned Phase 2.',
+  },
+  {
     date: 'September 12, 2026',
     title: 'Public Want Board — trade-match with any collector',
     changes: [
