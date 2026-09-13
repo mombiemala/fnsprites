@@ -22,7 +22,7 @@ export const ANNOUNCEMENTS = [
     link: '/?view=news',
     linkLabel: 'Event details',
     start: '2026-09-11',
-    end: '2026-09-13',
+    end: '2026-09-12',
     source: 'The Click',
     official: false,
     tone: 'event',

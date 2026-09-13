@@ -36,7 +36,7 @@ export const NEWS = [
     when: 'Sep 12, 2026',
     tag: 'event',
     start: '2026-09-12',
-    end: '2026-09-13',
+    end: '2026-09-12',
     title: '⚡ Power Hours today — Gold & Cheat Master Sprites boosted (Sep 12)',
     body: 'Power Hours return Saturday, Sep 12 in two windows — 2–4 PM & 9–11 PM ET — with boosted spawns for Gold and Cheat Master Sprites plus supercharged Overdrive Grenades. It’s a strong window to fill in premium finishes you’re missing (Gold and Cheat Master versions of already-released Sprites like Onigiri and Storm Scout), and 1-Up Tokens and Portable Extractors can drop from Chests.',
     link: 'https://www.theclick.gg/fortnite-power-hours-september-12/',
