@@ -30,25 +30,109 @@ function SpriteRow({ ids }) {
   )
 }
 
+// Trade-confirmation + vouch + report controls for one trading partner (Phase 2).
+// Vouching is gated on a MUTUAL trade confirmation: both of you mark the trade as
+// done, then the Vouch button unlocks. State comes from the global auth sets, so
+// it stays consistent across the friends list and the trade-match cards.
+function TraderActions({ partnerId, name, onRepChange }) {
+  const {
+    confirmedTradeIds, theyConfirmedTradeIds, mutualTradeIds, vouchedIds,
+    confirmTrade, unconfirmTrade, addVouch, removeVouch, reportTrader, fetchReputation,
+  } = useAuth()
+  const { toast } = useToast()
+  const iConfirmed = confirmedTradeIds.has(partnerId)
+  const theyConfirmed = theyConfirmedTradeIds.has(partnerId)
+  const mutual = mutualTradeIds.has(partnerId)
+  const vouched = vouchedIds.has(partnerId)
+
+  const refreshRep = async () => {
+    const m = await fetchReputation([partnerId])
+    onRepChange?.(m)
+  }
+
+  const onConfirm = async () => {
+    if (iConfirmed) {
+      const res = await unconfirmTrade(partnerId)
+      if (res?.error) { toast('Couldn’t update'); return }
+      toast('Trade unmarked')
+      if (vouched) await refreshRep() // unconfirm pulls any vouch too
+    } else {
+      const res = await confirmTrade(partnerId)
+      if (res?.error) { toast('Couldn’t mark as traded'); return }
+      toast(res.mutual ? `Trade confirmed — you can vouch for ${name || 'them'} now` : `Marked as traded — ${name || 'they'} confirm too to unlock vouching`)
+    }
+  }
+
+  const onVouch = async () => {
+    if (vouched) {
+      await removeVouch(partnerId)
+      toast('Vouch removed')
+    } else {
+      const res = await addVouch(partnerId)
+      if (res?.error) {
+        toast(
+          res.code === 'no_trade' ? 'Mark the trade as done first'
+            : res.code === 'not_mutual' ? 'They need to confirm the trade too'
+              : res.code === 'rate_limited' ? 'You’ve vouched a lot today — try again tomorrow'
+                : 'Couldn’t vouch',
+        )
+        return
+      }
+      toast(`Vouched for ${name || 'player'} 🤝`)
+    }
+    await refreshRep()
+  }
+
+  const onReport = async () => {
+    const reason = window.prompt(`Report ${name || 'this trader'}? Add an optional reason (e.g. a scam attempt). This is sent privately to the site owner and does not affect their score automatically.`)
+    if (reason === null) return
+    const res = await reportTrader(partnerId, reason)
+    toast(res?.error ? 'Couldn’t send report' : 'Report sent — thank you')
+  }
+
+  return (
+    <div className="flex flex-wrap items-center gap-1.5">
+      <button
+        onClick={onConfirm}
+        title={iConfirmed ? 'You marked a completed trade with them — tap to undo' : 'Mark that you completed a trade with them'}
+        aria-pressed={iConfirmed}
+        className={`shrink-0 rounded-lg px-2 py-1 text-[11px] font-bold ${iConfirmed ? (mutual ? 'bg-emerald-400/15 text-emerald-300' : 'bg-amber-400/15 text-amber-300') : 'bg-[var(--panel-2)] text-white hover:bg-[var(--border)]'}`}
+      >
+        {iConfirmed ? (mutual ? '✅ Traded' : '⏳ Awaiting them') : '🔁 Mark as traded'}
+      </button>
+      {mutual && (
+        <button
+          onClick={onVouch}
+          title={vouched ? 'Remove your vouch' : 'Vouch — you’ve completed a safe trade with them'}
+          aria-pressed={vouched}
+          className={`shrink-0 rounded-lg px-2 py-1 text-[11px] font-bold ${vouched ? 'bg-emerald-400/15 text-emerald-300' : 'bg-sky-400/15 text-sky-300 hover:bg-sky-400/25'}`}
+        >
+          {vouched ? '✓ Vouched' : '🤝 Vouch'}
+        </button>
+      )}
+      {theyConfirmed && !iConfirmed && (
+        <span className="text-[10px] font-semibold text-emerald-300">They marked you — confirm to vouch</span>
+      )}
+      <button
+        onClick={onReport}
+        title="Report a problem with this trader (private to the site owner)"
+        aria-label={`Report ${name || 'trader'}`}
+        className="shrink-0 rounded-lg px-1.5 py-1 text-[11px] text-[var(--muted)] hover:text-red-400"
+      >
+        ⚑
+      </button>
+    </div>
+  )
+}
+
 // Friends panel — the signed-in player's saved players, ranked by the same Flex
 // Score as the global board, each with a one-tap Compare. A Trades sub-view
 // surfaces two-way trade matches limited to your friends. One-directional
 // "save to compare" model.
 export default function Friends({ onSignIn }) {
-  const { user, friendIds, fetchFriends, fetchFriendTradeMatches, searchPlayers, addFriend, removeFriend, fetchReputation, vouchedIds, addVouch, removeVouch } = useAuth()
+  const { user, friendIds, fetchFriends, fetchFriendTradeMatches, searchPlayers, addFriend, removeFriend, fetchReputation } = useAuth()
   const { toast } = useToast()
 
-  const toggleVouch = async (targetId, name) => {
-    if (vouchedIds.has(targetId)) {
-      await removeVouch(targetId)
-    } else {
-      const res = await addVouch(targetId)
-      toast(res?.error ? (res.error === 'not_friend' ? 'Add them as a friend first' : 'Couldn’t vouch') : `Vouched for ${name || 'player'}`)
-    }
-    // refresh this player's rep after a change
-    const m = await fetchReputation([targetId])
-    setRep((prev) => ({ ...prev, ...m }))
-  }
   // ?tab=trades deep-links straight to the trade matcher (e.g. from the
   // /how-to-trade-sprites guide).
   const [view, setView] = useState(() => {
@@ -222,46 +306,49 @@ export default function Friends({ onSignIn }) {
           ) : (
             <div className="space-y-1">
               {rows.map((r, i) => (
-                <div key={r.user_id} className="flex items-center gap-3 rounded-xl bg-[var(--bg-2)] px-3 py-2">
-                  <span className="w-5 shrink-0 text-center text-sm font-extrabold text-[var(--muted)]">{i + 1}</span>
-                  <PlayerAvatar id={r.avatar} size={32} />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1.5">
-                      <a href={`?u=${r.user_id}`} className="truncate text-sm font-bold text-white hover:text-[var(--brand)]">{r.gamertag || 'Anonymous'}</a>
-                      <RepBadge rep={rep[r.user_id]} />
-                      {r.is_public ? <PlayerBadges owned={r.owned} mastered={r.mastered} max={2} /> : (
-                        <span className="shrink-0 text-[10px] text-[var(--muted)]">🔒 private</span>
-                      )}
+                <div key={r.user_id} className="rounded-xl bg-[var(--bg-2)] px-3 py-2">
+                  <div className="flex items-center gap-3">
+                    <span className="w-5 shrink-0 text-center text-sm font-extrabold text-[var(--muted)]">{i + 1}</span>
+                    <PlayerAvatar id={r.avatar} size={32} />
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <a href={`?u=${r.user_id}`} className="truncate text-sm font-bold text-white hover:text-[var(--brand)]">{r.gamertag || 'Anonymous'}</a>
+                        <RepBadge rep={rep[r.user_id]} />
+                        {r.is_public ? <PlayerBadges owned={r.owned} mastered={r.mastered} max={2} /> : (
+                          <span className="shrink-0 text-[10px] text-[var(--muted)]">🔒 private</span>
+                        )}
+                      </div>
+                      <div className="mt-0.5 text-[11px] text-[var(--muted)]">
+                        {r.is_public ? `${r.owned} owned · ${r.mastered}★ · ${Math.round(r.score)} pts` : 'Collection is private'}
+                      </div>
                     </div>
-                    <div className="mt-0.5 text-[11px] text-[var(--muted)]">
-                      {r.is_public ? `${r.owned} owned · ${r.mastered}★ · ${Math.round(r.score)} pts` : 'Collection is private'}
-                    </div>
+                    {r.is_public && (
+                      <button
+                        onClick={() => setCompare({ userId: r.user_id, gamertag: r.gamertag })}
+                        title={`Compare with ${r.gamertag || 'this player'}`}
+                        className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]"
+                      >
+                        ⚖ Compare
+                      </button>
+                    )}
+                    <button
+                      onClick={() => handleRemove(r)}
+                      title="Remove friend"
+                      aria-label={`Remove ${r.gamertag || 'friend'}`}
+                      className="shrink-0 rounded-lg px-1.5 py-1 text-sm text-[var(--muted)] hover:text-red-400"
+                    >
+                      ✕
+                    </button>
                   </div>
                   {r.is_public && (
-                    <button
-                      onClick={() => setCompare({ userId: r.user_id, gamertag: r.gamertag })}
-                      title={`Compare with ${r.gamertag || 'this player'}`}
-                      className="shrink-0 rounded-lg bg-[var(--panel-2)] px-2 py-1 text-[11px] font-bold text-white hover:bg-[var(--border)]"
-                    >
-                      ⚖ Compare
-                    </button>
+                    <div className="mt-2 pl-8">
+                      <TraderActions
+                        partnerId={r.user_id}
+                        name={r.gamertag}
+                        onRepChange={(m) => setRep((prev) => ({ ...prev, ...m }))}
+                      />
+                    </div>
                   )}
-                  <button
-                    onClick={() => toggleVouch(r.user_id, r.gamertag)}
-                    title={vouchedIds.has(r.user_id) ? 'Remove your vouch' : 'Vouch — you’ve traded safely with them'}
-                    aria-pressed={vouchedIds.has(r.user_id)}
-                    className={`shrink-0 rounded-lg px-2 py-1 text-[11px] font-bold ${vouchedIds.has(r.user_id) ? 'bg-emerald-400/15 text-emerald-300' : 'bg-[var(--panel-2)] text-white hover:bg-[var(--border)]'}`}
-                  >
-                    {vouchedIds.has(r.user_id) ? '✓ Vouched' : '🤝 Vouch'}
-                  </button>
-                  <button
-                    onClick={() => handleRemove(r)}
-                    title="Remove friend"
-                    aria-label={`Remove ${r.gamertag || 'friend'}`}
-                    className="shrink-0 rounded-lg px-1.5 py-1 text-sm text-[var(--muted)] hover:text-red-400"
-                  >
-                    ✕
-                  </button>
                 </div>
               ))}
             </div>
@@ -384,6 +471,13 @@ function TradeList({ trades, scope }) {
                 <SpriteRow ids={t.i_give} />
               </div>
             )}
+            <div className="mt-2.5 border-t border-[var(--border)] pt-2.5">
+              <TraderActions
+                partnerId={t.partner_id}
+                name={t.gamertag}
+                onRepChange={(m) => setRep((prev) => ({ ...prev, ...m }))}
+              />
+            </div>
           </div>
         )
       })}

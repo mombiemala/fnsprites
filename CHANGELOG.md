@@ -11,6 +11,25 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 13, 2026 — Trade reputation Phase 2 (trade-gated vouches, collusion capping, reports)
+
+- **Added:** `trade_confirmations` table + `trade_confirm` / `trade_unconfirm` / `trade_confirmations_for` RPCs. A "🔁 Mark as
+  traded" control on every trade-match card and friend row (`TraderActions` in `src/components/Friends.jsx`); when both
+  parties confirm, the trade is mutual and the "🤝 Vouch" button unlocks. Wired through `AuthContext`
+  (`confirmedTradeIds` / `theyConfirmedTradeIds` / `mutualTradeIds`, `confirmTrade`, `unconfirmTrade`,
+  `fetchTradeConfirmations`).
+- **Added:** lightweight `trade_reports` table + `report_add` RPC + ⚑ Report action (`reportTrader`). Private to the
+  reporter + maker (RLS, no public read); advisory only — never auto-adjusts reputation.
+- **Security/DB:** `vouch_add` re-gated — friend-gate → **mutual trade-confirmation gate** (returns `no_trade` /
+  `not_mutual`). `trade_reputation_batch` now applies **collusion capping**: `verified`/`top` tiers count only
+  **non-mutual** credible vouchers (a voucher the vouchee didn't vouch back for); `trusted` still counts any credible
+  voucher. Dropped the leftover `"insert own vouch"` RLS policy so all vouches route through the gated definer function.
+- **Why:** Phase 1's friend-gate is trivially faked (mutual-friend + mutual-vouch). Anchoring a vouch to a *confirmed*
+  trade makes it mean something; discounting reciprocal vouches stops 2-account rings from farming the top tiers. Reports
+  stay human-reviewed (never auto-penalising) so they can't be weaponised.
+
+---
+
 ## September 13, 2026 — Season timing corrected to the leaked 2026 schedule
 
 - **Changed:** forward-looking season data (`src/data/season.js` `next`, `src/data/incoming.js` `season-5`) no longer calls

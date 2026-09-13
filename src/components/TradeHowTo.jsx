@@ -34,6 +34,10 @@ export default function TradeHowTo() {
         </ol>
       )}
 
+      <p className="mt-2 rounded-lg bg-[var(--panel)] px-2.5 py-2 text-[10px] leading-relaxed text-[var(--muted)]">
+        <b className="text-emerald-300">After a successful trade:</b> tap <b className="text-white">🔁 Mark as traded</b> on their card. When you’ve <b>both</b> marked it, you can <b className="text-sky-300">🤝 Vouch</b> — that’s what builds a trader’s <b className="text-white">reputation badge</b> so the community knows who to trust.
+      </p>
+
       <p className="mt-3 mb-1.5 text-[11px] font-bold text-white">Sprite-Swap islands to meet on</p>
       <div className="space-y-1.5">
         {SPRITE_SWAP_ISLANDS.map((isl) => (

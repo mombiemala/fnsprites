@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'September 13, 2026',
+    title: 'Trade reputation Phase 2 — vouches now backed by a confirmed trade',
+    changes: [
+      { tag: 'Added', text: 'Every trade-match card (and friend) now has a 🔁 “Mark as traded” button. When both of you mark the same trade, it becomes ✅ mutual — and only then does the 🤝 Vouch button unlock. So a vouch now means a real, two-sided trade actually happened, not just “we’re friends.”' },
+      { tag: 'Added', text: 'A lightweight ⚑ Report on any trader — sent privately to us to review. It never auto-lowers anyone’s score (so it can’t be weaponised), it just flags problems for a human.' },
+      { tag: 'Security', text: 'Vouching is re-gated: it now requires a mutual trade confirmation (was: just being friends). Reputation tiers got collusion capping too — the ✅ Verified and ⭐ Top tiers only count vouchers who you did NOT vouch back for, so two accounts can’t “I-scratch-yours” each other into a high badge. And we closed a gap that let the app write vouch rows directly — all vouches now go through the gated function only.' },
+    ],
+    summary: 'Reputation you can trust more: a vouch requires both traders to confirm the trade, reciprocal back-vouches can’t inflate the top tiers, and there’s a quiet way to report bad actors.',
+    why: 'Phase 1 opened vouching to any friend, which is easy to fake — friend each other, vouch each other. The strongest, simplest fix is to anchor a vouch to an actual confirmed trade (both sides say it happened), then discount mutual back-vouches so rings can’t farm the top badges. Reports stay advisory-only on purpose: an automatic “report lowers score” is trivially abused, so a human stays in the loop.',
+  },
+  {
+    date: 'September 13, 2026',
     title: 'The road to Chapter 8 — season timing corrected to the leaked 2026 schedule',
     changes: [
       { tag: 'Changed', text: 'Our forward-looking season data no longer calls the next drop “Chapter 7 Season 5.” A widely-reported leaked 2026 schedule says Season 4 “Override” wraps around Nov 1, followed by a short bridge mini-season, with Chapter 8 Season 1 launching ~Dec 5 — so the countdown, the Heads Up spotlight and the season-transition page now describe it that way.' },

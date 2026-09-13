@@ -248,6 +248,17 @@ Database schema (applied via migrations):
   Readable when the owning profile is public (or it's your own); owner-writable.
 - `friends` — `(user_id, friend_id)`, RLS so you only ever see/manage your own
   rows (a one-directional "save to compare" model — no reciprocal consent).
+- **Trade reputation** (`trade_vouches`, `trade_confirmations`, `trade_reports`):
+  - `trade_confirmations` — `(confirmer_id, partner_id)`; each side marks a completed
+    trade. Both directions present ⇒ a **mutual** trade. RLS: involved parties read,
+    confirmer deletes; inserts go only through `trade_confirm(uuid)`.
+  - `trade_vouches` — `(voucher_id, vouchee_id, note)`. A vouch only records via the
+    gated `vouch_add(uuid, text)` RPC (there is **no** direct-insert policy), which now
+    requires a **mutual trade confirmation** (Phase 2 gate), a public target, no self,
+    and ≤5/24h.
+  - `trade_reports` — `(reporter_id, subject_id, reason)`, private to the reporter
+    (RLS, no public read); recorded via `report_add(uuid, text)`. Advisory only — never
+    auto-adjusts reputation.
 - `bug_reports` — insert-only feedback backup.
 
 Key RPCs (all **security-definer**, public profiles only, so raw collections are never
@@ -255,12 +266,17 @@ exposed): `leaderboard`; `my_friends()` — your saved friends with the same Fle
 `friend_trade_matches()` — two-way trade matches limited to your friends (`gamertag` +
 `discord`, `they_give`, `i_give`); `search_public_profiles(text)` — gamertag search to
 add friends; `find_trade_matches(uuid)` — the global (all public players) variant;
-`sprite_ownership_stats()` — privacy-safe aggregate ownership counts.
+`sprite_ownership_stats()` — privacy-safe aggregate ownership counts. **Reputation:**
+`trade_confirm` / `trade_unconfirm` / `trade_confirmations_for` (trade confirmations),
+`vouch_add` (mutual-trade-gated), `vouchers_for(uuid)` (credible voucher list), and
+`trade_reputation_batch(uuid[])` — returns each player's credible-voucher count + tier
+(🤝 Trusted / ✅ Verified / ⭐ Top), where **Verified/Top require _non-mutual_ vouchers**
+(collusion capping: reciprocal back-vouches can't inflate the top tiers).
 
 (Some older tables are kept in place, non-destructively but unused by the app: the
-legacy trading **hub** — `trade_posts` / `trade_vouches` (the current Trade tab
-uses lightweight `for_trade`/`wanted` matching instead of posts) — and the old
-crowd-sourced map — `maps`, `map_shares`, `map_markers`, `map_marker_votes`.)
+legacy `trade_posts` board (the current Trade tab uses lightweight
+`for_trade`/`wanted` matching instead of posts) and the old crowd-sourced map —
+`maps`, `map_shares`, `map_markers`, `map_marker_votes`.)
 
 ## Customizing
 

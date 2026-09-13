@@ -33,6 +33,11 @@ export function AuthProvider({ children }) {
   const [friendIds, setFriendIds] = useState(() => new Set())
   // user_ids the signed-in player has vouched for (trade reputation button state).
   const [vouchedIds, setVouchedIds] = useState(() => new Set())
+  // Trade confirmations (Phase 2): partners YOU've marked as traded-with, and the
+  // subset where they confirmed back (mutual) — vouching is gated on mutual.
+  const [confirmedTradeIds, setConfirmedTradeIds] = useState(() => new Set())
+  const [theyConfirmedTradeIds, setTheyConfirmedTradeIds] = useState(() => new Set())
+  const [mutualTradeIds, setMutualTradeIds] = useState(() => new Set())
   const [tracking, setTracking] = useState(() => loadLocal())
   const [authLoading, setAuthLoading] = useState(true)
   const [syncing, setSyncing] = useState(false)
@@ -56,6 +61,9 @@ export function AuthProvider({ children }) {
         setProfile(null)
         setFriendIds(new Set())
         setVouchedIds(new Set())
+        setConfirmedTradeIds(new Set())
+        setTheyConfirmedTradeIds(new Set())
+        setMutualTradeIds(new Set())
         mergedOnce.current = false
       }
     })
@@ -68,16 +76,29 @@ export function AuthProvider({ children }) {
     let cancelled = false
     const run = async () => {
       setSyncing(true)
-      const [{ data: prof }, { data: rows }, { data: friendRows }, { data: vouchRows }] = await Promise.all([
+      const [{ data: prof }, { data: rows }, { data: friendRows }, { data: vouchRows }, { data: confirmRows }] = await Promise.all([
         supabase.from('profiles').select('*').eq('id', user.id).maybeSingle(),
         supabase.from('sprite_progress').select('*').eq('user_id', user.id).eq('collection', ACTIVE_COLLECTION_ID),
         supabase.from('friends').select('friend_id').eq('user_id', user.id),
         supabase.from('trade_vouches').select('vouchee_id').eq('voucher_id', user.id),
+        // RLS returns rows where I'm either the confirmer or the partner.
+        supabase.from('trade_confirmations').select('confirmer_id,partner_id'),
       ])
       if (cancelled) return
 
       setFriendIds(new Set((friendRows || []).map((r) => r.friend_id)))
       setVouchedIds(new Set((vouchRows || []).map((r) => r.vouchee_id)))
+
+      // Derive my-confirmed + mutual sets from the rows involving me.
+      const iConfirmed = new Set()
+      const theyConfirmed = new Set()
+      for (const r of confirmRows || []) {
+        if (r.confirmer_id === user.id) iConfirmed.add(r.partner_id)
+        if (r.partner_id === user.id) theyConfirmed.add(r.confirmer_id)
+      }
+      setConfirmedTradeIds(iConfirmed)
+      setTheyConfirmedTradeIds(theyConfirmed)
+      setMutualTradeIds(new Set([...iConfirmed].filter((id) => theyConfirmed.has(id))))
 
       const cloudMap = rowsToMap(rows)
 
@@ -384,14 +405,15 @@ export function AuthProvider({ children }) {
     return data || []
   }, [])
 
-  // Vouch for a player you've added as a friend (Phase 1 gate). Optimistic.
+  // Vouch for a player you've BOTH confirmed a trade with (Phase 2 strong gate).
+  // The server enforces the mutual-confirmation gate; we surface its return code.
   const addVouch = useCallback(async (targetId, note = null) => {
     if (!user || !targetId || targetId === user.id) return { error: 'invalid' }
     setVouchedIds((prev) => new Set(prev).add(targetId))
     const { data, error } = await supabase.rpc('vouch_add', { target: targetId, p_note: note })
     if (error || data !== 'ok') {
       setVouchedIds((prev) => { const n = new Set(prev); n.delete(targetId); return n })
-      return { error: error?.message || data || 'failed' }
+      return { error: error?.message || data || 'failed', code: data }
     }
     return { ok: true }
   }, [user])
@@ -401,6 +423,74 @@ export function AuthProvider({ children }) {
     setVouchedIds((prev) => { const n = new Set(prev); n.delete(targetId); return n })
     const { error } = await supabase.from('trade_vouches').delete().eq('voucher_id', user.id).eq('vouchee_id', targetId)
     if (error) { setVouchedIds((prev) => new Set(prev).add(targetId)); return { error: error.message } }
+    return { ok: true }
+  }, [user])
+
+  // --- Trade confirmations (Phase 2) ---
+  // Mark that you completed a trade with a partner. When they've confirmed too the
+  // trade is mutual, which unlocks vouching. Optimistic on the "I confirmed" flag.
+  const confirmTrade = useCallback(async (partnerId) => {
+    if (!user || !partnerId || partnerId === user.id) return { error: 'invalid' }
+    setConfirmedTradeIds((prev) => new Set(prev).add(partnerId))
+    const { data, error } = await supabase.rpc('trade_confirm', { partner: partnerId })
+    if (error || (data !== 'ok' && data !== 'mutual')) {
+      setConfirmedTradeIds((prev) => { const n = new Set(prev); n.delete(partnerId); return n })
+      return { error: error?.message || data || 'failed', code: data }
+    }
+    if (data === 'mutual') {
+      setTheyConfirmedTradeIds((prev) => new Set(prev).add(partnerId))
+      setMutualTradeIds((prev) => new Set(prev).add(partnerId))
+    }
+    return { ok: true, mutual: data === 'mutual' }
+  }, [user])
+
+  const unconfirmTrade = useCallback(async (partnerId) => {
+    if (!user || !partnerId) return { error: 'invalid' }
+    setConfirmedTradeIds((prev) => { const n = new Set(prev); n.delete(partnerId); return n })
+    setMutualTradeIds((prev) => { const n = new Set(prev); n.delete(partnerId); return n })
+    const { error } = await supabase.rpc('trade_unconfirm', { partner: partnerId })
+    if (error) return { error: error.message }
+    // Removing my vouch too — a vouch with no trade behind it shouldn't stand.
+    await supabase.from('trade_vouches').delete().eq('voucher_id', user.id).eq('vouchee_id', partnerId)
+    setVouchedIds((prev) => { const n = new Set(prev); n.delete(partnerId); return n })
+    return { ok: true }
+  }, [user])
+
+  // Per-partner confirmation status for a set of players (drives trade-match cards).
+  // Also folds the results into the local sets so the UI stays consistent.
+  const fetchTradeConfirmations = useCallback(async (uids) => {
+    const list = [...new Set((uids || []).filter(Boolean))]
+    if (!user || !list.length) return {}
+    const { data, error } = await supabase.rpc('trade_confirmations_for', { uids: list })
+    if (error) return {}
+    const map = {}
+    for (const r of data || []) {
+      map[r.partner_id] = { iConfirmed: r.i_confirmed, theyConfirmed: r.they_confirmed, mutual: r.i_confirmed && r.they_confirmed }
+    }
+    setConfirmedTradeIds((prev) => {
+      const n = new Set(prev)
+      for (const r of data || []) { if (r.i_confirmed) n.add(r.partner_id); else n.delete(r.partner_id) }
+      return n
+    })
+    setTheyConfirmedTradeIds((prev) => {
+      const n = new Set(prev)
+      for (const r of data || []) { if (r.they_confirmed) n.add(r.partner_id); else n.delete(r.partner_id) }
+      return n
+    })
+    setMutualTradeIds((prev) => {
+      const n = new Set(prev)
+      for (const r of data || []) { if (r.i_confirmed && r.they_confirmed) n.add(r.partner_id); else n.delete(r.partner_id) }
+      return n
+    })
+    return map
+  }, [user])
+
+  // Lightweight report on a trader (Phase 2). Recorded privately for the maker to
+  // review — it does NOT auto-subtract reputation (positive-only stays un-abusable).
+  const reportTrader = useCallback(async (subjectId, reason = null) => {
+    if (!user || !subjectId || subjectId === user.id) return { error: 'invalid' }
+    const { data, error } = await supabase.rpc('report_add', { subject: subjectId, p_reason: reason })
+    if (error || data !== 'ok') return { error: error?.message || data || 'failed', code: data }
     return { ok: true }
   }, [user])
 
@@ -449,6 +539,13 @@ export function AuthProvider({ children }) {
     fetchVouchers,
     addVouch,
     removeVouch,
+    confirmedTradeIds,
+    theyConfirmedTradeIds,
+    mutualTradeIds,
+    confirmTrade,
+    unconfirmTrade,
+    fetchTradeConfirmations,
+    reportTrader,
     signUp,
     signIn,
     signInWithProvider,
