@@ -30,7 +30,7 @@ export const ANNOUNCEMENTS = [
   {
     id: 'season4-ending-2026-10',
     emoji: '⏳',
-    message: 'Season 4 “Override” is wrapping up (est. ~Nov 1) and Chapter 7 Season 5 is next. Don’t worry — every Sprite you’ve collected is kept forever in your Collection & Sprite Garden. Only Sprite Dust, Extractors & Locators reset, so spend your Dust before the flip.',
+    message: 'Season 4 “Override” is wrapping up (est. ~Nov 1) — a short bridge mini-season is next, with Chapter 8 following ~Dec 5 (per leaks). Don’t worry — every Sprite you’ve collected is kept forever in your Collection & Sprite Garden. Only Sprite Dust, Extractors & Locators reset, so spend your Dust before the flip.',
     link: '/season-transition',
     linkLabel: 'What carries over',
     start: '2026-10-24',

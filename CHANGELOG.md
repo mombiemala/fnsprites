@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 13, 2026 — Season timing corrected to the leaked 2026 schedule
+
+- **Changed:** forward-looking season data (`src/data/season.js` `next`, `src/data/incoming.js` `season-5`) no longer calls
+  the next drop "Chapter 7 Season 5." Per a widely-reported leaked 2026 schedule, Season 4 "Override" wraps ~Nov 1,
+  followed by a short bridge mini-season, with Chapter 8 Season 1 launching ~Dec 5. Countdown card, Heads Up spotlight and
+  the season-transition page inherit the corrected copy; dates flagged tentative (leak, not Epic).
+- **Added:** a News item (`src/data/news.js`) mapping the rest of 2026 (Fortnitemares → mini-season → Chapter 8),
+  labelled as a leak (source: Vice).
+- **Why:** a chapter flip (not a same-chapter season bump) brings a fresh Sprite generation — a bigger deal for
+  collectors. Better to describe it accurately and mark it tentative than to assert a season name Epic never used.
+
+---
+
 ## September 13, 2026 — Trade reputation (Phase 1: vouches)
 
 - **Added:** vouch for friends you've traded with; reputation shows as a tier badge (🤝 Trusted / ✅ Verified / ⭐ Top

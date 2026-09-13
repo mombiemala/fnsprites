@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 13, 2026',
+    title: 'The road to Chapter 8 — season timing corrected to the leaked 2026 schedule',
+    changes: [
+      { tag: 'Changed', text: 'Our forward-looking season data no longer calls the next drop “Chapter 7 Season 5.” A widely-reported leaked 2026 schedule says Season 4 “Override” wraps around Nov 1, followed by a short bridge mini-season, with Chapter 8 Season 1 launching ~Dec 5 — so the countdown, the Heads Up spotlight and the season-transition page now describe it that way.' },
+      { tag: 'Added', text: 'A News item mapping out the rest of 2026 — Fortnitemares in October, the mini-season, then the Chapter 8 flip — clearly labelled as a leak (source: Vice), not an Epic announcement.' },
+    ],
+    summary: 'Corrected our “what’s next” timing to match the leaked 2026 roadmap: a bridge mini-season after Override, then Chapter 8 in early December.',
+    why: 'We’d assumed the next flip would be a straightforward “Season 5.” The leaked schedule (well-corroborated across outlets) points to a mini-season bridge into a new chapter instead — a bigger deal for collectors, since a chapter flip brings a fresh Sprite generation. Better to describe it accurately now and mark it tentative than to state a season name Epic never used.',
+  },
+  {
+    date: 'September 13, 2026',
     title: 'Trade reputation — vouch for traders you trust',
     changes: [
       { tag: 'Added', text: 'You can now 🤝 vouch for a friend you’ve traded with. A trader’s reputation shows as a badge (🤝 Trusted → ✅ Verified → ⭐ Top trader) on their Friends row and on trade-match cards, so you can tell trustworthy traders at a glance.' },

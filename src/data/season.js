@@ -16,11 +16,13 @@ export const SEASON = {
   endEstimate: '2026-11-01',
   endConfirmed: true,
   next: {
-    label: 'Chapter 7 Season 5',
+    // Per a widely-reported leaked 2026 schedule, Nov 1 starts a short "bridge"
+    // mini-season (not a full Season 5), with Chapter 8 Season 1 following ~Dec 5.
+    label: 'a short bridge mini-season (Chapter 8 follows ~Dec 5)',
     startEstimate: '2026-11-01',
   },
-  source: 'Epic (Battle Pass end date)',
-  sourceUrl: 'https://fortnite.gg/season-countdown',
+  source: 'Epic (Battle Pass end date) · leaked 2026 schedule (Vice)',
+  sourceUrl: 'https://www.vice.com/en/article/fortnite-update-schedule-2026-fortnitemares-chapter-8-dates/',
 }
 
 // What players keep vs. what resets at a season flip (the established pattern).
