@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 13, 2026 — Sign-in never shows/persists an empty collection on a read blip
+
+- **Fixed:** the sign-in load in `AuthContext.jsx` trusted the first `sprite_progress` read unconditionally — a transient
+  error returned no rows, which then flowed into `setTracking({})` + `saveLocal({})`, blanking the view and local cache.
+  The collection read is now retried (with backoff); if it still errors, the load **keeps existing state**, sets
+  `cloudStatus='error'`, leaves `mergedOnce` unset, and returns without clobbering. A new `online`/`focus` listener
+  bumps `reloadTick` to re-run the load, so an errored session recovers automatically.
+- **Why:** a user reported signing in (Google) to an empty collection. Server data was never actually deleted — the
+  client was overwriting its own view with an empty result from a failed read. Note this is distinct from the genuine
+  "guest progress is device-local until first sign-in on that browser" behaviour, which is expected.
+
+---
+
 ## September 13, 2026 — Collection saves self-heal (auto-retry failed cloud writes)
 
 - **Added:** a pending-write queue in `AuthContext.jsx` (`pendingRef` + `flushPending` + `pushRows`). Every collection

@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 13, 2026',
+    title: 'A network blip at sign-in can no longer show an empty collection',
+    changes: [
+      { tag: 'Fixed', text: 'When you sign in, if the very first read of your collection from the cloud hiccups (a dropped or slow connection), the app used to fall back to showing — and then saving — an empty collection. Now that read is retried, and if it still fails the app keeps what you already have instead of blanking it out, then re-syncs automatically the moment you’re back online or return to the tab.' },
+    ],
+    summary: 'Signing in during a network blip won’t make your collection look empty anymore — a failed load is retried and never overwrites your data with a blank.',
+    why: 'The load path trusted the first cloud read unconditionally; a transient failure returned “no rows,” which then got written to local storage as if the collection were genuinely empty. Your data on the server was never actually lost, but the experience was alarming. Guarding the read (retry, and never clobber with an empty result) fixes the scary “logged in and everything’s gone” case. Note: collection data is still device-local until your first sign-in on that browser — so guest progress added on one device appears only after you sign in there.',
+  },
+  {
+    date: 'September 13, 2026',
     title: 'Your collection now self-heals if a save ever fails',
     changes: [
       { tag: 'Added', text: 'If a save to the cloud fails (a dropped connection, a flaky moment), that change is now queued and retried automatically — the instant you’re back online, after your next successful save, and on a quiet background timer. You don’t have to do anything; it catches up on its own.' },

@@ -45,6 +45,11 @@ export function AuthProvider({ children }) {
   // their changes persisting to the cloud.
   const [cloudStatus, setCloudStatus] = useState('synced')
   const mergedOnce = useRef(false)
+  // Set when the sign-in collection read failed after retries; a reconnect/focus
+  // then bumps `reloadTick` to re-run the load. Guards against a transient read
+  // ever presenting (or persisting) an empty collection for a user who has data.
+  const loadFailedRef = useRef(false)
+  const [reloadTick, setReloadTick] = useState(0)
 
   const user = session?.user || null
 
@@ -76,7 +81,7 @@ export function AuthProvider({ children }) {
     let cancelled = false
     const run = async () => {
       setSyncing(true)
-      const [{ data: prof }, { data: rows }, { data: friendRows }, { data: vouchRows }, { data: confirmRows }] = await Promise.all([
+      const [{ data: prof }, spriteRes, { data: friendRows }, { data: vouchRows }, { data: confirmRows }] = await Promise.all([
         supabase.from('profiles').select('*').eq('id', user.id).maybeSingle(),
         supabase.from('sprite_progress').select('*').eq('user_id', user.id).eq('collection', ACTIVE_COLLECTION_ID),
         supabase.from('friends').select('friend_id').eq('user_id', user.id),
@@ -85,6 +90,19 @@ export function AuthProvider({ children }) {
         supabase.from('trade_confirmations').select('confirmer_id,partner_id'),
       ])
       if (cancelled) return
+
+      // The collection read is the ONLY critical one — an empty result here (from
+      // a transient error) would otherwise clobber the user's data. Retry it a few
+      // times before trusting the result.
+      let rows = spriteRes.data
+      let rowsErr = spriteRes.error
+      for (let attempt = 0; rowsErr && attempt < 2; attempt++) {
+        await new Promise((r) => setTimeout(r, 400 * (attempt + 1)))
+        if (cancelled) return
+        const res = await supabase.from('sprite_progress').select('*').eq('user_id', user.id).eq('collection', ACTIVE_COLLECTION_ID)
+        rows = res.data
+        rowsErr = res.error
+      }
 
       setFriendIds(new Set((friendRows || []).map((r) => r.friend_id)))
       setVouchedIds(new Set((vouchRows || []).map((r) => r.vouchee_id)))
@@ -99,6 +117,20 @@ export function AuthProvider({ children }) {
       setConfirmedTradeIds(iConfirmed)
       setTheyConfirmedTradeIds(theyConfirmed)
       setMutualTradeIds(new Set([...iConfirmed].filter((id) => theyConfirmed.has(id))))
+
+      // If the collection read failed after retries, DO NOT overwrite tracking or
+      // localStorage with an empty map — keep what the user already has, flag it,
+      // and let a reconnect/focus re-run the load. Never flip mergedOnce here, so a
+      // later successful load can still merge any local progress up. (This is the
+      // guard against "signed in and my collection is empty" from a network blip.)
+      if (rowsErr) {
+        if (prof) setProfile(prof)
+        setCloudStatus('error')
+        loadFailedRef.current = true
+        setSyncing(false)
+        return
+      }
+      loadFailedRef.current = false
 
       const cloudMap = rowsToMap(rows)
 
@@ -135,6 +167,20 @@ export function AuthProvider({ children }) {
     run()
     return () => {
       cancelled = true
+    }
+  }, [user, reloadTick])
+
+  // If the initial collection load failed, re-run it when we regain connectivity
+  // or the tab is refocused — so a user who opened to an errored/empty state
+  // recovers automatically rather than seeing an empty collection.
+  useEffect(() => {
+    if (!user) return
+    const retry = () => { if (loadFailedRef.current) setReloadTick((t) => t + 1) }
+    window.addEventListener('online', retry)
+    window.addEventListener('focus', retry)
+    return () => {
+      window.removeEventListener('online', retry)
+      window.removeEventListener('focus', retry)
     }
   }, [user])
 
