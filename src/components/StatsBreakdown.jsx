@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
-import { ALL_SPRITES, RARITY_ORDER, dustCost, CURRENT_GEN } from '../data/sprites'
-import { THEMES, THEME_MAP } from '../data/themes'
+import { ALL_SPRITES, RARITY_ORDER, CURRENT_GEN } from '../data/sprites'
+import { THEMES } from '../data/themes'
 
 export default function StatsBreakdown({ tracking }) {
-  const { closest, seasonPct, collectionPct, masteryPct, dustToComplete } = useMemo(() => {
+  const { closest, seasonPct, collectionPct, masteryPct } = useMemo(() => {
     const released = ALL_SPRITES.filter((s) => s.released)
     // Current-season Sprites are the achievable target — archived past-gen Sprites
     // can't be obtained in BR now, so completion/Dust are figured on the current
@@ -21,17 +21,6 @@ export default function StatsBreakdown({ tracking }) {
     const totalLevels = released.reduce((sum, s) => sum + (tracking[s.id]?.level || 0), 0)
     const masteryPct = released.length ? Math.round((totalLevels / (released.length * 5)) * 100) : 0
 
-    // Sprite Dust to summon the current-season variants you're still missing (skip
-    // finishes you don't summon with Dust — Cheatmaster is code-unlocked, Quack is a
-    // reward). Archived Sprites are excluded — they can't be summoned anymore.
-    let dustToComplete = 0
-    for (const s of current) {
-      if (owned(s)) continue
-      const th = THEME_MAP[s.themeId]
-      if (th?.noSummon || th?.mastery) continue
-      dustToComplete += dustCost(s.rarity, s.themeId) || 0
-    }
-
     // The one nudge we keep: the current-season group (rarity or theme) you're
     // closest to finishing — always something you can actually complete.
     const groups = [
@@ -48,7 +37,7 @@ export default function StatsBreakdown({ tracking }) {
     incomplete.sort((a, b) => (a.total - a.owned) - (b.total - b.owned) || b.owned / b.total - a.owned / a.total)
     const closest = incomplete[0] || null
 
-    return { closest, seasonPct, collectionPct, masteryPct, dustToComplete }
+    return { closest, seasonPct, collectionPct, masteryPct }
   }, [tracking])
 
   return (
@@ -74,9 +63,6 @@ export default function StatsBreakdown({ tracking }) {
         </span>
         <span className="rounded-lg bg-[var(--bg-2)] px-3 py-1.5 text-xs font-bold text-white" title="Total sprite levels earned vs the max (5 each)">
           🏅 Mastery <span className="text-amber-300">{masteryPct}%</span>
-        </span>
-        <span className="rounded-lg bg-[var(--bg-2)] px-3 py-1.5 text-xs font-bold text-white" title="Sprite Dust to summon the current-season variants you're still missing">
-          💨 Dust to finish season <span className="text-[var(--brand)]">≈{dustToComplete.toLocaleString()}</span>
         </span>
       </div>
     </div>

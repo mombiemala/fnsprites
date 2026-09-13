@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 13, 2026',
+    title: 'Tidier top of page — three stacked banners merged into one compact card',
+    changes: [
+      { tag: 'Changed', text: 'The event announcement, the “Today” event countdown, and the “Heads up — you heard it here first” upcoming feed used to be three separate full-width blocks stacked down the page. They’re now one small card at the top: a slim dismissible announcement line, the live/next event + new-codes row, and upcoming drops shown as compact chips (hover for details). Much less scrolling before you reach your collection.' },
+      { tag: 'Removed', text: 'Dropped the “Dust to finish season” stat from the Breakdown card — it wasn’t a number people actually track (finishes like Cheatmaster aren’t Dust-summoned anyway), so it was just noise.' },
+    ],
+    summary: 'Reclaimed a big chunk of vertical space at the top: the three separate info banners are now one tight card, and a low-value stat is gone.',
+    why: 'The three blocks each earned their keep individually but together pushed the actual collection way down the page — especially on phones. Merging them keeps every signal (announcement, live event, what’s coming) while cutting the height, and trimming the Dust-to-finish stat removes a metric that didn’t map to how players think about completing a season.',
+  },
+  {
+    date: 'September 13, 2026',
     title: 'A network blip at sign-in can no longer show an empty collection',
     changes: [
       { tag: 'Fixed', text: 'When you sign in, if the very first read of your collection from the cloud hiccups (a dropped or slow connection), the app used to fall back to showing — and then saving — an empty collection. Now that read is retried, and if it still fails the app keeps what you already have instead of blanking it out, then re-syncs automatically the moment you’re back online or return to the tab.' },

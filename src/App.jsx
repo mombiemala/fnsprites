@@ -15,18 +15,16 @@ import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
 import StatsBreakdown from './components/StatsBreakdown'
 import NextToChase from './components/NextToChase'
-import TodayHub from './components/TodayHub'
+import TopStatus from './components/TopStatus'
 import QuickCheckList from './components/QuickCheckList'
 import ChestOdds from './components/ChestOdds'
 import LootHacks from './components/LootHacks'
 import SeasonCountdown from './components/SeasonCountdown'
 import SafetyNote from './components/SafetyNote'
-import HeadsUp from './components/HeadsUp'
 import OverflowNav from './components/OverflowNav'
 import UpcomingSprites from './components/UpcomingSprites'
 import HowSpritesWork from './components/HowSpritesWork'
 import WelcomeModal from './components/WelcomeModal'
-import AnnouncementBar from './components/AnnouncementBar'
 import SaveStatusPill from './components/SaveStatusPill'
 import AdSlot from './components/AdSlot'
 import { AD_SLOTS } from './lib/ads'
@@ -449,7 +447,6 @@ export default function App() {
   return (
     <div className="mx-auto min-h-screen max-w-6xl px-4 pb-24 pt-6 sm:px-6">
       <WelcomeModal />
-      <AnnouncementBar />
       <header className="mb-4 flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h1 className="font-display text-3xl leading-none sm:text-4xl">
@@ -593,11 +590,9 @@ export default function App() {
         </div>
       )}
 
-      {/* Heads up — confirmed, dated things coming before they're live. */}
-      {!isShareView && <HeadsUp />}
-
-      {/* Today — timely daily glance: next event countdown + new codes. */}
-      {!isShareView && <TodayHub onGo={goToSection} />}
+      {/* One compact top card: active announcement + today's event + upcoming
+          heads-up (was three separate stacked blocks). */}
+      {!isShareView && <TopStatus onGo={goToSection} />}
 
       {/* Full-width filters bar (sticks to the top on scroll) */}
       <div className="sticky top-0 z-30 -mx-4 mb-5 border-b border-[var(--border)] bg-[#0c0f1a]/85 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">

@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 13, 2026 — Merge three top-of-page banners into one compact card
+
+- **Changed:** new `src/components/TopStatus.jsx` merges the announcement bar (`AnnouncementBar`), the "Today"
+  event/codes glance (`TodayHub`), and the "Heads up" upcoming feed (`HeadsUp`) into a single tight card — a slim
+  dismissible announcement line, the live/next event + new-codes row, and upcoming drops as compact chips (detail on
+  hover). Removed the three old components and their separate render sites in `App.jsx`.
+- **Removed:** the "Dust to finish season" stat from `StatsBreakdown.jsx` (and its now-dead computation / unused
+  `dustCost`, `THEME_MAP` imports).
+- **Why:** the three stacked full-width blocks pushed the collection far down the page (worst on mobile). One card keeps
+  every signal at a fraction of the height. The Dust-to-finish stat didn't reflect how players think about season
+  completion (many finishes aren't Dust-summoned), so it was noise.
+
+---
+
 ## September 13, 2026 — Sign-in never shows/persists an empty collection on a read blip
 
 - **Fixed:** the sign-in load in `AuthContext.jsx` trusted the first `sprite_progress` read unconditionally — a transient
