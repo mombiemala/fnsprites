@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 13, 2026 — Collection saves self-heal (auto-retry failed cloud writes)
+
+- **Added:** a pending-write queue in `AuthContext.jsx` (`pendingRef` + `flushPending` + `pushRows`). Every collection
+  write (`update`, `bulkOwn`, `importTracking`) routes through `pushRows`; on failure the exact current row is queued and
+  retried on the `online` event, after any later successful write, and on a 20s interval while anything is pending.
+- **Fixed:** the additive login-time union merge couldn't undo an un-mark that failed to reach the cloud. The retry
+  re-sends the full current row (including `owned:false`), so removals sync correctly, not just additions. Also added the
+  missing `collection` field to `bulkOwn` rows for consistency.
+- **Why:** saves were already local-first + reconciled at sign-in, so nothing was ever truly lost — but a transient
+  failure could leave the cloud stale until next login, and an un-mark could be resurrected by the union merge. A small
+  retry queue closes both gaps and self-heals without user action.
+
+---
+
 ## September 13, 2026 — Trade reputation Phase 2 (trade-gated vouches, collusion capping, reports)
 
 - **Added:** `trade_confirmations` table + `trade_confirm` / `trade_unconfirm` / `trade_confirmations_for` RPCs. A "🔁 Mark as

@@ -138,6 +138,58 @@ export function AuthProvider({ children }) {
     }
   }, [user])
 
+  // Pending cloud writes that failed to sync (sprite_id -> the exact current row).
+  // Retried automatically on reconnect, after any later successful write, and on a
+  // light interval — so a transient network blip self-heals without waiting for the
+  // next sign-in. Because each entry is the full current row, this also correctly
+  // syncs un-marks (which the login-time union merge, being additive, can't undo).
+  const pendingRef = useRef(new Map())
+
+  const flushPending = useCallback(async () => {
+    if (!user || pendingRef.current.size === 0) return
+    const snapshot = [...pendingRef.current.entries()] // [ [sprite_id, row], … ]
+    setCloudStatus('saving')
+    const { error } = await supabase.from('sprite_progress').upsert(snapshot.map(([, row]) => row))
+    if (error) { setCloudStatus('error'); return }
+    // Clear only what we just wrote AND that a newer write hasn't superseded.
+    for (const [id, row] of snapshot) {
+      if (pendingRef.current.get(id) === row) pendingRef.current.delete(id)
+    }
+    setCloudStatus(pendingRef.current.size ? 'error' : 'synced')
+  }, [user])
+
+  // Upsert collection rows to the cloud; on failure, queue them for auto-retry.
+  const pushRows = useCallback((rows) => {
+    if (!user || !rows?.length) return
+    setCloudStatus('saving')
+    supabase.from('sprite_progress').upsert(rows).then(({ error }) => {
+      if (error) {
+        for (const row of rows) pendingRef.current.set(row.sprite_id, row)
+        setCloudStatus('error')
+      } else {
+        setCloudStatus('synced')
+        // A good moment to drain anything queued from an earlier failure.
+        if (pendingRef.current.size) flushPending()
+      }
+    })
+  }, [user, flushPending])
+
+  // Auto-retry queued writes: on reconnect and on a light interval while any are
+  // pending. The mount attempt is deferred to a timer so no state is set
+  // synchronously inside the effect.
+  useEffect(() => {
+    if (!user) return
+    const onOnline = () => flushPending()
+    window.addEventListener('online', onOnline)
+    const iv = setInterval(() => { if (pendingRef.current.size) flushPending() }, 20000)
+    const t = setTimeout(() => { if (pendingRef.current.size) flushPending() }, 0)
+    return () => {
+      window.removeEventListener('online', onOnline)
+      clearInterval(iv)
+      clearTimeout(t)
+    }
+  }, [user, flushPending])
+
   // Merge a patch into a sprite's state, enforce invariants, persist locally,
   // and upsert to the cloud when signed in.
   const update = useCallback(
@@ -171,24 +223,20 @@ export function AuthProvider({ children }) {
         return next
       })
       if (user) {
-        setCloudStatus('saving')
-        supabase
-          .from('sprite_progress')
-          .upsert({
-            user_id: user.id,
-            sprite_id: spriteId,
-            collection: ACTIVE_COLLECTION_ID,
-            owned: entry.owned,
-            mastered: entry.mastered,
-            level: entry.level,
-            for_trade: entry.forTrade,
-            wanted: entry.wanted,
-            updated_at: new Date().toISOString(),
-          })
-          .then(({ error }) => setCloudStatus(error ? 'error' : 'synced'))
+        pushRows([{
+          user_id: user.id,
+          sprite_id: spriteId,
+          collection: ACTIVE_COLLECTION_ID,
+          owned: entry.owned,
+          mastered: entry.mastered,
+          level: entry.level,
+          for_trade: entry.forTrade,
+          wanted: entry.wanted,
+          updated_at: new Date().toISOString(),
+        }])
       }
     },
-    [tracking, user]
+    [tracking, user, pushRows]
   )
 
   // Bulk owned toggle for many sprites at once (single local update + one upsert).
@@ -211,6 +259,7 @@ export function AuthProvider({ children }) {
           return {
             user_id: user.id,
             sprite_id: id,
+            collection: ACTIVE_COLLECTION_ID,
             owned,
             mastered: owned ? cur.mastered : false,
             level: owned ? Math.max(1, cur.level || 0) : 0,
@@ -219,13 +268,10 @@ export function AuthProvider({ children }) {
             updated_at: new Date().toISOString(),
           }
         })
-        if (rows.length) {
-          setCloudStatus('saving')
-          supabase.from('sprite_progress').upsert(rows).then(({ error }) => setCloudStatus(error ? 'error' : 'synced'))
-        }
+        pushRows(rows)
       }
     },
-    [tracking, user]
+    [tracking, user, pushRows]
   )
 
   // Restore from a backup code (guest device transfer). Non-destructive merge:
@@ -262,13 +308,10 @@ export function AuthProvider({ children }) {
       }
       setTracking(merged)
       saveLocal(merged)
-      if (user && rows.length) {
-        setCloudStatus('saving')
-        supabase.from('sprite_progress').upsert(rows).then(({ error }) => setCloudStatus(error ? 'error' : 'synced'))
-      }
+      if (user && rows.length) pushRows(rows)
       return changed
     },
-    [tracking, user]
+    [tracking, user, pushRows]
   )
 
   const setOwned = useCallback((id, owned) => update(id, { owned }), [update])

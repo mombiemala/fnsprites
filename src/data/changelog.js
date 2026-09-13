@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 13, 2026',
+    title: 'Your collection now self-heals if a save ever fails',
+    changes: [
+      { tag: 'Added', text: 'If a save to the cloud fails (a dropped connection, a flaky moment), that change is now queued and retried automatically — the instant you’re back online, after your next successful save, and on a quiet background timer. You don’t have to do anything; it catches up on its own.' },
+      { tag: 'Fixed', text: 'A rare edge where un-marking a Sprite (or un-flagging For trade / Wanted) might not stick if that exact save failed — the retry now re-sends your true current state, so removals sync correctly too, not just additions.' },
+    ],
+    summary: 'Belt-and-suspenders for collection saving: failed cloud writes are queued and retried until they land, so a network blip can’t quietly lose (or resurrect) a change.',
+    why: 'Saves were already local-first (nothing is lost) and reconciled at sign-in, but that sign-in merge is additive — it can’t undo an un-mark that failed to reach the cloud. A tiny retry queue that re-sends the full current row closes that gap and means transient failures fix themselves without waiting for the next login.',
+  },
+  {
+    date: 'September 13, 2026',
     title: 'Trade reputation Phase 2 — vouches now backed by a confirmed trade',
     changes: [
       { tag: 'Added', text: 'Every trade-match card (and friend) now has a 🔁 “Mark as traded” button. When both of you mark the same trade, it becomes ✅ mutual — and only then does the 🤝 Vouch button unlock. So a vouch now means a real, two-sided trade actually happened, not just “we’re friends.”' },
