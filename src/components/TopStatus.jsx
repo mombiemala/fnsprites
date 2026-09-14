@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { ANNOUNCEMENTS } from '../data/announcements'
 import { activeIncoming, daysUntil } from '../data/incoming'
 import { LOBBY_CODES } from '../data/codes'
+import { liveSpriteEvent, nextSpriteEvent } from '../data/events'
 
 // One compact top-of-page card that merges what used to be three stacked blocks:
 //  1. the dismissible event announcement bar,
@@ -28,17 +29,6 @@ const TONE_BORDER = {
 
 const isNewCode = (c) => c.added && Date.now() - new Date(c.added).getTime() <= 7 * 864e5
 
-function nowET() {
-  try { return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })) } catch { return new Date() }
-}
-function msUntilWeekly(now, dow, hour) {
-  const t = new Date(now)
-  t.setHours(hour, 0, 0, 0)
-  let add = (dow - now.getDay() + 7) % 7
-  if (add === 0 && now >= t) add = 7
-  t.setDate(t.getDate() + add)
-  return t - now
-}
 function fmtDur(ms) {
   if (ms <= 0) return 'now'
   const s = Math.floor(ms / 1000)
@@ -61,9 +51,9 @@ function countdownLabel(dropsOn, confirmedDate) {
 
 export default function TopStatus({ onGo }) {
   const [dismissed, setDismissed] = useState(loadDismissed)
-  const [, setTick] = useState(0)
+  const [now, setNow] = useState(() => Date.now()) // ticks every second for the countdown
   useEffect(() => {
-    const id = setInterval(() => setTick((n) => n + 1), 1000)
+    const id = setInterval(() => setNow(Date.now()), 1000)
     return () => clearInterval(id)
   }, [])
 
@@ -71,17 +61,10 @@ export default function TopStatus({ onGo }) {
   const incoming = activeIncoming()
   const newCodes = useMemo(() => LOBBY_CODES.filter(isNewCode).length, [])
 
-  const now = nowET()
-  const day = now.getDay()
-  const hour = now.getHours()
-  const masteryLive = day === 1
-  const powerLive = day === 6 && ((hour >= 14 && hour < 16) || (hour >= 21 && hour < 23))
-  const EVENTS = [
-    { key: 'mastery', emoji: '📅', name: 'Mastery Monday', perk: '2× Sprite Dust & XP', live: masteryLive, ms: msUntilWeekly(now, 1, 0) },
-    { key: 'power', emoji: '⚡', name: 'Power Hours', perk: 'boosted Sprite spawns', live: powerLive, ms: msUntilWeekly(now, 6, 14) },
-  ]
-  const liveEvent = EVENTS.find((e) => e.live)
-  const nextEvent = [...EVENTS].sort((a, b) => a.ms - b.ms)[0]
+  // Data-driven: "live" and the countdown come only from confirmed/sourced events
+  // in src/data/events.js — no assuming every Monday/Saturday has one.
+  const liveEvent = liveSpriteEvent(new Date(now))
+  const nextEvent = nextSpriteEvent(new Date(now))
 
   const dismiss = () => {
     const next = new Set(dismissed)
@@ -131,15 +114,19 @@ export default function TopStatus({ onGo }) {
               <span className="text-sm font-bold text-white">{liveEvent.emoji} {liveEvent.name}</span>
               <span className="hidden text-xs text-[var(--muted)] sm:inline">· {liveEvent.perk}</span>
             </span>
-          ) : (
+          ) : nextEvent ? (
             <span className="flex flex-wrap items-baseline gap-x-2">
               <span className="text-sm font-bold text-white">{nextEvent.emoji} {nextEvent.name}</span>
-              <span className="text-xs text-[var(--muted)]">in</span>
-              <span className="font-mono text-sm font-extrabold text-[var(--brand)]">{fmtDur(nextEvent.ms)}</span>
+              <span className="text-xs text-[var(--muted)]">{nextEvent.confirmed ? 'in' : 'expected in'}</span>
+              <span className="font-mono text-sm font-extrabold text-[var(--brand)]">{fmtDur(new Date(nextEvent.startsUtc) - now)}</span>
               <span className="hidden text-xs text-[var(--muted)] sm:inline">· {nextEvent.perk}</span>
             </span>
+          ) : (
+            <span className="text-sm font-bold text-white">
+              📅 Weekly Sprite events <span className="text-xs font-normal text-[var(--muted)]">· usually Mon / Thu / Sat (ET)</span>
+            </span>
           )}
-          <button onClick={() => onGo?.('news')} className="ml-0 mt-0.5 block text-[11px] font-bold text-[var(--brand)] hover:underline sm:ml-0">
+          <button onClick={() => onGo?.('news')} className="mt-0.5 block text-[11px] font-bold text-[var(--brand)] hover:underline">
             See all events →
           </button>
         </div>

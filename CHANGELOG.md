@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 14, 2026 — Weekly events are data-driven (no false "LIVE")
+
+- **Changed:** new `src/data/events.js` (`SPRITE_EVENTS` + `liveSpriteEvent()` / `nextSpriteEvent()`) is now the source of
+  truth for the top card's event row. `TopStatus.jsx` no longer hard-codes `masteryLive = day===1` / `powerLive =
+  day===6 …`; it shows "LIVE" only when a real UTC event window contains now, counts down to the next dated event
+  (labelled "expected in" when `confirmed:false`), and falls back to a neutral "weekly events usually run Mon/Thu/Sat
+  (ET)" line with no countdown when nothing is scheduled. Removed the `nowET` / `msUntilWeekly` helpers; the countdown
+  now ticks off a `now` state value (fixes a `react-hooks/purity` error from calling `Date.now()` in render).
+- **Why:** assuming every Monday/Saturday has an event could show a "LIVE" badge for an event that wasn't running. Events
+  are stored in UTC with a `confirmed` flag so a sourced date lights up the countdown and unconfirmed/pattern-based ones
+  read as "expected" — honest either way.
+
+---
+
 ## September 13, 2026 — Content-accuracy pass (stale pre-launch copy)
 
 - **Fixed:** `src/data/themes.js` — the `cheatmaster` finish `bonus` said "not yet confirmed by Epic (datamined)"; it's

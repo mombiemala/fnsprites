@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 14, 2026',
+    title: 'Event countdown is now data-driven — no more assuming an event is live',
+    changes: [
+      { tag: 'Changed', text: 'The top card used to assume a Mastery Monday every Monday and Power Hours every Saturday, so it could show “LIVE” for an event that wasn’t actually running. It now reads from a list of confirmed, dated events (src/data/events.js): it only shows “LIVE” when a real event window is happening, counts down to the next dated one (labelled “expected” when it’s from the in-game timer rather than an Epic post), and otherwise just notes that weekly events usually run Mon/Thu/Sat with a link to the schedule.' },
+    ],
+    summary: 'The live-event badge and countdown now come from confirmed dates, not a hard-coded weekly guess — so it never claims an event is on when it isn’t.',
+    why: 'The weekly cadence is a real pattern, but Epic doesn’t always run every event every week, so a fixed “every Monday = Mastery Monday” rule risked showing a false “LIVE.” Tying it to a small, sourced events list keeps the countdown honest and makes it trivial to light up a confirmed event the moment we have a date.',
+  },
+  {
     date: 'September 13, 2026',
     title: 'Content accuracy pass — Cheatmaster finish no longer reads as “unconfirmed”',
     changes: [
