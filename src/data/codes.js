@@ -69,6 +69,7 @@ export const LOBBY_CODES = [
   { code: 'NOPROLLAMA', unlocks: 'Llama Supply Drop Gizmo (calls a boosted llama supply drop) — redeemable Sep 7–14 only', type: 'reward', category: 'gizmos', status: 'working', added: '2026-09-07', source: 'The Click / FortniteFNLK' },
 
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
+  { code: 'BeamMeUp', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-14', source: 'Vice (Mastery Monday code)' },
   { code: 'TAKEYOURHEART', unlocks: '2× Extraction Accelerators (Persona 5 / Joker)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
   { code: 'SURVIVETHENIGHT', unlocks: '2× Cheat Code Locators (99 Nights)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
   { code: 'FINDITCHAT', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', source: 'community list', added: '2026-08-21' },

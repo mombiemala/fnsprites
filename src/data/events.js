@@ -15,6 +15,17 @@
 
 export const SPRITE_EVENTS = [
   {
+    id: 'mastery-monday-2026-09-14',
+    emoji: '⭐',
+    name: 'Mastery Monday',
+    perk: '2× Sprite Dust & XP · boosted Legendary/Mythic spawns',
+    startsUtc: '2026-09-14T13:00:00Z', // 9 AM ET Mon Sep 14
+    endsUtc: '2026-09-15T13:00:00Z', // runs 24h, to 9 AM ET Tue
+    confirmed: true,
+    source: 'Vice',
+    sourceUrl: 'https://www.vice.com/en/article/fortnite-admin-panel-code-mastery-monday-september-14/',
+  },
+  {
     id: 'new-sprite-day-2026-09-17',
     emoji: '🆕',
     name: 'New Sprite Day & Loot Hack refresh',

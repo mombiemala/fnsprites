@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-14',
+    when: 'Sep 14, 2026',
+    tag: 'event',
+    start: '2026-09-14',
+    end: '2026-09-15',
+    title: '⭐ Mastery Monday is live (Sep 14) — 2× Sprite Dust & XP + a new code',
+    body: 'Mastery Monday runs today from 9 AM ET (Mon, Sep 14) for 24 hours: double Sprite XP and double Sprite Dust, plus boosted Legendary/Mythic spawns — the fastest window to push Sprites toward Mastery. Epic also dropped a fresh Admin Panel code alongside it, BeamMeUp, for 2 free Extraction Accelerators — it’s on the Lobby Hacks page.',
+    link: 'https://www.vice.com/en/article/fortnite-admin-panel-code-mastery-monday-september-14/',
+    source: 'Vice',
+    official: true,
+  },
+  {
     ts: '2026-09-13',
     when: 'Sep 13, 2026',
     tag: 'upcoming',
