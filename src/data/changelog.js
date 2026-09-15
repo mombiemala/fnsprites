@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 15, 2026',
+    title: 'Community code check — tell everyone whether a code still works',
+    changes: [
+      { tag: 'Added', text: 'Every lobby code now has a “Still working? 👍 / 👎” control. Signed-in players can report whether a code worked, and everyone sees the recent tally — so dead codes get flagged by the community fast instead of waiting on a site update. A code with several recent “didn’t work” reports shows a ⚠️ “may be dead” hint.' },
+      { tag: 'Security', text: 'Votes are one-per-person-per-code (changeable), and only aggregate counts are exposed — nobody’s individual votes are visible. Counts are read through a definer function; reporting requires sign-in.' },
+    ],
+    summary: 'Crowd-sourced freshness on the codes page: players vote a code working or dead, and the recent tally shows for everyone.',
+    why: 'Codes expire unpredictably and our once-a-day watch can lag reality by hours. Letting the community flag a dead code the moment it stops working keeps the highest-traffic page trustworthy, while keeping our verified-only discipline (reports are a freshness signal shown alongside the code, not an auto-delete).',
+  },
+  {
+    date: 'September 15, 2026',
     title: 'Faster loads — split the big libraries into their own cached chunks',
     changes: [
       { tag: 'Changed', text: 'The app used to ship as one ~590 KB JavaScript file. It’s now split so React, Supabase and other libraries load as separate chunks that the browser fetches in parallel and keeps cached — the app’s own code dropped to ~195 KB. In practice: after each update we ship, you re-download only the small app chunk instead of everything, so return visits load noticeably quicker.' },

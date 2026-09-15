@@ -583,6 +583,37 @@ export function AuthProvider({ children }) {
     return { ok: true }
   }, [user])
 
+  // --- Community code reports ("still working?" votes on lobby codes) ---
+  // Recent working/failing counts per code (aggregate, works for guests too).
+  // Returns a map keyed by the LOWERCASED code -> { works, fails }.
+  const fetchCodeReports = useCallback(async (codes) => {
+    const list = [...new Set((codes || []).filter(Boolean))]
+    if (!list.length) return {}
+    const { data, error } = await supabase.rpc('code_reports_batch', { p_codes: list })
+    if (error) return {}
+    const map = {}
+    for (const r of data || []) map[r.code] = { works: r.works, fails: r.fails }
+    return map
+  }, [])
+
+  // The signed-in user's own votes -> map of lowercased code -> works (bool).
+  const fetchMyCodeVotes = useCallback(async () => {
+    if (!user) return {}
+    const { data, error } = await supabase.from('code_reports').select('code,works')
+    if (error) return {}
+    const map = {}
+    for (const r of data || []) map[r.code] = r.works
+    return map
+  }, [user])
+
+  // Cast/update the user's "works / doesn't work" vote for a code.
+  const setCodeReport = useCallback(async (code, works) => {
+    if (!user) return { error: 'not_signed_in' }
+    const { data, error } = await supabase.rpc('code_report_set', { p_code: code, p_works: works })
+    if (error || data !== 'ok') return { error: error?.message || data || 'failed' }
+    return { ok: true }
+  }, [user])
+
   const removeFriend = useCallback(async (friendId) => {
     if (!user || !friendId) return { error: 'Invalid' }
     const prevHad = friendIds.has(friendId)
@@ -635,6 +666,9 @@ export function AuthProvider({ children }) {
     unconfirmTrade,
     fetchTradeConfirmations,
     reportTrader,
+    fetchCodeReports,
+    fetchMyCodeVotes,
+    setCodeReport,
     signUp,
     signIn,
     signInWithProvider,

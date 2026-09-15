@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useToast } from '../context/toastStore'
+import { useAuth } from '../context/authStore'
 import { CODES_INTRO, CODE_CATEGORIES, LOBBY_CODES } from '../data/codes'
 
 // The "Lobby Hacks" codes as a first-class tab (was a modal). Same data as the
@@ -29,11 +30,60 @@ const saveRedeemed = (set) => {
 
 export default function CodesView() {
   const { toast } = useToast()
+  const { user, fetchCodeReports, fetchMyCodeVotes, setCodeReport } = useAuth()
   const [copied, setCopied] = useState(null)
   const [redeemed, setRedeemed] = useState(loadRedeemed)
   const [hideRedeemed, setHideRedeemed] = useState(() => {
     try { return localStorage.getItem(HIDE_KEY) === '1' } catch { return false }
   })
+  // Community "still working?" reports: aggregate counts (all viewers) + my own votes.
+  const [reports, setReports] = useState({}) // code_lc -> { works, fails }
+  const [myVotes, setMyVotes] = useState({}) // code_lc -> boolean
+
+  const allCodeStrings = LOBBY_CODES.filter((c) => c.code).map((c) => c.code)
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      const m = await fetchCodeReports(allCodeStrings)
+      if (!cancelled) setReports(m)
+    })()
+    return () => { cancelled = true }
+    // allCodeStrings is derived from a static import, so this runs once.
+  }, [fetchCodeReports]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    let cancelled = false
+    ;(async () => {
+      const v = user ? await fetchMyCodeVotes() : {}
+      if (!cancelled) setMyVotes(v)
+    })()
+    return () => { cancelled = true }
+  }, [user, fetchMyCodeVotes])
+
+  const vote = useCallback(async (code, works) => {
+    if (!user) { toast('Sign in to report whether a code worked'); return }
+    const lc = code.toLowerCase()
+    const prevVote = myVotes[lc]
+    if (prevVote === works) return // no change
+    // Optimistic: update my vote + shift the aggregate counts.
+    setMyVotes((prev) => ({ ...prev, [lc]: works }))
+    setReports((prev) => {
+      const cur = prev[lc] || { works: 0, fails: 0 }
+      const next = { ...cur }
+      if (works) { next.works += 1; if (prevVote === false) next.fails = Math.max(0, next.fails - 1) }
+      else { next.fails += 1; if (prevVote === true) next.works = Math.max(0, next.works - 1) }
+      return { ...prev, [lc]: next }
+    })
+    const res = await setCodeReport(code, works)
+    if (res?.error) {
+      toast('Couldn’t save your report')
+      // Re-sync from server on failure.
+      const [agg, mine] = await Promise.all([fetchCodeReports(allCodeStrings), fetchMyCodeVotes()])
+      setReports(agg); setMyVotes(mine)
+    } else {
+      toast(works ? 'Thanks — marked as working' : 'Thanks — flagged as not working')
+    }
+  }, [user, myVotes, toast, setCodeReport, fetchCodeReports, fetchMyCodeVotes, allCodeStrings])
 
   const copy = (code) => {
     if (navigator.clipboard?.writeText) {
@@ -145,6 +195,11 @@ export default function CodesView() {
                   const st = STATUS[c.status] || STATUS.rumored
                   const upcoming = !c.code
                   const done = !upcoming && redeemed.has(c.code)
+                  const lc = upcoming ? null : c.code.toLowerCase()
+                  const rep = lc ? reports[lc] : null
+                  const myVote = lc ? myVotes[lc] : undefined
+                  // Strong "probably dead" signal: several recent fails, clearly outweighing works.
+                  const dead = rep && rep.fails >= 3 && rep.fails > rep.works * 2
                   return (
                     <div key={c.code || c.unlocks} className={`flex flex-wrap items-center gap-2 rounded-xl bg-[var(--bg-2)] p-2 ${done ? 'opacity-55' : ''}`}>
                       {upcoming ? (
@@ -177,6 +232,28 @@ export default function CodesView() {
                         <p className="text-[10px] text-[var(--muted)]">
                           {c.region ? `${c.region} · ` : ''}via {c.source}
                         </p>
+                        {!upcoming && (
+                          <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                            <span className="text-[10px] text-[var(--muted)]">Still working?</span>
+                            <button
+                              onClick={() => vote(c.code, true)}
+                              aria-pressed={myVote === true}
+                              title={user ? 'Report this code worked for you' : 'Sign in to report'}
+                              className={`rounded px-1.5 py-0.5 text-[10px] font-bold transition-colors ${myVote === true ? 'bg-emerald-400/20 text-emerald-300' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'}`}
+                            >
+                              👍 {rep?.works || 0}
+                            </button>
+                            <button
+                              onClick={() => vote(c.code, false)}
+                              aria-pressed={myVote === false}
+                              title={user ? 'Report this code didn’t work' : 'Sign in to report'}
+                              className={`rounded px-1.5 py-0.5 text-[10px] font-bold transition-colors ${myVote === false ? 'bg-red-400/20 text-red-300' : 'bg-[var(--panel-2)] text-[var(--muted)] hover:text-white'}`}
+                            >
+                              👎 {rep?.fails || 0}
+                            </button>
+                            {dead && <span className="text-[10px] font-bold text-amber-300" title="Several recent reports say this code no longer works">⚠️ may be dead</span>}
+                          </div>
+                        )}
                       </div>
                       {isNewCode(c) && <span className="shrink-0 rounded bg-sky-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-sky-300" title="Added in the last week">🆕 New</span>}
                       {c.repeatable && <span className="shrink-0 rounded bg-sky-400/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-sky-300" title="Reusable — re-trigger any time">↻ Reusable</span>}

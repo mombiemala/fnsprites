@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 15, 2026 — Community code verification ("still working?" votes)
+
+- **Added:** a 👍/👎 "Still working?" control on every lobby code in `CodesView.jsx`. New `code_reports` table + RPCs
+  `code_report_set(text, boolean)` and `code_reports_batch(text[])` (recent 21-day working/failing counts); `AuthContext`
+  gains `fetchCodeReports`, `fetchMyCodeVotes`, `setCodeReport`. Aggregate counts render for everyone (RPC granted to
+  `anon`); a code with ≥3 recent fails clearly outweighing works shows a ⚠️ "may be dead" hint.
+- **Security/DB:** one vote per user per code (changeable), RLS exposes only the owner's rows, aggregate counts come from
+  a SECURITY DEFINER function; casting a vote requires sign-in.
+- **Why:** codes expire unpredictably and the once-daily watch can lag reality by hours. Community flags surface a dead
+  code immediately, keeping the highest-traffic page trustworthy — a freshness signal shown alongside each code, not an
+  auto-delete (verified-only discipline preserved).
+
+---
+
 ## September 15, 2026 — Bundle splitting (vendor chunks for faster repeat loads)
 
 - **Changed:** added `build.rollupOptions.output.manualChunks` in `vite.config.js` — `@supabase/*` → `supabase`,
