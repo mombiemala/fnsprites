@@ -66,7 +66,8 @@ export const LOBBY_CODES = [
   { code: 'PERFECTORDER', unlocks: '4× spicy-taco gizmos (Geno)', type: 'reward', category: 'gizmos', status: 'working', source: 'GamesRadar' },
   { code: 'InsertCoinToContinue', unlocks: 'Arcade Machine lobby transformation', type: 'effect', category: 'gizmos', status: 'working', added: '2026-09-08', source: 'GamesRadar / community list' },
   { code: 'BRB', unlocks: 'Toilet lobby transformation', type: 'effect', category: 'gizmos', status: 'working', added: '2026-09-08', source: 'GamesRadar / community list' },
-  { code: 'NOPROLLAMA', unlocks: 'Llama Supply Drop Gizmo (calls a boosted llama supply drop) — redeemable Sep 7–14 only', type: 'reward', category: 'gizmos', status: 'working', added: '2026-09-07', source: 'The Click / FortniteFNLK' },
+  // NOPROLLAMA (Llama Supply Drop Gizmo) was a Sep 7–14 limited-window code — expired
+  // Sep 14, removed Sep 15 once past its window.
 
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
   { code: 'BeamMeUp', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-14', source: 'Vice (Mastery Monday code)' },
