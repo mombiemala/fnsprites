@@ -164,7 +164,6 @@ export default function TopStatus({ onGo }) {
               </a>
             )
           })}
-          <span className="w-full text-[10px] text-[var(--muted)] sm:w-auto sm:pl-1">Confirmed &amp; dated only — hover for details.</span>
         </div>
       )}
     </div>

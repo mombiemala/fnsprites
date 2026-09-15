@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 15, 2026 — Fortnitemares 2026 hub (/fortnitemares)
+
+- **Added:** new `src/data/fortnitemares.js` (leak-labelled, sourced content) + `fortnitemaresPage()` in
+  `scripts/prerender.mjs`, wired into `GUIDES`, the sitemap, and the write loop → a prerendered `/fortnitemares` SEO page
+  (Article + FAQ JSON-LD). Covers the estimated start (~Oct 1), the datamined Trick-or-Treat Sprite, the FNAF/Ghostface
+  crossovers, Halloween Loot Hacks and map changes — every item badged **Leak**/**Rumor** with a source, plus a
+  not-Epic-confirmed disclaimer and links into the checklist/codes/loot-hacks.
+- **Fixed:** removed a stray "Confirmed & dated only — hover for details" caption under the "Coming up" chips in
+  `TopStatus.jsx` (didn't read right there).
+- **Why:** Halloween is Fortnite's biggest seasonal search spike and "Fortnitemares 2026" + the FNAF collab are already
+  trending — a dedicated, well-sourced hub captures that intent and funnels it into the tracker, while keeping the
+  verified-only discipline (labelled leaks, promoted to confirmed as Epic reveals them).
+
+---
+
 ## September 15, 2026 — Community code verification ("still working?" votes)
 
 - **Added:** a 👍/👎 "Still working?" control on every lobby code in `CodesView.jsx`. New `code_reports` table + RPCs

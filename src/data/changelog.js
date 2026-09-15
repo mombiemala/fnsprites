@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 15, 2026',
+    title: 'New: a Fortnitemares 2026 hub (Halloween leaks, clearly labelled)',
+    changes: [
+      { tag: 'Added', text: 'A dedicated /fortnitemares page rounding up everything known about Fortnite’s Halloween event: the estimated start (~Oct 1), the datamined Trick-or-Treat Sprite finish, the reported FNAF and Ghostface crossovers, Halloween Loot Hacks and map changes — each tagged Leak or Rumor, since Epic hasn’t announced it yet. It links into the checklist, codes and Loot Hacks so you can get ready.' },
+      { tag: 'Fixed', text: 'Removed a stray “Confirmed & dated only — hover for details” caption under the “Coming up” chips on the top card; it didn’t make sense there.' },
+    ],
+    summary: 'A Halloween landing page for Fortnitemares 2026 — the biggest Fortnite search spike of the season — with every leak honestly labelled.',
+    why: 'Halloween drives a huge organic-traffic surge, and “Fortnitemares 2026” + the FNAF collab are already trending. A dedicated, well-sourced hub captures that search intent and funnels it into the tracker, while keeping our verified-only discipline (everything is badged Leak/Rumor until Epic confirms).',
+  },
+  {
+    date: 'September 15, 2026',
     title: 'Community code check — tell everyone whether a code still works',
     changes: [
       { tag: 'Added', text: 'Every lobby code now has a “Still working? 👍 / 👎” control. Signed-in players can report whether a code worked, and everyone sees the recent tally — so dead codes get flagged by the community fast instead of waiting on a site update. A code with several recent “didn’t work” reports shows a ⚠️ “may be dead” hint.' },

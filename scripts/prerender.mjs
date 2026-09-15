@@ -22,6 +22,7 @@ import { CODES_INTRO, CODE_CATEGORIES, LOBBY_CODES } from '../src/data/codes.js'
 import { LOOT_HACK_ROTATION, LOOT_HACK_META, LOOT_HACK_HOW } from '../src/data/lootHacks.js'
 import { SEASON } from '../src/data/season.js'
 import { TRADE_STEPS, TRADE_SAFETY, SPRITE_SWAP_ISLANDS, ISLAND_HOWTO } from '../src/data/tradeHubs.js'
+import { FORTNITEMARES, daysUntilFortnitemares } from '../src/data/fortnitemares.js'
 
 const SITE = 'https://fnsprites.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -1563,7 +1564,55 @@ function tradeGuidePage() {
 ` + FOOT
 }
 
+// ---------- /fortnitemares page ----------
+// Fortnitemares 2026 hub — Halloween is Fortnite's biggest seasonal search spike.
+// Leak-heavy, so every item is clearly badged Leak/Rumor (verified-only discipline).
+function fortnitemaresPage() {
+  const fmtLong = (d) => new Date(d + 'T12:00:00Z').toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
+  const days = daysUntilFortnitemares()
+  const whenLine = days > 0 ? `expected to begin around <b>${fmtLong(FORTNITEMARES.startEstimate)}</b> (about ${days} day${days === 1 ? '' : 's'} away)` : `expected around <b>${fmtLong(FORTNITEMARES.startEstimate)}</b>`
+  const desc = `Fortnitemares 2026 — everything leaked so far for Fortnite's Halloween event: the estimated start date (~Oct 1), the datamined Trick-or-Treat Sprite, the reported FNAF & Ghostface crossovers, Halloween Loot Hacks and map changes. Clearly labelled leaks vs rumors, and how to get your Sprite collection ready.`
+  const badge = (s) => s === 'leak'
+    ? '<span style="flex:none;border-radius:6px;background:rgba(245,158,11,.15);color:#fbbf24;font-size:10px;font-weight:800;text-transform:uppercase;padding:2px 6px">Leak</span>'
+    : '<span style="flex:none;border-radius:6px;background:rgba(255,255,255,.1);color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase;padding:2px 6px">Rumor</span>'
+  const card = (it) => `<div class="card" style="padding:12px 14px;margin:0 0 8px">
+    <div style="display:flex;align-items:center;gap:8px;margin:0 0 4px"><span style="font-size:14px;font-weight:800;color:#fff">${esc(it.title)}</span>${badge(it.status)}</div>
+    <p style="margin:0;font-size:13px;color:var(--muted);line-height:1.6">${esc(it.detail)} <span style="opacity:.65">— ${esc(it.source)}</span></p>
+  </div>`
+  const section = (title, items) => `<h2 style="font-size:17px;color:#fff;margin:20px 0 8px">${title}</h2>${items.map(card).join('')}`
+  const faqs = [
+    ['When does Fortnitemares 2026 start?', `Fortnitemares 2026 is reported to begin around ${fmtLong(FORTNITEMARES.startEstimate)} — a Thursday, in line with Fortnite’s usual update cadence — and run through Halloween. Epic hasn’t officially confirmed the date yet, so treat it as a leak until they announce.`],
+    ['Is there a Fortnitemares Sprite?', 'A Halloween “Trick or Treat” Sprite finish is datamined (leak imagery points to an X-Ray Trick-or-Treat variant), but the base Sprite and its ability aren’t in the files yet. It’s unconfirmed — we’ll add it to the tracker the moment Epic makes it official.'],
+    ['Is Five Nights at Freddy’s coming to Fortnite?', 'Dataminers report a FNAF crossover for Fortnitemares 2026 — FNAF files in a recent update and a Freddy Fazbear’s Pizzeria-style building under construction on the map. Epic hasn’t named Fortnite directly, so it’s a strong leak, not a confirmation.'],
+    ['What else is leaked for Fortnitemares 2026?', `Reported additions include ${[...FORTNITEMARES.collabs, ...FORTNITEMARES.content].map((i) => i.title).join(', ')}. All are leaks/rumors until Epic confirms.`],
+    ['How do I get my Sprite collection ready?', 'Fill in the Sprites you’re missing now, spend or reset Sprite Dust before any event flip so it isn’t wasted, and keep an eye on the Lobby Hack codes — Halloween events often bring fresh codes and Loot Hacks. Track it all free on FN Sprite Tracker.'],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'Fortnitemares 2026 — Start Date, Sprite & Everything Leaked', description: desc, url: SITE + '/fortnitemares', dateModified: FORTNITEMARES.updated, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ] }
+  return head({ title: `Fortnitemares 2026 — Start Date, Sprite & Everything Leaked | FN Sprite Tracker`, desc, canonical: SITE + '/fortnitemares', jsonld, active: 'news' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🎃 Fortnitemares 2026 — what’s leaked</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 8px;font-size:14px;max-width:70ch">Fortnite’s Halloween event, Fortnitemares, is ${whenLine} and running through Halloween. Epic hasn’t officially announced it yet, so everything below is <b style="color:#fbbf24">leaked or rumored</b> — we label each item and will flip them to confirmed as Epic reveals them.</p>
+    <div class="card" style="padding:10px 14px;margin:0 0 6px;border-color:rgba(245,158,11,.35)"><p style="margin:0;font-size:12px;color:var(--muted)">⚠️ Dates and details are from dataminers &amp; community outlets, <b>not Epic</b>. Treat as unconfirmed.</p></div>
+    ${section('👾 Sprites', FORTNITEMARES.sprites)}
+    ${section('🤝 Crossovers', FORTNITEMARES.collabs)}
+    ${section('🗺️ Everything else', FORTNITEMARES.content)}
+    <div class="card" style="padding:14px 16px;margin:16px 0 0">
+      <p style="margin:0;font-size:13px;color:var(--muted)">Get ready: fill in your <a href="/sprites" style="color:var(--brand)">Sprite checklist</a>, grab free Sprite Dust from <a href="/codes" style="color:var(--brand)">Lobby Hack codes</a>, watch the <a href="/loot-hacks" style="color:var(--brand)">Loot Hacks</a> rotation, and see what carries over at the <a href="/season-transition" style="color:var(--brand)">season transition</a>.</p>
+    </div>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Compiled from ${esc(FORTNITEMARES.sourceUrl.replace(/^https?:\/\//, '').replace(/\/.*$/, ''))} and other community leak reports; updated ${fmtLong(FORTNITEMARES.updated)}. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/">Track your Sprite collection — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 const GUIDES = [
+  ['/fortnitemares', '🎃', 'Fortnitemares 2026', 'Everything leaked for Fortnite’s Halloween event — start date, the Trick-or-Treat Sprite, the FNAF & Ghostface crossovers, and how to get ready.'],
   ['/codes', '🔓', 'Lobby Hacks (codes)', 'Every Hack the Lobby / Admin Panel code and what it unlocks — grouped by reward, with copy & redeemed-tracking.'],
   ['/loot-hacks', '🎯', 'Loot Hacks (this week)', 'The current rotating Loot Hack weapons you buy with Sprite Dust, how upgrades work, and when they next refresh.'],
   ['/how-to-trade-sprites', '🔁', 'How to trade Sprites', 'The drop-&-extract method (Fortnite has no trade button), a scam-safety checklist, and the Sprite-Swap island codes to meet on.'],
@@ -1804,6 +1853,7 @@ function sitemap(types) {
     { loc: SITE + '/events', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/season-transition', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
+    { loc: SITE + '/fortnitemares', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/privacy', changefreq: 'yearly', priority: '0.3' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
@@ -1833,6 +1883,8 @@ mkdirSync(resolve(DIST, 'tier-list'), { recursive: true })
 writeFileSync(resolve(DIST, 'tier-list', 'index.html'), tierListPage())
 mkdirSync(resolve(DIST, 'news'), { recursive: true })
 writeFileSync(resolve(DIST, 'news', 'index.html'), newsPage())
+mkdirSync(resolve(DIST, 'fortnitemares'), { recursive: true })
+writeFileSync(resolve(DIST, 'fortnitemares', 'index.html'), fortnitemaresPage())
 mkdirSync(resolve(DIST, 'codes'), { recursive: true })
 writeFileSync(resolve(DIST, 'codes', 'index.html'), codesPage())
 mkdirSync(resolve(DIST, 'sprite-garden'), { recursive: true })
