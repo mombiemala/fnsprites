@@ -16,6 +16,6 @@ export const ADS_ENABLED = import.meta.env.VITE_ADS_ENABLED === 'true'
 // then paste their data-ad-slot ids here. An empty id keeps that placement
 // dormant even when ADS_ENABLED is on, so it's safe to place them now.
 export const AD_SLOTS = {
-  collectionBottom: '', // responsive unit above the footer
-  spritesSidebar: '',   // in-content unit in the /sprites reference sidebar
+  collectionBottom: '4589403651', // responsive unit above the footer (AdSense "ad 1")
+  spritesSidebar: '',   // in-content unit in the /sprites reference sidebar (awaiting its slot id)
 }
