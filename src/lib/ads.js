@@ -17,5 +17,5 @@ export const ADS_ENABLED = import.meta.env.VITE_ADS_ENABLED === 'true'
 // dormant even when ADS_ENABLED is on, so it's safe to place them now.
 export const AD_SLOTS = {
   collectionBottom: '4589403651', // responsive unit above the footer (AdSense "ad 1")
-  spritesSidebar: '',   // in-content unit in the /sprites reference sidebar (awaiting its slot id)
+  spritesSidebar: '3068438420',   // in-content unit in the /sprites reference sidebar (AdSense "ad2")
 }
