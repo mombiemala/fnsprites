@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 15, 2026 — Bundle splitting (vendor chunks for faster repeat loads)
+
+- **Changed:** added `build.rollupOptions.output.manualChunks` in `vite.config.js` — `@supabase/*` → `supabase`,
+  React/react-dom/scheduler → `react-vendor`, other `node_modules` → `vendor`. The eager app chunk dropped from **~591 KB
+  → ~195 KB** (≈170 KB → ~58 KB gzip); React (~60 KB gz), Supabase (~52 KB gz) and vendor (~17 KB gz) are now separate,
+  parallel-fetched, and cached across deploys. The >500 KB chunk-size warning is gone.
+- **Why:** everything was in one chunk, so every deploy busted the whole 590 KB download for returning visitors. Isolating
+  the rarely-changing libraries means repeat visits re-download only the small app chunk. (Heavy tabs/modals and the big
+  `changelog.js` were already lazy-loaded; `framer-motion`/`lucide-react` are unused and tree-shaken out.) Faster loads
+  also help SEO and ad performance.
+- **Follow-up option:** defer `@supabase/supabase-js` off the first-paint path for guests (it's ~52 KB gz and loads eagerly
+  for auth) — a bigger first-load win but a riskier refactor, left for later.
+
+---
+
 ## September 14, 2026 — Weekly events are data-driven (no false "LIVE")
 
 - **Changed:** new `src/data/events.js` (`SPRITE_EVENTS` + `liveSpriteEvent()` / `nextSpriteEvent()`) is now the source of

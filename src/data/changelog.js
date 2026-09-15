@@ -6,6 +6,14 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 15, 2026',
+    title: 'Faster loads — split the big libraries into their own cached chunks',
+    changes: [
+      { tag: 'Changed', text: 'The app used to ship as one ~590 KB JavaScript file. It’s now split so React, Supabase and other libraries load as separate chunks that the browser fetches in parallel and keeps cached — the app’s own code dropped to ~195 KB. In practice: after each update we ship, you re-download only the small app chunk instead of everything, so return visits load noticeably quicker.' },
+    ],
+    summary: 'Split the bundle so libraries are cached separately from app code — quicker repeat loads, especially since the site updates often.',
+    why: 'Everything was bundled together, so every deploy invalidated the whole 590 KB download for returning visitors, and the build kept warning about the oversized chunk. Splitting the rarely-changing vendor libraries (React, Supabase) from the frequently-updated app code lets browsers reuse the cached libraries across deploys, and the parallel fetch helps first load too. Faster pages also help SEO and ad performance.' },
+  {
     date: 'September 14, 2026',
     title: 'Event countdown is now data-driven — no more assuming an event is live',
     changes: [
