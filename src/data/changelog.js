@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 15, 2026',
+    title: 'Heads-up for guests — “sign in to save your collection across devices”',
+    changes: [
+      { tag: 'Added', text: 'If you’ve started tracking Sprites without signing in, a friendly banner now reminds you that your progress is saved on this device only, with a one-tap Sign in. Your current progress carries over when you do. It only appears once you’ve marked at least one Sprite, and it’s dismissible.' },
+    ],
+    summary: 'A gentle nudge so guests know their collection is device-local until they sign in — and can back it up in one tap.',
+    why: 'A player recently signed in on a new device and found an empty collection because their earlier progress was guest data stranded in another browser. Guest progress only reaches the cloud on your first sign-in, so making that explicit (and easy to act on) prevents the “where did my collection go?” surprise and saves more collections.',
+  },
+  {
+    date: 'September 15, 2026',
     title: 'New: a Fortnitemares 2026 hub (Halloween leaks, clearly labelled)',
     changes: [
       { tag: 'Added', text: 'A dedicated /fortnitemares page rounding up everything known about Fortnite’s Halloween event: the estimated start (~Oct 1), the datamined Trick-or-Treat Sprite finish, the reported FNAF and Ghostface crossovers, Halloween Loot Hacks and map changes — each tagged Leak or Rumor, since Epic hasn’t announced it yet. It links into the checklist, codes and Loot Hacks so you can get ready.' },

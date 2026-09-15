@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 15, 2026 — Guest save nudge
+
+- **Added:** `src/components/GuestSaveNudge.jsx`, rendered in `App.jsx` for signed-out visitors (`!user`, non-share) below
+  the top card. Shows only once the guest has ≥1 owned Sprite, is dismissible (localStorage), and offers a one-tap Sign
+  in (`setShowAuth(true)`) noting progress carries over on first sign-in (the existing union-merge).
+- **Why:** a player signed in on a new device to an empty collection because their guest progress was stranded in another
+  browser (guest data only reaches the cloud on first sign-in). Making that explicit prevents the "where did my
+  collection go?" surprise and converts more guests.
+
+---
+
 ## September 15, 2026 — Fortnitemares 2026 hub (/fortnitemares)
 
 - **Added:** new `src/data/fortnitemares.js` (leak-labelled, sourced content) + `fortnitemaresPage()` in

@@ -26,6 +26,7 @@ import UpcomingSprites from './components/UpcomingSprites'
 import HowSpritesWork from './components/HowSpritesWork'
 import WelcomeModal from './components/WelcomeModal'
 import SaveStatusPill from './components/SaveStatusPill'
+import GuestSaveNudge from './components/GuestSaveNudge'
 import AdSlot from './components/AdSlot'
 import { AD_SLOTS } from './lib/ads'
 
@@ -593,6 +594,10 @@ export default function App() {
       {/* One compact top card: active announcement + today's event + upcoming
           heads-up (was three separate stacked blocks). */}
       {!isShareView && <TopStatus onGo={goToSection} />}
+
+      {/* Guests with progress: nudge to sign in so their device-local collection
+          gets backed up + synced (their progress merges on first sign-in). */}
+      {!isShareView && !user && <GuestSaveNudge tracking={tracking} onSignIn={() => setShowAuth(true)} />}
 
       {/* Full-width filters bar (sticks to the top on scroll) */}
       <div className="sticky top-0 z-30 -mx-4 mb-5 border-b border-[var(--border)] bg-[#0c0f1a]/85 px-4 py-3 backdrop-blur-md sm:-mx-6 sm:px-6">
