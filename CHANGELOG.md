@@ -11,6 +11,27 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 16, 2026 — v42.20 datamine (42 new Sprites, Bounty Hunter finish)
+
+- **Added:** a third Season 4 "Override" finish, **Bounty Hunter**, to `src/data/themes.js` (`rumored: true` as a
+  release-gate, `noSummon: true`, `FINISH_ODDS_FACTOR.bountyhunter = null`) + a `.theme-bountyhunter` card treatment in
+  `src/index.css` (amber "wanted-poster" wash). In-game it gives a chance to find Sprites on eliminations and only earns
+  Sprite XP from eliminations. Added as `bountyhunter: U` to the 15 live Override Sprites, Pond and the new arrivals.
+- **Added:** five new base Sprites in `src/data/sprites.js` (`gen: 'c7s4'`, `rumored`, all-`U` variants) with their
+  datamined abilities — Pond (Super Jump after landing), Morgana (Persona 5, healing-item boost), Crash Bandicoot
+  (whirlwind on air-jump), Blinky (Pac-Man, cloak on damage at night) and Phase Dash (ability TBC). Pond gained its
+  confirmed finish set + ability.
+- **Changed:** Pond's ability text updated from the old design concept to the confirmed v42.20 Super Jump; the datamined
+  `headshot` entry renamed to its proper name **"Head Shot"**.
+- **Added:** a datamine News item (`src/data/news.js`) and a refreshed Sep 17 New Sprite Day card (`src/data/events.js`),
+  both labelled datamine (Vice / FireMonkey).
+- **Why:** Epic ships all the files in one update but releases variants gradually over the following weeks, so everything
+  is added datamined/rumored (excluded from totals) and flips live per-drop — the same wave handling used for
+  Cube/Holofoil/Loot Hacker. Verified-only discipline held: only Epic-detailed abilities are stated; the rest is TBC.
+  `incoming.js` was deliberately left untouched (it's the confirmed-and-dated feed; gradual/undated drops don't belong).
+
+---
+
 ## September 15, 2026 — Guest save nudge
 
 - **Added:** `src/components/GuestSaveNudge.jsx`, rendered in `App.jsx` for signed-out visitors (`!user`, non-share) below

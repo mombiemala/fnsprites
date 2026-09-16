@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-16',
+    when: 'Sep 16, 2026',
+    tag: 'upcoming',
+    tentative: true,
+    title: '🕵️ Datamine — 42 new Sprites (incl. a Bounty Hunter finish) in the v42.20 files',
+    sprites: ['morgana', 'birthday', 'crash', 'blinky', 'pond'],
+    body: 'The v42.20 update (arriving Thu, Sep 17) adds files for 42 new Sprites/variants. Five brand-new base Sprites are in there with abilities: Pond (the Design-a-Sprite winner — Super Jump after landing), Morgana (Persona 5 — boosts healing-item effectiveness), Crash Bandicoot (a spin/whirlwind attack when you jump in the air), Blinky (Pac-Man’s red ghost — a cloak when you take damage at night) and Birthday (chests can spawn cake). The rest of the wave is a third “Override” finish, Bounty Hunter, added across existing Sprites — it gives a chance to find Sprites when you eliminate opponents, and only earns Sprite XP from eliminations, so it levels by fighting. Important: not all 42 go live on Sep 17 — the files ship together but Epic releases variants gradually over the following weeks, so we’ve added everything as datamined/upcoming (it won’t count toward your total) and will flip each one live the moment it’s obtainable. Datamine-only until Epic confirms.',
+    link: 'https://www.vice.com/en/article/fortnite-september-17-update-42-new-sprites/',
+    source: 'Vice · FireMonkey',
+    official: false,
+  },
+  {
     ts: '2026-09-14',
     when: 'Sep 14, 2026',
     tag: 'event',

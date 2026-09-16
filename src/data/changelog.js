@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 16, 2026',
+    title: 'v42.20 datamine — 42 new Sprites, a Bounty Hunter finish, 5 new Sprites',
+    changes: [
+      { tag: 'Added', text: 'A new “Bounty Hunter” finish (Season 4 “Override”), datamined in the v42.20 update. In-game it gives a chance to find Sprites when you eliminate opponents, and it only earns Sprite XP from eliminations — so it levels by fighting rather than from chests. It’s on the 15 already-live Override Sprites plus Pond and the new arrivals below, all marked datamined/upcoming.' },
+      { tag: 'Added', text: 'Five brand-new base Sprites with their datamined abilities: Pond (Design-a-Sprite winner — a Super Jump when you jump shortly after landing), Morgana (Persona 5 — boosts healing-item effectiveness), Crash Bandicoot (a whirlwind attack when you jump in the air), Blinky (Pac-Man’s red ghost — a cloak when you take damage at night) and Birthday (chests can spawn cake). Pond also picked up its confirmed finish set.' },
+      { tag: 'Changed', text: 'Pond now shows its confirmed v42.20 ability (Super Jump) instead of the older “egg → frog” design concept, and the datamined “Headshot” Sprite is renamed to its proper name, “Head Shot”.' },
+      { tag: 'Added', text: 'A News item and a refreshed Sep 17 New Sprite Day event card covering the wave, both clearly labelled datamine (Vice / FireMonkey).' },
+    ],
+    summary: 'The Sep 17 (v42.20) update datamined 42 new Sprites — a third Override finish (Bounty Hunter) and five new base Sprites (Pond, Morgana, Crash Bandicoot, Blinky, Birthday) — all added to the roster as datamined/upcoming.',
+    why: 'Epic adds all the files in one update but releases the variants gradually over the following weeks, so everything is added as datamined/rumored (it doesn’t count toward your total) and will flip to live per-drop — the same wave handling we use for Cube/Holofoil/Loot Hacker. Getting the roster in early lets collectors see exactly what’s coming and plan, while keeping our verified-only discipline: only the abilities Epic detailed are shown, everything else is marked TBC.',
+  },
+  {
     date: 'September 15, 2026',
     title: 'Heads-up for guests — “sign in to save your collection across devices”',
     changes: [

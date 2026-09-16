@@ -28,12 +28,12 @@ export const SPRITE_EVENTS = [
   {
     id: 'new-sprite-day-2026-09-17',
     emoji: '🆕',
-    name: 'New Sprite Day & Loot Hack refresh',
-    perk: 'new Sprites + a fresh Loot Hack rotation',
+    name: 'New Sprite Day & v42.20 update',
+    perk: 'v42.20 drops — the 42-Sprite wave begins + a fresh Loot Hack rotation',
     startsUtc: '2026-09-17T13:00:00Z', // ~9 AM ET, Thu Sep 17
     endsUtc: '2026-09-17T23:59:00Z',
     confirmed: false, // expected from the in-game Loot Hack timer + weekly cadence
-    source: 'in-game Loot Hack timer',
+    source: 'in-game Loot Hack timer · v42.20 datamine (Vice/FireMonkey)',
     sourceUrl: '/loot-hacks',
   },
 ]

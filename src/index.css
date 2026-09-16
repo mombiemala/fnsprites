@@ -166,6 +166,14 @@
       linear-gradient(90deg, rgba(74, 163, 255, 0.10) 1px, transparent 1px) 0 0 / 12px 12px,
       linear-gradient(135deg, #0f2540, #122a52 45%, #241b52 100%);
   }
+  /* Bounty Hunter — the third Season 4 "Override" finish (datamined, v42.20): a
+     warm amber/orange "wanted-poster" wash with a faint crosshair-ring accent,
+     distinct from Cheatmaster's green and Loot Hacker's blue. */
+  .theme-bountyhunter {
+    background:
+      radial-gradient(circle at 78% 22%, rgba(255, 168, 76, 0.18), transparent 42%),
+      linear-gradient(135deg, #3a1e0c, #4a2410 45%, #2a1206 100%);
+  }
 
   /* ---------- Collectible-card treatment (redesign) ----------
      Frames each sprite like a trading card: a rarity-tinted foil edge, a

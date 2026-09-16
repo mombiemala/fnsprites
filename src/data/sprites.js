@@ -11,8 +11,11 @@ import { THEME_MAP } from './themes.js'
 // released, so entries that still read `released:false` here but carry a past
 // `releaseDate` are effectively released at runtime.
 // The only genuinely-unreleased types are the datamined Season 4 "Override"
-// Sprites (Pond, Honey, Dumpster, Meowscles, Squibbly, Cube, Headshot, BodySlam),
-// still flagged `rumored` until Epic ships each — their abilities can change.
+// Sprites (Pond, Honey, Dumpster, Meowscles, Squibbly, Cube, Head Shot, BodySlam,
+// and the v42.20 wave — Morgana, Birthday, Crash Bandicoot, Blinky, Phase Dash),
+// still flagged `rumored` until Epic ships each — their abilities can change. The
+// v42.20 update (Sep 17) also datamined a third "Override" finish, Bounty Hunter,
+// added per-Sprite as `bountyhunter: U` and gated by the theme's `rumored` flag.
 //
 // `dropRate` is the base (Normal) chance from a Sprite Chest. Epic does NOT
 // publish official rates — these are COMMUNITY ESTIMATES cross-referenced from
@@ -135,13 +138,13 @@ export const SPRITE_TYPES = [
   //   them with real variants, rarities and abilities (don't auto-release guesses).
   { id: 'sonic', name: 'Sonic', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the marquee Sonic collab (cube “backpack” redesign). Normal, Gold & Cheatmaster are all live (Cheatmaster unlocks via the GOTTAGOFAST lobby code; Gold since Gold Hours, Aug 22). Its exact in-game ability isn’t documented here yet.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'pond', name: 'Pond', icon: '🐸', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Design-a-Sprite winner (by Pine & Kiri): evolves egg → tadpole → frog, boosting movement speed & jump height and cutting fall damage as it grows. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
-    variants: { normal: U } },
+    ability: 'Design-a-Sprite winner (by Pine & Kiri). Confirmed ability (v42.20): Active — jump shortly after landing to trigger a Super Jump; charges regenerate over time, and Super Jump strength rises while its cooldown drops with each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — Epic rolls the variants out gradually over the following weeks. (Datamine: FireMonkey / Vice.)',
+    variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
   { id: 'onigiri', name: 'Onigiri', icon: '🍙', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside X-Ray. Exact in-game ability not yet detailed by Epic. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is live too (since Sep 10).',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'honey', name: 'Honey', icon: '🍯', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Conejito_sam): spawns a beehive that swarms whoever damages you. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },
@@ -150,7 +153,7 @@ export const SPRITE_TYPES = [
     variants: { normal: U } },
   { id: 'xray', name: 'X-Ray', icon: '🩻', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players (and objects) through walls, like the old medallion did. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside Onigiri. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is live too (since Sep 10).',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
 
   // ---- Override new-generation Sprites — LIVE in Chapter 7 Season 4, with
   //   official datamined art (Normal, Gold & the new "Cheatmaster" finish).
@@ -162,37 +165,37 @@ export const SPRITE_TYPES = [
   //   ships under the internal "NarrowFlea" codename: Sonic / Tails / Shadow. ----
   { id: 'tails', name: 'Tails', icon: '🦊', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — Tails (Sonic collab), cube redesign. Normal & Cheatmaster are live (Cheatmaster via the IWANNAFLYHIGH lobby code); Gold is live too (Gold Hours, Aug 22). Ability: lets you hover — a glide / slow descent.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'shadow', name: 'Shadow', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: automatically reloads your unequipped weapons over time.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'jazz', name: 'Jazz Jackrabbit', icon: '🐇', rarity: 'Legendary', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — Jazz Jackrabbit. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: unlocks a double‑jump.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'klombo', name: 'Klombo', icon: '🦕', rarity: 'Mythic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Klombo creature. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: grants a random item at each level — but levelling it up consumes items.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'bushranger', name: 'Bush Ranger', icon: '🌿', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — a woodland Bush Ranger. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'victorycrown', name: 'Crown', icon: '👑', rarity: 'Mythic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Crown. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: grants bonus Crown Wins when you earn a Victory Royale.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'jonesy', name: 'Jonesy', icon: '🕶️', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — Jonesy. Normal & Cheatmaster are live (Cheatmaster via the PLAY4ALL lobby code); Gold is live too (Gold Hours, Aug 22). Ability: restores some Health or Shield after you take damage.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'blaster', name: '8-Bit Blaster', icon: '🎮', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — a retro handheld “8-Bit Blaster”. Normal & Cheatmaster are live (Cheatmaster via the 8BITBLAST lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'killswitch', name: 'Killswitch', icon: '🎯', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — a tactical “Killswitch”. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: grants Hangtime — improved accuracy when aiming while jumping or falling.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'adventure', name: 'Adventure', icon: '🧭', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Adventure Sprite (a hooded, eye-patched explorer). Ability: upgrades a random item in your inventory each time it Levels Up. Found near high, mountainous areas. Normal & Cheatmaster are live (Cheatmaster via the BORN2PLAY lobby code); Gold is live too (Gold Hours, Aug 22). Its Loot Hacker finish is live too (since Sep 10).',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'stormscout', name: 'Storm Scout', icon: '👿', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — a horned “Storm Scout”, live since New Sprite Day (Aug 29) in all three finishes (Normal · Gold · Cheatmaster). Ability (per HYPEX): after you take 10 Storm damage it grants Overdrive and unlimited Energy — great for surviving or rotating through the Storm — and at max level it reveals upcoming Storm Circles.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
 
   // ---- Second datamine wave — six more Override Sprites found in the C7S4 files
   //   by leakers Krowe & FNBRIntel. No release dates yet, and Epic hasn't shown
@@ -204,7 +207,7 @@ export const SPRITE_TYPES = [
     variants: { normal: U } },
   { id: 'overshield', name: 'Overshield', icon: '🛡️', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — Overshield. Live in all four finishes (Normal · Gold · Cheatmaster · Loot Hacker, the last live since Sep 10). Exact in-game ability not fully documented here yet.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'megaman', name: 'Mega Man', icon: '🔵', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Mega Man collab (Capcom), internal codename “ImprovedSlide” (his signature slide). Live now; exact in-game ability not fully documented here yet, and additional finishes may follow.',
     variants: { normal: R } },
@@ -214,11 +217,36 @@ export const SPRITE_TYPES = [
   { id: 'cube', name: 'Cube', icon: '🟪', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Datamined Season 4 “Override” Sprite — the Cube (Kevin). Found in the C7S4 files but not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
     variants: { normal: U } },
-  { id: 'headshot', name: 'Headshot', icon: '🔻', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — codenamed “Headshot” (a Gold finish has been spotted in the files). Not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
+  { id: 'headshot', name: 'Head Shot', icon: '🔻', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Season 4 “Override” Sprite — “Head Shot”. Reappears in the v42.20 files (Sep 17); its in-game ability & rarity still aren’t detailed by Epic — TBC. (Datamine: FireMonkey / Vice; earlier: Krowe & FNBRIntel.)',
     variants: { normal: U } },
   { id: 'bodyslam', name: 'BodySlam', icon: '🤼', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Datamined Season 4 “Override” Sprite — internal codename “BodySlam”, which appears to be a collab crossover. Not yet obtainable; real name, ability & rarity all TBC. (Krowe & FNBRIntel)',
+    variants: { normal: U } },
+
+  // ---- Third datamine wave — the v42.20 update (Sep 17) added files for 42 new
+  //   Sprites, entries (the new Bounty Hunter finish + 5 brand-new base Sprites).
+  //   Epic ships them GRADUALLY over the following weeks, so everything here stays
+  //   unreleased/rumored (no `releaseDate`) until each variant actually goes live —
+  //   we flip them per-drop, exactly like the Cube/Holofoil waves. The five new
+  //   base Sprites below carry the abilities Epic detailed in the update; the rest
+  //   of the wave is the Bounty Hunter finish added to already-listed Sprites
+  //   above (see `bountyhunter: U`). Rarities aren't published yet — Epic tier TBC.
+  //   (Datamine: FireMonkey / Vice.) ----
+  { id: 'morgana', name: 'Morgana', icon: '🐈‍⬛', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Persona 5 collab. Increases the effectiveness of healing items, with healing effectiveness rising each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. Rarity TBC. (Datamine: FireMonkey / Vice.)',
+    variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
+  { id: 'birthday', name: 'Birthday', icon: '🎂', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Spotted near high, mountainous areas. Opening chests has a chance to spawn a piece of cake (and at max level eliminations can spawn cake too); the chance rises with each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. Rarity TBC. (Datamine: FireMonkey / Vice.)',
+    variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
+  { id: 'crash', name: 'Crash Bandicoot', icon: '🌀', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Crash Bandicoot collab. Spotted near high, mountainous areas. Active — jump in the air to trigger a whirlwind attack that damages and knocks back nearby enemies; damage rises and the cooldown drops with each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. Rarity TBC. (Datamine: FireMonkey / Vice.)',
+    variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
+  { id: 'blinky', name: 'Blinky', icon: '👾', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Pac-Man collab (Blinky, the red ghost). Found in the world at nighttime. Grants a temporary cloak when you take damage; cloak duration rises with each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. Rarity TBC. (Datamine: FireMonkey / Vice.)',
+    variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
+  { id: 'phasedash', name: 'Phase Dash', icon: '💨', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined in the v42.20 update (Sep 17) — only a Normal finish appears in the files so far, and its in-game ability & rarity aren’t detailed yet. TBC. (Datamine: FireMonkey / Vice.)',
     variants: { normal: U } },
 ]
 

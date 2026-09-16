@@ -31,6 +31,16 @@ export const THEMES = [
   // (15 incl. the already-out Crown). `noSummon: true` keeps it out of
   // "Dust to complete" math (it isn't a Dust summon).
   { id: 'loothacker', name: 'Loot Hacker', short: 'LH', className: 'theme-loothacker', accent: '#4aa3ff', bonus: 'Season 4 “Override” finish. Holding a Loot Hacker Sprite gives a +20% (1.2×) chance of Loot Hack items from Chests.', noSummon: true },
+  // Bounty Hunter — a third Chapter 7 Season 4 "Override" finish, DATAMINED in the
+  // v42.20 update (Sep 17). In-game description: "Chance to find Sprites when
+  // eliminating opponents." It only gains Sprite XP from eliminations (unless a
+  // Sprite has special XP rules), so it levels by fighting — like Crown's Crown
+  // Wins. `rumored: true` is a release-GATE (only Sprites with an explicit Bounty
+  // Hunter variant count as having it, rather than the finish auto-releasing
+  // roster-wide); `noSummon: true` keeps it out of "Dust to complete" math. Epic
+  // ships variants gradually over the following weeks, so each stays U until live.
+  // (Datamine: FireMonkey / Vice.)
+  { id: 'bountyhunter', name: 'Bounty Hunter', short: 'BH', className: 'theme-bountyhunter', accent: '#ff7a2f', bonus: 'Season 4 “Override” finish (datamined, v42.20). Chance to find Sprites when eliminating opponents. Only gains Sprite XP from eliminations, so it levels by fighting rather than from chests.', rumored: true, noSummon: true },
 ]
 
 export const THEME_MAP = Object.fromEntries(THEMES.map((t) => [t.id, t]))
@@ -60,5 +70,8 @@ export const FINISH_ODDS_FACTOR = {
   // Loot Hacker is live (Sep 10) but Epic/the community haven't surfaced a roll
   // rate for it — null keeps it out of the Chest-luck picker until one does.
   loothacker: null,
+  // Bounty Hunter is datamined (v42.20) and not chest-summoned (it levels from
+  // eliminations) — null keeps it out of the Chest-luck picker.
+  bountyhunter: null,
   rift: 0.05,
 }
