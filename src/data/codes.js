@@ -66,11 +66,15 @@ export const LOBBY_CODES = [
   { code: 'PERFECTORDER', unlocks: '4× spicy-taco gizmos (Geno)', type: 'reward', category: 'gizmos', status: 'working', source: 'GamesRadar' },
   { code: 'InsertCoinToContinue', unlocks: 'Arcade Machine lobby transformation', type: 'effect', category: 'gizmos', status: 'working', added: '2026-09-08', source: 'GamesRadar / community list' },
   { code: 'BRB', unlocks: 'Toilet lobby transformation', type: 'effect', category: 'gizmos', status: 'working', added: '2026-09-08', source: 'GamesRadar / community list' },
-  // NOPROLLAMA (Llama Supply Drop Gizmo) was a Sep 7–14 limited-window code — expired
-  // Sep 14, removed Sep 15 once past its window.
+  // NOPROLLAMA (Llama Supply Drop Gizmo) — re-added Sep 17: still listed Active on
+  // Fortnite.GG's Lobby Hacks board, so the earlier "expired Sep 14" window was wrong.
 
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
   { code: 'BeamMeUp', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-14', source: 'Vice (Mastery Monday code)' },
+  { code: 'NOCTURNEOP55N1', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
+  { code: 'DestinyAwaits', unlocks: '2× Llama Supply Drop Gizmos (Kingdom Hearts promo)', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
+  { code: 'ChatFindAnotherCode', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
+  { code: 'NOPROLLAMA', unlocks: '1× Llama Supply Drop Gizmo', type: 'reward', category: 'boosts', status: 'working', source: 'Fortnite.GG' },
   { code: 'TAKEYOURHEART', unlocks: '2× Extraction Accelerators (Persona 5 / Joker)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
   { code: 'SURVIVETHENIGHT', unlocks: '2× Cheat Code Locators (99 Nights)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
   { code: 'FINDITCHAT', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', source: 'community list', added: '2026-08-21' },
@@ -84,6 +88,7 @@ export const LOBBY_CODES = [
   // quests + a specific "let Geno eliminate you" step, so we note the condition.
   { code: 'YOURTHOUGHTSAREMINE', unlocks: '5,000 Sprite Dust + Void Master Geno Outfit style — after finishing the Geno story quests, shoot Geno’s shield and let him eliminate you', type: 'reward', category: 'dust', status: 'working', source: 'community list', added: '2026-09-03' },
   { code: 'BLINKYINKYPINKYCLYDE', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-17', source: 'Vice (v42.20 codes)' },
+  { code: 'PlayToLevelUp', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
   { code: 'WHEREISTHEDUSTYTREE', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-07', source: 'confirmed in-game' },
   { code: 'DUSTINTHEWIND', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-07', source: 'confirmed in-game' },
   // The four localized codes were posted by regional Fortnite accounts but are
@@ -96,5 +101,6 @@ export const LOBBY_CODES = [
 
   // --- 🖼️ Loading screens ---
   { code: 'REACHYOURIMPOSSIBLE', unlocks: 'Block Party loading screen', type: 'cosmetic', category: 'screens', status: 'working', source: 'community list', added: '2026-08-21' },
+  { code: 'SAYH12WR1X3L', unlocks: 'Wrixel’s Hero Portrait Spray', type: 'cosmetic', category: 'screens', status: 'working', source: 'Fortnite.GG', added: '2026-09-17' },
   { code: 'BEMOREALIEN', unlocks: '“Override Ready” loading screen', type: 'cosmetic', category: 'screens', status: 'regional', region: 'Alienware', source: 'GamesRadar' },
 ]

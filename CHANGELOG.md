@@ -20,7 +20,11 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 - **Added:** `releaseDate` on each built sprite item (`src/data/sprites.js`) and a **"Newest (release date)"** sort in
   `src/App.jsx` + `src/components/Toolbar.jsx` (both desktop and mobile selects). Dated Sprites sort newest-first; undated fall to
   the bottom in default order.
-- **Note:** Crash Bandicoot art was **not** in this drop — it keeps the vector placeholder until we have the official icons.
+- **Fixed:** the datamined `bodyslam` entry was Crash Bandicoot's internal codename (`BodySlam` = his spin) — its art (`BodySlam_*`)
+  is remapped to `crash_*` and the redundant `bodyslam` roster entry removed. Crash Bandicoot now has full official art in every finish.
+- **Added:** 6 more lobby codes in `src/data/codes.js`, confirmed Active on Fortnite.GG's board — `NOCTURNEOP55N1`, `DestinyAwaits`,
+  `ChatFindAnotherCode`, `PlayToLevelUp` (2,000 Dust), `SAYH12WR1X3L` (Wrixel's Hero Portrait Spray), and `NOPROLLAMA` reinstated
+  (still listed active, so the earlier "expired" call was wrong).
 - **Verified:** the variant/theme filter is data-driven from `THEMES`, so the Bounty Hunter finish and the new Sprites already
   appear in filters, search and the detail modal/pages with no extra wiring.
 - **Why:** swapping placeholders for Epic's real art makes the board look finished; pre-loading Bounty Hunter icons means the cards

@@ -13,8 +13,10 @@ import { THEME_MAP } from './themes.js'
 // The v42.20 update (Sep 17) went live with 3 new Sprites — Pond, Crash Bandicoot
 // and Blinky — each in Normal/Gold/Loot Hacker/Cheat Master (flipped released
 // here). Still genuinely-unreleased/datamined: Honey, Dumpster, Meowscles,
-// Squibbly, Cube, Head Shot, BodySlam and the rest of the v42.20 wave (Morgana,
-// Birthday, Phase Dash), all `rumored` until Epic ships each. v42.20 also added a
+// Squibbly, Cube, Head Shot and the rest of the v42.20 wave (Morgana,
+// Birthday, Phase Dash), all `rumored` until Epic ships each. ("BodySlam" turned
+// out to be the internal codename for Crash Bandicoot, not a separate Sprite —
+// its art/entry are folded into `crash`.) v42.20 also added a
 // third "Override" finish, Bounty Hunter, per-Sprite as `bountyhunter: U` and
 // gated by the theme's `rumored` flag — Epic ships that wave over coming weeks.
 //
@@ -220,9 +222,6 @@ export const SPRITE_TYPES = [
     variants: { normal: U } },
   { id: 'headshot', name: 'Head Shot', icon: '🔻', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Datamined Season 4 “Override” Sprite — “Head Shot”. Reappears in the v42.20 files (Sep 17); its in-game ability & rarity still aren’t detailed by Epic — TBC. (Datamine: FireMonkey / Vice; earlier: Krowe & FNBRIntel.)',
-    variants: { normal: U } },
-  { id: 'bodyslam', name: 'BodySlam', icon: '🤼', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — internal codename “BodySlam”, which appears to be a collab crossover. Not yet obtainable; real name, ability & rarity all TBC. (Krowe & FNBRIntel)',
     variants: { normal: U } },
 
   // ---- Third datamine wave — the v42.20 update (Sep 17) added files for 42 new
