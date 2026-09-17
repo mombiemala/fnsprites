@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 17, 2026 — Placeholder art for the v42.20 Sprites
+
+- **Added:** `TYPES` palettes + `Features` motifs in `src/components/SpriteArt.jsx` for `crash`, `blinky`, `morgana`,
+  `birthday` and `phasedash`, and a `bountyhunter` case in `treatment()` (amber wash + faint crosshair ring). Original
+  stylised looks only — colour + a simple shape that reads as the character, never a copy of the real IP art or an AI
+  likeness (same approach as Peely/Batman/Ironmouse).
+- **Why:** `SpriteArt`'s vector fallback only draws a per-character motif for `typeId`s it knows, so Crash and Blinky (live
+  since this morning) were rendering the generic default blob. These placeholders make every new Sprite recognisable on
+  drop day; the real datamined art (`public/sprites/<id>.<ext>`) overrides them automatically once added.
+
+---
+
 ## September 17, 2026 — New Sprite Day: Crash Bandicoot, Blinky & Pond live (v42.20)
 
 - **Added:** flipped `crash`, `blinky` and `pond` to `released: true` (`releaseDate: '2026-09-17'`) in `src/data/sprites.js`, with

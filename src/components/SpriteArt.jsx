@@ -52,6 +52,13 @@ const TYPES = {
   honey: { c: ['#ffe6a0', '#f5b81f', '#b8801c'], feat: '#7a5220' },
   dumpster: { c: ['#cfd6e0', '#8b93a7', '#4a5265'], feat: '#1a2138' },
   xray: { c: ['#d0faff', '#46d0e0', '#1f8fae'], feat: '#ffffff' },
+  // v42.20 wave — original stylised looks (colour + a simple motif that "reads as"
+  // the character), never a copy of the real IP art or an AI likeness.
+  crash: { c: ['#ffc27a', '#ff7a2f', '#c8481a'], feat: '#ffe14d' },
+  blinky: { c: ['#ffb0b0', '#ff4d4d', '#c81f1f'], feat: '#ffffff' },
+  morgana: { c: ['#4a5378', '#252c48', '#10142a'], feat: '#ffe14d' },
+  birthday: { c: ['#ffe0ec', '#ffb3d1', '#e07aa8'], feat: '#ffffff' },
+  phasedash: { c: ['#bff0ff', '#46c8ff', '#1f7aae'], feat: '#ffffff' },
 }
 
 const BODY =
@@ -87,6 +94,11 @@ function treatment(themeId, type, gid, hgid) {
       // Blue circuit / hologram wash (distinct from Cheatmaster's green).
       return { stops: ['#7fc4ff', '#2a6cf0', '#1a1f6b'], feat: '#eaf4ff',
         overlay: <g stroke="#bfe4ff" strokeWidth="1" opacity="0.3" fill="none"><path d="M28 40 h14 v10 h16 M30 62 h20 v-8 M60 30 v18 h12 M50 70 v-10 h16" /><g fill="#bfe4ff"><circle cx="42" cy="40" r="1.6" /><circle cx="58" cy="50" r="1.6" /><circle cx="50" cy="60" r="1.6" /><circle cx="72" cy="48" r="1.6" /></g></g> }
+    case 'bountyhunter':
+      // Warm amber "wanted-poster" wash + a faint crosshair ring (levels from
+      // eliminations) — distinct from Cheatmaster green / Loot Hacker blue.
+      return { stops: ['#ffc27a', '#ff7a2f', '#8a3a10'], feat: '#3a1e0c',
+        overlay: <g stroke="#fff" strokeWidth="1.4" opacity="0.28" fill="none"><circle cx="50" cy="50" r="16" /><path d="M50 30 v8 M50 62 v8 M30 50 h8 M62 50 h8" /></g> }
     default: // normal
       return { stops: [l, b, s], feat: type.feat, overlay: null }
   }
@@ -259,6 +271,23 @@ function Features({ id, fc, gid }) {
     case 'megaman':
       // Robot helmet dome + a little ear-pod on each side.
       return <><path d="M28 34 q22 -22 44 0 l0 4 q-22 -12 -44 0 Z" fill={fc} opacity="0.55" /><circle cx="26" cy="50" r="4.5" fill={fc} opacity="0.6" /><circle cx="74" cy="50" r="4.5" fill={fc} opacity="0.6" /></>
+
+    // ---- v42.20 wave — stylised motifs, not IP copies ----
+    case 'crash':
+      // Spiky hair tuft + a whirlwind-spin swirl (its air-jump ability).
+      return <><g fill={fc} stroke="rgba(0,0,0,.25)" strokeWidth="1.2" strokeLinejoin="round"><path d="M42 14 l3-11 3 9 4-9 2 12 Z" /></g><g fill="none" stroke="#fff" strokeWidth="2" opacity="0.4" strokeLinecap="round"><path d="M30 84 q20 8 40 0" /><path d="M34 88 q16 5 32 0" /></g></>
+    case 'blinky':
+      // Classic ghost wavy hem along the base + a soft glow.
+      return <path d="M27 78 q6 8 11 0 q5 8 10 0 q5 8 10 0 q5 8 11 0 l0 6 q-24 8 -42 0 Z" fill={fc} opacity="0.55" />
+    case 'morgana':
+      // Cat ears + a pale muzzle patch + a little scarf line (Persona cat).
+      return <><path d="M33 18 L30 4 L44 15 Z" {...st} /><path d="M67 18 L70 4 L56 15 Z" {...st} /><ellipse cx="50" cy="64" rx="12" ry="8" fill="#fff" opacity="0.85" /><path d="M38 46 q12 5 24 0" stroke={fc} strokeWidth="3" fill="none" strokeLinecap="round" opacity="0.9" /></>
+    case 'birthday':
+      // A birthday candle with a flame + sprinkles.
+      return <><rect x="48" y="6" width="4" height="12" rx="1.5" fill={fc === '#ffffff' ? '#ff8ab0' : fc} /><path d="M50 0 c3 3 3 6 0 8 c-3-2-3-5 0-8 Z" fill="#ffb020" /><g fill={INK} opacity="0.35"><rect x="36" y="42" width="6" height="2" rx="1" transform="rotate(30 39 43)" /><rect x="58" y="46" width="6" height="2" rx="1" transform="rotate(-25 61 47)" /><rect x="46" y="58" width="6" height="2" rx="1" transform="rotate(15 49 59)" /></g></>
+    case 'phasedash':
+      // Speed / dash motion streaks.
+      return <g stroke={fc} strokeWidth="3" strokeLinecap="round" opacity="0.7"><path d="M20 44 h20" /><path d="M16 54 h26" /><path d="M22 64 h16" /></g>
 
     default:
       return null

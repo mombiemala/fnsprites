@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 17, 2026',
+    title: 'Placeholder art for the v42.20 Sprites (until official art lands)',
+    changes: [
+      { tag: 'Added', text: 'Stylised placeholder art for the new v42.20 Sprites — Crash Bandicoot, Blinky, Morgana, Birthday and Phase Dash — plus a distinct look for the new Bounty Hunter finish. Crash and Blinky were showing a generic blob since they went live this morning; now every new Sprite has a recognisable card until Epic’s official art is added.' },
+    ],
+    summary: 'The just-dropped (and upcoming) v42.20 Sprites now render proper stylised placeholder art instead of a generic shape, so the board looks right the moment each one goes live.',
+    why: 'Our art fallback only draws a per-character motif for Sprites it has a design for, so brand-new ones fell back to a plain blob. Adding original stylised motifs (colour + a simple shape that reads as the character — never a copy of the real IP art or an AI likeness, same approach as Peely/Batman) keeps the tracker looking finished on drop day. Real datamined art replaces these automatically once the image files are added.',
+  },
+  {
+    date: 'September 17, 2026',
     title: 'New Sprite Day — Crash Bandicoot, Blinky & Pond are live (v42.20)',
     changes: [
       { tag: 'Added', text: 'The v42.20 update went live, so three new Sprites are now marked released in Normal, Gold, Loot Hacker and Cheat Master: Crash Bandicoot (whirlwind spin on an air-jump), Blinky — Pac-Man’s red ghost (a cloak when you take damage) and Pond, the Design-a-Sprite winner (a Super Jump after landing).' },
