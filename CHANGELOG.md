@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 17, 2026 — "Coming Sep 24" heads-up (Morgana, Birthday, Bounty Hunter)
+
+- **Added:** an `incoming.js` entry (dropsOn 2026-09-24, `confirmedDate: false`) covering the Morgana & Birthday Sprites (via
+  `typeIds`) and the 20 Bounty Hunter variants (via `spriteIds`), plus a matching `events.js` entry so the top card counts down
+  to it. Those cards now show a "~Sep 24" Coming badge.
+- **Why:** Vice/dataminers report the rest of the v42.20 wave for next Thursday. It's not an official Epic date, so it uses the
+  estimate ("~") convention — dated enough to plan around, and the daily watch flips each live once actually obtainable.
+
+---
+
 ## September 17, 2026 — Release dates across the roster (New badges, Newest sort/group, finish tooltips)
 
 - **Added:** central `C7S4_RELEASE` map + backfill loop in `src/data/sprites.js` (Aug 20 launch, Aug 29, Sep 3, Sep 17), and an

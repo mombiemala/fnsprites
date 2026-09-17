@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 17, 2026',
+    title: 'Heads-up — Morgana, Birthday & the Bounty Hunter finish coming Sep 24',
+    changes: [
+      { tag: 'Added', text: 'A “Coming Sep 24” heads-up (and a countdown on the top card) for the rest of the v42.20 wave — the Morgana and Birthday Sprites and the whole Bounty Hunter finish — which reports peg to next Thursday’s New Sprite Day. Those cards now show a “~Sep 24” badge.' },
+    ],
+    summary: 'Added a dated heads-up for the next drop (Morgana, Birthday and Bounty Hunter, reported for Sep 24) so you can see exactly what’s coming and when.',
+    why: 'The date is from Vice/dataminers rather than an official Epic post, so it’s marked as an estimate (the “~” convention) — solid enough to plan around without over-claiming. The daily watch flips each one live the moment it’s actually obtainable.',
+  },
+  {
+    date: 'September 17, 2026',
     title: 'Release dates everywhere — “New” badges, Newest sort & grouping, finish tooltips',
     changes: [
       { tag: 'Added', text: 'A green “NEW” badge on Sprites released in the last ~8 days (both the collection cards and the detail modal), so drop-week additions stand out at a glance.' },
