@@ -10,6 +10,19 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-17',
+    when: 'Sep 17, 2026',
+    tag: 'sprites',
+    start: '2026-09-17',
+    end: '2026-09-19',
+    title: '🆕 New Sprite Day — Crash Bandicoot, Blinky & Pond are LIVE (v42.20)',
+    sprites: ['crash', 'blinky', 'pond'],
+    body: 'The v42.20 update went live this morning (~6 AM ET) and, although 42 new Sprites were added to the files, 13 are obtainable right now — the three brand-new characters plus their finishes. We’ve flipped all three to released in Normal, Gold, Loot Hacker and Cheat Master: Crash Bandicoot (jump in the air for a whirlwind spin that damages and knocks back nearby enemies), Blinky — Pac-Man’s red ghost (a temporary cloak when you take damage, found in the world at night) and Pond, the Design-a-Sprite winner (jump shortly after landing for a Super Jump, charges regenerating over time). The new Bounty Hunter finish, plus the Morgana (Persona 5) and Birthday Sprites, are in the files but Epic is holding them for next week — they stay marked datamined/upcoming here until they’re live. Heads-up: official art for the new Sprites isn’t in the tracker yet, so they show our generated placeholder art for now.',
+    link: 'https://www.vice.com/en/article/fortnite-new-sprites-september-17-complete-list/',
+    source: 'Vice · Epic (v42.20)',
+    official: true,
+  },
+  {
     ts: '2026-09-16',
     when: 'Sep 16, 2026',
     tag: 'upcoming',

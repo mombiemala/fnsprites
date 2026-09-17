@@ -6,6 +6,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 17, 2026',
+    title: 'New Sprite Day — Crash Bandicoot, Blinky & Pond are live (v42.20)',
+    changes: [
+      { tag: 'Added', text: 'The v42.20 update went live, so three new Sprites are now marked released in Normal, Gold, Loot Hacker and Cheat Master: Crash Bandicoot (whirlwind spin on an air-jump), Blinky — Pac-Man’s red ghost (a cloak when you take damage) and Pond, the Design-a-Sprite winner (a Super Jump after landing).' },
+      { tag: 'Changed', text: 'Refreshed the Loot Hacks rotation to the v42.20 set Epic posted — Rocket Ram, Reaper Sniper Rifle, Mammoth Pistol, Hyperburst Pistol, Deadeye DMR and Flowberry Fizz (the Sep 3 pool rotated out).' },
+      { tag: 'Added', text: 'New lobby code: BLINKYINKYPINKYCLYDE for 5,000 Sprite Dust.' },
+      { tag: 'Changed', text: 'Added a New Sprite Day news post + top-of-page announcement, and marked the Sep 17 event live.' },
+    ],
+    summary: 'v42.20 shipped: Crash Bandicoot, Blinky and Pond are collectible now (with Gold/Loot Hacker/Cheat Master), a new Loot Hack rotation is live, and a fresh 5,000-Dust code dropped.',
+    why: 'Of the 42 datamined Sprites, Epic only made 13 obtainable at launch (the three new characters + their finishes) and is holding the Bounty Hunter finish, Morgana and Birthday for the following weeks. We flip only what’s actually obtainable and keep the rest datamined/upcoming, so the tracker never over-claims. Official art for the new Sprites isn’t out yet, so they use our generated placeholder art until the assets land.',
+  },
+  {
     date: 'September 16, 2026',
     title: 'v42.20 datamine — 42 new Sprites, a Bounty Hunter finish, 5 new Sprites',
     changes: [

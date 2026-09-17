@@ -11,22 +11,25 @@
 // rather than invent figures. Verified/sourced only — same rule as codes & news.
 
 export const LOOT_HACK_META = {
-  patch: 'v42.10',
-  rotationStart: '2026-09-03',
-  nextRefresh: '2026-09-17', // next expected rotation (in-game timer is authoritative)
+  patch: 'v42.20',
+  rotationStart: '2026-09-17',
+  nextRefresh: '2026-09-24', // next expected rotation (in-game timer is authoritative)
   maxLevel: 6, // each item unlocks at L1, then upgrades up to L6 for higher odds/rarity
-  source: 'FNBRintel · accountshark · esports.gg',
-  sourceUrl: 'https://x.com/FNBRintel/status/2095428841955094532',
+  source: 'Epic (Fortnite / X, official list) · HYPEX · ShiinaBR',
+  sourceUrl: 'https://x.com/Fortnite/status/2099906350671450438',
 }
 
-// Current rotation (Sep 3 → ~Sep 17, v42.10). `role` describes what the weapon
-// is; we don't assert an exact rarity/cost we can't source.
+// Current rotation (Sep 17 → ~Sep 24, v42.20) — the six items Epic posted for the
+// refresh. `role` describes what the item is; we don't assert an exact rarity/cost
+// we can't source. (The Sep 3 pool — Caduceus Staff, Scorpion’s Combat Kit,
+// Wrecker Revolver, Deadeye AR, Holo Twister AR — rotated out.)
 export const LOOT_HACK_ROTATION = [
-  { name: 'Caduceus Staff', role: 'Healing / utility', note: 'Team-healing endgame tool — the standout unlock this rotation.' },
-  { name: 'Scorpion’s Combat Kit', role: 'Close-range kit', note: 'Aggressive close-quarters option.' },
-  { name: 'Wrecker Revolver', role: 'Revolver', note: 'Hard-hitting single-shot pistol.' },
-  { name: 'Deadeye Assault Rifle', role: 'Assault rifle', note: 'Reliable mid-range AR.' },
-  { name: 'Holo Twister Assault Rifle', role: 'Assault rifle', note: 'Alternate AR pick for the pool.' },
+  { name: 'Rocket Ram', role: 'Mobility / utility', note: 'Ram-launch tool for repositioning and cracking builds — the returning standout.' },
+  { name: 'Reaper Sniper Rifle', role: 'Sniper', note: 'Hard-hitting long-range sniper.' },
+  { name: 'Mammoth Pistol', role: 'Pistol', note: 'Heavy single-shot pistol.' },
+  { name: 'Hyperburst Pistol', role: 'Pistol', note: 'Burst-fire sidearm.' },
+  { name: 'Deadeye DMR', role: 'Marksman rifle', note: 'Precision mid-to-long-range DMR.' },
+  { name: 'Flowberry Fizz', role: 'Consumable', note: 'Mobility + effect consumable to add to your pool.' },
 ]
 
 // How the system works — short, factual bullets reused by the app card + SEO page.

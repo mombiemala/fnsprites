@@ -83,6 +83,7 @@ export const LOBBY_CODES = [
   // The bigger Geno code also grants an Outfit style, and is gated behind the Geno
   // quests + a specific "let Geno eliminate you" step, so we note the condition.
   { code: 'YOURTHOUGHTSAREMINE', unlocks: '5,000 Sprite Dust + Void Master Geno Outfit style — after finishing the Geno story quests, shoot Geno’s shield and let him eliminate you', type: 'reward', category: 'dust', status: 'working', source: 'community list', added: '2026-09-03' },
+  { code: 'BLINKYINKYPINKYCLYDE', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-17', source: 'Vice (v42.20 codes)' },
   { code: 'WHEREISTHEDUSTYTREE', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-07', source: 'confirmed in-game' },
   { code: 'DUSTINTHEWIND', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-07', source: 'confirmed in-game' },
   // The four localized codes were posted by regional Fortnite accounts but are

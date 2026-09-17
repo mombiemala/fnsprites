@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'new-sprite-day-v4220-2026-09-17',
+    emoji: '🆕',
+    message: 'New Sprite Day is LIVE (v42.20, Sep 17) — 3 new Sprites out now in Normal/Gold/Loot Hacker/Cheat Master: Crash Bandicoot (whirlwind spin on air-jump), Blinky/Pac-Man (cloak when hit) & Pond (Super Jump). The Bounty Hunter finish + Morgana & Birthday are datamined for next week. Also: fresh Loot Hacks + new codes (BLINKYINKYPINKYCLYDE = 5,000 Dust).',
+    link: '/?view=news',
+    linkLabel: 'What dropped',
+    start: '2026-09-17',
+    end: '2026-09-19',
+    source: 'Epic / Vice (v42.20)',
+    official: true,
+    tone: 'event',
+  },
+  {
     id: 'power-hours-2026-09-12',
     emoji: '⚡',
     message: 'Power Hours — Sat, Sep 12 (2–4 PM & 9–11 PM ET): boosted Gold & Cheat Master Sprite spawns and supercharged Overdrive Grenades — a strong window to fill in premium finishes you’re missing, plus 1-Up Tokens & Portable Extractors in Chests.',

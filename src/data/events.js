@@ -29,12 +29,12 @@ export const SPRITE_EVENTS = [
     id: 'new-sprite-day-2026-09-17',
     emoji: '🆕',
     name: 'New Sprite Day & v42.20 update',
-    perk: 'v42.20 drops — the 42-Sprite wave begins + a fresh Loot Hack rotation',
-    startsUtc: '2026-09-17T13:00:00Z', // ~9 AM ET, Thu Sep 17
+    perk: 'LIVE — Crash Bandicoot, Blinky & Pond dropped + a fresh Loot Hack rotation',
+    startsUtc: '2026-09-17T10:00:00Z', // ~6 AM ET launch, Thu Sep 17
     endsUtc: '2026-09-17T23:59:00Z',
-    confirmed: false, // expected from the in-game Loot Hack timer + weekly cadence
-    source: 'in-game Loot Hack timer · v42.20 datamine (Vice/FireMonkey)',
-    sourceUrl: '/loot-hacks',
+    confirmed: true, // v42.20 shipped Sep 17 — 3 Sprites live
+    source: 'Epic (v42.20) · Vice',
+    sourceUrl: '/?view=news',
   },
 ]
 

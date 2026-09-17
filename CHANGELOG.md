@@ -11,6 +11,24 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 17, 2026 — New Sprite Day: Crash Bandicoot, Blinky & Pond live (v42.20)
+
+- **Added:** flipped `crash`, `blinky` and `pond` to `released: true` (`releaseDate: '2026-09-17'`) in `src/data/sprites.js`, with
+  `normal`/`gold`/`loothacker`/`cheatmaster` set to `R` and `bountyhunter` held at `U` (that finish, plus Morgana and Birthday,
+  is datamined for the following weeks). Ability text updated to "live" wording. `RELEASED_COUNT` is derived, so it updates itself.
+- **Changed:** `src/data/lootHacks.js` rotation refreshed to the v42.20 set Epic posted — Rocket Ram, Reaper Sniper Rifle,
+  Mammoth Pistol, Hyperburst Pistol, Deadeye DMR, Flowberry Fizz; `patch`/`rotationStart`/`nextRefresh`/`source` updated. Sep 3
+  pool rotated out.
+- **Added:** lobby code `BLINKYINKYPINKYCLYDE` (5,000 Sprite Dust) to `src/data/codes.js`. Held `NOCTURNEOP55N1` (datamined) and
+  other single-source Sep 17 codes pending corroboration.
+- **Changed:** New Sprite Day news post (`news.js`), top-of-page announcement (`announcements.js`), Sep 17 event marked
+  `confirmed` (`events.js`), and `incoming.js` loot-hack entry advanced to the ~Sep 24 refresh.
+- **Why:** Epic made only 13 of the 42 datamined Sprites obtainable at launch (the three new characters + finishes), so we flip
+  only what's actually live and keep the rest datamined/upcoming — the tracker never over-claims. Official art for the new
+  Sprites isn't out yet, so they fall back to generated placeholder art until the assets land.
+
+---
+
 ## September 16, 2026 — v42.20 datamine (42 new Sprites, Bounty Hunter finish)
 
 - **Added:** a third Season 4 "Override" finish, **Bounty Hunter**, to `src/data/themes.js` (`rumored: true` as a

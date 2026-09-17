@@ -10,12 +10,13 @@ import { THEME_MAP } from './themes.js'
 // The date-gate loop below auto-flips any past-dated leaked Sprite/variant to
 // released, so entries that still read `released:false` here but carry a past
 // `releaseDate` are effectively released at runtime.
-// The only genuinely-unreleased types are the datamined Season 4 "Override"
-// Sprites (Pond, Honey, Dumpster, Meowscles, Squibbly, Cube, Head Shot, BodySlam,
-// and the v42.20 wave — Morgana, Birthday, Crash Bandicoot, Blinky, Phase Dash),
-// still flagged `rumored` until Epic ships each — their abilities can change. The
-// v42.20 update (Sep 17) also datamined a third "Override" finish, Bounty Hunter,
-// added per-Sprite as `bountyhunter: U` and gated by the theme's `rumored` flag.
+// The v42.20 update (Sep 17) went live with 3 new Sprites — Pond, Crash Bandicoot
+// and Blinky — each in Normal/Gold/Loot Hacker/Cheat Master (flipped released
+// here). Still genuinely-unreleased/datamined: Honey, Dumpster, Meowscles,
+// Squibbly, Cube, Head Shot, BodySlam and the rest of the v42.20 wave (Morgana,
+// Birthday, Phase Dash), all `rumored` until Epic ships each. v42.20 also added a
+// third "Override" finish, Bounty Hunter, per-Sprite as `bountyhunter: U` and
+// gated by the theme's `rumored` flag — Epic ships that wave over coming weeks.
 //
 // `dropRate` is the base (Normal) chance from a Sprite Chest. Epic does NOT
 // publish official rates — these are COMMUNITY ESTIMATES cross-referenced from
@@ -139,9 +140,9 @@ export const SPRITE_TYPES = [
   { id: 'sonic', name: 'Sonic', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the marquee Sonic collab (cube “backpack” redesign). Normal, Gold & Cheatmaster are all live (Cheatmaster unlocks via the GOTTAGOFAST lobby code; Gold since Gold Hours, Aug 22). Its exact in-game ability isn’t documented here yet.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
-  { id: 'pond', name: 'Pond', icon: '🐸', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Design-a-Sprite winner (by Pine & Kiri). Confirmed ability (v42.20): Active — jump shortly after landing to trigger a Super Jump; charges regenerate over time, and Super Jump strength rises while its cooldown drops with each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — Epic rolls the variants out gradually over the following weeks. (Datamine: FireMonkey / Vice.)',
-    variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
+  { id: 'pond', name: 'Pond', icon: '🐸', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
+    ability: 'Design-a-Sprite winner (by Pine & Kiri). Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes. Ability: Active — jump shortly after landing to trigger a Super Jump; charges regenerate over time, and Super Jump strength rises while its cooldown drops with each level up. (Its Bounty Hunter finish is datamined but not out yet — Epic ships that wave over the following weeks.)',
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'onigiri', name: 'Onigiri', icon: '🍙', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside X-Ray. Exact in-game ability not yet detailed by Epic. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is live too (since Sep 10).',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
@@ -239,12 +240,12 @@ export const SPRITE_TYPES = [
   { id: 'birthday', name: 'Birthday', icon: '🎂', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Spotted near high, mountainous areas. Opening chests has a chance to spawn a piece of cake (and at max level eliminations can spawn cake too); the chance rises with each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. Rarity TBC. (Datamine: FireMonkey / Vice.)',
     variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
-  { id: 'crash', name: 'Crash Bandicoot', icon: '🌀', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Crash Bandicoot collab. Spotted near high, mountainous areas. Active — jump in the air to trigger a whirlwind attack that damages and knocks back nearby enemies; damage rises and the cooldown drops with each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. Rarity TBC. (Datamine: FireMonkey / Vice.)',
-    variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
-  { id: 'blinky', name: 'Blinky', icon: '👾', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Pac-Man collab (Blinky, the red ghost). Found in the world at nighttime. Grants a temporary cloak when you take damage; cloak duration rises with each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. Rarity TBC. (Datamine: FireMonkey / Vice.)',
-    variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
+  { id: 'crash', name: 'Crash Bandicoot', icon: '🌀', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
+    ability: 'Crash Bandicoot collab. Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes. Spotted near high, mountainous areas. Ability: Active — jump in the air to trigger a whirlwind spin attack that damages and knocks back nearby enemies; damage rises and the cooldown drops with each level up. (Its Bounty Hunter finish is datamined but not out yet.)',
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
+  { id: 'blinky', name: 'Blinky', icon: '👾', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
+    ability: 'Pac-Man collab (Blinky, the red ghost). Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes. Found in the world at nighttime. Ability: grants a temporary cloak when you take damage; cloak duration rises with each level up. (Its Bounty Hunter finish is datamined but not out yet.)',
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'phasedash', name: 'Phase Dash', icon: '💨', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Datamined in the v42.20 update (Sep 17) — only a Normal finish appears in the files so far, and its in-game ability & rarity aren’t detailed yet. TBC. (Datamine: FireMonkey / Vice.)',
     variants: { normal: U } },
