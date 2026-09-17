@@ -244,6 +244,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           <option value="theme">Group by theme</option>
           <option value="rarity">Group by rarity</option>
           <option value="tier">Group by tier</option>
+          <option value="update">Group by release date</option>
           <option value="sprite">Group by sprite</option>
         </select>
         <label className="flex items-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-xs font-semibold text-[var(--muted)]">

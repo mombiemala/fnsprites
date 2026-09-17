@@ -189,8 +189,10 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                     <span className="text-sm font-bold text-white">{theme?.name}</span>
                     {v.vaulted ? (
                       <span title="Vaulted — currently unavailable" className="rounded bg-red-500/15 px-1 py-0.5 text-[9px] font-bold uppercase text-red-300">vaulted</span>
-                    ) : v.unreleased && (
+                    ) : v.unreleased ? (
                       <span className="rounded bg-black/40 px-1 py-0.5 text-[9px] font-bold uppercase text-white/60">soon</span>
+                    ) : v.isNew && (
+                      <span title="Released recently" className="rounded bg-emerald-400/20 px-1 py-0.5 text-[9px] font-bold uppercase text-emerald-300">new</span>
                     )}
                     {dust != null && (
                       <span

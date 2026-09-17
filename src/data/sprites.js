@@ -322,6 +322,36 @@ for (const t of SPRITE_TYPES) {
   }
 }
 
+// Known Chapter 7 Season 4 "Override" per-Sprite release dates (New Sprite Days),
+// so the "Newest" sort, the "New" badge and update-grouping have real dates to
+// work with. Anything released in c7s4 without a specific date defaults to the
+// Aug 20 (v42.00) launch. Season 3 (legacy) Sprites are intentionally left
+// undated — they're the oldest generation and simply sort last under "Newest".
+const C7S4_RELEASE = {
+  // v42.00 launch wave (Aug 20)
+  sonic: '2026-08-20', tails: '2026-08-20', shadow: '2026-08-20', klombo: '2026-08-20',
+  jonesy: '2026-08-20', victorycrown: '2026-08-20', blaster: '2026-08-20', jazz: '2026-08-20',
+  killswitch: '2026-08-20', bushranger: '2026-08-20', adventure: '2026-08-20',
+  // New Sprite Days since
+  stormscout: '2026-08-29',
+  xray: '2026-09-03', onigiri: '2026-09-03', overshield: '2026-09-03', megaman: '2026-09-03',
+  pond: '2026-09-17', crash: '2026-09-17', blinky: '2026-09-17',
+}
+const _todayMs = (() => { try { return Date.parse(_todayStr + 'T00:00:00Z') } catch { return Date.now() } })()
+for (const t of SPRITE_TYPES) {
+  if (t.gen === 'c7s4' && !t.releaseDate) {
+    if (C7S4_RELEASE[t.id]) t.releaseDate = C7S4_RELEASE[t.id]
+    else if (t.released) t.releaseDate = '2026-08-20'
+  }
+}
+// A Sprite is "new" for ~8 days after its release date — powers the NEW badge.
+const NEW_WINDOW_MS = 8 * 86400000
+const _isNewType = (t) => {
+  if (!t.released || !t.releaseDate) return false
+  const ms = Date.parse(t.releaseDate + 'T00:00:00Z')
+  return Number.isFinite(ms) && _todayMs - ms >= -86400000 && _todayMs - ms <= NEW_WINDOW_MS
+}
+
 // Sprite generations — each season introduces a whole new generation; past
 // generations stay in your collection (Epic confirmed Sprites are permanent).
 // The Sprite Garden groups by these. To add the next gen: append an entry here
@@ -357,6 +387,8 @@ export function buildSpriteList() {
         ability: type.ability,
         // When the Sprite type went live (if known) — powers the "Newest" sort.
         releaseDate: type.releaseDate || null,
+        // True for ~8 days after release — powers the "NEW" badge on cards.
+        isNew: _isNewType(type),
         themeId,
         // Official Epic sprite art at public/sprites/<id>.png; SpriteArt falls
         // back to generated SVG if the file is missing.

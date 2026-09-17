@@ -332,6 +332,7 @@ export default function App() {
       const k = filters.groupBy === 'theme' ? s.themeId
         : filters.groupBy === 'rarity' ? s.rarity
         : filters.groupBy === 'tier' ? (s.tier || 'Unranked')
+        : filters.groupBy === 'update' ? (s.releaseDate || 'undated')
         : s.typeId
       ;(buckets[k] ||= []).push(s)
     }
@@ -339,6 +340,13 @@ export default function App() {
     if (filters.groupBy === 'theme') order = set.variants.map((t) => [t.id, t.name])
     else if (filters.groupBy === 'rarity') order = set.rarityOrder.map((r) => [r, r])
     else if (filters.groupBy === 'tier') order = [...(set.tierOrder || []), ['Unranked', 'Unranked']]
+    else if (filters.groupBy === 'update') {
+      // Group by release date, newest first; "undated" (legacy, no known date) last.
+      const fmt = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
+      order = Object.keys(buckets)
+        .sort((a, b) => (a === 'undated' ? 1 : b === 'undated' ? -1 : (b.localeCompare(a))))
+        .map((k) => [k, k === 'undated' ? 'Earlier / undated' : fmt(k)])
+    }
     else order = [...set.types].sort((a, b) => genRank(b) - genRank(a)).map((t) => [t.id, t.name])
     return order.filter(([k]) => buckets[k]?.length).map(([k, label]) => ({ key: k, label, items: buckets[k] }))
   })()

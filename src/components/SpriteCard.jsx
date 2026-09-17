@@ -29,7 +29,7 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
           type="button"
           onClick={() => onOpen?.(sprite)}
           className={`sprite-art sc-art relative block w-full ${theme?.className || 'theme-normal'}`}
-          title={`${sprite.typeName} · ${theme?.name} — details`}
+          title={`${sprite.typeName} · ${theme?.name}${theme?.bonus ? ` — ${theme.bonus}` : ''} · tap for details`}
         >
           <SpriteArt sprite={sprite} />
           <span className="sc-foil" aria-hidden="true" />
@@ -46,9 +46,13 @@ export default function SpriteCard({ sprite, state, onToggleOwned, onToggleMaste
             <span title={`${incoming.title} — ${incoming.confirmedDate ? 'drops' : 'expected'} soon (confirmed, not yet live)`} className="sc-badge absolute left-1.5 top-1.5 z-[5] bg-[var(--brand)]/90 font-bold text-black">
               {comingLabel}
             </span>
-          ) : sprite.unreleased && (
+          ) : sprite.unreleased ? (
             <span title="Coming soon — not yet released" className="sc-badge absolute left-1.5 top-1.5 z-[5] bg-black/60 text-white/85 ring-1 ring-white/20">
               soon
+            </span>
+          ) : sprite.isNew && (
+            <span title="Released recently" className="sc-badge absolute left-1.5 top-1.5 z-[5] bg-emerald-400 font-extrabold text-black">
+              new
             </span>
           )}
           {owned && !mastered && (

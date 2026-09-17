@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 17, 2026 — Release dates across the roster (New badges, Newest sort/group, finish tooltips)
+
+- **Added:** central `C7S4_RELEASE` map + backfill loop in `src/data/sprites.js` (Aug 20 launch, Aug 29, Sep 3, Sep 17), and an
+  `isNew` flag (released within ~8 days) on each built item. Season 3 left undated on purpose (sorts last under Newest).
+- **Added:** "NEW" badge in `SpriteCard.jsx` and the detail modal (`SpriteDetailModal.jsx`) for `isNew` released variants.
+- **Added:** "Group by release date" in `App.jsx` (buckets by `releaseDate`, newest first; undated last) + Toolbar option.
+- **Added:** "Newest" sort chip on the SEO `/sprites` board (`scripts/prerender.mjs`) — new `data-released` attr + a `newest`
+  client sort — mirroring the in-app sort.
+- **Changed:** `SpriteCard` hover title now includes the finish's perk (finish education, e.g. Bounty Hunter); the detail modal
+  already lists each finish's perk per variant.
+- **Why:** release dates are the backbone for answering "what just dropped?" consistently (badge, sort, grouping) instead of
+  making players scan the grid. Legacy S3 Sprites stay undated rather than getting a fabricated date.
+
+---
+
 ## September 17, 2026 — Official v42.20 art + Bounty Hunter icons + "Newest" sort
 
 - **Added:** 40 official datamined sprite icons to `public/sprites/` (mapped from Epic's internal codenames): full finish sets for

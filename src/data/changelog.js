@@ -7,6 +7,19 @@
 export const CHANGELOG = [
   {
     date: 'September 17, 2026',
+    title: 'Release dates everywhere — “New” badges, Newest sort & grouping, finish tooltips',
+    changes: [
+      { tag: 'Added', text: 'A green “NEW” badge on Sprites released in the last ~8 days (both the collection cards and the detail modal), so drop-week additions stand out at a glance.' },
+      { tag: 'Added', text: 'A “Group by release date” option — browse the roster by when each Sprite dropped (newest update first).' },
+      { tag: 'Added', text: 'A “Newest” sort on the public /sprites board too (not just the app collection), matching the in-app sort.' },
+      { tag: 'Added', text: 'Real release dates for the whole Chapter 7 Season 4 roster (Aug 20 launch, Aug 29, Sep 3 and Sep 17 New Sprite Days), which power all of the above.' },
+      { tag: 'Changed', text: 'Hovering a Sprite card now shows that finish’s perk (e.g. what the Bounty Hunter finish does), and the detail modal already lists every finish’s perk per variant.' },
+    ],
+    summary: 'The tracker now knows when each Override Sprite released — so new drops get a NEW badge, you can sort or group by release date (on the app and the public board), and finish perks show on hover.',
+    why: 'Drop weeks are the busiest time here, and “what just came out?” is the top question. Giving every Sprite a real release date lets the UI answer that consistently — a NEW badge, a Newest sort, and update-grouping — instead of players hunting through the grid. Season 3 legacy Sprites are left undated on purpose, so they naturally sort last rather than getting a guessed date.',
+  },
+  {
+    date: 'September 17, 2026',
     title: 'Official art for the v42.20 Sprites + the Bounty Hunter finish, and a “Newest” sort',
     changes: [
       { tag: 'Added', text: 'Official datamined art for the new Sprites — Crash Bandicoot, Blinky, Pond, Morgana and Birthday now show their real icons in every finish (Normal, Gold, Loot Hacker, Cheat Master), replacing the placeholder art.' },
