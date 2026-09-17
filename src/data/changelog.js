@@ -7,6 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'September 17, 2026',
+    title: 'Official art for the v42.20 Sprites + the Bounty Hunter finish, and a “Newest” sort',
+    changes: [
+      { tag: 'Added', text: 'Official datamined art for the new Sprites — Blinky, Pond, Morgana and Birthday now show their real icons in every finish (Normal, Gold, Loot Hacker, Cheat Master), replacing the placeholder art.' },
+      { tag: 'Added', text: 'Official Bounty Hunter art for 20 Sprites (Sonic, Tails, Shadow, Klombo, Jonesy, Killswitch, Adventure, Bush Ranger, Storm Scout, Crown, 8-Bit, Jazz, Overshield, X-Ray, Onigiri, Pond, Blinky, Morgana, Birthday and more) — so the upcoming Bounty Hunter cards show the real icon instead of a placeholder.' },
+      { tag: 'Added', text: 'A new “Newest (release date)” sort on the collection — the most recently released Sprites float to the top, so drop-day additions are easy to find.' },
+      { tag: 'Fixed', text: 'Crash Bandicoot still shows placeholder art — its official icons weren’t in this art drop; we’ll add them as soon as we have them.' },
+    ],
+    summary: 'The just-dropped Sprites now use Epic’s real art, the whole Bounty Hunter finish is pre-loaded with official icons, and you can sort the collection by newest release.',
+    why: 'We had stylised placeholders since drop day; swapping in the official datamined art makes the board look finished. Loading the Bounty Hunter icons now (even though the finish isn’t obtainable yet) means the moment it goes live the cards are already correct. The “Newest” sort answers the most common drop-week question — “what just came out?” — using only the release dates we actually know (undated Sprites fall to the bottom rather than guessing).',
+  },
+  {
+    date: 'September 17, 2026',
     title: 'Placeholder art for the v42.20 Sprites (until official art lands)',
     changes: [
       { tag: 'Added', text: 'Stylised placeholder art for the new v42.20 Sprites — Crash Bandicoot, Blinky, Morgana, Birthday and Phase Dash — plus a distinct look for the new Bounty Hunter finish. Crash and Blinky were showing a generic blob since they went live this morning; now every new Sprite has a recognisable card until Epic’s official art is added.' },

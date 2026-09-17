@@ -153,6 +153,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           {/* Sort — inline on desktop; in the Filters panel on mobile. */}
           <select value={filters.sort} onChange={(e) => set({ sort: e.target.value })} title="Sort order" className={`${selectCls} hidden shrink-0 sm:block`}>
             <option value="default">Default order</option>
+            <option value="newest">Newest (release date)</option>
             <option value="closest">Closest to complete</option>
             <option value="name">Name A–Z</option>
             <option value="rarity">Rarity</option>
@@ -201,6 +202,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
         <SeasonSelect selected={filters.generation} onChange={(g) => set({ generation: g })} />
         <select value={filters.sort} onChange={(e) => set({ sort: e.target.value })} title="Sort order" className={`${selectCls} shrink-0`}>
           <option value="default">Default order</option>
+          <option value="newest">Newest (release date)</option>
           <option value="closest">Closest to complete</option>
           <option value="name">Name A–Z</option>
           <option value="rarity">Rarity</option>

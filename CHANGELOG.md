@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 17, 2026 — Official v42.20 art + Bounty Hunter icons + "Newest" sort
+
+- **Added:** 40 official datamined sprite icons to `public/sprites/` (mapped from Epic's internal codenames): full finish sets for
+  Blinky (`GhostDamage`), Pond (`WinnerA`), Morgana (`IncreaseHeals`), Birthday and BodySlam, plus Bounty Hunter icons for 20
+  Sprites (`NarrowFlea`=Sonic, `NarrowFleaMonkey`=Tails, `ReloadOverTime`=Shadow, `Dwarf`=Adventure, `Crown`=Crown, `WinnerB`=X-Ray,
+  `WinnerC`=Onigiri, etc.). These override the vector placeholders automatically.
+- **Added:** `releaseDate` on each built sprite item (`src/data/sprites.js`) and a **"Newest (release date)"** sort in
+  `src/App.jsx` + `src/components/Toolbar.jsx` (both desktop and mobile selects). Dated Sprites sort newest-first; undated fall to
+  the bottom in default order.
+- **Note:** Crash Bandicoot art was **not** in this drop — it keeps the vector placeholder until we have the official icons.
+- **Verified:** the variant/theme filter is data-driven from `THEMES`, so the Bounty Hunter finish and the new Sprites already
+  appear in filters, search and the detail modal/pages with no extra wiring.
+- **Why:** swapping placeholders for Epic's real art makes the board look finished; pre-loading Bounty Hunter icons means the cards
+  are correct the instant the finish goes live; the "Newest" sort answers the drop-week "what just came out?" using only known dates.
+
+---
+
 ## September 17, 2026 — Placeholder art for the v42.20 Sprites
 
 - **Added:** `TYPES` palettes + `Features` motifs in `src/components/SpriteArt.jsx` for `crash`, `blinky`, `morgana`,

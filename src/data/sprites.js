@@ -356,6 +356,8 @@ export function buildSpriteList() {
         rarity: type.rarity,
         dropRate: type.dropRate,
         ability: type.ability,
+        // When the Sprite type went live (if known) — powers the "Newest" sort.
+        releaseDate: type.releaseDate || null,
         themeId,
         // Official Epic sprite art at public/sprites/<id>.png; SpriteArt falls
         // back to generated SVG if the file is missing.

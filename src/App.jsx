@@ -274,6 +274,20 @@ export default function App() {
     })
     if (filters.sort === 'name') {
       list = [...list].sort((a, b) => a.typeName.localeCompare(b.typeName) || a.themeId.localeCompare(b.themeId))
+    } else if (filters.sort === 'newest') {
+      // "Newest (release date)" — most-recently-released Sprites first. Dated
+      // Sprites sort by releaseDate descending; undated ones (no known date) fall
+      // to the bottom in default roster order. Variants of a type keep a stable
+      // sub-order by themeId so a Sprite's finishes stay grouped together.
+      const ts = (s) => (s.releaseDate ? Date.parse(s.releaseDate + 'T00:00:00Z') : -Infinity)
+      list = list
+        .map((s, i) => [s, i])
+        .sort((a, b) =>
+          (ts(b[0]) - ts(a[0])) ||
+          a[0].typeName.localeCompare(b[0].typeName) ||
+          a[0].themeId.localeCompare(b[0].themeId) ||
+          (a[1] - b[1]))
+        .map(([s]) => s)
     } else if (filters.sort === 'rarity') {
       list = [...list].sort((a, b) => (RARITY_RANK[a.rarity] - RARITY_RANK[b.rarity]) || a.typeName.localeCompare(b.typeName))
     } else if (filters.sort === 'closest') {
