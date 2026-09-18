@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'power-hours-kh-2026-09-19',
+    emoji: '🗝️',
+    message: 'Kingdom Hearts Power Hours — Sat, Sep 19 (2–4 PM & 9–11 PM ET): Loot Hacker (“Hacker”) Sprite variants spawn far more often — the best window to fill in the Loot Hacker finishes you’re missing. Everyone drops in with the Kingdom Key & a Sea Salt Ice Cream, and 1-Up Tokens & Portable Extractors can drop from Chests.',
+    link: '/?view=news',
+    linkLabel: 'Event details',
+    start: '2026-09-18',
+    end: '2026-09-19',
+    source: 'Epic (Fortnite)',
+    official: true,
+    tone: 'event',
+  },
+  {
     id: 'new-sprite-day-v4220-2026-09-17',
     emoji: '🆕',
     message: 'New Sprite Day is LIVE (v42.20, Sep 17) — 3 new Sprites out now in Normal/Gold/Loot Hacker/Cheat Master: Crash Bandicoot (whirlwind spin on air-jump), Blinky/Pac-Man (cloak when hit) & Pond (Super Jump). The Bounty Hunter finish + Morgana & Birthday are datamined for next week. Also: fresh Loot Hacks + new codes (BLINKYINKYPINKYCLYDE = 5,000 Dust).',

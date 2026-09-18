@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 18, 2026 — Kingdom Hearts Power Hours (Sat Sep 19)
+
+- **Added:** two confirmed Power Hours windows in `events.js` (Sep 19, 18:00–20:00 UTC and Sep 20, 01:00–03:00 UTC), a banner in
+  `announcements.js`, and a News post in `news.js`. "Hacker" (Loot Hacker) Sprite variants are boosted both windows.
+- **Why:** Epic announced it directly (both ET windows), so it's a confirmed event — the data-driven top card counts down and shows
+  LIVE automatically, and it's flagged as the week's best window to chase the Loot Hacker finish.
+
+---
+
 ## September 17, 2026 — "Coming Sep 24" heads-up (Morgana, Birthday, Bounty Hunter)
 
 - **Added:** an `incoming.js` entry (dropsOn 2026-09-24, `confirmedDate: false`) covering the Morgana & Birthday Sprites (via

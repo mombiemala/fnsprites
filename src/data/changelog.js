@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 18, 2026',
+    title: 'Kingdom Hearts Power Hours (Sat Sep 19) — Loot Hacker Sprites boosted',
+    changes: [
+      { tag: 'Added', text: 'The Kingdom Hearts Power Hours are on the schedule: both windows Saturday Sep 19 (2–4 PM & 9–11 PM ET) now drive the top-card countdown/LIVE badge, with a top-of-page banner and a News post. “Hacker” (Loot Hacker) Sprite variants are boosted — the week’s best window to fill in Loot Hacker finishes.' },
+    ],
+    summary: 'Wired up Saturday’s Kingdom Hearts Power Hours so the tracker counts down to it and flags it live during both windows — a great Loot Hacker farming window.',
+    why: 'Epic announced it directly (both ET windows), so it goes in as a confirmed event — the data-driven top card lights up automatically, and collectors get the heads-up that this is the moment to chase the Loot Hacker finish.',
+  },
+  {
     date: 'September 17, 2026',
     title: 'Heads-up — Morgana, Birthday & the Bounty Hunter finish coming Sep 24',
     changes: [

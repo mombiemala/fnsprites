@@ -37,6 +37,28 @@ export const SPRITE_EVENTS = [
     sourceUrl: '/?view=news',
   },
   {
+    id: 'power-hours-kh-2026-09-19-r1',
+    emoji: '🗝️',
+    name: 'Kingdom Hearts Power Hours (Round 1)',
+    perk: 'Loot Hacker (“Hacker”) Sprites boosted · everyone starts with the Kingdom Key & Sea Salt Ice Cream · 1-Up Tokens & Portable Extractors from Chests',
+    startsUtc: '2026-09-19T18:00:00Z', // 2 PM ET Sat Sep 19
+    endsUtc: '2026-09-19T20:00:00Z', // 4 PM ET
+    confirmed: true,
+    source: 'Epic (Fortnite)',
+    sourceUrl: '/?view=news',
+  },
+  {
+    id: 'power-hours-kh-2026-09-19-r2',
+    emoji: '🗝️',
+    name: 'Kingdom Hearts Power Hours (Round 2)',
+    perk: 'Loot Hacker (“Hacker”) Sprites boosted · everyone starts with the Kingdom Key & Sea Salt Ice Cream · 1-Up Tokens & Portable Extractors from Chests',
+    startsUtc: '2026-09-20T01:00:00Z', // 9 PM ET Sat Sep 19 (= 1 AM UTC Sun)
+    endsUtc: '2026-09-20T03:00:00Z', // 11 PM ET
+    confirmed: true,
+    source: 'Epic (Fortnite)',
+    sourceUrl: '/?view=news',
+  },
+  {
     id: 'new-sprite-day-2026-09-24',
     emoji: '🕵️',
     name: 'New Sprite Day — Bounty Hunter finish + Morgana & Birthday',

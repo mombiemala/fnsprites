@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-19',
+    when: 'Sep 19, 2026',
+    tag: 'event',
+    start: '2026-09-18',
+    end: '2026-09-20',
+    title: '🗝️ Kingdom Hearts Power Hours — Loot Hacker Sprites boosted (Sat, Sep 19)',
+    body: 'Two Power Hour windows Saturday, Sep 19 — 2–4 PM ET and again 9–11 PM ET (6–8 PM & 1–3 AM UTC). “Hacker” (Loot Hacker) Sprite variants spawn far more often, so it’s the best window this week to fill in the Loot Hacker finishes you’re still missing. Everyone drops in holding the Kingdom Key and a Sea Salt Ice Cream, and 1-Up Tokens & Portable Extractors can turn up in Chests. Tied to the Kingdom Hearts collab that went live with v42.20 (Sora, Riku, Kairi & Roxas in the Shop, plus two Kingdom Hearts match Overrides).',
+    link: 'https://www.fortnite.com/news/journey-across-worlds-with-kingdom-hearts-in-fortnite',
+    source: 'Epic (Fortnite)',
+    official: true,
+  },
+  {
     ts: '2026-09-17',
     when: 'Sep 17, 2026',
     tag: 'sprites',
