@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useAuth } from '../context/authStore'
 import { useToast } from '../context/toastStore'
 import { ALL_SPRITES, RELEASED_COUNT } from '../data/sprites'
+import { THEME_MAP, THEME_ORDER } from '../data/themes'
+import { CREATOR_CODE } from '../lib/supabase'
 
 export default function ShareBar({ onExport, exporting, onExportGarden, gardenExporting }) {
   const { user, profile, updateProfile, tracking } = useAuth()
@@ -11,6 +13,7 @@ export default function ShareBar({ onExport, exporting, onExportGarden, gardenEx
   const [saved, setSaved] = useState(false)
   const [copied, setCopied] = useState(false)
   const [copiedCap, setCopiedCap] = useState(false)
+  const [copiedDiscord, setCopiedDiscord] = useState(false)
 
   // Re-seed the form fields when the loaded profile changes (React's
   // recommended "adjust state during render" pattern — avoids an effect).
@@ -72,6 +75,46 @@ export default function ShareBar({ onExport, exporting, onExportGarden, gardenEx
     }
   }
 
+  // Richer, Discord-formatted breakdown (markdown bold + a per-finish tally and a
+  // few of the sprites you're still missing) — a step up from the one-line caption.
+  const relByTheme = {}
+  for (const s of ALL_SPRITES) {
+    if (s.unreleased) continue
+    const t = (relByTheme[s.themeId] ||= { owned: 0, total: 0 })
+    t.total++
+    if (tracking[s.id]?.owned) t.owned++
+  }
+  const finishLines = THEME_ORDER
+    .filter((id) => relByTheme[id]?.total)
+    .map((id) => `${THEME_MAP[id]?.name || id} ${relByTheme[id].owned}/${relByTheme[id].total}`)
+  const missingNames = ALL_SPRITES
+    .filter((s) => !s.unreleased && !tracking[s.id]?.owned)
+    .slice(0, 6)
+    .map((s) => (THEME_MAP[s.themeId]?.name && THEME_MAP[s.themeId].name !== 'Normal' ? `${THEME_MAP[s.themeId].name} ${s.typeName}` : s.typeName))
+  const discord = [
+    `🧩 **${who} Fortnite Sprite Collection** — Season 4 “Override”`,
+    `**${owned}/${RELEASED_COUNT} (${pctOwned}%)** collected${mastered ? ` · **${mastered}** mastered ⭐` : ''}`,
+    '',
+    `**By finish:** ${finishLines.join(' · ')}`,
+    missing > 0
+      ? `**Still chasing ${missing}:** ${missingNames.join(', ')}${missing > missingNames.length ? '…' : ''}`
+      : `**Full set — gotta catch ’em all!** 🏆`,
+    '',
+    `Track & compare yours → ${captionUrl}`,
+    `💜 Support the maker — Creator Code **${CREATOR_CODE.toUpperCase()}**`,
+  ].join('\n')
+
+  const copyDiscord = async () => {
+    try {
+      await navigator.clipboard.writeText(discord)
+      setCopiedDiscord(true)
+      toast('Discord breakdown copied — paste it in your server!')
+      setTimeout(() => setCopiedDiscord(false), 1600)
+    } catch {
+      toast('Could not copy', 'error')
+    }
+  }
+
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
       <h3 className="mb-3 font-display text-lg text-white">Share &amp; export</h3>
@@ -115,13 +158,22 @@ export default function ShareBar({ onExport, exporting, onExportGarden, gardenEx
           {copied ? 'Copied ✓' : 'Copy link'}
         </button>
       </div>
-      <button
-        onClick={copyCaption}
-        title="Copies a ready-to-paste summary of your collection for Discord or Reddit"
-        className="mt-2 w-full rounded-xl bg-[var(--panel-2)] px-4 py-2 text-sm font-bold text-white hover:bg-[var(--border)]"
-      >
-        {copiedCap ? 'Caption copied ✓' : '📋 Copy caption for Discord / Reddit'}
-      </button>
+      <div className="mt-2 flex flex-col gap-2 sm:flex-row">
+        <button
+          onClick={copyCaption}
+          title="Copies a short one-line summary of your collection — good for Reddit or a quick post"
+          className="w-full rounded-xl bg-[var(--panel-2)] px-4 py-2 text-sm font-bold text-white hover:bg-[var(--border)]"
+        >
+          {copiedCap ? 'Caption copied ✓' : '📋 Copy short caption'}
+        </button>
+        <button
+          onClick={copyDiscord}
+          title="Copies a full Discord-formatted breakdown (completion %, per-finish tally, what you're missing) — paste it straight into a server"
+          className="w-full rounded-xl bg-[#5865F2] px-4 py-2 text-sm font-extrabold text-white hover:brightness-110"
+        >
+          {copiedDiscord ? 'Copied for Discord ✓' : '🎮 Copy for Discord'}
+        </button>
+      </div>
       {!isPublic && (
         <p className="mt-2 text-[11px] text-[var(--muted)]">
           Your link is currently private — enable “Public link” and save so others can view it.

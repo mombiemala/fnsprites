@@ -44,6 +44,7 @@ export const SPRITE_EVENTS = [
     startsUtc: '2026-09-19T18:00:00Z', // 2 PM ET Sat Sep 19
     endsUtc: '2026-09-19T20:00:00Z', // 4 PM ET
     confirmed: true,
+    boostedThemes: ['loothacker'], // "Hacker" Sprite variants spawn more often
     source: 'Epic (Fortnite)',
     sourceUrl: '/?view=news',
   },
@@ -55,6 +56,7 @@ export const SPRITE_EVENTS = [
     startsUtc: '2026-09-20T01:00:00Z', // 9 PM ET Sat Sep 19 (= 1 AM UTC Sun)
     endsUtc: '2026-09-20T03:00:00Z', // 11 PM ET
     confirmed: true,
+    boostedThemes: ['loothacker'], // "Hacker" Sprite variants spawn more often
     source: 'Epic (Fortnite)',
     sourceUrl: '/?view=news',
   },

@@ -3,6 +3,8 @@ import { ANNOUNCEMENTS } from '../data/announcements'
 import { activeIncoming, daysUntil } from '../data/incoming'
 import { LOBBY_CODES } from '../data/codes'
 import { liveSpriteEvent, nextSpriteEvent } from '../data/events'
+import { ALL_SPRITES } from '../data/sprites'
+import { THEME_MAP } from '../data/themes'
 
 // One compact top-of-page card that merges what used to be three stacked blocks:
 //  1. the dismissible event announcement bar,
@@ -49,7 +51,11 @@ function countdownLabel(dropsOn, confirmedDate) {
   return 'soon'
 }
 
-export default function TopStatus({ onGo }) {
+// A boosted-finish event (Power Hours) is worth surfacing a "farm my missing
+// ones" shortcut for — when it's LIVE, or starting within ~2 days.
+const FARM_LEAD_MS = 2 * 864e5
+
+export default function TopStatus({ onGo, tracking, onFarmFinish }) {
   const [dismissed, setDismissed] = useState(loadDismissed)
   const [now, setNow] = useState(() => Date.now()) // ticks every second for the countdown
   useEffect(() => {
@@ -65,6 +71,16 @@ export default function TopStatus({ onGo }) {
   // in src/data/events.js — no assuming every Monday/Saturday has one.
   const liveEvent = liveSpriteEvent(new Date(now))
   const nextEvent = nextSpriteEvent(new Date(now))
+
+  // Power Hours tie-in: if a boosted-finish event is live (or imminent), offer a
+  // one-tap "farm my missing <finish>" that filters the grid to exactly those.
+  const boostEvent = (liveEvent?.boostedThemes?.length && liveEvent) ||
+    (nextEvent?.boostedThemes?.length && (new Date(nextEvent.startsUtc) - now <= FARM_LEAD_MS) && nextEvent) || null
+  const boostTheme = boostEvent?.boostedThemes?.[0] || null
+  const boostMissing = (boostTheme && tracking)
+    ? ALL_SPRITES.filter((s) => s.themeId === boostTheme && !s.unreleased && !tracking[s.id]?.owned).length
+    : 0
+  const showFarm = !!(onFarmFinish && boostTheme && boostMissing > 0)
 
   const dismiss = () => {
     const next = new Set(dismissed)
@@ -129,6 +145,15 @@ export default function TopStatus({ onGo }) {
           <button onClick={() => onGo?.('news')} className="mt-0.5 block text-[11px] font-bold text-[var(--brand)] hover:underline">
             See all events →
           </button>
+          {showFarm && (
+            <button
+              onClick={() => onFarmFinish(boostTheme)}
+              title={`Filter the grid to the ${THEME_MAP[boostTheme]?.name || boostTheme} Sprites you still need — ${liveEvent?.boostedThemes ? 'boosted right now' : 'boosted this weekend'}`}
+              className="mt-1.5 inline-flex items-center gap-1.5 rounded-lg bg-fuchsia-500/15 px-2.5 py-1 text-[11px] font-extrabold text-fuchsia-300 ring-1 ring-fuchsia-400/30 hover:bg-fuchsia-500/25"
+            >
+              🎯 Farm my {boostMissing} missing {THEME_MAP[boostTheme]?.name || boostTheme} Sprite{boostMissing === 1 ? '' : 's'} →
+            </button>
+          )}
         </div>
         <button
           onClick={() => onGo?.('codes')}

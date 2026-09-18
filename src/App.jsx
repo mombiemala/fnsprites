@@ -367,6 +367,15 @@ export default function App() {
   )
   const clearFilters = () => setFilters((f) => ({ ...DEFAULT_FILTERS, generation: [], sort: f.sort, view: f.view }))
 
+  // Power Hours tie-in: jump straight to the missing Sprites of a boosted finish.
+  const farmFinish = (themeId) => {
+    setView('collection')
+    setFilters((f) => ({ ...f, search: '', theme: themeId, rarity: 'all', ownership: 'unowned', hideMastered: false, showUnreleased: false }))
+    if (typeof document !== 'undefined') {
+      requestAnimationFrame(() => document.getElementById('collection-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+    }
+  }
+
 
   // Bulk quick-add: acts on the released sprites currently shown, so filtering to
   // a theme or rarity (or searching) then hitting the button claims the whole set
@@ -615,7 +624,7 @@ export default function App() {
 
       {/* One compact top card: active announcement + today's event + upcoming
           heads-up (was three separate stacked blocks). */}
-      {!isShareView && <TopStatus onGo={goToSection} />}
+      {!isShareView && <TopStatus onGo={goToSection} tracking={activeTracking} onFarmFinish={farmFinish} />}
 
       {/* Guests with progress: nudge to sign in so their device-local collection
           gets backed up + synced (their progress merges on first sign-in). */}
@@ -636,7 +645,7 @@ export default function App() {
 
       {/* Collection: sprite grid + a static sidebar of secondary cards on
           desktop; the sidebar stacks below the grid on mobile. */}
-      <div className="lg:flex lg:items-start lg:gap-6">
+      <div id="collection-grid" className="lg:flex lg:items-start lg:gap-6">
         {/* Main column: grid */}
         <div className="min-w-0 lg:flex-1">
           {/* Mobile only: hoist progress + next-to-chase above the grid, so the

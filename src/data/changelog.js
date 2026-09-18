@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 18, 2026',
+    title: 'Copy-for-Discord export + a Power Hours “farm my missing ones” shortcut',
+    changes: [
+      { tag: 'Added', text: 'A “🎮 Copy for Discord” button in Share & export — copies a formatted breakdown of your collection (completion %, a per-finish tally, and a few Sprites you’re still missing) ready to paste into a server, alongside the existing short caption.' },
+      { tag: 'Added', text: 'A Power Hours tie-in on the top card: when a finish-boosting event is live or imminent (e.g. Saturday’s Loot Hacker Power Hours), a one-tap “🎯 Farm my N missing Loot Hacker Sprites” button filters the grid to exactly the ones you still need and scrolls you there.' },
+    ],
+    summary: 'Share your collection to Discord in one tap with a proper breakdown, and jump straight to the Sprites worth farming during a boosted-finish event.',
+    why: 'Discord export is the one thing rival checklists had that we didn’t — an easy, shareable breakdown doubles as free word-of-mouth. The Power Hours shortcut turns “a finish is boosted right now” into immediate action (filter to your missing ones) instead of leaving players to hunt through the grid during the short event window.',
+  },
+  {
+    date: 'September 18, 2026',
     title: 'Kingdom Hearts Power Hours (Sat Sep 19) — Loot Hacker Sprites boosted',
     changes: [
       { tag: 'Added', text: 'The Kingdom Hearts Power Hours are on the schedule: both windows Saturday Sep 19 (2–4 PM & 9–11 PM ET) now drive the top-card countdown/LIVE badge, with a top-of-page banner and a News post. “Hacker” (Loot Hacker) Sprite variants are boosted — the week’s best window to fill in Loot Hacker finishes.' },

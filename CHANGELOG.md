@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 18, 2026 — Copy-for-Discord export + Power Hours farm shortcut
+
+- **Added:** a "🎮 Copy for Discord" button in `ShareBar.jsx` — a formatted breakdown (completion %, per-finish tally via
+  `THEME_ORDER`, up to 6 missing Sprites, share link + Creator Code) copied to clipboard, next to the existing short caption.
+- **Added:** a Power Hours tie-in in `TopStatus.jsx` — events can declare `boostedThemes` (added `['loothacker']` to the Sep 19
+  windows in `events.js`); when such an event is live or within ~2 days, the top card shows "🎯 Farm my N missing <finish>
+  Sprites", wired to a new `farmFinish()` in `App.jsx` that sets the grid filters (theme + unowned) and scrolls to it
+  (`#collection-grid`).
+- **Why:** Discord export was the one feature rival checklists had that we lacked, and it doubles as shareable marketing. The
+  farm shortcut converts a boosted-finish window into one-tap action during the short event.
+
+---
+
 ## September 18, 2026 — Kingdom Hearts Power Hours (Sat Sep 19)
 
 - **Added:** two confirmed Power Hours windows in `events.js` (Sep 19, 18:00–20:00 UTC and Sep 20, 01:00–03:00 UTC), a banner in
