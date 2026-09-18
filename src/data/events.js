@@ -12,6 +12,17 @@
 // To add one: drop in an entry with a real window + source. When Epic confirms a
 // specific Mastery Monday / Power Hours / New Sprite Day, add it here (confirmed:
 // true) and it lights up the countdown automatically.
+//
+// `boostedThemes`: OPTIONAL array of finish theme-ids a Power Hours event boosts.
+// When set, the top card shows a one-tap "Farm my N missing <finish> Sprites"
+// shortcut (filters the grid to exactly those) while the event is live or within
+// ~2 days. Map the event to its finish, e.g.:
+//   Gold Hours        → ['gold']
+//   Cheat Master Hours→ ['cheatmaster']
+//   Loot Hacker Hours → ['loothacker']  (Epic calls these "Hacker" Sprites)
+//   Gummy / Galaxy / Gem / Holofoil Hours → ['gummy'] / ['galaxy'] / ['gem'] / ['holofoil']
+// A general Power Hours that boosts several finishes can list more than one.
+// Leave it off for events that don't boost a specific finish (Mastery Monday, etc.).
 
 export const SPRITE_EVENTS = [
   {
