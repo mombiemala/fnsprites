@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 19, 2026',
+    title: 'Heads-up card — Chapter 8 (~Dec 5)',
+    changes: [
+      { tag: 'Added', text: 'A “Chapter 8 — a brand-new Sprite generation” card in the Coming-up heads-up feed, dated ~Dec 5 (leak). Split the season-flip card so it now reads: bridge mini-season (~Nov 1) → Chapter 8 (~Dec 5).' },
+    ],
+    summary: 'Added a Chapter 8 heads-up (~Dec 5) so the whole road ahead — Fortnitemares, the Nov 1 mini-season, then Chapter 8 — is visible at a glance.',
+    why: 'Chapter 8 means a fresh Sprite generation to chase, and it’s the biggest thing on the horizon for collectors. It’s a leaked date (HYPEX/ShiinaBR), so it uses the “~” estimate convention; the Season 5 watch firms it up as Epic confirms.',
+  },
+  {
+    date: 'September 19, 2026',
     title: 'New datamined Sprite — Vampire (likely Fortnitemares)',
     changes: [
       { tag: 'Added', text: 'A datamined “Vampire” Sprite added to the roster as rumored/upcoming (it won’t count toward your total). Leaked ability: converts a portion of the damage you deal into siphoned white Health, scaling from ~10% at Level 1 to ~50% at max. Ships with a stylised placeholder until official art surfaces, plus a labelled leak entry in the News feed.' },

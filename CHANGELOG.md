@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 19, 2026 — Chapter 8 heads-up card (~Dec 5)
+
+- **Added:** a `chapter-8` entry in `src/data/incoming.js` (dropsOn 2026-12-05, `confirmedDate:false`) and retuned the `season-5`
+  card to focus on the ~Nov 1 bridge mini-season — so the heads-up feed reads mini-season (~Nov 1) → Chapter 8 (~Dec 5).
+- **Why:** Chapter 8 (HYPEX/ShiinaBR leak) brings a new Sprite generation — the biggest thing on collectors' horizon. Leaked date,
+  so it uses the "~" estimate convention; the Season 5 leak-watch firms it up as Epic confirms.
+
+---
+
 ## September 19, 2026 — New datamined Sprite: Vampire (likely Fortnitemares)
 
 - **Added:** `vampire` to `src/data/sprites.js` (`released:false, rumored:true, gen:'c7s4'`, `normal:U`) with the leaked siphon
