@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 19, 2026 — New datamined Sprite: Vampire (likely Fortnitemares)
+
+- **Added:** `vampire` to `src/data/sprites.js` (`released:false, rumored:true, gen:'c7s4'`, `normal:U`) with the leaked siphon
+  ability (damage dealt → white Health, ~10%→50% by level), clearly labelled leak-only. Placeholder art in `SpriteArt.jsx`
+  (dark-red vampire palette + cape-collar/fang motif) and a tentative News item in `news.js` (source: Techtroduce datamine).
+- **Why:** a fresh datamine surfaced a Vampire Sprite fitting the ~Oct 1 Fortnitemares window. Epic hasn't confirmed it, so it's
+  rumored/datamined (never counted toward completion); the daily watch flips it live with real art once it's obtainable.
+
+---
+
 ## September 18, 2026 — Copy-for-Discord export + Power Hours farm shortcut
 
 - **Added:** a "🎮 Copy for Discord" button in `ShareBar.jsx` — a formatted breakdown (completion %, per-finish tally via

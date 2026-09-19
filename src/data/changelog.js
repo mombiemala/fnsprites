@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 19, 2026',
+    title: 'New datamined Sprite — Vampire (likely Fortnitemares)',
+    changes: [
+      { tag: 'Added', text: 'A datamined “Vampire” Sprite added to the roster as rumored/upcoming (it won’t count toward your total). Leaked ability: converts a portion of the damage you deal into siphoned white Health, scaling from ~10% at Level 1 to ~50% at max. Ships with a stylised placeholder until official art surfaces, plus a labelled leak entry in the News feed.' },
+    ],
+    summary: 'Added the newly-datamined Vampire Sprite — a likely Fortnitemares (Halloween) addition — as a clearly-labelled leak.',
+    why: 'A fresh datamine surfaced a Vampire Sprite that fits the ~Oct 1 Fortnitemares timing. It’s leak-only (Epic hasn’t confirmed it), so it goes in as rumored/datamined with a source, never counted toward completion — the daily watch will flip it live with real art the moment it’s actually obtainable.',
+  },
+  {
     date: 'September 18, 2026',
     title: 'Copy-for-Discord export + a Power Hours “farm my missing ones” shortcut',
     changes: [

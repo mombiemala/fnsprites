@@ -13,8 +13,9 @@ import { THEME_MAP } from './themes.js'
 // The v42.20 update (Sep 17) went live with 3 new Sprites — Pond, Crash Bandicoot
 // and Blinky — each in Normal/Gold/Loot Hacker/Cheat Master (flipped released
 // here). Still genuinely-unreleased/datamined: Honey, Dumpster, Meowscles,
-// Squibbly, Cube, Head Shot and the rest of the v42.20 wave (Morgana,
-// Birthday, Phase Dash), all `rumored` until Epic ships each. ("BodySlam" turned
+// Squibbly, Cube, Head Shot, the rest of the v42.20 wave (Morgana, Birthday,
+// Phase Dash) and the newly-datamined Vampire (a likely Fortnitemares Sprite),
+// all `rumored` until Epic ships each. ("BodySlam" turned
 // out to be the internal codename for Crash Bandicoot, not a separate Sprite —
 // its art/entry are folded into `crash`.) v42.20 also added a
 // third "Override" finish, Bounty Hunter, per-Sprite as `bountyhunter: U` and
@@ -247,6 +248,9 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'phasedash', name: 'Phase Dash', icon: '💨', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Datamined in the v42.20 update (Sep 17) — only a Normal finish appears in the files so far, and its in-game ability & rarity aren’t detailed yet. TBC. (Datamine: FireMonkey / Vice.)',
+    variants: { normal: U } },
+  { id: 'vampire', name: 'Vampire', icon: '🧛', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Sprite — looks like a Fortnitemares (Halloween) addition. Leaked ability: converts a portion of the damage you deal into siphoned white Health, scaling from ~10% at Level 1 up to ~50% at max level. Leak-only — Epic hasn’t confirmed it, and its rarity, variants & release date are all TBC. (Datamine via Techtroduce.)',
     variants: { normal: U } },
 ]
 

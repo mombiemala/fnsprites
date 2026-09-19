@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-18',
+    when: 'Sep 18, 2026',
+    tag: 'upcoming',
+    tentative: true,
+    title: '🧛 Leak — a “Vampire” Sprite datamined (likely Fortnitemares)',
+    sprites: ['vampire'],
+    body: 'A fresh datamine turned up a Vampire Sprite in the files — its leaked ability converts a portion of the damage you deal into siphoned white Health, scaling from ~10% at Level 1 up to ~50% at max level. The vampire theme lines up with Fortnitemares 2026 (expected ~Oct 1), so it may headline the Halloween drop. Epic hasn’t announced it, so treat it as a leak — we’ve added it to the roster as datamined/rumored (it won’t count toward your total), and we’ll flip it live with real art the moment it’s obtainable.',
+    link: 'https://www.techtroduce.com/fortnite-unreleased-sprites-abilities-leak',
+    source: 'Techtroduce (datamine)',
+    official: false,
+  },
+  {
     ts: '2026-09-19',
     when: 'Sep 19, 2026',
     tag: 'event',

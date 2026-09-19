@@ -59,6 +59,7 @@ const TYPES = {
   morgana: { c: ['#4a5378', '#252c48', '#10142a'], feat: '#ffe14d' },
   birthday: { c: ['#ffe0ec', '#ffb3d1', '#e07aa8'], feat: '#ffffff' },
   phasedash: { c: ['#bff0ff', '#46c8ff', '#1f7aae'], feat: '#ffffff' },
+  vampire: { c: ['#b06a8a', '#6a2a4a', '#3a1226'], feat: '#ff5566' },
 }
 
 const BODY =
@@ -288,6 +289,10 @@ function Features({ id, fc, gid }) {
     case 'phasedash':
       // Speed / dash motion streaks.
       return <g stroke={fc} strokeWidth="3" strokeLinecap="round" opacity="0.7"><path d="M20 44 h20" /><path d="M16 54 h26" /><path d="M22 64 h16" /></g>
+    case 'vampire':
+      // A pointed cape collar (behind the head) + two little fangs — reads as a
+      // vampire without copying any IP art.
+      return <><g fill={fc} stroke="rgba(0,0,0,.25)" strokeWidth="1" strokeLinejoin="round"><path d="M24 42 L34 28 L37 46 Z" /><path d="M76 42 L66 28 L63 46 Z" /></g><g fill="#fff"><path d="M45 71 l2 5 2-5 Z" /><path d="M51 71 l2 5 2-5 Z" /></g></>
 
     default:
       return null
