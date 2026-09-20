@@ -10,6 +10,19 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-21',
+    when: 'Sep 21, 2026',
+    tag: 'event',
+    start: '2026-09-20',
+    end: '2026-09-22',
+    title: '⭐ Mastery Monday — 2× Sprite Dust & XP (Mon, Sep 21)',
+    body: 'Mastery Monday returns Monday, Sep 21 from 9 AM ET for 24 hours (to 9 AM ET Tue): double Sprite XP and double Sprite Dust, boosted Sprite spawns and extra Portable Extractors — the fastest window to push Sprites toward Mastery. A good day to bank Dust ahead of Thursday’s New Sprite Day (Morgana, Birthday & the Bounty Hunter finish, reported for ~Sep 24). Timing follows Epic’s documented weekly cadence; we’ll firm it up if Epic posts a specific note.',
+    link: 'https://beebom.com/fortnite-sprite-events-schedule/',
+    source: 'Epic (weekly cadence) / Beebom',
+    official: false,
+    tentative: true,
+  },
+  {
     ts: '2026-09-18',
     when: 'Sep 18, 2026',
     tag: 'upcoming',

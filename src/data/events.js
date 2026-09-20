@@ -72,6 +72,17 @@ export const SPRITE_EVENTS = [
     sourceUrl: '/?view=news',
   },
   {
+    id: 'mastery-monday-2026-09-21',
+    emoji: '⭐',
+    name: 'Mastery Monday',
+    perk: '2× Sprite Dust & XP · boosted spawns + extra Portable Extractors',
+    startsUtc: '2026-09-21T13:00:00Z', // 9 AM ET Mon Sep 21
+    endsUtc: '2026-09-22T13:00:00Z', // runs 24h, to 9 AM ET Tue
+    confirmed: false, // expected from Epic's documented weekly Monday cadence
+    source: 'Epic weekly cadence · Beebom schedule',
+    sourceUrl: '/?view=news',
+  },
+  {
     id: 'new-sprite-day-2026-09-24',
     emoji: '🕵️',
     name: 'New Sprite Day — Bounty Hunter finish + Morgana & Birthday',

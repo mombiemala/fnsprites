@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'mastery-monday-2026-09-21',
+    emoji: '⭐',
+    message: 'Mastery Monday — Mon, Sep 21 (9 AM ET, 24 hours): 2× Sprite Dust & 2× Sprite XP, boosted Sprite spawns and extra Portable Extractors. The fastest day to level Sprites toward Mastery.',
+    link: '/?view=news',
+    linkLabel: 'Event details',
+    start: '2026-09-20',
+    end: '2026-09-21',
+    source: 'Epic (weekly cadence)',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'power-hours-kh-2026-09-19',
     emoji: '🗝️',
     message: 'Kingdom Hearts Power Hours — Sat, Sep 19 (2–4 PM & 9–11 PM ET): Loot Hacker (“Hacker”) Sprite variants spawn far more often — the best window to fill in the Loot Hacker finishes you’re missing. Everyone drops in with the Kingdom Key & a Sea Salt Ice Cream, and 1-Up Tokens & Portable Extractors can drop from Chests.',

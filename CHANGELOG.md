@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 20, 2026 — Top card rolled forward to Mastery Monday (Sep 21)
+
+- **Changed:** added the Mastery Monday (Sep 21, 13:00–next-day 13:00 UTC) event to `events.js` (`confirmed:false`, weekly cadence),
+  a banner in `announcements.js`, and a News post — so the top card counts down to it now that the Sep 19 Power Hours ended.
+- **Why:** expired event banners leave the card empty; surfacing the next dated event keeps it useful. Marked "expected" until Epic
+  posts a specific note.
+
+---
+
 ## September 19, 2026 — Chapter 8 heads-up card (~Dec 5)
 
 - **Added:** a `chapter-8` entry in `src/data/incoming.js` (dropsOn 2026-12-05, `confirmedDate:false`) and retuned the `season-5`

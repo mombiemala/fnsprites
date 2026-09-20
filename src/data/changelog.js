@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 20, 2026',
+    title: 'Top card refreshed — Mastery Monday (Sep 21) is next up',
+    changes: [
+      { tag: 'Changed', text: 'The top-of-page event card now counts down to Mastery Monday (Mon, Sep 21 — 2× Sprite Dust & XP) now that the Kingdom Hearts Power Hours have wrapped, with a matching banner and News post. The countdown/LIVE badge is data-driven, so it lights up automatically at 9 AM ET.' },
+    ],
+    summary: 'Rolled the top card forward from the (now-finished) Power Hours to Monday’s Mastery Monday — the best day to bank 2× Dust/XP before Thursday’s New Sprite Day.',
+    why: 'Once an event window passes the card would otherwise sit empty; surfacing the next dated event (Mastery Monday) keeps it useful. It’s marked “expected” (Epic’s weekly cadence) rather than hard-confirmed until Epic posts a specific note.',
+  },
+  {
     date: 'September 19, 2026',
     title: 'Heads-up card — Chapter 8 (~Dec 5)',
     changes: [
