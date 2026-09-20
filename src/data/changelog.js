@@ -7,9 +7,18 @@
 export const CHANGELOG = [
   {
     date: 'September 20, 2026',
+    title: 'Fixed: the Map tab now actually loads its POIs',
+    changes: [
+      { tag: 'Fixed', text: 'The “🗺️ Map” tab could get stuck with no Points of Interest because the browser can’t call fortnite-api.com’s map endpoint directly (it isn’t open to cross-site requests). Added a small server-side proxy (/api/map) that fetches it for us, so the live minimap + full POI list load reliably now — with an 8-second timeout that drops to the built-in fallback list instead of spinning forever.' },
+    ],
+    summary: 'Fixed the Map tab hanging with no POIs — it now loads through a server-side proxy, with a guaranteed fallback so it never just spins.',
+    why: 'The first cut fetched the map vendor straight from the browser, but that endpoint blocks cross-origin requests, so the fetch failed and the POI list could stall on “Loading…”. Routing it through our own /api/map (same pattern as player stats) sidesteps that entirely and lets us cache it at the edge; the timeout guarantees the tab always resolves to a rendered list.',
+  },
+  {
+    date: 'September 20, 2026',
     title: 'New: a live Map & POIs reference',
     changes: [
-      { tag: 'Added', text: 'A “🗺️ Map” tab showing the current Chapter 7 Season 4 “Override” minimap and its full Points-of-Interest list, pulled live from fortnite-api.com (no login, always current) with a static fallback if it’s unreachable. Plus a crawlable /map page for search.' },
+      { tag: 'Added', text: 'A “🗺️ Map” tab showing the current Chapter 7 Season 4 “Override” minimap and its full Points-of-Interest list, pulled live from fortnite-api.com (via our own proxy — no login, always current) with a static fallback if it’s unreachable. Plus a crawlable /map page for search.' },
     ],
     summary: 'Added a live map & POI reference so you can see the current island and its named locations at a glance.',
     why: 'It’s the most-requested “what does the map look like now” context, and it doubles as an SEO landing page. Kept honest: Override Sprites aren’t POI-locked (they come from Cheat Codes, Chests & events), so the map is framed as a general chest-farm reference, not a “go here for Sprite X” tool. Uses the same trusted vendor (fortnite-api.com) we already use for the Shop & stats — no new key, no paid API.',

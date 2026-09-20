@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { MAP_API, MAP_SOURCE, MAP_IMAGE_FALLBACK, MAP_POIS } from '../data/mapInfo'
 
-// A light "current map" reference: the live labelled minimap + POI list from
-// fortnite-api.com's free /v1/map (no key, CORS-open). Falls back to a static
-// image + our curated POI list if the fetch fails, so it always renders.
+// A light "current map" reference: the live labelled minimap + POI list from our
+// /api/map proxy (server-side fetch of fortnite-api.com/v1/map — the browser can't
+// call that vendor directly because it isn't CORS-open). Falls back to a static
+// image + our curated POI list if the proxy fails or times out, so it ALWAYS
+// resolves to a rendered list rather than hanging on "Loading…".
 export default function MapView() {
   const [image, setImage] = useState(MAP_IMAGE_FALLBACK)
   const [pois, setPois] = useState(null) // null = loading; [] handled as fallback
@@ -12,15 +14,17 @@ export default function MapView() {
 
   useEffect(() => {
     let cancelled = false
+    // Never hang the tab: if the proxy is slow/unreachable, bail to the fallback.
+    const ctrl = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(), 8000)
     ;(async () => {
       try {
-        const res = await fetch(MAP_API)
+        const res = await fetch(MAP_API, { signal: ctrl.signal })
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         const json = await res.json()
-        const d = json?.data || {}
-        const img = d.images?.pois || d.images?.blank
-        const list = Array.isArray(d.pois)
-          ? d.pois.map((p) => p?.name).filter(Boolean).sort((a, b) => a.localeCompare(b))
+        const img = json?.image
+        const list = Array.isArray(json?.pois)
+          ? json.pois.filter(Boolean).sort((a, b) => a.localeCompare(b))
           : []
         if (cancelled) return
         if (img) setImage(img)
@@ -30,9 +34,11 @@ export default function MapView() {
         if (cancelled) return
         setFailed(true)
         setPois(MAP_POIS.map((p) => p.name))
+      } finally {
+        clearTimeout(timer)
       }
     })()
-    return () => { cancelled = true }
+    return () => { cancelled = true; clearTimeout(timer); ctrl.abort() }
   }, [])
 
   return (

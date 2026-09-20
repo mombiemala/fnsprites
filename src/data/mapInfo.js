@@ -1,14 +1,15 @@
 // Current-season map reference. The live map image + full POI list are pulled at
-// runtime from fortnite-api.com's free /v1/map endpoint (no key, CORS-open — the
-// same vendor we already use for the Shop & player stats). This file holds a
-// static fallback (used if that fetch fails) and the notable current-season POIs
-// for the crawlable /map SEO page.
+// runtime from our own /api/map serverless proxy, which fetches fortnite-api.com's
+// /v1/map server-side. We proxy it (rather than calling the vendor from the
+// browser) because that endpoint isn't CORS-open, so a direct client fetch failed
+// and left the Map tab stuck loading. This file holds a static fallback (used if
+// the proxy fails) and the notable current-season POIs for the crawlable /map page.
 //
 // NOTE for collectors: Override Sprites are NOT tied to specific POIs — they come
 // from in-world Cheat Codes, map-wide Sprite Chests and events. This map is a
 // general reference / chest-farm aid, not a "go here for Sprite X" tool.
 
-export const MAP_API = 'https://fortnite-api.com/v1/map'
+export const MAP_API = '/api/map' // our proxy → fortnite-api.com/v1/map (see api/map.js)
 export const MAP_SOURCE = 'fortnite-api.com'
 
 // A stable, always-current labelled minimap image from the same API's CDN. If the

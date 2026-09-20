@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 20, 2026 — Fixed: Map tab now loads its POIs (server-side proxy)
+
+- **Fixed:** the "🗺️ Map" tab could hang with no Points of Interest — the browser can't call `fortnite-api.com/v1/map`
+  directly because it isn't CORS-open, so the client fetch failed and the POI list stalled. Added `api/map.js` (a serverless
+  proxy that fetches the map server-side and returns `{ image, pois }`), repointed `MAP_API` in `src/data/mapInfo.js` to
+  `/api/map`, and hardened `MapView.jsx` with an 8-second `AbortController` timeout that drops to the curated fallback list.
+- **Why:** the first cut assumed the vendor was CORS-open (it isn't). Proxying it server-side (same pattern as `api/stats.js`)
+  sidesteps CORS, lets us edge-cache the map for an hour, and the timeout guarantees the tab always resolves to a rendered list
+  rather than spinning forever.
+
+---
+
 ## September 20, 2026 — Live Map & POIs reference (/map)
 
 - **Added:** `src/data/mapInfo.js` (API ref + curated fallback POIs), `src/components/MapView.jsx` (a "🗺️ Map" tab that fetches
@@ -18,7 +30,7 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   (lazy view + `TABS` + `?view=map`), and a prerendered `/map` SEO page in `scripts/prerender.mjs` (Article + FAQ JSON-LD, nav +
   footer + sitemap + GUIDES).
 - **Why:** most-requested "what's the map now" context + an SEO landing page, using the vendor we already trust
-  (fortnite-api.com — no key, free, CORS-open). Framed as a chest-farm reference since Override Sprites aren't POI-locked (they
+  (fortnite-api.com — no key, free; proxied server-side, see the Sep 20 fix above). Framed as a chest-farm reference since Override Sprites aren't POI-locked (they
   come from Cheat Codes, Chests & events). Declined api-fortnite.com (paid/unproven) and a second keyed vendor.
 
 ---
