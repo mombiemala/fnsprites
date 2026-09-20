@@ -32,8 +32,10 @@ export default async function handler(req, res) {
     if (upstream.ok && body?.data) {
       const d = body.data
       const image = d.images?.pois || d.images?.blank || null
+      // De-dupe by name: the raw feed has repeats (e.g. 8× "Override Console",
+      // 2× "Carwash") that are distinct map markers but redundant as a name list.
       const pois = Array.isArray(d.pois)
-        ? d.pois.map((p) => p?.name).filter(Boolean).sort((a, b) => a.localeCompare(b))
+        ? [...new Set(d.pois.map((p) => p?.name).filter(Boolean))].sort((a, b) => a.localeCompare(b))
         : []
       res.status(200).json({ image, pois, source: SOURCE })
       return

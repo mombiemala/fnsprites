@@ -16,14 +16,19 @@ export const MAP_SOURCE = 'fortnite-api.com'
 // live /v1/map fetch fails, MapView falls back to this URL, then to the blank map.
 export const MAP_IMAGE_FALLBACK = 'https://media.fortnite-api.com/images/map_pois.png'
 
-// Notable Chapter 7 Season 4 "Override" POIs (curated + sourced). The in-app Map
-// view shows the live, complete list; this drives the SEO page and the fallback.
+// Notable Chapter 7 Season 4 "Override" POIs (curated from the live fortnite-api.com
+// map feed). The in-app Map view shows the live, complete list via /api/map; this
+// curated subset drives the SEO page and the offline fallback, so keep it matching
+// the real current-map names.
 export const MAP_POIS = [
-  { name: 'Green Hill Zone', note: 'Sonic-themed POI (replaced Calamari Canyon).' },
+  { name: 'Green Hill Zone', note: 'Sonic-themed POI.' },
+  { name: 'Blinky Island', note: 'One of the Pac-Man-themed islands (with Pinky & Pac-Man Island).' },
+  { name: 'Crashout Estates', note: 'Crash Bandicoot-themed location.' },
   { name: 'Reality’s Reign', note: 'Large technological complex of pipes & machinery.' },
+  { name: 'Geno’s Machine', note: 'Override / Geno storyline landmark.' },
   { name: 'Stone Sanctum', note: 'Ancient-themed location on the southern Island.' },
-  { name: 'The Spire', note: 'Central landmark (the old Zero Point spot).' },
-  { name: 'Sunken Shores', note: 'Tetris-themed destruction added this season.' },
+  { name: 'Sunken Shores', note: 'Tetris-themed coastal POI.' },
+  { name: 'WonkeeLand', note: 'Colourful themed POI added this season.' },
 ]
 
 export const MAP_UPDATED = 'September 20, 2026'
