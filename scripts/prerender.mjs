@@ -2028,9 +2028,12 @@ function sitemap(types) {
     { loc: SITE + '/about', changefreq: 'monthly', priority: '0.5' },
     { loc: SITE + '/contact', changefreq: 'yearly', priority: '0.4' },
     { loc: SITE + '/privacy', changefreq: 'yearly', priority: '0.3' },
-    { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
-    { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
-    { loc: SITE + '/?view=stats', changefreq: 'weekly', priority: '0.6' },
+    // NOTE: the app-state URLs (/?view=shop, /?view=leaderboard, /?view=stats)
+    // used to be listed here, but they're just the homepage with a query param —
+    // they canonicalize to "/", so Google (correctly) reported them as "Alternate
+    // page with proper canonical tag" and wouldn't index them. A sitemap should
+    // only list canonical, indexable URLs, so they've been removed. The Item Shop /
+    // Leaderboard / Stats are still reachable in-app and via the nav.
     ...types.map((t) => ({ loc: `${SITE}/sprite/${slug(t.name)}`, changefreq: 'weekly', priority: '0.8' })),
   ]
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${u.lastmod || NEWS_TODAY}</lastmod><changefreq>${u.changefreq}</changefreq><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>\n`
