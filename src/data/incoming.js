@@ -58,6 +58,18 @@ export const INCOMING = [
     ],
   },
   {
+    id: 'fortnitemares-2026',
+    emoji: '🎃',
+    title: 'Fortnitemares 2026 — Halloween event',
+    detail: 'Fortnite’s annual Halloween event is leaked to kick off around Oct 1 and run ~3 weeks. Leaks point to Five Nights at Freddy’s and Black Clover crossovers, the return of Horde Rush, and spooky new Loot Hack items (Ghostface’s knife, Witch Broom, Chainsaw, Wood Stake Shotgun). Likely home for the datamined Vampire Sprite. Date/details are from leakers (HYPEX), not an Epic post — treat as an estimate; we’ll firm it up and flip any new Sprites live as they’re confirmed.',
+    dropsOn: '2026-10-01',
+    confirmedDate: false,
+    source: 'HYPEX · Dexerto · Vice (2026 schedule leak)',
+    sourceUrl: 'https://www.dexerto.com/fortnite/fortnite-fortnitemares-2026-3405057/',
+    typeIds: ['vampire'],
+    spriteIds: [],
+  },
+  {
     id: 'loot-hack-refresh',
     emoji: '🎯',
     title: 'Next Loot Hack rotation',

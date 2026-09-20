@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 20, 2026',
+    title: 'Heads-up card — Fortnitemares 2026 (~Oct 1)',
+    changes: [
+      { tag: 'Added', text: 'A “Fortnitemares 2026” card in the Coming-up heads-up feed, dated ~Oct 1 (leak). Notes the leaked Five Nights at Freddy’s & Black Clover crossovers, Horde Rush’s return, and spooky new Loot Hack items — and ties to the already-datamined Vampire Sprite, which now shows a “Coming ~Oct 1” badge.' },
+    ],
+    summary: 'Added a Fortnitemares (~Oct 1) heads-up so the Halloween event — the next big thing after this week’s New Sprite Day — is on the radar, with the Vampire Sprite linked to it.',
+    why: 'Fortnitemares is an annual, near-certain event and it’s where the datamined Vampire Sprite most likely lands, so surfacing it early helps collectors plan Dust spending before the season winds down. It’s a leaked date (HYPEX/Dexerto/Vice), so it uses the “~” estimate convention and stays clearly leak-labelled; the daily & Season 5 watches firm it up as Epic confirms.',
+  },
+  {
+    date: 'September 20, 2026',
     title: 'Fixed: the Map tab now actually loads its POIs',
     changes: [
       { tag: 'Fixed', text: 'The “🗺️ Map” tab could get stuck with no Points of Interest because the browser can’t call fortnite-api.com’s map endpoint directly (it isn’t open to cross-site requests). Added a small server-side proxy (/api/map) that fetches it for us, so the live minimap + full POI list load reliably now — with an 8-second timeout that drops to the built-in fallback list instead of spinning forever.' },

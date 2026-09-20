@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 20, 2026 — Fortnitemares 2026 heads-up card (~Oct 1)
+
+- **Added:** a `fortnitemares-2026` entry in `src/data/incoming.js` (dropsOn 2026-10-01, `confirmedDate:false`, `typeIds:['vampire']`)
+  — so the Halloween event shows in the Coming-up feed and the datamined Vampire Sprite gets a "Coming ~Oct 1" badge.
+- **Why:** Fortnitemares is annual and near-certain, and it's the likely home for the Vampire Sprite, so flagging it early helps
+  collectors plan Dust before the season winds down. Leaked date (HYPEX/Dexerto/Vice), so it uses the "~" estimate convention and
+  stays leak-labelled; the watches firm it up as Epic confirms.
+
+---
+
 ## September 20, 2026 — Fixed: Map tab now loads its POIs (server-side proxy)
 
 - **Fixed:** the "🗺️ Map" tab could hang with no Points of Interest — the browser can't call `fortnite-api.com/v1/map`
