@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 20, 2026 — Live Map & POIs reference (/map)
+
+- **Added:** `src/data/mapInfo.js` (API ref + curated fallback POIs), `src/components/MapView.jsx` (a "🗺️ Map" tab that fetches
+  the live labelled minimap + POI list from `fortnite-api.com/v1/map` client-side, with static fallback), wired into `App.jsx`
+  (lazy view + `TABS` + `?view=map`), and a prerendered `/map` SEO page in `scripts/prerender.mjs` (Article + FAQ JSON-LD, nav +
+  footer + sitemap + GUIDES).
+- **Why:** most-requested "what's the map now" context + an SEO landing page, using the vendor we already trust
+  (fortnite-api.com — no key, free, CORS-open). Framed as a chest-farm reference since Override Sprites aren't POI-locked (they
+  come from Cheat Codes, Chests & events). Declined api-fortnite.com (paid/unproven) and a second keyed vendor.
+
+---
+
 ## September 20, 2026 — Top card rolled forward to Mastery Monday (Sep 21)
 
 - **Changed:** added the Mastery Monday (Sep 21, 13:00–next-day 13:00 UTC) event to `events.js` (`confirmed:false`, weekly cadence),

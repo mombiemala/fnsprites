@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 20, 2026',
+    title: 'New: a live Map & POIs reference',
+    changes: [
+      { tag: 'Added', text: 'A “🗺️ Map” tab showing the current Chapter 7 Season 4 “Override” minimap and its full Points-of-Interest list, pulled live from fortnite-api.com (no login, always current) with a static fallback if it’s unreachable. Plus a crawlable /map page for search.' },
+    ],
+    summary: 'Added a live map & POI reference so you can see the current island and its named locations at a glance.',
+    why: 'It’s the most-requested “what does the map look like now” context, and it doubles as an SEO landing page. Kept honest: Override Sprites aren’t POI-locked (they come from Cheat Codes, Chests & events), so the map is framed as a general chest-farm reference, not a “go here for Sprite X” tool. Uses the same trusted vendor (fortnite-api.com) we already use for the Shop & stats — no new key, no paid API.',
+  },
+  {
+    date: 'September 20, 2026',
     title: 'Top card refreshed — Mastery Monday (Sep 21) is next up',
     changes: [
       { tag: 'Changed', text: 'The top-of-page event card now counts down to Mastery Monday (Mon, Sep 21 — 2× Sprite Dust & XP) now that the Kingdom Hearts Power Hours have wrapped, with a matching banner and News post. The countdown/LIVE badge is data-driven, so it lights up automatically at 9 AM ET.' },

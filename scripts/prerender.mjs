@@ -23,6 +23,7 @@ import { LOOT_HACK_ROTATION, LOOT_HACK_META, LOOT_HACK_HOW } from '../src/data/l
 import { SEASON } from '../src/data/season.js'
 import { TRADE_STEPS, TRADE_SAFETY, SPRITE_SWAP_ISLANDS, ISLAND_HOWTO } from '../src/data/tradeHubs.js'
 import { FORTNITEMARES, daysUntilFortnitemares } from '../src/data/fortnitemares.js'
+import { MAP_POIS, MAP_IMAGE_FALLBACK, MAP_SOURCE, MAP_UPDATED } from '../src/data/mapInfo.js'
 
 const SITE = 'https://fnsprites.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -300,6 +301,7 @@ const NAV_LINKS = [
   { key: 'news', href: '/news', label: '📰 News' },
   { key: 'stats', href: '/?view=stats', label: '📊 Stats' },
   { key: 'shop', href: '/?view=shop', label: '🛒 Item Shop' },
+  { key: 'map', href: '/map', label: '🗺️ Map' },
 ]
 
 function head({ title, desc, canonical, jsonld, ogImage, active = 'sprites' }) {
@@ -369,7 +371,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the same sections row, the utility/support row (modal links deep-link into
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
-<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard &amp; Friends</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
+<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard &amp; Friends</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a><span class="sep">·</span><a href="/map">🗺️ Map</a></nav>
 <div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/guides">📖 Guides</a><span class="sep">·</span><a href="/privacy">Privacy</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <details><summary>Credits, sources &amp; disclaimers <span class="fcaret">›</span></summary>
@@ -1612,7 +1614,40 @@ function fortnitemaresPage() {
 ` + FOOT
 }
 
+// ---------- /map page ----------
+function mapPage() {
+  const desc = `The current Fortnite Chapter 7 Season 4 “Override” map and its Points of Interest — ${MAP_POIS.map((p) => p.name).join(', ')} and more. Live labelled minimap plus the POI list. Note: Override Sprites come from in-world Cheat Codes, Sprite Chests and events, not specific POIs.`
+  const faqs = [
+    ['What are the current Fortnite map POIs?', `This season’s notable named locations include ${MAP_POIS.map((p) => p.name).join(', ')}, alongside returning Chapter 7 spots. The in-app Map shows the full live list, pulled from ${MAP_SOURCE}.`],
+    ['Do Fortnite Sprites spawn at specific POIs?', 'No — Chapter 7 Season 4 “Override” Sprites are unlocked from in-world Cheat Codes, found in map-wide Sprite Chests, and dropped during events, rather than at specific POIs. Use the map as a general chest-farm reference.'],
+    ['Where can I see the live Fortnite map?', `The Map tab on FN Sprite Tracker shows the current labelled minimap and the complete, always-current POI list, served live from ${MAP_SOURCE}.`],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'Fortnite Map & POIs — Chapter 7 Season 4 Override', description: desc, url: SITE + '/map', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ] }
+  const poiCard = (p) => `<div class="card" style="padding:10px 14px;margin:0 0 8px"><span style="font-size:14px;font-weight:800;color:#fff">${esc(p.name)}</span><p style="margin:2px 0 0;font-size:13px;color:var(--muted);line-height:1.5">${esc(p.note)}</p></div>`
+  return head({ title: `Fortnite Map & POIs — Chapter 7 Season 4 “Override” | FN Sprite Tracker`, desc, canonical: SITE + '/map', jsonld, active: 'map' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🗺️ Fortnite Map &amp; POIs — Season 4 “Override”</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:70ch">The current Battle Royale map and its Points of Interest. Heads-up for collectors: Override Sprites aren’t tied to specific POIs — they come from in-world <a href="/codes" style="color:var(--brand)">Cheat Codes</a>, map-wide Sprite Chests and events — so treat this as a general chest-farm reference.</p>
+    <div class="card" style="padding:0;overflow:hidden;margin:0 0 14px"><img src="${MAP_IMAGE_FALLBACK}" alt="Fortnite Chapter 7 Season 4 Override map with POIs" loading="lazy" style="display:block;width:100%;max-width:760px;margin:0 auto"></div>
+    <h2 style="font-size:17px;color:#fff;margin:18px 0 8px">Notable POIs this season</h2>
+    ${MAP_POIS.map(poiCard).join('')}
+    <div class="card" style="padding:12px 14px;margin:12px 0 0"><p style="margin:0;font-size:13px;color:var(--muted);line-height:1.6">The <a href="/?view=map" style="color:var(--brand)">live Map in the app</a> shows the complete, always-current POI list (served from ${esc(MAP_SOURCE)}). Getting set to farm? See the <a href="/sprites" style="color:var(--brand)">Sprites guide</a> and grab free Dust from <a href="/codes" style="color:var(--brand)">Lobby Hack codes</a>.</p></div>
+    <h2 style="font-size:17px;color:#fff;margin:20px 0 8px">FAQ</h2>
+    ${faqs.map(([q, a]) => `<details class="gd"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Map &amp; POI data © Epic Games, served via ${esc(MAP_SOURCE)}. Updated ${esc(MAP_UPDATED)}. Not affiliated with Epic Games.</p>
+    <a class="bigcta" href="/?view=map">Open the live map →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 const GUIDES = [
+  ['/map', '🗺️', 'Map & POIs', 'The current Season 4 “Override” map and Points of Interest — live minimap + POI list. (Sprites aren’t POI-locked; it’s a chest-farm reference.)'],
   ['/fortnitemares', '🎃', 'Fortnitemares 2026', 'Everything leaked for Fortnite’s Halloween event — start date, the Trick-or-Treat Sprite, the FNAF & Ghostface crossovers, and how to get ready.'],
   ['/codes', '🔓', 'Lobby Hacks (codes)', 'Every Hack the Lobby / Admin Panel code and what it unlocks — grouped by reward, with copy & redeemed-tracking.'],
   ['/loot-hacks', '🎯', 'Loot Hacks (this week)', 'The current rotating Loot Hack weapons you buy with Sprite Dust, how upgrades work, and when they next refresh.'],
@@ -1855,6 +1890,7 @@ function sitemap(types) {
     { loc: SITE + '/season-transition', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/fortnitemares', changefreq: 'daily', priority: '0.8' },
+    { loc: SITE + '/map', changefreq: 'weekly', priority: '0.6' },
     { loc: SITE + '/privacy', changefreq: 'yearly', priority: '0.3' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
@@ -1886,6 +1922,8 @@ mkdirSync(resolve(DIST, 'news'), { recursive: true })
 writeFileSync(resolve(DIST, 'news', 'index.html'), newsPage())
 mkdirSync(resolve(DIST, 'fortnitemares'), { recursive: true })
 writeFileSync(resolve(DIST, 'fortnitemares', 'index.html'), fortnitemaresPage())
+mkdirSync(resolve(DIST, 'map'), { recursive: true })
+writeFileSync(resolve(DIST, 'map', 'index.html'), mapPage())
 mkdirSync(resolve(DIST, 'codes'), { recursive: true })
 writeFileSync(resolve(DIST, 'codes', 'index.html'), codesPage())
 mkdirSync(resolve(DIST, 'sprite-garden'), { recursive: true })
@@ -1921,4 +1959,4 @@ writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /privacy + 404 + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /map + /privacy + 404 + sitemap.xml → dist/`)
