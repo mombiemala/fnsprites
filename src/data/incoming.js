@@ -42,8 +42,8 @@ export const INCOMING = [
   {
     id: 'new-sprite-day-2026-09-24',
     emoji: '🕵️',
-    title: 'New Sprite Day — Morgana, Birthday & the Bounty Hunter finish',
-    detail: 'The rest of the v42.20 wave is reported for next Thursday (Sep 24): the Morgana (Persona 5) and Birthday Sprites, plus the whole new Bounty Hunter finish across the roster. Date is from Vice/dataminers, not an official Epic post, so treat it as an estimate — we’ll flip each live the moment it’s obtainable.',
+    title: 'New Sprite Day — Morgana, Birthday & the Bounty Hunter wave',
+    detail: 'The rest of the v42.20 wave rolls out over the coming week: the Morgana (Persona 5) Sprite and the rest of the Bounty Hunter finish across the roster (the Bounty Hunter Crown is already live), plus the Birthday Sprite reported for Sat Sep 26. Dates are from Vice/dataminers, not an official Epic post, so treat them as estimates — we’ll flip each live the moment it’s obtainable.',
     dropsOn: '2026-09-24',
     confirmedDate: false,
     source: 'Vice (v42.20 rollout)',
@@ -51,7 +51,7 @@ export const INCOMING = [
     typeIds: ['morgana', 'birthday'],
     spriteIds: [
       'sonic_bountyhunter', 'tails_bountyhunter', 'shadow_bountyhunter', 'klombo_bountyhunter',
-      'jonesy_bountyhunter', 'victorycrown_bountyhunter', 'blaster_bountyhunter', 'killswitch_bountyhunter',
+      'jonesy_bountyhunter', 'blaster_bountyhunter', 'killswitch_bountyhunter',
       'adventure_bountyhunter', 'stormscout_bountyhunter', 'overshield_bountyhunter', 'bushranger_bountyhunter',
       'jazz_bountyhunter', 'xray_bountyhunter', 'onigiri_bountyhunter', 'pond_bountyhunter',
       'crash_bountyhunter', 'blinky_bountyhunter', 'morgana_bountyhunter', 'birthday_bountyhunter',

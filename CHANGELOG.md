@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 20, 2026 — Added the Bounty Hunter Crown (already live)
+
+- **Added:** flipped `victorycrown`'s `bountyhunter` variant to released in `src/data/sprites.js` — the Bounty Hunter Crown shipped
+  with v42.20 (Sep 17), unlocking by winning a match with the Loot Hacker Crown equipped, the first Bounty Hunter finish live
+  ahead of the rest of the wave. Official art (`victorycrown_bountyhunter.webp`) was already present.
+- **Changed:** `src/data/incoming.js` — dropped the now-live Crown from the "coming" list, noted the Birthday Sprite for Sat
+  Sep 26, and reworded the v42.20 heads-up so it reads "Crown live, rest of the Bounty Hunter finish rolling out."
+- **Why:** Epic staggered the finish; per-variant gating lets us mark just the Crown live without releasing the whole finish, so
+  the roster matches what's actually obtainable. Rarities for Blinky/Crash/Birthday remain as-is (only single-source rarity
+  chatter so far — not changed without corroboration).
+
+---
+
 ## September 20, 2026 — Fortnitemares 2026 heads-up card (~Oct 1)
 
 - **Added:** a `fortnitemares-2026` entry in `src/data/incoming.js` (dropsOn 2026-10-01, `confirmedDate:false`, `typeIds:['vampire']`)

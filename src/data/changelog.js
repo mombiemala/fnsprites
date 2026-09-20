@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 20, 2026',
+    title: 'Added the Bounty Hunter Crown (it’s already live)',
+    changes: [
+      { tag: 'Added', text: 'The Bounty Hunter Crown — the Crown Sprite’s Bounty Hunter finish — is now marked live. It shipped with v42.20 (Sep 17) and unlocks by winning a match with the Loot Hacker Crown equipped, making it the first Bounty Hunter finish obtainable ahead of the rest of that wave.' },
+      { tag: 'Changed', text: 'Refined the v42.20 heads-up: the Birthday Sprite is now noted for Sat Sep 26, and the Coming-up card reflects that the Bounty Hunter Crown is already live while the rest of the finish rolls out over the week.' },
+    ],
+    summary: 'Marked the Bounty Hunter Crown live (we’d missed it) and tidied the v42.20 rollout dates.',
+    why: 'Epic staggered the Bounty Hunter finish — the Crown dropped first (Sep 17, via a Loot Hacker Crown win) while the rest stays datamined. Per-variant gating lets us flip just the Crown live without releasing the whole finish, so the roster matches exactly what’s obtainable in-game.',
+  },
+  {
+    date: 'September 20, 2026',
     title: 'Heads-up card — Fortnitemares 2026 (~Oct 1)',
     changes: [
       { tag: 'Added', text: 'A “Fortnitemares 2026” card in the Coming-up heads-up feed, dated ~Oct 1 (leak). Notes the leaked Five Nights at Freddy’s & Black Clover crossovers, Horde Rush’s return, and spooky new Loot Hack items — and ties to the already-datamined Vampire Sprite, which now shows a “Coming ~Oct 1” badge.' },
