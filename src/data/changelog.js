@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 20, 2026',
+    title: 'New About & Contact pages + deeper Sprite content',
+    changes: [
+      { tag: 'Added', text: 'Real, crawlable About and Contact pages (About used to be an in-app pop-up only). About covers what the tracker is, who makes it, and exactly how every Sprite, code, drop rate and event is sourced and verified; Contact explains how to reach us for corrections, bugs, data or privacy requests. Both are linked from the nav and footer.' },
+      { tag: 'Added', text: 'A unique overview paragraph at the top of every per-Sprite page (built from that Sprite’s own facts), plus six new FAQ answers — the Bounty Hunter finish, what each finish means, Power Hours & Mastery Monday, trading, and what carries over between seasons.' },
+    ],
+    summary: 'Added proper About & Contact pages and deepened the per-Sprite pages and FAQ with substantial, original writing.',
+    why: 'Google AdSense flagged the site as “low value / thin content” — common for tracker/tool sites heavy on interactive data but light on readable substance and clear authorship. This pass adds genuine written depth (unique per-Sprite overviews, a larger FAQ) and the trust pages (About/Contact, how the data is sourced) that ad review looks for, so the crawlable pages clearly stand on their own ahead of a re-review request.',
+  },
+  {
+    date: 'September 20, 2026',
     title: 'Added the Bounty Hunter Crown (it’s already live)',
     changes: [
       { tag: 'Added', text: 'The Bounty Hunter Crown — the Crown Sprite’s Bounty Hunter finish — is now marked live. It shipped with v42.20 (Sep 17) and unlocks by winning a match with the Loot Hacker Crown equipped, making it the first Bounty Hunter finish obtainable ahead of the rest of that wave.' },

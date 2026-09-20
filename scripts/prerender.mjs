@@ -325,7 +325,8 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 <nav class="nav" aria-label="Sections">
   ${NAV_LINKS.map((l) => `<a href="${l.href}"${l.key === active ? ' class="on" aria-current="page"' : ''}>${l.label}</a>`).join('\n  ')}
   <details class="more"><summary>⋯ More <span class="mcaret">▾</span></summary><div class="moremenu">
-    <a href="/?about=1">About</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
     <a href="/?changelog=1">Changelog</a>
     <a href="/?backup=1">Backup</a>
     <a href="/?bug=1">Report a bug</a>
@@ -372,7 +373,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
 <nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard &amp; Friends</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a><span class="sep">·</span><a href="/map">🗺️ Map</a></nav>
-<div class="row"><a href="/?about=1">About</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/guides">📖 Guides</a><span class="sep">·</span><a href="/privacy">Privacy</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
+<div class="row"><a href="/about">About</a><span class="sep">·</span><a href="/contact">Contact</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/guides">📖 Guides</a><span class="sep">·</span><a href="/privacy">Privacy</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <details><summary>Credits, sources &amp; disclaimers <span class="fcaret">›</span></summary>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; the Season 4 “Override” roster uses Epic's official datamined icons (Normal, Gold, Cheat Master &amp; Loot Hacker); some Season 3 variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), and real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
@@ -433,6 +434,33 @@ function spritePage(type, others) {
     howToHtml = `<p><b>${esc(name)}</b> is part of the <b>current Season 4 “Override”</b> generation, so you can unlock it right now:</p>
   <ul ${UL}>${steps.map((s) => `<li>${s}</li>`).join('')}</ul>${!workingCode && source ? `\n  <p style="color:var(--muted);font-size:13px">${esc(source)}</p>` : ''}`
   }
+
+  // A unique, data-driven overview paragraph so every Sprite page LEADS with
+  // genuinely distinct prose (composed from this Sprite's own facts) instead of a
+  // shared template — its identity, ability, how it's obtained, finishes and
+  // rarity/tier/ownership all vary per Sprite.
+  const s4x = type.gen === 'c7s4'
+  const aAn = /^[aeiou]/i.test(type.rarity) ? 'an' : 'a'
+  const genPhrase = s4x ? 'in Fortnite Chapter 7 Season 4 “Override”'
+    : (type.released && type.gen !== CURRENT_GEN) ? 'from the Chapter 7 Season 3 “Runners” generation'
+    : 'in Fortnite'
+  const ov = [`The <b>${esc(name)}</b> Sprite is ${aAn} <b>${esc(type.rarity)}</b> Sprite ${genPhrase}.`]
+  if (!type.released) {
+    ov.push(`It’s ${type.rumored ? 'a datamined, rumored' : 'an upcoming'} Sprite that isn’t obtainable yet${type.releaseDate ? `, expected around <b>${esc(fmtLeak(type.releaseDate))}</b>` : ''} — so it doesn’t count toward your collection total until it goes live.`)
+  } else if (type.released && type.gen !== CURRENT_GEN) {
+    ov.push(`It’s now archived: kept forever in your collection and the in-game Sprite Garden, but no longer pullable from Sprite Chests in Battle Royale this season.`)
+  } else {
+    ov.push(`You can unlock it in the current Override season${workingCode ? `, and its Cheat Master finish is free with the lobby code <b>${esc(workingCode.code)}</b>` : ''}.`)
+  }
+  if (variants.length) {
+    ov.push(`${esc(name)} comes in ${variants.length} finish${variants.length === 1 ? '' : 'es'}${liveFinishes.length ? ` — ${liveFinishes.length} obtainable now (${liveFinishes.map(esc).join(', ')})` : ''}${soonFinishes.length ? `, with ${soonFinishes.map(esc).join(', ')} still to come` : ''}. Each finish shares the base ability and layers on its own bonus perk.`)
+  }
+  const ovTail = []
+  if (p) ovTail.push(`it pulls at roughly <b>${esc(type.dropRate)}</b> per Sprite Chest (about 1 in ${fmt(1 / p)})`)
+  if (tier) ovTail.push(`community tier lists rank it <b>${tier}-Tier</b>`)
+  if (own) ovTail.push(`about <b>${own.pct}%</b> of tracked collectors own it`)
+  if (ovTail.length) ov.push(ovTail.join(', ').replace(/^./, (c) => c.toUpperCase()) + '.')
+  const overview = ov.join(' ')
 
   // New-generation (Season 4 "Override") Sprites carry a season qualifier so they
   // rank for the high-intent "Override" queries the whole field is chasing.
@@ -506,6 +534,8 @@ function spritePage(type, others) {
 
 <div class="cols">
   <div class="main">
+<h2>About the ${esc(name)} Sprite</h2>
+<p style="font-size:14px;line-height:1.7;margin:0 0 16px">${overview}</p>
 <h2>How to get the ${esc(name)} Sprite</h2>
 ${howToHtml}
 ${archived ? '' : oddsTable}
@@ -1166,6 +1196,11 @@ function faqPage() {
     ['How do you get Sprites in Fortnite?', `In Season 4 “Override” you unlock Sprites mainly by entering Hack the Lobby (Admin Panel) codes in the Battle Royale lobby and by finding in-world Cheat Codes during matches. Earlier “Runners”-generation Sprites dropped from chests. See the full list on the ${L('/codes', 'Lobby Hacks page')} and the how-to on the ${L('/sprites', 'Sprites guide')}.`],
     ['What is a Cheat Master Sprite?', `Cheat Master is a special Season 4 finish — a flashier, rarer version of an Override Sprite. You unlock them with specific lobby codes (for example, GOTTAGOFAST for the Cheat Master Sonic), and their spawns are boosted during Power Hours. See the full ${L('/cheat-master-sprites', 'list of Cheat Master Sprites')}, which codes unlock them on the ${L('/codes', 'Lobby Hacks page')}, and when on the ${L('/events', 'events schedule')}.`],
     ['What is the Loot Hacker finish?', `Loot Hacker is an Override finish that went live on Sep 10, 2026 — 14 new Loot Hacker variants (15 incl. the Crown). Holding one gives a +20% (1.2×) chance of Loot Hack items from Chests. Not to be confused with ${L('/loot-hacks', 'Loot Hacks')} (the weapons you buy with Sprite Dust). More on finishes and Dust in the ${L('/sprite-dust', 'Dust and Loot Hacks guide')}.`],
+    ['What is the Bounty Hunter finish?', `Bounty Hunter is the newest Season 4 “Override” finish, added in the v42.20 update. Epic is rolling it out in stages: the ${L('/sprite/crown', 'Bounty Hunter Crown')} is already obtainable — win a match with the Loot Hacker Crown equipped — while the rest of the Bounty Hunter variants across the roster arrive over the following weeks. We mark each one live in the ${L('/sprites', 'checklist')} the moment it’s genuinely obtainable; until then it’s clearly labelled as datamined.`],
+    ['What do the Gold, Gummy, Galaxy, Gem and Holofoil finishes mean?', `Finishes are alternate looks that also add a small bonus perk on top of a Sprite’s base ability. Broadly: Gold is the premium shiny; Gummy, Galaxy, Gem and Holofoil are rarer collectible finishes from past seasons; and the current Override finishes are Cheat Master, Loot Hacker and Bounty Hunter. Every finish shares the Sprite’s core ability and layers its own bonus on top. Each Sprite page lists exactly which finishes it has and what each one grants — start from the ${L('/sprites', 'checklist')}.`],
+    ['What are Power Hours and Mastery Monday?', `They’re Fortnite’s recurring Sprite events. Power Hours (usually two windows on Saturdays) boost the spawn rate of a specific finish — the ideal window to fill in the Gold, Cheat Master or Loot Hacker Sprites you’re missing. Mastery Monday gives 2× Sprite XP and Sprite Dust for 24 hours, the fastest day to level and master Sprites. New Sprite Day (Thursdays) is when new Sprites drop. Live countdowns, and which finish each event boosts, are on the ${L('/events', 'events page')}.`],
+    ['Can you trade Sprites in Fortnite?', `Not inside Fortnite itself — there’s no in-game trade feature, so collectors coordinate trades within the community. FN Sprite Tracker has a trade board to help you find people who have the Sprite you need and need one you have. See ${L('/how-to-trade-sprites', 'how to trade Sprites')} for the safe way to do it, and steer clear of “free Sprite” or “locker value” sites, which are phishing scams.`],
+    ['What happens to my Sprites when the season or chapter ends?', `You keep them. Epic has confirmed Sprites are permanent — every one you collect stays in your Collection and the in-game Sprite Garden forever, even after its generation stops being used in Battle Royale. What resets between seasons is consumable: Sprite Dust, Extractors and Locators, so spend your Dust before a flip. The ${L('/season-transition', 'season-transition FAQ')} covers exactly what carries over.`],
     ['What are the rarest Fortnite Sprites?', `Rarity comes down to drop rate and finish. See every Sprite ranked rarest-first on the ${L('/rarest-sprites', 'rarest Sprites')} page, sort the full checklist by rarity on the ${L('/sprites', 'Sprites page')}, and check how strong each one is on the ${L('/tier-list', 'tier list')}.`],
     ['What is the best Sprite in Fortnite?', `“Best” depends on the ability. Our ${L('/tier-list', 'tier list')} ranks every Sprite S–C by how useful its ability is (based on the settled Season 3 meta), and logged-in players vote on the newer Override Sprites so you can watch the community consensus form.`],
     ['How do you level up and master a Sprite?', `Use a Sprite in matches to level it up; its ability gets stronger at each level, up to Level 5. The ${L('/abilities', 'abilities guide')} shows exactly what every Sprite does and how it scales.`],
@@ -1841,6 +1876,105 @@ function privacyPage() {
 ` + FOOT
 }
 
+// ---------- /about page ----------
+// A real, crawlable About page (the in-app "About" is only a modal at ?about=1,
+// which crawlers and ad reviewers can't see). Explains what the site is, who runs
+// it, why it exists, and — importantly for trust — HOW the data is sourced and
+// verified. AboutPage + Organization schema.
+function aboutPage() {
+  const desc = 'About FN Sprite Tracker — a free, fan-made Fortnite Sprite collection tracker. Who makes it, why it exists, and how every Sprite, drop rate, code and event is sourced and verified. Not affiliated with Epic Games.'
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'AboutPage', name: 'About FN Sprite Tracker', url: SITE + '/about', description: desc, dateModified: NEWS_TODAY },
+    { '@type': 'Organization', name: 'FN Sprite Tracker', url: SITE, logo: `${SITE}/og-image.png`, email: 'dontbemad@gmail.com',
+      description: 'A free, fan-made Fortnite Sprite collection tracker.', sameAs: ['https://buymeacoffee.com/kamalathedesigner'] },
+  ] }
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const L2 = (href, text) => `<a href="${href}" target="_blank" rel="noreferrer" style="color:var(--brand)">${text}</a>`
+  return head({ title: 'About FN Sprite Tracker — the free, fan-made Sprite tracker', desc, canonical: SITE + '/about', jsonld, active: '' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>About FN Sprite Tracker</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:72ch"><b style="color:#fff">FN Sprite Tracker</b> (fnsprites.app) is a free, independent, fan-made tool for tracking your Fortnite Sprite collection — every Sprite, every finish, across every season — plus the codes, drop rates, events and guides that go with the hunt. It’s built and maintained by a collector, for collectors.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">What you can do here</h2>
+    <ul style="margin:6px 0 0;padding-left:18px;line-height:1.75;font-size:14px">
+      <li><b>Track your collection.</b> Tick off the Sprites and finishes (Normal, Gold, Cheat Master, Loot Hacker and more) you own and watch your completion climb. Your progress saves locally, and syncs across devices if you sign in.</li>
+      <li><b>Know what to chase next.</b> Sort and filter the full ${L('/sprites', 'checklist')} by rarity, drop rate, Sprite Dust cost or release date, and see the ${L('/rarest-sprites', 'rarest Sprites')} at a glance.</li>
+      <li><b>Grab every reward.</b> A verified, always-current list of ${L('/codes', 'Admin Panel “Lobby Hack” codes')} for free Sprites, Dust and gizmos.</li>
+      <li><b>Plan around events.</b> Live countdowns for ${L('/events', 'Power Hours, Mastery Monday and New Sprite Day')}, so you farm the right finish at the right time.</li>
+      <li><b>Go deeper.</b> Tools like the ${L('/drop-rate-calculator', 'drop-rate calculator')}, the ${L('/loot-hacks', 'Loot Hacks guide')}, the ${L('/tier-list', 'tier list')} and a full set of ${L('/guides', 'guides')} and ${L('/faq', 'FAQs')}.</li>
+    </ul>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Who makes it</h2>
+    <p>Hi — I’m <b>mombie</b>, a Fortnite player who got a little too into collecting Sprites: chasing every Gold, Gummy, Galaxy and Mythic until I needed a spreadsheet, then decided to build something better than a spreadsheet. FN Sprite Tracker is that project. It’s a solo, fan-made labour of love that I keep updated each season — not a company, and not affiliated with Epic Games.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">How we source &amp; verify our data</h2>
+    <p>Accuracy is the whole point of a tracker, so here’s exactly how the information here is put together and kept current:</p>
+    <ul style="margin:6px 0 0;padding-left:18px;line-height:1.75;font-size:14px">
+      <li><b>The roster &amp; abilities</b> are cross-referenced from Epic’s official patch notes and in-game data, ${L('/sprites', 'the live game')}, and community references like fortnite.gg and the Fortnite Wiki. New Sprites are added the day they go live.</li>
+      <li><b>Codes</b> are only listed once they’re redeemable and corroborated by multiple reputable outlets or a confirmed in-game redemption — each row shows its source and the date it was verified. Expired promo codes are retired.</li>
+      <li><b>Drop rates</b> are community estimates (Epic doesn’t publish official rates), clearly labelled as estimates and cross-referenced across player-tracking projects.</li>
+      <li><b>Events</b> come from official Fortnite channels and are date- and source-stamped; each shows whether it’s Epic-confirmed or community-reported.</li>
+      <li><b>Leaks &amp; datamines</b> are always labelled as <b>Rumored</b> or <b>Datamined</b> until Epic confirms them, and they never count toward your completion total. Credit goes to the dataminers named in our ${L('/news', 'News feed')}.</li>
+    </ul>
+    <p style="margin-top:8px">Spotted something wrong or out of date? Please tell us — see the ${L('/contact', 'Contact page')}. Corrections are welcome and get fixed fast.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Free, and staying that way</h2>
+    <p>The tracker is free for everyone. A small, non-intrusive amount of advertising and optional support (Creator Code <b>MOMBIE</b> in the Item Shop, or ${L2('https://buymeacoffee.com/kamalathedesigner', 'buying a coffee')}) covers the hosting and the time it takes to keep everything current each season. Nothing is paywalled.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Legal &amp; attribution</h2>
+    <p>Fortnite and all related Sprite names and imagery are trademarks of Epic Games, Inc.; images are used for identification only. FN Sprite Tracker is an unofficial fan site and is <b>not affiliated with, endorsed by, or sponsored by Epic Games</b>. Full credits and sources are in the footer, and our ${L('/privacy', 'Privacy Policy')} explains how your data is handled.</p>
+
+    <a class="bigcta" href="/">Start tracking your collection — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
+// ---------- /contact page ----------
+// A real, crawlable Contact page (trust signal for ad review + genuinely useful).
+// ContactPage + Organization(contactPoint) schema.
+function contactPage() {
+  const desc = 'Contact FN Sprite Tracker — report a wrong or missing Sprite, a dead or new code, a bug, a data correction, a privacy request or a takedown. Fan-made and free; not affiliated with Epic Games.'
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'ContactPage', name: 'Contact FN Sprite Tracker', url: SITE + '/contact', description: desc, dateModified: NEWS_TODAY },
+    { '@type': 'Organization', name: 'FN Sprite Tracker', url: SITE, email: 'dontbemad@gmail.com',
+      contactPoint: { '@type': 'ContactPoint', email: 'dontbemad@gmail.com', contactType: 'customer support', availableLanguage: 'English' } },
+  ] }
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const L2 = (href, text) => `<a href="${href}" target="_blank" rel="noreferrer" style="color:var(--brand)">${text}</a>`
+  return head({ title: 'Contact | FN Sprite Tracker', desc, canonical: SITE + '/contact', jsonld, active: '' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>Contact us</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:72ch">FN Sprite Tracker is a fan-made, one-person project, and feedback from the community is what keeps it accurate. Whatever you need — a correction, a new code, a bug, or a data request — here’s how to reach us.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Email</h2>
+    <p>The best way to reach us is by email: <a href="mailto:dontbemad@gmail.com"><b>dontbemad@gmail.com</b></a>. We read everything and usually reply within a few days. It helps to include a link or screenshot where relevant.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">What to get in touch about</h2>
+    <ul style="margin:6px 0 0;padding-left:18px;line-height:1.75;font-size:14px">
+      <li><b>A wrong or missing Sprite, ability or drop rate</b> — tell us what’s off and we’ll fix it. Accuracy corrections are always welcome.</li>
+      <li><b>A code that’s dead, or a new one we’re missing</b> — include where you saw it so we can verify before listing it.</li>
+      <li><b>A bug or something broken</b> — what happened, on what device/browser, and what you expected. You can also use the in-app <a href="/?bug=1">Report a bug</a> option.</li>
+      <li><b>A new event, leak or datamine</b> — send the source; confirmed, dated items go on the site (leaks stay labelled as leaks).</li>
+      <li><b>Privacy or data requests</b> — to access or delete data tied to your account, see the ${L('/privacy', 'Privacy Policy')} and email us.</li>
+      <li><b>Business, press or content/takedown requests</b> — email us and we’ll respond promptly.</li>
+    </ul>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Support the tracker</h2>
+    <p>FN Sprite Tracker is free to use. If it’s helped you complete your set, using Creator Code <b>MOMBIE</b> in the Fortnite Item Shop or ${L2('https://buymeacoffee.com/kamalathedesigner', 'buying a coffee')} helps cover hosting and keeps it free and updated for everyone. Learn more on the ${L('/about', 'About page')}.</p>
+
+    <p style="margin-top:14px;font-size:12px;color:var(--muted)">FN Sprite Tracker is a fan-made project and is not affiliated with, endorsed by, or sponsored by Epic Games, Inc.</p>
+
+    <a class="bigcta" href="/">← Back to the Sprite tracker</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 // ---------- 404 page ----------
 // A real not-found page (Vercel serves /404.html for unmatched routes) — keeps
 // lost visitors and crawlers on-site with links back to the key pages, instead
@@ -1891,6 +2025,8 @@ function sitemap(types) {
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/fortnitemares', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/map', changefreq: 'weekly', priority: '0.6' },
+    { loc: SITE + '/about', changefreq: 'monthly', priority: '0.5' },
+    { loc: SITE + '/contact', changefreq: 'yearly', priority: '0.4' },
     { loc: SITE + '/privacy', changefreq: 'yearly', priority: '0.3' },
     { loc: SITE + '/?view=shop', changefreq: 'daily', priority: '0.7' },
     { loc: SITE + '/?view=leaderboard', changefreq: 'weekly', priority: '0.6' },
@@ -1956,6 +2092,10 @@ mkdirSync(resolve(DIST, 'gold-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'gold-sprites', 'index.html'), goldPage())
 mkdirSync(resolve(DIST, 'privacy'), { recursive: true })
 writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
+mkdirSync(resolve(DIST, 'about'), { recursive: true })
+writeFileSync(resolve(DIST, 'about', 'index.html'), aboutPage())
+mkdirSync(resolve(DIST, 'contact'), { recursive: true })
+writeFileSync(resolve(DIST, 'contact', 'index.html'), contactPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 

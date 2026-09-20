@@ -180,6 +180,7 @@ export default function App() {
   // point to.
   const utilityLinks = [
     { id: 'about', label: 'About', onClick: () => setShowAbout(true) },
+    { id: 'contact', label: 'Contact', href: '/contact' },
     { id: 'changelog', label: 'Changelog', onClick: () => setShowChangelog(true) },
     { id: 'backup', label: 'Backup', onClick: () => setShowBackup(true) },
     { id: 'bug', label: 'Report a bug', onClick: () => setShowBug(true) },

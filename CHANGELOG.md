@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 20, 2026 — About & Contact pages + deeper Sprite content (AdSense "thin content" pass)
+
+- **Added:** `aboutPage()` and `contactPage()` in `scripts/prerender.mjs` → crawlable `/about` and `/contact` (with AboutPage /
+  ContactPage / Organization JSON-LD), wired into the nav "More" menu, the footer, the sitemap, and the app's utility links
+  (`src/App.jsx`). About documents what the site is, who runs it, and how the roster/codes/rates/events are sourced & verified.
+- **Added:** a unique, data-driven overview paragraph at the top of every per-Sprite page (`spritePage()`), composed from that
+  Sprite's own facts (rarity, generation, obtainability, finishes, drop rate, tier, ownership) so no two read alike.
+- **Added:** six new answers to the `/faq` page — the Bounty Hunter finish, what each finish means, Power Hours & Mastery Monday,
+  trading Sprites, and what carries over between seasons.
+- **Why:** AdSense rejected the site for "low value / thin content," which targets tool/tracker sites with lots of interactive
+  data but little readable substance or clear authorship. Real About/Contact/how-we-source pages plus genuine per-page writing
+  are the levers ad review weighs; this pass adds them so the crawlable pages stand on their own before requesting a re-review.
+
+---
+
 ## September 20, 2026 — Added the Bounty Hunter Crown (already live)
 
 - **Added:** flipped `victorycrown`'s `bountyhunter` variant to released in `src/data/sprites.js` — the Bounty Hunter Crown shipped
