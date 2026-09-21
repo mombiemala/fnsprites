@@ -11,6 +11,14 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 21, 2026 — Mastery Monday code (ALMOSTSCARINGSEASON)
+
+- **Added:** the Sep 21 Mastery Monday Admin Panel code `ALMOSTSCARINGSEASON` (2× Cheat Code Locators) to `src/data/codes.js`.
+- **Why:** Mastery Monday drops a fresh free code weekly; adding it promptly keeps the Lobby Hacks list complete during the
+  double Dust/XP window. The code name also nods to the approaching Fortnitemares "scaring season" (~Oct 1).
+
+---
+
 ## September 20, 2026 — About & Contact pages + deeper Sprite content (AdSense "thin content" pass)
 
 - **Added:** `aboutPage()` and `contactPage()` in `scripts/prerender.mjs` → crawlable `/about` and `/contact` (with AboutPage /

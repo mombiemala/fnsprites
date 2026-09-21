@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 21, 2026',
+    title: 'Mastery Monday code — ALMOSTSCARINGSEASON',
+    changes: [
+      { tag: 'Added', text: 'This week’s Mastery Monday Admin Panel code: ALMOSTSCARINGSEASON grants 2× Cheat Code Locators — enter it in the lobby Admin Panel. Mastery Monday (Mon Sep 21, 9 AM ET, 24h) also gives 2× Sprite XP & Dust, the fastest day to level and master Sprites.' },
+    ],
+    summary: 'Added the Sep 21 Mastery Monday code (ALMOSTSCARINGSEASON → 2× Cheat Code Locators).',
+    why: 'Mastery Monday drops a fresh free code each week; adding it promptly keeps the Lobby Hacks list complete while the double Dust/XP window is live. (The name also winks at the approaching “scaring season” — Fortnitemares ~Oct 1.)',
+  },
+  {
     date: 'September 20, 2026',
     title: 'New About & Contact pages + deeper Sprite content',
     changes: [

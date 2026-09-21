@@ -70,6 +70,7 @@ export const LOBBY_CODES = [
   // Fortnite.GG's Lobby Hacks board, so the earlier "expired Sep 14" window was wrong.
 
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
+  { code: 'ALMOSTSCARINGSEASON', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-21', source: 'Vice (Mastery Monday code, Sep 21)' },
   { code: 'BeamMeUp', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-14', source: 'Vice (Mastery Monday code)' },
   { code: 'NOCTURNEOP55N1', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
   { code: 'DestinyAwaits', unlocks: '2× Llama Supply Drop Gizmos (Kingdom Hearts promo)', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
