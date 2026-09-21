@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 21, 2026',
+    title: '9th Birthday event code — 9YEARS (confirmed working)',
+    changes: [
+      { tag: 'Added', text: 'Fortnite’s 9th Birthday event is live (Sep 21). The Admin Panel code 9YEARS redeems the 9th Birthday Sprite Spray — now confirmed working in-game and marked Working on the Lobby Hacks page.' },
+    ],
+    summary: 'Added the 9YEARS code (9th Birthday Sprite Spray), verified working in-game.',
+    why: 'It first surfaced from a single unverified social post, so it went up as “Rumored,” then was promoted to “Working” once an in-game redemption confirmed it. Keeping that rumor→verified flow visible is how the codes list stays trustworthy.',
+  },
+  {
+    date: 'September 21, 2026',
     title: 'Mastery Monday code — ALMOSTSCARINGSEASON',
     changes: [
       { tag: 'Added', text: 'This week’s Mastery Monday Admin Panel code: ALMOSTSCARINGSEASON grants 2× Cheat Code Locators — enter it in the lobby Admin Panel. Mastery Monday (Mon Sep 21, 9 AM ET, 24h) also gives 2× Sprite XP & Dust, the fastest day to level and master Sprites.' },

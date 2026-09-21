@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 21, 2026 — 9th Birthday event code (9YEARS, confirmed working)
+
+- **Added:** promoted `9YEARS` from `rumored` to `working` in `src/data/codes.js` — Fortnite's 9th Birthday event is live (Sep 21)
+  and the code redeems the 9th Birthday Sprite Spray, confirmed by an in-game redemption.
+- **Why:** it first appeared in a single unverified social post, so it went up as "Rumored"; an in-game "LOBBY HACK ACTIVATED!"
+  confirmation cleared the bar to mark it Working. The rumor→verified flow keeps the codes list trustworthy.
+
+---
+
 ## September 21, 2026 — Mastery Monday code (ALMOSTSCARINGSEASON)
 
 - **Added:** the Sep 21 Mastery Monday Admin Panel code `ALMOSTSCARINGSEASON` (2× Cheat Code Locators) to `src/data/codes.js`.

@@ -101,11 +101,10 @@ export const LOBBY_CODES = [
   { code: 'H0p0nVC', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list', added: '2026-08-21' },
 
   // --- 🖼️ Loading screens ---
-  // 9th Birthday event is live (Sep 21) and a 9th Birthday Sprite Spray IS a real
-  // lobby-hack reward, but the exact code string is community-rumored (single
-  // source, poster unsure) and not yet corroborated by reputable outlets — kept
-  // `rumored` until 2+ sources or an in-game confirm; the daily watch will verify.
-  { code: '9YEARS', unlocks: '9th Birthday Sprite Spray (Fortnite 9th Birthday event)', type: 'cosmetic', category: 'screens', status: 'rumored', added: '2026-09-21', source: 'community (single-source, unverified)' },
+  // 9YEARS: confirmed working in-game (Fortnite 9th Birthday event, live Sep 21) —
+  // redeems the 9th Birthday Sprite Spray. Started as a single-source rumor, then
+  // verified by an in-game "LOBBY HACK ACTIVATED!" redemption.
+  { code: '9YEARS', unlocks: '9th Birthday Sprite Spray (Fortnite 9th Birthday event)', type: 'cosmetic', category: 'screens', status: 'working', added: '2026-09-21', source: 'in-game confirmed' },
   { code: 'REACHYOURIMPOSSIBLE', unlocks: 'Block Party loading screen', type: 'cosmetic', category: 'screens', status: 'working', source: 'community list', added: '2026-08-21' },
   { code: 'SAYH12WR1X3L', unlocks: 'Wrixel’s Hero Portrait Spray', type: 'cosmetic', category: 'screens', status: 'working', source: 'Fortnite.GG', added: '2026-09-17' },
   { code: 'BEMOREALIEN', unlocks: '“Override Ready” loading screen', type: 'cosmetic', category: 'screens', status: 'regional', region: 'Alienware', source: 'GamesRadar' },
