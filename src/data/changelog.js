@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 22, 2026',
+    title: 'Slimmer deploys — OCR engine loads from a CDN',
+    changes: [
+      { tag: 'Changed', text: 'The optional “scan your locker screenshot” OCR now loads its Tesseract engine from a CDN on demand instead of bundling ~14 MB of assets into every deployment — cutting each build ~36% smaller (39 MB → 25 MB). OCR works exactly the same when you use it; it just fetches the engine at that moment.' },
+    ],
+    summary: 'Trimmed ~14 MB off every deploy by loading the OCR engine from a CDN instead of self-hosting it.',
+    why: 'Deployment storage had reached 75% of the free 10 GB because every build re-shipped the full OCR engine. OCR is a lazy, optional feature, so serving its assets from Tesseract’s version-pinned CDN keeps deploys lean with no change to the core tracker.',
+  },
+  {
     date: 'September 21, 2026',
     title: '9th Birthday event code — 9YEARS (confirmed working)',
     changes: [

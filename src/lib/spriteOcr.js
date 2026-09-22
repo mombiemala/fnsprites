@@ -66,13 +66,13 @@ export function matchSpriteTypesFromText(text, threshold = 0.84) {
 // recognizing. Tesseract.js is imported lazily so it never touches the main bundle.
 export async function readSpriteTypesFromImage(file, onProgress) {
   const { createWorker } = await import('tesseract.js')
-  // Self-hosted worker/core/lang assets (public/tesseract) so recognition has no
-  // third-party CDN dependency — works offline and behind strict networks.
-  const base = import.meta.env.BASE_URL
+  // Worker, WASM core and language data load from Tesseract.js's own default CDN
+  // (jsDelivr, version-pinned by the library) on demand. We used to self-host these
+  // in public/tesseract, but that shipped ~14 MB in EVERY deployment; since OCR is
+  // a lazy, optional feature (screenshot → Sprite match) that most visitors never
+  // use, loading them from the CDN keeps deploys ~36% smaller with no change to the
+  // core tracker. Trade-off: the screenshot scan needs the CDN reachable when used.
   const worker = await createWorker('eng', 1, {
-    workerPath: `${base}tesseract/worker.min.js`,
-    corePath: `${base}tesseract/core`,
-    langPath: `${base}tesseract/lang`,
     logger: (m) => {
       if (m.status === 'recognizing text' && typeof onProgress === 'function') onProgress(m.progress)
     },

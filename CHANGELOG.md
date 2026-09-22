@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 22, 2026 — Slimmer deploys: OCR engine loads from CDN
+
+- **Changed:** `src/lib/spriteOcr.js` no longer sets `workerPath`/`corePath`/`langPath`, so Tesseract.js loads its worker, WASM
+  core and language data from its own version-pinned jsDelivr CDN on demand. Deleted the self-hosted `public/tesseract/` assets
+  (~14 MB). Each deploy drops from ~39 MB to ~25 MB (≈36% smaller).
+- **Why:** Vercel Deployment Storage hit 75% of the free 10 GB because every build re-shipped the full OCR engine. OCR is a lazy,
+  optional feature (screenshot → Sprite match), so serving its assets from the CDN keeps deploys lean without touching the core
+  tracker. Trade-off: the screenshot scan needs the CDN reachable when used.
+
+---
+
 ## September 21, 2026 — 9th Birthday event code (9YEARS, confirmed working)
 
 - **Added:** promoted `9YEARS` from `rumored` to `working` in `src/data/codes.js` — Fortnite's 9th Birthday event is live (Sep 21)
