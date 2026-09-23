@@ -235,10 +235,10 @@ export const SPRITE_TYPES = [
   //   above (see `bountyhunter: U`). Rarities aren't published yet — Epic tier TBC.
   //   (Datamine: FireMonkey / Vice.) ----
   { id: 'morgana', name: 'Morgana', icon: '🐈‍⬛', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Persona 5 collab. Increases the effectiveness of healing items, with healing effectiveness rising each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. Rarity TBC. (Datamine: FireMonkey / Vice.)',
+    ability: 'Persona 5 collab (Epic). Increases the effectiveness of healing items, with healing effectiveness rising each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. (Datamine: FireMonkey / Vice.)',
     variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
-  { id: 'birthday', name: 'Birthday', icon: '🎂', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Spotted near high, mountainous areas. Opening chests has a chance to spawn a piece of cake (and at max level eliminations can spawn cake too); the chance rises with each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. Rarity TBC. (Datamine: FireMonkey / Vice.)',
+  { id: 'birthday', name: 'Birthday', icon: '🎂', rarity: 'Rare', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'A Rare Sprite for Fortnite’s 9th Birthday, spotted near high, mountainous areas. Opening chests has a chance to spawn a piece of cake (and at max level eliminations can spawn cake too); the chance rises with each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. (Datamine / reported rarity: Vice.)',
     variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
   { id: 'crash', name: 'Crash Bandicoot', icon: '🌀', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
     ability: 'Crash Bandicoot collab. Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes. Spotted near high, mountainous areas. Ability: Active — jump in the air to trigger a whirlwind spin attack that damages and knocks back nearby enemies; damage rises and the cooldown drops with each level up. (Its Bounty Hunter finish is datamined but not out yet.)',
