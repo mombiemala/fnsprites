@@ -61,7 +61,7 @@ export const INCOMING = [
     id: 'fortnitemares-2026',
     emoji: '🎃',
     title: 'Fortnitemares 2026 — Halloween event',
-    detail: 'Fortnite’s annual Halloween event is leaked to kick off around Oct 1 and run ~3 weeks. Leaks point to Five Nights at Freddy’s and Black Clover crossovers, the return of Horde Rush, and spooky new Loot Hack items (Ghostface’s knife, Witch Broom, Chainsaw, Wood Stake Shotgun). Likely home for the datamined Vampire Sprite. Date/details are from leakers (HYPEX), not an Epic post — treat as an estimate; we’ll firm it up and flip any new Sprites live as they’re confirmed.',
+    detail: 'Fortnite’s annual Halloween event is leaked to kick off around Oct 1 and run ~3 weeks. What the leaks point to: Five Nights at Freddy’s and Black Clover crossovers (plus a vampire-cowboy skin reportedly in October’s Fortnite Crew), the return of Horde Rush, and a new haunted Reload map. Map changes: Halloween-themed POIs (Battlewoods is expected to be replaced), purple water, and a new Dash Medallion. Spooky new items to farm/boost include Ghostface’s knife, the Witch Broom, a Chainsaw, Slap Candy Corn, the Rocket Ride Launcher, Balloon Popper AR, Accelerant Drum Gun, Overpowered Pump and Overclocked 8-Bit Shotgun. Likely home for the datamined Vampire Sprite. Date/details are from leakers (HYPEX), not an Epic post — treat as an estimate; we’ll firm it up and flip any new Sprites live as they’re confirmed.',
     dropsOn: '2026-10-01',
     confirmedDate: false,
     source: 'HYPEX · Dexerto · Vice (2026 schedule leak)',
