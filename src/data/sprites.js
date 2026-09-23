@@ -216,7 +216,7 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Mega Man collab (Capcom), internal codename “ImprovedSlide” (his signature slide). Live now; exact in-game ability not fully documented here yet, and additional finishes may follow.',
     variants: { normal: R } },
   { id: 'squibbly', name: 'Squibbly', icon: '🫧', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — Squibbly, which appears to support multiple special variants. Still in the files, not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
+    ability: 'Datamined Season 4 “Override” Sprite — Squibbly, which appears to support multiple special variants. Leaked ability: fishes up a Fishing Hole when you dive into water. Still in the files, not yet obtainable; ability details are leak-only and rarity is TBC. (Krowe & FNBRIntel · The Click)',
     variants: { normal: U } },
   { id: 'cube', name: 'Cube', icon: '🟪', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Datamined Season 4 “Override” Sprite — the Cube (Kevin). Found in the C7S4 files but not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
