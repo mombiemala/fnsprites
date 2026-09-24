@@ -6,6 +6,17 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 24, 2026',
+    title: 'New Sprite Day — Bounty Hunter finish + Morgana are LIVE',
+    changes: [
+      { tag: 'Added', text: 'The Bounty Hunter finish went live across the roster (17 Sprites, plus the Crown that dropped early) — marked obtainable in the checklist. It’s the fighting finish: a chance to spawn extra Sprites on eliminations, and it levels only from eliminations (mastery like Klombo/the Crown).' },
+      { tag: 'Added', text: 'The Persona 5 Morgana Sprite (Epic — boosts healing items) is live in all five finishes: Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter.' },
+      { tag: 'Changed', text: 'Heads-up feed trimmed to the last piece of the wave — the Birthday Sprite (Rare), reported for Sat Sep 26.' },
+    ],
+    summary: 'Flipped the Bounty Hunter finish and Morgana live for New Sprite Day (Sep 24); Birthday follows Sep 26.',
+    why: 'Vice confirmed the 9 AM ET drop (17 Bounty Hunter variants + Morgana = 22 new). The finish released roster-wide on one date, so it’s date-gated via FORM_RELEASE rather than 17 hand flips — which also keeps it correctly gated on the still-unreleased Birthday until that Sprite goes live Saturday. Official datamined art was already in place, so everything renders immediately.',
+  },
+  {
     date: 'September 22, 2026',
     title: 'Slimmer deploys — OCR engine loads from a CDN',
     changes: [

@@ -40,7 +40,7 @@ export const THEMES = [
   // roster-wide); `noSummon: true` keeps it out of "Dust to complete" math. Epic
   // ships variants gradually over the following weeks, so each stays U until live.
   // (Datamine: FireMonkey / Vice.)
-  { id: 'bountyhunter', name: 'Bounty Hunter', short: 'BH', className: 'theme-bountyhunter', accent: '#ff7a2f', bonus: 'Season 4 “Override” finish (datamined, v42.20). Chance to find Sprites when eliminating opponents. Only gains Sprite XP from eliminations, so it levels by fighting rather than from chests.', rumored: true, noSummon: true },
+  { id: 'bountyhunter', name: 'Bounty Hunter', short: 'BH', className: 'theme-bountyhunter', accent: '#ff7a2f', bonus: 'Season 4 “Override” finish (v42.20, live Sep 24). Chance to find Sprites when eliminating opponents. Only gains Sprite XP from eliminations, so it levels by fighting rather than from chests.', noSummon: true },
 ]
 
 export const THEME_MAP = Object.fromEntries(THEMES.map((t) => [t.id, t]))

@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 24, 2026 — New Sprite Day: Bounty Hunter finish + Morgana LIVE
+
+- **Added:** the Bounty Hunter finish went live roster-wide (17 Sprites + the Crown). Handled via `FORM_RELEASE = { bountyhunter:
+  '2026-09-24' }` in `src/data/sprites.js` and removing `rumored: true` from the `bountyhunter` theme in `src/data/themes.js`, so
+  every released type auto-releases its Bounty Hunter variant while unreleased types (Birthday) stay gated until they drop.
+- **Added:** Morgana (Persona 5, Epic) flipped `released: true` with all five finishes `R` and `releaseDate: '2026-09-24'`.
+- **Changed:** Crash/Blinky ability text (Bounty Hunter now live, not datamined); `incoming.js` card trimmed to the Birthday
+  Sprite (Rare, Sep 26); added a News item and a tight-window announcement banner.
+- **Why:** Vice confirmed the 9 AM ET drop (17 BH variants + Morgana's 5 = 22 new). Date-gating the finish beats 17 hand-flips and
+  auto-handles the Birthday stagger. Official art was already in the repo, so all variants render immediately.
+
+---
+
 ## September 22, 2026 — Slimmer deploys: OCR engine loads from CDN
 
 - **Changed:** `src/lib/spriteOcr.js` no longer sets `workerPath`/`corePath`/`langPath`, so Tesseract.js loads its worker, WASM

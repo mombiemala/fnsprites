@@ -234,17 +234,17 @@ export const SPRITE_TYPES = [
   //   of the wave is the Bounty Hunter finish added to already-listed Sprites
   //   above (see `bountyhunter: U`). Rarities aren't published yet — Epic tier TBC.
   //   (Datamine: FireMonkey / Vice.) ----
-  { id: 'morgana', name: 'Morgana', icon: '🐈‍⬛', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Persona 5 collab (Epic). Increases the effectiveness of healing items, with healing effectiveness rising each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. (Datamine: FireMonkey / Vice.)',
-    variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
+  { id: 'morgana', name: 'Morgana', icon: '🐈‍⬛', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-24', gen: 'c7s4',
+    ability: 'Persona 5 collab (Epic). Increases the effectiveness of healing items, with healing effectiveness rising each level up. Live since Sep 24 (New Sprite Day) in all five finishes — Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter.',
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R } },
   { id: 'birthday', name: 'Birthday', icon: '🎂', rarity: 'Rare', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'A Rare Sprite for Fortnite’s 9th Birthday, spotted near high, mountainous areas. Opening chests has a chance to spawn a piece of cake (and at max level eliminations can spawn cake too); the chance rises with each level up. Files added in the v42.20 update (Sep 17) with Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter finishes — variants roll out gradually. (Datamine / reported rarity: Vice.)',
     variants: { normal: U, gold: U, cheatmaster: U, loothacker: U, bountyhunter: U } },
   { id: 'crash', name: 'Crash Bandicoot', icon: '🌀', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
-    ability: 'Crash Bandicoot collab. Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes. Spotted near high, mountainous areas. Ability: Active — jump in the air to trigger a whirlwind spin attack that damages and knocks back nearby enemies; damage rises and the cooldown drops with each level up. (Its Bounty Hunter finish is datamined but not out yet.)',
+    ability: 'Crash Bandicoot collab. Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes, with its Bounty Hunter finish added Sep 24. Spotted near high, mountainous areas. Ability: Active — jump in the air to trigger a whirlwind spin attack that damages and knocks back nearby enemies; damage rises and the cooldown drops with each level up.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'blinky', name: 'Blinky', icon: '👾', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
-    ability: 'Pac-Man collab (Blinky, the red ghost). Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes. Found in the world at nighttime. Ability: grants a temporary cloak when you take damage; cloak duration rises with each level up. (Its Bounty Hunter finish is datamined but not out yet.)',
+    ability: 'Pac-Man collab (Blinky, the red ghost). Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes, with its Bounty Hunter finish added Sep 24. Found in the world at nighttime. Ability: grants a temporary cloak when you take damage; cloak duration rises with each level up.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'phasedash', name: 'Phase Dash', icon: '💨', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Datamined in the v42.20 update (Sep 17) — only a Normal finish appears in the files so far, and its in-game ability & rarity aren’t detailed yet. TBC. (Datamine: FireMonkey / Vice.)',
@@ -302,7 +302,12 @@ export function spriteTier(typeId) {
 // New Sprite Days — NOT all at once. So DON'T blanket date-gate it here (that
 // would over-claim on day one). Flip `cube: R` per-sprite as each wave is
 // confirmed live, exactly as Holofoil is handled above.
-export const FORM_RELEASE = {}
+// The Bounty Hunter finish went live roster-wide on Sep 24, 2026 (v42.20 wave).
+// Rather than flip every `bountyhunter: U`→`R` by hand, we date-gate the whole
+// form here: every RELEASED type that has a bountyhunter variant auto-releases it
+// from this date on. Unreleased types (e.g. Birthday, out Sep 26) keep it gated
+// until the type itself goes live — so the stagger is handled automatically.
+export const FORM_RELEASE = { bountyhunter: '2026-09-24' }
 const _todayStr = (() => { try { return new Date().toISOString().slice(0, 10) } catch { return '9999-12-31' } })()
 const formLive = (themeId) => !!(FORM_RELEASE[themeId] && _todayStr >= FORM_RELEASE[themeId])
 

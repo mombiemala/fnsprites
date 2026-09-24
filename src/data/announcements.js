@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'new-sprite-day-bountyhunter-morgana-2026-09-24',
+    emoji: '🕵️',
+    message: 'New Sprite Day is LIVE (Sep 24) — the Bounty Hunter finish dropped across the roster (17 Sprites + the Crown) and the Persona 5 Morgana Sprite is out in all five finishes. Bounty Hunter is the fighting finish: it can spawn extra Sprites on eliminations and only levels from elims. Birthday Sprite (Rare) is next, Sat Sep 26.',
+    link: '/?view=news',
+    linkLabel: 'What dropped',
+    start: '2026-09-24',
+    end: '2026-09-26',
+    source: 'Vice / Epic',
+    official: true,
+    tone: 'event',
+  },
+  {
     id: 'mastery-monday-2026-09-21',
     emoji: '⭐',
     message: 'Mastery Monday — Mon, Sep 21 (9 AM ET, 24 hours): 2× Sprite Dust & 2× Sprite XP, boosted Sprite spawns and extra Portable Extractors. The fastest day to level Sprites toward Mastery.',

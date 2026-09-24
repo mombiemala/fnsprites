@@ -10,6 +10,19 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-24',
+    when: 'Sep 24, 2026',
+    tag: 'sprites',
+    start: '2026-09-24',
+    end: '2026-09-27',
+    title: '🕵️ New Sprite Day — Bounty Hunter finish + Morgana are LIVE',
+    sprites: ['morgana'],
+    body: 'The v42.20 wave landed at 9 AM ET: the new Bounty Hunter finish went live across the roster (17 Sprites, on top of the Crown that dropped early), and the Persona 5 Morgana Sprite is out in all five finishes (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter). Bounty Hunter is the fighting finish — its Sprites have a chance to spawn extra Sprites when you eliminate an opponent, and they level up only from eliminations (mastery works like Klombo and the Crown). Still to come: the Birthday Sprite (Rare) on Sat, Sep 26. All variants are marked live in the checklist now.',
+    link: 'https://www.vice.com/en/article/all-new-fortnite-sprites-available-after-september-24-update-complete-list/',
+    source: 'Vice / Epic',
+    official: true,
+  },
+  {
     ts: '2026-09-21',
     when: 'Sep 21, 2026',
     tag: 'event',
