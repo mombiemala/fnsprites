@@ -6,6 +6,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 25, 2026',
+    title: 'Birthday Power Hours (Sat) + Fortnitemares confirmed for Oct 1',
+    changes: [
+      { tag: 'Added', text: 'Birthday Power Hours on the top card & events page — Sat Sep 26, 2–4 PM & 9–11 PM ET: boosted spawns of the new Birthday Sprite (Rare) and other hard-to-find Sprites. While a Birthday Sprite is equipped, cake from chests and eliminations restores both Health & Shield.' },
+      { tag: 'Changed', text: 'Fortnitemares 2026 is now Epic-confirmed (was a leak): Oct 1 → Oct 31, slogan “The Game Is Cursed” (update v42.30). The Coming-up card is upgraded to a confirmed date, with reported collabs (FNAF, Black Clover, Chucky), skins (Bunnybone, Osric the Uninvited, Gold Punk) and map changes still flagged as leaks until they go live. Added a News post.' },
+    ],
+    summary: 'Added tomorrow’s Birthday Sprite Power Hours and upgraded Fortnitemares to an Epic-confirmed Oct 1 date.',
+    why: 'Epic’s teaser locked the Fortnitemares date, so the card moves from estimate to confirmed while keeping unconfirmed skins/collabs/map details clearly leak-labelled. The Birthday Power Hours go in as a dated event so the countdown surfaces them tomorrow.',
+  },
+  {
     date: 'September 24, 2026',
     title: 'New Sprite Day — Bounty Hunter finish + Morgana are LIVE',
     changes: [

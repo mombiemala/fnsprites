@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 25, 2026 — Birthday Power Hours (Sat) + Fortnitemares confirmed (Oct 1)
+
+- **Added:** Birthday Power Hours (two rounds, Sat Sep 26 18:00–20:00Z & 01:00–03:00Z) to `src/data/events.js` + an announcement banner
+  — boosted Birthday/hard-to-find Sprite spawns; cake restores Health & Shield. Refined the Birthday Sprite ability text.
+- **Changed:** Fortnitemares 2026 upgraded from leak to Epic-confirmed in `src/data/incoming.js` (`confirmedDate: true`, Oct 1 → Oct 31,
+  "The Game Is Cursed", v42.30); collabs (FNAF, Black Clover, Chucky), skins (Bunnybone, Osric, Gold Punk) and map changes kept as
+  leaks until live. Added a News item.
+- **Why:** Epic's teaser locked the Fortnitemares date; the card moves to confirmed while unconfirmed details stay leak-labelled. The
+  Birthday Power Hours are dated + sourced so the countdown surfaces them.
+
+---
+
 ## September 24, 2026 — New Sprite Day: Bounty Hunter finish + Morgana LIVE
 
 - **Added:** the Bounty Hunter finish went live roster-wide (17 Sprites + the Crown). Handled via `FORM_RELEASE = { bountyhunter:

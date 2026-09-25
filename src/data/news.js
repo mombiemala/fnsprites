@@ -10,6 +10,17 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-25',
+    when: 'Sep 25, 2026',
+    tag: 'upcoming',
+    title: '🎃 Fortnitemares 2026 confirmed — “The Game Is Cursed” (Oct 1)',
+    sprites: ['vampire'],
+    body: 'Epic dropped a teaser confirming Fortnitemares 2026: it starts Thursday, Oct 1 with update v42.30 and runs through Oct 31, under the slogan “The Game Is Cursed.” Reported for the event (still leak-level until live): Five Nights at Freddy’s, Black Clover and Chucky collabs; skins Bunnybone, Osric the Uninvited and Gold Punk (via gift cards Oct 2–31); the return of Horde Rush; a haunted Reload map; and Halloween map changes (Battlewoods → a spooky POI, purple water, a new Dash Medallion). It’s the likely home for the datamined Vampire Sprite. The date is Epic-confirmed; we’ll flip any new Sprites and map POIs live as they’re confirmed.',
+    link: 'https://www.vice.com/en/article/fortnitemares-2026-release-date-confirmed/',
+    source: 'Epic (teaser) / Vice',
+    official: true,
+  },
+  {
     ts: '2026-09-24',
     when: 'Sep 24, 2026',
     tag: 'sprites',

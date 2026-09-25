@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'birthday-sprite-power-hours-2026-09-26',
+    emoji: '🎂',
+    message: 'Fortnite’s 9th Birthday (Sat, Sep 26) — the Birthday Sprite (Rare) drops, and Birthday Power Hours run 2–4 PM & 9–11 PM ET: boosted spawns of the new Birthday Sprite and other hard-to-find Sprites. While a Birthday Sprite is equipped, cake from chests and eliminations restores both Health & Shield.',
+    link: '/?view=news',
+    linkLabel: 'Event details',
+    start: '2026-09-25',
+    end: '2026-09-26',
+    source: 'Vice / esports.gg',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'new-sprite-day-bountyhunter-morgana-2026-09-24',
     emoji: '🕵️',
     message: 'New Sprite Day is LIVE (Sep 24) — the Bounty Hunter finish dropped across the roster (17 Sprites + the Crown) and the Persona 5 Morgana Sprite is out in all five finishes. Bounty Hunter is the fighting finish: it can spawn extra Sprites on eliminations and only levels from elims. Birthday Sprite (Rare) is next, Sat Sep 26.',
