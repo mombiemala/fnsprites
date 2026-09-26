@@ -75,7 +75,7 @@ export const LOBBY_CODES = [
   { code: 'BeamMeUp', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-14', source: 'Vice (Mastery Monday code)' },
   { code: 'NOCTURNEOP55N1', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
   { code: 'DestinyAwaits', unlocks: '2× Llama Supply Drop Gizmos (Kingdom Hearts promo)', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
-  { code: 'ChatFindAnotherCode', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
+  { code: 'ChatFindMeAnotherCode', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-17', source: 'Vice / Nintendo Life (corrected spelling)' },
   { code: 'NOPROLLAMA', unlocks: '1× Llama Supply Drop Gizmo', type: 'reward', category: 'boosts', status: 'working', source: 'Fortnite.GG' },
   { code: 'TAKEYOURHEART', unlocks: '2× Extraction Accelerators (Persona 5 / Joker)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
   { code: 'SURVIVETHENIGHT', unlocks: '2× Cheat Code Locators (99 Nights)', type: 'reward', category: 'boosts', status: 'working', source: 'GamesRadar' },
