@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 26, 2026',
+    title: 'Three FNCS-livestream lobby codes added',
+    changes: [
+      { tag: 'Added', text: 'Three Admin Panel codes Epic dropped during the Sep 26 FNCS livestream (championship + birthday): DustySprites (5,000 Sprite Dust), WhoCrackedTheCode (40,000 XP), and WeAreTheWorldChampionsToday (FNCS Back Bling). All confirmed working and live on the Lobby Hacks page.' },
+    ],
+    summary: 'Added the three FNCS-livestream codes — Sprite Dust, 40k XP, and an FNCS Back Bling.',
+    why: 'Confirmed working by Vice, the FNCS broadcast, and in-game redemption, so they went straight in as Working (not rumored).',
+  },
+  {
+    date: 'September 26, 2026',
     title: 'New Sprite Day — the Birthday Sprite is LIVE',
     changes: [
       { tag: 'Added', text: 'The Birthday Sprite (Rare) went live at 2 PM ET in all five finishes (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter) — flipped live in the checklist. While equipped, chests (and elims at max level) can spawn cake slices that restore both Health & Shield. This completes the v42.20 Sprite wave.' },

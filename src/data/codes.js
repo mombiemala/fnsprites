@@ -70,6 +70,7 @@ export const LOBBY_CODES = [
   // Fortnite.GG's Lobby Hacks board, so the earlier "expired Sep 14" window was wrong.
 
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
+  { code: 'WhoCrackedTheCode', unlocks: '40,000 XP', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-26', source: 'Vice / FNCS livestream (Sep 26)' },
   { code: 'ALMOSTSCARINGSEASON', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-21', source: 'Vice (Mastery Monday code, Sep 21)' },
   { code: 'BeamMeUp', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-14', source: 'Vice (Mastery Monday code)' },
   { code: 'NOCTURNEOP55N1', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
@@ -87,6 +88,7 @@ export const LOBBY_CODES = [
   // --- 🔷 Sprite Dust ---
   // The bigger Geno code also grants an Outfit style, and is gated behind the Geno
   // quests + a specific "let Geno eliminate you" step, so we note the condition.
+  { code: 'DustySprites', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-26', source: 'Vice / FNCS livestream (Sep 26)' },
   { code: 'YOURTHOUGHTSAREMINE', unlocks: '5,000 Sprite Dust + Void Master Geno Outfit style — after finishing the Geno story quests, shoot Geno’s shield and let him eliminate you', type: 'reward', category: 'dust', status: 'working', source: 'community list', added: '2026-09-03' },
   { code: 'BLINKYINKYPINKYCLYDE', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-17', source: 'Vice (v42.20 codes)' },
   { code: 'PlayToLevelUp', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
@@ -101,6 +103,7 @@ export const LOBBY_CODES = [
   { code: 'H0p0nVC', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', source: 'community list', added: '2026-08-21' },
 
   // --- 🖼️ Loading screens ---
+  { code: 'WeAreTheWorldChampionsToday', unlocks: 'FNCS Back Bling (Locker cosmetic)', type: 'cosmetic', category: 'screens', status: 'working', added: '2026-09-26', source: 'Vice / FNCS livestream (Sep 26)' },
   // 9YEARS: confirmed working in-game (Fortnite 9th Birthday event, live Sep 21) —
   // redeems the 9th Birthday Sprite Spray. Started as a single-source rumor, then
   // verified by an in-game "LOBBY HACK ACTIVATED!" redemption.

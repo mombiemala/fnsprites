@@ -11,6 +11,14 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 26, 2026 — Three FNCS-livestream lobby codes
+
+- **Added:** `DustySprites` (5,000 Sprite Dust), `WhoCrackedTheCode` (40,000 XP) and `WeAreTheWorldChampionsToday` (FNCS Back
+  Bling) to `src/data/codes.js` — Epic dropped them during the Sep 26 FNCS livestream (championship + birthday).
+- **Why:** confirmed working by Vice, the FNCS broadcast, and in-game redemption, so added as Working.
+
+---
+
 ## September 26, 2026 — New Sprite Day: Birthday Sprite LIVE
 
 - **Added:** flipped the `birthday` type `released: true` (releaseDate 2026-09-26) with all five finishes `R` in `src/data/sprites.js`
