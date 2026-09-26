@@ -18,11 +18,11 @@ export const ANNOUNCEMENTS = [
   {
     id: 'birthday-sprite-power-hours-2026-09-26',
     emoji: '🎂',
-    message: 'Fortnite’s 9th Birthday (Sat, Sep 26) — the Birthday Sprite (Rare) drops, and Birthday Power Hours run 2–4 PM & 9–11 PM ET: boosted spawns of the new Birthday Sprite and other hard-to-find Sprites. While a Birthday Sprite is equipped, cake from chests and eliminations restores both Health & Shield.',
+    message: 'Fortnite’s 9th Birthday (Sat, Sep 26) — the Birthday Sprite (Rare) drops, and Birthday Power Hours run in two THREE-hour windows: 2–5 PM & 9 PM–12 AM ET. Birthday Sprites are enabled (Cake Slices from chests, and from elims at max level), everyone starts with Presents, the Exotic Balloon Popper AR joins the loot pool, and Portable Extractors & 1-Up Tokens drop from Chests.',
     link: '/?view=news',
     linkLabel: 'Event details',
     start: '2026-09-25',
-    end: '2026-09-26',
+    end: '2026-09-27',
     source: 'Vice / esports.gg',
     official: false,
     tone: 'event',

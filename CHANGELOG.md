@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 26, 2026 — Birthday Power Hours corrected to 3-hour windows
+
+- **Fixed:** `src/data/events.js` — the Birthday Power Hours are two THREE-hour windows (18:00–21:00Z & 01:00–04:00Z), not the
+  assumed 2-hour cadence. Enriched the perk (Presents starting items, Exotic Balloon Popper AR in the loot pool, Cake Slices from
+  chests/elims, Portable Extractors & 1-Up Tokens). Announcement banner updated to match.
+- **Why:** the initial entry assumed the standard 2-hour Power Hours; FN_Assist + community posts confirmed 3-hour "Happy Birthday
+  Hours," so the countdown and banner now reflect the real schedule.
+
+---
+
 ## September 25, 2026 — Birthday Power Hours (Sat) + Fortnitemares confirmed (Oct 1)
 
 - **Added:** Birthday Power Hours (two rounds, Sat Sep 26 18:00–20:00Z & 01:00–03:00Z) to `src/data/events.js` + an announcement banner

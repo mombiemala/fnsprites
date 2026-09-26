@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 26, 2026',
+    title: 'Birthday Power Hours corrected — 3-hour windows',
+    changes: [
+      { tag: 'Fixed', text: 'Corrected the Birthday Power Hours timing: this year they’re two THREE-hour windows (2–5 PM & 9 PM–12 AM ET), not the usual two hours. Added the confirmed perks — everyone starts with Presents, the Exotic Balloon Popper AR joins the loot pool, Birthday Sprites give Cake Slices from chests (and elims at max level), and Portable Extractors & 1-Up Tokens drop from Chests.' },
+    ],
+    summary: 'Fixed the Birthday Power Hours to the confirmed 3-hour windows and added the event’s perks.',
+    why: 'Initial times assumed the standard 2-hour cadence; FN_Assist and community posts confirmed 3-hour windows for the 9th-Birthday hours, so the countdown and banner now match the real schedule.',
+  },
+  {
     date: 'September 25, 2026',
     title: 'Birthday Power Hours (Sat) + Fortnitemares confirmed for Oct 1',
     changes: [

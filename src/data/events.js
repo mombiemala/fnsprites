@@ -29,9 +29,9 @@ export const SPRITE_EVENTS = [
     id: 'power-hours-birthday-2026-09-26-r1',
     emoji: '🎂',
     name: 'Birthday Power Hours (Round 1)',
-    perk: 'Fortnite 9th Birthday — boosted spawns of the new Birthday Sprite & other hard-to-find Sprites; while a Birthday Sprite is equipped, cake from chests/elims restores Health & Shield',
+    perk: 'Fortnite 9th Birthday — 3-hour window. Birthday Sprites enabled (Cake Slices from chests, and from elims at max level); everyone starts with Presents; Exotic Balloon Popper AR added to the loot pool; Portable Extractors & 1-Up Tokens from Chests.',
     startsUtc: '2026-09-26T18:00:00Z', // 2 PM ET Sat Sep 26
-    endsUtc: '2026-09-26T20:00:00Z', // 4 PM ET
+    endsUtc: '2026-09-26T21:00:00Z', // 5 PM ET (3-hour window)
     confirmed: true,
     source: 'Vice / esports.gg (Birthday Power Hour)',
     sourceUrl: '/?view=news',
@@ -40,9 +40,9 @@ export const SPRITE_EVENTS = [
     id: 'power-hours-birthday-2026-09-26-r2',
     emoji: '🎂',
     name: 'Birthday Power Hours (Round 2)',
-    perk: 'Fortnite 9th Birthday — boosted spawns of the new Birthday Sprite & other hard-to-find Sprites; while a Birthday Sprite is equipped, cake from chests/elims restores Health & Shield',
+    perk: 'Fortnite 9th Birthday — 3-hour window. Birthday Sprites enabled (Cake Slices from chests, and from elims at max level); everyone starts with Presents; Exotic Balloon Popper AR added to the loot pool; Portable Extractors & 1-Up Tokens from Chests.',
     startsUtc: '2026-09-27T01:00:00Z', // 9 PM ET Sat Sep 26 (= 1 AM UTC Sun)
-    endsUtc: '2026-09-27T03:00:00Z', // 11 PM ET
+    endsUtc: '2026-09-27T04:00:00Z', // 12 AM ET (3-hour window)
     confirmed: true,
     source: 'Vice / esports.gg (Birthday Power Hour)',
     sourceUrl: '/?view=news',
