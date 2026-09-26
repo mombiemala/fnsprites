@@ -40,18 +40,6 @@ export const INCOMING = [
     spriteIds: [],
   },
   {
-    id: 'new-sprite-day-birthday-2026-09-26',
-    emoji: '🎂',
-    title: 'New Sprite Day — Birthday Sprite',
-    detail: 'The last piece of the v42.20 wave: the Birthday Sprite (Rare, for Fortnite’s 9th Birthday) is reported for Sat Sep 26 in all five finishes. The Bounty Hunter finish and the Morgana Sprite already went live Sep 24. Date is from Vice/dataminers, not an official Epic post — we’ll flip Birthday live the moment it’s obtainable.',
-    dropsOn: '2026-09-26',
-    confirmedDate: false,
-    source: 'Vice (v42.20 rollout)',
-    sourceUrl: 'https://www.vice.com/en/article/all-new-fortnite-sprites-available-after-september-24-update-complete-list/',
-    typeIds: ['birthday'],
-    spriteIds: ['birthday_bountyhunter'],
-  },
-  {
     id: 'fortnitemares-2026',
     emoji: '🎃',
     title: 'Fortnitemares 2026 — “The Game Is Cursed”',

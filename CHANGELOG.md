@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 26, 2026 — New Sprite Day: Birthday Sprite LIVE
+
+- **Added:** flipped the `birthday` type `released: true` (releaseDate 2026-09-26) with all five finishes `R` in `src/data/sprites.js`
+  — the Rare 9th-Birthday Sprite enabled at 2 PM ET. Removed its `incoming.js` card; added a News item. Official art was already
+  in the repo.
+- **Why:** Vice confirmed the 2 PM ET enable; this completes the v42.20 Sprite wave (Bounty Hunter finish + Morgana on Sep 24,
+  Birthday on Sep 26).
+
+---
+
 ## September 26, 2026 — Birthday Power Hours corrected to 3-hour windows
 
 - **Fixed:** `src/data/events.js` — the Birthday Power Hours are two THREE-hour windows (18:00–21:00Z & 01:00–04:00Z), not the

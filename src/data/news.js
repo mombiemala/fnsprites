@@ -10,6 +10,19 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-26',
+    when: 'Sep 26, 2026',
+    tag: 'sprites',
+    start: '2026-09-26',
+    end: '2026-09-27',
+    title: '🎂 New Sprite Day — the Birthday Sprite is LIVE',
+    sprites: ['birthday'],
+    body: 'Fortnite’s 9th Birthday Sprite (Rare) went live at 2 PM ET on Sat Sep 26, in all five finishes (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter). While it’s equipped, opening chests has a chance to spawn cake slices (and at max level, eliminations can too), and eating cake restores both Health and Shield. It debuted during the Birthday Power Hours (two 3-hour windows, 2–5 PM & 9 PM–12 AM ET — boosted spawns, Presents on drop-in, the Exotic Balloon Popper AR in the loot pool, and Extractors/1-Up Tokens in chests), but stays obtainable afterward. That wraps the v42.20 Sprite wave — all live in the checklist now.',
+    link: 'https://www.vice.com/en/article/fortnite-birthday-sprites-release-time-list/',
+    source: 'Vice / Epic',
+    official: true,
+  },
+  {
     ts: '2026-09-25',
     when: 'Sep 25, 2026',
     tag: 'upcoming',

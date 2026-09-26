@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 26, 2026',
+    title: 'New Sprite Day — the Birthday Sprite is LIVE',
+    changes: [
+      { tag: 'Added', text: 'The Birthday Sprite (Rare) went live at 2 PM ET in all five finishes (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter) — flipped live in the checklist. While equipped, chests (and elims at max level) can spawn cake slices that restore both Health & Shield. This completes the v42.20 Sprite wave.' },
+    ],
+    summary: 'Flipped the Birthday Sprite live for its Sep 26 debut — the last drop of the v42.20 wave.',
+    why: 'Vice confirmed the 2 PM ET enable time; its official art was already in the repo, so it renders immediately. The 9th-Birthday drop landing with the Power Hours closes out the v42.20 roster.',
+  },
+  {
+    date: 'September 26, 2026',
     title: 'Birthday Power Hours corrected — 3-hour windows',
     changes: [
       { tag: 'Fixed', text: 'Corrected the Birthday Power Hours timing: this year they’re two THREE-hour windows (2–5 PM & 9 PM–12 AM ET), not the usual two hours. Added the confirmed perks — everyone starts with Presents, the Exotic Balloon Popper AR joins the loot pool, Birthday Sprites give Cake Slices from chests (and elims at max level), and Portable Extractors & 1-Up Tokens drop from Chests.' },
