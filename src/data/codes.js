@@ -4,9 +4,11 @@
 // Admin Panel (the "…" / admin prompt, top-right), type a code, and Submit —
 // a "LOBBY HACK ACTIVATED!" screen confirms it, then you Claim/Equip. Codes are
 // NOT case-sensitive (capitalization doesn't matter — we show them in caps for
-// readability). Most work ONCE per account and stay claimable all season; the two
-// Tetris-block codes are the exception — they're reusable. Some are tied to regional
-// promos and EXPIRE when that campaign ends. Epic drips new codes out all season.
+// readability). Most work ONCE per account and stay claimable all season; the
+// lobby-transformation codes (Tetris blocks, Arcade Machine, Toilet) are the
+// exception — they're reusable, re-triggering the transform every time. Some are
+// tied to regional promos and EXPIRE when that campaign ends. Epic drips new codes
+// out all season.
 //
 // Redeeming a Sprite code you already own grants Sprite Dust instead (~10,000).
 //
@@ -36,7 +38,7 @@ export const CODES_INTRO = {
   rules: [
     'Not case-sensitive — capitalization doesn’t matter (we show them in caps for readability).',
     'A few codes mix letters and numbers (e.g. H0p0nVC — those are zeros, not the letter “O”). Type those exactly.',
-    'Most codes work once and stay claimable all season; the two Tetris-block codes are reusable.',
+    'Most codes work once and stay claimable all season; the lobby-transformation codes (Tetris blocks, Arcade Machine, Toilet) are reusable — re-trigger the transform any time.',
     'Redeeming a Sprite you already own grants ~10,000 Sprite Dust instead.',
     'Regional / promo codes (e.g. O2, Alienware) can be locale-locked and expire when the campaign ends.',
   ],
@@ -59,13 +61,14 @@ export const LOBBY_CODES = [
   // Fortnite.GG and other aggregators ~3 weeks on), so they were pruned as likely fake.
 
   // --- ✨ Gizmos & effects ---
-  // The two Tetris-block codes are the only REUSABLE codes — they re-trigger the
-  // transform every time instead of granting a one-time item.
+  // Lobby-transformation codes are the REUSABLE ones — they re-trigger the transform
+  // every time instead of granting a one-time item (Tetris blocks, Arcade, Toilet).
+  // PERFECTORDER grants one-time gizmo items, so it is NOT repeatable.
   { code: 'DONTBLOCKME', unlocks: 'Tetris-block transform effect', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, source: 'Loolo_WRLD' },
   { code: 'LETSBLOCKANDROLL', unlocks: 'Tetris-block transform effect', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, source: 'Loolo_WRLD' },
   { code: 'PERFECTORDER', unlocks: '4× spicy-taco gizmos (Geno)', type: 'reward', category: 'gizmos', status: 'working', source: 'GamesRadar' },
-  { code: 'InsertCoinToContinue', unlocks: 'Arcade Machine lobby transformation', type: 'effect', category: 'gizmos', status: 'working', added: '2026-09-08', source: 'GamesRadar / community list' },
-  { code: 'BRB', unlocks: 'Toilet lobby transformation', type: 'effect', category: 'gizmos', status: 'working', added: '2026-09-08', source: 'GamesRadar / community list' },
+  { code: 'InsertCoinToContinue', unlocks: 'Arcade Machine lobby transformation', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-09-08', source: 'GamesRadar / community list' },
+  { code: 'BRB', unlocks: 'Toilet lobby transformation', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-09-08', source: 'GamesRadar / community list' },
   // NOPROLLAMA (Llama Supply Drop Gizmo) — re-added Sep 17: still listed Active on
   // Fortnite.GG's Lobby Hacks board, so the earlier "expired Sep 14" window was wrong.
 

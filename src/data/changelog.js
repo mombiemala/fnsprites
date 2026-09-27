@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 27, 2026',
+    title: 'Reusable lobby codes tagged consistently',
+    changes: [
+      { tag: 'Fixed', text: 'Tagged the Arcade Machine (InsertCoinToContinue) and Toilet (BRB) lobby-transformation codes as ↻ Reusable — they re-trigger the transform every time, same as the Tetris-block codes, but were missing the badge. Reworded the Lobby Hacks intro and code notes so “reusable” covers all lobby-transformation codes, not just the two Tetris ones.' },
+    ],
+    summary: 'Fixed the Reusable badge so every lobby-transformation code shows it — the Arcade and Toilet codes were missing it.',
+    why: 'A transformation code re-fires the lobby effect on every submit instead of granting a one-time item, so all four (Tetris blocks, Arcade, Toilet) are reusable. The old copy only named the Tetris pair, which read as if the others were one-time.',
+  },
+  {
     date: 'September 26, 2026',
     title: 'Three FNCS-livestream lobby codes added',
     changes: [

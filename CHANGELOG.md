@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 27, 2026 — Reusable lobby codes tagged consistently
+
+- **Fixed:** added `repeatable: true` to `InsertCoinToContinue` (Arcade Machine) and `BRB` (Toilet) in `src/data/codes.js` so both
+  show the ↻ Reusable badge — they re-trigger the lobby transform every submit, same as the Tetris-block codes, but were missing it.
+- **Changed:** reworded the file header comment, the `CODES_INTRO` rule, and the gizmos section note so "reusable" covers all
+  lobby-transformation codes (Tetris blocks, Arcade, Toilet), not only the two Tetris ones. `PERFECTORDER` stays one-time (it grants
+  gizmo items, not a transform).
+- **Why:** a transformation code re-fires the effect on every submit instead of granting a one-time item, so all four are reusable;
+  the old copy named only the Tetris pair, which made the others read as one-time.
+
+---
+
 ## September 26, 2026 — Three FNCS-livestream lobby codes
 
 - **Added:** `DustySprites` (5,000 Sprite Dust), `WhoCrackedTheCode` (40,000 XP) and `WeAreTheWorldChampionsToday` (FNCS Back
