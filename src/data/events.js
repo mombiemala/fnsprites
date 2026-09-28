@@ -115,6 +115,17 @@ export const SPRITE_EVENTS = [
     source: 'Vice (v42.20 rollout)',
     sourceUrl: '/?view=news',
   },
+  {
+    id: 'mastery-monday-2026-09-28',
+    emoji: '⭐',
+    name: 'Mastery Monday',
+    perk: '2× Sprite Dust & XP · boosted spawns — runs 24h',
+    startsUtc: '2026-09-28T13:00:00Z', // 9 AM ET / 6 AM PT Mon Sep 28
+    endsUtc: '2026-09-29T13:00:00Z', // runs 24h, to 9 AM ET Tue Sep 29
+    confirmed: true, // Vice published this week's start times
+    source: 'Vice (Mastery Monday Sep 28 start times)',
+    sourceUrl: 'https://www.vice.com/en/article/fortnite-mastery-monday-start-times-september-28/',
+  },
 ]
 
 // The event whose window contains `now` (live right now), or null.
