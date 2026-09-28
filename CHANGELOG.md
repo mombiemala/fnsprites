@@ -11,18 +11,6 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## September 28, 2026 — Interactive map: toggleable POI markers
-
-- **Added:** the 🗺️ Map tab (`src/components/MapView.jsx`) now plots live POIs as markers on the map image, with a Layers panel to
-  show/hide the pins and their labels, and hover-to-highlight between pins and the name list.
-- **Changed:** `api/map.js` now returns each POI’s coordinates + the blank minimap image (not just names). Marker positions are
-  derived from the live coordinate bounds, so the overlay self-calibrates when the map changes. The text list remains as a companion
-  and as the fallback when the live feed is unavailable.
-- **Why:** a flat name list didn’t answer “where is this?” Positions are approximate for now (a precise-alignment / zoom-pan pass can
-  follow); deriving them from the feed’s own bounds keeps it working across map changes without manual re-calibration.
-
----
-
 ## September 28, 2026 — FNAF confirmed for Fortnitemares; Loot Hack refresh date fixed
 
 - **Changed:** upgraded the Five Nights at Freddy’s × Fortnite collab from leak to **Epic-confirmed** after Epic’s Sep 27 trailer —
