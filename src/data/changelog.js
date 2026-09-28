@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 28, 2026',
+    title: 'Map tab now opens fortnite.gg’s interactive map',
+    changes: [
+      { tag: 'Changed', text: 'The 🗺️ Map tab and the /map page now link straight to fortnite.gg’s full interactive map — zoomable, with POI/chest/loot layers you can toggle — instead of an embedded image. It’s the best free map tool and runs on the same Epic data. We keep the current, live POI list here for quick reference.' },
+      { tag: 'Fixed', text: 'Removed the embedded map image that had stopped loading (its image host went away), which had left the Map looking broken and empty.' },
+    ],
+    summary: 'The Map tab now sends you to fortnite.gg for the real interactive map and keeps a live POI list — no more broken map image.',
+    why: 'A static (and lately broken) image plus a name list wasn’t pulling its weight, and cloning a dedicated map tool blind wasn’t worth the upkeep. Pointing to fortnite.gg gives players the best experience in one click, while the crawlable POI list stays for reference and search.',
+  },
+  {
+    date: 'September 28, 2026',
     title: 'FNAF collab confirmed for Fortnitemares; Loot Hack refresh date fixed',
     changes: [
       { tag: 'Changed', text: 'Upgraded the Five Nights at Freddy’s × Fortnite collab from leak to Epic-confirmed after Epic’s Sep 27 trailer — Freddy Fazbear’s Pizzeria arrives as a map POI with the four animatronics (Freddy, Bonnie, Chica, Foxy) on Oct 1. Updated the News feed and the Fortnitemares heads-up card; Black Clover and Chucky stay flagged as leaks.' },

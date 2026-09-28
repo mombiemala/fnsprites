@@ -12,6 +12,12 @@
 export const MAP_API = '/api/map' // our proxy → fortnite-api.com/v1/map (see api/map.js)
 export const MAP_SOURCE = 'fortnite-api.com'
 
+// The full interactive map (zoomable, with POI/chest/loot layer toggles) lives on
+// fortnite.gg — a dedicated, best-in-class tool on the same Epic data. Rather than
+// ship an inferior in-house clone, we point players there and keep a crawlable POI
+// list here for reference/SEO.
+export const FORTNITE_GG_MAP = 'https://fortnite.gg/map'
+
 // A stable, always-current labelled minimap image from the same API's CDN. If the
 // live /v1/map fetch fails, MapView falls back to this URL, then to the blank map.
 export const MAP_IMAGE_FALLBACK = 'https://media.fortnite-api.com/images/map_pois.png'

@@ -23,7 +23,7 @@ import { LOOT_HACK_ROTATION, LOOT_HACK_META, LOOT_HACK_HOW } from '../src/data/l
 import { SEASON } from '../src/data/season.js'
 import { TRADE_STEPS, TRADE_SAFETY, SPRITE_SWAP_ISLANDS, ISLAND_HOWTO } from '../src/data/tradeHubs.js'
 import { FORTNITEMARES, daysUntilFortnitemares } from '../src/data/fortnitemares.js'
-import { MAP_POIS, MAP_IMAGE_FALLBACK, MAP_SOURCE, MAP_UPDATED } from '../src/data/mapInfo.js'
+import { MAP_POIS, MAP_SOURCE, MAP_UPDATED, FORTNITE_GG_MAP } from '../src/data/mapInfo.js'
 
 const SITE = 'https://fnsprites.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -1651,11 +1651,11 @@ function fortnitemaresPage() {
 
 // ---------- /map page ----------
 function mapPage() {
-  const desc = `The current Fortnite Chapter 7 Season 4 “Override” map and its Points of Interest — ${MAP_POIS.map((p) => p.name).join(', ')} and more. Live labelled minimap plus the POI list. Note: Override Sprites come from in-world Cheat Codes, Sprite Chests and events, not specific POIs.`
+  const desc = `The current Fortnite Chapter 7 Season 4 “Override” map POIs — ${MAP_POIS.map((p) => p.name).join(', ')} and more — plus a link to the full interactive map on fortnite.gg. Note: Override Sprites come from in-world Cheat Codes, Sprite Chests and events, not specific POIs.`
   const faqs = [
     ['What are the current Fortnite map POIs?', `This season’s notable named locations include ${MAP_POIS.map((p) => p.name).join(', ')}, alongside returning Chapter 7 spots. The in-app Map shows the full live list, pulled from ${MAP_SOURCE}.`],
     ['Do Fortnite Sprites spawn at specific POIs?', 'No — Chapter 7 Season 4 “Override” Sprites are unlocked from in-world Cheat Codes, found in map-wide Sprite Chests, and dropped during events, rather than at specific POIs. Use the map as a general chest-farm reference.'],
-    ['Where can I see the live Fortnite map?', `The Map tab on FN Sprite Tracker shows the current labelled minimap and the complete, always-current POI list, served live from ${MAP_SOURCE}.`],
+    ['Where can I see the full interactive Fortnite map?', `For the full zoomable map with POI, chest and loot layers you can toggle, open fortnite.gg — it’s the best free tool for it, on the same Epic data. FN Sprite Tracker links you there and lists the current POIs (served from ${MAP_SOURCE}).`],
   ]
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'Article', headline: 'Fortnite Map & POIs — Chapter 7 Season 4 Override', description: desc, url: SITE + '/map', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
@@ -1666,15 +1666,15 @@ function mapPage() {
 <div class="cols">
   <div class="main">
     <h1>🗺️ Fortnite Map &amp; POIs — Season 4 “Override”</h1>
-    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:70ch">The current Battle Royale map and its Points of Interest. Heads-up for collectors: Override Sprites aren’t tied to specific POIs — they come from in-world <a href="/codes" style="color:var(--brand)">Cheat Codes</a>, map-wide Sprite Chests and events — so treat this as a general chest-farm reference.</p>
-    <div class="card" style="padding:0;overflow:hidden;margin:0 0 14px"><img src="${MAP_IMAGE_FALLBACK}" alt="Fortnite Chapter 7 Season 4 Override map with POIs" loading="lazy" style="display:block;width:100%;max-width:760px;margin:0 auto"></div>
+    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:70ch">The current Battle Royale Points of Interest, plus a link to the full interactive map. Heads-up for collectors: Override Sprites aren’t tied to specific POIs — they come from in-world <a href="/codes" style="color:var(--brand)">Cheat Codes</a>, map-wide Sprite Chests and events — so treat this as a general chest-farm reference.</p>
+    <a class="bigcta" href="${FORTNITE_GG_MAP}" target="_blank" rel="noopener" style="margin:0 0 14px">🗺️ Open the full interactive map on fortnite.gg →</a>
     <h2 style="font-size:17px;color:#fff;margin:18px 0 8px">Notable POIs this season</h2>
     ${MAP_POIS.map(poiCard).join('')}
     <div class="card" style="padding:12px 14px;margin:12px 0 0"><p style="margin:0;font-size:13px;color:var(--muted);line-height:1.6">The <a href="/?view=map" style="color:var(--brand)">live Map in the app</a> shows the complete, always-current POI list (served from ${esc(MAP_SOURCE)}). Getting set to farm? See the <a href="/sprites" style="color:var(--brand)">Sprites guide</a> and grab free Dust from <a href="/codes" style="color:var(--brand)">Lobby Hack codes</a>.</p></div>
     <h2 style="font-size:17px;color:#fff;margin:20px 0 8px">FAQ</h2>
     ${faqs.map(([q, a]) => `<details class="gd"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Map &amp; POI data © Epic Games, served via ${esc(MAP_SOURCE)}. Updated ${esc(MAP_UPDATED)}. Not affiliated with Epic Games.</p>
-    <a class="bigcta" href="/?view=map">Open the live map →</a>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">POI data © Epic Games, served via ${esc(MAP_SOURCE)}. Interactive map by fortnite.gg. Updated ${esc(MAP_UPDATED)}. Not affiliated with Epic Games or fortnite.gg.</p>
+    <a class="bigcta" href="/codes">Grab free Sprite Dust from Lobby Hack codes →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
 </div>

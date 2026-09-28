@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 28, 2026 — Map tab now opens fortnite.gg’s interactive map
+
+- **Changed:** the 🗺️ Map tab (`src/components/MapView.jsx`) and the `/map` page (`scripts/prerender.mjs`) now link out to
+  fortnite.gg’s full interactive map (zoom + POI/chest/loot layer toggles) instead of an embedded image, keeping the live POI list
+  here for reference. Added `FORTNITE_GG_MAP` to `src/data/mapInfo.js`.
+- **Fixed:** removed the embedded map image whose host (`media.fortnite-api.com`) had stopped serving, which left the Map looking broken.
+- **Why:** a static (and lately broken) image plus a name list wasn’t worth it, and cloning a dedicated map tool blind wasn’t worth the
+  upkeep. Pointing to fortnite.gg gives the best experience in one click; the crawlable POI list stays for reference/SEO.
+
+---
+
 ## September 28, 2026 — FNAF confirmed for Fortnitemares; Loot Hack refresh date fixed
 
 - **Changed:** upgraded the Five Nights at Freddy’s × Fortnite collab from leak to **Epic-confirmed** after Epic’s Sep 27 trailer —
