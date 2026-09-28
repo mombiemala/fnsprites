@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'September 28, 2026',
+    title: 'Interactive map — POI markers you can toggle',
+    changes: [
+      { tag: 'Added', text: 'The 🗺️ Map tab now plots the live Points of Interest as markers directly on the map, with a Layers panel to show/hide the POI pins and their labels. Hovering a pin (or a name in the list) highlights it. Marker positions come straight from the live POI coordinates, so they re-map themselves whenever Epic reshapes the island.' },
+      { tag: 'Changed', text: 'The /api/map proxy now returns each POI’s coordinates and the blank minimap image (not just the name list), so the overlay can draw itself and self-calibrate to the current map. The text POI list stays as a companion and as the fallback if the live feed is unavailable.' },
+    ],
+    summary: 'The Map tab went from a static image + name list to an interactive map with toggleable POI markers.',
+    why: 'A flat list didn’t answer “where is this on the map?” Plotting the live coordinates as togglable pins makes it a real reference, and deriving positions from the feed’s own coordinate bounds means it keeps working across map changes with no manual re-calibration. Positions are approximate for now — a precise-alignment/zoom pass can follow.',
+  },
+  {
+    date: 'September 28, 2026',
     title: 'FNAF collab confirmed for Fortnitemares; Loot Hack refresh date fixed',
     changes: [
       { tag: 'Changed', text: 'Upgraded the Five Nights at Freddy’s × Fortnite collab from leak to Epic-confirmed after Epic’s Sep 27 trailer — Freddy Fazbear’s Pizzeria arrives as a map POI with the four animatronics (Freddy, Bonnie, Chica, Foxy) on Oct 1. Updated the News feed and the Fortnitemares heads-up card; Black Clover and Chucky stay flagged as leaks.' },
