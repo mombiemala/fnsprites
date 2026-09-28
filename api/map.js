@@ -44,22 +44,19 @@ export default async function handler(req, res) {
       const blankImage = d.images?.blank || d.images?.pois || null
       const raw = Array.isArray(d.pois) ? d.pois : []
 
-      // Named POIs WITH coordinates, de-duped by name. The raw feed repeats some
-      // markers (e.g. 8× "Override Console", 2× "Carwash") — distinct in-world
-      // objects but noise as named pins, so we keep the first of each name.
-      const seen = new Set()
+      // ALL named POIs WITH coordinates — we keep every instance (the feed has
+      // e.g. 8× "Override Console", 2× "Carwash"; those are distinct in-world
+      // markers and should each get a pin, like fortnite.gg shows them).
       const pois = []
       for (const p of raw) {
         const name = p?.name
         const x = p?.location?.x
         const y = p?.location?.y
         if (!name || typeof x !== 'number' || typeof y !== 'number') continue
-        if (seen.has(name)) continue
-        seen.add(name)
         pois.push({ name, x, y })
       }
 
-      // All unique POI names (drives the text list + offline fallback).
+      // Unique POI names, sorted (drives the text list + offline fallback).
       const names = [...new Set(raw.map((p) => p?.name).filter(Boolean))].sort((a, b) => a.localeCompare(b))
 
       // Coordinate bounds so the client can normalize marker positions without

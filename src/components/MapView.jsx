@@ -8,21 +8,20 @@ import { MAP_API, MAP_SOURCE, MAP_IMAGE_FALLBACK, MAP_POIS } from '../data/mapIn
 // our curated POI list if the proxy fails or times out, so it ALWAYS resolves to a
 // rendered reference rather than hanging on "Loading…".
 
-// The minimap image is a SQUARE centred on the world origin (0,0). POIs sit inside
-// the coastline, so we take the largest POI coordinate magnitude (plus a little
-// padding) as a symmetric half-extent and scale BOTH axes by the same factor — this
-// preserves the map's aspect ratio (no stretch) and self-recalibrates when the map
-// changes. If markers ever look uniformly shifted, nudge PAD; if vertically
-// mirrored, flip the `top` line.
-const PAD = 0.08
+// The minimap image is a SQUARE centred on the world origin (0,0). Fortnite-api's
+// map spans roughly ±135000 world units per axis; POIs land ~85% out from centre,
+// leaving the ocean border. These three constants are the calibration — if pins are
+// uniformly off, adjust them:
+//   WORLD_HALF  → scale (bigger = pins pulled toward centre)
+//   FLIP_X/FLIP_Y → orientation (mirror horizontally / vertically)
+const WORLD_HALF = 135000
+const FLIP_X = false
+const FLIP_Y = true // +Y is north (up); image Y grows downward, so flip by default
 
-function makeProjector(b) {
-  const half = Math.max(Math.abs(b.minX), Math.abs(b.maxX), Math.abs(b.minY), Math.abs(b.maxY)) * (1 + PAD)
-  const span = half * 2 || 1
-  return (p) => ({
-    left: ((p.x + half) / span) * 100,
-    top: ((half - p.y) / span) * 100, // +Y = north = top of the image
-  })
+function project(p) {
+  const nx = (FLIP_X ? -p.x : p.x) / (2 * WORLD_HALF) + 0.5
+  const ny = (FLIP_Y ? -p.y : p.y) / (2 * WORLD_HALF) + 0.5
+  return { left: nx * 100, top: ny * 100 }
 }
 
 export default function MapView() {
@@ -71,13 +70,12 @@ export default function MapView() {
     return () => { cancelled = true; clearTimeout(timer); ctrl.abort() }
   }, [])
 
-  // Can we draw the interactive overlay? Only when we have coords + bounds.
-  const canOverlay = !!(data?.bounds && data.pois.length)
-  const markers = useMemo(() => {
-    if (!canOverlay) return []
-    const project = makeProjector(data.bounds)
-    return data.pois.map((p) => ({ ...p, ...project(p) }))
-  }, [canOverlay, data])
+  // Can we draw the interactive overlay? Only when we have POI coordinates.
+  const canOverlay = !!data?.pois?.length
+  const markers = useMemo(
+    () => (canOverlay ? data.pois.map((p, i) => ({ ...p, ...project(p), id: `${p.name}#${i}` })) : []),
+    [canOverlay, data],
+  )
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
@@ -106,7 +104,7 @@ export default function MapView() {
             aria-pressed={showMarkers}
             className={`rounded-full border px-3 py-1 text-[12px] font-semibold transition ${showMarkers ? 'border-[var(--brand)] bg-[var(--brand)]/15 text-white' : 'border-[var(--border)] bg-[var(--bg-2)] text-[var(--muted)]'}`}
           >
-            📍 POIs ({markers.length})
+            📍 Markers ({markers.length})
           </button>
           <button
             type="button"
@@ -135,7 +133,7 @@ export default function MapView() {
             const active = hovered === m.name
             return (
               <button
-                key={m.name}
+                key={m.id}
                 type="button"
                 title={m.name}
                 onMouseEnter={() => setHovered(m.name)}
