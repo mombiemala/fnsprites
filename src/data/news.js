@@ -10,6 +10,16 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-27',
+    when: 'Sep 27, 2026',
+    tag: 'upcoming',
+    title: '🐻 Five Nights at Freddy’s × Fortnite is OFFICIAL for Fortnitemares (Oct 1)',
+    body: 'Epic posted a Fortnite × Five Nights at Freddy’s trailer on Sep 27, confirming the long-rumored crossover for Fortnitemares 2026 (Oct 1). Freddy Fazbear’s Pizzeria arrives as a new map location and the four classic animatronics — Freddy, Bonnie, Chica and Foxy — are front and centre. That upgrades FNAF from leak to Epic-confirmed; the pizzeria POI (and any FNAF Sprite/variant) will flip live here the moment they’re obtainable on Oct 1.',
+    link: 'https://accountshark.net/blog/fortnite-fnaf-fortnitemares-oct-1-guide',
+    source: 'Epic (trailer) / AccountShark',
+    official: true,
+  },
+  {
     ts: '2026-09-26',
     when: 'Sep 26, 2026',
     tag: 'sprites',
@@ -28,7 +38,7 @@ export const NEWS = [
     tag: 'upcoming',
     title: '🎃 Fortnitemares 2026 confirmed — “The Game Is Cursed” (Oct 1)',
     sprites: ['vampire'],
-    body: 'Epic dropped a teaser confirming Fortnitemares 2026: it starts Thursday, Oct 1 with update v42.30 and runs through Oct 31, under the slogan “The Game Is Cursed.” Reported for the event (still leak-level until live): Five Nights at Freddy’s, Black Clover and Chucky collabs; skins Bunnybone, Osric the Uninvited and Gold Punk (via gift cards Oct 2–31); the return of Horde Rush; a haunted Reload map; and Halloween map changes (Battlewoods → a spooky POI, purple water, a new Dash Medallion). It’s the likely home for the datamined Vampire Sprite. The date is Epic-confirmed; we’ll flip any new Sprites and map POIs live as they’re confirmed.',
+    body: 'Epic dropped a teaser confirming Fortnitemares 2026: it starts Thursday, Oct 1 with update v42.30 and runs through Oct 31, under the slogan “The Game Is Cursed.” Now Epic-confirmed: the Five Nights at Freddy’s collab (a Freddy Fazbear’s Pizzeria POI + the four animatronics, trailer Sep 27). Still leak-level until live: Black Clover and Chucky collabs; skins Bunnybone, Osric the Uninvited and Gold Punk (via gift cards Oct 2–31); the return of Horde Rush; a haunted Reload map; and Halloween map changes (Battlewoods → a spooky POI, Wonkeeland → an evil-clown park, purple water, a new Dash Medallion). It’s the likely home for the datamined Vampire Sprite. The date is Epic-confirmed; we’ll flip any new Sprites and map POIs live as they’re confirmed.',
     link: 'https://www.vice.com/en/article/fortnitemares-2026-release-date-confirmed/',
     source: 'Epic (teaser) / Vice',
     official: true,

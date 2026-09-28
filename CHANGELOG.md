@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 28, 2026 — FNAF confirmed for Fortnitemares; Loot Hack refresh date fixed
+
+- **Changed:** upgraded the Five Nights at Freddy’s × Fortnite collab from leak to **Epic-confirmed** after Epic’s Sep 27 trailer —
+  Freddy Fazbear’s Pizzeria arrives as a map POI with the four animatronics on Oct 1. Updated `src/data/news.js` (new confirmed item
+  + the Fortnitemares item body) and the `fortnitemares-2026` card in `src/data/incoming.js`. Black Clover and Chucky stay flagged as leaks.
+- **Fixed:** pointed `LOOT_HACK_META.nextRefresh` (and the incoming Loot Hack heads-up) at the confirmed **Oct 1 (v42.30)** beat in
+  `src/data/lootHacks.js` / `src/data/incoming.js` — the v42.20 set has held since Sep 17, so `/loot-hacks` no longer shows a stale
+  “refresh due.” Rotation contents unchanged.
+- **Why:** Epic’s trailer moved FNAF from rumor to fact, so it belongs on the confirmed side of the feed while unconfirmed collabs
+  stay labelled as leaks. The map POIs haven’t flipped yet — those remain on the daily watch for Oct 1.
+
+---
+
 ## September 27, 2026 — Reusable lobby codes tagged consistently
 
 - **Fixed:** added `repeatable: true` to `InsertCoinToContinue` (Arcade Machine) and `BRB` (Toilet) in `src/data/codes.js` so both

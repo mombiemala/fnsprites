@@ -6,6 +6,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 28, 2026',
+    title: 'FNAF collab confirmed for Fortnitemares; Loot Hack refresh date fixed',
+    changes: [
+      { tag: 'Changed', text: 'Upgraded the Five Nights at Freddy’s × Fortnite collab from leak to Epic-confirmed after Epic’s Sep 27 trailer — Freddy Fazbear’s Pizzeria arrives as a map POI with the four animatronics (Freddy, Bonnie, Chica, Foxy) on Oct 1. Updated the News feed and the Fortnitemares heads-up card; Black Clover and Chucky stay flagged as leaks.' },
+      { tag: 'Fixed', text: 'Pointed the Loot Hack “next refresh” at the confirmed Oct 1 (Fortnitemares v42.30) beat. The v42.20 set has held since Sep 17, so the /loot-hacks page now reads “refreshes in ~N days” instead of a stale “refresh due — check in game.”' },
+    ],
+    summary: 'FNAF is officially in for Fortnitemares (Oct 1), and the Loot Hack refresh date now points at the real next beat.',
+    why: 'Epic’s own trailer moved FNAF from rumor to fact, so it belongs on the confirmed side of the feed while genuinely unconfirmed collabs stay labelled as leaks — keeping the “verified vs leaked” line honest. The map POIs themselves haven’t flipped yet, so those stay on the daily watch for Oct 1.',
+  },
+  {
     date: 'September 27, 2026',
     title: 'Reusable lobby codes tagged consistently',
     changes: [
