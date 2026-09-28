@@ -13,7 +13,7 @@
 export const LOOT_HACK_META = {
   patch: 'v42.20',
   rotationStart: '2026-09-17',
-  nextRefresh: '2026-09-24', // next expected rotation (in-game timer is authoritative)
+  nextRefresh: '2026-10-01', // next expected rotation lands with Fortnitemares v42.30 (in-game timer is authoritative)
   maxLevel: 6, // each item unlocks at L1, then upgrades up to L6 for higher odds/rarity
   source: 'Epic (Fortnite / X, official list) · HYPEX · ShiinaBR',
   sourceUrl: 'https://x.com/Fortnite/status/2099906350671450438',
