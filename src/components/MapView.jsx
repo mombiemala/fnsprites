@@ -8,23 +8,21 @@ import { MAP_API, MAP_SOURCE, MAP_IMAGE_FALLBACK, MAP_POIS } from '../data/mapIn
 // our curated POI list if the proxy fails or times out, so it ALWAYS resolves to a
 // rendered reference rather than hanging on "Loading…".
 
-// POIs sit inside the playable island, not at the very edges of the minimap image
-// (which includes ocean border), so we pad the POI bounding box before projecting.
-// If markers ever look jammed to the edges or too clustered, tune this.
-const PAD = 0.1
+// The minimap image is a SQUARE centred on the world origin (0,0). POIs sit inside
+// the coastline, so we take the largest POI coordinate magnitude (plus a little
+// padding) as a symmetric half-extent and scale BOTH axes by the same factor — this
+// preserves the map's aspect ratio (no stretch) and self-recalibrates when the map
+// changes. If markers ever look uniformly shifted, nudge PAD; if vertically
+// mirrored, flip the `top` line.
+const PAD = 0.08
 
-// Project a POI's world coords to a 0–100% position over the map image, using the
-// live bounding box so it auto-recalibrates when the map changes.
-function project(p, b) {
-  const spanX = b.maxX - b.minX || 1
-  const spanY = b.maxY - b.minY || 1
-  const nx = (p.x - b.minX) / spanX
-  const ny = (p.y - b.minY) / spanY
-  const left = (PAD + nx * (1 - 2 * PAD)) * 100
-  // World Y increases toward the south on the minimap, so flip it for screen space.
-  // If markers ever look vertically mirrored, flip this single line.
-  const top = (PAD + (1 - ny) * (1 - 2 * PAD)) * 100
-  return { left, top }
+function makeProjector(b) {
+  const half = Math.max(Math.abs(b.minX), Math.abs(b.maxX), Math.abs(b.minY), Math.abs(b.maxY)) * (1 + PAD)
+  const span = half * 2 || 1
+  return (p) => ({
+    left: ((p.x + half) / span) * 100,
+    top: ((half - p.y) / span) * 100, // +Y = north = top of the image
+  })
 }
 
 export default function MapView() {
@@ -75,10 +73,11 @@ export default function MapView() {
 
   // Can we draw the interactive overlay? Only when we have coords + bounds.
   const canOverlay = !!(data?.bounds && data.pois.length)
-  const markers = useMemo(
-    () => (canOverlay ? data.pois.map((p) => ({ ...p, ...project(p, data.bounds) })) : []),
-    [canOverlay, data],
-  )
+  const markers = useMemo(() => {
+    if (!canOverlay) return []
+    const project = makeProjector(data.bounds)
+    return data.pois.map((p) => ({ ...p, ...project(p) }))
+  }, [canOverlay, data])
 
   return (
     <div className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-4">
