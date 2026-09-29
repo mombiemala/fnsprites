@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'September 29, 2026',
+    title: 'Chapter 8 estimate moved to ~Nov 28 (Epic Trello roadmap)',
+    changes: [
+      { tag: 'Changed', text: 'Updated the Chapter 8 estimate from the earlier ~Dec 5 leak to ~Nov 28 (v44.00), per Epic’s public Trello roadmap (via Vice & esports.gg). Refreshed the season timing, the Chapter 8 heads-up card, and the schedule News post. The Nov 1 bridge mini-season is unchanged, and it’s still a roadmap date that can shift.' },
+    ],
+    summary: 'Firmed up the Chapter 8 estimate to ~Nov 28 from Epic’s Trello roadmap (was ~Dec 5).',
+    why: 'An Epic-sourced roadmap date is firmer than the earlier third-party leak, so the countdown and heads-up feed should reflect it — kept labelled as an estimate since roadmap dates still move.',
+  },
+  {
+    date: 'September 29, 2026',
     title: 'Fortnitemares Sprites datamined — Pumpkin & Vampire (Oct 1)',
     changes: [
       { tag: 'Added', text: 'Added the datamined Pumpkin (jack-o’-lantern) Sprite to the roster as rumored, alongside the existing Vampire — both expected to headline Fortnitemares when it goes live Oct 1. Leaked powers: Pumpkin grows a Pumpkin Head that blocks headshot damage; Vampire siphons up to ~50% of the damage you deal back as white Health. Both are flagged datamined (they don’t count toward your total), have placeholder art, a Coming Oct 1 badge, and a leak-labelled News post.' },

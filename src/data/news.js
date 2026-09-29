@@ -159,7 +159,7 @@ export const NEWS = [
     tag: 'upcoming',
     tentative: true,
     title: '🗓️ Leak — the rest of 2026 mapped out (Fortnitemares, a mini-season, then Chapter 8)',
-    body: 'A widely-reported leaked 2026 update schedule lines up the road ahead: Chapter 7 Season 4 “Override” runs to ~Oct 31, with Fortnitemares landing in October. Instead of a full “Season 5,” the leak points to a short bridge mini-season starting around Nov 1, before Chapter 8 Season 1 launches in early December (~Dec 5). For collectors that means one more finish/variant wave to chase this season, a Halloween drop, then a fresh generation of Sprites at the chapter flip. Dates are from a leak — not Epic — so treat them as tentative; we’ll firm them up as Epic confirms.',
+    body: 'A widely-reported 2026 update schedule lines up the road ahead: Chapter 7 Season 4 “Override” runs to ~Nov 1, with Fortnitemares landing Oct 1. Instead of a full “Season 5,” a short bridge mini-season starts around Nov 1, before Chapter 8 Season 1 (v44.00) launches — now pegged for ~Nov 28 per Epic’s public Trello roadmap (a firmer date than the earlier ~Dec 5 leak). For collectors that means one more finish/variant wave to chase this season, a Halloween drop, then a fresh generation of Sprites at the chapter flip. Roadmap dates can still shift; we’ll firm them up as Epic confirms.',
     link: 'https://www.vice.com/en/article/fortnite-update-schedule-2026-fortnitemares-chapter-8-dates/',
     source: 'Vice (leak)',
     official: false,

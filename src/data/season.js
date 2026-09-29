@@ -16,12 +16,13 @@ export const SEASON = {
   endEstimate: '2026-11-01',
   endConfirmed: true,
   next: {
-    // Per a widely-reported leaked 2026 schedule, Nov 1 starts a short "bridge"
-    // mini-season (not a full Season 5), with Chapter 8 Season 1 following ~Dec 5.
-    label: 'a short bridge mini-season (Chapter 8 follows ~Dec 5)',
+    // Nov 1 starts a short "bridge" mini-season (not a full Season 5); Chapter 8
+    // Season 1 (v44.00) follows ~Nov 28 per Epic's public Trello roadmap — firmer
+    // than the earlier ~Dec 5 leak, though roadmap dates can still shift.
+    label: 'a short bridge mini-season (Chapter 8 follows ~Nov 28)',
     startEstimate: '2026-11-01',
   },
-  source: 'Epic (Battle Pass end date) · leaked 2026 schedule (Vice)',
+  source: 'Epic (Battle Pass end date · Trello roadmap for Ch.8) · Vice',
   sourceUrl: 'https://www.vice.com/en/article/fortnite-update-schedule-2026-fortnitemares-chapter-8-dates/',
 }
 

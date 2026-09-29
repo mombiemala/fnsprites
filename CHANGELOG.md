@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 29, 2026 — Chapter 8 estimate moved to ~Nov 28 (Epic Trello roadmap)
+
+- **Changed:** updated the Chapter 8 estimate from ~Dec 5 (leak) to **~Nov 28** (v44.00) per Epic’s public Trello roadmap (via Vice &
+  esports.gg), across `src/data/season.js`, the `chapter-8` card in `src/data/incoming.js`, and the schedule News post in `src/data/news.js`.
+  The Nov 1 bridge mini-season is unchanged; still labelled a roadmap estimate that can shift.
+- **Why:** an Epic-sourced roadmap date is firmer than the earlier third-party leak, so the countdown/heads-up should reflect it.
+
+---
+
 ## September 29, 2026 — Fortnitemares Sprites datamined: Pumpkin & Vampire (Oct 1)
 
 - **Added:** the datamined **Pumpkin** (jack-o’-lantern) Sprite to `src/data/sprites.js` as rumored, alongside the existing **Vampire** —
