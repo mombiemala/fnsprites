@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## September 29, 2026 — Fortnitemares Sprites datamined: Pumpkin & Vampire (Oct 1)
+
+- **Added:** the datamined **Pumpkin** (jack-o’-lantern) Sprite to `src/data/sprites.js` as rumored, alongside the existing **Vampire** —
+  both expected to headline Fortnitemares on Oct 1. Leaked powers: Pumpkin grows a Pumpkin Head that blocks headshot damage; Vampire
+  siphons up to ~50% of damage dealt back as white Health. Added a `pumpkin` placeholder to `SpriteArt.jsx`, a `Coming Oct 1` badge
+  (`incoming.js` typeIds), and a leak-labelled News post (`news.js`).
+- **Why:** Vice’s datamine gives credible names + powers, so they go in as clearly-labelled leaks now and flip to released with real art
+  once obtainable — keeping the datamined-vs-live line honest. They don’t count toward the collection total while rumored.
+
+---
+
 ## September 28, 2026 — Map tab now opens fortnite.gg’s interactive map
 
 - **Changed:** the 🗺️ Map tab (`src/components/MapView.jsx`) and the `/map` page (`scripts/prerender.mjs`) now link out to

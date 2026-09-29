@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-09-29',
+    when: 'Sep 29, 2026',
+    tag: 'upcoming',
+    tentative: true,
+    title: '🎃 Leak — two Fortnitemares Sprites (Pumpkin & Vampire) revealed for Oct 1',
+    sprites: ['pumpkin', 'vampire'],
+    body: 'Dataminers have surfaced the two Sprites expected to headline Fortnitemares 2026 when it goes live Oct 1: a Pumpkin (jack-o’-lantern) Sprite and the Vampire Sprite. Leaked powers — Pumpkin: over time it grows you a Pumpkin Head that protects you from headshot damage; Vampire: siphons a share of the damage you deal back as white Health, up to ~50% at max level. Epic hasn’t officially confirmed the powers, rarities, variants or exact release, so treat it all as a leak — we’ve added both to the roster as datamined (they won’t count toward your total) and will flip them live with real details the moment they’re obtainable.',
+    link: 'https://www.vice.com/en/article/fortnitemares-2026-new-fortnite-sprites-release-date-powers/',
+    source: 'Vice (leak)',
+    official: false,
+  },
+  {
     ts: '2026-09-27',
     when: 'Sep 27, 2026',
     tag: 'upcoming',

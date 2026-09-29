@@ -250,7 +250,10 @@ export const SPRITE_TYPES = [
     ability: 'Datamined in the v42.20 update (Sep 17) — only a Normal finish appears in the files so far, and its in-game ability & rarity aren’t detailed yet. TBC. (Datamine: FireMonkey / Vice.)',
     variants: { normal: U } },
   { id: 'vampire', name: 'Vampire', icon: '🧛', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Sprite — looks like a Fortnitemares (Halloween) addition. Leaked ability: converts a portion of the damage you deal into siphoned white Health, scaling from ~10% at Level 1 up to ~50% at max level. Leak-only — Epic hasn’t confirmed it, and its rarity, variants & release date are all TBC. (Datamine via Techtroduce.)',
+    ability: 'Datamined Sprite — looks like a Fortnitemares (Halloween) addition, expected to go live with the event on Oct 1. Leaked ability: converts a portion of the damage you deal into siphoned white Health, scaling from ~10% at Level 1 up to ~50% at max level. Leak-only — Epic hasn’t confirmed it, and its rarity, variants & release date are all TBC. (Datamine via Techtroduce / Vice.)',
+    variants: { normal: U } },
+  { id: 'pumpkin', name: 'Pumpkin', icon: '🎃', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
+    ability: 'Datamined Sprite — a jack-o’-lantern, the other half of the Fortnitemares pair with the Vampire, expected to go live with the event on Oct 1. Leaked ability: over time it grows you a Pumpkin Head that protects you from headshot damage. Leak-only — Epic hasn’t confirmed it, and its rarity, variants & release date are all TBC. (Datamine via Vice.)',
     variants: { normal: U } },
 ]
 

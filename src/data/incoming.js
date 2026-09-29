@@ -48,7 +48,7 @@ export const INCOMING = [
     confirmedDate: true,
     source: 'Epic (teaser) · Vice · Beebom',
     sourceUrl: 'https://www.vice.com/en/article/fortnitemares-2026-release-date-confirmed/',
-    typeIds: ['vampire'],
+    typeIds: ['vampire', 'pumpkin'],
     spriteIds: [],
   },
   {

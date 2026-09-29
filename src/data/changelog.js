@@ -6,6 +6,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'September 29, 2026',
+    title: 'Fortnitemares Sprites datamined — Pumpkin & Vampire (Oct 1)',
+    changes: [
+      { tag: 'Added', text: 'Added the datamined Pumpkin (jack-o’-lantern) Sprite to the roster as rumored, alongside the existing Vampire — both expected to headline Fortnitemares when it goes live Oct 1. Leaked powers: Pumpkin grows a Pumpkin Head that blocks headshot damage; Vampire siphons up to ~50% of the damage you deal back as white Health. Both are flagged datamined (they don’t count toward your total), have placeholder art, a Coming Oct 1 badge, and a leak-labelled News post.' },
+    ],
+    summary: 'Added the datamined Fortnitemares Sprites (Pumpkin + Vampire) with their leaked powers, ahead of Oct 1.',
+    why: 'Vice’s datamine gives credible names and powers for the Halloween pair, so they go in as clearly-labelled leaks now (with a Coming Oct 1 badge) and will flip to released with real art the moment they’re obtainable — keeping the “datamined vs live” line honest.',
+  },
+  {
     date: 'September 28, 2026',
     title: 'Map tab now opens fortnite.gg’s interactive map',
     changes: [

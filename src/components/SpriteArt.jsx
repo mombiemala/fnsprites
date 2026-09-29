@@ -60,6 +60,7 @@ const TYPES = {
   birthday: { c: ['#ffe0ec', '#ffb3d1', '#e07aa8'], feat: '#ffffff' },
   phasedash: { c: ['#bff0ff', '#46c8ff', '#1f7aae'], feat: '#ffffff' },
   vampire: { c: ['#b06a8a', '#6a2a4a', '#3a1226'], feat: '#ff5566' },
+  pumpkin: { c: ['#ffb85c', '#ff8c1a', '#c85a0e'], feat: '#ffe14d' },
 }
 
 const BODY =
@@ -293,6 +294,10 @@ function Features({ id, fc, gid }) {
       // A pointed cape collar (behind the head) + two little fangs — reads as a
       // vampire without copying any IP art.
       return <><g fill={fc} stroke="rgba(0,0,0,.25)" strokeWidth="1" strokeLinejoin="round"><path d="M24 42 L34 28 L37 46 Z" /><path d="M76 42 L66 28 L63 46 Z" /></g><g fill="#fff"><path d="M45 71 l2 5 2-5 Z" /><path d="M51 71 l2 5 2-5 Z" /></g></>
+    case 'pumpkin':
+      // A carved jack-o'-lantern face (triangle eyes + nose, toothy grin) that
+      // "glows" in the feature colour, with a little green stem.
+      return <><rect x="47" y="18" width="6" height="9" rx="2" fill="#3f7d2a" /><g fill={fc}><path d="M35 45 l11 3 -7 8 Z" /><path d="M65 45 l-11 3 7 8 Z" /><path d="M50 52 l5 8 -10 0 Z" /><path d="M36 65 q14 11 28 0 l-4 7 -6 -3 -4 3 -4 -3 -6 3 Z" /></g></>
 
     default:
       return null
