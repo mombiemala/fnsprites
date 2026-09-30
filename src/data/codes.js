@@ -68,6 +68,7 @@ export const LOBBY_CODES = [
   { code: 'LETSBLOCKANDROLL', unlocks: 'Tetris-block transform effect', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, source: 'Loolo_WRLD' },
   { code: 'PERFECTORDER', unlocks: '4× spicy-taco gizmos (Geno)', type: 'reward', category: 'gizmos', status: 'working', source: 'GamesRadar' },
   { code: 'BoneRattler', unlocks: '4× Spicy Taco gizmos', type: 'reward', category: 'gizmos', status: 'working', added: '2026-09-28', source: 'Beebom / Nintendo Life / esports.gg' },
+  { code: 'PowerOut', unlocks: 'Screen-blackout + FNAF jumpscare effect (Fortnitemares tie-in)', type: 'effect', category: 'gizmos', status: 'working', added: '2026-09-29', source: 'Nintendo Life / community list' },
   { code: 'InsertCoinToContinue', unlocks: 'Arcade Machine lobby transformation', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-09-08', source: 'GamesRadar / community list' },
   { code: 'BRB', unlocks: 'Toilet lobby transformation', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-09-08', source: 'GamesRadar / community list' },
   // NOPROLLAMA (Llama Supply Drop Gizmo) — re-added Sep 17: still listed Active on
