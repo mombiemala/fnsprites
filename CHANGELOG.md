@@ -15,9 +15,8 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 - **Changed:** the top-of-page status card (`src/components/TopStatus.jsx`) now collapses when idle — it drops the generic
   "weekly events" filler and renders nothing when there’s no live event, new code, or upcoming drop, instead of always taking space.
-- **Changed:** scrubbed internal/technical wording across the site’s content (`src/data/*`, a couple of components) — "datamined",
-  "dataminers", "in the files" — in favour of plain player terms ("leaked", "unreleased", "ahead of release"). Code comments only
-  were left untouched.
+- **Changed:** scrubbed internal/technical wording from the site’s user-facing content (`src/data/*`, a couple of components) in
+  favour of plain player terms ("leaked", "unreleased", "ahead of release"). Code comments only were left untouched.
 - **Why:** the top bar was eating screen space with nothing active, and internal terms read as jargon to players.
 
 ---

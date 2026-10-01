@@ -10,10 +10,10 @@ export const CHANGELOG = [
     title: 'Tidier top status bar + plainer wording',
     changes: [
       { tag: 'Changed', text: 'The top-of-page status card now collapses when nothing’s happening — it drops the generic “weekly events” filler line and hides entirely when there’s no live event, new code, or upcoming drop, so it stops taking up space.' },
-      { tag: 'Changed', text: 'Swapped internal/technical wording across the site (“datamined”, “in the files”, etc.) for plain player language — “leaked”, “unreleased”, “ahead of release”.' },
+      { tag: 'Changed', text: 'Swapped internal/technical wording across the site for plain player language — unreleased Sprites and upcoming drops now read as “leaked”, “unreleased” or “ahead of release” instead of developer shorthand.' },
     ],
     summary: 'Collapsed the top status bar when idle, and replaced internal jargon with plain wording.',
-    why: 'The top bar ate screen space even with nothing active, and terms like “datamined” read as internal jargon — both changes make the page cleaner and friendlier to read.',
+    why: 'The top bar ate screen space even with nothing active, and some copy used developer shorthand that reads as jargon to players — both changes make the page cleaner and friendlier to read.',
   },
   {
     date: 'September 29, 2026',
