@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Content-quality pass for search (and ad eligibility)',
+    changes: [
+      { tag: 'Changed', text: 'Rumored / not-yet-released Sprite pages (Honey, Bullet, Dumpster Dive, Meowscles, Squibbly, Cube, Head Shot) are now kept out of search indexes until they actually go live — there’s no drop rate, finishes or confirmed ability to show yet, so they were thin pages. They stay fully browsable in the app and flip to indexable automatically the day they release.' },
+      { tag: 'Changed', text: 'Dropped those unreleased pages from the sitemap for the same reason, so search engines only see pages with real, substantial content.' },
+      { tag: 'Added', text: 'Gave the home page a real first-paint landing section — a plain-English “what this does” plus links to the checklist, codes, tier list, calculator and more. Live visitors still get the full app instantly; this is for the first paint, no-JS readers and crawlers.' },
+    ],
+    summary: 'Kept thin unreleased-Sprite pages out of search until they go live, and gave the home page substantial first-paint content.',
+    why: 'Google AdSense flagged “low value content”: the auto-generated pages for rumored Sprites were ~95% shared boilerplate with almost nothing unique (no drop rate, no live finishes). Rather than pad them with filler — which would read as exactly the thin content being flagged — the right move is to not index a page until it has something real to say, and to make the home page (the actual tool) present genuine, crawlable value. The released-Sprite pages already carry unique data (ability, finishes, codes, odds) and were left as-is.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'Six new Fortnitemares Lobby Hack codes',
     changes: [
       { tag: 'Added', text: 'Added the six Admin Panel codes from the Oct 1 update: CrowsAreAfraid (turn the lobby into Scarecrows) and PumpkinSpiceLife (turn the lobby into Pumpkins) — both reusable Fortnitemares transforms; IThinkTheKeyFoundMeChat (Extraction Accelerator); s7h-50p-r03 (Geno glitches your lobby, after Stage 4 of the Hope Quest); and runSystemOverride + ImTheRealEdgelord (5,000 Sprite Dust each, after the Geno and Wrixel story quests).' },

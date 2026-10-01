@@ -302,13 +302,16 @@ const NAV_LINKS = [
   { key: 'shop', href: '/?view=shop', label: '🛒 Item Shop' },
 ]
 
-function head({ title, desc, canonical, jsonld, ogImage, active = 'sprites' }) {
+function head({ title, desc, canonical, jsonld, ogImage, active = 'sprites', index = true, canonicalTo }) {
   const img = ogImage || `${SITE}/og-image.png`
+  // `index:false` keeps thin/duplicate pages out of Google's index (still crawlable
+  // so internal links flow and users can reach them). `canonicalTo` points a
+  // near-duplicate at its canonical page so link equity consolidates there.
   return `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(title)}</title>
+${index ? '' : '<meta name="robots" content="noindex,follow">\n'}<title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
-<link rel="canonical" href="${canonical}">
+<link rel="canonical" href="${canonicalTo || canonical}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin><link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
 ${ADSENSE}
@@ -521,7 +524,11 @@ function spritePage(type, others) {
     <tr><td>Almost sure (99% chance)</td><td class="v">${fmt(chestsFor(p, 0.99))}</td></tr>
   </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Modeled as independent draws at the base rate. Run your own numbers in the <a href="/drop-rate-calculator">Sprite drop-rate calculator →</a></p></div>` : ''
 
-  return head({ title, desc, canonical: url, jsonld, ogImage: `${SITE}/api/og?sprite=${encodeURIComponent(type.id)}` }) + `
+  // Rumored / unreleased Sprites have little unique content to stand on (no drop
+  // rate, no live finishes, ability still TBC), so keep them out of the index until
+  // they go live — then they flip to indexable automatically. They stay fully
+  // crawlable and usable; they just don't dilute the site with thin pages.
+  return head({ title, desc, canonical: url, jsonld, index: !!type.released, ogImage: `${SITE}/api/og?sprite=${encodeURIComponent(type.id)}` }) + `
 <section class="hero" style="background:linear-gradient(135deg,${tint}22,var(--panel))">
   <div class="avatar" style="background:${VARIANT_BG.normal}"><span class="avfallback">${esc(type.icon || '🧩')}</span><img class="art" src="/sprites/${type.id}_normal.${imgExt(type)}" alt="${esc(name)} Sprite (Normal)" onerror="this.style.display='none'"></div>
   <div><h1>${esc(name)} Sprite</h1>
@@ -1998,7 +2005,9 @@ function sitemap(types) {
     // page with proper canonical tag" and wouldn't index them. A sitemap should
     // only list canonical, indexable URLs, so they've been removed. The Item Shop /
     // Leaderboard / Stats are still reachable in-app and via the nav.
-    ...types.map((t) => ({ loc: `${SITE}/sprite/${slug(t.name)}`, changefreq: 'weekly', priority: '0.8' })),
+    // Only released Sprites go in the sitemap — rumored/unreleased pages are noindex
+    // until they go live (thin until there's a real drop rate / ability / finishes).
+    ...types.filter((t) => t.released).map((t) => ({ loc: `${SITE}/sprite/${slug(t.name)}`, changefreq: 'weekly', priority: '0.8' })),
   ]
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${u.lastmod || NEWS_TODAY}</lastmod><changefreq>${u.changefreq}</changefreq><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>\n`
 }

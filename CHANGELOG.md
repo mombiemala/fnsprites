@@ -11,6 +11,24 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Content-quality pass for search (and ad eligibility)
+
+- **Changed** (`scripts/prerender.mjs`): added a `noindex` / `canonicalTo` option to `head()`, and set rumored/unreleased
+  Sprite pages to `noindex,follow` (they flip to indexable automatically once `type.released` is true). They stay fully
+  crawlable and usable — just out of the index while thin.
+- **Changed:** the sitemap now lists only released Sprites (`types.filter(t => t.released)`), so search engines only see
+  pages with real drop-rate / ability / finish content.
+- **Added** (`index.html`): a real first-paint landing section inside `#boot` — a description of the tool plus internal
+  links to `/sprites`, `/codes`, `/tier-list`, `/rarest-sprites`, `/drop-rate-calculator`, `/cheat-master-sprites`,
+  `/gold-sprites`, `/abilities`, `/faq`, `/news`. React replaces `#root` on mount, so live visitors are unaffected.
+- **Why:** AdSense flagged "low value content". The thin pages were the auto-generated rumored-Sprite pages (~95% shared
+  boilerplate, only ~20–30 unique lines each — no drop rate, no live finishes, ability TBC). Padding them with prose would
+  read as exactly the thin content being flagged, so instead we keep a page out of the index until it has something real to
+  say, and make the home page (the tool itself) present substantial, crawlable value. Released-Sprite pages already carry
+  genuine unique data and were left unchanged.
+
+---
+
 ## October 1, 2026 — Six new Fortnitemares Lobby Hack codes
 
 - **Added** (`src/data/codes.js`): the six Admin Panel codes from the Oct 1 update —
