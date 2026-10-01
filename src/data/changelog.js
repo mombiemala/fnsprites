@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Fixed the top status card when there’s no live event',
+    changes: [
+      { tag: 'Fixed', text: 'The top-of-page card could look broken after you dismissed the announcement — an empty row with a lone “new codes” button floating on the right. Now the “Today” row only appears when there’s a real live/next event or genuinely-new codes, and with no event the codes button sits neatly on the left instead of drifting.' },
+    ],
+    summary: 'Fixed the top status card rendering an empty row / floating button once the announcement was dismissed.',
+    why: 'The recent “collapse when idle” change left a gap: with no active event it still drew the Today row, so dismissing the notice exposed an empty left side and a stray button. Gating the row on real content keeps the card tight whether or not anything’s happening.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'Naming fix — the dash Sprite is “Spooky Dash”',
     changes: [
       { tag: 'Fixed', text: 'Corrected the second Fortnitemares Sprite: it’s the Mythic Spooky Dash (dash charges that let you phase through objects), not a headshot-blocking “Pumpkin” — that was an early-leak mix-up. It’s the same Sprite we’d also been tracking under the datamined name “Phase Dash,” so the two are now merged into one correct Spooky Dash (with its real art), and the duplicate is gone.' },

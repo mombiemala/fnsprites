@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Fixed the top status card when there's no live event
+
+- **Fixed:** the top-of-page status card (`src/components/TopStatus.jsx`) could render an empty row with a lone "new codes"
+  button floating right after the announcement was dismissed. The "Today" row now only renders when there's a real live/next
+  event or genuinely-new codes (`hasTodayRow`), `justify-between` is applied only when there's an event, and with no event the
+  codes button left-aligns instead of floating.
+- **Why:** the recent "collapse when idle" change still drew the Today row with no active event, so dismissing the notice
+  exposed an empty left side + stray button. Gating the row on real content keeps the card tight either way.
+
+---
+
 ## October 1, 2026 — Naming fix: the dash Sprite is "Spooky Dash"
 
 - **Fixed:** the second Fortnitemares Sprite is the **Mythic Spooky Dash** (dash charges that let you phase through objects), not a

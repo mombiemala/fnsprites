@@ -127,9 +127,12 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
         </div>
       )}
 
-      {/* 2 · Today — live/next event + new codes (hidden when neither exists) */}
+      {/* 2 · Today — live/next event + new codes. Only renders when there's an
+          event or new codes; with no event the codes button left-aligns (no empty
+          floating row). */}
       {hasTodayRow && (
-      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5">
+      <div className={`flex flex-wrap items-center gap-x-3 gap-y-1.5 px-3 py-2.5 ${hasEvent ? 'justify-between' : ''}`}>
+        {hasEvent && (
         <div className="min-w-0">
           {liveEvent ? (
             <span className="flex flex-wrap items-center gap-2">
@@ -139,19 +142,17 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
               <span className="text-sm font-bold text-white">{liveEvent.emoji} {liveEvent.name}</span>
               <span className="hidden text-xs text-[var(--muted)] sm:inline">· {liveEvent.perk}</span>
             </span>
-          ) : nextEvent ? (
+          ) : (
             <span className="flex flex-wrap items-baseline gap-x-2">
               <span className="text-sm font-bold text-white">{nextEvent.emoji} {nextEvent.name}</span>
               <span className="text-xs text-[var(--muted)]">{nextEvent.confirmed ? 'in' : 'expected in'}</span>
               <span className="font-mono text-sm font-extrabold text-[var(--brand)]">{fmtDur(new Date(nextEvent.startsUtc) - now)}</span>
               <span className="hidden text-xs text-[var(--muted)] sm:inline">· {nextEvent.perk}</span>
             </span>
-          ) : null}
-          {hasEvent && (
-            <button onClick={() => onGo?.('news')} className="mt-0.5 block text-[11px] font-bold text-[var(--brand)] hover:underline">
-              See all events →
-            </button>
           )}
+          <button onClick={() => onGo?.('news')} className="mt-0.5 block text-[11px] font-bold text-[var(--brand)] hover:underline">
+            See all events →
+          </button>
           {showFarm && (
             <button
               onClick={() => onFarmFinish(boostTheme)}
@@ -162,15 +163,16 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
             </button>
           )}
         </div>
-        <button
-          onClick={() => onGo?.('codes')}
-          title="Open Lobby Hacks"
-          className={`shrink-0 rounded-xl px-3 py-1.5 text-xs font-bold transition-colors ${
-            newCodes > 0 ? 'bg-[var(--brand)]/15 text-[var(--brand)] hover:bg-[var(--brand)]/25' : 'bg-[var(--bg-2)] text-[var(--muted)] hover:text-white'
-          }`}
-        >
-          {newCodes > 0 ? `🆕 ${newCodes} new code${newCodes === 1 ? '' : 's'}` : '🔓 Lobby Hacks'} →
-        </button>
+        )}
+        {newCodes > 0 && (
+          <button
+            onClick={() => onGo?.('codes')}
+            title="Open Lobby Hacks"
+            className="shrink-0 rounded-xl bg-[var(--brand)]/15 px-3 py-1.5 text-xs font-bold text-[var(--brand)] transition-colors hover:bg-[var(--brand)]/25"
+          >
+            🆕 {newCodes} new code{newCodes === 1 ? '' : 's'} →
+          </button>
+        )}
       </div>
       )}
 
