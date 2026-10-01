@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Simpler filtering & search',
+    changes: [
+      { tag: 'Changed', text: 'Rebuilt the collection filter bar to be cleaner and quicker to scan: season tabs (All Seasons / C7 S3 / C7 S4), then one row of Search · Variant · Sprite · Sort · grid/list. The less-used options (ownership, rarity, grouping, hide-mastered, show-unreleased) now tuck behind a ⚙ gear so the common path stays uncluttered.' },
+      { tag: 'Added', text: 'A “Sprite” filter to jump straight to one Sprite’s variants (e.g. just Jonesy’s finishes).' },
+    ],
+    summary: 'Streamlined the filter bar — season tabs + Search/Variant/Sprite/Sort, with advanced options behind a gear.',
+    why: 'The old bar stacked rarity and variant chip rows plus several inline toggles, which crowded the top of the page. A tabbed, dropdown-based layout (inspired by fortnite.gg) reads faster and keeps the power-user filters one tap away.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'New Trick-or-Treat finish (Fortnitemares)',
     changes: [
       { tag: 'Added', text: 'Added the Fortnitemares Trick-or-Treat finish — a spooky Halloween recolour — with official art on 14 Sprites: Crown, Jonesy, Bush Ranger, 8-Bit Blaster, Birthday, Killswitch, Storm Scout, Klombo, Overshield, Vampire, Phase Dash, Morgana, Shadow and Jazz Jackrabbit. It’s a cosmetic finish (keeps the base ability). A few more Trick-or-Treat icons in the drop use Epic internal names we haven’t matched to our roster yet — those will follow once mapped.' },

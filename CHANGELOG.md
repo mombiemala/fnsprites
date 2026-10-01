@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Simpler filtering & search
+
+- **Changed:** rebuilt the collection filter bar (`src/components/Toolbar.jsx`): season tabs (All Seasons / C7 S3 / C7 S4) + one row of
+  Search · Variant · Sprite · Sort · grid/list, with ownership, rarity, grouping and the hide-mastered / show-unreleased toggles moved
+  behind a ⚙ gear popover.
+- **Added:** a **Sprite** filter (`spriteType` in `App.jsx`) to narrow the grid to a single Sprite’s variants.
+- **Why:** the old bar stacked chip rows + inline toggles and crowded the page; a tabbed, dropdown layout (inspired by fortnite.gg) is
+  quicker to scan and keeps advanced filters one tap away.
+
+---
+
 ## October 1, 2026 — New Trick-or-Treat finish (Fortnitemares)
 
 - **Added:** the Fortnitemares **Trick-or-Treat** finish — a new finish theme (`themes.js`, `.theme-trickortreat` in `index.css`, a

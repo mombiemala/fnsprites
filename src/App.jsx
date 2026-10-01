@@ -70,6 +70,7 @@ const TABS = [
 const DEFAULT_FILTERS = {
   search: '',
   theme: 'all',
+  spriteType: 'all', // filter to one base Sprite (e.g. just Jonesy's variants)
   rarity: 'all',
   ownership: 'all',
   generation: [], // multiselect: empty = all seasons
@@ -263,6 +264,7 @@ export default function App() {
     let list = set.items.filter((s) => {
       if (!filters.showUnreleased && s.unreleased) return false
       if (filters.theme !== 'all' && s.themeId !== filters.theme) return false
+      if (filters.spriteType !== 'all' && s.typeId !== filters.spriteType) return false
       if (filters.rarity !== 'all' && s.rarity !== filters.rarity) return false
       if (filters.generation.length && !filters.generation.includes(s.gen || 'c7s3')) return false
       const st = activeTracking[s.id]
@@ -359,7 +361,7 @@ export default function App() {
   // View + sort are quick-access layout controls, not filters — so switching to
   // list view (or changing sort) must NOT light up "Clear filters", and clearing
   // must preserve them.
-  const FILTER_KEYS = ['search', 'theme', 'rarity', 'ownership', 'generation', 'hideMastered', 'showUnreleased', 'groupBy']
+  const FILTER_KEYS = ['search', 'theme', 'spriteType', 'rarity', 'ownership', 'generation', 'hideMastered', 'showUnreleased', 'groupBy']
   const hasActiveFilters = useMemo(
     () => FILTER_KEYS.some((k) => {
       const d = DEFAULT_FILTERS[k]
@@ -411,6 +413,7 @@ export default function App() {
       if (s.unreleased) return false
       if (activeTracking[s.id]?.owned) return false
       if (filters.theme !== 'all' && s.themeId !== filters.theme) return false
+      if (filters.spriteType !== 'all' && s.typeId !== filters.spriteType) return false
       if (filters.rarity !== 'all' && s.rarity !== filters.rarity) return false
       if (filters.generation.length && !filters.generation.includes(s.gen || 'c7s3')) return false
       if (q) {
