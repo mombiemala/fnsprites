@@ -41,6 +41,11 @@ export const THEMES = [
   // ships variants gradually over the following weeks, so each stays U until live.
   // (Reported by FireMonkey / Vice.)
   { id: 'bountyhunter', name: 'Bounty Hunter', short: 'BH', className: 'theme-bountyhunter', accent: '#ff7a2f', bonus: 'Season 4 “Override” finish (v42.20, live Sep 24). Chance to find Sprites when eliminating opponents. Only gains Sprite XP from eliminations, so it levels by fighting rather than from chests.', noSummon: true },
+  // Trick-or-Treat — the Fortnitemares (Halloween) finish, live with v42.30 (Oct 1):
+  // a spooky recolour that ships per-Sprite. Cosmetic (keeps the base ability).
+  // `noSummon: true` keeps it out of "Dust to complete" math; variants are added
+  // per-Sprite as their art/availability is confirmed.
+  { id: 'trickortreat', name: 'Trick-or-Treat', short: 'ToT', className: 'theme-trickortreat', accent: '#ff6a00', bonus: 'Fortnitemares (Halloween) finish, live with v42.30 (Oct 1) — a spooky Trick-or-Treat recolour. Cosmetic: it keeps the Sprite’s base ability.', noSummon: true },
 ]
 
 export const THEME_MAP = Object.fromEntries(THEMES.map((t) => [t.id, t]))
@@ -73,5 +78,8 @@ export const FINISH_ODDS_FACTOR = {
   // Bounty Hunter is leaked (v42.20) and not chest-summoned (it levels from
   // eliminations) — null keeps it out of the Chest-luck picker.
   bountyhunter: null,
+  // Trick-or-Treat is a Fortnitemares cosmetic finish (not a known chest-roll
+  // rate) — null keeps it out of the Chest-luck picker.
+  trickortreat: null,
   rift: 0.05,
 }

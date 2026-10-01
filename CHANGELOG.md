@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — New Trick-or-Treat finish (Fortnitemares)
+
+- **Added:** the Fortnitemares **Trick-or-Treat** finish — a new finish theme (`themes.js`, `.theme-trickortreat` in `index.css`, a
+  `treatment()` fallback case in `SpriteArt.jsx`) with official art on the first 11 Sprites (Crown, Jonesy, Bush Ranger, 8-Bit Blaster,
+  Birthday, Killswitch, Storm Scout, Klombo, Overshield, Vampire, Phase Dash). Cosmetic finish; keeps the base ability. More to follow
+  as their Epic internal names are mapped and availability confirmed.
+
+---
+
+## October 1, 2026 — Real Vampire art + five finishes
+
+- **Added:** official **Vampire** art (replacing the placeholder) across all five finishes, and staged **Phase Dash** art. Mapped from
+  Epic internal names (`HealthSiphon` → vampire, `PhaseDash` → phasedash; `Hacker` → loothacker). Pumpkin has no art in the drop, so it
+  keeps its placeholder.
+
+---
+
 ## October 1, 2026 — Fortnitemares is live: Vampire & Pumpkin Sprites + map changes
 
 - **Added:** New Sprite Day — flipped the **Vampire** and **Pumpkin** Sprites `released` in `src/data/sprites.js` for Fortnitemares

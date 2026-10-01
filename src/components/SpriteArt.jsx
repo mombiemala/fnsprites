@@ -101,6 +101,11 @@ function treatment(themeId, type, gid, hgid) {
       // eliminations) — distinct from Cheatmaster green / Loot Hacker blue.
       return { stops: ['#ffc27a', '#ff7a2f', '#8a3a10'], feat: '#3a1e0c',
         overlay: <g stroke="#fff" strokeWidth="1.4" opacity="0.28" fill="none"><circle cx="50" cy="50" r="16" /><path d="M50 30 v8 M50 62 v8 M30 50 h8 M62 50 h8" /></g> }
+    case 'trickortreat':
+      // Fortnitemares finish — pumpkin-orange glow over a purple Halloween night,
+      // with a small bat silhouette.
+      return { stops: ['#ffb067', '#ff6a00', '#4a1430'], feat: '#2a0a20',
+        overlay: <g fill="#160617" opacity="0.4"><path d="M30 36 q6 -7 12 -1 q6 -6 12 1 q-6 5 -12 2 q-6 3 -12 -2 Z" /></g> }
     default: // normal
       return { stops: [l, b, s], feat: type.feat, overlay: null }
   }

@@ -174,6 +174,13 @@
       radial-gradient(circle at 78% 22%, rgba(255, 168, 76, 0.18), transparent 42%),
       linear-gradient(135deg, #3a1e0c, #4a2410 45%, #2a1206 100%);
   }
+  /* Trick-or-Treat — the Fortnitemares (Halloween) finish: a pumpkin-orange glow
+     over a deep purple night wash. */
+  .theme-trickortreat {
+    background:
+      radial-gradient(circle at 75% 20%, rgba(255, 122, 0, 0.22), transparent 45%),
+      linear-gradient(135deg, #2a123a, #3a1030 45%, #1a0820 100%);
+  }
 
   /* ---------- Collectible-card treatment (redesign) ----------
      Frames each sprite like a trading card: a rarity-tinted foil edge, a
