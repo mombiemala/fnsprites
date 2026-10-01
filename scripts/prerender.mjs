@@ -23,6 +23,7 @@ import { LOOT_HACK_ROTATION, LOOT_HACK_META, LOOT_HACK_HOW } from '../src/data/l
 import { SEASON } from '../src/data/season.js'
 import { TRADE_STEPS, TRADE_SAFETY, SPRITE_SWAP_ISLANDS, ISLAND_HOWTO } from '../src/data/tradeHubs.js'
 import { FORTNITEMARES, daysUntilFortnitemares } from '../src/data/fortnitemares.js'
+import { SPRITE_SPAWNS, SPAWN_GENERAL, SPAWN_SOURCE, spawnFor } from '../src/data/spawns.js'
 
 const SITE = 'https://fnsprites.app'
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
@@ -524,6 +525,19 @@ function spritePage(type, others) {
     <tr><td>Almost sure (99% chance)</td><td class="v">${fmt(chestsFor(p, 0.99))}</td></tr>
   </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Modeled as independent draws at the base rate. Run your own numbers in the <a href="/drop-rate-calculator">Sprite drop-rate calculator →</a></p></div>` : ''
 
+  // "Where to find it" — only for Sprites we have genuinely-sourced spawn intel on
+  // (the Fortnitemares chest-droppable Sprites). Most Override Sprites aren't
+  // POI-locked, so the block simply doesn't render for them.
+  const spawn = spawnFor(type.id)
+  const spawnHtml = spawn ? `
+  <h2>Where to find the ${esc(name)} Sprite</h2>
+  <div class="card">
+    <p style="margin:0 0 ${spawn.pois.length ? '10px' : '0'};font-size:14px;line-height:1.7"><b>${esc(name)}</b> drops from <b>${esc(spawn.chests)}</b>.${spawn.extra ? ` ${esc(spawn.extra)}` : ''}</p>
+    ${spawn.pois.length ? `<p style="margin:0 0 6px;font-size:13px;color:var(--muted)">Most-reported hotspots:</p><div class="tags">${spawn.pois.map((poi) => `<span class="tag">📍 ${esc(poi)}</span>`).join('')}</div>` : ''}
+    <p style="margin:12px 0 0;font-size:13px;color:var(--muted);line-height:1.6">${esc(SPAWN_GENERAL)} For the full island-wide farming routine, see the <a href="/fortnitemares-sprites" style="color:var(--brand)">Fortnitemares Sprite farming guide →</a></p>
+    <p class="fine" style="margin-top:8px;font-size:11px">Hotspots are from ${esc(SPAWN_SOURCE)} and shift as the map rotates — chests and Cheat Codes anywhere can still drop it.</p>
+  </div>` : ''
+
   // Rumored / unreleased Sprites have little unique content to stand on (no drop
   // rate, no live finishes, ability still TBC), so keep them out of the index until
   // they go live — then they flip to indexable automatically. They stay fully
@@ -543,6 +557,7 @@ function spritePage(type, others) {
 <p style="font-size:14px;line-height:1.7;margin:0 0 16px">${overview}</p>
 <h2>How to get the ${esc(name)} Sprite</h2>
 ${howToHtml}
+${spawnHtml}
 ${archived ? '' : oddsTable}
 ${type.ability ? `<h2>Ability &amp; leveling</h2><div class="card"><p style="margin:0">${esc(type.ability)}${scaling ? ` <span style="color:var(--muted)">${esc(scaling)}</span>` : ''} Reaches full effect at <b>Level 5 (Mastered)</b>. Community-reported — Epic doesn't publish exact figures.</p></div>` : ''}
 
@@ -1638,6 +1653,7 @@ function fortnitemaresPage() {
 <div class="cols">
   <div class="main">
     <h1>🎃 Fortnitemares 2026 — what’s leaked</h1>
+    <div class="card" style="padding:12px 14px;margin:0 0 10px;border-color:rgba(52,211,153,.4)"><p style="margin:0;font-size:13px;line-height:1.6"><b style="color:#34d399">It’s live now (v42.30, Oct 1).</b> This page tracks the original leaks; for the Sprites that actually dropped — powers, finishes and where to farm them — see the <a href="/fortnitemares-sprites" style="color:var(--brand)">Fortnitemares Sprite farming guide →</a></p></div>
     <p class="lede" style="color:var(--muted);margin:6px 0 8px;font-size:14px;max-width:70ch">Fortnite’s Halloween event, Fortnitemares, is ${whenLine} and running through Halloween. Epic hasn’t officially announced it yet, so everything below is <b style="color:#fbbf24">leaked or rumored</b> — we label each item and will flip them to confirmed as Epic reveals them.</p>
     <div class="card" style="padding:10px 14px;margin:0 0 6px;border-color:rgba(245,158,11,.35)"><p style="margin:0;font-size:12px;color:var(--muted)">⚠️ Dates and details are from dataminers &amp; community outlets, <b>not Epic</b>. Treat as unconfirmed.</p></div>
     ${section('👾 Sprites', FORTNITEMARES.sprites)}
@@ -1654,7 +1670,85 @@ function fortnitemaresPage() {
 ` + FOOT
 }
 
+// ---------- /fortnitemares-sprites — original farming guide (live event) ----------
+// Hand-written editorial: the four live Sprites, what their powers actually do,
+// where to farm them, how to chase the finishes, and which to prioritise. Distinct
+// from /fortnitemares (the event/leak overview) and /tier-list (a data ranking).
+function fortnitemaresSpritesPage() {
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const desc = `How to get all four live Fortnitemares 2026 Sprites in Fortnite — Spooky Dash, Vampire, The Deer and Dumpster Dive: what each power does, every finish, where to farm them, and which to chase first. Plus the two coming Oct 15.`
+  const title = `Fortnitemares 2026 Sprites — How to Get & Where to Farm All Four | FN Sprite Tracker`
+  // The four live Sprites, in my recommended chase order, with hand-written takes.
+  const picks = [
+    { id: 'phasedash', name: 'Spooky Dash', rarity: 'Mythic', slug: 'spooky-dash',
+      power: 'Holds dash charges that recharge over time — tap to burst forward and phase through some objects.',
+      take: 'The headline pickup. It’s the only Mythic of the four, it’s the rarest to find, and mobility is the hardest thing to get from a Sprite — a free repositioning tool that also ignores some walls is genuinely strong in the endgame. If you only farm one, make it this.' },
+    { id: 'vampire', name: 'Vampire', rarity: 'Epic', slug: 'vampire',
+      power: 'Recover Health whenever you damage an enemy — the share returned climbs with each level.',
+      take: 'The best fighter’s Sprite of the bunch. Passive lifesteal rewards aggression and keeps you topped up without burning mats or minis, which is exactly what you want in high-kill games. Level it to 5 and it noticeably changes how greedy you can play.' },
+    { id: 'deer', name: 'The Deer', rarity: 'Legendary', slug: 'the-deer',
+      power: 'Your melee attacks hit harder, scaling up each level (a 99 Nights in the Forest collab).',
+      take: 'The niche pick. Melee rarely decides fights, so the raw power is situational — but it’s a Legendary with the full finish set, so collectors and melee-pickaxe-rush players will still want it. Lower priority unless you love the 99 Nights tie-in.' },
+    { id: 'dumpster', name: 'Dumpster Dive', rarity: 'Epic', slug: 'dumpster-dive',
+      power: 'Dive into a hiding spot to turn up food that restores extra Health — the heal grows each level.',
+      take: 'The easiest grab. It’s an Epic you’ll stumble into while farming the others, and bonus healing from foraged food is a quiet but real sustain boost for slower, rotation-heavy playstyles. Great value for how little effort it takes to complete.' },
+  ]
+  const spriteCard = (pk) => {
+    const s = SPRITE_SPAWNS[pk.id]
+    return `<div class="card" style="padding:14px 16px;margin:0 0 10px">
+      <div style="display:flex;align-items:center;gap:8px;margin:0 0 6px"><span style="font-size:15px;font-weight:800;color:#fff">${esc(pk.name)}</span><span class="tag" style="background:${RARITY_TINT[pk.rarity] || '#888'};color:#0a0606;border-color:transparent">${esc(pk.rarity)}</span></div>
+      <p style="margin:0 0 8px;font-size:13.5px;line-height:1.65"><b style="color:#fff">Power:</b> ${esc(pk.power)}</p>
+      <p style="margin:0 0 8px;font-size:13.5px;line-height:1.65"><b style="color:#fff">Where to farm:</b> ${esc(s.chests)}${s.pois.length ? ` — hotspots: ${s.pois.map(esc).join(', ')}` : ''}. ${esc(s.extra)}</p>
+      <p style="margin:0;font-size:13.5px;line-height:1.65;color:var(--muted)"><b style="color:#fff">Our take:</b> ${esc(pk.take)}</p>
+      <p style="margin:8px 0 0;font-size:13px">${L(`/sprite/${pk.slug}`, `Full ${pk.name} page — finishes, codes & odds →`)}</p>
+    </div>`
+  }
+  const faqs = [
+    ['How many Fortnitemares Sprites are there?', 'Four are live right now — Spooky Dash, Vampire, The Deer and Dumpster Dive — each with Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter and Trick-or-Treat finishes. Two more, Honey and Obsession, are expected around October 15.'],
+    ['What’s the fastest way to farm them?', 'Drop on a chest-dense POI with a Vault (Stone Sanctum or the Mega Maze landmark), crack Pumpkin and rare chests first, and cash in every Cheat Code you find — Cheat Codes are the most reliable Sprite source and an Epic-tier code gives the best shot at the Legendary Deer. Survive longer = more chests = more rolls.'],
+    ['Which Fortnitemares Sprite should I get first?', 'Spooky Dash. It’s the rarest (Mythic) and the only one that gives you mobility, which is the most valuable thing a Sprite can do. Vampire is the next best for its lifesteal, then Dumpster Dive for easy sustain, with The Deer last unless you want the Legendary for your collection.'],
+    ['How do I get the Cheat Master finishes?', `The Cheat Master finish is unlocked per-Sprite with a specific ${L('/codes', 'Hack the Lobby code')}, not from chests — enter it in the lobby Admin Panel. ${L('/events', 'Power Hours')} also boost finish spawns while they’re live.`],
+    ['Do the Sprites spawn at fixed locations?', 'Not strictly. The hotspots above are where players report the most luck, but Sprites come from chests and Cheat Codes anywhere on the island, and the map rotates — treat the POIs as a starting route, not a guarantee.'],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'Fortnitemares 2026 Sprites — How to Get & Where to Farm All Four', description: desc, url: SITE + '/fortnitemares-sprites', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]*>/g, '') } })) },
+  ] }
+  return head({ title, desc, canonical: SITE + '/fortnitemares-sprites', jsonld, active: 'news' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🎃 Fortnitemares 2026 Sprites — how to get all four (and where to farm them)</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:70ch">Fortnitemares went live with update v42.30 on October 1, and it brought four new Sprites to collect. Here’s what each one’s power actually does, every finish you can chase, the POIs where players are finding them, and — if you can’t grind all four — which to prioritise. Two more (Honey and Obsession) land around October 15.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:18px 0 10px">The four live Sprites, ranked by what we’d chase first</h2>
+    ${picks.map(spriteCard).join('')}
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">The fastest farming routine</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">Sprites don’t have guaranteed spawns, so you’re really farming <b>chances</b>. Three things stack those chances in your favour:</p>
+    <ul style="margin:0 0 12px;padding-left:18px;line-height:1.8;font-size:14px">
+      <li><b>Hit Vaults first.</b> ${esc(SPAWN_GENERAL)} Those underground chests are Pumpkin/rare chests, which carry the best Sprite odds.</li>
+      <li><b>Cash in every Cheat Code.</b> Cheat Codes are the most reliable Sprite source in Override — and an <b>Epic-tier</b> Cheat Code is your best shot at the Legendary ${L('/sprite/the-deer', 'Deer')} and the Mythic ${L('/sprite/spooky-dash', 'Spooky Dash')}.</li>
+      <li><b>Survive longer.</b> More time alive = more chests opened = more rolls. Farm the edges of a POI, not the hot-drop.</li>
+    </ul>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">For the premium looks: the <b>Cheat Master</b> finish is unlocked per-Sprite with a ${L('/codes', 'Hack the Lobby code')} (not from chests), and ${L('/events', 'Power Hours')} temporarily boost finish spawns — stack a session during one to fill out Gold and the event finishes faster.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Coming next: Honey & Obsession (~Oct 15)</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">Fortnitemares runs through Halloween, and two more Sprites are slated for a mid-event wave around October 15 — the ${L('/sprite/honey', 'Honey')} Sprite (a Design-a-Sprite winner that swarms whoever damages you) and a new Obsession Sprite. We’ll flip them live with their art the day they drop — keep the ${L('/news', 'news feed')} handy.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">FAQ</h2>
+    ${faqs.map(([q, a]) => `<details class="gd"><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
+
+    <div class="card" style="padding:14px 16px;margin:16px 0 0"><p style="margin:0;font-size:13px;color:var(--muted);line-height:1.6">Track your haul as you go: tick off finishes on the ${L('/', 'collection tracker')}, grab free Sprite Dust from ${L('/codes', 'Lobby Hack codes')}, and see how the new Sprites rank on the ${L('/tier-list', 'tier list')}.</p></div>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Powers are community-reported (Epic doesn’t publish exact figures); farming hotspots are from ${esc(SPAWN_SOURCE)} and shift as the map rotates. Updated ${new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}.</p>
+    <a class="bigcta" href="/">Track your Fortnitemares Sprites — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 const GUIDES = [
+  ['/fortnitemares-sprites', '🎃', 'Fortnitemares Sprites — farming guide', 'The four live Fortnitemares Sprites: what each power does, where to farm them, how to chase the finishes, and which to get first.'],
   ['/fortnitemares', '🎃', 'Fortnitemares 2026', 'Everything leaked for Fortnite’s Halloween event — start date, the Trick-or-Treat Sprite, the FNAF & Ghostface crossovers, and how to get ready.'],
   ['/codes', '🔓', 'Lobby Hacks (codes)', 'Every Hack the Lobby / Admin Panel code and what it unlocks — grouped by reward, with copy & redeemed-tracking.'],
   ['/loot-hacks', '🎯', 'Loot Hacks (this week)', 'The current rotating Loot Hack weapons you buy with Sprite Dust, how upgrades work, and when they next refresh.'],
@@ -1996,6 +2090,7 @@ function sitemap(types) {
     { loc: SITE + '/season-transition', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/fortnitemares', changefreq: 'daily', priority: '0.8' },
+    { loc: SITE + '/fortnitemares-sprites', changefreq: 'daily', priority: '0.8' },
     { loc: SITE + '/about', changefreq: 'monthly', priority: '0.5' },
     { loc: SITE + '/contact', changefreq: 'yearly', priority: '0.4' },
     { loc: SITE + '/privacy', changefreq: 'yearly', priority: '0.3' },
@@ -2034,6 +2129,8 @@ mkdirSync(resolve(DIST, 'news'), { recursive: true })
 writeFileSync(resolve(DIST, 'news', 'index.html'), newsPage())
 mkdirSync(resolve(DIST, 'fortnitemares'), { recursive: true })
 writeFileSync(resolve(DIST, 'fortnitemares', 'index.html'), fortnitemaresPage())
+mkdirSync(resolve(DIST, 'fortnitemares-sprites'), { recursive: true })
+writeFileSync(resolve(DIST, 'fortnitemares-sprites', 'index.html'), fortnitemaresSpritesPage())
 mkdirSync(resolve(DIST, 'codes'), { recursive: true })
 writeFileSync(resolve(DIST, 'codes', 'index.html'), codesPage())
 mkdirSync(resolve(DIST, 'sprite-garden'), { recursive: true })
@@ -2073,4 +2170,4 @@ writeFileSync(resolve(DIST, 'contact', 'index.html'), contactPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /privacy + 404 + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /fortnitemares-sprites + /privacy + 404 + sitemap.xml → dist/`)

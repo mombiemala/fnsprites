@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: '“Where to find it” spawn info + a Fortnitemares farming guide',
+    changes: [
+      { tag: 'Added', text: 'Each live Fortnitemares Sprite page now has a “Where to find it” section — which chests drop it, the most-reported hotspot POIs, and any special method (e.g. Vampire from the FNAF animatronics at Freddy Fazbear’s Pizzeria). It only shows where we have genuinely-sourced location intel, so no made-up spots.' },
+      { tag: 'Added', text: 'New guide: Fortnitemares 2026 Sprites — a hand-written walkthrough of all four live Sprites (what each power actually does, every finish, where to farm them, and which to chase first), plus the two coming ~Oct 15.' },
+      { tag: 'Changed', text: 'The Fortnitemares event page now shows a “live now” banner linking to the new farming guide, instead of reading as all-leaks.' },
+    ],
+    summary: 'Added per-Sprite spawn locations and an original Fortnitemares farming guide.',
+    why: 'Players kept asking where the new Sprites actually drop, and spawn/farming info is genuinely useful original content (not auto-generated from the roster) — the kind of depth that makes the pages worth visiting and reads as real editorial value.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'Trick-or-Treat finish added to 8 more Sprites',
     changes: [
       { tag: 'Added', text: 'Wired up the official Trick-or-Treat art for eight more Sprites: Sonic, Tails, Crash Bandicoot, Blinky, Adventure, X-Ray, Onigiri and Pond. That brings the spooky Fortnitemares recolour to 24 Sprites total.' },

@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — "Where to find it" spawn info + a Fortnitemares farming guide
+
+- **Added** (`src/data/spawns.js` + `scripts/prerender.mjs`): a "Where to find the X Sprite" section on each live
+  Fortnitemares Sprite page — drop source, reported hotspot POIs, and special methods (e.g. Vampire from the FNAF
+  animatronics). Data-gated: the block only renders for Sprites with sourced spawn intel, so nothing is invented.
+- **Added:** `/fortnitemares-sprites` — an original, hand-written farming guide for the four live Sprites (powers,
+  finishes, where to farm, and a prioritised "chase first" ranking) + the ~Oct 15 wave. Wired into GUIDES and the sitemap.
+- **Changed:** the `/fortnitemares` event page now carries a "live now" banner linking to the new guide (it previously
+  read as all-leaks, which went stale once the event launched).
+- **Why:** spawn/farming info is high-intent and genuinely *original* content (not generated from the roster) — the depth
+  that both helps players and strengthens the site's content-quality signal for ad review.
+
+---
+
 ## October 1, 2026 — Trick-or-Treat finish added to 8 more Sprites
 
 - **Added:** official Trick-or-Treat art for **Sonic, Tails, Crash Bandicoot, Blinky, Adventure, X-Ray, Onigiri, Pond**
