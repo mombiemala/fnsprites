@@ -14,9 +14,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 ## October 1, 2026 — New Trick-or-Treat finish (Fortnitemares)
 
 - **Added:** the Fortnitemares **Trick-or-Treat** finish — a new finish theme (`themes.js`, `.theme-trickortreat` in `index.css`, a
-  `treatment()` fallback case in `SpriteArt.jsx`) with official art on the first 11 Sprites (Crown, Jonesy, Bush Ranger, 8-Bit Blaster,
-  Birthday, Killswitch, Storm Scout, Klombo, Overshield, Vampire, Phase Dash). Cosmetic finish; keeps the base ability. More to follow
-  as their Epic internal names are mapped and availability confirmed.
+  `treatment()` fallback case in `SpriteArt.jsx`) with official art on 14 Sprites (Crown, Jonesy, Bush Ranger, 8-Bit Blaster,
+  Birthday, Killswitch, Storm Scout, Klombo, Overshield, Vampire, Phase Dash, Morgana, Shadow, Jazz Jackrabbit). Cosmetic finish; keeps
+  the base ability. A few more Trick-or-Treat icons use Epic internal names not yet mapped to our roster — to follow once matched.
 
 ---
 

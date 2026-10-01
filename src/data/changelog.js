@@ -9,9 +9,9 @@ export const CHANGELOG = [
     date: 'October 1, 2026',
     title: 'New Trick-or-Treat finish (Fortnitemares)',
     changes: [
-      { tag: 'Added', text: 'Added the Fortnitemares Trick-or-Treat finish — a spooky Halloween recolour — with official art on the first 11 Sprites: Crown, Jonesy, Bush Ranger, 8-Bit Blaster, Birthday, Killswitch, Storm Scout, Klombo, Overshield, Vampire and Phase Dash. It’s a cosmetic finish (keeps the base ability). More Sprites’ Trick-or-Treat variants will follow as their art and availability are confirmed.' },
+      { tag: 'Added', text: 'Added the Fortnitemares Trick-or-Treat finish — a spooky Halloween recolour — with official art on 14 Sprites: Crown, Jonesy, Bush Ranger, 8-Bit Blaster, Birthday, Killswitch, Storm Scout, Klombo, Overshield, Vampire, Phase Dash, Morgana, Shadow and Jazz Jackrabbit. It’s a cosmetic finish (keeps the base ability). A few more Trick-or-Treat icons in the drop use Epic internal names we haven’t matched to our roster yet — those will follow once mapped.' },
     ],
-    summary: 'Added the Fortnitemares Trick-or-Treat finish with real art on the first 11 Sprites.',
+    summary: 'Added the Fortnitemares Trick-or-Treat finish with real art on 14 Sprites.',
     why: 'Trick-or-Treat is the headline Fortnitemares (v42.30) finish; the official icons arrived for a first batch, so the finish and its art are in now, with the rest to follow as they’re confirmed.',
   },
   {
