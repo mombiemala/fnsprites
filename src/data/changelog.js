@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Six new Fortnitemares Lobby Hack codes',
+    changes: [
+      { tag: 'Added', text: 'Added the six Admin Panel codes from the Oct 1 update: CrowsAreAfraid (turn the lobby into Scarecrows) and PumpkinSpiceLife (turn the lobby into Pumpkins) — both reusable Fortnitemares transforms; IThinkTheKeyFoundMeChat (Extraction Accelerator); s7h-50p-r03 (Geno glitches your lobby, after Stage 4 of the Hope Quest); and runSystemOverride + ImTheRealEdgelord (5,000 Sprite Dust each, after the Geno and Wrixel story quests).' },
+    ],
+    summary: 'Added the six new Fortnitemares Admin Panel codes from the Oct 1 update (two lobby transforms, an Accelerator, and three quest-gated rewards).',
+    why: 'Fortnitemares (v42.30) dropped a fresh batch of Lobby Hacks; the two lobby transforms are the fun headline ones, the other four are easy Sprite Dust / Accelerator pickups, so collectors want them in the list right away.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'Removed the Map tab',
     changes: [
       { tag: 'Removed', text: 'Took out the Map tab (and the /map page). For the full interactive Fortnite map with toggleable POI, chest and loot layers, fortnite.gg does it best — the tracker isn’t trying to rebuild that.' },

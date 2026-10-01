@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Six new Fortnitemares Lobby Hack codes
+
+- **Added** (`src/data/codes.js`): the six Admin Panel codes from the Oct 1 update —
+  - `CrowsAreAfraid` — turns the lobby into Scarecrows (reusable transform)
+  - `PumpkinSpiceLife` — turns the lobby into Pumpkins (reusable transform)
+  - `IThinkTheKeyFoundMeChat` — 1× Extraction Accelerator
+  - `s7h-50p-r03` — Geno glitches your lobby (after Stage 4 of the Hope Quest)
+  - `runSystemOverride` — 5,000 Sprite Dust (after the Geno story quests)
+  - `ImTheRealEdgelord` — 5,000 Sprite Dust (after the Wrixel story quests)
+- **Why:** Fortnitemares (v42.30) dropped a fresh batch of Lobby Hacks; corroborated via Vice + The Click.
+
+---
+
 ## October 1, 2026 — Removed the Map tab
 
 - **Removed:** the Map tab and the `/map` SEO page. Deleted `src/components/MapView.jsx`, `src/data/mapInfo.js` and the

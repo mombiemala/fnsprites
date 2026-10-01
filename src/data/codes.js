@@ -69,12 +69,16 @@ export const LOBBY_CODES = [
   { code: 'PERFECTORDER', unlocks: '4× spicy-taco gizmos (Geno)', type: 'reward', category: 'gizmos', status: 'working', source: 'GamesRadar' },
   { code: 'BoneRattler', unlocks: '4× Spicy Taco gizmos', type: 'reward', category: 'gizmos', status: 'working', added: '2026-09-28', source: 'Beebom / Nintendo Life / esports.gg' },
   { code: 'PowerOut', unlocks: 'Screen-blackout + FNAF jumpscare effect (Fortnitemares tie-in)', type: 'effect', category: 'gizmos', status: 'working', added: '2026-09-29', source: 'Nintendo Life / community list' },
+  { code: 'CrowsAreAfraid', unlocks: 'Turns everyone in the lobby into a Scarecrow (Fortnitemares)', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-10-01', source: 'Vice / The Click (Oct 1 update)' },
+  { code: 'PumpkinSpiceLife', unlocks: 'Turns everyone in the lobby into a Pumpkin (Fortnitemares)', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-10-01', source: 'Vice / The Click (Oct 1 update)' },
+  { code: 's7h-50p-r03', unlocks: 'Geno glitches your lobby (Fortnitemares effect) — after Stage 4 of the Hope Quest. Type exactly: those are zeros, not the letter “O”.', type: 'effect', category: 'gizmos', status: 'working', added: '2026-10-01', source: 'Vice (Oct 1 update)' },
   { code: 'InsertCoinToContinue', unlocks: 'Arcade Machine lobby transformation', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-09-08', source: 'GamesRadar / community list' },
   { code: 'BRB', unlocks: 'Toilet lobby transformation', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-09-08', source: 'GamesRadar / community list' },
   // NOPROLLAMA (Llama Supply Drop Gizmo) — re-added Sep 17: still listed Active on
   // Fortnite.GG's Lobby Hacks board, so the earlier "expired Sep 14" window was wrong.
 
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
+  { code: 'IThinkTheKeyFoundMeChat', unlocks: '1× Extraction Accelerator', type: 'reward', category: 'boosts', status: 'working', added: '2026-10-01', source: 'Vice (Oct 1 update)' },
   { code: 'WhoCrackedTheCode', unlocks: '40,000 XP', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-26', source: 'Vice / FNCS livestream (Sep 26)' },
   { code: 'ALMOSTSCARINGSEASON', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-21', source: 'Vice (Mastery Monday code, Sep 21)' },
   { code: 'BeamMeUp', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-14', source: 'Vice (Mastery Monday code)' },
@@ -94,6 +98,8 @@ export const LOBBY_CODES = [
   // The bigger Geno code also grants an Outfit style, and is gated behind the Geno
   // quests + a specific "let Geno eliminate you" step, so we note the condition.
   { code: 'DustySprites', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-26', source: 'Vice / FNCS livestream (Sep 26)' },
+  { code: 'runSystemOverride', unlocks: '5,000 Sprite Dust — after finishing the Geno story quests', type: 'reward', category: 'dust', status: 'working', added: '2026-10-01', source: 'Vice (Oct 1 update)' },
+  { code: 'ImTheRealEdgelord', unlocks: '5,000 Sprite Dust — after finishing the Wrixel story quests', type: 'reward', category: 'dust', status: 'working', added: '2026-10-01', source: 'Vice (Oct 1 update)' },
   { code: 'YOURTHOUGHTSAREMINE', unlocks: '5,000 Sprite Dust + Void Master Geno Outfit style — after finishing the Geno story quests, shoot Geno’s shield and let him eliminate you', type: 'reward', category: 'dust', status: 'working', source: 'community list', added: '2026-09-03' },
   { code: 'BLINKYINKYPINKYCLYDE', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-17', source: 'Vice (v42.20 codes)' },
   { code: 'PlayToLevelUp', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
