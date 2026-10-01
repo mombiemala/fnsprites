@@ -65,7 +65,16 @@ export default function ChangelogModal({ onClose }) {
         </div>
 
         <p className="mt-4 shrink-0 border-t border-[var(--border)] pt-3 text-[11px] text-[var(--muted)]">
-          Got an idea or found a bug? Use “Report a bug” in the footer — feedback shapes this list. 💜
+          Showing the latest {CHANGELOG.length} updates — see the{' '}
+          <a
+            href="https://github.com/mombiemala/fnsprites/blob/main/CHANGELOG.md"
+            target="_blank"
+            rel="noreferrer"
+            className="text-[var(--brand)] underline hover:opacity-80"
+          >
+            full history on GitHub
+          </a>
+          . Got an idea or found a bug? Use “Report a bug” in the footer — feedback shapes this list. 💜
         </p>
       </div>
     </div>

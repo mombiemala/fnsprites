@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Lighter, faster changelog
+
+- **Changed** (`src/data/changelog.js`, `ChangelogModal.jsx`): capped the in-app changelog to a recent ~60-entry window
+  with a "full history on GitHub" link. The data file dropped from ~370 KB (315 entries) to ~67 KB, so the lazy
+  ChangelogModal chunk went from 340 KB → 66 KB (gzip 114 → 23 KB). This full `CHANGELOG.md` keeps the complete history.
+- **Why:** the changelog had grown unbounded; it's lazy-loaded (no initial-load impact) but the open-interaction download
+  was heavy. Capping it keeps the panel snappy and the bundle lean with zero data loss.
+
+---
+
 ## October 1, 2026 — New guide: Best Override Sprites, ranked & explained
 
 - **Added:** `/best-sprites` — an original, opinionated ranking of the live Override Sprites into S/A/B tiers with the
