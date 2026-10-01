@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Real Vampire art + all five finishes',
+    changes: [
+      { tag: 'Added', text: 'Dropped in the official Vampire Sprite art (replacing the placeholder) across all five finishes — Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter — so the live Fortnitemares Sprite now shows its real look. Staged the Phase Dash art too, ready for when it goes live.' },
+    ],
+    summary: 'Added the real Vampire Sprite art in all five finishes (and pre-staged Phase Dash art).',
+    why: 'The Vampire went live today with placeholder art; the real icons arrived, so they’re in now. Pumpkin’s real art still isn’t available, so it keeps its placeholder for now.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'Fortnitemares is live — Vampire & Pumpkin Sprites + map changes',
     changes: [
       { tag: 'Added', text: 'New Sprite Day: flipped the Vampire and Pumpkin Sprites live for Fortnitemares (v42.30, Oct 1). Vampire recovers Health when you damage an enemy (scaling per level); Pumpkin builds a headshot-blocking Pumpkin Head over time. Both come from Pumpkin chests and Cheat Codes (Vampire can also drop from the FNAF animatronics at Freddy Fazbear’s Pizzeria). Official art isn’t out yet, so they use placeholder art for now and rarities are still unconfirmed.' },
