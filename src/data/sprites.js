@@ -157,7 +157,7 @@ export const SPRITE_TYPES = [
     variants: { normal: U } },
   { id: 'dumpster', name: 'Dumpster Dive', icon: '🦝', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-10-01', gen: 'c7s4',
     ability: 'Live since Fortnitemares (Oct 1, v42.30). Design-a-Sprite winner (by StinkyPrincessGoose): dive into a hiding spot to turn up food that restores extra Health — the healing bonus grows as it levels up. Found in Chests and via Cheat Codes.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
   { id: 'xray', name: 'X-Ray', icon: '🩻', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players (and objects) through walls, like the old medallion did. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside Onigiri. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is live too (since Sep 10).',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
@@ -259,7 +259,7 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
   { id: 'deer', name: 'The Deer', icon: '🦌', rarity: 'Legendary', dropRate: null, released: true, releaseDate: '2026-10-01', gen: 'c7s4',
     ability: 'Live since Fortnitemares (Oct 1, v42.30). A 99 Nights in the Forest collab: your melee attacks hit harder, and the bonus grows with each level up. Found in Chests and via Cheat Codes (a Legendary, so Epic-tier Cheat Codes give the best odds).',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
 ]
 
 export const RARITY_ORDER = ['Rare', 'Epic', 'Legendary', 'Mythic']

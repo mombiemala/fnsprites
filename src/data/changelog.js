@@ -9,13 +9,13 @@ export const CHANGELOG = [
     date: 'October 1, 2026',
     title: 'New Sprite Day — The Deer & Dumpster Dive live + Loot Hacks refresh',
     changes: [
-      { tag: 'Added', text: 'The Deer Sprite is live — a Legendary 99 Nights in the Forest collab whose melee attacks hit harder (more each level). Added with a stylised placeholder look (official datamined art pending) and its Gold / Cheat Master / Loot Hacker / Bounty Hunter finishes.' },
-      { tag: 'Changed', text: 'Dumpster Dive flipped from rumored to live: dive into a hiding spot for food that restores extra Health. Its finishes (Gold, Cheat Master, Loot Hacker, Bounty Hunter) are in too.' },
+      { tag: 'Added', text: 'The Deer Sprite is live — a Legendary 99 Nights in the Forest collab whose melee attacks hit harder (more each level) — with its official art across all finishes: Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter and Trick-or-Treat.' },
+      { tag: 'Changed', text: 'Dumpster Dive flipped from rumored to live with its official art: dive into a hiding spot for food that restores extra Health. All six finishes are in (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter, Trick-or-Treat).' },
       { tag: 'Changed', text: 'Loot Hacks pool refreshed for Fortnitemares (v42.30): in came the Infantry Rifle, LMG, Pumpkin Launcher, Last Call and Slap Candy Corn (out went Rocket Ram, Reaper Sniper, the Mammoth & Hyperburst Pistols, Deadeye DMR and Flowberry Fizz).' },
       { tag: 'Changed', text: 'Heads-up feed updated: Honey and the new Obsession Sprite are expected around Oct 15.' },
     ],
-    summary: 'The Deer and Dumpster Dive Sprites are live (with all four finishes), and the Loot Hacks pool refreshed for Fortnitemares.',
-    why: 'Fortnitemares launched four Sprites on Oct 1 — Vampire and Spooky Dash were already in; The Deer and Dumpster Dive are the other two, confirmed live by multiple outlets, so they’re flipped now (The Deer gets a placeholder look until official art is grabbable). Two more (Honey, Obsession) are slated for ~Oct 15.',
+    summary: 'The Deer and Dumpster Dive Sprites are live with official art (all six finishes), and the Loot Hacks pool refreshed for Fortnitemares.',
+    why: 'Fortnitemares launched four Sprites on Oct 1 — Vampire and Spooky Dash were already in; The Deer and Dumpster Dive are the other two, confirmed live by multiple outlets and now in with their official art (The Deer = the “IncreasedMelee” icon, Dumpster Dive = the “WinnerD” raccoon). Two more (Honey, Obsession) are slated for ~Oct 15.',
   },
   {
     date: 'October 1, 2026',
