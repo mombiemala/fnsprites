@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'New guide: Best Override Sprites, ranked & explained',
+    changes: [
+      { tag: 'Added', text: 'A hand-written “Best Sprites” guide that ranks the live Override Sprites into S / A / B tiers with the reasoning behind each pick, plus “best for mobility / sustain / info / easy wins” calls. It’s the opinionated companion to the sortable tier list — the “what should I actually chase?” version.' },
+    ],
+    summary: 'Added an opinionated, tiered “Best Override Sprites” guide with reasoning per pick.',
+    why: 'The tier list answers “how do they rank”; players also want “which should I chase for my playstyle.” A prose, judgement-led guide is genuinely original editorial content (not generated from data) and gives the site more real depth.',
+  },
+  {
+    date: 'October 1, 2026',
     title: '“Where to find it” spawn info + a Fortnitemares farming guide',
     changes: [
       { tag: 'Added', text: 'Each live Fortnitemares Sprite page now has a “Where to find it” section — which chests drop it, the most-reported hotspot POIs, and any special method (e.g. Vampire from the FNAF animatronics at Freddy Fazbear’s Pizzeria). It only shows where we have genuinely-sourced location intel, so no made-up spots.' },

@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — New guide: Best Override Sprites, ranked & explained
+
+- **Added:** `/best-sprites` — an original, opinionated ranking of the live Override Sprites into S/A/B tiers with the
+  reasoning for each pick, a "Best Sprite for…" table (mobility / aggression / info / heal-heavy / easy-start / flex), and
+  an FAQ. Wired into GUIDES + sitemap; cross-links the tier list, abilities, codes and the Fortnitemares guide.
+- **Why:** distinct from `/tier-list` (a sortable data table) — this is the judgement-led "what should I chase?" version,
+  which is genuinely original editorial content and adds real depth to the site.
+
+---
+
 ## October 1, 2026 — "Where to find it" spawn info + a Fortnitemares farming guide
 
 - **Added** (`src/data/spawns.js` + `scripts/prerender.mjs`): a "Where to find the X Sprite" section on each live

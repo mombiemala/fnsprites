@@ -1747,7 +1747,90 @@ function fortnitemaresSpritesPage() {
 ` + FOOT
 }
 
+// ---------- /best-sprites — original, opinionated ranking (editorial) ----------
+// Hand-written analysis with reasoning per pick — deliberately different from
+// /tier-list (an auto-generated data ranking): this is prose, picks and "best for"
+// calls, the kind of take a player writes, not a table.
+function bestSpritesPage() {
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const desc = `The best Fortnite Sprites in Chapter 7 Season 4 “Override”, ranked with reasoning — which abilities actually win games, the S/A/B tiers, and the best Sprite for mobility, sustain, info and easy wins.`
+  const title = `Best Fortnite Sprites in Override (Season 4) — Ranked & Explained | FN Sprite Tracker`
+  const rarityTag = (r) => `<span class="tag" style="background:${RARITY_TINT[r] || '#888'};color:#0a0606;border-color:transparent">${esc(r)}</span>`
+  const pick = (p) => `<div class="card" style="padding:12px 14px;margin:0 0 8px">
+    <div style="display:flex;align-items:center;gap:8px;margin:0 0 4px"><span style="font-size:14px;font-weight:800;color:#fff">${esc(p.name)}</span>${rarityTag(p.rarity)}</div>
+    <p style="margin:0;font-size:13.5px;color:var(--muted);line-height:1.6">${p.take} ${L(`/sprite/${p.slug}`, 'Details →')}</p>
+  </div>`
+  const sTier = [
+    { name: 'Spooky Dash', slug: 'spooky-dash', rarity: 'Mythic', take: 'The best Sprite in the game right now. Free, on-demand mobility is the single most valuable thing a Sprite can give you, and this one also phases through some objects for escapes and repositions that nothing else offers. Rare and worth every chest.' },
+    { name: 'Vampire', slug: 'vampire', rarity: 'Epic', take: 'Passive lifesteal that scales with level and costs you nothing — no mats, no minis, no slot. It quietly changes how aggressively you can play every fight, which is exactly what a top-tier Sprite should do.' },
+    { name: 'Jazz Jackrabbit', slug: 'jazz-jackrabbit', rarity: 'Legendary', take: 'A permanent double-jump. Vertical mobility for peeks, box retakes and disengages, always on. Mobility is king in Override, and this is the cleanest always-available version of it.' },
+  ]
+  const aTier = [
+    { name: 'Tails', slug: 'tails', rarity: 'Epic', take: 'Hover / slow-descent — softer than a double-jump but brilliant for rotations, edits and dropping onto fights without fall damage. The third of the strong mobility trio.' },
+    { name: 'X-Ray', slug: 'x-ray', rarity: 'Epic', take: 'Reveals nearby players through walls. Information wins fights before they start — knowing exactly where the third party is coming from is worth more than most raw stat buffs.' },
+    { name: 'Blinky', slug: 'blinky', rarity: 'Epic', take: 'Grants a short cloak when you take damage — a built-in “get out of jail” that buys the half-second you need to reset a fight you were losing.' },
+    { name: 'Morgana', slug: 'morgana', rarity: 'Epic', take: 'Boosts the effectiveness of your healing items. If you play a slower, heal-heavy style it effectively stretches every Med-Mist and mini you pick up — a real multiplier on your survivability.' },
+  ]
+  const bTier = [
+    { name: 'Jonesy', slug: 'jonesy', rarity: 'Rare', take: 'A small heal after you take damage. Not flashy, but it’s a Rare you can grab early and the Cheat Master finish is a free lobby-code unlock — great value for new collectors.' },
+    { name: 'Killswitch', slug: 'killswitch', rarity: 'Epic', take: 'Hangtime — better accuracy while jumping or falling. A fun pick for aggressive jump-shot players, niche for everyone else.' },
+    { name: 'Dumpster Dive', slug: 'dumpster-dive', rarity: 'Epic', take: 'Bonus healing from foraged food. Easy to complete and a quiet sustain boost for rotation-heavy play.' },
+    { name: 'The Deer', slug: 'the-deer', rarity: 'Legendary', take: 'Stronger melee. Situational since melee rarely decides fights, but it’s a Legendary with the full finish set, so collectors will still want it.' },
+    { name: 'Crash Bandicoot', slug: 'crash-bandicoot', rarity: 'Epic', take: 'An active whirlwind spin that damages and knocks back nearby enemies — good for peeling off a close-range push, less useful at range.' },
+    { name: 'Klombo', slug: 'klombo', rarity: 'Mythic', take: 'Hands you a random item each level, but levelling it consumes items — a double-edged economy pick that’s more fun than consistent, and a Mythic flex regardless.' },
+    { name: 'Crown', slug: 'crown', rarity: 'Mythic', take: 'More status symbol than stat-stick — the rarest flex in the game, but you’re chasing it for the look and the finishes, not the edge.' },
+  ]
+  const bestFor = [
+    ['Best mobility', 'Spooky Dash, then Jazz Jackrabbit and Tails'],
+    ['Best for aggressive players', 'Vampire — lifesteal rewards pushing'],
+    ['Best info / recon', 'X-Ray — wallhack awareness'],
+    ['Best heal-heavy build', 'Morgana — multiplies your med economy'],
+    ['Best free & easy to start', 'Jonesy — Rare, early, free Cheat Master code'],
+    ['Best pure flex', 'Crown or Klombo — Mythic bragging rights'],
+  ]
+  const faqs = [
+    ['What’s the best Sprite in Fortnite right now?', 'Spooky Dash. It’s a Mythic that gives you free, on-demand dash mobility and lets you phase through some objects — mobility is the most valuable thing a Sprite can provide, and no other Sprite matches it.'],
+    ['Are Sprites pay-to-win?', 'No — every Sprite is earned in-game (Cheat Codes, chests, events), none are bought. Some abilities are stronger than others, which is what this ranking is about, but it’s effort-to-win, not pay-to-win.'],
+    ['How is this different from your tier list?', `The ${L('/tier-list', 'tier list')} ranks every released Sprite by ability strength as a sortable table. This guide is the opinionated version — fewer picks, with the reasoning for each and “best for” calls — so you know what to chase for your playstyle.`],
+    ['How do I actually get these Sprites?', `Most come from in-world Cheat Codes and Sprite Chests; the Cheat Master finishes unlock with ${L('/codes', 'Hack the Lobby codes')}. See each Sprite’s page for its exact method, and the ${L('/fortnitemares-sprites', 'Fortnitemares farming guide')} for the newest ones.`],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'Best Fortnite Sprites in Override (Season 4) — Ranked & Explained', description: desc, url: SITE + '/best-sprites', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]*>/g, '') } })) },
+  ] }
+  return head({ title, desc, canonical: SITE + '/best-sprites', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🏅 Best Fortnite Sprites in Override — ranked &amp; explained</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:70ch">There are 25 Sprites live in Chapter 7 Season 4 “Override”, and they are not created equal. This is our opinionated take on which ones actually move the needle in Battle Royale — judged on how useful the ability is in a real match, not how rare the Sprite is. For the full sortable ranking of every Sprite, see the ${L('/tier-list', 'tier list')}; this is the “what should I chase?” version.</p>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 6px"><b style="color:#fff">How we rank:</b> mobility and free sustain top the list because they help in <i>every</i> game; information and clutch-survival tools come next; raw situational buffs and economy gimmicks sit lower. Rarity is a tiebreaker for collectors, not a power level.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:20px 0 8px">S-Tier — chase these first</h2>
+    ${sTier.map(pick).join('')}
+    <h2 style="font-size:18px;color:#fff;margin:20px 0 8px">A-Tier — excellent picks</h2>
+    ${aTier.map(pick).join('')}
+    <h2 style="font-size:18px;color:#fff;margin:20px 0 8px">B-Tier — situational &amp; collector picks</h2>
+    ${bTier.map(pick).join('')}
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Best Sprite for…</h2>
+    <div class="card" style="padding:4px 2px;margin:0 0 6px"><table>
+      ${bestFor.map(([k, v]) => `<tr><td style="font-weight:700;color:#fff;white-space:nowrap">${esc(k)}</td><td>${esc(v)}</td></tr>`).join('')}
+    </table></div>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">FAQ</h2>
+    ${faqs.map(([q, a]) => `<details class="gd"><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
+
+    <div class="card" style="padding:14px 16px;margin:16px 0 0"><p style="margin:0;font-size:13px;color:var(--muted);line-height:1.6">Decide what to chase, then track it: tick off finishes on the ${L('/', 'collection tracker')}, grab the Cheat Master unlocks from ${L('/codes', 'Lobby Hack codes')}, and compare every Sprite on the ${L('/tier-list', 'tier list')} and ${L('/abilities', 'abilities list')}.</p></div>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Abilities are community-reported — Epic doesn’t publish exact figures — and rankings are our opinion for general Battle Royale play. Updated ${new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}.</p>
+    <a class="bigcta" href="/">Track your Sprite collection — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 const GUIDES = [
+  ['/best-sprites', '🏅', 'Best Sprites (ranked)', 'Our opinionated take on the strongest Override Sprites — S/A/B tiers with reasoning, plus the best pick for mobility, sustain, info and easy wins.'],
   ['/fortnitemares-sprites', '🎃', 'Fortnitemares Sprites — farming guide', 'The four live Fortnitemares Sprites: what each power does, where to farm them, how to chase the finishes, and which to get first.'],
   ['/fortnitemares', '🎃', 'Fortnitemares 2026', 'Everything leaked for Fortnite’s Halloween event — start date, the Trick-or-Treat Sprite, the FNAF & Ghostface crossovers, and how to get ready.'],
   ['/codes', '🔓', 'Lobby Hacks (codes)', 'Every Hack the Lobby / Admin Panel code and what it unlocks — grouped by reward, with copy & redeemed-tracking.'],
@@ -2075,6 +2158,7 @@ function sitemap(types) {
     { loc: SITE + '/guides', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/faq', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
+    { loc: SITE + '/best-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/rarest-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/drop-rate-calculator', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
@@ -2131,6 +2215,8 @@ mkdirSync(resolve(DIST, 'fortnitemares'), { recursive: true })
 writeFileSync(resolve(DIST, 'fortnitemares', 'index.html'), fortnitemaresPage())
 mkdirSync(resolve(DIST, 'fortnitemares-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'fortnitemares-sprites', 'index.html'), fortnitemaresSpritesPage())
+mkdirSync(resolve(DIST, 'best-sprites'), { recursive: true })
+writeFileSync(resolve(DIST, 'best-sprites', 'index.html'), bestSpritesPage())
 mkdirSync(resolve(DIST, 'codes'), { recursive: true })
 writeFileSync(resolve(DIST, 'codes', 'index.html'), codesPage())
 mkdirSync(resolve(DIST, 'sprite-garden'), { recursive: true })
@@ -2170,4 +2256,4 @@ writeFileSync(resolve(DIST, 'contact', 'index.html'), contactPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /fortnitemares-sprites + /privacy + 404 + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /fortnitemares-sprites + /best-sprites + /privacy + 404 + sitemap.xml → dist/`)
