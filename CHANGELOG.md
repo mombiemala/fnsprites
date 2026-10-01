@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Richer, less-repetitive Sprite page FAQs
+
+- **Added** (`scripts/prerender.mjs`): a "What finishes does X have?" FAQ on every Sprite page (lists the Sprite's actual
+  finishes + which are obtainable — unique per page since finish sets differ).
+- **Changed:** the "usable in Battle Royale?" answer now includes the Sprite's rarity + obtainable-finish count, and the
+  "how do I get it?" answer appends reported spawn hotspots for Sprites with spawn data — instead of identical text on
+  every page.
+- **Why:** near-identical FAQ answers across ~48 pages read as duplicate/thin content; tying each answer to the Sprite's
+  own facts makes the main content genuinely distinct (what Google's text-level dedup actually weighs) and more useful.
+
+---
+
 ## October 1, 2026 — Lighter, faster changelog
 
 - **Changed** (`src/data/changelog.js`, `ChangelogModal.jsx`): capped the in-app changelog to a recent ~60-entry window

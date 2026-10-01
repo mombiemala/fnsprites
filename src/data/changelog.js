@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Richer, less-repetitive Sprite page FAQs',
+    changes: [
+      { tag: 'Added', text: 'Every Sprite page now has a “What finishes does X have?” answer listing its actual finishes and which are obtainable.' },
+      { tag: 'Changed', text: 'Rewrote the FAQ answers to be specific to each Sprite — its rarity, finishes and (for the Fortnitemares Sprites) where players find it — instead of the same generic text on every page.' },
+    ],
+    summary: 'Made each Sprite page’s FAQ answers specific to that Sprite rather than identical boilerplate.',
+    why: 'Near-identical FAQ text across dozens of pages reads as thin/duplicate content to search engines and is less useful to readers. Tying each answer to the Sprite’s own facts makes the pages genuinely distinct and more informative.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'Lighter, faster changelog',
     changes: [
       { tag: 'Changed', text: 'The in-app changelog now shows the most recent ~60 updates with a link to the complete history on GitHub, instead of loading all 300+ entries at once.' },

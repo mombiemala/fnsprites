@@ -476,8 +476,9 @@ function spritePage(type, others) {
   const faqs = []
   if (s4) {
     const codeForSprite = LOBBY_CODES.find((c) => c.spriteId === type.id && c.status === 'working')
+    const sp = spawnFor(type.id)
     faqs.push([`How do I get the ${name} Sprite?`,
-      `${spriteSource(type.id)}${codeForSprite ? ` Its Cheatmaster finish unlocks with the Hack the Lobby code “${codeForSprite.code}” — enter it in the lobby Admin Panel.` : ''}`])
+      `${spriteSource(type.id)}${codeForSprite ? ` Its Cheatmaster finish unlocks with the Hack the Lobby code “${codeForSprite.code}” — enter it in the lobby Admin Panel.` : ''}${sp?.pois?.length ? ` Players report the best luck around ${sp.pois.join(', ')}.` : ''}`])
   } else {
     faqs.push([`How rare is the ${name} Sprite?`, p
       ? `${name} is a ${type.rarity} Sprite with about a ${type.dropRate} chance per Sprite Chest — roughly a 1-in-${fmt(1 / p)} pull.`
@@ -488,8 +489,12 @@ function spritePage(type, others) {
       `${fmt(dustN)} Dust for the Normal form${dustV != null ? `, or ${fmt(dustV)} for a special variant` : ''}.`])
   }
   if (type.ability) faqs.push([`What does the ${name} Sprite do?`, type.ability])
+  // Per-Sprite finishes answer — genuinely unique per page (each Sprite's finish
+  // set and release state differ), so it doesn't read as duplicated boilerplate.
+  if (variants.length) faqs.push([`What finishes does the ${name} Sprite have?`,
+    `${name} comes in ${variants.length} finish${variants.length === 1 ? '' : 'es'}: ${variants.map((v) => v.name).join(', ')}.${liveFinishes.length ? ` ${liveFinishes.length} ${liveFinishes.length === 1 ? 'is' : 'are'} obtainable now (${liveFinishes.join(', ')})${soonFinishes.length ? `, with ${soonFinishes.join(', ')} still to come` : ''}.` : ''} Every finish keeps the same base ability and adds its own cosmetic look or bonus.`])
   faqs.push([`Is the ${name} Sprite usable in Battle Royale?`, s4
-    ? `Yes — ${name} is part of the current Season 4 “Override” generation, so you can equip and use it in Battle Royale this season.`
+    ? `Yes — ${name} is a live ${type.rarity} Sprite in the current Season 4 “Override” generation, so you can equip it in Battle Royale right now.${liveFinishes.length ? ` It has ${liveFinishes.length} obtainable finish${liveFinishes.length === 1 ? '' : 'es'}, and leveling it to Level 5 (Mastered) unlocks its full effect.` : ''}`
     : `${name} is a Season 3 “Runners” Sprite. It's kept forever in your collection and the in-game Sprite Garden, but the Season 4 “Override” generation took over Battle Royale — so older-generation Sprites aren't used in BR matches this season (Epic says they may return later).`])
   if (own) faqs.push([`How many people have the ${name} Sprite?`,
     `Among collectors tracking their collection on FN Sprite Tracker, about ${own.pct}% own ${name}${own.mpct ? ` and ${own.mpct}% have mastered it` : ''} — based on ${own.total} tracked collectors, and it grows as more players join.`])
