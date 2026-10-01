@@ -12,9 +12,9 @@ import { THEME_MAP } from './themes.js'
 // `releaseDate` are effectively released at runtime.
 // The v42.20 update (Sep 17) went live with 3 new Sprites — Pond, Crash Bandicoot
 // and Blinky — each in Normal/Gold/Loot Hacker/Cheat Master (flipped released
-// here). Still genuinely-unreleased/datamined: Honey, Dumpster, Meowscles,
+// here). Still genuinely-unreleased/leaked: Honey, Dumpster, Meowscles,
 // Squibbly, Cube, Head Shot, the rest of the v42.20 wave (Morgana, Birthday,
-// Phase Dash) and the newly-datamined Vampire (a likely Fortnitemares Sprite),
+// Phase Dash) and the newly-leaked Vampire (a likely Fortnitemares Sprite),
 // all `rumored` until Epic ships each. ("BodySlam" turned
 // out to be the internal codename for Crash Bandicoot, not a separate Sprite —
 // its art/entry are folded into `crash`.) v42.20 also added a
@@ -60,7 +60,7 @@ export const SPRITE_TYPES = [
   { id: 'king', name: 'King', icon: '👑', rarity: 'Epic', dropRate: '5.22%', released: true,
     ability: 'Your pickaxe deals extra damage.',
     // King ships Normal/Gold/Gummy/Galaxy/Holofoil only — Fortnite.GG lists no
-    // Gem/Cube/Quack King (the earlier Gem King datamine never shipped publicly).
+    // Gem/Cube/Quack King (the earlier Gem King leak never shipped publicly).
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
   { id: 'zeropoint', name: 'Zero Point', icon: '🔷', rarity: 'Mythic', dropRate: '0.00034%', released: true,
     ability: 'Spawns a Shield Bubble Jr. when you use a healing item on yourself (not splashes or grenades).',
@@ -144,7 +144,7 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — the marquee Sonic collab (cube “backpack” redesign). Normal, Gold & Cheatmaster are all live (Cheatmaster unlocks via the GOTTAGOFAST lobby code; Gold since Gold Hours, Aug 22). Its exact in-game ability isn’t documented here yet.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'pond', name: 'Pond', icon: '🐸', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
-    ability: 'Design-a-Sprite winner (by Pine & Kiri). Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes. Ability: Active — jump shortly after landing to trigger a Super Jump; charges regenerate over time, and Super Jump strength rises while its cooldown drops with each level up. (Its Bounty Hunter finish is datamined but not out yet — Epic ships that wave over the following weeks.)',
+    ability: 'Design-a-Sprite winner (by Pine & Kiri). Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes. Ability: Active — jump shortly after landing to trigger a Super Jump; charges regenerate over time, and Super Jump strength rises while its cooldown drops with each level up. (Its Bounty Hunter finish is leaked but not out yet — Epic ships that wave over the following weeks.)',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'onigiri', name: 'Onigiri', icon: '🍙', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside X-Ray. Exact in-game ability not yet detailed by Epic. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is live too (since Sep 10).',
@@ -160,7 +160,7 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
 
   // ---- Override new-generation Sprites — LIVE in Chapter 7 Season 4, with
-  //   official datamined art (Normal, Gold & the new "Cheatmaster" finish).
+  //   official leaked art (Normal, Gold & the new "Cheatmaster" finish).
   //   Normal & Cheatmaster shipped at launch (Cheatmaster via Hack-the-Lobby
   //   codes); Gold went live at Gold Hours (Aug 22), so all three are `R`. Exact
   //   in-game abilities aren't
@@ -201,13 +201,13 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — a horned “Storm Scout”, live since New Sprite Day (Aug 29) in all three finishes (Normal · Gold · Cheatmaster). Ability (per HYPEX): after you take 10 Storm damage it grants Overdrive and unlimited Energy — great for surviving or rotating through the Storm — and at max level it reveals upcoming Storm Circles.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
 
-  // ---- Second datamine wave — six more Override Sprites found in the C7S4 files
+  // ---- Second leak wave — six more Override Sprites spotted ahead of release
   //   by leakers Krowe & FNBRIntel. No release dates yet, and Epic hasn't shown
   //   abilities or rarities, so those stay placeholders/unconfirmed. Squibbly &
   //   Overshield are noted to have extra variant support; BodySlam (a codename)
   //   looks like a collab crossover. All unreleased until Epic ships them. ----
   { id: 'meowscles', name: 'Meowscles', icon: '🐱', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — Meowscles. Found in the files (Krowe & FNBRIntel) but not yet obtainable; ability & rarity not revealed by Epic — TBC.',
+    ability: 'Unreleased Season 4 “Override” Sprite — Meowscles. Spotted ahead of release (Krowe & FNBRIntel) but not yet obtainable; ability & rarity not revealed by Epic — TBC.',
     variants: { normal: U } },
   { id: 'overshield', name: 'Overshield', icon: '🛡️', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — Overshield. Live in all four finishes (Normal · Gold · Cheatmaster · Loot Hacker, the last live since Sep 10). Exact in-game ability not fully documented here yet.',
@@ -216,16 +216,16 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Mega Man collab (Capcom), internal codename “ImprovedSlide” (his signature slide). Live now; exact in-game ability not fully documented here yet, and additional finishes may follow.',
     variants: { normal: R } },
   { id: 'squibbly', name: 'Squibbly', icon: '🫧', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — Squibbly, which appears to support multiple special variants. Leaked ability: fishes up a Fishing Hole when you dive into water. Still in the files, not yet obtainable; ability details are leak-only and rarity is TBC. (Krowe & FNBRIntel · The Click)',
+    ability: 'Unreleased Season 4 “Override” Sprite — Squibbly, which appears to support multiple special variants. Leaked ability: fishes up a Fishing Hole when you dive into water. Still unreleased, not yet obtainable; ability details are leak-only and rarity is TBC. (Krowe & FNBRIntel · The Click)',
     variants: { normal: U } },
   { id: 'cube', name: 'Cube', icon: '🟪', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — the Cube (Kevin). Found in the C7S4 files but not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
+    ability: 'Unreleased Season 4 “Override” Sprite — the Cube (Kevin). Spotted ahead of release but not yet obtainable; ability & rarity TBC. (Krowe & FNBRIntel)',
     variants: { normal: U } },
   { id: 'headshot', name: 'Head Shot', icon: '🔻', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Season 4 “Override” Sprite — “Head Shot”. Reappears in the v42.20 files (Sep 17); its in-game ability & rarity still aren’t detailed by Epic — TBC. (Datamine: FireMonkey / Vice; earlier: Krowe & FNBRIntel.)',
+    ability: 'Unreleased Season 4 “Override” Sprite — “Head Shot”. Reappears in the v42.20 update (Sep 17); its in-game ability & rarity still aren’t detailed by Epic — TBC. (Reported by FireMonkey / Vice; earlier: Krowe & FNBRIntel.)',
     variants: { normal: U } },
 
-  // ---- Third datamine wave — the v42.20 update (Sep 17) added files for 42 new
+  // ---- Third leak wave — the v42.20 update (Sep 17) added files for 42 new
   //   Sprites, entries (the new Bounty Hunter finish + 5 brand-new base Sprites).
   //   Epic ships them GRADUALLY over the following weeks, so everything here stays
   //   unreleased/rumored (no `releaseDate`) until each variant actually goes live —
@@ -233,7 +233,7 @@ export const SPRITE_TYPES = [
   //   base Sprites below carry the abilities Epic detailed in the update; the rest
   //   of the wave is the Bounty Hunter finish added to already-listed Sprites
   //   above (see `bountyhunter: U`). Rarities aren't published yet — Epic tier TBC.
-  //   (Datamine: FireMonkey / Vice.) ----
+  //   (Reported by FireMonkey / Vice.) ----
   { id: 'morgana', name: 'Morgana', icon: '🐈‍⬛', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-24', gen: 'c7s4',
     ability: 'Persona 5 collab (Epic). Increases the effectiveness of healing items, with healing effectiveness rising each level up. Live since Sep 24 (New Sprite Day) in all five finishes — Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R } },
@@ -247,13 +247,13 @@ export const SPRITE_TYPES = [
     ability: 'Pac-Man collab (Blinky, the red ghost). Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes, with its Bounty Hunter finish added Sep 24. Found in the world at nighttime. Ability: grants a temporary cloak when you take damage; cloak duration rises with each level up.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
   { id: 'phasedash', name: 'Phase Dash', icon: '💨', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined in the v42.20 update (Sep 17) — only a Normal finish appears in the files so far, and its in-game ability & rarity aren’t detailed yet. TBC. (Datamine: FireMonkey / Vice.)',
+    ability: 'Unreleased in the v42.20 update (Sep 17) — only a Normal finish has surfaced so far, and its in-game ability & rarity aren’t detailed yet. TBC. (Reported by FireMonkey / Vice.)',
     variants: { normal: U } },
   { id: 'vampire', name: 'Vampire', icon: '🧛', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Sprite — looks like a Fortnitemares (Halloween) addition, expected to go live with the event on Oct 1. Leaked ability: converts a portion of the damage you deal into siphoned white Health, scaling from ~10% at Level 1 up to ~50% at max level. Leak-only — Epic hasn’t confirmed it, and its rarity, variants & release date are all TBC. (Datamine via Techtroduce / Vice.)',
+    ability: 'Unreleased Sprite — looks like a Fortnitemares (Halloween) addition, expected to go live with the event on Oct 1. Leaked ability: converts a portion of the damage you deal into siphoned white Health, scaling from ~10% at Level 1 up to ~50% at max level. Leak-only — Epic hasn’t confirmed it, and its rarity, variants & release date are all TBC. (Reported by Techtroduce / Vice.)',
     variants: { normal: U } },
   { id: 'pumpkin', name: 'Pumpkin', icon: '🎃', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Datamined Sprite — a jack-o’-lantern, the other half of the Fortnitemares pair with the Vampire, expected to go live with the event on Oct 1. Leaked ability: over time it grows you a Pumpkin Head that protects you from headshot damage. Leak-only — Epic hasn’t confirmed it, and its rarity, variants & release date are all TBC. (Datamine via Vice.)',
+    ability: 'Unreleased Sprite — a jack-o’-lantern, the other half of the Fortnitemares pair with the Vampire, expected to go live with the event on Oct 1. Leaked ability: over time it grows you a Pumpkin Head that protects you from headshot damage. Leak-only — Epic hasn’t confirmed it, and its rarity, variants & release date are all TBC. (Reported by Vice.)',
     variants: { normal: U } },
 ]
 
@@ -406,7 +406,7 @@ export function buildSpriteList() {
         // back to generated SVG if the file is missing.
         // `import.meta.env` is undefined under plain Node (the prerender script
         // imports this module directly), so fall back to a root base path there.
-        // Season 4 "Override" art ships as .webp (datamined assets); the Season 3
+        // Season 4 "Override" art ships as .webp (leaked assets); the Season 3
         // roster is .png. SpriteArt falls back to generated vector art either way.
         image: `${import.meta.env?.BASE_URL ?? '/'}sprites/${type.id}_${themeId}.${type.gen === 'c7s4' ? 'webp' : 'png'}`,
         // Leaked/unconfirmed: either the whole sprite is rumored, or it's a

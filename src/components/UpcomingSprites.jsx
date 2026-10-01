@@ -11,7 +11,7 @@ const daysAway = (d) => {
   return Math.round((Date.UTC(y, m - 1, day) - today) / 86400000)
 }
 const countdown = (d) => {
-  if (!d) return 'Datamined · TBA'
+  if (!d) return 'Unreleased · TBA'
   const n = daysAway(d)
   if (n > 1) return `in ${n} days`
   if (n === 1) return 'Tomorrow'
@@ -39,7 +39,7 @@ export default function UpcomingSprites({ onOpen }) {
         <h3 className="font-display text-lg text-white">🔮 Upcoming &amp; leaked</h3>
         <span className="rounded bg-amber-400/15 px-1.5 py-0.5 text-[9px] font-bold uppercase text-amber-300">Rumored</span>
       </div>
-      <p className="mt-1 text-[11px] text-[var(--muted)]">Datamined / leaked — dates &amp; details aren’t confirmed by Epic.</p>
+      <p className="mt-1 text-[11px] text-[var(--muted)]">Unreleased / leaked — dates &amp; details aren’t confirmed by Epic.</p>
       <div className="mt-3 flex flex-col gap-2">
         {rows.map(({ t, sprite }) => (
           <button

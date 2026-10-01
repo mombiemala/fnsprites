@@ -6,6 +6,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 1, 2026',
+    title: 'Tidier top status bar + plainer wording',
+    changes: [
+      { tag: 'Changed', text: 'The top-of-page status card now collapses when nothing’s happening — it drops the generic “weekly events” filler line and hides entirely when there’s no live event, new code, or upcoming drop, so it stops taking up space.' },
+      { tag: 'Changed', text: 'Swapped internal/technical wording across the site (“datamined”, “in the files”, etc.) for plain player language — “leaked”, “unreleased”, “ahead of release”.' },
+    ],
+    summary: 'Collapsed the top status bar when idle, and replaced internal jargon with plain wording.',
+    why: 'The top bar ate screen space even with nothing active, and terms like “datamined” read as internal jargon — both changes make the page cleaner and friendlier to read.',
+  },
+  {
     date: 'September 29, 2026',
     title: 'Chapter 8 estimate moved to ~Nov 28 (Epic Trello roadmap)',
     changes: [
@@ -16,12 +26,12 @@ export const CHANGELOG = [
   },
   {
     date: 'September 29, 2026',
-    title: 'Fortnitemares Sprites datamined — Pumpkin & Vampire (Oct 1)',
+    title: 'Fortnitemares Sprites leaked — Pumpkin & Vampire (Oct 1)',
     changes: [
-      { tag: 'Added', text: 'Added the datamined Pumpkin (jack-o’-lantern) Sprite to the roster as rumored, alongside the existing Vampire — both expected to headline Fortnitemares when it goes live Oct 1. Leaked powers: Pumpkin grows a Pumpkin Head that blocks headshot damage; Vampire siphons up to ~50% of the damage you deal back as white Health. Both are flagged datamined (they don’t count toward your total), have placeholder art, a Coming Oct 1 badge, and a leak-labelled News post.' },
+      { tag: 'Added', text: 'Added the leaked Pumpkin (jack-o’-lantern) Sprite to the roster as rumored, alongside the existing Vampire — both expected to headline Fortnitemares when it goes live Oct 1. Leaked powers: Pumpkin grows a Pumpkin Head that blocks headshot damage; Vampire siphons up to ~50% of the damage you deal back as white Health. Both are flagged as leaks (they don’t count toward your total), have placeholder art, a Coming Oct 1 badge, and a leak-labelled News post.' },
     ],
-    summary: 'Added the datamined Fortnitemares Sprites (Pumpkin + Vampire) with their leaked powers, ahead of Oct 1.',
-    why: 'Vice’s datamine gives credible names and powers for the Halloween pair, so they go in as clearly-labelled leaks now (with a Coming Oct 1 badge) and will flip to released with real art the moment they’re obtainable — keeping the “datamined vs live” line honest.',
+    summary: 'Added the leaked Fortnitemares Sprites (Pumpkin + Vampire) with their leaked powers, ahead of Oct 1.',
+    why: 'Vice’s leak gives credible names and powers for the Halloween pair, so they go in as clearly-labelled leaks now (with a Coming Oct 1 badge) and will flip to released with real art the moment they’re obtainable — keeping the “leaked vs live” line honest.',
   },
   {
     date: 'September 28, 2026',
@@ -98,7 +108,7 @@ export const CHANGELOG = [
       { tag: 'Changed', text: 'Heads-up feed trimmed to the last piece of the wave — the Birthday Sprite (Rare), reported for Sat Sep 26.' },
     ],
     summary: 'Flipped the Bounty Hunter finish and Morgana live for New Sprite Day (Sep 24); Birthday follows Sep 26.',
-    why: 'Vice confirmed the 9 AM ET drop (17 Bounty Hunter variants + Morgana = 22 new). The finish released roster-wide on one date, so it’s date-gated via FORM_RELEASE rather than 17 hand flips — which also keeps it correctly gated on the still-unreleased Birthday until that Sprite goes live Saturday. Official datamined art was already in place, so everything renders immediately.',
+    why: 'Vice confirmed the 9 AM ET drop (17 Bounty Hunter variants + Morgana = 22 new). The finish released roster-wide on one date, so it’s date-gated via FORM_RELEASE rather than 17 hand flips — which also keeps it correctly gated on the still-unreleased Birthday until that Sprite goes live Saturday. Official leaked art was already in place, so everything renders immediately.',
   },
   {
     date: 'September 22, 2026',
@@ -145,16 +155,16 @@ export const CHANGELOG = [
       { tag: 'Changed', text: 'Refined the v42.20 heads-up: the Birthday Sprite is now noted for Sat Sep 26, and the Coming-up card reflects that the Bounty Hunter Crown is already live while the rest of the finish rolls out over the week.' },
     ],
     summary: 'Marked the Bounty Hunter Crown live (we’d missed it) and tidied the v42.20 rollout dates.',
-    why: 'Epic staggered the Bounty Hunter finish — the Crown dropped first (Sep 17, via a Loot Hacker Crown win) while the rest stays datamined. Per-variant gating lets us flip just the Crown live without releasing the whole finish, so the roster matches exactly what’s obtainable in-game.',
+    why: 'Epic staggered the Bounty Hunter finish — the Crown dropped first (Sep 17, via a Loot Hacker Crown win) while the rest stays leaked. Per-variant gating lets us flip just the Crown live without releasing the whole finish, so the roster matches exactly what’s obtainable in-game.',
   },
   {
     date: 'September 20, 2026',
     title: 'Heads-up card — Fortnitemares 2026 (~Oct 1)',
     changes: [
-      { tag: 'Added', text: 'A “Fortnitemares 2026” card in the Coming-up heads-up feed, dated ~Oct 1 (leak). Notes the leaked Five Nights at Freddy’s & Black Clover crossovers, Horde Rush’s return, and spooky new Loot Hack items — and ties to the already-datamined Vampire Sprite, which now shows a “Coming ~Oct 1” badge.' },
+      { tag: 'Added', text: 'A “Fortnitemares 2026” card in the Coming-up heads-up feed, dated ~Oct 1 (leak). Notes the leaked Five Nights at Freddy’s & Black Clover crossovers, Horde Rush’s return, and spooky new Loot Hack items — and ties to the already-leaked Vampire Sprite, which now shows a “Coming ~Oct 1” badge.' },
     ],
     summary: 'Added a Fortnitemares (~Oct 1) heads-up so the Halloween event — the next big thing after this week’s New Sprite Day — is on the radar, with the Vampire Sprite linked to it.',
-    why: 'Fortnitemares is an annual, near-certain event and it’s where the datamined Vampire Sprite most likely lands, so surfacing it early helps collectors plan Dust spending before the season winds down. It’s a leaked date (HYPEX/Dexerto/Vice), so it uses the “~” estimate convention and stays clearly leak-labelled; the daily & Season 5 watches firm it up as Epic confirms.',
+    why: 'Fortnitemares is an annual, near-certain event and it’s where the leaked Vampire Sprite most likely lands, so surfacing it early helps collectors plan Dust spending before the season winds down. It’s a leaked date (HYPEX/Dexerto/Vice), so it uses the “~” estimate convention and stays clearly leak-labelled; the daily & Season 5 watches firm it up as Epic confirms.',
   },
   {
     date: 'September 20, 2026',
@@ -194,12 +204,12 @@ export const CHANGELOG = [
   },
   {
     date: 'September 19, 2026',
-    title: 'New datamined Sprite — Vampire (likely Fortnitemares)',
+    title: 'New leaked Sprite — Vampire (likely Fortnitemares)',
     changes: [
-      { tag: 'Added', text: 'A datamined “Vampire” Sprite added to the roster as rumored/upcoming (it won’t count toward your total). Leaked ability: converts a portion of the damage you deal into siphoned white Health, scaling from ~10% at Level 1 to ~50% at max. Ships with a stylised placeholder until official art surfaces, plus a labelled leak entry in the News feed.' },
+      { tag: 'Added', text: 'A leaked “Vampire” Sprite added to the roster as rumored/upcoming (it won’t count toward your total). Leaked ability: converts a portion of the damage you deal into siphoned white Health, scaling from ~10% at Level 1 to ~50% at max. Ships with a stylised placeholder until official art surfaces, plus a labelled leak entry in the News feed.' },
     ],
-    summary: 'Added the newly-datamined Vampire Sprite — a likely Fortnitemares (Halloween) addition — as a clearly-labelled leak.',
-    why: 'A fresh datamine surfaced a Vampire Sprite that fits the ~Oct 1 Fortnitemares timing. It’s leak-only (Epic hasn’t confirmed it), so it goes in as rumored/datamined with a source, never counted toward completion — the daily watch will flip it live with real art the moment it’s actually obtainable.',
+    summary: 'Added the newly-leaked Vampire Sprite — a likely Fortnitemares (Halloween) addition — as a clearly-labelled leak.',
+    why: 'A fresh leak surfaced a Vampire Sprite that fits the ~Oct 1 Fortnitemares timing. It’s leak-only (Epic hasn’t confirmed it), so it goes in as rumored/leaked with a source, never counted toward completion — the daily watch will flip it live with real art the moment it’s actually obtainable.',
   },
   {
     date: 'September 18, 2026',
@@ -227,7 +237,7 @@ export const CHANGELOG = [
       { tag: 'Added', text: 'A “Coming Sep 24” heads-up (and a countdown on the top card) for the rest of the v42.20 wave — the Morgana and Birthday Sprites and the whole Bounty Hunter finish — which reports peg to next Thursday’s New Sprite Day. Those cards now show a “~Sep 24” badge.' },
     ],
     summary: 'Added a dated heads-up for the next drop (Morgana, Birthday and Bounty Hunter, reported for Sep 24) so you can see exactly what’s coming and when.',
-    why: 'The date is from Vice/dataminers rather than an official Epic post, so it’s marked as an estimate (the “~” convention) — solid enough to plan around without over-claiming. The daily watch flips each one live the moment it’s actually obtainable.',
+    why: 'The date is from Vice/leakers rather than an official Epic post, so it’s marked as an estimate (the “~” convention) — solid enough to plan around without over-claiming. The daily watch flips each one live the moment it’s actually obtainable.',
   },
   {
     date: 'September 17, 2026',
@@ -246,14 +256,14 @@ export const CHANGELOG = [
     date: 'September 17, 2026',
     title: 'Official art for the v42.20 Sprites + the Bounty Hunter finish, and a “Newest” sort',
     changes: [
-      { tag: 'Added', text: 'Official datamined art for the new Sprites — Crash Bandicoot, Blinky, Pond, Morgana and Birthday now show their real icons in every finish (Normal, Gold, Loot Hacker, Cheat Master), replacing the placeholder art.' },
+      { tag: 'Added', text: 'Official leaked art for the new Sprites — Crash Bandicoot, Blinky, Pond, Morgana and Birthday now show their real icons in every finish (Normal, Gold, Loot Hacker, Cheat Master), replacing the placeholder art.' },
       { tag: 'Added', text: 'Official Bounty Hunter art for 20 Sprites (Sonic, Tails, Shadow, Klombo, Jonesy, Killswitch, Adventure, Bush Ranger, Storm Scout, Crown, 8-Bit, Jazz, Overshield, X-Ray, Onigiri, Pond, Blinky, Crash Bandicoot, Morgana, Birthday) — so the upcoming Bounty Hunter cards show the real icon instead of a placeholder.' },
       { tag: 'Added', text: 'A new “Newest (release date)” sort on the collection — the most recently released Sprites float to the top, so drop-day additions are easy to find.' },
       { tag: 'Added', text: 'Six more lobby codes now that they’re confirmed live: NOCTURNEOP55N1 & DestinyAwaits (Extraction Accelerators / Llama Drops), ChatFindAnotherCode & NoProLlama, PlayToLevelUp (2,000 Dust) and SAYH12WR1X3L (Wrixel’s Hero Portrait Spray).' },
-      { tag: 'Fixed', text: 'The datamined “BodySlam” entry turned out to be Crash Bandicoot’s internal codename (his spin attack), not a separate Sprite — merged it into Crash so it’s no longer double-listed.' },
+      { tag: 'Fixed', text: 'The leaked “BodySlam” entry turned out to be Crash Bandicoot’s internal codename (his spin attack), not a separate Sprite — merged it into Crash so it’s no longer double-listed.' },
     ],
     summary: 'The just-dropped Sprites (Crash Bandicoot included) now use Epic’s real art, the whole Bounty Hunter finish is pre-loaded with official icons, and you can sort the collection by newest release.',
-    why: 'We had stylised placeholders since drop day; swapping in the official datamined art makes the board look finished. Loading the Bounty Hunter icons now (even though the finish isn’t obtainable yet) means the moment it goes live the cards are already correct. The “Newest” sort answers the most common drop-week question — “what just came out?” — using only the release dates we actually know (undated Sprites fall to the bottom rather than guessing).',
+    why: 'We had stylised placeholders since drop day; swapping in the official leaked art makes the board look finished. Loading the Bounty Hunter icons now (even though the finish isn’t obtainable yet) means the moment it goes live the cards are already correct. The “Newest” sort answers the most common drop-week question — “what just came out?” — using only the release dates we actually know (undated Sprites fall to the bottom rather than guessing).',
   },
   {
     date: 'September 17, 2026',
@@ -262,7 +272,7 @@ export const CHANGELOG = [
       { tag: 'Added', text: 'Stylised placeholder art for the new v42.20 Sprites — Crash Bandicoot, Blinky, Morgana, Birthday and Phase Dash — plus a distinct look for the new Bounty Hunter finish. Crash and Blinky were showing a generic blob since they went live this morning; now every new Sprite has a recognisable card until Epic’s official art is added.' },
     ],
     summary: 'The just-dropped (and upcoming) v42.20 Sprites now render proper stylised placeholder art instead of a generic shape, so the board looks right the moment each one goes live.',
-    why: 'Our art fallback only draws a per-character motif for Sprites it has a design for, so brand-new ones fell back to a plain blob. Adding original stylised motifs (colour + a simple shape that reads as the character — never a copy of the real IP art or an AI likeness, same approach as Peely/Batman) keeps the tracker looking finished on drop day. Real datamined art replaces these automatically once the image files are added.',
+    why: 'Our art fallback only draws a per-character motif for Sprites it has a design for, so brand-new ones fell back to a plain blob. Adding original stylised motifs (colour + a simple shape that reads as the character — never a copy of the real IP art or an AI likeness, same approach as Peely/Batman) keeps the tracker looking finished on drop day. Real leaked art replaces these automatically once the image files are added.',
   },
   {
     date: 'September 17, 2026',
@@ -274,19 +284,19 @@ export const CHANGELOG = [
       { tag: 'Changed', text: 'Added a New Sprite Day news post + top-of-page announcement, and marked the Sep 17 event live.' },
     ],
     summary: 'v42.20 shipped: Crash Bandicoot, Blinky and Pond are collectible now (with Gold/Loot Hacker/Cheat Master), a new Loot Hack rotation is live, and a fresh 5,000-Dust code dropped.',
-    why: 'Of the 42 datamined Sprites, Epic only made 13 obtainable at launch (the three new characters + their finishes) and is holding the Bounty Hunter finish, Morgana and Birthday for the following weeks. We flip only what’s actually obtainable and keep the rest datamined/upcoming, so the tracker never over-claims. Official art for the new Sprites isn’t out yet, so they use our generated placeholder art until the assets land.',
+    why: 'Of the 42 leaked Sprites, Epic only made 13 obtainable at launch (the three new characters + their finishes) and is holding the Bounty Hunter finish, Morgana and Birthday for the following weeks. We flip only what’s actually obtainable and keep the rest leaked/upcoming, so the tracker never over-claims. Official art for the new Sprites isn’t out yet, so they use our generated placeholder art until the assets land.',
   },
   {
     date: 'September 16, 2026',
-    title: 'v42.20 datamine — 42 new Sprites, a Bounty Hunter finish, 5 new Sprites',
+    title: 'v42.20 leak — 42 new Sprites, a Bounty Hunter finish, 5 new Sprites',
     changes: [
-      { tag: 'Added', text: 'A new “Bounty Hunter” finish (Season 4 “Override”), datamined in the v42.20 update. In-game it gives a chance to find Sprites when you eliminate opponents, and it only earns Sprite XP from eliminations — so it levels by fighting rather than from chests. It’s on the 15 already-live Override Sprites plus Pond and the new arrivals below, all marked datamined/upcoming.' },
-      { tag: 'Added', text: 'Five brand-new base Sprites with their datamined abilities: Pond (Design-a-Sprite winner — a Super Jump when you jump shortly after landing), Morgana (Persona 5 — boosts healing-item effectiveness), Crash Bandicoot (a whirlwind attack when you jump in the air), Blinky (Pac-Man’s red ghost — a cloak when you take damage at night) and Birthday (chests can spawn cake). Pond also picked up its confirmed finish set.' },
-      { tag: 'Changed', text: 'Pond now shows its confirmed v42.20 ability (Super Jump) instead of the older “egg → frog” design concept, and the datamined “Headshot” Sprite is renamed to its proper name, “Head Shot”.' },
-      { tag: 'Added', text: 'A News item and a refreshed Sep 17 New Sprite Day event card covering the wave, both clearly labelled datamine (Vice / FireMonkey).' },
+      { tag: 'Added', text: 'A new “Bounty Hunter” finish (Season 4 “Override”), leaked in the v42.20 update. In-game it gives a chance to find Sprites when you eliminate opponents, and it only earns Sprite XP from eliminations — so it levels by fighting rather than from chests. It’s on the 15 already-live Override Sprites plus Pond and the new arrivals below, all marked leaked/upcoming.' },
+      { tag: 'Added', text: 'Five brand-new base Sprites with their leaked abilities: Pond (Design-a-Sprite winner — a Super Jump when you jump shortly after landing), Morgana (Persona 5 — boosts healing-item effectiveness), Crash Bandicoot (a whirlwind attack when you jump in the air), Blinky (Pac-Man’s red ghost — a cloak when you take damage at night) and Birthday (chests can spawn cake). Pond also picked up its confirmed finish set.' },
+      { tag: 'Changed', text: 'Pond now shows its confirmed v42.20 ability (Super Jump) instead of the older “egg → frog” design concept, and the leaked “Headshot” Sprite is renamed to its proper name, “Head Shot”.' },
+      { tag: 'Added', text: 'A News item and a refreshed Sep 17 New Sprite Day event card covering the wave, both clearly labelled leak (Vice / FireMonkey).' },
     ],
-    summary: 'The Sep 17 (v42.20) update datamined 42 new Sprites — a third Override finish (Bounty Hunter) and five new base Sprites (Pond, Morgana, Crash Bandicoot, Blinky, Birthday) — all added to the roster as datamined/upcoming.',
-    why: 'Epic adds all the files in one update but releases the variants gradually over the following weeks, so everything is added as datamined/rumored (it doesn’t count toward your total) and will flip to live per-drop — the same wave handling we use for Cube/Holofoil/Loot Hacker. Getting the roster in early lets collectors see exactly what’s coming and plan, while keeping our verified-only discipline: only the abilities Epic detailed are shown, everything else is marked TBC.',
+    summary: 'The Sep 17 (v42.20) update leaked 42 new Sprites — a third Override finish (Bounty Hunter) and five new base Sprites (Pond, Morgana, Crash Bandicoot, Blinky, Birthday) — all added to the roster as leaked/upcoming.',
+    why: 'Epic adds all the files in one update but releases the variants gradually over the following weeks, so everything is added as leaked/rumored (it doesn’t count toward your total) and will flip to live per-drop — the same wave handling we use for Cube/Holofoil/Loot Hacker. Getting the roster in early lets collectors see exactly what’s coming and plan, while keeping our verified-only discipline: only the abilities Epic detailed are shown, everything else is marked TBC.',
   },
   {
     date: 'September 15, 2026',
@@ -301,7 +311,7 @@ export const CHANGELOG = [
     date: 'September 15, 2026',
     title: 'New: a Fortnitemares 2026 hub (Halloween leaks, clearly labelled)',
     changes: [
-      { tag: 'Added', text: 'A dedicated /fortnitemares page rounding up everything known about Fortnite’s Halloween event: the estimated start (~Oct 1), the datamined Trick-or-Treat Sprite finish, the reported FNAF and Ghostface crossovers, Halloween Loot Hacks and map changes — each tagged Leak or Rumor, since Epic hasn’t announced it yet. It links into the checklist, codes and Loot Hacks so you can get ready.' },
+      { tag: 'Added', text: 'A dedicated /fortnitemares page rounding up everything known about Fortnite’s Halloween event: the estimated start (~Oct 1), the leaked Trick-or-Treat Sprite finish, the reported FNAF and Ghostface crossovers, Halloween Loot Hacks and map changes — each tagged Leak or Rumor, since Epic hasn’t announced it yet. It links into the checklist, codes and Loot Hacks so you can get ready.' },
       { tag: 'Fixed', text: 'Removed a stray “Confirmed & dated only — hover for details” caption under the “Coming up” chips on the top card; it didn’t make sense there.' },
     ],
     summary: 'A Halloween landing page for Fortnitemares 2026 — the biggest Fortnite search spike of the season — with every leak honestly labelled.',
@@ -338,11 +348,11 @@ export const CHANGELOG = [
     date: 'September 13, 2026',
     title: 'Content accuracy pass — Cheatmaster finish no longer reads as “unconfirmed”',
     changes: [
-      { tag: 'Fixed', text: 'The Cheatmaster finish description still said its bonus was “not yet confirmed by Epic (datamined)” — left over from before launch. It’s been live all season, so it now correctly reads as the Season 4 “Override” premium finish: unlocked per-Sprite by a specific Hack the Lobby code, cosmetic (keeps the Sprite’s base ability).' },
+      { tag: 'Fixed', text: 'The Cheatmaster finish description still said its bonus was “not yet confirmed by Epic (leaked)” — left over from before launch. It’s been live all season, so it now correctly reads as the Season 4 “Override” premium finish: unlocked per-Sprite by a specific Hack the Lobby code, cosmetic (keeps the Sprite’s base ability).' },
       { tag: 'Fixed', text: 'Cleaned up leftover “leaked / unconfirmed until Epic’s patch notes” wording on Season 3 collab Sprites (John Wick, Air) that have long since shipped and are now archived — their descriptions now say so plainly.' },
     ],
     summary: 'Swept the roster and finishes for stale pre-launch “leaked/unconfirmed” copy and corrected it to match what’s actually live.',
-    why: 'Some hand-written descriptions were written while a finish or Sprite was still datamined, and the release logic outran the prose — so live content still read as speculative. A quick audit caught the Cheatmaster finish (the most visible one) plus a few archived Season 3 collabs; the counts and release flags were already correct, this was just wording.',
+    why: 'Some hand-written descriptions were written while a finish or Sprite was still leaked, and the release logic outran the prose — so live content still read as speculative. A quick audit caught the Cheatmaster finish (the most visible one) plus a few archived Season 3 collabs; the counts and release flags were already correct, this was just wording.',
   },
   {
     date: 'September 13, 2026',
@@ -455,7 +465,7 @@ export const CHANGELOG = [
     date: 'September 12, 2026',
     title: 'Content audit — Loot Hacker prose caught up to live',
     changes: [
-      { tag: 'Fixed', text: 'A site-wide accuracy pass found several hand-written descriptions still calling the Loot Hacker finish “datamined / not released yet” even though it went live Sep 10. Fixed on the Onigiri, X-Ray, Adventure and Overshield Sprite pages, in the in-app “How Sprites work” guide, and in a stale code note — Loot Hacker now reads as live everywhere (the release flags were already correct).' },
+      { tag: 'Fixed', text: 'A site-wide accuracy pass found several hand-written descriptions still calling the Loot Hacker finish “leaked / not released yet” even though it went live Sep 10. Fixed on the Onigiri, X-Ray, Adventure and Overshield Sprite pages, in the in-app “How Sprites work” guide, and in a stale code note — Loot Hacker now reads as live everywhere (the release flags were already correct).' },
       { tag: 'Changed', text: 'The Sep 12 Power Hours item now reads “today” (it was still tagged upcoming).' },
     ],
     summary: 'Swept the whole site so every mention of the Loot Hacker finish matches reality (it’s live).',
@@ -504,7 +514,7 @@ export const CHANGELOG = [
     date: 'September 11, 2026',
     title: 'Currency pass — docs, tagline & this weekend’s Power Hours',
     changes: [
-      { tag: 'Changed', text: 'Brought the README current with everything shipped this week: the Loot Hacker finish is live (no longer “datamined/unreleased”), the new Friends + trade-matcher and Loot Hacks tracker are documented, and the database section now lists the friends table and the new RPCs.' },
+      { tag: 'Changed', text: 'Brought the README current with everything shipped this week: the Loot Hacker finish is live (no longer “leaked/unreleased”), the new Friends + trade-matcher and Loot Hacks tracker are documented, and the database section now lists the friends table and the new RPCs.' },
       { tag: 'Changed', text: 'The header tagline (in-app and on the SEO pages) no longer hard-codes “v42.10 · Sep 3” — the static pages now self-date to the build so they never go stale.' },
       { tag: 'Added', text: 'This weekend’s event is detailed: Power Hours Sat, Sep 12 (2–4 PM & 9–11 PM ET) — boosted Gold & Cheat Master spawns, supercharged Overdrive, plus the Cheat Master Storm Scout & Gold Onigiri variants joining the island. Announcement banner added.' },
     ],
@@ -577,11 +587,11 @@ export const CHANGELOG = [
     title: 'Loot Hacker finishes are live (New Sprites Day)',
     changes: [
       { tag: 'Added', text: 'The Sep 10 update added the Loot Hacker “Override” finish to the loot pool — 14 new Loot Hacker Sprite variants (15 incl. the already-out Crown) are now marked released across Klombo, Jackrabbit, Killswitch, Tails, Sonic, Shadow, 8-Bit, Bush Ranger, Adventure, Jonesy, Storm Scout, X-Ray, Onigiri and Overshield. The released-variant count moves from 164 to 179.' },
-      { tag: 'Changed', text: 'The Loot Hacker theme is no longer flagged as a rumor/datamine, and its perk is now confirmed: holding a Loot Hacker Sprite gives a +20% (1.2×) chance of Loot Hack items from Chests.' },
+      { tag: 'Changed', text: 'The Loot Hacker theme is no longer flagged as a rumor/leak, and its perk is now confirmed: holding a Loot Hacker Sprite gives a +20% (1.2×) chance of Loot Hack items from Chests.' },
       { tag: 'Changed', text: 'The “New Sprites Day” News item now reads as live, listing the finishes that dropped.' },
     ],
     summary: 'Loot Hacker went live — 14 new finishes flipped to released (15 with Crown), theme perk confirmed.',
-    why: 'These were tracked as datamined/unreleased for parity; the moment Epic shipped them we flip them to released so the roster, counts and per-Sprite pages match what players actually see in game.',
+    why: 'These were tracked as leaked/unreleased for parity; the moment Epic shipped them we flip them to released so the roster, counts and per-Sprite pages match what players actually see in game.',
   },
   {
     date: 'September 10, 2026',
@@ -607,7 +617,7 @@ export const CHANGELOG = [
     date: 'September 10, 2026',
     title: 'News: Halloween Sprite leak (Fortnitemares 2026)',
     changes: [
-      { tag: 'Added', text: 'A News item on the datamined Halloween “Trick or Treat” Sprite variant tied to Fortnitemares 2026 (~Oct 1) — clearly flagged as an unconfirmed leak, with a source link. We’ll add it to the roster if/when Epic confirms it.' },
+      { tag: 'Added', text: 'A News item on the leaked Halloween “Trick or Treat” Sprite variant tied to Fortnitemares 2026 (~Oct 1) — clearly flagged as an unconfirmed leak, with a source link. We’ll add it to the roster if/when Epic confirms it.' },
     ],
     summary: 'A heads-up on the leaked Halloween Sprite, labelled as a rumor with its source.',
     why: 'Players are already asking about a Halloween Sprite; surfacing the leak (clearly marked unofficial, with a source) answers the question early without treating it as fact.',
@@ -681,7 +691,7 @@ export const CHANGELOG = [
     date: 'September 6, 2026',
     title: 'Cheat Master Sprites hub',
     changes: [
-      { tag: 'Added', text: 'A “Cheat Master Sprites” page (in Guides, and at /cheat-master-sprites) listing every Sprite with a Cheat Master finish — which are live vs datamined, the exact code that unlocks each (tap to copy), and a link to every Sprite. Kept in sync with the roster automatically.' },
+      { tag: 'Added', text: 'A “Cheat Master Sprites” page (in Guides, and at /cheat-master-sprites) listing every Sprite with a Cheat Master finish — which are live vs leaked, the exact code that unlocks each (tap to copy), and a link to every Sprite. Kept in sync with the roster automatically.' },
     ],
     summary: 'One place to see every Cheat Master Sprite and how to unlock it — live now vs coming, with copy-ready codes.',
     why: '“Cheat Master Sprites” is one of the most-searched Season 4 terms, and the info was scattered across the codes list and individual Sprites. A single hub answers it directly, gives players a copy-a-code shortcut, and links out to each Sprite and the codes page.',
@@ -701,7 +711,7 @@ export const CHANGELOG = [
     date: 'September 6, 2026',
     title: 'Per-Sprite “How to get” sections',
     changes: [
-      { tag: 'Added', text: 'Every Sprite page now has a tailored “How to get” block instead of a one-liner. Override Sprites show the exact Hack the Lobby code and steps (plus Cheat-Code farming and which finishes are live vs datamined); archived Season 3 Sprites explain they’re kept in your Garden but no longer droppable, with their final drop rate; and upcoming Sprites show their expected date. Each block is built from that Sprite’s own data.' },
+      { tag: 'Added', text: 'Every Sprite page now has a tailored “How to get” block instead of a one-liner. Override Sprites show the exact Hack the Lobby code and steps (plus Cheat-Code farming and which finishes are live vs leaked); archived Season 3 Sprites explain they’re kept in your Garden but no longer droppable, with their final drop rate; and upcoming Sprites show their expected date. Each block is built from that Sprite’s own data.' },
     ],
     summary: 'Clear, specific unlock instructions on every Sprite page — the right answer for that exact Sprite, whether it’s from a code, archived, or still coming.',
     why: 'Players (and search engines) ask “how do I get [Sprite]” one Sprite at a time, and a generic answer helped no one. Generating each block from the Sprite’s real data — its code, generation and finish status — makes every page genuinely useful and distinct, which is also what earns each one its own search traffic.',
@@ -751,7 +761,7 @@ export const CHANGELOG = [
       { tag: 'Changed', text: 'The header line under the logo now stamps the current build — v42.10 · Sep 3, 2026 — and the app still swaps in the live build number when it detects one.' },
     ],
     summary: 'The two newest Design-a-Sprite winners now have their Gold and Cheat Master finishes obtainable.',
-    why: 'X-Ray and Onigiri launched Sep 3 with only their Normal finish confirmed, so we’d held Gold/Cheat Master as datamined-but-unreleased; they’re now live in-game, so they’re flipped to obtainable (verified in-game and against community trackers).',
+    why: 'X-Ray and Onigiri launched Sep 3 with only their Normal finish confirmed, so we’d held Gold/Cheat Master as leaked-but-unreleased; they’re now live in-game, so they’re flipped to obtainable (verified in-game and against community trackers).',
   },
   {
     date: 'September 4, 2026',
@@ -863,11 +873,11 @@ export const CHANGELOG = [
     title: 'Sprites now work in Ranked; build number corrected to v42.10',
     changes: [
       { tag: 'Added', text: 'News item: Sprites now appear in Ranked too, with their abilities disabled to keep competition even (from Epic’s in-game news).' },
-      { tag: 'Fixed', text: 'Corrected the Sep 3 update’s build number to v42.10 (datamine-confirmed via the scout) — outlets had called it “v41.10,” which is actually the older Season 3 build. Updated the X-Ray/Onigiri sprite notes and news item accordingly.' },
+      { tag: 'Fixed', text: 'Corrected the Sep 3 update’s build number to v42.10 (leak-confirmed via the scout) — outlets had called it “v41.10,” which is actually the older Season 3 build. Updated the X-Ray/Onigiri sprite notes and news item accordingly.' },
       { tag: 'Changed', text: 'Refreshed the New Sprite Day news item — it now notes Overshield & Mega Man also went live that update, and drops the old “unnamed Knight Sprite” line (that turned out to be Overshield).' },
     ],
     summary: 'Folded in the real finds from the scout’s auto-draft — the Ranked change and the correct build number.',
-    why: 'The scout surfaced Epic’s in-game note that Sprites are now Ranked-eligible (abilities off), and the datamined build string (v42.10) settled the version outlets had wrong — both worth getting right since players make competitive and “what patch” decisions on them.',
+    why: 'The scout surfaced Epic’s in-game note that Sprites are now Ranked-eligible (abilities off), and the leaked build string (v42.10) settled the version outlets had wrong — both worth getting right since players make competitive and “what patch” decisions on them.',
   },
   {
     date: 'September 3, 2026',
@@ -887,7 +897,7 @@ export const CHANGELOG = [
       { tag: 'Added', text: 'Wired in Epic’s official Loot Hacker (blue circuit) icon for the Crown Sprite, replacing the generated fallback. Crown now has all four finish icons — Normal, Gold, Cheat Master and Loot Hacker.' },
     ],
     summary: 'The last Loot Hacker icon we were missing — Crown’s — is now the official one.',
-    why: 'Crown wasn’t in the first datamined-art batch, so its Loot Hacker finish had been showing the generated blue-circuit fallback; the real icon brings it in line with the rest of the roster.',
+    why: 'Crown wasn’t in the first leaked-art batch, so its Loot Hacker finish had been showing the generated blue-circuit fallback; the real icon brings it in line with the rest of the roster.',
   },
   {
     date: 'September 3, 2026',
@@ -895,7 +905,7 @@ export const CHANGELOG = [
     changes: [
       { tag: 'Changed', text: 'The “How Sprites work” guide now leads with the current Override season — Sprites come from in-world Cheat Codes and Hack the Lobby codes (plus chests) — and covers the two Season 4 finishes (Cheat Master, Loot Hacker). Season 3’s chest-farming is kept but framed as the archived “Runners” generation.' },
       { tag: 'Changed', text: 'The line under the logo now reads “Chapter 7 Season 4: Override” instead of the stale “v41.30 (Jul 30, 2026)” fallback (the app still shows the live build number when it can detect one).' },
-      { tag: 'Changed', text: 'Footer credits and the GitHub README are brought current — Season 4 art is Epic’s official datamined icons, and counts/roster updated (160 released variants; X-Ray, Onigiri, Overshield, Mega Man now live).' },
+      { tag: 'Changed', text: 'Footer credits and the GitHub README are brought current — Season 4 art is Epic’s official leaked icons, and counts/roster updated (160 released variants; X-Ray, Onigiri, Overshield, Mega Man now live).' },
     ],
     summary:
       'A consistency sweep for the new season — the sprite guide leads with Override, and the header, footer and README no longer reference last season.',
@@ -908,38 +918,38 @@ export const CHANGELOG = [
     changes: [
       { tag: 'Changed', text: 'Overshield flipped to released — Normal, Gold and Cheat Master are obtainable now (its Loot Hacker finish stays unreleased).' },
       { tag: 'Changed', text: 'Mega Man flipped to released (Normal finish).' },
-      { tag: 'Added', text: 'Identified the mystery hooded, eye-patched datamined icon as the Loot Hacker Adventure finish, and wired its real art in. Also filled in Adventure’s confirmed ability — “upgrades a random item in your inventory each Level Up” — and that it’s found near high, mountainous areas.' },
+      { tag: 'Added', text: 'Identified the mystery hooded, eye-patched leaked icon as the Loot Hacker Adventure finish, and wired its real art in. Also filled in Adventure’s confirmed ability — “upgrades a random item in your inventory each Level Up” — and that it’s found near high, mountainous areas.' },
       { tag: 'Fixed', text: 'Removed the placeholder “Knight” entry — the “third Sprite” some outlets described that way was just Overshield (its shield/armor look), which is already in the roster. No more phantom Sprite in the count.' },
     ],
     summary:
-      'Two datamined Sprites (Overshield, Mega Man) are confirmed obtainable and now show as released, and the last unidentified icon turned out to be Adventure’s Loot Hacker finish.',
+      'Two leaked Sprites (Overshield, Mega Man) are confirmed obtainable and now show as released, and the last unidentified icon turned out to be Adventure’s Loot Hacker finish.',
     why:
       'Cross-checked against the community tracker (Fortnite.GG): Overshield and Mega Man show without an “unreleased” flag, so they’re live. The hooded eye-patched art was “Loot Hacker Adventure,” which also handed us Adventure’s real ability — so we replaced the placeholder text with the confirmed one.',
   },
   {
     date: 'September 3, 2026',
-    title: 'New “Loot Hacker” finish added (datamined, unreleased)',
+    title: 'New “Loot Hacker” finish added (leaked, unreleased)',
     summary:
       'Added the second Override finish — Loot Hacker — across the Season 4 roster, marked unreleased, with Epic’s real icons for it.',
     changes: [
-      { tag: 'Added', text: 'A “Loot Hacker” finish (blue circuit / hologram look) alongside Normal, Gold and Cheat Master on the Chapter 7 Season 4 Sprites. It’s datamined and not yet obtainable, so every Loot Hacker variant shows as unreleased — matching community trackers.' },
+      { tag: 'Added', text: 'A “Loot Hacker” finish (blue circuit / hologram look) alongside Normal, Gold and Cheat Master on the Chapter 7 Season 4 Sprites. It’s leaked and not yet obtainable, so every Loot Hacker variant shows as unreleased — matching community trackers.' },
       { tag: 'Added', text: 'Official Loot Hacker icons for 13 Sprites (X-Ray, Onigiri, Sonic, Tails, Shadow, Jazz, Klombo, Bush Ranger, Jonesy, 8-Bit, Killswitch, Storm Scout, Overshield); the rest use a generated blue-circuit fallback until their art lands.' },
     ],
     why:
-      'Loot Hacker is a real, separate finish in the Season 4 files (distinct from the green Cheat Master), and it kept showing up in datamines. Adding it now — clearly flagged unreleased with unlock TBC — means the collection totals and variant filters already account for it, and it simply flips to “obtainable” the day Epic ships it, no scramble. How it’s unlocked isn’t confirmed yet, so we don’t assert a method.',
+      'Loot Hacker is a real, separate finish in the Season 4 files (distinct from the green Cheat Master), and it kept showing up in leaks. Adding it now — clearly flagged unreleased with unlock TBC — means the collection totals and variant filters already account for it, and it simply flips to “obtainable” the day Epic ships it, no scramble. How it’s unlocked isn’t confirmed yet, so we don’t assert a method.',
   },
   {
     date: 'September 3, 2026',
-    title: 'Official art for X-Ray & Onigiri, plus a datamined Mega Man',
+    title: 'Official art for X-Ray & Onigiri, plus a leaked Mega Man',
     summary:
-      'Dropped in Epic’s real icons for the two new Design-a-Sprite winners (they’d been on our fallback art), and added the Mega Man collab Sprite found in the files.',
+      'Dropped in Epic’s real icons for the two new Design-a-Sprite winners (they’d been on our fallback art), and added the Mega Man collab Sprite found ahead of release.',
     changes: [
-      { tag: 'Added', text: 'Official Epic icons for X-Ray and Onigiri — Normal (live) plus their datamined Gold & Cheatmaster finishes (art shown, flagged not-yet-obtainable until Epic confirms). These replace the app’s generated fallback art for both.' },
-      { tag: 'Added', text: 'Mega Man (Capcom collab) as a datamined upcoming Sprite, with its official icon — found under the internal codename “ImprovedSlide” (his signature slide). Ability & rarity TBC.' },
-      { tag: 'Added', text: 'Overshield now shows its datamined Gold & Cheatmaster finish art alongside Normal.' },
+      { tag: 'Added', text: 'Official Epic icons for X-Ray and Onigiri — Normal (live) plus their leaked Gold & Cheatmaster finishes (art shown, flagged not-yet-obtainable until Epic confirms). These replace the app’s generated fallback art for both.' },
+      { tag: 'Added', text: 'Mega Man (Capcom collab) as a leaked upcoming Sprite, with its official icon — found under the internal codename “ImprovedSlide” (his signature slide). Ability & rarity TBC.' },
+      { tag: 'Added', text: 'Overshield now shows its leaked Gold & Cheatmaster finish art alongside Normal.' },
     ],
     why:
-      'Epic’s real icons read far better than our stylized fallbacks, and X-Ray/Onigiri were the only live Sprites still on fallback art. The roster’s art pipeline already auto-uses public/sprites/<id>_<finish>.webp and falls back to vector, so this was a drop-in. Two more finds from the same datamine — a separate blue “Hacker” finish across the roster, and an unidentified hooded Sprite — are being held until they’re confirmed and named.',
+      'Epic’s real icons read far better than our stylized fallbacks, and X-Ray/Onigiri were the only live Sprites still on fallback art. The roster’s art pipeline already auto-uses public/sprites/<id>_<finish>.webp and falls back to vector, so this was a drop-in. Two more finds from the same leak — a separate blue “Hacker” finish across the roster, and an unidentified hooded Sprite — are being held until they’re confirmed and named.',
   },
   {
     date: 'September 3, 2026',
@@ -1064,22 +1074,22 @@ export const CHANGELOG = [
       { tag: 'Added', text: 'A “coming next” News item for the five Design-a-Sprite contest winners (Pond, Bullet, Honey, Dumpster Dive, X-Ray) with their as-designed abilities — the next confirmed additions, arriving in a mid-season update.' },
     ],
     why:
-      'The tracker’s job is to reflect what’s actually catchable the moment it lands. Storm Scout was pre-loaded as a datamined entry; flipping it live on New Sprite Day (rather than waiting) keeps the checklist accurate the same day players can catch it.',
+      'The tracker’s job is to reflect what’s actually catchable the moment it lands. Storm Scout was pre-loaded as a leaked entry; flipping it live on New Sprite Day (rather than waiting) keeps the checklist accurate the same day players can catch it.',
   },
   {
     date: 'August 28, 2026',
     title: 'Six more leaked Sprites + a Fortnitemares heads-up',
     summary:
-      'A fresh datamine surfaced six more Override Sprites in the files — they’re now in the tracker as unreleased, plus a news note on the Fortnitemares variant coming in October.',
+      'A fresh leak surfaced six more Override unreleased Sprites — they’re now in the tracker as unreleased, plus a news note on the Fortnitemares variant coming in October.',
     changes: [
-      { tag: 'Added', text: 'Meowscles, Overshield, Squibbly, Cube, Headshot and the “BodySlam” collab codename — six datamined Season 4 Sprites (via leakers Krowe & FNBRIntel) added as unreleased/rumored. They show in the checklist so you can see what’s coming, but don’t count toward your total until Epic ships them.' },
-      { tag: 'Added', text: 'A News item on the second datamine wave and the “TrickTreat” Sprite variant expected with Fortnitemares 2026 (Oct 1) — tagged unofficial + tentative, with a source.' },
-      { tag: 'Added', text: 'Credited two more datamine sources in the footer — Loolo (@Loolo_WRLD), a sprite-focused leaker, and Krowe — so the people whose finds feed the tracker get named.' },
+      { tag: 'Added', text: 'Meowscles, Overshield, Squibbly, Cube, Headshot and the “BodySlam” collab codename — six leaked Season 4 Sprites (via leakers Krowe & FNBRIntel) added as unreleased/rumored. They show in the checklist so you can see what’s coming, but don’t count toward your total until Epic ships them.' },
+      { tag: 'Added', text: 'A News item on the second leak wave and the “TrickTreat” Sprite variant expected with Fortnitemares 2026 (Oct 1) — tagged unofficial + tentative, with a source.' },
+      { tag: 'Added', text: 'Credited two more leak sources in the footer — Loolo (@Loolo_WRLD), a sprite-focused leaker, and Krowe — so the people whose finds feed the tracker get named.' },
       { tag: 'Added', text: 'Two Season-Transition FAQ answers from Loolo’s clarifications: mastering Sprites gives no reward this season (for now) — it still powers up abilities, and a mastery questline/Back Bling is signalled — and a Sprite only needs to be collected (any level) to appear in your Garden, not mastered.' },
       { tag: 'Added', text: 'A tentative News item flagging that Sprite Mastery rewards (a mastery questline + a new Mastery Back Bling) are leaked to return later in Override — so players wondering why maxing Sprites feels empty know rewards are coming.' },
     ],
     why:
-      'A sprite checklist is only as useful as it is current, and “what’s coming next” is exactly what collectors search for. Adding leaked Sprites as clearly-marked unreleased entries (abilities/rarity TBC, never counted as owned) keeps us ahead of the datamine cycle without overstating what’s confirmed.',
+      'A sprite checklist is only as useful as it is current, and “what’s coming next” is exactly what collectors search for. Adding leaked Sprites as clearly-marked unreleased entries (abilities/rarity TBC, never counted as owned) keeps us ahead of the leak cycle without overstating what’s confirmed.',
   },
   {
     date: 'August 27, 2026',
@@ -1159,13 +1169,13 @@ export const CHANGELOG = [
     date: 'August 22, 2026',
     title: 'Gold Jonesy code revealed + Storm Scout ability',
     summary:
-      'The Gold Jonesy code string is now public (JONESYISGOLDEN, unlocks Aug 24), and Storm Scout’s datamined ability is in.',
+      'The Gold Jonesy code string is now public (JONESYISGOLDEN, unlocks Aug 24), and Storm Scout’s leaked ability is in.',
     changes: [
       { tag: 'Added', text: 'The Gold Jonesy code JONESYISGOLDEN is now shown (copyable), with an “Aug 24” badge since it stays locked until then.' },
-      { tag: 'Added', text: 'Storm Scout’s datamined ability — Overdrive from Storm damage, and reveals upcoming Storm Circles at max level. (Still not obtainable in-game yet.)' },
+      { tag: 'Added', text: 'Storm Scout’s leaked ability — Overdrive from Storm damage, and reveals upcoming Storm Circles at max level. (Still not obtainable in-game yet.)' },
     ],
     why:
-      'Once a code string is public we show it even if it’s date-locked, so people can grab it early — the badge makes the unlock date clear. And a datamined-but-labelled ability beats “not confirmed yet.”',
+      'Once a code string is public we show it even if it’s date-locked, so people can grab it early — the badge makes the unlock date clear. And a leaked-but-labelled ability beats “not confirmed yet.”',
   },
   {
     date: 'August 22, 2026',
@@ -1434,8 +1444,8 @@ export const CHANGELOG = [
       'With Season 4 live, the new-generation Sprites moved from “Upcoming/Rumored” to released, with their real art (Normal + the new Cheatmaster finish), reference-aligned rarities, and their own pages.',
     changes: [
       { tag: 'Changed', text: '11 Override Sprites are now released — Sonic, Tails, Shadow, Jazz Jackrabbit, Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch and Adventure — each with Normal & Cheatmaster live (Gold still rolling out). Released-variant count is now 140 (was 118).' },
-      { tag: 'Fixed', text: 'Renamed the “Dwarf” datamine codename to its real name, Adventure (matching its BORN2PLAY unlock code), and corrected rarities to the live values (e.g. Sonic/Tails/Shadow are Epic, Klombo/Crown Mythic, Bush/Jonesy/8-Bit/Adventure Rare).' },
-      { tag: 'Added', text: 'Real datamined art now shows for the new Sprites everywhere (app + SEO pages use the .webp assets), and each has its own SEO page. Storm Scout and the five Design-a-Sprite winners stay Upcoming until they’re obtainable.' },
+      { tag: 'Fixed', text: 'Renamed the “Dwarf” leak codename to its real name, Adventure (matching its BORN2PLAY unlock code), and corrected rarities to the live values (e.g. Sonic/Tails/Shadow are Epic, Klombo/Crown Mythic, Bush/Jonesy/8-Bit/Adventure Rare).' },
+      { tag: 'Added', text: 'Real leaked art now shows for the new Sprites everywhere (app + SEO pages use the .webp assets), and each has its own SEO page. Storm Scout and the five Design-a-Sprite winners stay Upcoming until they’re obtainable.' },
     ],
     why:
       'Leaving the launch Sprites tagged “Soon” after the season went live would make the tracker wrong on day one. Flipping them with real art + accurate rarities (cross-checked against the live roster) is the core promise — be right the moment the game changes.',
@@ -1467,15 +1477,15 @@ export const CHANGELOG = [
     date: 'August 19, 2026',
     title: 'Season 4 “Override” Sprites — real art + their own pages 🎮',
     summary:
-      'The datamined Chapter 7 Season 4 roster is in with official art: 12 new Sprites in the cube “backpack” redesign, the new Cheatmaster finish, a page for each, and a Season tag on every Sprite.',
+      'The leaked Chapter 7 Season 4 roster is in with official art: 12 new Sprites in the cube “backpack” redesign, the new Cheatmaster finish, a page for each, and a Season tag on every Sprite.',
     changes: [
-      { tag: 'Added', text: 'Official art for the 12 datamined Override Sprites (Normal, Gold & Cheatmaster finishes): the Sonic collab — Sonic, Tails & Shadow — plus Klombo, Jonesy, Victory Crown, 8-Bit Blaster, Storm Scout, Killswitch, Bush Ranger, Jazz Jackrabbit and Dwarf. Replaces the earlier name-only placeholders (the leaked “NarrowFlea” codename turned out to be the Sonic set).' },
+      { tag: 'Added', text: 'Official art for the 12 leaked Override Sprites (Normal, Gold & Cheatmaster finishes): the Sonic collab — Sonic, Tails & Shadow — plus Klombo, Jonesy, Victory Crown, 8-Bit Blaster, Storm Scout, Killswitch, Bush Ranger, Jazz Jackrabbit and Dwarf. Replaces the earlier name-only placeholders (the leaked “NarrowFlea” codename turned out to be the Sonic set).' },
       { tag: 'Added', text: 'The new “Cheatmaster” Season 4 finish (glitch/pixel look), and a dedicated SEO page for every new Sprite (each shows Upcoming + Rumored until launch).' },
       { tag: 'Added', text: 'A “Season” tag on every Sprite page — Chapter 7 Season 3 “Runners” or Season 4 “Override” — so it’s clear which generation each belongs to.' },
-      { tag: 'Changed', text: 'Abilities and rarities for the new Sprites are still marked unconfirmed (Epic hasn’t revealed them); the art and roster are datamine-confirmed. They flip to fully released with real data at the Aug 20 launch.' },
+      { tag: 'Changed', text: 'Abilities and rarities for the new Sprites are still marked unconfirmed (Epic hasn’t revealed them); the art and roster are leak-confirmed. They flip to fully released with real data at the Aug 20 launch.' },
     ],
     why:
-      'You sent the datamined asset drop — real art beats our generated placeholders, and the internal names finally resolved the roster (e.g. “NarrowFlea” = the Sonic/Tails/Shadow set). Giving each its own page + a season tag gets the tracker ready for the Aug 20 flip and captures “Override sprites” search traffic early.',
+      'You sent the leaked asset drop — real art beats our generated placeholders, and the internal names finally resolved the roster (e.g. “NarrowFlea” = the Sonic/Tails/Shadow set). Giving each its own page + a season tag gets the tracker ready for the Aug 20 flip and captures “Override sprites” search traffic early.',
   },
   {
     date: 'August 19, 2026',
@@ -1493,10 +1503,10 @@ export const CHANGELOG = [
     date: 'August 19, 2026',
     title: 'New: a Sprites tier list 🏆 + more sources credited',
     summary:
-      'Added a dedicated tier-list page ranking every Sprite S→C by how strong its ability is, and credited the extra datamine/community sources we now cross-reference.',
+      'Added a dedicated tier-list page ranking every Sprite S→C by how strong its ability is, and credited the extra leak/community sources we now cross-reference.',
     changes: [
       { tag: 'Added', text: 'A /tier-list page — every released Sprite ranked S through C (meta strength, distinct from rarity), with what each does and how to get it. Linked from the footer and the ⋯ More menu, in the sitemap, and it taps through to each Sprite’s full page.' },
-      { tag: 'Added', text: 'Credited the additional leak/community sources we cross-check — @FN_Assist & FNBRIntel (datamines), and punksprite & quackadex (tier/farm-route context) — alongside HYPEX & ShiinaBR.' },
+      { tag: 'Added', text: 'Credited the additional leak/community sources we cross-check — @FN_Assist & FNBRIntel (leaks), and punksprite & quackadex (tier/farm-route context) — alongside HYPEX & ShiinaBR.' },
     ],
     why:
       'Rivals surface a tier list and we already stored a per-Sprite tier — assembling it is a low-effort, high-visibility page that answers a question players actually search (“best Fortnite Sprites”). Crediting every source we lean on keeps the “trust” bar high.',
@@ -1509,7 +1519,7 @@ export const CHANGELOG = [
     changes: [
       { tag: 'Fixed', text: 'Clarified what “Sprites stay forever” means: your Season 3 Sprites are kept and displayed (in the Sprite Garden, your Collection, Mastery Pod Back Bling styles, Guardian Outfit pilots) — but a new generation takes over Battle Royale in Season 4, so old-gen Sprites aren’t used in BR matches at launch (Epic: they “may return down the line”). Previous copy implied they carried into BR play.' },
       { tag: 'Added', text: 'A heads-up that Sprite Dust & Gizmos reset at the season flip (the Sprites themselves don’t), an Override launch news item, and a launch announcement banner (Aug 20).' },
-      { tag: 'Added', text: 'Expanded the datamined Override roster: alongside Sonic + the Design-a-Sprite winners, added the leaked Tails, Jazz Jackrabbit, Klombo, Bushranger, Killswitch, Victory Crown and The Adventurer — all clearly badged Rumored with unconfirmed abilities/rarities, no drop data.' },
+      { tag: 'Added', text: 'Expanded the leaked Override roster: alongside Sonic + the Design-a-Sprite winners, added the leaked Tails, Jazz Jackrabbit, Klombo, Bushranger, Killswitch, Victory Crown and The Adventurer — all clearly badged Rumored with unconfirmed abilities/rarities, no drop data.' },
       { tag: 'Changed', text: 'Refreshed the leaked-roster news to the current picture (Sonic trailer-confirmed; several collabs have skins but no confirmed Sprite; Kingdom Hearts & Vampire Survivors leaked but not in the trailer; cube “backpack” Sprite redesign leaked).' },
     ],
     why:
@@ -1648,7 +1658,7 @@ export const CHANGELOG = [
       'Pulled everything current on the incoming Sprite generation and the Sprite Garden and folded the new resources into the news feed.',
     changes: [
       { tag: 'Changed', text: 'Sprite Garden: added the confirmed mechanics — it’s a UEFN island (built with Fairview Portals & Beyond Creative); Season 3 Sprites are preserved automatically and new Override Sprites auto-add; a Sprite that goes down in a match is never lost from the Garden; and it’ll keep growing with player feedback.' },
-      { tag: 'Changed', text: 'Season 4 “Override” entry: added the leaked ~4 AM ET Thursday Aug 20 go-live (after the v42.00 downtime), flagged Sonic as the headliner (rumored Green Hill Zone POI), and added Vampire Survivors to the leaked Gaming Legends roster. Noted no specific new-Sprite names are datamined yet beyond the five Design-a-Sprite winners, and that per-collab themed Sprites aren’t confirmed.' },
+      { tag: 'Changed', text: 'Season 4 “Override” entry: added the leaked ~4 AM ET Thursday Aug 20 go-live (after the v42.00 downtime), flagged Sonic as the headliner (rumored Green Hill Zone POI), and added Vampire Survivors to the leaked Gaming Legends roster. Noted no specific new-Sprite names are leaked yet beyond the five Design-a-Sprite winners, and that per-collab themed Sprites aren’t confirmed.' },
       { tag: 'Added', text: 'A pinned “Rumors vs official notices — how to read this feed” explainer that lays out which Season 4 items are Epic-confirmed vs leaked, so the two never blur together.' },
     ],
     why:
@@ -1673,7 +1683,7 @@ export const CHANGELOG = [
     summary:
       'Added the season’s end-of-story event and its Mythic Sprite Power Hour (Sat Aug 15), and firmed up the next-season date now that Epic has dated Chapter 7 Season 4 “Override.”',
     changes: [
-      { tag: 'Added', text: 'A news entry for the “Unstable” Story Moment (Sat Aug 15, 2:00 PM ET; log in 1:55 PM ET near the Zero Point Stabilizer) and the Mythic Sprite Power Hour right after (2–4 PM ET, plus a reported ~9–11 PM ET window) — boosted Mythic spawns, Grim & Zero Point most of all, raised loot, everyone starts with a Self-Revive, and extracting a Sprite fully heals you + grants Slap. Flagged community/datamined (times converted from a JST source; Epic hasn’t posted the closing event).' },
+      { tag: 'Added', text: 'A news entry for the “Unstable” Story Moment (Sat Aug 15, 2:00 PM ET; log in 1:55 PM ET near the Zero Point Stabilizer) and the Mythic Sprite Power Hour right after (2–4 PM ET, plus a reported ~9–11 PM ET window) — boosted Mythic spawns, Grim & Zero Point most of all, raised loot, everyone starts with a Self-Revive, and extracting a Sprite fully heals you + grants Slap. Flagged community/leaked (times converted from a JST source; Epic hasn’t posted the closing event).' },
       { tag: 'Changed', text: 'Next-season entry updated to Epic’s confirmed date: Chapter 7 Season 4 “Override” (tagline “Break the rules, change the game”) launches Thursday, Aug 20 — the day after Runners ends (Aug 19). The “Gaming Legends” collab roster stays leak-only.' },
     ],
     why:
@@ -1702,7 +1712,7 @@ export const CHANGELOG = [
       { tag: 'Added', text: 'A pinned news entry for Epic’s official “Sprites are staying forever” reveal — all generations always yours, a new generation each season, past generations never removed, plus teased Sprite Garden (showcase your collection on a private island) and friend-garden visits.' },
       { tag: 'Fixed', text: 'Retracted the earlier “Season 3 Sprite collection won’t carry into Season 4” note (a leak, now contradicted by Epic): the season-end entry, the Gaming Legends entry and the Guide no longer claim a carry-over reset or an Aug 19 collection deadline. Quack Zero Point stays listed as a free 55-mastery reward.' },
       { tag: 'Changed', text: 'Gem Hours (Sat, Aug 8) now has confirmed times — two rounds, 2–4 PM & 9–11 PM ET — plus its bonuses (Self-Revive for all, full Mythic loot pool, Mythic Goldfish). Added a Gem Hours announcement banner for the day.' },
-      { tag: 'Changed', text: 'Kept the refreshed “Gaming Legends” (Ch 7 S4) leak — datamined roster (Sonic & Eggman, Mega Man, Persona’s Joker, Pac-Man, Tetris, Crash, Kingdom Hearts), ShiinaBR/HYPEX sourcing, Wonkeeland Pac-Man easter egg, unsettled date (Aug 19–20 vs Sept 4).' },
+      { tag: 'Changed', text: 'Kept the refreshed “Gaming Legends” (Ch 7 S4) leak — leaked roster (Sonic & Eggman, Mega Man, Persona’s Joker, Pac-Man, Tetris, Crash, Kingdom Hearts), ShiinaBR/HYPEX sourcing, Wonkeeland Pac-Man easter egg, unsettled date (Aug 19–20 vs Sept 4).' },
     ],
     why:
       'An official announcement outranks a leak — the “won’t carry over” claim was wrong, so it had to come out of every player-facing spot, not just be softened. Confirming Sprites are permanent is reassuring news worth leading with.',
@@ -1726,7 +1736,7 @@ export const CHANGELOG = [
     changes: [
       { tag: 'Added', text: 'Marked the full Gem set obtainable: Gem Water, Earth, Duck, Punk, Demon and Zero Point flip to released, joining the already-out Gem Llama — nine Gem Sprites in all. The released-variant count moves 110 → 116.' },
       { tag: 'Changed', text: 'Un-vaulted Gem Aura and Gem Grim — both return with the Gem line, so their “Vaulted” badges clear and they’re back in the Chest-luck picker.' },
-      { tag: 'Changed', text: 'The Gem finish is no longer “datamined/disabled”: its bonus now reads the confirmed “take 30% less fall damage (stacks with the base ability),” and Gem is eligible in Chest-luck again (Gem Sprites drop from Sprite Chests).' },
+      { tag: 'Changed', text: 'The Gem finish is no longer “leaked/disabled”: its bonus now reads the confirmed “take 30% less fall damage (stacks with the base ability),” and Gem is eligible in Chest-luck again (Gem Sprites drop from Sprite Chests).' },
       { tag: 'Changed', text: 'News + announcement bar updated to the LIVE, Epic-confirmed Gem drop (source: Epic’s official Fortnite Communities post), and the old “Gem Grim vaulted” note now records its Aug 6 return.' },
       { tag: 'Fixed', text: 'Separately, an accuracy audit caught Cube Zero Point still flagged “Soon” — it’s actually been obtainable since v41.30 (Jul 30) from Vault / keycard Sprite Chests at a sub-0.01% rate. Marked it Available (now in the Chest-luck picker) and rewrote the Zero Point-finishes note; Holofoil Zero Point stays the only Zero Point finish not yet switched on. Released-variant count 110 → 117.' },
     ],
@@ -1841,7 +1851,7 @@ export const CHANGELOG = [
       { tag: 'Added', text: 'A News entry clarifying that Cube Zero Point and Holofoil Zero Point exist in the v41.30 files but aren’t obtainable yet — so it’s clear why the tracker flags them “Soon” rather than missing.' },
     ],
     why:
-      'These are curated because the live in-game feed only carries what Epic is actively promoting in its news tiles, and neither of these was in it — Peeky Peely Hours is a timed community event and the extra Zero Point finishes are staged in the files. Hand-adding them (with tight event dates so the event self-expires) keeps the feed accurate without waiting on the auto feed.',
+      'These are curated because the live in-game feed only carries what Epic is actively promoting in its news tiles, and neither of these was in it — Peeky Peely Hours is a timed community event and the extra Zero Point finishes are staged ahead of release. Hand-adding them (with tight event dates so the event self-expires) keeps the feed accurate without waiting on the auto feed.',
   },
   {
     date: 'August 2, 2026',
@@ -1885,12 +1895,12 @@ export const CHANGELOG = [
     date: 'August 1, 2026',
     title: 'A collectible-card redesign — and a roster reconciled to Fortnite.GG',
     summary:
-      'The tracker now looks like a binder of trading cards instead of a checklist, and the Sprite roster was corrected against Fortnite.GG’s official list and the datamined asset IDs — so it’s exactly the 25 real Sprites / 118 variants, no phantoms.',
+      'The tracker now looks like a binder of trading cards instead of a checklist, and the Sprite roster was corrected against Fortnite.GG’s official list and the leaked asset IDs — so it’s exactly the 25 real Sprites / 118 variants, no phantoms.',
     changes: [
       { tag: 'Changed', text: 'Every Sprite is framed like a collectible card: a rarity-tinted foil edge (Rare/Epic/Legendary/Mythic), a nameplate, a holographic sheen that sweeps on hover, and a gentle 3D tilt. Owned cards glow in their rarity colour; “Have” and “Soon” badges sit on the art. The card still does everything it did (Have / ★ Mastered / level dots).' },
       { tag: 'Changed', text: 'Reskinned the whole app off the cool navy/cyan palette that every community tracker shares, onto a warm “card-binder” look (warm charcoal + gold) that lets each finish’s own colour pop. Animations respect prefers-reduced-motion.' },
       { tag: 'Changed', text: 'Unreleased variants now show by default (with a “Soon” badge) instead of being hidden — so upcoming finishes like Cube / Holofoil / Gem Zero Point are visible without digging into filters.' },
-      { tag: 'Fixed', text: 'Removed three Sprites that don’t exist in the game: Drifter, Ice, and the Spider-Man Sprite. “Drifter” was a phantom born from a misread codename — ESD_DrifterSprite is actually Aura’s internal asset id. None appear on Fortnite.GG (even with “Show unreleased” on) or in the datamined ESD_/EID_ id list.' },
+      { tag: 'Fixed', text: 'Removed three Sprites that don’t exist in the game: Drifter, Ice, and the Spider-Man Sprite. “Drifter” was a phantom born from a misread codename — ESD_DrifterSprite is actually Aura’s internal asset id. None appear on Fortnite.GG (even with “Show unreleased” on) or in the leaked ESD_/EID_ id list.' },
       { tag: 'Fixed', text: 'Trimmed speculative finishes that were never in the game to match Fortnite.GG exactly: e.g. no Cube Water, no Holofoil Earth, no Gem/Cube/Quack King or Seven or Air, and Quack only exists for Water/Earth/Fire/Zero Point. Cube Zero Point stays — it’s real (unreleased). Roster is now 25 characters / 118 variants (110 released).' },
       { tag: 'Fixed', text: 'Scrubbed the leftover Spider-Man Sprite references from the News feed and the Aug 1 announcement bar — the “Web-Shooter Power Hour” was premised on a Sprite that doesn’t exist.' },
       { tag: 'Fixed', text: 'Cards now stretch to equal height within a row, so “Soon”/unreleased/vaulted cards (which have no level dots) fill their cell instead of leaving a gap under the frame.' },
@@ -1899,7 +1909,7 @@ export const CHANGELOG = [
       { tag: 'Fixed', text: 'Modals (About, etc.) were off-center on mobile: the nav’s hidden pill-measurement row leaked horizontal scroll width, widening the mobile layout viewport so centered overlays drifted to the side. It’s now clipped to zero size, so every modal centers correctly on phones.' },
     ],
     why:
-      'Two goals landed together. First, the tracker looked near-identical to other community trackers; leaning into the “these are collectible finishes” idea (foil, holo tilt, a binder aesthetic) makes it unmistakably ours without changing how fast it is to use. Second, the roster had drifted onto a theoretical “every Sprite gets every finish” matrix, plus a few leaked Sprites that never shipped. Fortnite.GG’s published list and the datamined asset IDs are the authoritative sources, so the roster is reconciled to them exactly — accuracy is the whole point of a tracker.',
+      'Two goals landed together. First, the tracker looked near-identical to other community trackers; leaning into the “these are collectible finishes” idea (foil, holo tilt, a binder aesthetic) makes it unmistakably ours without changing how fast it is to use. Second, the roster had drifted onto a theoretical “every Sprite gets every finish” matrix, plus a few leaked Sprites that never shipped. Fortnite.GG’s published list and the leaked asset IDs are the authoritative sources, so the roster is reconciled to them exactly — accuracy is the whole point of a tracker.',
   },
   {
     date: 'August 1, 2026',
@@ -2289,7 +2299,7 @@ export const CHANGELOG = [
     changes: [
       { tag: 'Added', text: 'Every /sprite/… page now generates its own social preview image (rarity, drop rate, Dust, chests-for-50%), so sharing a sprite link on Discord/Twitter/iMessage shows that sprite’s card instead of the generic banner.' },
       { tag: 'Added', text: 'An “Upcoming” news entry + announcement bar for New Sprite Day (v41.30, Jul 30): the leaked Peely, Loot Llama & Quack Zero Point Sprites and the Spider-Man collab — all clearly flagged as leaks.' },
-      { tag: 'Changed', text: 'Softened the Spider-Man Sprite’s placeholder rarity — its tier, ability and drop rate are datamined, not confirmed by Epic.' },
+      { tag: 'Changed', text: 'Softened the Spider-Man Sprite’s placeholder rarity — its tier, ability and drop rate are leaked, not confirmed by Epic.' },
       { tag: 'Fixed', text: 'Removed a stale “v41.20 — Sprite Pod styles (upcoming)” news item that still showed as upcoming after that patch had already shipped.' },
     ],
     why:
@@ -2935,7 +2945,7 @@ export const CHANGELOG = [
       'A full re-check of every Sprite’s ability and each variant’s bonus against current sources turned up a lot of drift — many abilities were early guesses, not what actually shipped. Fixed all of them, corrected two variant percentages, and added a Known Issues section to the news feed.',
     changes: [
       { tag: 'Fixed', text: 'Rewrote the abilities that were wrong to match the live game: Zero Point (spawns a Shield Bubble Jr. on self-heal, not “teleports”), Boss (max HP/Shield boost, not “hires henchmen”), Ghost (cloak on reload), Dream (random loot, Legendary at max level), Demon (siphon health+shields on elim), Punk (random buff; infinite-ammo chance at max), King (pickaxe damage), Fishy (swim speed), Aura (Shock Rock charge on damage), Grim Reaper (marks whoever damages you), Striker (Overdrive on Mantle/Hurdle), plus small clarifications to Water, Fire and Duck.' },
-      { tag: 'Fixed', text: 'Variant bonuses corrected: Gummy is +20% Sprite Dust (was +10%) and Galaxy is +30% ammo (was +20%). Gem is now flagged datamined/unconfirmed — it was disabled on Jun 25 and isn’t currently obtainable. Gold and Holofoil were already correct.' },
+      { tag: 'Fixed', text: 'Variant bonuses corrected: Gummy is +20% Sprite Dust (was +10%) and Galaxy is +30% ammo (was +20%). Gem is now flagged as leaks/unconfirmed — it was disabled on Jun 25 and isn’t currently obtainable. Gold and Holofoil were already correct.' },
       { tag: 'Added', text: 'A “Known Issue” tag and section in the news feed, seeded from Epic’s official Live Issues page and patch notes — currently the Aura/Fire shield-damage bug and the Ranked Slap stamina-bar visual bug, plus a note on the Sprite bugs fixed in v41.10. Filter the feed to “Known Issue” to see just these.' },
     ],
     why:
@@ -2947,7 +2957,7 @@ export const CHANGELOG = [
     summary:
       'Rechecked the events and rumors against current reporting. Everything still lines up; the July 16 DC Summer leak has strengthened, so its news entry now carries the fuller, better-sourced details.',
     changes: [
-      { tag: 'Changed', text: 'DC Summer news item: dataminer HYPEX now corroborates the earlier Nintendo eShop listing, so the entry adds the ~7 AM ET go-live, Seven’s “~30s at max level” trail-tracking, and the wider collab (summer Harley Quinn / Poison Ivy / Catwoman skins, Batmobile, “Ace” dog sidekick). Still flagged tentative/unofficial until Epic posts patch notes.' },
+      { tag: 'Changed', text: 'DC Summer news item: leakr HYPEX now corroborates the earlier Nintendo eShop listing, so the entry adds the ~7 AM ET go-live, Seven’s “~30s at max level” trail-tracking, and the wider collab (summer Harley Quinn / Poison Ivy / Catwoman skins, Batmobile, “Ace” dog sidekick). Still flagged tentative/unofficial until Epic posts patch notes.' },
     ],
     why:
       'Two independent leak sources agreeing is a meaningful step up from a lone retailer listing, so the entry should reflect that — while still making clear it isn’t official, since the date traces to leaks, not Epic.',
@@ -3023,7 +3033,7 @@ export const CHANGELOG = [
     summary:
       'A new sidebar card that turns all the leak-tracking into a feature: every unreleased sprite, sorted by its leaked release date, with a live countdown. Spider-Man is now in the roster too.',
     changes: [
-      { tag: 'Added', text: 'A “🔮 Upcoming & leaked” card listing every unreleased sprite — Seven, Air, Batman (Jul 16), Spider-Man (~Jul 30), and the datamined Wick / Drifter / Ice (TBA) — soonest first, each with a countdown (“in 8 days”) and tap-to-open. Clearly badged Rumored.' },
+      { tag: 'Added', text: 'A “🔮 Upcoming & leaked” card listing every unreleased sprite — Seven, Air, Batman (Jul 16), Spider-Man (~Jul 30), and the leaked Wick / Drifter / Ice (TBA) — soonest first, each with a countdown (“in 8 days”) and tap-to-open. Clearly badged Rumored.' },
       { tag: 'Added', text: 'Spider-Man added to the roster — a leaked Marvel collab Sprite (web-swinging, ~Jul 30 / v41.30) with generated art; the official render will swap in on release.' },
       { tag: 'Added', text: 'Leaked release dates on the upcoming sprites (Seven/Air/Batman = Jul 16, Spider-Man = Jul 30) power the countdowns.' },
     ],
@@ -3034,7 +3044,7 @@ export const CHANGELOG = [
     date: 'July 8, 2026',
     title: 'News: Spider-Man Sprite leak added',
     summary:
-      'Added the datamined Spider-Man Sprite to the news feed — a web-swinging Sprite reportedly landing ~July 30, flagged Tentative.',
+      'Added the leaked Spider-Man Sprite to the news feed — a web-swinging Sprite reportedly landing ~July 30, flagged Tentative.',
     changes: [
       { tag: 'Added', text: 'News entry for the leaked Spider-Man Sprite + “Spider-Man Power Hour” (~Jul 30 / v41.30, timed with the Spider-Man: Brand New Day film). Marked Tentative/unofficial — it would be Fortnite’s first Marvel + DC Sprite overlap (with the Jul 16 Batman collab).' },
     ],
@@ -3109,7 +3119,7 @@ export const CHANGELOG = [
     summary:
       'Followed the leaks to firmer dates and honest labels: anything Epic hasn’t confirmed now wears a “Rumored” tag, Holofoil is dated for every Sprite, and the news feed has the Holofoil and DC Summer drops.',
     changes: [
-      { tag: 'Added', text: 'A “Rumored” badge on unconfirmed sprites (Air, Seven, Batman, and the datamined Wick/Drifter/Ice), and the detail view now reads “Ability (rumored):” so leaked powers aren’t mistaken for confirmed ones. The Cube & Quack forms simply read “Bonus not yet revealed” (in amber) rather than a guessed perk — we don’t invent a bonus Epic hasn’t announced.' },
+      { tag: 'Added', text: 'A “Rumored” badge on unconfirmed sprites (Air, Seven, Batman, and the leaked Wick/Drifter/Ice), and the detail view now reads “Ability (rumored):” so leaked powers aren’t mistaken for confirmed ones. The Cube & Quack forms simply read “Bonus not yet revealed” (in amber) rather than a guessed perk — we don’t invent a bonus Epic hasn’t announced.' },
       { tag: 'Added', text: 'Two upcoming events in the news feed, both Tentative: Holofoil Sprites (Jul 9 — a Holofoil for every Sprite, reported +5% squad chance to find rare Sprites) and the leaked DC Summer event (Jul 16 — Batman plus the Air & Seven Sprites).' },
       { tag: 'Changed', text: 'Rolled Holofoil out as a variant of every Sprite (still unreleased) to match the leaked Jul-9 rollout, and gave Air, Seven & Batman their reported abilities/variant lines. Holofoil’s bonus updated to the reported “+5% squad chance to find rare Sprites”.' },
       { tag: 'Added', text: 'Added the Fortnite Wiki as a roster/leak cross-reference source in the footer credits.' },
@@ -3121,11 +3131,11 @@ export const CHANGELOG = [
     date: 'July 5, 2026',
     title: 'New sprites & forms on the horizon — Air, Seven, Cube, Quack (and a Bat)',
     summary:
-      'Getting ahead of the next drop: two new sprites (Air & Seven), two new variant forms (Cube & Quack) rolling out across the whole roster, and a datamined Batman collab — all flagged Unreleased so you can see what’s coming.',
+      'Getting ahead of the next drop: two new sprites (Air & Seven), two new variant forms (Cube & Quack) rolling out across the whole roster, and a leaked Batman collab — all flagged Unreleased so you can see what’s coming.',
     changes: [
       { tag: 'Added', text: 'Two new sprites — 🌬️ Air (sprint/jump boost, no fall damage) and 7️⃣ Seven (reveals nearby footstep trails) — each ships with the full variant line, from Normal all the way to the new Cube & Quack forms.' },
       { tag: 'Added', text: 'Two new variant forms — Cube (a purple Zero-Point grid) and Quack (duck-gold) — added to every sprite in the roster, each with its in-game bonus listed.' },
-      { tag: 'Added', text: 'A datamined 🦇 Batman sprite (DC collab, ~Jul 16) added to the roster.' },
+      { tag: 'Added', text: 'A leaked 🦇 Batman sprite (DC collab, ~Jul 16) added to the roster.' },
       { tag: 'Added', text: 'Art for all of the above is drawn on the fly by the built-in sprite generator, so every new sprite and form stays perfectly consistent with the existing house style — no missing images.' },
       { tag: 'Changed', text: 'Everything here is clearly marked Unreleased until it goes live, so your “collectible now” counts and completion % are unaffected.' },
     ],

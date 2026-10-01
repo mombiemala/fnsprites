@@ -39,7 +39,7 @@ export const THEMES = [
   // Hunter variant count as having it, rather than the finish auto-releasing
   // roster-wide); `noSummon: true` keeps it out of "Dust to complete" math. Epic
   // ships variants gradually over the following weeks, so each stays U until live.
-  // (Datamine: FireMonkey / Vice.)
+  // (Reported by FireMonkey / Vice.)
   { id: 'bountyhunter', name: 'Bounty Hunter', short: 'BH', className: 'theme-bountyhunter', accent: '#ff7a2f', bonus: 'Season 4 “Override” finish (v42.20, live Sep 24). Chance to find Sprites when eliminating opponents. Only gains Sprite XP from eliminations, so it levels by fighting rather than from chests.', noSummon: true },
 ]
 
@@ -70,7 +70,7 @@ export const FINISH_ODDS_FACTOR = {
   // Loot Hacker is live (Sep 10) but Epic/the community haven't surfaced a roll
   // rate for it — null keeps it out of the Chest-luck picker until one does.
   loothacker: null,
-  // Bounty Hunter is datamined (v42.20) and not chest-summoned (it levels from
+  // Bounty Hunter is leaked (v42.20) and not chest-summoned (it levels from
   // eliminations) — null keeps it out of the Chest-luck picker.
   bountyhunter: null,
   rift: 0.05,

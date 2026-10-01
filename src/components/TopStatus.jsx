@@ -89,6 +89,14 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
     try { localStorage.setItem(KEY, JSON.stringify([...next])) } catch { /* ignore */ }
   }
 
+  // Keep this card tight: only show the "Today" row when there's a real live/next
+  // event or genuinely-new codes (no generic weekly filler), and render NOTHING at
+  // all when there's no announcement, event, new code, or upcoming drop.
+  const hasEvent = !!(liveEvent || nextEvent)
+  const hasTodayRow = hasEvent || newCodes > 0
+  const hasAbove = !!note || hasTodayRow
+  if (!note && !hasTodayRow && incoming.length === 0) return null
+
   return (
     <div className="mb-4 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--panel)]">
       {/* 1 · Active announcement (dismissible) */}
@@ -119,7 +127,8 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
         </div>
       )}
 
-      {/* 2 · Today — live/next weekly event + new codes */}
+      {/* 2 · Today — live/next event + new codes (hidden when neither exists) */}
+      {hasTodayRow && (
       <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 px-3 py-2.5">
         <div className="min-w-0">
           {liveEvent ? (
@@ -137,14 +146,12 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
               <span className="font-mono text-sm font-extrabold text-[var(--brand)]">{fmtDur(new Date(nextEvent.startsUtc) - now)}</span>
               <span className="hidden text-xs text-[var(--muted)] sm:inline">· {nextEvent.perk}</span>
             </span>
-          ) : (
-            <span className="text-sm font-bold text-white">
-              📅 Weekly Sprite events <span className="text-xs font-normal text-[var(--muted)]">· usually Mon / Thu / Sat (ET)</span>
-            </span>
+          ) : null}
+          {hasEvent && (
+            <button onClick={() => onGo?.('news')} className="mt-0.5 block text-[11px] font-bold text-[var(--brand)] hover:underline">
+              See all events →
+            </button>
           )}
-          <button onClick={() => onGo?.('news')} className="mt-0.5 block text-[11px] font-bold text-[var(--brand)] hover:underline">
-            See all events →
-          </button>
           {showFarm && (
             <button
               onClick={() => onFarmFinish(boostTheme)}
@@ -165,10 +172,11 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
           {newCodes > 0 ? `🆕 ${newCodes} new code${newCodes === 1 ? '' : 's'}` : '🔓 Lobby Hacks'} →
         </button>
       </div>
+      )}
 
       {/* 3 · Heads up — upcoming confirmed/dated drops, as compact chips */}
       {incoming.length > 0 && (
-        <div className="flex flex-wrap items-center gap-1.5 border-t border-[var(--border)] px-3 py-2">
+        <div className={`flex flex-wrap items-center gap-1.5 ${hasAbove ? 'border-t border-[var(--border)] ' : ''}px-3 py-2`}>
           <span className="mr-0.5 shrink-0 text-[11px] font-bold text-white/80">🔔 Coming up</span>
           {incoming.map((e) => {
             const cd = countdownLabel(e.dropsOn, e.confirmedDate)

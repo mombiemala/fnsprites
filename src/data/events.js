@@ -111,7 +111,7 @@ export const SPRITE_EVENTS = [
     perk: 'the rest of the v42.20 wave is expected to drop',
     startsUtc: '2026-09-24T13:00:00Z', // ~9 AM ET, Thu Sep 24
     endsUtc: '2026-09-24T23:59:00Z',
-    confirmed: false, // reported date (Vice/dataminers), not an official Epic post
+    confirmed: false, // reported date (Vice/leakers), not an official Epic post
     source: 'Vice (v42.20 rollout)',
     sourceUrl: '/?view=news',
   },
