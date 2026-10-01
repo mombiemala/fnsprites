@@ -61,6 +61,7 @@ const TYPES = {
   phasedash: { c: ['#bff0ff', '#46c8ff', '#1f7aae'], feat: '#ffffff' },
   vampire: { c: ['#b06a8a', '#6a2a4a', '#3a1226'], feat: '#ff5566' },
   pumpkin: { c: ['#ffb85c', '#ff8c1a', '#c85a0e'], feat: '#ffe14d' },
+  bullet: { c: ['#f0d98a', '#c99a3a', '#6e4a12'], feat: '#3a2a08' },
 }
 
 const BODY =
@@ -303,6 +304,9 @@ function Features({ id, fc, gid }) {
       // A carved jack-o'-lantern face (triangle eyes + nose, toothy grin) that
       // "glows" in the feature colour, with a little green stem.
       return <><rect x="47" y="18" width="6" height="9" rx="2" fill="#3f7d2a" /><g fill={fc}><path d="M35 45 l11 3 -7 8 Z" /><path d="M65 45 l-11 3 7 8 Z" /><path d="M50 52 l5 8 -10 0 Z" /><path d="M36 65 q14 11 28 0 l-4 7 -6 -3 -4 3 -4 -3 -6 3 Z" /></g></>
+    case 'bullet':
+      // A simple brass cartridge: pointed tip + casing band.
+      return <g fill={fc} opacity="0.55"><path d="M50 28 l8 12 v16 h-16 v-16 Z" /><rect x="42" y="58" width="16" height="12" rx="1" /></g>
 
     default:
       return null
