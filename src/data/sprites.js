@@ -142,13 +142,13 @@ export const SPRITE_TYPES = [
   //   them with real variants, rarities and abilities (don't auto-release guesses).
   { id: 'sonic', name: 'Sonic', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the marquee Sonic collab (cube “backpack” redesign). Normal, Gold & Cheatmaster are all live (Cheatmaster unlocks via the GOTTAGOFAST lobby code; Gold since Gold Hours, Aug 22). Its exact in-game ability isn’t documented here yet.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'pond', name: 'Pond', icon: '🐸', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Pine & Kiri). Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes. Ability: Active — jump shortly after landing to trigger a Super Jump; charges regenerate over time, and Super Jump strength rises while its cooldown drops with each level up. (Its Bounty Hunter finish is leaked but not out yet — Epic ships that wave over the following weeks.)',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'onigiri', name: 'Onigiri', icon: '🍙', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside X-Ray. Exact in-game ability not yet detailed by Epic. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is live too (since Sep 10).',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'honey', name: 'Honey', icon: '🍯', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4', releaseDate: '2026-10-15',
     ability: 'Design-a-Sprite winner (by Conejito_sam): spawns a beehive that swarms whoever damages you. Expected during Fortnitemares around Oct 15 — abilities as designed, Epic may tweak; rarity TBC.',
     variants: { normal: U } },
@@ -160,7 +160,7 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
   { id: 'xray', name: 'X-Ray', icon: '🩻', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Avila215): reveals nearby players (and objects) through walls, like the old medallion did. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside Onigiri. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is live too (since Sep 10).',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
 
   // ---- Override new-generation Sprites — LIVE in Chapter 7 Season 4, with
   //   official leaked art (Normal, Gold & the new "Cheatmaster" finish).
@@ -172,7 +172,7 @@ export const SPRITE_TYPES = [
   //   ships under the internal "NarrowFlea" codename: Sonic / Tails / Shadow. ----
   { id: 'tails', name: 'Tails', icon: '🦊', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — Tails (Sonic collab), cube redesign. Normal & Cheatmaster are live (Cheatmaster via the IWANNAFLYHIGH lobby code); Gold is live too (Gold Hours, Aug 22). Ability: lets you hover — a glide / slow descent.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'shadow', name: 'Shadow', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: automatically reloads your unequipped weapons over time.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
@@ -199,7 +199,7 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'adventure', name: 'Adventure', icon: '🧭', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Adventure Sprite (a hooded, eye-patched explorer). Ability: upgrades a random item in your inventory each time it Levels Up. Found near high, mountainous areas. Normal & Cheatmaster are live (Cheatmaster via the BORN2PLAY lobby code); Gold is live too (Gold Hours, Aug 22). Its Loot Hacker finish is live too (since Sep 10).',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'stormscout', name: 'Storm Scout', icon: '👿', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — a horned “Storm Scout”, live since New Sprite Day (Aug 29) in all three finishes (Normal · Gold · Cheatmaster). Ability (per HYPEX): after you take 10 Storm damage it grants Overdrive and unlimited Energy — great for surviving or rotating through the Storm — and at max level it reveals upcoming Storm Circles.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
@@ -245,10 +245,10 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
   { id: 'crash', name: 'Crash Bandicoot', icon: '🌀', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
     ability: 'Crash Bandicoot collab. Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes, with its Bounty Hunter finish added Sep 24. Spotted near high, mountainous areas. Ability: Active — jump in the air to trigger a whirlwind spin attack that damages and knocks back nearby enemies; damage rises and the cooldown drops with each level up.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'blinky', name: 'Blinky', icon: '👾', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
     ability: 'Pac-Man collab (Blinky, the red ghost). Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes, with its Bounty Hunter finish added Sep 24. Found in the world at nighttime. Ability: grants a temporary cloak when you take damage; cloak duration rises with each level up.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   // "Spooky Dash" is the official Fortnitemares name for this dash Sprite (its
   // datamined/working name was "Phase Dash"); the internal id stays `phasedash`.
   { id: 'phasedash', name: 'Spooky Dash', icon: '🎃', rarity: 'Mythic', dropRate: null, released: true, releaseDate: '2026-10-01', gen: 'c7s4',

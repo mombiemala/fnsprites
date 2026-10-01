@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Trick-or-Treat finish added to 8 more Sprites',
+    changes: [
+      { tag: 'Added', text: 'Wired up the official Trick-or-Treat art for eight more Sprites: Sonic, Tails, Crash Bandicoot, Blinky, Adventure, X-Ray, Onigiri and Pond. That brings the spooky Fortnitemares recolour to 24 Sprites total.' },
+    ],
+    summary: 'Added official Trick-or-Treat art to 8 more Sprites (Sonic, Tails, Crash, Blinky, Adventure, X-Ray, Onigiri, Pond).',
+    why: 'Epic’s Fortnitemares drop included Trick-or-Treat versions of these eight under internal codenames (e.g. the Sonic trio as “NarrowFlea”, Adventure as “Dwarf”, the Design-a-Sprite winners as “WinnerA/B/C”). Matched each by its art and finish so collectors can track the full Trick-or-Treat set.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'Rebuilt the list view — fast one-tap ticking',
     changes: [
       { tag: 'Changed', text: 'The list (quick-check) view is now a clean fortnite.gg-style layout: one row per Sprite with its art thumbnail, an owned count, and a round, tappable toggle for each finish (BASE · GOLD · CHEAT · HACKER · HUNTER · TRICK), labelled and colour-coded. Tap a circle to mark that finish owned — the quickest way to log a lot at once.' },

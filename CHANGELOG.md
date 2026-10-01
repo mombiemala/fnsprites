@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Trick-or-Treat finish added to 8 more Sprites
+
+- **Added:** official Trick-or-Treat art for **Sonic, Tails, Crash Bandicoot, Blinky, Adventure, X-Ray, Onigiri, Pond**
+  (`trickortreat: R` + `public/sprites/<id>_trickortreat.webp`), bringing the finish to 24 Sprites.
+- **Codename mapping** (Epic internal → our id), matched by art: `NarrowFlea`→sonic, `NarrowFleaMonkey`→tails,
+  `GhostDamage`→blinky, `BodySlam`→crash, `WinnerB`→xray, `WinnerC`→onigiri, `WinnerA`→pond, `Dwarf`→adventure.
+- **Still unmatched:** one `IncreaseHeals` Trick-or-Treat icon (a bandana cat) — likely the unreleased Meowscles, held
+  until confirmed.
+
+---
+
 ## October 1, 2026 — Rebuilt the list view (fast one-tap ticking)
 
 - **Changed** (`src/components/QuickCheckList.jsx`): replaced the text-chip list with a fortnite.gg-style layout — one row
