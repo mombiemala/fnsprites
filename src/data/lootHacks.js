@@ -11,25 +11,25 @@
 // rather than invent figures. Verified/sourced only — same rule as codes & news.
 
 export const LOOT_HACK_META = {
-  patch: 'v42.20',
-  rotationStart: '2026-09-17',
-  nextRefresh: '2026-10-01', // next expected rotation lands with Fortnitemares v42.30 (in-game timer is authoritative)
+  patch: 'v42.30',
+  rotationStart: '2026-10-01',
+  nextRefresh: '2026-10-08', // next rotation expected ~weekly; the in-game timer is authoritative
   maxLevel: 6, // each item unlocks at L1, then upgrades up to L6 for higher odds/rarity
-  source: 'Epic (Fortnite / X, official list) · HYPEX · ShiinaBR',
-  sourceUrl: 'https://x.com/Fortnite/status/2099906350671450438',
+  source: 'Epic (Fortnite v42.30 Fortnitemares) · FNAssist',
+  sourceUrl: 'https://x.com/FN_Assist/status/2105577166163603735',
 }
 
-// Current rotation (Sep 17 → ~Sep 24, v42.20) — the six items Epic posted for the
-// refresh. `role` describes what the item is; we don't assert an exact rarity/cost
-// we can't source. (The Sep 3 pool — Caduceus Staff, Scorpion’s Combat Kit,
-// Wrecker Revolver, Deadeye AR, Holo Twister AR — rotated out.)
+// Current rotation (Oct 1, v42.30 — Fortnitemares). `role` describes what the item
+// is; we don't assert an exact rarity/cost we can't source. (The Sep 17 pool —
+// Rocket Ram, Reaper Sniper Rifle, Mammoth Pistol, Hyperburst Pistol, Deadeye DMR,
+// Flowberry Fizz — rotated out.) Note: v42.30 also added the Loot Hacker Sprite
+// finish to the Loot Hack menu (a Sprite variant, not a weapon in this pool).
 export const LOOT_HACK_ROTATION = [
-  { name: 'Rocket Ram', role: 'Mobility / utility', note: 'Ram-launch tool for repositioning and cracking builds — the returning standout.' },
-  { name: 'Reaper Sniper Rifle', role: 'Sniper', note: 'Hard-hitting long-range sniper.' },
-  { name: 'Mammoth Pistol', role: 'Pistol', note: 'Heavy single-shot pistol.' },
-  { name: 'Hyperburst Pistol', role: 'Pistol', note: 'Burst-fire sidearm.' },
-  { name: 'Deadeye DMR', role: 'Marksman rifle', note: 'Precision mid-to-long-range DMR.' },
-  { name: 'Flowberry Fizz', role: 'Consumable', note: 'Mobility + effect consumable to add to your pool.' },
+  { name: 'Infantry Rifle', role: 'Assault rifle', note: 'Steady semi-auto rifle for controlled mid-range fire.' },
+  { name: 'Light Machine Gun (LMG)', role: 'LMG', note: 'High-capacity suppressive fire — great for shredding builds.' },
+  { name: 'Pumpkin Launcher', role: 'Explosive', note: 'Fortnitemares explosive launcher — the Halloween standout.' },
+  { name: 'Last Call', role: 'Weapon', note: 'New to the Loot Hack pool this Fortnitemares rotation.' },
+  { name: 'Slap Candy Corn', role: 'Consumable', note: 'Halloween Slap consumable — a candy-corn energy/mobility boost.' },
 ]
 
 // How the system works — short, factual bullets reused by the app card + SEO page.

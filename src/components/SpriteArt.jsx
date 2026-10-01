@@ -51,6 +51,7 @@ const TYPES = {
   megaman: { c: ['#bfe4ff', '#2a7cff', '#123a9e'], feat: '#eaf4ff' },
   honey: { c: ['#ffe6a0', '#f5b81f', '#b8801c'], feat: '#7a5220' },
   dumpster: { c: ['#cfd6e0', '#8b93a7', '#4a5265'], feat: '#1a2138' },
+  deer: { c: ['#e8c49a', '#b5793f', '#6e4420'], feat: '#f4ead8' },
   xray: { c: ['#d0faff', '#46d0e0', '#1f8fae'], feat: '#ffffff' },
   // v42.20 wave — original stylised looks (colour + a simple motif that "reads as"
   // the character), never a copy of the real IP art or an AI likeness.
@@ -273,6 +274,9 @@ function Features({ id, fc, gid }) {
     case 'dumpster':
       // Raccoon eye-mask band + rounded ears.
       return <><path d="M32 20 L30 8 L42 16 Z" {...st} /><path d="M68 20 L70 8 L58 16 Z" {...st} /><path d="M31 52 q19 -7 38 0 l0 6 q-19 -6 -38 0 Z" fill={INK} opacity="0.55" /></>
+    case 'deer':
+      // Branching antlers rising from the crown (99 Nights collab — melee power).
+      return <g fill="none" stroke={fc} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" opacity="0.85"><path d="M40 18 q-5 -9 -9 -12 M40 18 q-9 -3 -13 -1 M40 18 q-2 -8 1 -13" /><path d="M60 18 q5 -9 9 -12 M60 18 q9 -3 13 -1 M60 18 q2 -8 -1 -13" /></g>
     case 'xray':
       // Ribcage scan lines.
       return <g stroke={fc} strokeWidth="2" opacity="0.7" fill="none" strokeLinecap="round"><path d="M50 40 v26" /><path d="M40 46 h20 M38 54 h24 M40 62 h20" /></g>

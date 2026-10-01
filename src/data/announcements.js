@@ -18,7 +18,7 @@ export const ANNOUNCEMENTS = [
   {
     id: 'fortnitemares-live-2026-10-01',
     emoji: '🎃',
-    message: 'Fortnitemares is LIVE (v42.30)! Two new Sprites dropped — Vampire (heal when you damage enemies) and Spooky Dash (Mythic dash that phases through objects) — from Pumpkin chests, Cheat Codes, and the FNAF animatronics. Map shake-up: Battlewoods → Gravegate, a new Freddy Fazbear’s Pizzeria, and a Nightmare Neighborhood with Freddy Krueger.',
+    message: 'Fortnitemares is LIVE (v42.30)! Four new Sprites dropped — Vampire, Spooky Dash (Mythic), The Deer (99 Nights collab) and Dumpster Dive — each with Gold, Cheat Master, Loot Hacker & Bounty Hunter finishes, from Sprite/Pumpkin chests, Cheat Codes, and the FNAF animatronics. Loot Hacks also refreshed (Infantry Rifle, LMG, Pumpkin Launcher, Last Call, Slap Candy Corn), and the map shook up: Battlewoods → Gravegate, a new Freddy Fazbear’s Pizzeria, and a Nightmare Neighborhood.',
     link: '/?view=news',
     linkLabel: 'What dropped',
     start: '2026-10-01',

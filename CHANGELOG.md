@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — New Sprite Day: The Deer & Dumpster Dive live + Loot Hacks refresh
+
+- **Added:** **The Deer** Sprite (`deer`) — Legendary, a 99 Nights in the Forest collab; melee attacks hit harder (scales
+  per level). New `SpriteArt.jsx` placeholder (antlers motif) until official art is grabbable; finishes Gold / Cheat Master /
+  Loot Hacker / Bounty Hunter.
+- **Changed:** **Dumpster Dive** flipped rumored → live (food restores extra Health) with the same four finishes.
+- **Changed:** Loot Hacks pool refreshed for v42.30 (`lootHacks.js`): Infantry Rifle, LMG, Pumpkin Launcher, Last Call,
+  Slap Candy Corn in; Rocket Ram, Reaper Sniper, Mammoth/Hyperburst Pistols, Deadeye DMR, Flowberry Fizz out.
+- **Changed:** `incoming.js` heads-up — retired the now-live Fortnitemares/loot-hack entries; added a wave-2 entry (Honey +
+  Obsession, ~Oct 15) and bumped the next loot-hack refresh to ~Oct 8. Honey now carries a `2026-10-15` expected date.
+- **Sources:** Vice, The Click, GameRant, Beebom, Prima, FNAssist. Corroborated by 2+ outlets before flipping live.
+
+---
+
 ## October 1, 2026 — Content-quality pass for search (and ad eligibility)
 
 - **Changed** (`scripts/prerender.mjs`): added a `noindex` / `canonicalTo` option to `head()`, and set rumored/unreleased
