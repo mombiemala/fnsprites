@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Rebuilt the list view (fast one-tap ticking)
+
+- **Changed** (`src/components/QuickCheckList.jsx`): replaced the text-chip list with a fortnite.gg-style layout — one row
+  per Sprite with its art thumbnail (reuses `SpriteArt`, so real art with vector fallback), an owned count, and a round
+  tappable toggle per finish in a fixed order (BASE · GOLD · CHEAT · HACKER · HUNTER · TRICK · then gummy/galaxy/gem/holo/
+  cube/quack), labelled and coloured by the finish accent. Clicking a circle calls `setOwned(id, !owned)`.
+- **Changed:** unreleased/vaulted finishes render a locked, disabled ○ (🔒) instead of a tappable circle.
+- **Why:** the old chips were awkward to scan and tap; aligned per-finish circles are faster for bulk entry and make
+  ownership obvious at a glance. Verified the toggle end-to-end in a headless browser (false → owned → false).
+
+---
+
 ## October 1, 2026 — New Sprite Day: The Deer & Dumpster Dive live + Loot Hacks refresh
 
 - **Added:** **The Deer** Sprite (`deer`) — Legendary, a 99 Nights in the Forest collab; melee attacks hit harder (scales

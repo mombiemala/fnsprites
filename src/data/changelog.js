@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Rebuilt the list view — fast one-tap ticking',
+    changes: [
+      { tag: 'Changed', text: 'The list (quick-check) view is now a clean fortnite.gg-style layout: one row per Sprite with its art thumbnail, an owned count, and a round, tappable toggle for each finish (BASE · GOLD · CHEAT · HACKER · HUNTER · TRICK), labelled and colour-coded. Tap a circle to mark that finish owned — the quickest way to log a lot at once.' },
+      { tag: 'Changed', text: 'Finishes that aren’t out yet (or are vaulted) show a locked ○ instead of a tappable circle, so you can see what’s still coming without it looking checkable.' },
+    ],
+    summary: 'Rebuilt the list view into a fortnite.gg-style grid of tappable finish circles per Sprite.',
+    why: 'The old list used text chips that were awkward to scan and tap. Round per-finish toggles with the art thumbnail line up down the page, make ownership obvious at a glance, and are much faster for bulk entry — the whole point of the list mode.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'New Sprite Day — The Deer & Dumpster Dive live + Loot Hacks refresh',
     changes: [
       { tag: 'Added', text: 'The Deer Sprite is live — a Legendary 99 Nights in the Forest collab whose melee attacks hit harder (more each level) — with its official art across all finishes: Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter and Trick-or-Treat.' },
