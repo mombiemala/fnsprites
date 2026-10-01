@@ -43,7 +43,6 @@ const BugReportModal = lazy(() => import('./components/BugReportModal'))
 const AboutModal = lazy(() => import('./components/AboutModal'))
 const ChangelogModal = lazy(() => import('./components/ChangelogModal'))
 const CodesView = lazy(() => import('./components/CodesView'))
-const MapView = lazy(() => import('./components/MapView'))
 const GardenHub = lazy(() => import('./components/GardenHub'))
 const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
@@ -64,7 +63,6 @@ const TABS = [
   { id: 'news', label: '📰 News' },
   { id: 'stats', label: '📊 Stats' },
   { id: 'shop', label: '🛒 Item Shop' },
-  { id: 'map', label: '🗺️ Map' },
 ]
 
 const DEFAULT_FILTERS = {
@@ -545,7 +543,7 @@ export default function App() {
         ariaLabel="Sections"
       />
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'codes' || effectiveView === 'garden' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop' || effectiveView === 'map') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'codes' || effectiveView === 'garden' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard onSignIn={() => setShowAuth(true)} /></div>}
           {effectiveView === 'codes' && <div className="mb-5"><CodesView /></div>}
@@ -553,7 +551,6 @@ export default function App() {
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}
-          {effectiveView === 'map' && <div className="mb-5"><MapView /></div>}
         </Suspense>
       )}
 

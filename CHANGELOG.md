@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Removed the Map tab
+
+- **Removed:** the Map tab and the `/map` SEO page. Deleted `src/components/MapView.jsx`, `src/data/mapInfo.js` and the
+  `api/map.js` proxy; dropped the tab from `src/App.jsx`, the nav + `mapPage()` + sitemap/guide entries from
+  `scripts/prerender.mjs`.
+- **Why:** we tried an interactive POI map and then a fortnite.gg link-out card; neither matched what fortnite.gg already
+  does well, and Override Sprites aren't POI-locked (they come from in-world Cheat Codes, Sprite Chests and events), so the
+  map never earned its spot. A thin link-out page also works against us for content quality, so it's gone. For the full
+  interactive map, fortnite.gg remains the recommendation.
+
+---
+
 ## October 1, 2026 — Fixed the top status card when there's no live event
 
 - **Fixed:** the top-of-page status card (`src/components/TopStatus.jsx`) could render an empty row with a lone "new codes"

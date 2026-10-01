@@ -7,6 +7,16 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Removed the Map tab',
+    changes: [
+      { tag: 'Removed', text: 'Took out the Map tab (and the /map page). For the full interactive Fortnite map with toggleable POI, chest and loot layers, fortnite.gg does it best — the tracker isn’t trying to rebuild that.' },
+      { tag: 'Changed', text: 'Sprites aren’t tied to specific map locations anyway — they come from in-world Cheat Codes, Sprite Chests and events — so the map wasn’t pulling its weight here. The nav is lighter for it.' },
+    ],
+    summary: 'Removed the Map tab and /map page — a link-out to a partial map wasn’t adding value.',
+    why: 'We tried an interactive POI map and a link-out card, but neither matched what fortnite.gg already does well, and Sprites aren’t POI-locked, so the feature never earned its spot. Rather than ship a half-map, we removed it and keep the tracker focused on what it’s actually for — the collection, codes and events.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'Fixed the top status card when there’s no live event',
     changes: [
       { tag: 'Fixed', text: 'The top-of-page card could look broken after you dismissed the announcement — an empty row with a lone “new codes” button floating on the right. Now the “Today” row only appears when there’s a real live/next event or genuinely-new codes, and with no event the codes button sits neatly on the left instead of drifting.' },
