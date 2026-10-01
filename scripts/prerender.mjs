@@ -22,7 +22,7 @@ import { CODES_INTRO, CODE_CATEGORIES, LOBBY_CODES } from '../src/data/codes.js'
 import { LOOT_HACK_ROTATION, LOOT_HACK_META, LOOT_HACK_HOW } from '../src/data/lootHacks.js'
 import { SEASON } from '../src/data/season.js'
 import { TRADE_STEPS, TRADE_SAFETY, SPRITE_SWAP_ISLANDS, ISLAND_HOWTO } from '../src/data/tradeHubs.js'
-import { FORTNITEMARES, daysUntilFortnitemares } from '../src/data/fortnitemares.js'
+import { FORTNITEMARES } from '../src/data/fortnitemares.js'
 import { SPRITE_SPAWNS, SPAWN_GENERAL, SPAWN_SOURCE, spawnFor } from '../src/data/spawns.js'
 
 const SITE = 'https://fnsprites.app'
@@ -1632,10 +1632,10 @@ function tradeGuidePage() {
 // Leak-heavy, so every item is clearly badged Leak/Rumor (verified-only discipline).
 function fortnitemaresPage() {
   const fmtLong = (d) => new Date(d + 'T12:00:00Z').toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
-  const days = daysUntilFortnitemares()
-  const whenLine = days > 0 ? `expected to begin around <b>${fmtLong(FORTNITEMARES.startEstimate)}</b> (about ${days} day${days === 1 ? '' : 's'} away)` : `expected around <b>${fmtLong(FORTNITEMARES.startEstimate)}</b>`
-  const desc = `Fortnitemares 2026 — everything leaked so far for Fortnite's Halloween event: the estimated start date (~Oct 1), the datamined Trick-or-Treat Sprite, the reported FNAF & Ghostface crossovers, Halloween Loot Hacks and map changes. Clearly labelled leaks vs rumors, and how to get your Sprite collection ready.`
-  const badge = (s) => s === 'leak'
+  const desc = `Fortnitemares 2026 is LIVE in Fortnite (update v42.30, Oct 1–31) — four new Sprites, the Trick-or-Treat finish, the FNAF & Ghostface crossovers, Halloween Loot Hacks and a map shake-up. What’s live now vs still expected, clearly labelled, plus how to get your Sprite collection ready.`
+  const badge = (s) => s === 'live'
+    ? '<span style="flex:none;border-radius:6px;background:rgba(52,211,153,.15);color:#34d399;font-size:10px;font-weight:800;text-transform:uppercase;padding:2px 6px">Live</span>'
+    : s === 'leak'
     ? '<span style="flex:none;border-radius:6px;background:rgba(245,158,11,.15);color:#fbbf24;font-size:10px;font-weight:800;text-transform:uppercase;padding:2px 6px">Leak</span>'
     : '<span style="flex:none;border-radius:6px;background:rgba(255,255,255,.1);color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase;padding:2px 6px">Rumor</span>'
   const card = (it) => `<div class="card" style="padding:12px 14px;margin:0 0 8px">
@@ -1644,23 +1644,22 @@ function fortnitemaresPage() {
   </div>`
   const section = (title, items) => `<h2 style="font-size:17px;color:#fff;margin:20px 0 8px">${title}</h2>${items.map(card).join('')}`
   const faqs = [
-    ['When does Fortnitemares 2026 start?', `Fortnitemares 2026 is reported to begin around ${fmtLong(FORTNITEMARES.startEstimate)} — a Thursday, in line with Fortnite’s usual update cadence — and run through Halloween. Epic hasn’t officially confirmed the date yet, so treat it as a leak until they announce.`],
-    ['Is there a Fortnitemares Sprite?', 'A Halloween “Trick or Treat” Sprite finish is datamined (leak imagery points to an X-Ray Trick-or-Treat variant), but the base Sprite and its ability aren’t in the files yet. It’s unconfirmed — we’ll add it to the tracker the moment Epic makes it official.'],
-    ['Is Five Nights at Freddy’s coming to Fortnite?', 'Dataminers report a FNAF crossover for Fortnitemares 2026 — FNAF files in a recent update and a Freddy Fazbear’s Pizzeria-style building under construction on the map. Epic hasn’t named Fortnite directly, so it’s a strong leak, not a confirmation.'],
-    ['What else is leaked for Fortnitemares 2026?', `Reported additions include ${[...FORTNITEMARES.collabs, ...FORTNITEMARES.content].map((i) => i.title).join(', ')}. All are leaks/rumors until Epic confirms.`],
-    ['How do I get my Sprite collection ready?', 'Fill in the Sprites you’re missing now, spend or reset Sprite Dust before any event flip so it isn’t wasted, and keep an eye on the Lobby Hack codes — Halloween events often bring fresh codes and Loot Hacks. Track it all free on FN Sprite Tracker.'],
+    ['When does Fortnitemares 2026 start and end?', `Fortnitemares 2026 went live on ${fmtLong(FORTNITEMARES.startEstimate)} with update v42.30 and runs through Halloween (${fmtLong(FORTNITEMARES.endEstimate)}).`],
+    ['What are the Fortnitemares Sprites?', 'Four are live now — Vampire, Spooky Dash (Mythic), The Deer (a 99 Nights in the Forest collab) and Dumpster Dive — each with Gold, Cheat Master, Loot Hacker, Bounty Hunter and Trick-or-Treat finishes. The Trick-or-Treat Halloween recolour is also live across 24 Sprites. Two more (Honey and Obsession) are expected around Oct 15.'],
+    ['Is Five Nights at Freddy’s in Fortnite?', 'Yes — the FNAF crossover is live for Fortnitemares. Freddy Fazbear’s Pizzeria is a new POI and the four animatronics (Freddy, Bonnie, Chica, Foxy) appear as bosses; beating them is one way to get the Vampire Sprite.'],
+    ['Where do the new Sprites spawn?', 'They drop from Pumpkin/Sprite Chests and Cheat Codes, with reported hotspots like Gravegate, Nightmare Neighborhood and Wonkeeland. See the Fortnitemares Sprite farming guide for the full breakdown and the best chest routes.'],
+    ['How do I get my Sprite collection ready?', 'Fill in the Sprites you’re missing, spend or reset Sprite Dust so none is wasted, and grab the fresh Fortnitemares Lobby Hack codes for free Dust and the Cheat Master finishes. Track it all free on FN Sprite Tracker.'],
   ]
   const jsonld = { '@context': 'https://schema.org', '@graph': [
-    { '@type': 'Article', headline: 'Fortnitemares 2026 — Start Date, Sprite & Everything Leaked', description: desc, url: SITE + '/fortnitemares', dateModified: FORTNITEMARES.updated, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'Article', headline: 'Fortnitemares 2026 — What’s Live: Sprites, FNAF & Map Changes', description: desc, url: SITE + '/fortnitemares', dateModified: FORTNITEMARES.updated, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
     { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
   ] }
-  return head({ title: `Fortnitemares 2026 — Start Date, Sprite & Everything Leaked | FN Sprite Tracker`, desc, canonical: SITE + '/fortnitemares', jsonld, active: 'news' }) + `
+  return head({ title: `Fortnitemares 2026 — What’s Live: Sprites, FNAF & Map Changes | FN Sprite Tracker`, desc, canonical: SITE + '/fortnitemares', jsonld, active: 'news' }) + `
 <div class="cols">
   <div class="main">
-    <h1>🎃 Fortnitemares 2026 — what’s leaked</h1>
-    <div class="card" style="padding:12px 14px;margin:0 0 10px;border-color:rgba(52,211,153,.4)"><p style="margin:0;font-size:13px;line-height:1.6"><b style="color:#34d399">It’s live now (v42.30, Oct 1).</b> This page tracks the original leaks; for the Sprites that actually dropped — powers, finishes and where to farm them — see the <a href="/fortnitemares-sprites" style="color:var(--brand)">Fortnitemares Sprite farming guide →</a></p></div>
-    <p class="lede" style="color:var(--muted);margin:6px 0 8px;font-size:14px;max-width:70ch">Fortnite’s Halloween event, Fortnitemares, is ${whenLine} and running through Halloween. Epic hasn’t officially announced it yet, so everything below is <b style="color:#fbbf24">leaked or rumored</b> — we label each item and will flip them to confirmed as Epic reveals them.</p>
-    <div class="card" style="padding:10px 14px;margin:0 0 6px;border-color:rgba(245,158,11,.35)"><p style="margin:0;font-size:12px;color:var(--muted)">⚠️ Dates and details are from dataminers &amp; community outlets, <b>not Epic</b>. Treat as unconfirmed.</p></div>
+    <h1>🎃 Fortnitemares 2026 — what’s live</h1>
+    <div class="card" style="padding:12px 14px;margin:0 0 10px;border-color:rgba(52,211,153,.4)"><p style="margin:0;font-size:13px;line-height:1.6"><b style="color:#34d399">It’s live now (v42.30, Oct 1–31).</b> For the new Sprites in detail — powers, finishes and where to farm them — see the <a href="/fortnitemares-sprites" style="color:var(--brand)">Fortnitemares Sprite farming guide →</a></p></div>
+    <p class="lede" style="color:var(--muted);margin:6px 0 8px;font-size:14px;max-width:70ch">Fortnite’s Halloween event, Fortnitemares 2026, went live with update v42.30 on <b>${fmtLong(FORTNITEMARES.startEstimate)}</b> and runs through Halloween. Here’s what landed — Sprites, crossovers and map changes — with anything not yet in-game clearly tagged. Each item is marked <b style="color:#34d399">Live</b>, <b style="color:#fbbf24">Leak</b> or Rumor.</p>
     ${section('👾 Sprites', FORTNITEMARES.sprites)}
     ${section('🤝 Crossovers', FORTNITEMARES.collabs)}
     ${section('🗺️ Everything else', FORTNITEMARES.content)}

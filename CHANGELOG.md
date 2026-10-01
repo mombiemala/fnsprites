@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Fortnitemares page refreshed (what's live, not leaks)
+
+- **Changed** (`src/data/fortnitemares.js`, `scripts/prerender.mjs`): rewrote the `/fortnitemares` page from a pre-launch
+  leak tracker to an accurate live overview. Data items now carry `status: 'live' | 'leak' | 'rumor'` (added a green
+  **Live** badge); the four Sprites, Trick-or-Treat finish, FNAF & Ghostface, Loot Hacks refresh and map shake-up are
+  marked live, with Honey/Obsession (~Oct 15) still Leak and HHN Rumor. Updated the h1, lede, FAQ, title and JSON-LD; set
+  `confirmed:true`, `live:true`, `updated:'2026-10-01'`.
+- **Why:** the event launched Oct 1 but the page still read as "leaked / not yet announced" — stale, inaccurate content
+  hurts both players and search quality.
+
+---
+
 ## October 1, 2026 — Richer, less-repetitive Sprite page FAQs
 
 - **Added** (`scripts/prerender.mjs`): a "What finishes does X have?" FAQ on every Sprite page (lists the Sprite's actual

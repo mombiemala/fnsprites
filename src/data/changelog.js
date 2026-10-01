@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Fortnitemares page refreshed — what’s live, not just leaks',
+    changes: [
+      { tag: 'Changed', text: 'The Fortnitemares page now reflects the live event instead of pre-launch leaks: the four new Sprites, the Trick-or-Treat finish, the FNAF & Ghostface crossovers, the Loot Hacks refresh and the map shake-up are all marked “Live,” with only genuinely-upcoming items (Honey & Obsession, ~Oct 15) still tagged as leaks.' },
+    ],
+    summary: 'Refreshed the Fortnitemares page from a pre-launch leak list to an accurate “what’s live now” overview.',
+    why: 'The event went live Oct 1, but the page still read as “leaked / not yet announced” — stale, inaccurate content is bad for players and for search quality. Now each item is tagged Live / Leak / Rumor and links to the farming guide.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'Richer, less-repetitive Sprite page FAQs',
     changes: [
       { tag: 'Added', text: 'Every Sprite page now has a “What finishes does X have?” answer listing its actual finishes and which are obtainable.' },

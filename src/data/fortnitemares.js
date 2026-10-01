@@ -1,45 +1,42 @@
 // Fortnitemares 2026 hub content. Halloween is Fortnite's biggest seasonal spike,
-// so this powers a dedicated /fortnitemares SEO page. It's LEAK-heavy right now —
-// Epic hasn't officially announced the event — so EVERY item carries a status
-// (`leak` = leaked / multi-source; `rumor` = softer / single-source) and the
-// page labels them clearly. Update / promote items to confirmed as Epic reveals
-// them; the Season-5 / daily watches can keep this current.
+// so this powers a dedicated /fortnitemares SEO page. The event is now LIVE
+// (update v42.30, Oct 1 → Oct 31), so items carry a status — `live` = in-game now,
+// `leak` = reported but not yet live, `rumor` = softer / single-source — and the
+// page labels them clearly. Keep statuses current as more of the event rolls out.
 
 export const FORTNITEMARES = {
   year: 2026,
-  // Reported for Thursday Oct 1 (fits the usual Thursday cadence) — NOT Epic-confirmed.
-  startEstimate: '2026-10-01',
+  startEstimate: '2026-10-01', // now the confirmed start
   endEstimate: '2026-10-31',
-  confirmed: false,
-  updated: '2026-09-15',
-  sourceUrl: 'https://www.theclick.gg/fortnitemares-2026/',
+  confirmed: true,
+  live: true,
+  updated: '2026-10-01',
+  sourceUrl: 'https://www.vice.com/en/article/fortnitemares-2026-collabs-weapons-map-changes-sprites/',
 
   // Sprite-relevant first (this is a Sprite tracker), then collabs, then the wider event.
   sprites: [
-    { title: 'Trick-or-Treat Sprite finish', status: 'leak', source: 'The Click',
-      detail: 'A Halloween “Trick or Treat” Sprite finish is leaked (internal name “TrickTreat”), with leak imagery pointing to an X-Ray Trick-or-Treat variant. Which base Sprite gets it — and its ability — aren’t confirmed yet.' },
-    { title: 'Returning Gummy & Holofoil variants', status: 'leak', source: 'Vice / The Click',
-      detail: 'Leaks suggest the Gummy and Holofoil finishes from earlier seasons make a limited return during the event.' },
+    { title: 'Four new Sprites are live', status: 'live', source: 'Epic (v42.30) / Vice',
+      detail: 'Vampire (heal when you damage enemies), Spooky Dash (Mythic — dash charges that phase through objects), The Deer (99 Nights in the Forest collab — stronger melee) and Dumpster Dive (foraged food heals more). Full powers, finishes and where to farm each are in the Fortnitemares Sprite farming guide.' },
+    { title: 'Trick-or-Treat finish is live', status: 'live', source: 'Epic (v42.30)',
+      detail: 'The Halloween “Trick-or-Treat” recolour is live across 24 Sprites — a cosmetic finish that keeps each Sprite’s base ability.' },
+    { title: 'Honey & Obsession Sprites', status: 'leak', source: 'Vice / The Click',
+      detail: 'Two more Sprites are expected in a mid-event wave around Oct 15 — the Honey Sprite (a Design-a-Sprite winner) and a new Obsession Sprite. Not live yet.' },
   ],
   collabs: [
-    { title: 'Five Nights at Freddy’s (FNAF)', status: 'leak', source: 'Vice',
-      detail: 'Leakers (SamLeakss) report a FNAF crossover this Halloween — FNAF files surfaced in a recent update and a Freddy Fazbear’s Pizzeria-style building is under construction on the Chapter 7 Season 4 map. Epic hasn’t named Fortnite directly yet.' },
-    { title: 'Ghostface (Scream)', status: 'leak', source: 'The Click / Dexerto',
-      detail: 'Ghostface content is reported — current info points to a Ghostface-themed knife item / Loot Hack rather than just an Item Shop return.' },
+    { title: 'Five Nights at Freddy’s (FNAF)', status: 'live', source: 'Epic (trailer Sep 27)',
+      detail: 'Live: Freddy Fazbear’s Pizzeria is a new POI, and the four animatronics (Freddy, Bonnie, Chica, Foxy) appear as bosses — beating them is one way to get the Vampire Sprite.' },
+    { title: 'Ghostface (Scream)', status: 'live', source: 'The Click / Dexerto',
+      detail: 'Ghostface content is in the event, including a Ghostface knife item in the Fortnitemares loot.' },
     { title: 'Universal Halloween Horror Nights', status: 'rumor', source: 'Dexerto',
-      detail: 'A Halloween Horror Nights tie-in is among the rumored crossovers.' },
+      detail: 'A Halloween Horror Nights tie-in was among the rumored crossovers; unconfirmed.' },
   ],
   content: [
-    { title: 'Halloween Loot Hacks', status: 'leak', source: 'The Click',
-      detail: 'A Halloween set of Loot Hacks is expected (e.g. a Ghostface knife) rotating into the Sprite-Dust loot-hack pool.' },
-    { title: 'Witch Broom returns', status: 'leak', source: 'The Click',
-      detail: 'The Witch Broom mobility item is reported to return for the event.' },
-    { title: 'Chainsaw item', status: 'leak', source: 'The Click',
-      detail: 'A Chainsaw is among the leaked Fortnitemares weapon/item additions.' },
-    { title: 'Spooky map changes', status: 'leak', source: 'The Click',
-      detail: 'Halloween map changes including purple water and themed points of interest are reported.' },
-    { title: 'New Dash Medallion', status: 'rumor', source: 'The Click',
-      detail: 'A new Dash Medallion is among the leaked gameplay additions.' },
+    { title: 'Halloween Loot Hacks', status: 'live', source: 'Epic (v42.30)',
+      detail: 'The Loot Hacks pool refreshed with Fortnitemares items — the Pumpkin Launcher and Slap Candy Corn joined the Infantry Rifle, LMG and Last Call.' },
+    { title: 'Map shake-up', status: 'live', source: 'Epic (v42.30)',
+      detail: 'Battlewoods became Gravegate, the old Arcade is now Freddy Fazbear’s Pizzeria, and a new Nightmare Neighborhood POI appeared.' },
+    { title: 'Witch Broom & Chainsaw', status: 'live', source: 'The Click',
+      detail: 'Halloween mobility and melee items including the Witch Broom and Chainsaw are back for the event.' },
   ],
 }
 
