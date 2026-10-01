@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'fortnitemares-live-2026-10-01',
+    emoji: '🎃',
+    message: 'Fortnitemares is LIVE (v42.30)! Two new Sprites dropped — Vampire (heal when you damage enemies) and Pumpkin (grows a headshot-blocking Pumpkin Head) — from Pumpkin chests, Cheat Codes, and the FNAF animatronics. Map shake-up: Battlewoods → Gravegate, a new Freddy Fazbear’s Pizzeria, and a Nightmare Neighborhood with Freddy Krueger.',
+    link: '/?view=news',
+    linkLabel: 'What dropped',
+    start: '2026-10-01',
+    end: '2026-10-03',
+    source: 'Epic (v42.30) / Vice',
+    official: true,
+    tone: 'event',
+  },
+  {
     id: 'birthday-sprite-power-hours-2026-09-26',
     emoji: '🎂',
     message: 'Fortnite’s 9th Birthday (Sat, Sep 26) — the Birthday Sprite (Rare) drops, and Birthday Power Hours run in two THREE-hour windows: 2–5 PM & 9 PM–12 AM ET. Birthday Sprites are enabled (Cake Slices from chests, and from elims at max level), everyone starts with Presents, the Exotic Balloon Popper AR joins the loot pool, and Portable Extractors & 1-Up Tokens drop from Chests.',

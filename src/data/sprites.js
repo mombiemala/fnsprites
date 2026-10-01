@@ -249,12 +249,12 @@ export const SPRITE_TYPES = [
   { id: 'phasedash', name: 'Phase Dash', icon: '💨', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Unreleased in the v42.20 update (Sep 17) — only a Normal finish has surfaced so far, and its in-game ability & rarity aren’t detailed yet. TBC. (Reported by FireMonkey / Vice.)',
     variants: { normal: U } },
-  { id: 'vampire', name: 'Vampire', icon: '🧛', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Unreleased Sprite — looks like a Fortnitemares (Halloween) addition, expected to go live with the event on Oct 1. Leaked ability: converts a portion of the damage you deal into siphoned white Health, scaling from ~10% at Level 1 up to ~50% at max level. Leak-only — Epic hasn’t confirmed it, and its rarity, variants & release date are all TBC. (Reported by Techtroduce / Vice.)',
-    variants: { normal: U } },
-  { id: 'pumpkin', name: 'Pumpkin', icon: '🎃', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Unreleased Sprite — a jack-o’-lantern, the other half of the Fortnitemares pair with the Vampire, expected to go live with the event on Oct 1. Leaked ability: over time it grows you a Pumpkin Head that protects you from headshot damage. Leak-only — Epic hasn’t confirmed it, and its rarity, variants & release date are all TBC. (Reported by Vice.)',
-    variants: { normal: U } },
+  { id: 'vampire', name: 'Vampire', icon: '🧛', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-10-01', gen: 'c7s4',
+    ability: 'Live since Fortnitemares (Oct 1, v42.30). Recover Health when you damage an enemy — the share returned as Health rises with each level up. Found via Pumpkin chests and Cheat Codes, and by defeating the FNAF animatronics at Freddy Fazbear’s Pizzeria. (Official art pending — shown with placeholder art for now; rarity TBC.)',
+    variants: { normal: R } },
+  { id: 'pumpkin', name: 'Pumpkin', icon: '🎃', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-10-01', gen: 'c7s4',
+    ability: 'Live since Fortnitemares (Oct 1, v42.30). Builds a Pumpkin Head over time that shields you from headshot damage. Found via Pumpkin chests and Cheat Codes during the Halloween event. (Official art pending — shown with placeholder art for now; rarity TBC.)',
+    variants: { normal: R } },
 ]
 
 export const RARITY_ORDER = ['Rare', 'Epic', 'Legendary', 'Mythic']

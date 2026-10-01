@@ -10,6 +10,19 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-10-01',
+    when: 'Oct 1, 2026',
+    tag: 'sprites',
+    start: '2026-10-01',
+    end: '2026-10-02',
+    title: '🎃 Fortnitemares is LIVE — Vampire & Pumpkin Sprites + map changes',
+    sprites: ['vampire', 'pumpkin'],
+    body: 'Fortnitemares 2026 (update v42.30) is live. New Sprite Day brought the Vampire and Pumpkin Sprites — both are flipped live here. Vampire: recover Health when you damage an enemy (more per level up). Pumpkin: builds a Pumpkin Head over time that shields you from headshots. Get them from Pumpkin chests and Cheat Codes — and the Vampire can also drop from beating the FNAF animatronics at Freddy Fazbear’s Pizzeria. Map shake-up: Battlewoods became Gravegate (haunted houses + an Elm Street area), the Arcade landmark is now Freddy Fazbear’s Pizzeria (jumpscares + animatronic bosses), and a new Nightmare Neighborhood POI has Freddy Krueger. Official art for the new Sprites isn’t in the tracker yet — they show our placeholder for now. More Fortnitemares Sprites/variants are expected through the event; we’ll add them as they’re confirmed.',
+    link: 'https://www.vice.com/en/article/fortnitemares-2026-collabs-weapons-map-changes-sprites/',
+    source: 'Epic (v42.30) / Vice / Beebom',
+    official: true,
+  },
+  {
     ts: '2026-09-29',
     when: 'Sep 29, 2026',
     tag: 'upcoming',

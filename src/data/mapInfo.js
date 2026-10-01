@@ -27,6 +27,10 @@ export const MAP_IMAGE_FALLBACK = 'https://media.fortnite-api.com/images/map_poi
 // curated subset drives the SEO page and the offline fallback, so keep it matching
 // the real current-map names.
 export const MAP_POIS = [
+  // Fortnitemares (v42.30, Oct 1) map changes — newest first.
+  { name: 'Gravegate', note: 'Fortnitemares overhaul of Battlewoods — haunted houses, tombstones & jack-o’-lanterns, with cables running to Geno’s Machine. Contains the Elm Street area.' },
+  { name: 'Freddy Fazbear’s Pizzeria', note: 'New FNAF-collab POI (the old Arcade landmark north of Gravegate) — jumpscares, security cameras & hostile animatronic bosses.' },
+  { name: 'Nightmare Neighborhood', note: 'New Nightmare on Elm Street POI — Freddy Krueger waits here (Fortnitemares).' },
   { name: 'Green Hill Zone', note: 'Sonic-themed POI.' },
   { name: 'Blinky Island', note: 'One of the Pac-Man-themed islands (with Pinky & Pac-Man Island).' },
   { name: 'Crashout Estates', note: 'Crash Bandicoot-themed location.' },
@@ -37,4 +41,4 @@ export const MAP_POIS = [
   { name: 'WonkeeLand', note: 'Colourful themed POI added this season.' },
 ]
 
-export const MAP_UPDATED = 'September 20, 2026'
+export const MAP_UPDATED = 'October 1, 2026'

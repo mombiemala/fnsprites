@@ -7,6 +7,17 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Fortnitemares is live — Vampire & Pumpkin Sprites + map changes',
+    changes: [
+      { tag: 'Added', text: 'New Sprite Day: flipped the Vampire and Pumpkin Sprites live for Fortnitemares (v42.30, Oct 1). Vampire recovers Health when you damage an enemy (scaling per level); Pumpkin builds a headshot-blocking Pumpkin Head over time. Both come from Pumpkin chests and Cheat Codes (Vampire can also drop from the FNAF animatronics at Freddy Fazbear’s Pizzeria). Official art isn’t out yet, so they use placeholder art for now and rarities are still unconfirmed.' },
+      { tag: 'Changed', text: 'Refreshed the map POIs for Fortnitemares: Battlewoods → Gravegate (haunted houses + an Elm Street area), the Arcade landmark → Freddy Fazbear’s Pizzeria (FNAF collab, animatronic bosses), and a new Nightmare Neighborhood POI with Freddy Krueger.' },
+      { tag: 'Added', text: 'A Fortnitemares-live announcement banner and a New Sprite Day news post.' },
+    ],
+    summary: 'Flipped the Vampire & Pumpkin Sprites live and refreshed the map POIs for the Fortnitemares (v42.30) launch.',
+    why: 'Fortnitemares went live Oct 1 and multiple outlets (Vice, Beebom, FRVR) confirmed the two Sprites are obtainable and the map changes are in — so they move from leak to live. Official art hasn’t surfaced yet, so placeholders stand in and rarities stay unconfirmed until Epic details land.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'Tidier top status bar + plainer wording',
     changes: [
       { tag: 'Changed', text: 'The top-of-page status card now collapses when nothing’s happening — it drops the generic “weekly events” filler line and hides entirely when there’s no live event, new code, or upcoming drop, so it stops taking up space.' },

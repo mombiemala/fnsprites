@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Fortnitemares is live: Vampire & Pumpkin Sprites + map changes
+
+- **Added:** New Sprite Day — flipped the **Vampire** and **Pumpkin** Sprites `released` in `src/data/sprites.js` for Fortnitemares
+  (v42.30, Oct 1). Vampire heals you when you damage enemies (scales per level); Pumpkin grows a headshot-blocking Pumpkin Head. Both
+  from Pumpkin chests + Cheat Codes (Vampire also from the FNAF animatronics). Placeholder art for now; rarities unconfirmed.
+- **Changed:** refreshed `MAP_POIS` in `src/data/mapInfo.js` — Battlewoods → **Gravegate** (haunted houses + Elm Street area), the
+  Arcade landmark → **Freddy Fazbear’s Pizzeria** (FNAF collab, animatronic bosses), new **Nightmare Neighborhood** POI (Freddy
+  Krueger). Bumped `MAP_UPDATED`. (The live `/api/map` feed from fortnite-api.com lags the patch, so the in-app live list catches up
+  when the vendor refreshes.)
+- **Added:** a Fortnitemares-live announcement banner (`announcements.js`) and a New Sprite Day news post (`news.js`); cleared the
+  Vampire/Pumpkin "Coming Oct 1" badge wiring now that they’re live.
+- **Why:** Fortnitemares launched Oct 1 and multiple outlets (Vice, Beebom, FRVR) confirmed the Sprites are obtainable and the map
+  changes are in, so they move from leak to live.
+
+---
+
 ## October 1, 2026 — Tidier top status bar + plainer wording
 
 - **Changed:** the top-of-page status card (`src/components/TopStatus.jsx`) now collapses when idle — it drops the generic
