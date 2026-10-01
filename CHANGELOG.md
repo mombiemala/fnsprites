@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 1, 2026 — Naming fix: the dash Sprite is "Spooky Dash"
+
+- **Fixed:** the second Fortnitemares Sprite is the **Mythic Spooky Dash** (dash charges that let you phase through objects), not a
+  headshot-blocking "Pumpkin" (an early-leak mix-up). It's the same Sprite we tracked under the datamined name "Phase Dash", so the two
+  are merged into one correct `phasedash`-id entry named **Spooky Dash** (with its real art), and the duplicate `pumpkin` entry is removed.
+  Updated `sprites.js`, `news.js`, `announcements.js` and the changelog references accordingly ("Pumpkin chests" stays — that's the real
+  in-game chest).
+
+---
+
 ## October 1, 2026 — Simpler filtering & search
 
 - **Changed:** rebuilt the collection filter bar (`src/components/Toolbar.jsx`): season tabs (All Seasons / C7 S3 / C7 S4) + one row of
@@ -39,10 +49,10 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## October 1, 2026 — Fortnitemares is live: Vampire & Pumpkin Sprites + map changes
+## October 1, 2026 — Fortnitemares is live: Vampire & Spooky Dash Sprites + map changes
 
-- **Added:** New Sprite Day — flipped the **Vampire** and **Pumpkin** Sprites `released` in `src/data/sprites.js` for Fortnitemares
-  (v42.30, Oct 1). Vampire heals you when you damage enemies (scales per level); Pumpkin grows a headshot-blocking Pumpkin Head. Both
+- **Added:** New Sprite Day — flipped the **Vampire** and **Spooky Dash** Sprites `released` in `src/data/sprites.js` for Fortnitemares
+  (v42.30, Oct 1). Vampire heals you when you damage enemies (scales per level); Spooky Dash (Mythic) holds dash charges that phase through objects. Both
   from Pumpkin chests + Cheat Codes (Vampire also from the FNAF animatronics). Placeholder art for now; rarities unconfirmed.
 - **Changed:** refreshed `MAP_POIS` in `src/data/mapInfo.js` — Battlewoods → **Gravegate** (haunted houses + Elm Street area), the
   Arcade landmark → **Freddy Fazbear’s Pizzeria** (FNAF collab, animatronic bosses), new **Nightmare Neighborhood** POI (Freddy

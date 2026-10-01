@@ -18,7 +18,7 @@ export const ANNOUNCEMENTS = [
   {
     id: 'fortnitemares-live-2026-10-01',
     emoji: '🎃',
-    message: 'Fortnitemares is LIVE (v42.30)! Two new Sprites dropped — Vampire (heal when you damage enemies) and Pumpkin (grows a headshot-blocking Pumpkin Head) — from Pumpkin chests, Cheat Codes, and the FNAF animatronics. Map shake-up: Battlewoods → Gravegate, a new Freddy Fazbear’s Pizzeria, and a Nightmare Neighborhood with Freddy Krueger.',
+    message: 'Fortnitemares is LIVE (v42.30)! Two new Sprites dropped — Vampire (heal when you damage enemies) and Spooky Dash (Mythic dash that phases through objects) — from Pumpkin chests, Cheat Codes, and the FNAF animatronics. Map shake-up: Battlewoods → Gravegate, a new Freddy Fazbear’s Pizzeria, and a Nightmare Neighborhood with Freddy Krueger.',
     link: '/?view=news',
     linkLabel: 'What dropped',
     start: '2026-10-01',

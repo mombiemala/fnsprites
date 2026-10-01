@@ -246,15 +246,14 @@ export const SPRITE_TYPES = [
   { id: 'blinky', name: 'Blinky', icon: '👾', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
     ability: 'Pac-Man collab (Blinky, the red ghost). Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes, with its Bounty Hunter finish added Sep 24. Found in the world at nighttime. Ability: grants a temporary cloak when you take damage; cloak duration rises with each level up.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U } },
-  { id: 'phasedash', name: 'Phase Dash', icon: '💨', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
-    ability: 'Unreleased in the v42.20 update (Sep 17) — only a Normal finish has surfaced so far, and its in-game ability & rarity aren’t detailed yet. TBC. (Reported by FireMonkey / Vice.)',
-    variants: { normal: U, trickortreat: R } },
+  // "Spooky Dash" is the official Fortnitemares name for this dash Sprite (its
+  // datamined/working name was "Phase Dash"); the internal id stays `phasedash`.
+  { id: 'phasedash', name: 'Spooky Dash', icon: '🎃', rarity: 'Mythic', dropRate: null, released: true, releaseDate: '2026-10-01', gen: 'c7s4',
+    ability: 'Live since Fortnitemares (Oct 1, v42.30). A mobility Sprite: it holds dash charges that recharge over time, letting you burst forward and phase through some objects — the recharge gets faster as it levels up. Very rare (Mythic, like the Crown): found in Pumpkin chests, via Cheat Codes, and around the new Nightmare Neighborhood POI.',
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
   { id: 'vampire', name: 'Vampire', icon: '🧛', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-10-01', gen: 'c7s4',
     ability: 'Live since Fortnitemares (Oct 1, v42.30). Recover Health when you damage an enemy — the share returned as Health rises with each level up. Found via Pumpkin chests and Cheat Codes, and by defeating the FNAF animatronics at Freddy Fazbear’s Pizzeria. (Rarity TBC.)',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
-  { id: 'pumpkin', name: 'Pumpkin', icon: '🎃', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-10-01', gen: 'c7s4',
-    ability: 'Live since Fortnitemares (Oct 1, v42.30). Builds a Pumpkin Head over time that shields you from headshot damage. Found via Pumpkin chests and Cheat Codes during the Halloween event. (Official art pending — shown with placeholder art for now; rarity TBC.)',
-    variants: { normal: R } },
 ]
 
 export const RARITY_ORDER = ['Rare', 'Epic', 'Legendary', 'Mythic']

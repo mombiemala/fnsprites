@@ -7,6 +7,15 @@
 export const CHANGELOG = [
   {
     date: 'October 1, 2026',
+    title: 'Naming fix — the dash Sprite is “Spooky Dash”',
+    changes: [
+      { tag: 'Fixed', text: 'Corrected the second Fortnitemares Sprite: it’s the Mythic Spooky Dash (dash charges that let you phase through objects), not a headshot-blocking “Pumpkin” — that was an early-leak mix-up. It’s the same Sprite we’d also been tracking under the datamined name “Phase Dash,” so the two are now merged into one correct Spooky Dash (with its real art), and the duplicate is gone.' },
+    ],
+    summary: 'Fixed the dash Sprite to the correct “Spooky Dash” (Mythic) and removed the bogus “Pumpkin” duplicate.',
+    why: 'Early Fortnitemares leaks called it a pumpkin/headshot Sprite; the live version is the Spooky Dash dash Sprite, which we’d also listed under the datamined name “Phase Dash.” One Sprite, one entry — the roster now matches what’s actually in-game.',
+  },
+  {
+    date: 'October 1, 2026',
     title: 'Simpler filtering & search',
     changes: [
       { tag: 'Changed', text: 'Rebuilt the collection filter bar to be cleaner and quicker to scan: season tabs (All Seasons / C7 S3 / C7 S4), then one row of Search · Variant · Sprite · Sort · grid/list. The less-used options (ownership, rarity, grouping, hide-mastered, show-unreleased) now tuck behind a ⚙ gear so the common path stays uncluttered.' },
@@ -28,21 +37,21 @@ export const CHANGELOG = [
     date: 'October 1, 2026',
     title: 'Real Vampire art + all five finishes',
     changes: [
-      { tag: 'Added', text: 'Dropped in the official Vampire Sprite art (replacing the placeholder) across all five finishes — Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter — so the live Fortnitemares Sprite now shows its real look. Staged the Phase Dash art too, ready for when it goes live.' },
+      { tag: 'Added', text: 'Dropped in the official Vampire Sprite art (replacing the placeholder) across all five finishes — Normal, Gold, Cheat Master, Loot Hacker and Bounty Hunter — so the live Fortnitemares Sprite now shows its real look. Added the Spooky Dash art from the same drop too.' },
     ],
-    summary: 'Added the real Vampire Sprite art in all five finishes (and pre-staged Phase Dash art).',
-    why: 'The Vampire went live today with placeholder art; the real icons arrived, so they’re in now. Pumpkin’s real art still isn’t available, so it keeps its placeholder for now.',
+    summary: 'Added the real Vampire Sprite art in all five finishes (plus the Spooky Dash art).',
+    why: 'The Vampire went live today with placeholder art; the real icons arrived, so they’re in now — along with the Spooky Dash art from the same drop.',
   },
   {
     date: 'October 1, 2026',
-    title: 'Fortnitemares is live — Vampire & Pumpkin Sprites + map changes',
+    title: 'Fortnitemares is live — Vampire & Spooky Dash Sprites + map changes',
     changes: [
-      { tag: 'Added', text: 'New Sprite Day: flipped the Vampire and Pumpkin Sprites live for Fortnitemares (v42.30, Oct 1). Vampire recovers Health when you damage an enemy (scaling per level); Pumpkin builds a headshot-blocking Pumpkin Head over time. Both come from Pumpkin chests and Cheat Codes (Vampire can also drop from the FNAF animatronics at Freddy Fazbear’s Pizzeria). Official art isn’t out yet, so they use placeholder art for now and rarities are still unconfirmed.' },
+      { tag: 'Added', text: 'New Sprite Day: flipped the Vampire and Spooky Dash Sprites live for Fortnitemares (v42.30, Oct 1). Vampire recovers Health when you damage an enemy (scaling per level); Spooky Dash (Mythic) holds dash charges that recharge over time and let you phase through some objects. Both come from Pumpkin chests and Cheat Codes (Vampire can also drop from the FNAF animatronics at Freddy Fazbear’s Pizzeria; Spooky Dash turns up around Nightmare Neighborhood).' },
       { tag: 'Changed', text: 'Refreshed the map POIs for Fortnitemares: Battlewoods → Gravegate (haunted houses + an Elm Street area), the Arcade landmark → Freddy Fazbear’s Pizzeria (FNAF collab, animatronic bosses), and a new Nightmare Neighborhood POI with Freddy Krueger.' },
       { tag: 'Added', text: 'A Fortnitemares-live announcement banner and a New Sprite Day news post.' },
     ],
-    summary: 'Flipped the Vampire & Pumpkin Sprites live and refreshed the map POIs for the Fortnitemares (v42.30) launch.',
-    why: 'Fortnitemares went live Oct 1 and multiple outlets (Vice, Beebom, FRVR) confirmed the two Sprites are obtainable and the map changes are in — so they move from leak to live. Official art hasn’t surfaced yet, so placeholders stand in and rarities stay unconfirmed until Epic details land.',
+    summary: 'Flipped the Vampire & Spooky Dash Sprites live and refreshed the map POIs for the Fortnitemares (v42.30) launch.',
+    why: 'Fortnitemares went live Oct 1 and multiple outlets (Vice, Beebom, FRVR) confirmed the two Sprites are obtainable and the map changes are in — so they move from leak to live, with their official art.',
   },
   {
     date: 'October 1, 2026',
@@ -65,11 +74,11 @@ export const CHANGELOG = [
   },
   {
     date: 'September 29, 2026',
-    title: 'Fortnitemares Sprites leaked — Pumpkin & Vampire (Oct 1)',
+    title: 'Fortnitemares Sprites leaked — Spooky Dash & Vampire (Oct 1)',
     changes: [
-      { tag: 'Added', text: 'Added the leaked Pumpkin (jack-o’-lantern) Sprite to the roster as rumored, alongside the existing Vampire — both expected to headline Fortnitemares when it goes live Oct 1. Leaked powers: Pumpkin grows a Pumpkin Head that blocks headshot damage; Vampire siphons up to ~50% of the damage you deal back as white Health. Both are flagged as leaks (they don’t count toward your total), have placeholder art, a Coming Oct 1 badge, and a leak-labelled News post.' },
+      { tag: 'Added', text: 'Added the two leaked Fortnitemares Sprites to the roster as rumored — the Spooky Dash Sprite and the Vampire — both expected to headline the event when it goes live Oct 1. Leaked powers: Spooky Dash has dash charges that let you phase through objects; Vampire siphons up to ~50% of the damage you deal back as white Health. Both are flagged as leaks (they don’t count toward your total), with a Coming Oct 1 badge and a leak-labelled News post.' },
     ],
-    summary: 'Added the leaked Fortnitemares Sprites (Pumpkin + Vampire) with their leaked powers, ahead of Oct 1.',
+    summary: 'Added the leaked Fortnitemares Sprites (Spooky Dash + Vampire) with their leaked powers, ahead of Oct 1.',
     why: 'Vice’s leak gives credible names and powers for the Halloween pair, so they go in as clearly-labelled leaks now (with a Coming Oct 1 badge) and will flip to released with real art the moment they’re obtainable — keeping the “leaked vs live” line honest.',
   },
   {
