@@ -11,12 +11,12 @@
 export const CHANGELOG = [
   {
     date: 'October 2, 2026',
-    title: 'Golden Power Hours this weekend (Oct 3)',
+    title: 'Bounty Hunter Power Hours this weekend (Sat Oct 3)',
     changes: [
-      { tag: 'Added', text: 'Added the confirmed Golden Power Hours on Fri Oct 3 — Gold-finish Sprites are rate-boosted in two 2-hour windows (2–4 PM & 9–11 PM ET). The top card’s “Farm my missing Gold Sprites” shortcut lights up during the event, and there’s a heads-up banner.' },
+      { tag: 'Added', text: 'Added the confirmed Bounty Hunter Power Hours on Sat Oct 3 — Bounty Hunter-finish Sprites are rate-boosted in two 2-hour windows (2–4 PM & 9–11 PM ET); everyone drops with Dual Fiend Hunters, and 1-Up Tokens & Portable Extractors can drop from chests. The top card’s “Farm my missing Bounty Hunter Sprites” shortcut lights up during the event, with a heads-up banner.' },
     ],
-    summary: 'Added the Oct 3 Golden Power Hours (Gold-finish rate-up, two windows) with a live banner and the Gold-farm shortcut.',
-    why: 'Power Hours are the best time to fill in a specific finish; surfacing the dated Gold window (with the one-tap “farm my missing Gold” filter) helps players use it.',
+    summary: 'Added the Sat Oct 3 Bounty Hunter Power Hours (finish rate-up, two windows) with a live banner and the farm shortcut.',
+    why: 'Power Hours are the best time to fill in a specific finish; surfacing the dated Bounty Hunter window (with the one-tap “farm my missing” filter) helps players use it. (Corrected from an initial “Golden” label — The Click + FortniteFNLK confirm it’s the Bounty Hunter finish.)',
   },
   {
     date: 'October 2, 2026',

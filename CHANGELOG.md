@@ -11,11 +11,12 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## October 2, 2026 — Golden Power Hours (Oct 3)
+## October 2, 2026 — Bounty Hunter Power Hours (Sat Oct 3)
 
-- **Added** (`src/data/events.js`, `src/data/announcements.js`): the confirmed Golden Power Hours on Fri Oct 3 — two 2-hour
-  windows (2–4 PM & 9–11 PM ET → 18:00–20:00Z and 01:00–03:00Z Oct 4), `boostedThemes: ['gold']` so the top card's "Farm my
-  missing Gold Sprites" shortcut appears, plus a heads-up banner (Oct 2–4). Source: GameRant / Vice.
+- **Added** (`src/data/events.js`, `src/data/announcements.js`): the confirmed Bounty Hunter Power Hours on Sat Oct 3 — two
+  2-hour windows (2–4 PM & 9–11 PM ET → 18:00–20:00Z and 01:00–03:00Z Oct 4), `boostedThemes: ['bountyhunter']` so the top
+  card's "Farm my missing Bounty Hunter Sprites" shortcut appears; everyone drops with Dual Fiend Hunters; heads-up banner
+  (Oct 2–4). Source: The Click / FortniteFNLK. (Corrected from an initial "Golden" label — GameRant had mislabeled it.)
 
 ---
 

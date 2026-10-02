@@ -16,14 +16,14 @@
 
 export const ANNOUNCEMENTS = [
   {
-    id: 'gold-hours-2026-10-03',
-    emoji: '🥇',
-    message: 'Golden Power Hours this weekend (Fri Oct 3) — Gold-finish Sprites are rate-boosted in two 2-hour windows: 2–4 PM & 9–11 PM ET. The best time to farm the Gold finishes you’re missing.',
+    id: 'bountyhunter-hours-2026-10-03',
+    emoji: '🎯',
+    message: 'Bounty Hunter Power Hours (Sat Oct 3) — Bounty Hunter-finish Sprites are rate-boosted in two 2-hour windows: 2–4 PM & 9–11 PM ET. Everyone drops with Dual Fiend Hunters, and 1-Up Tokens & Portable Extractors can drop from chests. The best time to farm the Bounty Hunter finishes you’re missing.',
     link: '/?view=news',
     linkLabel: 'Event details',
     start: '2026-10-02',
     end: '2026-10-04',
-    source: 'GameRant / Vice',
+    source: 'The Click / FortniteFNLK',
     official: false,
     tone: 'event',
   },

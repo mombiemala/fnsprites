@@ -26,28 +26,28 @@
 
 export const SPRITE_EVENTS = [
   {
-    id: 'gold-hours-2026-10-03-r1',
-    emoji: '🥇',
-    name: 'Golden Power Hours (Round 1)',
-    perk: 'Gold-finish Sprites are rate-boosted — the best window to farm the Gold finishes you’re missing. 2-hour window.',
-    startsUtc: '2026-10-03T18:00:00Z', // 2 PM ET Fri Oct 3
+    id: 'bountyhunter-hours-2026-10-03-r1',
+    emoji: '🎯',
+    name: 'Bounty Hunter Power Hours (Round 1)',
+    perk: 'Bounty Hunter-finish Sprites are rate-boosted — the best window to farm the ones you’re missing. Everyone drops with Dual Fiend Hunters (“aim once, hit twice”), and 1-Up Tokens & Portable Extractors can drop from chests. 2-hour window.',
+    startsUtc: '2026-10-03T18:00:00Z', // 2 PM ET Sat Oct 3 (= 6 PM UTC)
     endsUtc: '2026-10-03T20:00:00Z', // 4 PM ET (2-hour window)
     confirmed: true,
-    boostedThemes: ['gold'],
-    source: 'GameRant / Vice (Golden Power Hours)',
-    sourceUrl: 'https://gamerant.com/fortnite-golden-hours-start-times-power-hour-when-to-play-gold-sprite-rate-up/',
+    boostedThemes: ['bountyhunter'],
+    source: 'The Click / FortniteFNLK (Bounty Hunter Power Hours)',
+    sourceUrl: 'https://www.theclick.gg/fortnite-bounty-hunter-sprite-power-hour/',
   },
   {
-    id: 'gold-hours-2026-10-03-r2',
-    emoji: '🥇',
-    name: 'Golden Power Hours (Round 2)',
-    perk: 'Gold-finish Sprites are rate-boosted — the best window to farm the Gold finishes you’re missing. 2-hour window.',
-    startsUtc: '2026-10-04T01:00:00Z', // 9 PM ET Fri Oct 3 (= 1 AM UTC Sat)
+    id: 'bountyhunter-hours-2026-10-03-r2',
+    emoji: '🎯',
+    name: 'Bounty Hunter Power Hours (Round 2)',
+    perk: 'Bounty Hunter-finish Sprites are rate-boosted — the best window to farm the ones you’re missing. Everyone drops with Dual Fiend Hunters (“aim once, hit twice”), and 1-Up Tokens & Portable Extractors can drop from chests. 2-hour window.',
+    startsUtc: '2026-10-04T01:00:00Z', // 9 PM ET Sat Oct 3 (= 1 AM UTC Sun)
     endsUtc: '2026-10-04T03:00:00Z', // 11 PM ET (2-hour window)
     confirmed: true,
-    boostedThemes: ['gold'],
-    source: 'GameRant / Vice (Golden Power Hours)',
-    sourceUrl: 'https://gamerant.com/fortnite-golden-hours-start-times-power-hour-when-to-play-gold-sprite-rate-up/',
+    boostedThemes: ['bountyhunter'],
+    source: 'The Click / FortniteFNLK (Bounty Hunter Power Hours)',
+    sourceUrl: 'https://www.theclick.gg/fortnite-bounty-hunter-sprite-power-hour/',
   },
   {
     id: 'power-hours-birthday-2026-09-26-r1',
