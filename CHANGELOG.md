@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 2, 2026 — Decluttered the collection sidebar
+
+- **Changed** (`src/App.jsx`, new `src/components/WhatsNext.jsx`): rebuilt the sidebar per the approved mockup — Progress
+  (StatsBreakdown) now leads as a hero, and NextToChase + UpcomingSprites + SeasonCountdown + LootHacks fold into one
+  tabbed "What's next" card (Chase · Upcoming · Season · Loot). Removed the standalone "New to Sprites" nudge and the
+  mobile NextToChase hoist (now in the tab on all sizes). ~10 cards → ~5 blocks. ShareBar kept inline (richer than the
+  mockup's button). Verified in a headless browser: tabs switch, no errors.
+- **Why:** the sidebar's ten-card stack buried progress under support/reference cards; leading with progress and tabbing
+  the rest keeps it all one tap away with far less scrolling.
+
+---
+
 ## October 2, 2026 — Guide share images + accessibility polish
 
 - **Added** (`api/og.js`, `scripts/prerender.mjs`): the OG image endpoint now takes `?title=`/`?sub=`, and the four guide

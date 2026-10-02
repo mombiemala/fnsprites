@@ -14,12 +14,10 @@ import Toolbar from './components/Toolbar'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
 import StatsBreakdown from './components/StatsBreakdown'
-import NextToChase from './components/NextToChase'
 import TopStatus from './components/TopStatus'
 import QuickCheckList from './components/QuickCheckList'
 import ChestOdds from './components/ChestOdds'
-import LootHacks from './components/LootHacks'
-import SeasonCountdown from './components/SeasonCountdown'
+import WhatsNext from './components/WhatsNext'
 import SafetyNote from './components/SafetyNote'
 import OverflowNav from './components/OverflowNav'
 import UpcomingSprites from './components/UpcomingSprites'
@@ -653,13 +651,13 @@ export default function App() {
       <div id="collection-grid" className="lg:flex lg:items-start lg:gap-6">
         {/* Main column: grid */}
         <div className="min-w-0 lg:flex-1">
-          {/* Mobile only: hoist progress + next-to-chase above the grid, so the
-              most useful sidebar cards aren't buried below the whole roster on
-              phones. On desktop these live in the sidebar (hidden here via lg:hidden). */}
+          {/* Mobile only: hoist progress above the grid, so your completion % isn't
+              buried below the whole roster on phones. On desktop it leads the
+              sidebar (hidden here via lg:hidden). Next-to-chase now lives in the
+              sidebar's tabbed "What's next" card on all sizes. */}
           {!isShareView && (
             <div className="mb-4 flex flex-col gap-4 lg:hidden">
               <StatsBreakdown tracking={activeTracking} />
-              <NextToChase tracking={activeTracking} onOpen={setDetailType} />
             </div>
           )}
           {showOnboarding && (
@@ -764,6 +762,13 @@ export default function App() {
 
         {/* Sidebar: a static column beside the grid that scrolls with the page */}
         <aside className="mt-8 flex flex-col gap-4 lg:mt-0 lg:w-80 lg:shrink-0">
+          {/* Progress hero — lead with the player's completion, not a stack of
+              cards. Desktop-only here (mobile hoists it above the grid); a shared
+              view (no hoist) shows it on all sizes. */}
+          <div className={isShareView ? '' : 'hidden lg:block'}>
+            <StatsBreakdown tracking={activeTracking} />
+          </div>
+
           {!isShareView && !readOnly && !showOnboarding && (
             <button
               onClick={() => setShowImport(true)}
@@ -796,37 +801,10 @@ export default function App() {
               </div>
             ))}
 
-          {/* Breakdown — the single stats hub (Collection %, Mastery %, Dust, rings).
-              On own view it's hoisted above the grid on mobile, so here it's
-              desktop-only; in a shared view (no hoist) it shows on all sizes. */}
-          <div className={isShareView ? '' : 'hidden lg:block'}>
-            <StatsBreakdown tracking={activeTracking} />
-          </div>
-
-          {/* Small guide nudge for signed-in players — links to the guide that now
-              lives on the /sprites landing page (the modal + nav item were removed). */}
-          {user && !isShareView && (
-            <a
-              href="/sprites#how-sprites-work"
-              title="How Sprites work — extraction, leveling, mastery & variants"
-              className="flex items-center gap-2 rounded-2xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-left text-xs font-bold text-[var(--muted)] transition-colors hover:border-[var(--brand)] hover:text-white"
-            >
-              <span className="text-base">❔</span>
-              New to Sprites? <span className="text-[var(--brand)]">Read the quick guide →</span>
-            </a>
-          )}
-
-          {!isShareView && (
-            <div className="hidden lg:block">
-              <NextToChase tracking={activeTracking} onOpen={setDetailType} />
-            </div>
-          )}
-
-          {!isShareView && <UpcomingSprites onOpen={setDetailType} />}
-
-          {!isShareView && <SeasonCountdown />}
-
-          {!isShareView && <LootHacks />}
+          {/* What's next — Next-to-chase, Upcoming, Season countdown & Loot Hacks
+              folded into one tabbed card so the sidebar leads with progress instead
+              of a ten-card stack. */}
+          {!isShareView && <WhatsNext tracking={activeTracking} onOpen={setDetailType} />}
 
           {!isShareView && <SupportBanner />}
 

@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 2, 2026',
+    title: 'Decluttered the collection sidebar',
+    changes: [
+      { tag: 'Changed', text: 'The sidebar now leads with your progress (collection %, mastery, Dust) instead of a ten-card stack, and the Next-to-chase, Upcoming, Season countdown and Loot Hacks cards are folded into a single tabbed “What’s next” card. Ten cards become about five focused blocks — far less scrolling to reach what matters.' },
+    ],
+    summary: 'Rebuilt the collection sidebar: progress first, and four reference cards combined into one tabbed card.',
+    why: 'The sidebar had grown to ~10 stacked cards, so your progress competed with support banners and reference info. Leading with progress and tabbing the “what’s next” cards (per the mockup) keeps everything one tap away without the long scroll.',
+  },
+  {
+    date: 'October 2, 2026',
     title: 'Share images for guides + accessibility polish',
     changes: [
       { tag: 'Added', text: 'The guide pages now generate their own branded share/preview images, so links to them look sharp when posted on Discord, Reddit or socials (instead of the generic site image).' },
