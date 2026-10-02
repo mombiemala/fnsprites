@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 2, 2026',
+    title: 'Fixed the invisible “Start tracking” button on guide pages',
+    changes: [
+      { tag: 'Fixed', text: 'The gold “Start tracking your collection” call-to-action in the sidebar of the guide/SEO pages was rendering invisible (dark text on a dark card) — a CSS ordering bug where the generic card style overrode its gradient. It now shows as the intended gold button.' },
+    ],
+    summary: 'Fixed the sidebar “Start tracking” CTA on prerendered pages rendering invisible (dark-on-dark).',
+    why: 'A `.card` rule defined after `.ctacard` overrode its gradient background (same specificity, later wins), so the button lost its fill and its dark text disappeared. Scoping the rule to `.card.ctacard` restores the gradient everywhere it’s used.',
+  },
+  {
+    date: 'October 2, 2026',
     title: 'Bounty Hunter Power Hours this weekend (Sat Oct 3)',
     changes: [
       { tag: 'Added', text: 'Added the confirmed Bounty Hunter Power Hours on Sat Oct 3 — Bounty Hunter-finish Sprites are rate-boosted in two 2-hour windows (2–4 PM & 9–11 PM ET); everyone drops with Dual Fiend Hunters, and 1-Up Tokens & Portable Extractors can drop from chests. The top card’s “Farm my missing Bounty Hunter Sprites” shortcut lights up during the event, with a heads-up banner.' },

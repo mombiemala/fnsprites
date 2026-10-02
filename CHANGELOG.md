@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 2, 2026 — Fix invisible "Start tracking" CTA on prerendered pages
+
+- **Fixed** (`scripts/prerender.mjs` CSS): the sidebar `.ctacard` ("Start tracking your collection — free →") rendered with
+  no background and near-black text on prerendered pages — `.card` (defined later, same specificity) overrode
+  `.ctacard`'s gradient `background`. Scoped it to `.card.ctacard` (+ `:hover`, `border:0`) so the gold→violet gradient
+  applies. Verified via computed style (`background-image` now a gradient) and a screenshot.
+
+---
+
 ## October 2, 2026 — Bounty Hunter Power Hours (Sat Oct 3)
 
 - **Added** (`src/data/events.js`, `src/data/announcements.js`): the confirmed Bounty Hunter Power Hours on Sat Oct 3 — two
