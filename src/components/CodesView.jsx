@@ -19,20 +19,15 @@ const byStatus = (a, b) => (STATUS_RANK[a.status] ?? 3) - (STATUS_RANK[b.status]
 // A code counts as "new" for ~a week after its `added` date.
 const isNewCode = (c) => c.added && (Date.now() - new Date(c.added).getTime()) <= 7 * 864e5
 
-const REDEEMED_KEY = 'fnsprites.codesRedeemed'
+// Redeemed-code state lives in the auth store now (local for guests, synced to the
+// user's profile when signed in so it follows the account across devices).
 const HIDE_KEY = 'fnsprites.codesHideRedeemed'
-const loadRedeemed = () => {
-  try { return new Set(JSON.parse(localStorage.getItem(REDEEMED_KEY)) || []) } catch { return new Set() }
-}
-const saveRedeemed = (set) => {
-  try { localStorage.setItem(REDEEMED_KEY, JSON.stringify([...set])) } catch { /* ignore */ }
-}
 
 export default function CodesView() {
   const { toast } = useToast()
-  const { user, fetchCodeReports, fetchMyCodeVotes, setCodeReport } = useAuth()
+  const { user, fetchCodeReports, fetchMyCodeVotes, setCodeReport, redeemedCodes, saveRedeemedCodes } = useAuth()
   const [copied, setCopied] = useState(null)
-  const [redeemed, setRedeemed] = useState(loadRedeemed)
+  const redeemed = redeemedCodes
   const [hideRedeemed, setHideRedeemed] = useState(() => {
     try { return localStorage.getItem(HIDE_KEY) === '1' } catch { return false }
   })
@@ -97,16 +92,13 @@ export default function CodesView() {
   }
 
   const toggleRedeem = (code) => {
-    setRedeemed((prev) => {
-      const next = new Set(prev)
-      if (next.has(code)) next.delete(code); else next.add(code)
-      saveRedeemed(next)
-      return next
-    })
+    const next = new Set(redeemed)
+    if (next.has(code)) next.delete(code); else next.add(code)
+    saveRedeemedCodes(next)
   }
   const setAll = (on) => {
     const next = on ? new Set(LOBBY_CODES.filter((c) => c.code).map((c) => c.code)) : new Set()
-    setRedeemed(next); saveRedeemed(next)
+    saveRedeemedCodes(next)
     toast(on ? 'Marked all codes redeemed' : 'Cleared redeemed codes')
   }
   const toggleHide = () => {

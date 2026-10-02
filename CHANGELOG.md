@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 2, 2026 — Redeemed Lobby Hack codes sync across devices
+
+- **Fixed:** redeemed-code state was `localStorage`-only (`CodesView.jsx`), so codes marked redeemed on one device never
+  appeared on another even when signed into the same account (reported: "claimed Lobby Hacks show on desktop but not
+  mobile"). Now cloud-synced when signed in.
+- **Added** (DB migration `add_redeemed_codes_to_profiles`): `profiles.redeemed_codes text[]`. Owner-only writes via the
+  existing `profiles_owner_update/insert` RLS.
+- **Changed:** `AuthContext.jsx` loads `redeemed_codes` on sign-in and unions it with local marks (one-time per sign-in, so
+  existing device marks seed the cloud), exposes `redeemedCodes` + `saveRedeemedCodes`; `CodesView.jsx` now reads/writes
+  through the auth store (guests still persist to `localStorage`). Verified in a headless browser: mark → persists across
+  reload.
+
+---
+
 ## October 1, 2026 — Fortnitemares page refreshed (what's live, not leaks)
 
 - **Changed** (`src/data/fortnitemares.js`, `scripts/prerender.mjs`): rewrote the `/fortnitemares` page from a pre-launch

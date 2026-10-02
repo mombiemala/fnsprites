@@ -10,6 +10,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 2, 2026',
+    title: 'Redeemed Lobby Hack codes now sync across devices',
+    changes: [
+      { tag: 'Fixed', text: 'The codes you’ve marked as redeemed weren’t showing up on other devices — they were saved only in each browser. Now, when you’re signed in, your redeemed codes sync to your account, so they follow you from desktop to mobile and back. Existing marks on a device are merged up the first time you sign in there.' },
+      { tag: 'Security', text: 'Added a redeemed_codes field to your profile to store this; it’s written only by you (same per-user rules as the rest of your collection).' },
+    ],
+    summary: 'Redeemed Lobby Hack codes now sync to your account and appear across devices when signed in (were previously saved per-browser only).',
+    why: 'Redeemed-state was localStorage-only, so claiming a code on desktop never reached mobile even when logged into the same account. Persisting it to your profile (like your collection) makes it device-independent — the behaviour players expect from a signed-in account.',
+  },
+  {
     date: 'October 1, 2026',
     title: 'Fortnitemares page refreshed — what’s live, not just leaks',
     changes: [

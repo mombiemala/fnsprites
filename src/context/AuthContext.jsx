@@ -24,6 +24,18 @@ function saveLocal(tracking) {
   }
 }
 
+// Redeemed Lobby Hack codes — stored locally for guests, and synced to the user's
+// profile row (profiles.redeemed_codes) when signed in so they follow the account
+// across devices. Same localStorage key the Codes view has always used, so a
+// signed-in player's existing local marks migrate up on first login.
+const REDEEMED_KEY = 'fnsprites.codesRedeemed'
+function loadLocalRedeemed() {
+  try { return new Set(JSON.parse(localStorage.getItem(REDEEMED_KEY)) || []) } catch { return new Set() }
+}
+function saveLocalRedeemed(set) {
+  try { localStorage.setItem(REDEEMED_KEY, JSON.stringify([...set])) } catch { /* ignore */ }
+}
+
 export function AuthProvider({ children }) {
   const [session, setSession] = useState(null)
   const [profile, setProfile] = useState(null)
@@ -39,6 +51,10 @@ export function AuthProvider({ children }) {
   const [theyConfirmedTradeIds, setTheyConfirmedTradeIds] = useState(() => new Set())
   const [mutualTradeIds, setMutualTradeIds] = useState(() => new Set())
   const [tracking, setTracking] = useState(() => loadLocal())
+  // Redeemed Lobby Hack codes (Set of code strings). Local for guests; cloud-synced
+  // via profiles.redeemed_codes when signed in.
+  const [redeemedCodes, setRedeemedCodesState] = useState(() => loadLocalRedeemed())
+  const redeemedMergedOnce = useRef(false)
   const [authLoading, setAuthLoading] = useState(true)
   const [syncing, setSyncing] = useState(false)
   // 'synced' | 'saving' | 'error' — surfaced in the header so the user can see
@@ -70,6 +86,8 @@ export function AuthProvider({ children }) {
         setTheyConfirmedTradeIds(new Set())
         setMutualTradeIds(new Set())
         mergedOnce.current = false
+        redeemedMergedOnce.current = false
+        // Keep redeemedCodes as-is (local) for the guest session, like tracking.
       }
     })
     return () => sub.subscription.unsubscribe()
@@ -162,6 +180,23 @@ export function AuthProvider({ children }) {
       setProfile(prof || { id: user.id, gamertag: null, is_public: true, epic_username: null, epic_platform: 'epic', showcase_sprite_ids: null, stats_public: false })
       setTracking(cloudMap)
       saveLocal(cloudMap)
+
+      // Redeemed Lobby Hack codes: union the cloud set with any local marks (one-time
+      // per sign-in), so a device with existing local marks seeds the cloud and a
+      // fresh device (e.g. mobile) picks up what was redeemed elsewhere.
+      if (!redeemedMergedOnce.current) {
+        redeemedMergedOnce.current = true
+        const cloudRedeemed = Array.isArray(prof?.redeemed_codes) ? prof.redeemed_codes : []
+        const union = new Set([...loadLocalRedeemed(), ...cloudRedeemed])
+        setRedeemedCodesState(union)
+        saveLocalRedeemed(union)
+        // Push the union up if it adds anything the cloud didn't have.
+        if (union.size !== cloudRedeemed.length) {
+          supabase.from('profiles').upsert({ id: user.id, redeemed_codes: [...union] }).then(({ error }) => {
+            if (error) console.warn('redeemed_codes sync failed', error.message)
+          })
+        }
+      }
       setSyncing(false)
     }
     run()
@@ -630,11 +665,26 @@ export function AuthProvider({ children }) {
     return { ok: true }
   }, [user, friendIds])
 
+  // Set/clear the full redeemed-codes set — persists locally and, when signed in,
+  // to profiles.redeemed_codes so it syncs across devices.
+  const saveRedeemedCodes = useCallback((nextSet) => {
+    const set = nextSet instanceof Set ? nextSet : new Set(nextSet)
+    setRedeemedCodesState(set)
+    saveLocalRedeemed(set)
+    if (user) {
+      supabase.from('profiles').upsert({ id: user.id, redeemed_codes: [...set] }).then(({ error }) => {
+        if (error) console.warn('redeemed_codes save failed', error.message)
+      })
+    }
+  }, [user])
+
   const value = {
     session,
     user,
     profile,
     tracking,
+    redeemedCodes,
+    saveRedeemedCodes,
     authLoading,
     syncing,
     cloudStatus,
