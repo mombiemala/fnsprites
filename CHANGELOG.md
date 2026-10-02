@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 2, 2026 — Fix Lobby Hacks horizontal overflow on mobile; wrap code titles
+
+- **Fixed** (`src/components/CodesView.jsx`): the Lobby Hacks / Admin Panel codes page scrolled horizontally on phones —
+  `document.scrollWidth` was ~2108px on a 390px viewport. The code list used `grid gap-4 lg:grid-cols-2`, so on mobile it
+  fell back to an *implicit* `auto` grid track; grid items don't shrink below their content's min-content, and each card
+  title was `truncate` (`white-space: nowrap`), so the longest title forced the single track to ~2075px. Pinned the mobile
+  layout to `grid-cols-1` (`repeat(1, minmax(0,1fr))`) — the `0` min lets the track collapse to the viewport. Verified
+  `grid-template-columns` went from `2075px` → `324px` and `scrollWidth === clientWidth` (390).
+- **Changed** (`src/components/CodesView.jsx`): code titles now wrap (`break-words`, was `truncate`) so the full reward
+  shows on every screen instead of an ellipsis — long desktop entries (Geno story-quest Dust codes, Fortnitemares lobby
+  transforms) are readable, and on mobile you can tell which Sprite each Cheatmaster code unlocks.
+
+---
+
 ## October 2, 2026 — Fix invisible "Start tracking" CTA on prerendered pages
 
 - **Fixed** (`scripts/prerender.mjs` CSS): the sidebar `.ctacard` ("Start tracking your collection — free →") rendered with

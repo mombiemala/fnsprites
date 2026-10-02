@@ -171,7 +171,7 @@ export default function CodesView() {
       </div>
 
       {/* Code groups — by reward category */}
-      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+      <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
         {CODE_CATEGORIES.map((g) => {
           const items = LOBBY_CODES
             .filter((c) => c.category === g.key)
@@ -220,7 +220,7 @@ export default function CodesView() {
                         </button>
                       )}
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-semibold text-white">{c.unlocks}</p>
+                        <p className="break-words text-sm font-semibold leading-snug text-white">{c.unlocks}</p>
                         <p className="text-[10px] text-[var(--muted)]">
                           {c.region ? `${c.region} · ` : ''}via {c.source}
                         </p>

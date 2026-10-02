@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 2, 2026',
+    title: 'Fixed the Lobby Hacks page scrolling sideways on phones',
+    changes: [
+      { tag: 'Fixed', text: 'On mobile, the Lobby Hacks / Admin Panel codes page could be swiped far to the right — the code list blew out to several times the screen width. The two-column layout now collapses cleanly to one readable column on phones.' },
+      { tag: 'Changed', text: 'Code titles now wrap to show the full reward on every screen instead of being cut off with a “…”. On desktop that means long entries (e.g. the Geno story-quest Dust codes, the Fortnitemares lobby transforms) are fully readable; on mobile you can finally tell which Sprite each Cheatmaster code unlocks.' },
+    ],
+    summary: 'Fixed a horizontal-scroll bug on the Lobby Hacks page on phones, and let code titles wrap in full instead of truncating.',
+    why: 'The code grid used an implicit single track on mobile; because grid items don’t shrink below their content and the titles were set to never wrap, one long title forced the whole page ~5× wider than the screen. Pinning the mobile layout to `grid-cols-1` (a `minmax(0,1fr)` track) lets it shrink to the viewport, and switching titles from clip-to-ellipsis to wrapping makes the full reward readable everywhere.',
+  },
+  {
+    date: 'October 2, 2026',
     title: 'Fixed the invisible “Start tracking” button on guide pages',
     changes: [
       { tag: 'Fixed', text: 'The gold “Start tracking your collection” call-to-action in the sidebar of the guide/SEO pages was rendering invisible (dark text on a dark card) — a CSS ordering bug where the generic card style overrode its gradient. It now shows as the intended gold button.' },
