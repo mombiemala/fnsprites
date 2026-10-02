@@ -11,6 +11,15 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 2, 2026 — New guide: find & farm Cheat Codes
+
+- **Added** (`scripts/prerender.mjs`): `/cheat-codes` — a guide to in-world Cheat Codes (the main Override collecting loop):
+  what they are vs Lobby Hack codes, where they spawn, densest POIs (Cluster Coast, Chopped Shop, Sunken Shores,
+  Gravegate), and the Visualize-Sound-Effects + Cheat Code Locator workflow. Per-guide OG image; wired into GUIDES +
+  sitemap. Facts mirror `src/data/spriteGuide.js`.
+
+---
+
 ## October 2, 2026 — Decluttered the collection sidebar
 
 - **Changed** (`src/App.jsx`, new `src/components/WhatsNext.jsx`): rebuilt the sidebar per the approved mockup — Progress

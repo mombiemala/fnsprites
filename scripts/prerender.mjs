@@ -1975,8 +1975,70 @@ function whatAreSpritesPage() {
 ` + FOOT
 }
 
+// ---------- /cheat-codes — in-world Cheat Code farming guide ----------
+// Distinct from /codes (Admin Panel "Lobby Hack" codes): this is about the Cheat
+// Code panels you find in-match to unlock Override Sprites. Facts mirror
+// src/data/spriteGuide.js.
+function cheatCodesPage() {
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const desc = `How to find and farm Fortnite Cheat Codes to unlock Override Sprites — what Cheat Codes are (vs Lobby Hack codes), where they spawn, the densest POIs, and the two tools that make hunting fast. Chapter 7 Season 4.`
+  const title = `How to Find & Farm Fortnite Cheat Codes (Override Sprites) | FN Sprite Tracker`
+  const faqs = [
+    ['What are Cheat Codes in Fortnite?', 'Cheat Codes are glowing panels sprayed on walls, floors and ceilings around the Battle Royale island in Chapter 7 Season 4 “Override.” Interact with one to unlock an Override Sprite. They’re the main way to collect Sprites this season, alongside Sprite Chests.'],
+    ['Are Cheat Codes the same as Admin Panel / Lobby Hack codes?', 'No — they’re different. Admin Panel “Lobby Hack” codes are text codes you type in the lobby for rewards and Cheat Master finishes (see the Lobby Hacks list). Cheat Codes are physical panels you find out in matches. This guide is about the in-world Cheat Codes.'],
+    ['Where do Cheat Codes spawn?', 'Their spots are randomized every match, so there’s no fixed map. Drop where they’re densest: Cluster Coast is the standout (60+ potential spawns), with Chopped Shop, Sunken Shores and the Gravegate area also code-heavy. Hotspots shift as Epic re-tunes the map.'],
+    ['How do I find Cheat Codes faster?', 'Turn on Visualize Sound Effects so codes flag on your HUD, and carry a Cheat Code Locator / Override Gizmo to ping the nearest one. Then interact with the panel to enter its code and unlock that Sprite.'],
+    ['Do Cheat Codes give the Cheat Master finish?', 'No — the green Cheat Master finish is unlocked per-Sprite with a specific Lobby Hack code typed in the Admin Panel, not from in-world Cheat Codes. See the Lobby Hacks page for which code unlocks each.'],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'How to Find & Farm Fortnite Cheat Codes (Override Sprites)', description: desc, url: SITE + '/cheat-codes', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ] }
+  return head({ title, desc, canonical: SITE + '/cheat-codes', jsonld, active: 'sprites', ogImage: `${SITE}/api/og?title=${encodeURIComponent('Fortnite Cheat Codes')}&sub=${encodeURIComponent('Find & farm Override Sprites')}` }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🔓 How to find &amp; farm Fortnite Cheat Codes</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:70ch">In Chapter 7 Season 4 “Override,” Cheat Codes are the fastest way to collect Sprites. This is how to find them, where they’re densest, and the two settings that turn a slow hunt into a quick one.</p>
+
+    <div class="card" style="padding:12px 14px;margin:0 0 14px;border-color:rgba(245,158,11,.3)"><p style="margin:0;font-size:13px;line-height:1.6"><b style="color:#fbbf24">Don’t confuse the two kinds of “codes.”</b> <b>Cheat Codes</b> (this page) are panels you find <i>in matches</i> to unlock Sprites. <b>Lobby Hack / Admin Panel codes</b> are text codes you type <i>in the lobby</i> for rewards and Cheat Master finishes — those live on the ${L('/codes', 'Lobby Hacks page')}.</p></div>
+
+    <h2 style="font-size:18px;color:#fff;margin:18px 0 8px">What Cheat Codes are</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">Cheat Codes are glowing panels sprayed on walls, floors and ceilings around the island — not chests. Walk up and interact with one to enter its code and unlock an Override Sprite on the spot. Any Sprite can come from a Cheat Code; it’s the signature collecting mechanic of the Override season.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Where they spawn (densest POIs)</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 8px">Cheat Code locations are <b>randomized every match</b>, so there’s no fixed map to memorise. Instead, drop where they’re densest and sweep:</p>
+    <ul style="margin:0 0 12px;padding-left:18px;line-height:1.8;font-size:14px">
+      <li><b>Cluster Coast</b> — the standout, with 60+ potential Cheat Code spawns. Start here if it’s not too contested.</li>
+      <li><b>Chopped Shop</b> and <b>Sunken Shores</b> — both reliably code-heavy.</li>
+      <li><b>Gravegate</b> (the Fortnitemares POI that replaced Battlewoods) and other busy named POIs — more loot means more codes.</li>
+    </ul>
+    <p style="font-size:13px;line-height:1.6;margin:0 0 10px;color:var(--muted)">Hotspots are community-sourced and shift as Epic re-tunes the map, so treat them as a starting route rather than a guarantee.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Two things that make hunting fast</h2>
+    <ul style="margin:0 0 12px;padding-left:18px;line-height:1.8;font-size:14px">
+      <li><b>Turn on Visualize Sound Effects</b> (Settings → Accessibility). Cheat Codes flag on your HUD, so you spot them through walls and floors instead of hunting blind.</li>
+      <li><b>Carry a Cheat Code Locator / Override Gizmo.</b> It pings the nearest code — grab one early and let it route you between panels.</li>
+      <li><b>Survive longer.</b> Codes are randomized each game, so more time alive = more panels interacted with = more Sprites. Farm the quieter edges of a POI, not the hot-drop.</li>
+    </ul>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Cheat Codes vs chests</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">You can also pull Sprites from <b>Sprite Chests</b> — any chest can drop any Sprite, with rarity setting the odds. Cheat Codes are usually faster and more targeted, but working chests into your route (especially the Pumpkin/rare chests in Vaults) stacks more rolls per game. The Fortnitemares Sprites in particular lean on both — see the ${L('/fortnitemares-sprites', 'Fortnitemares farming guide')} for per-Sprite spots.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">FAQ</h2>
+    ${faqs.map(([q, a]) => `<details class="gd"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
+
+    <div class="card" style="padding:14px 16px;margin:16px 0 0"><p style="margin:0;font-size:13px;color:var(--muted);line-height:1.6">Grab the free lobby rewards too on the ${L('/codes', 'Lobby Hacks page')}, track what you unlock on the ${L('/', 'collection tracker')}, and see what’s worth chasing first on the ${L('/best-sprites', 'best Sprites ranking')}.</p></div>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Farm spots and tools are community-sourced and change as the map rotates. Updated ${new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}.</p>
+    <a class="bigcta" href="/">Track the Sprites you unlock — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 const GUIDES = [
   ['/what-are-sprites', '🧩', 'What are Sprites? (beginner)', 'New to Sprites? The start-here: what they do, how to get your first one, why you must extract them, finishes, and how leveling & mastery work.'],
+  ['/cheat-codes', '🔓', 'Find & farm Cheat Codes', 'The fastest way to collect Override Sprites: what in-world Cheat Codes are, where they spawn, the densest POIs, and the two settings that speed up the hunt.'],
   ['/best-sprites', '🏅', 'Best Sprites (ranked)', 'Our opinionated take on the strongest Override Sprites — S/A/B tiers with reasoning, plus the best pick for mobility, sustain, info and easy wins.'],
   ['/sprite-leveling', '⬆️', 'Leveling & mastery', 'How level points work, how to master a Sprite (extract at Lv 5), the Mastery Monday 2× window, and the free Quack milestone finishes.'],
   ['/fortnitemares-sprites', '🎃', 'Fortnitemares Sprites — farming guide', 'The four live Fortnitemares Sprites: what each power does, where to farm them, how to chase the finishes, and which to get first.'],
@@ -2364,6 +2426,7 @@ function sitemap(types) {
     { loc: SITE + '/best-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/sprite-leveling', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/what-are-sprites', changefreq: 'monthly', priority: '0.7' },
+    { loc: SITE + '/cheat-codes', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/rarest-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/drop-rate-calculator', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
@@ -2423,6 +2486,8 @@ mkdirSync(resolve(DIST, 'fortnitemares-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'fortnitemares-sprites', 'index.html'), fortnitemaresSpritesPage())
 mkdirSync(resolve(DIST, 'best-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'best-sprites', 'index.html'), bestSpritesPage())
+mkdirSync(resolve(DIST, 'cheat-codes'), { recursive: true })
+writeFileSync(resolve(DIST, 'cheat-codes', 'index.html'), cheatCodesPage())
 mkdirSync(resolve(DIST, 'what-are-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'what-are-sprites', 'index.html'), whatAreSpritesPage())
 mkdirSync(resolve(DIST, 'sprite-leveling'), { recursive: true })
@@ -2468,4 +2533,4 @@ writeFileSync(resolve(DIST, 'contact', 'index.html'), contactPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /fortnitemares-sprites + /best-sprites + /sprite-leveling + /privacy + /terms + 404 + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /fortnitemares-sprites + /best-sprites + /sprite-leveling + /what-are-sprites + /cheat-codes + /privacy + /terms + 404 + sitemap.xml → dist/`)

@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 2, 2026',
+    title: 'New guide: how to find & farm Cheat Codes',
+    changes: [
+      { tag: 'Added', text: 'A guide to the in-world Cheat Codes — the fastest way to collect Override Sprites: what they are (and how they differ from Lobby Hack codes), where they spawn, the densest POIs, and the two settings (Visualize Sound Effects + a Cheat Code Locator) that make hunting quick.' },
+    ],
+    summary: 'Added a Cheat Codes farming guide for collecting Override Sprites in-match.',
+    why: 'Finding Cheat Codes is the core Override collecting loop, and “Fortnite cheat codes” is a high-intent search — a dedicated, clearly-distinct-from-Lobby-Hacks guide helps players and brings in traffic.',
+  },
+  {
+    date: 'October 2, 2026',
     title: 'Decluttered the collection sidebar',
     changes: [
       { tag: 'Changed', text: 'The sidebar now leads with your progress (collection %, mastery, Dust) instead of a ten-card stack, and the Next-to-chase, Upcoming, Season countdown and Loot Hacks cards are folded into a single tabbed “What’s next” card. Ten cards become about five focused blocks — far less scrolling to reach what matters.' },
