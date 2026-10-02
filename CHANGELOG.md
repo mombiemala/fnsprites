@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 2, 2026 — Guide share images + accessibility polish
+
+- **Added** (`api/og.js`, `scripts/prerender.mjs`): the OG image endpoint now takes `?title=`/`?sub=`, and the four guide
+  pages (`/best-sprites`, `/fortnitemares-sprites`, `/sprite-leveling`, `/what-are-sprites`) set a per-guide
+  `og:image`/`twitter:image` so shared links render a branded card instead of the generic site image.
+- **Changed** (a11y): added a global `:focus-visible` ring in `src/index.css` (keyboard-only), and enriched `SpriteArt`
+  image labels to include the finish ("Jonesy Sprite, Gold finish") for screen readers.
+- **Note:** analytics was audited — Vercel Web Analytics + Speed Insights are already installed and mounted
+  (`src/main.jsx`); no change needed. Traffic is visible in the Vercel dashboard.
+
+---
+
 ## October 2, 2026 — Beginner guide: "What are Fortnite Sprites?"
 
 - **Added** (`scripts/prerender.mjs`): `/what-are-sprites` — a top-of-funnel beginner explainer (what Sprites do, getting

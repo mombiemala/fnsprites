@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 2, 2026',
+    title: 'Share images for guides + accessibility polish',
+    changes: [
+      { tag: 'Added', text: 'The guide pages now generate their own branded share/preview images, so links to them look sharp when posted on Discord, Reddit or socials (instead of the generic site image).' },
+      { tag: 'Changed', text: 'Accessibility: added a clear keyboard-focus ring across the app (shown only for keyboard users), and made Sprite images read their finish to screen readers (e.g. “Jonesy Sprite, Gold finish”) so same-named variants are distinguishable.' },
+    ],
+    summary: 'Per-guide social share images, plus a keyboard-focus ring and richer image labels for accessibility.',
+    why: 'Good share previews help the guides spread (and bring the traffic that matters for a content site), and the focus ring + descriptive image labels make the app usable by keyboard and screen-reader users.',
+  },
+  {
+    date: 'October 2, 2026',
     title: 'New beginner’s guide: “What are Fortnite Sprites?”',
     changes: [
       { tag: 'Added', text: 'A start-here guide for newcomers — what Sprites do, how to get your first one, the “extract it or lose it” rule, what the finishes mean, how leveling & mastery work, and the common beginner mistakes. Linked from the Guides hub.' },

@@ -7,6 +7,7 @@
 // A real image (public/sprites/<id>.png|webp) overrides the vector art.
 
 import { useState } from 'react'
+import { THEME_MAP } from '../data/themes'
 
 const INK = '#1a2138'
 
@@ -319,11 +320,17 @@ function Features({ id, fc, gid }) {
 
 export default function SpriteArt({ sprite, className = '' }) {
   const [imgFailed, setImgFailed] = useState(false)
+  // A descriptive label for screen readers — includes the finish so the many
+  // same-named variants in the grid are distinguishable (e.g. "Jonesy Sprite, Gold").
+  const finish = THEME_MAP[sprite.themeId]?.name
+  const label = finish && finish !== 'Normal'
+    ? `${sprite.typeName} Sprite, ${finish} finish`
+    : `${sprite.typeName} Sprite`
   if (sprite.image && !imgFailed) {
     return (
       <img
         src={sprite.image}
-        alt={sprite.typeName}
+        alt={label}
         loading="lazy"
         onError={() => setImgFailed(true)}
         className={`h-[94%] w-[94%] object-contain ${className}`}
@@ -339,7 +346,7 @@ export default function SpriteArt({ sprite, className = '' }) {
   const glow = sprite.typeId === 'grim' ? type.feat : sprite.themeId === 'galaxy' ? '#bdbcff' : null
 
   return (
-    <svg viewBox="0 0 100 100" className={`h-[90%] w-[90%] ${className}`} role="img" aria-label={sprite.typeName}>
+    <svg viewBox="0 0 100 100" className={`h-[90%] w-[90%] ${className}`} role="img" aria-label={label}>
       <defs>
         <radialGradient id={gid} cx="38%" cy="30%" r="85%">
           <stop offset="0%" stopColor={tr.stops[0]} />

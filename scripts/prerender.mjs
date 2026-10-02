@@ -1718,7 +1718,7 @@ function fortnitemaresSpritesPage() {
     { '@type': 'Article', headline: 'Fortnitemares 2026 Sprites — How to Get & Where to Farm All Four', description: desc, url: SITE + '/fortnitemares-sprites', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
     { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]*>/g, '') } })) },
   ] }
-  return head({ title, desc, canonical: SITE + '/fortnitemares-sprites', jsonld, active: 'news' }) + `
+  return head({ title, desc, canonical: SITE + '/fortnitemares-sprites', jsonld, active: 'news', ogImage: `${SITE}/api/og?title=${encodeURIComponent('Fortnitemares Sprites')}&sub=${encodeURIComponent('How to get & farm all four')}` }) + `
 <div class="cols">
   <div class="main">
     <h1>🎃 Fortnitemares 2026 Sprites — how to get all four (and where to farm them)</h1>
@@ -1802,7 +1802,7 @@ function bestSpritesPage() {
     { '@type': 'Article', headline: 'Best Fortnite Sprites in Override (Season 4) — Ranked & Explained', description: desc, url: SITE + '/best-sprites', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
     { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]*>/g, '') } })) },
   ] }
-  return head({ title, desc, canonical: SITE + '/best-sprites', jsonld, active: 'sprites' }) + `
+  return head({ title, desc, canonical: SITE + '/best-sprites', jsonld, active: 'sprites', ogImage: `${SITE}/api/og?title=${encodeURIComponent('Best Override Sprites')}&sub=${encodeURIComponent('Ranked & explained')}` }) + `
 <div class="cols">
   <div class="main">
     <h1>🏅 Best Fortnite Sprites in Override — ranked &amp; explained</h1>
@@ -1851,7 +1851,7 @@ function spriteLevelingPage() {
     { '@type': 'Article', headline: 'Fortnite Sprite Leveling & Mastery — Level Fast & Unlock Quack', description: desc, url: SITE + '/sprite-leveling', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
     { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
   ] }
-  return head({ title, desc, canonical: SITE + '/sprite-leveling', jsonld, active: 'sprites' }) + `
+  return head({ title, desc, canonical: SITE + '/sprite-leveling', jsonld, active: 'sprites', ogImage: `${SITE}/api/og?title=${encodeURIComponent('Sprite Leveling & Mastery')}&sub=${encodeURIComponent('Level fast & unlock Quack')}` }) + `
 <div class="cols">
   <div class="main">
     <h1>⬆️ Fortnite Sprite leveling &amp; mastery — level fast, master, and unlock Quack</h1>
@@ -1926,7 +1926,7 @@ function whatAreSpritesPage() {
     { '@type': 'Article', headline: 'What Are Fortnite Sprites? A Beginner’s Guide', description: desc, url: SITE + '/what-are-sprites', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
     { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]*>/g, '') } })) },
   ] }
-  return head({ title, desc, canonical: SITE + '/what-are-sprites', jsonld, active: 'sprites' }) + `
+  return head({ title, desc, canonical: SITE + '/what-are-sprites', jsonld, active: 'sprites', ogImage: `${SITE}/api/og?title=${encodeURIComponent('What Are Fortnite Sprites?')}&sub=${encodeURIComponent('A beginner guide')}` }) + `
 <div class="cols">
   <div class="main">
     <h1>🧩 What are Fortnite Sprites? A beginner’s guide</h1>

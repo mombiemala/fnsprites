@@ -42,6 +42,16 @@
   }
 }
 
+@layer base {
+  /* Accessibility: a clear, theme-aware focus ring for keyboard users only
+     (:focus-visible, so mouse clicks don't show it). Applies app-wide. */
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
 @layer components {
   /* ---------- Sprite art treatments per theme ---------- */
   .sprite-art {

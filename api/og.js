@@ -115,17 +115,29 @@ export default async function handler(req) {
   }
 
   let player = null
+  let customTitle = null
+  let customSub = null
   try {
-    const u = new URL(req.url).searchParams.get('u')
+    const params = new URL(req.url).searchParams
+    const u = params.get('u')
     if (u) player = await getPlayer(u)
+    // Guides/pages pass ?title= (and optional ?sub=) for a branded share card.
+    if (!player) {
+      const t = params.get('title')
+      if (t) customTitle = t.slice(0, 80)
+      const s = params.get('sub')
+      if (s) customSub = s.slice(0, 120)
+    }
   } catch {
     player = null
   }
 
-  const title = player ? player.gamertag : 'FN Sprite Tracker'
+  const title = player ? player.gamertag : (customTitle || 'FN Sprite Tracker')
   const sub = player
     ? `${player.owned} sprites collected · ${player.mastered} mastered`
-    : 'Track every Fortnite sprite & variant'
+    : (customSub || 'Track every Fortnite sprite & variant')
+  // Shrink the headline for longer custom titles so they don't clip.
+  const titleSize = player ? 82 : customTitle ? (customTitle.length > 34 ? 48 : 60) : 64
 
   const card = el('div', {
     width: '100%', height: '100%', display: 'flex', flexDirection: 'column',
@@ -137,7 +149,7 @@ export default async function handler(req) {
       el('span', { color: '#9aa4bf' }, 'Sprite Tracker'),
     ]),
     el('div', { display: 'flex', flexDirection: 'column' }, [
-      el('div', { display: 'flex', fontSize: player ? 82 : 64, fontWeight: 800, color: '#ffffff', lineHeight: 1.05 }, title),
+      el('div', { display: 'flex', fontSize: titleSize, fontWeight: 800, color: '#ffffff', lineHeight: 1.05 }, title),
       el('div', { display: 'flex', fontSize: 40, marginTop: 14, color: '#cdd5ee' }, sub),
       el('div', {
         display: 'flex', alignSelf: 'flex-start', marginTop: 28, fontSize: 30, fontWeight: 800,
