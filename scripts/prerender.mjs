@@ -1908,7 +1908,75 @@ function spriteLevelingPage() {
 ` + FOOT
 }
 
+// ---------- /what-are-sprites — beginner explainer (top-of-funnel) ----------
+// A narrative "start here" for newcomers — distinct from the FAQ (Q&A) and the
+// reference pages. Facts mirror src/data/spriteGuide.js.
+function whatAreSpritesPage() {
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const desc = `What are Fortnite Sprites? A beginner’s guide — what Sprites do, how to get your first one, why you must extract them, what the finishes mean, and how leveling and mastery work. Everything a new collector needs to start.`
+  const title = `What Are Fortnite Sprites? A Beginner’s Guide | FN Sprite Tracker`
+  const faqs = [
+    ['What are Sprites in Fortnite?', 'Sprites are collectible little creatures in Fortnite Battle Royale. You equip one to your back, and it grants a passive or active ability that gets stronger as it levels up. The current generation is Chapter 7 Season 4 “Override.”'],
+    ['How do you get your first Sprite?', 'Fastest: open the Admin Panel in the lobby and enter a free Hack the Lobby code (each unlocks a Sprite’s Cheat Master finish). In matches, activate the Cheat Code panels sprayed around the map, and open Sprite Chests — any chest can drop any Sprite.'],
+    ['Why do I keep losing Sprites?', 'A Sprite isn’t yours until you extract it. Equip it to your back and use an Extraction Site or Portable Extractor before the match ends — if you’re eliminated first, it’s gone.'],
+    ['Do Sprites cost money?', 'No. Every Sprite is earned in-game for free — there’s nothing to buy. This tracker is free too.'],
+    ['How many Sprites are there?', `There are dozens across the current Override generation plus the archived Season 3 “Runners” set. You can see and track them all on the ${L('/sprites', 'full checklist')}.`],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'What Are Fortnite Sprites? A Beginner’s Guide', description: desc, url: SITE + '/what-are-sprites', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]*>/g, '') } })) },
+  ] }
+  return head({ title, desc, canonical: SITE + '/what-are-sprites', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🧩 What are Fortnite Sprites? A beginner’s guide</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:70ch">New to Sprites? This is the start-here. Sprites are collectible creatures in Fortnite Battle Royale that give you a perk when equipped — and collecting, leveling and “mastering” them is a game within the game. Here’s how the whole system works, in plain terms.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:20px 0 8px">What a Sprite actually does</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">You equip one Sprite to your back, and it grants an ability — some are <b>passive</b> (e.g. heal a little when you deal damage), others are <b>active</b> (e.g. a dash or a double-jump). The ability gets stronger as the Sprite levels up, from Level 1 to Level 5. Each Sprite also has a <b>rarity</b> (Rare → Epic → Legendary → Mythic) that mostly reflects how hard it is to find.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">How to get your first Sprite</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 8px">In this season (“Override”) there are three main sources:</p>
+    <ul style="margin:0 0 12px;padding-left:18px;line-height:1.8;font-size:14px">
+      <li><b>Hack the Lobby codes</b> — the quickest start. Open the Admin Panel in the lobby, type a free code, and claim the Sprite’s Cheat Master finish. Grab today’s from the ${L('/codes', 'Lobby Hack codes list')}.</li>
+      <li><b>In-world Cheat Codes</b> — panels sprayed on walls and floors around the map; interact to unlock a Sprite. Their spots are randomized each match, so drop where they’re densest.</li>
+      <li><b>Sprite Chests</b> — any chest can drop any Sprite; rarity sets the odds, not the location.</li>
+    </ul>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">The golden rule: extract it, or lose it</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">This trips up every new collector: a Sprite <b>isn’t yours until you extract it</b>. Equip it to your back, then reach an <b>Extraction Site</b> (or use a <b>Portable Extractor</b>) and extract before the match ends. Get eliminated first and it’s gone — only extracted Sprites count toward your collection.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Finishes (the different looks)</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">Each Sprite comes in several <b>finishes</b> — Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter and seasonal recolours like Trick-or-Treat. A finish is mostly cosmetic (it keeps the base ability), though some add a small bonus. Cheat Master is the green “code” finish unlocked by a lobby code; Loot Hacker (blue circuit) boosts your chance of Loot Hack items from chests.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Leveling &amp; mastery (the long game)</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">Keep a Sprite equipped and it earns level points as you loot and fight. Extract it at <b>Level 5</b> to “master” it, which unlocks rewards — including the free <b>Quack</b> finishes that speed up your whole collection. Full details in the ${L('/sprite-leveling', 'leveling &amp; mastery guide')}.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Generations: Override vs the archived Runners</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">The Sprites you collect and use right now are the <b>Chapter 7 Season 4 “Override”</b> generation. The older <b>Season 3 “Runners”</b> Sprites are archived in your in-game <b>Sprite Garden</b> — kept forever, but not used in Battle Royale this season. Each new season adds a generation; your past ones stay with you.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Beginner mistakes to avoid</h2>
+    <ul style="margin:0 0 12px;padding-left:18px;line-height:1.8;font-size:14px">
+      <li>Forgetting to <b>equip the Sprite to your back</b> before extracting — one left in your inventory won’t extract.</li>
+      <li><b>Throwing</b> a Sprite into the extractor instead of walking up and pressing Extract (it can register wrong).</li>
+      <li>Hoarding <b>Sprite Dust</b> through a season flip — spend or reset it first so it isn’t wasted.</li>
+      <li>Dropping first in a trade — trades are in-game and at your own risk; see the ${L('/how-to-trade-sprites', 'trading guide')}.</li>
+    </ul>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">FAQ</h2>
+    ${faqs.map(([q, a]) => `<details class="gd"><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
+
+    <div class="card" style="padding:14px 16px;margin:16px 0 0"><p style="margin:0;font-size:13px;color:var(--muted);line-height:1.6">Ready to start? Open the ${L('/', 'free collection tracker')}, grab your first Sprites from the ${L('/codes', 'Lobby Hack codes')}, and see what to chase on the ${L('/best-sprites', 'best Sprites ranking')}.</p></div>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Details are community-sourced — Epic doesn’t publish exact figures. Updated ${new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}.</p>
+    <a class="bigcta" href="/">Start your Sprite collection — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 const GUIDES = [
+  ['/what-are-sprites', '🧩', 'What are Sprites? (beginner)', 'New to Sprites? The start-here: what they do, how to get your first one, why you must extract them, finishes, and how leveling & mastery work.'],
   ['/best-sprites', '🏅', 'Best Sprites (ranked)', 'Our opinionated take on the strongest Override Sprites — S/A/B tiers with reasoning, plus the best pick for mobility, sustain, info and easy wins.'],
   ['/sprite-leveling', '⬆️', 'Leveling & mastery', 'How level points work, how to master a Sprite (extract at Lv 5), the Mastery Monday 2× window, and the free Quack milestone finishes.'],
   ['/fortnitemares-sprites', '🎃', 'Fortnitemares Sprites — farming guide', 'The four live Fortnitemares Sprites: what each power does, where to farm them, how to chase the finishes, and which to get first.'],
@@ -2295,6 +2363,7 @@ function sitemap(types) {
     { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/best-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/sprite-leveling', changefreq: 'weekly', priority: '0.7' },
+    { loc: SITE + '/what-are-sprites', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/rarest-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/drop-rate-calculator', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
@@ -2354,6 +2423,8 @@ mkdirSync(resolve(DIST, 'fortnitemares-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'fortnitemares-sprites', 'index.html'), fortnitemaresSpritesPage())
 mkdirSync(resolve(DIST, 'best-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'best-sprites', 'index.html'), bestSpritesPage())
+mkdirSync(resolve(DIST, 'what-are-sprites'), { recursive: true })
+writeFileSync(resolve(DIST, 'what-are-sprites', 'index.html'), whatAreSpritesPage())
 mkdirSync(resolve(DIST, 'sprite-leveling'), { recursive: true })
 writeFileSync(resolve(DIST, 'sprite-leveling', 'index.html'), spriteLevelingPage())
 mkdirSync(resolve(DIST, 'codes'), { recursive: true })

@@ -11,6 +11,14 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 2, 2026 — Beginner guide: "What are Fortnite Sprites?"
+
+- **Added** (`scripts/prerender.mjs`): `/what-are-sprites` — a top-of-funnel beginner explainer (what Sprites do, getting
+  your first, extract-or-lose, finishes, leveling/mastery, generations, beginner mistakes). Wired into GUIDES + sitemap;
+  facts mirror `src/data/spriteGuide.js`. Distinct from the FAQ (Q&A) and reference pages.
+
+---
+
 ## October 2, 2026 — Terms page + Sprite leveling & mastery guide
 
 - **Added** (`scripts/prerender.mjs`): `/terms` — a plain-English Terms of Use (service, account & content, acceptable use,

@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 2, 2026',
+    title: 'New beginner’s guide: “What are Fortnite Sprites?”',
+    changes: [
+      { tag: 'Added', text: 'A start-here guide for newcomers — what Sprites do, how to get your first one, the “extract it or lose it” rule, what the finishes mean, how leveling & mastery work, and the common beginner mistakes. Linked from the Guides hub.' },
+    ],
+    summary: 'Added a beginner “What are Fortnite Sprites?” guide for people new to the system.',
+    why: 'The reference pages assume you already know the basics; a plain-English on-ramp helps new players (and brings in top-of-funnel search traffic) without duplicating the FAQ or the how-to pages.',
+  },
+  {
+    date: 'October 2, 2026',
     title: 'New Terms page + a Sprite leveling & mastery guide',
     changes: [
       { tag: 'Added', text: 'A Terms of Use page (linked in the footer alongside Privacy) — plain-English terms for a free fan tool: the service, your account & content, acceptable use, Epic Games trademarks, disclaimers and contact.' },
