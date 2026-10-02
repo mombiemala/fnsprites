@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 2, 2026',
+    title: 'Finishes guide + branded share images site-wide',
+    changes: [
+      { tag: 'Added', text: 'A “Finishes explained” guide — every Sprite finish (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter, Trick-or-Treat, plus the older Gummy/Galaxy/Gem/Holofoil/Cube/Quack), what bonus each gives, and how to get it.' },
+      { tag: 'Changed', text: 'Every page now generates its own branded share/preview image (title-specific) instead of the generic logo, so any link you share shows what the page actually is.' },
+    ],
+    summary: 'Added a Sprite-finishes guide and gave every page its own title-specific social share image.',
+    why: 'Finishes are a core part of collecting but weren’t explained anywhere in one place, and per-page share cards help every page spread when linked — both deepen the site and help it get found.',
+  },
+  {
+    date: 'October 2, 2026',
     title: 'New guide: how to find & farm Cheat Codes',
     changes: [
       { tag: 'Added', text: 'A guide to the in-world Cheat Codes — the fastest way to collect Override Sprites: what they are (and how they differ from Lobby Hack codes), where they spawn, the densest POIs, and the two settings (Visualize Sound Effects + a Cheat Code Locator) that make hunting quick.' },

@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 2, 2026 — Finishes guide + site-wide branded share images
+
+- **Added** (`scripts/prerender.mjs`): `/sprite-finishes` — every finish explained (current Override set + legacy
+  Gummy/Galaxy/Gem/Holofoil/Cube/Quack), each bonus pulled live from `THEME_MAP` so it never drifts, plus hand-written
+  how-to-get. Wired into GUIDES + sitemap; per-guide OG.
+- **Changed:** `head()` now defaults every page's `og:image`/`twitter:image` to a title-specific `/api/og` card (clean lead
+  phrase, no mid-word cuts) instead of the generic logo. Pages with their own ogImage (sprite cards, subtitled guides) keep
+  theirs.
+- **Why:** finishes had no single explainer, and title-specific share cards make every page look right when linked.
+
+---
+
 ## October 2, 2026 — New guide: find & farm Cheat Codes
 
 - **Added** (`scripts/prerender.mjs`): `/cheat-codes` — a guide to in-world Cheat Codes (the main Override collecting loop):

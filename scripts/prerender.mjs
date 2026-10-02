@@ -304,7 +304,15 @@ const NAV_LINKS = [
 ]
 
 function head({ title, desc, canonical, jsonld, ogImage, active = 'sprites', index = true, canonicalTo }) {
-  const img = ogImage || `${SITE}/og-image.png`
+  // Default every page to a branded, title-specific share card (via the /api/og
+  // endpoint) instead of the generic logo — so any page shared on Discord/Reddit/
+  // socials shows what it actually is. Pages that pass their own ogImage (sprite
+  // cards, the guides with a subtitle) keep theirs.
+  const ogTitle = (title || 'FN Sprite Tracker')
+    .replace(/\s*\|\s*FN Sprite Tracker\s*$/, '')
+    .split(' — ')[0] // the clean lead phrase, so the card title never cuts mid-word
+    .trim()
+  const img = ogImage || `${SITE}/api/og?title=${encodeURIComponent(ogTitle.slice(0, 70))}`
   // `index:false` keeps thin/duplicate pages out of Google's index (still crawlable
   // so internal links flow and users can reach them). `canonicalTo` points a
   // near-duplicate at its canonical page so link equity consolidates there.
@@ -2036,9 +2044,81 @@ function cheatCodesPage() {
 ` + FOOT
 }
 
+// ---------- /sprite-finishes — every finish explained ----------
+// Pulls each finish's bonus straight from THEME_MAP so it never drifts; the
+// how-to prose is hand-written. No other page explains all the finishes in one place.
+function finishesPage() {
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const desc = `Every Fortnite Sprite finish explained — Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter and Trick-or-Treat, plus the older Gummy, Galaxy, Gem, Holofoil, Cube and Quack — what bonus each gives and how to get it.`
+  const title = `Fortnite Sprite Finishes Explained — Every Variant & Bonus | FN Sprite Tracker`
+  // How to get each finish (hand-written); the bonus text comes from THEME_MAP.
+  const howTo = {
+    normal: 'The base version — any Cheat Code, chest or lobby code can give you a Sprite in its Normal finish.',
+    gold: 'Earned during Gold Hours (a Power Hours window) and from eliminations at higher levels.',
+    cheatmaster: 'Unlocked per-Sprite by a specific Hack the Lobby code typed in the Admin Panel — not summoned with Dust.',
+    loothacker: 'A Season 4 finish that drops from the usual Override sources (Cheat Codes / chests) once live.',
+    bountyhunter: 'A Season 4 finish you unlock by fighting — it has a chance to appear from eliminations, and only levels via elims.',
+    trickortreat: 'The Fortnitemares (Halloween) recolour — obtainable during the event on the Sprites that have it.',
+    gummy: 'An older-generation finish pulled from Sprite Chests (or re-summoned with Sprite Dust).',
+    galaxy: 'An older-generation finish from Sprite Chests / Dust re-summon.',
+    gem: 'An older-generation finish from Sprite Chests / Dust re-summon.',
+    holofoil: 'An older-generation finish from Sprite Chests / Dust re-summon.',
+    cube: 'A rarer older-generation finish (rolled out in waves).',
+    quack: 'A mastery-milestone reward — you can’t pull it from chests; master enough Sprites to earn it (see the leveling guide).',
+  }
+  const current = ['normal', 'gold', 'cheatmaster', 'loothacker', 'bountyhunter', 'trickortreat']
+  const legacy = ['gummy', 'galaxy', 'gem', 'holofoil', 'cube', 'quack']
+  const row = (id) => {
+    const t = THEME_MAP[id]
+    if (!t) return ''
+    return `<div class="card" style="padding:12px 14px;margin:0 0 8px">
+      <div style="display:flex;align-items:center;gap:8px;margin:0 0 4px"><span style="width:12px;height:12px;border-radius:3px;background:${t.accent};display:flex"></span><span style="font-size:14px;font-weight:800;color:#fff">${esc(t.name)}</span></div>
+      <p style="margin:0 0 6px;font-size:13.5px;line-height:1.6"><b style="color:#fff">Bonus:</b> ${esc(t.bonus || 'Cosmetic — keeps the Sprite’s base ability.')}</p>
+      <p style="margin:0;font-size:13.5px;line-height:1.6;color:var(--muted)"><b style="color:#fff">How to get:</b> ${esc(howTo[id] || '')}</p>
+    </div>`
+  }
+  const faqs = [
+    ['Do finishes change a Sprite’s ability?', 'Mostly no — a finish is primarily a cosmetic look, and the Sprite keeps its base ability. Several finishes add a small bonus on top (e.g. Gold grants bonus elimination XP, Loot Hacker boosts Loot Hack item chance), but they don’t replace the ability.'],
+    ['What’s the Cheat Master finish?', `It’s the Season 4 “Override” premium finish (the green code look), unlocked per-Sprite with a specific ${L('/codes', 'Hack the Lobby code')} in the Admin Panel — not summoned with Dust. See the ${L('/cheat-master-sprites', 'full Cheat Master list')}.`],
+    ['How do I get Gold Sprites?', `Gold finishes come from Gold Hours (a Power Hours window) and from eliminations at higher levels. See the ${L('/gold-sprites', 'Gold Sprites page')} and the ${L('/events', 'events schedule')}.`],
+    ['What are the Quack finishes?', `Quack is a mastery-milestone reward — not from chests. Master a set number of Sprites to earn each one; they share XP with your other Sprites. Details in the ${L('/sprite-leveling', 'leveling & mastery guide')}.`],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'Fortnite Sprite Finishes Explained — Every Variant & Bonus', description: desc, url: SITE + '/sprite-finishes', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]*>/g, '') } })) },
+  ] }
+  return head({ title, desc, canonical: SITE + '/sprite-finishes', jsonld, active: 'sprites', ogImage: `${SITE}/api/og?title=${encodeURIComponent('Sprite Finishes Explained')}&sub=${encodeURIComponent('Every variant & bonus')}` }) + `
+<div class="cols">
+  <div class="main">
+    <h1>🎨 Fortnite Sprite finishes explained</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:70ch">Every Sprite comes in several <b>finishes</b> — different looks that each layer a small bonus on top of the Sprite’s base ability. Here’s what every finish does and how to get it, from the current Override finishes to the older-generation ones.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:20px 0 8px">Current (Season 4 “Override”) finishes</h2>
+    ${current.map(row).join('')}
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Older-generation finishes</h2>
+    <p style="font-size:13.5px;line-height:1.6;margin:0 0 8px;color:var(--muted)">From earlier seasons — still part of your collection and the Sprite Garden, and some make limited returns during events.</p>
+    ${legacy.map(row).join('')}
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Which finishes are worth chasing?</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">For looks, <b>Cheat Master</b> and <b>Trick-or-Treat</b> are the standouts this season. For a gameplay edge, <b>Loot Hacker</b> (more Loot Hack items) and <b>Bounty Hunter</b> (Sprites from elims) pull their weight, and the <b>Quack</b> finishes are the smartest long-term chase because they speed up your whole mastery grind. <b>Gold</b> is the easy everyday pickup via Power Hours.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">FAQ</h2>
+    ${faqs.map(([q, a]) => `<details class="gd"><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
+
+    <div class="card" style="padding:14px 16px;margin:16px 0 0"><p style="margin:0;font-size:13px;color:var(--muted);line-height:1.6">Track every finish you own on the ${L('/', 'collection tracker')}, grab Cheat Master unlocks from the ${L('/codes', 'Lobby Hacks page')}, and see which Sprites are worth it on the ${L('/best-sprites', 'best Sprites ranking')}.</p></div>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Bonuses are community-sourced — Epic doesn’t publish exact figures. Updated ${new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}.</p>
+    <a class="bigcta" href="/">Track your finishes — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 const GUIDES = [
   ['/what-are-sprites', '🧩', 'What are Sprites? (beginner)', 'New to Sprites? The start-here: what they do, how to get your first one, why you must extract them, finishes, and how leveling & mastery work.'],
   ['/cheat-codes', '🔓', 'Find & farm Cheat Codes', 'The fastest way to collect Override Sprites: what in-world Cheat Codes are, where they spawn, the densest POIs, and the two settings that speed up the hunt.'],
+  ['/sprite-finishes', '🎨', 'Finishes explained', 'Every Sprite finish and its bonus — Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter, Trick-or-Treat, plus Gummy/Galaxy/Gem/Holofoil/Cube/Quack.'],
   ['/best-sprites', '🏅', 'Best Sprites (ranked)', 'Our opinionated take on the strongest Override Sprites — S/A/B tiers with reasoning, plus the best pick for mobility, sustain, info and easy wins.'],
   ['/sprite-leveling', '⬆️', 'Leveling & mastery', 'How level points work, how to master a Sprite (extract at Lv 5), the Mastery Monday 2× window, and the free Quack milestone finishes.'],
   ['/fortnitemares-sprites', '🎃', 'Fortnitemares Sprites — farming guide', 'The four live Fortnitemares Sprites: what each power does, where to farm them, how to chase the finishes, and which to get first.'],
@@ -2427,6 +2507,7 @@ function sitemap(types) {
     { loc: SITE + '/sprite-leveling', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/what-are-sprites', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/cheat-codes', changefreq: 'weekly', priority: '0.8' },
+    { loc: SITE + '/sprite-finishes', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/rarest-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/drop-rate-calculator', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
@@ -2486,6 +2567,8 @@ mkdirSync(resolve(DIST, 'fortnitemares-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'fortnitemares-sprites', 'index.html'), fortnitemaresSpritesPage())
 mkdirSync(resolve(DIST, 'best-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'best-sprites', 'index.html'), bestSpritesPage())
+mkdirSync(resolve(DIST, 'sprite-finishes'), { recursive: true })
+writeFileSync(resolve(DIST, 'sprite-finishes', 'index.html'), finishesPage())
 mkdirSync(resolve(DIST, 'cheat-codes'), { recursive: true })
 writeFileSync(resolve(DIST, 'cheat-codes', 'index.html'), cheatCodesPage())
 mkdirSync(resolve(DIST, 'what-are-sprites'), { recursive: true })
@@ -2533,4 +2616,4 @@ writeFileSync(resolve(DIST, 'contact', 'index.html'), contactPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /fortnitemares-sprites + /best-sprites + /sprite-leveling + /what-are-sprites + /cheat-codes + /privacy + /terms + 404 + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /fortnitemares-sprites + /best-sprites + /sprite-leveling + /what-are-sprites + /cheat-codes + /sprite-finishes + /privacy + /terms + 404 + sitemap.xml → dist/`)
