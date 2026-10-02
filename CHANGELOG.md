@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 2, 2026 — Terms page + Sprite leveling & mastery guide
+
+- **Added** (`scripts/prerender.mjs`): `/terms` — a plain-English Terms of Use (service, account & content, acceptable use,
+  Epic trademarks, third-party services, disclaimers, changes, contact). Linked in the prerender footer and the in-app
+  footer (`src/App.jsx`), added to the sitemap; indexable.
+- **Added:** `/sprite-leveling` — an original leveling & mastery guide (point values, Lv 1→5, extract-at-Lv-5 mastery,
+  Mastery Monday 2×, the Quack milestone finishes at 35/40/45/55, and extraction gotchas). Facts mirror
+  `src/data/spriteGuide.js`. Wired into GUIDES + sitemap.
+- **Why:** clear terms next to the privacy policy support ad eligibility/trust, and a real leveling/mastery walkthrough is
+  high-intent original content that deepens the site.
+
+---
+
 ## October 2, 2026 — Redeemed Lobby Hack codes sync across devices
 
 - **Fixed:** redeemed-code state was `localStorage`-only (`CodesView.jsx`), so codes marked redeemed on one device never

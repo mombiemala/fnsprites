@@ -375,7 +375,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
 <nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard &amp; Friends</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
-<div class="row"><a href="/about">About</a><span class="sep">·</span><a href="/contact">Contact</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/guides">📖 Guides</a><span class="sep">·</span><a href="/privacy">Privacy</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
+<div class="row"><a href="/about">About</a><span class="sep">·</span><a href="/contact">Contact</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/guides">📖 Guides</a><span class="sep">·</span><a href="/privacy">Privacy</a><span class="sep">·</span><a href="/terms">Terms</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <details><summary>Credits, sources &amp; disclaimers <span class="fcaret">›</span></summary>
 <p>Sprite images are © Epic Games, Inc., used for identification only. Official base art sourced from <a href="https://github.com/UltronCore/sprite-tracker" target="_blank" rel="noreferrer">UltronCore/sprite-tracker</a>; the Season 4 “Override” roster uses Epic's official datamined icons (Normal, Gold, Cheat Master &amp; Loot Hacker); some Season 3 variant art — the Holofoil renders and the Air &amp; Seven sprites — is AI-generated (Google Gemini), and real-person collab sprites (Vini Jr., Pollo) use Epic's official art with the background removed, never an AI likeness. A built-in generator covers anything still missing an image.</p>
@@ -1833,8 +1833,84 @@ function bestSpritesPage() {
 ` + FOOT
 }
 
+// ---------- /sprite-leveling — original leveling & mastery guide ----------
+// Hand-written how-to that expands the brief "How Sprites work" sidebar card into a
+// full strategy guide. Facts mirror src/data/spriteGuide.js (one source of truth).
+function spriteLevelingPage() {
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const desc = `How Sprite leveling and mastery work in Fortnite — how to earn level points, level 1→5 fast, master a Sprite (extract at Lv 5), the Mastery Monday 2× XP window, and the free Quack finishes. Plus the extraction mistakes that lose you a Sprite.`
+  const title = `Fortnite Sprite Leveling & Mastery — Level Fast & Unlock Quack | FN Sprite Tracker`
+  const faqs = [
+    ['How do you level up a Sprite in Fortnite?', 'Keep the Sprite equipped and earn level points in-match: roughly 75 points per container you open, ~200 per elimination, and ~200 for extracting a duplicate of a Sprite. Points carry the Sprite from Level 1 up to Level 5, and its ability gets stronger at each level.'],
+    ['How do you master a Sprite?', 'Reaching Level 5 isn’t enough on its own — you have to extract the Sprite while it’s at Level 5. That “Mastered” state unlocks rewards in the Sprites menu (Portable Extractors, Sprite Dust, XP and cosmetics). In this tracker, marking a variant ★ Mastered means you’ve extracted it at Lv 5.'],
+    ['What is Mastery Monday?', 'Every Monday (9 AM ET, for 24 hours) Sprites earn 2× XP and Dust. It’s the fastest time to level — a common tactic is to get a Sprite to Lv 3 in one game and finish it to Lv 5 in the next.'],
+    ['How do you get the Quack Sprites?', 'The Quack finishes are mastery-milestone rewards — you can’t pull them from chests. Master 35 Sprites for Quack Water, 40 for Quack Earth, 45 for Quack Fire, and 55 for Quack Zero Point (free via the mastery track). Each Quack shares 50% of the XP it earns with every other Sprite in your match, so it fast-tracks the rest of your collection.'],
+    ['Why didn’t my leveled Sprite count?', 'A Sprite only counts once you extract it — equip it to your back before the match ends, walk up to the Extraction crate and press Extract (don’t throw or drop it in). If you’re eliminated first, it’s lost. Genuine extraction misfires do happen; file an in-game bug report and Epic usually grants it back.'],
+  ]
+  const jsonld = { '@context': 'https://schema.org', '@graph': [
+    { '@type': 'Article', headline: 'Fortnite Sprite Leveling & Mastery — Level Fast & Unlock Quack', description: desc, url: SITE + '/sprite-leveling', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },
+    { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+  ] }
+  return head({ title, desc, canonical: SITE + '/sprite-leveling', jsonld, active: 'sprites' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>⬆️ Fortnite Sprite leveling &amp; mastery — level fast, master, and unlock Quack</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:70ch">Every Sprite gets stronger as it levels, and “mastering” your collection unlocks the best rewards in the game — including the free Quack finishes. Here’s exactly how leveling and mastery work, the fastest way to grind them, and the extraction mistakes that quietly cost people Sprites.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:20px 0 8px">Leveling 1 → 5: how points work</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 8px">Keep a Sprite equipped and it earns level points as you play, up to <b>Level 5</b> — its ability scales up at each level. The point values are community-measured (Epic doesn’t publish them):</p>
+    <div class="card"><table>
+      <tr><th>Action</th><th style="text-align:right">Level points</th></tr>
+      <tr><td>Open a container (chest, ammo box, etc.)</td><td class="v">~75</td></tr>
+      <tr><td>Eliminate an opponent</td><td class="v">~200</td></tr>
+      <tr><td>Extract a duplicate of the Sprite</td><td class="v">~200</td></tr>
+    </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">So looting is steady XP, but fighting (and duplicate extracts) levels far faster.</p></div>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Mastery: it takes more than hitting Lv 5</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 8px">Hitting Level 5 doesn’t master a Sprite — you have to <b>extract it while it’s at Level 5</b>. Do that and it’s Mastered, which unlocks rewards in the Sprites menu: <b>Portable Extractors</b> (extract anywhere — huge for safe collecting), <b>Sprite Dust</b>, XP, and cosmetics. In this tracker, marking a variant <b>★ Mastered</b> means exactly that: extracted at Lv 5.</p>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">The free Quack finishes (mastery milestones)</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 8px">The <b>Quack</b> finishes can’t be pulled from chests — they’re milestone rewards for mastering a set number of Sprites, and they’re the smartest thing to chase because each one <b>shares 50% of its earned XP with every other Sprite in your match</b>:</p>
+    <div class="card"><table>
+      <tr><th>Master this many Sprites</th><th style="text-align:right">Reward</th></tr>
+      <tr><td>35</td><td class="v">Quack Water</td></tr>
+      <tr><td>40</td><td class="v">Quack Earth</td></tr>
+      <tr><td>45</td><td class="v">Quack Fire</td></tr>
+      <tr><td>55</td><td class="v">Quack Zero Point (free)</td></tr>
+    </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Equip a Quack once you have one — it snowballs the rest of your mastery grind.</p></div>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">The fastest way to grind</h2>
+    <ul style="margin:0 0 12px;padding-left:18px;line-height:1.8;font-size:14px">
+      <li><b>Grind on ${L('/events', 'Mastery Monday')}</b> — every Monday (9 AM ET, 24h) Sprites earn <b>2× XP &amp; Dust</b>. It’s the single best time to level.</li>
+      <li><b>Two-game method:</b> land quiet, take a Sprite to ~Lv 3 in game one, then finish it to Lv 5 and extract in game two.</li>
+      <li><b>Fight for it:</b> eliminations (~200 pts) and duplicate extracts dwarf looting — a couple of kills can be a whole level.</li>
+      <li><b>Equip a Quack as soon as you earn one</b> — the 50% match-wide XP share levels your other Sprites while you play.</li>
+      <li><b>Bank Portable Extractors</b> from mastery rewards so you can extract from anywhere and stop losing leveled Sprites to bad fights.</li>
+    </ul>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Don’t lose it at the last step: extraction</h2>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 8px">A leveled Sprite is worthless until it’s extracted, and a few mistakes quietly cost people their grind:</p>
+    <ul style="margin:0 0 12px;padding-left:18px;line-height:1.8;font-size:14px">
+      <li><b>Equip it to your back before the match ends</b> — a Sprite left sitting in your inventory won’t extract.</li>
+      <li><b>Walk up to the Extraction crate and press Extract — don’t throw or drop it in.</b> Thrown Sprites can register as the wrong type (they were turning into Water Sprites, so Epic disabled throw-to-extract).</li>
+      <li><b>Extracted but it never showed up?</b> Real misfires happen — file an in-game bug report and Epic usually grants the Sprite back.</li>
+    </ul>
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">FAQ</h2>
+    ${faqs.map(([q, a]) => `<details class="gd"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
+
+    <div class="card" style="padding:14px 16px;margin:16px 0 0"><p style="margin:0;font-size:13px;color:var(--muted);line-height:1.6">Track your mastery as you go on the ${L('/', 'collection tracker')}, spend your rewards wisely with the ${L('/sprite-dust', 'Sprite Dust guide')}, and see which Sprites are worth leveling first on the ${L('/best-sprites', 'best Sprites ranking')}.</p></div>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Point values and reward thresholds are community-sourced — Epic doesn’t publish exact figures, so treat them as close estimates. Updated ${new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}.</p>
+    <a class="bigcta" href="/">Track your Sprite mastery — free →</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 const GUIDES = [
   ['/best-sprites', '🏅', 'Best Sprites (ranked)', 'Our opinionated take on the strongest Override Sprites — S/A/B tiers with reasoning, plus the best pick for mobility, sustain, info and easy wins.'],
+  ['/sprite-leveling', '⬆️', 'Leveling & mastery', 'How level points work, how to master a Sprite (extract at Lv 5), the Mastery Monday 2× window, and the free Quack milestone finishes.'],
   ['/fortnitemares-sprites', '🎃', 'Fortnitemares Sprites — farming guide', 'The four live Fortnitemares Sprites: what each power does, where to farm them, how to chase the finishes, and which to get first.'],
   ['/fortnitemares', '🎃', 'Fortnitemares 2026', 'Everything leaked for Fortnite’s Halloween event — start date, the Trick-or-Treat Sprite, the FNAF & Ghostface crossovers, and how to get ready.'],
   ['/codes', '🔓', 'Lobby Hacks (codes)', 'Every Hack the Lobby / Admin Panel code and what it unlocks — grouped by reward, with copy & redeemed-tracking.'],
@@ -2029,6 +2105,61 @@ function privacyPage() {
 ` + FOOT
 }
 
+// ---------- /terms page ----------
+// A plain-English Terms of Use. AdSense (and general trust) expects a site to have
+// clear terms alongside the privacy policy. Kept fair and readable for a free
+// fan tool — no hidden obligations.
+function termsPage() {
+  const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const updated = 'October 2, 2026'
+  const desc = 'Terms of Use for FN Sprite Tracker — a free, fan-made Fortnite Sprite collection tracker. The service, your account and content, acceptable use, Epic Games trademarks, disclaimers and contact. Not affiliated with Epic Games.'
+  const jsonld = { '@context': 'https://schema.org', '@type': 'WebPage', name: 'Terms of Use — FN Sprite Tracker', url: SITE + '/terms', description: desc, dateModified: '2026-10-02' }
+  return head({ title: 'Terms of Use | FN Sprite Tracker', desc, canonical: SITE + '/terms', jsonld, active: '' }) + `
+<div class="cols">
+  <div class="main">
+    <h1>Terms of Use</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:72ch">Last updated: <b>${updated}</b>. These terms cover your use of FN Sprite Tracker (<b>fnsprites.app</b>), a free, fan-made Fortnite Sprite collection tracker. By using the site you agree to them; if you don't, please don't use the site.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">The service</h2>
+    <p>FN Sprite Tracker is a free tool for tracking your Fortnite Sprite collection, with reference guides, drop-rate estimates, Lobby Hack codes and community features. It's provided as-is and may change or be unavailable at any time. Most features work without an account; signing in just saves your collection to your profile so it syncs across devices.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Not affiliated with Epic Games</h2>
+    <p>This is an independent fan project. It is <b>not affiliated with, endorsed by, or sponsored by Epic Games, Inc.</b> “Fortnite,” Sprite names and related imagery are trademarks of Epic Games; they're referenced here for identification and reference only. Gameplay details (drop rates, abilities, codes, events) are community-sourced estimates and can be wrong or out of date — always verify in-game before relying on them.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Your account</h2>
+    <p>If you create an account, you're responsible for activity under it. Sign-in is handled by our authentication provider (Google via Supabase) — don't share access, and tell us if you suspect misuse. You can request deletion of your account data at any time (see the ${L('/privacy', 'Privacy Policy')}).</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Acceptable use</h2>
+    <ul style="margin:6px 0 0;padding-left:18px;line-height:1.75;font-size:14px">
+      <li>Don't abuse, scrape, overload, or try to break the site or its API, or probe its security.</li>
+      <li>Don't post content that's illegal, hateful, harassing, deceptive, or that impersonates others in community features (display name, trade posts, tier votes, Garden).</li>
+      <li>Don't use the site to scam other players — trades happen in-game and at your own risk (see the ${L('/how-to-trade-sprites', 'trading guide')} for safety tips).</li>
+      <li>Don't misrepresent the site as official or affiliated with Epic Games.</li>
+    </ul>
+    <p style="margin-top:8px">We may remove content or restrict access that breaks these rules.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Content &amp; intellectual property</h2>
+    <p>The site's original text, guides, layout and generated artwork belong to FN Sprite Tracker. Fortnite-related names and imagery belong to Epic Games. Anything you submit (display name, tier votes, trade posts, Garden layout) stays yours, but you grant us permission to display it within the site's features (e.g. the leaderboard, public profiles and community vote counts) as you opt into them.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Third-party services &amp; links</h2>
+    <p>The site uses third parties — Supabase (accounts), Vercel (hosting &amp; privacy-friendly analytics), Google AdSense (ads), and a third-party Fortnite stats API — and links out to other sites. We're not responsible for third-party content or practices; their terms and the ${L('/privacy', 'Privacy Policy')} apply.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Disclaimer &amp; limitation of liability</h2>
+    <p>The site and its data are provided “as is,” without warranties of any kind, and may contain inaccuracies. To the fullest extent allowed by law, FN Sprite Tracker isn't liable for any loss arising from your use of the site or reliance on its information (including in-game decisions, trades, or Dust spent). Your collection data is stored on your device and, if you sign in, in the cloud — but keep your own backup of anything important; we can't guarantee against data loss.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Changes &amp; termination</h2>
+    <p>We may update these terms as the site evolves; we'll revise the “Last updated” date above. We may also change, suspend, or discontinue any part of the site at any time. You can stop using the site (and delete your account) whenever you like.</p>
+
+    <h2 style="font-size:16px;margin:18px 0 6px">Contact</h2>
+    <p>Questions about these terms: <a href="mailto:dontbemad@gmail.com">dontbemad@gmail.com</a>. See also our ${L('/privacy', 'Privacy Policy')} and ${L('/about', 'About page')}.</p>
+
+    <a class="bigcta" href="/">← Back to the Sprite tracker</a>
+  </div>
+  <aside class="side">${ctaCard()}${supportCard()}</aside>
+</div>
+` + FOOT
+}
+
 // ---------- /about page ----------
 // A real, crawlable About page (the in-app "About" is only a modal at ?about=1,
 // which crawlers and ad reviewers can't see). Explains what the site is, who runs
@@ -2163,6 +2294,7 @@ function sitemap(types) {
     { loc: SITE + '/faq', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/tier-list', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/best-sprites', changefreq: 'weekly', priority: '0.8' },
+    { loc: SITE + '/sprite-leveling', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/rarest-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/drop-rate-calculator', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
@@ -2182,6 +2314,7 @@ function sitemap(types) {
     { loc: SITE + '/about', changefreq: 'monthly', priority: '0.5' },
     { loc: SITE + '/contact', changefreq: 'yearly', priority: '0.4' },
     { loc: SITE + '/privacy', changefreq: 'yearly', priority: '0.3' },
+    { loc: SITE + '/terms', changefreq: 'yearly', priority: '0.3' },
     // NOTE: the app-state URLs (/?view=shop, /?view=leaderboard, /?view=stats)
     // used to be listed here, but they're just the homepage with a query param —
     // they canonicalize to "/", so Google (correctly) reported them as "Alternate
@@ -2221,6 +2354,8 @@ mkdirSync(resolve(DIST, 'fortnitemares-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'fortnitemares-sprites', 'index.html'), fortnitemaresSpritesPage())
 mkdirSync(resolve(DIST, 'best-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'best-sprites', 'index.html'), bestSpritesPage())
+mkdirSync(resolve(DIST, 'sprite-leveling'), { recursive: true })
+writeFileSync(resolve(DIST, 'sprite-leveling', 'index.html'), spriteLevelingPage())
 mkdirSync(resolve(DIST, 'codes'), { recursive: true })
 writeFileSync(resolve(DIST, 'codes', 'index.html'), codesPage())
 mkdirSync(resolve(DIST, 'sprite-garden'), { recursive: true })
@@ -2253,6 +2388,8 @@ mkdirSync(resolve(DIST, 'gold-sprites'), { recursive: true })
 writeFileSync(resolve(DIST, 'gold-sprites', 'index.html'), goldPage())
 mkdirSync(resolve(DIST, 'privacy'), { recursive: true })
 writeFileSync(resolve(DIST, 'privacy', 'index.html'), privacyPage())
+mkdirSync(resolve(DIST, 'terms'), { recursive: true })
+writeFileSync(resolve(DIST, 'terms', 'index.html'), termsPage())
 mkdirSync(resolve(DIST, 'about'), { recursive: true })
 writeFileSync(resolve(DIST, 'about', 'index.html'), aboutPage())
 mkdirSync(resolve(DIST, 'contact'), { recursive: true })
@@ -2260,4 +2397,4 @@ writeFileSync(resolve(DIST, 'contact', 'index.html'), contactPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
 
-console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /fortnitemares-sprites + /best-sprites + /privacy + 404 + sitemap.xml → dist/`)
+console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /fortnitemares-sprites + /best-sprites + /sprite-leveling + /privacy + /terms + 404 + sitemap.xml → dist/`)

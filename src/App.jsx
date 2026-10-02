@@ -185,6 +185,7 @@ export default function App() {
     { id: 'bug', label: 'Report a bug', onClick: () => setShowBug(true) },
     { id: 'guides', label: '📖 Guides', href: '/guides' },
     { id: 'privacy', label: 'Privacy', href: '/privacy' },
+    { id: 'terms', label: 'Terms', href: '/terms' },
     { id: 'coffee', label: '☕ Buy me a coffee', href: LINKS.buyMeACoffee },
   ]
 
