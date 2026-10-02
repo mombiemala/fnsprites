@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 2, 2026',
+    title: 'Golden Power Hours this weekend (Oct 3)',
+    changes: [
+      { tag: 'Added', text: 'Added the confirmed Golden Power Hours on Fri Oct 3 — Gold-finish Sprites are rate-boosted in two 2-hour windows (2–4 PM & 9–11 PM ET). The top card’s “Farm my missing Gold Sprites” shortcut lights up during the event, and there’s a heads-up banner.' },
+    ],
+    summary: 'Added the Oct 3 Golden Power Hours (Gold-finish rate-up, two windows) with a live banner and the Gold-farm shortcut.',
+    why: 'Power Hours are the best time to fill in a specific finish; surfacing the dated Gold window (with the one-tap “farm my missing Gold” filter) helps players use it.',
+  },
+  {
+    date: 'October 2, 2026',
     title: 'Finishes guide + branded share images site-wide',
     changes: [
       { tag: 'Added', text: 'A “Finishes explained” guide — every Sprite finish (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter, Trick-or-Treat, plus the older Gummy/Galaxy/Gem/Holofoil/Cube/Quack), what bonus each gives, and how to get it.' },

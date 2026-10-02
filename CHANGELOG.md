@@ -11,6 +11,14 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 2, 2026 — Golden Power Hours (Oct 3)
+
+- **Added** (`src/data/events.js`, `src/data/announcements.js`): the confirmed Golden Power Hours on Fri Oct 3 — two 2-hour
+  windows (2–4 PM & 9–11 PM ET → 18:00–20:00Z and 01:00–03:00Z Oct 4), `boostedThemes: ['gold']` so the top card's "Farm my
+  missing Gold Sprites" shortcut appears, plus a heads-up banner (Oct 2–4). Source: GameRant / Vice.
+
+---
+
 ## October 2, 2026 — Finishes guide + site-wide branded share images
 
 - **Added** (`scripts/prerender.mjs`): `/sprite-finishes` — every finish explained (current Override set + legacy

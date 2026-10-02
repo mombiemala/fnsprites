@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'gold-hours-2026-10-03',
+    emoji: '🥇',
+    message: 'Golden Power Hours this weekend (Fri Oct 3) — Gold-finish Sprites are rate-boosted in two 2-hour windows: 2–4 PM & 9–11 PM ET. The best time to farm the Gold finishes you’re missing.',
+    link: '/?view=news',
+    linkLabel: 'Event details',
+    start: '2026-10-02',
+    end: '2026-10-04',
+    source: 'GameRant / Vice',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'fortnitemares-live-2026-10-01',
     emoji: '🎃',
     message: 'Fortnitemares is LIVE (v42.30)! Four new Sprites dropped — Vampire, Spooky Dash (Mythic), The Deer (99 Nights collab) and Dumpster Dive — each with Gold, Cheat Master, Loot Hacker & Bounty Hunter finishes, from Sprite/Pumpkin chests, Cheat Codes, and the FNAF animatronics. Loot Hacks also refreshed (Infantry Rifle, LMG, Pumpkin Launcher, Last Call, Slap Candy Corn), and the map shook up: Battlewoods → Gravegate, a new Freddy Fazbear’s Pizzeria, and a Nightmare Neighborhood.',
