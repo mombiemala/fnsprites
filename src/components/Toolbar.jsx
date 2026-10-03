@@ -104,8 +104,11 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
         {seasonTabs.map((g) => seasonTab(g.id, shortSeason(g.id), `${g.name} — ${g.sub}${g.current ? ' (current)' : ''}`))}
       </div>
 
-      {/* Main controls: search · variant · sprite · sort · view · advanced */}
-      <div className="flex flex-wrap items-center gap-2">
+      {/* Main controls: search · variant · sprite · sort · view · advanced.
+          `relative` here anchors the gear popover to the full-width row, not the
+          gear itself — the gear wraps to varying x on mobile, so anchoring to it
+          pushed the panel off one edge or the other. */}
+      <div className="relative flex flex-wrap items-center gap-2">
         <input
           value={filters.search}
           onChange={(e) => set({ search: e.target.value })}
@@ -154,8 +157,9 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
           ))}
         </div>
 
-        {/* Advanced (gear) */}
-        <div ref={gearRef} className="relative shrink-0">
+        {/* Advanced (gear) — not `relative`, so the popover below positions
+            against the full-width controls row instead of this button. */}
+        <div ref={gearRef} className="shrink-0">
           <button
             onClick={() => setGearOpen((o) => !o)}
             aria-expanded={gearOpen}
@@ -168,7 +172,7 @@ export default function Toolbar({ filters, setFilters, themeStats, count, total,
             {advCount > 0 && <span className="grid h-4 min-w-4 place-items-center rounded-full bg-[var(--brand)] px-1 text-[10px] font-extrabold text-black">{advCount}</span>}
           </button>
           {gearOpen && (
-            <div className="absolute right-0 z-40 mt-1 w-60 rounded-xl border border-[var(--border)] bg-[var(--panel)] p-3 shadow-xl">
+            <div className="absolute right-0 top-full z-40 mt-1 w-60 max-w-[calc(100vw-1.5rem)] rounded-xl border border-[var(--border)] bg-[var(--panel)] p-3 shadow-xl">
               <div className="flex flex-col gap-3">
                 <label className="flex flex-col gap-1 text-[11px] font-bold uppercase tracking-wider text-[var(--muted)]">
                   Ownership

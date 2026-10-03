@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 3, 2026',
+    title: 'Fixed the “more filters” menu getting cut off on phones',
+    changes: [
+      { tag: 'Fixed', text: 'The advanced-filters (⚙) menu on the collection — Ownership, Rarity, Group by, Hide mastered, Show unreleased — could open half-off the screen edge on mobile, cutting off its options. It now stays fully on-screen at every width.' },
+    ],
+    summary: 'Fixed the ⚙ advanced-filters menu opening partly off-screen on phones.',
+    why: 'The menu was anchored to the gear button, but the toolbar wraps on mobile so the gear lands at a different spot depending on width — anchoring to it pushed the panel off the left edge (or the right, on other widths). Anchoring it to the full-width filter row instead keeps it on-screen no matter where the gear wraps.',
+  },
+  {
     date: 'October 2, 2026',
     title: 'Fixed the Lobby Hacks page scrolling sideways on phones',
     changes: [

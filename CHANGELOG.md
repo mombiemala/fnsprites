@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 3, 2026 — Fix advanced-filters (gear) popover clipping off-screen on mobile
+
+- **Fixed** (`src/components/Toolbar.jsx`): the ⚙ advanced-filters popover (Ownership / Rarity / Group by / Hide mastered /
+  Show unreleased) was `absolute right-0` inside the gear's own `relative` wrapper. The toolbar is `flex-wrap`, so on mobile
+  the gear lands at a different x depending on width — `right-0` pushed the 240px panel off the left edge (and switching to
+  `left-0` just pushed it off the right at other widths). Moved the positioning context to the full-width controls row
+  (`relative` on that row; removed `relative` from the gear wrapper) and anchored the popover `right-0 top-full` to it, so it
+  aligns to the on-screen right edge regardless of where the gear wrapped. Added `max-w-[calc(100vw-1.5rem)]` as a guard.
+  The popover stays inside `gearRef`, so click-outside-to-close still works. Verified `offLeft/offRight` false at 360, 390,
+  and 1280px.
+
+---
+
 ## October 2, 2026 — Fix Lobby Hacks horizontal overflow on mobile; wrap code titles
 
 - **Fixed** (`src/components/CodesView.jsx`): the Lobby Hacks / Admin Panel codes page scrolled horizontally on phones —
