@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 3, 2026 — Document the six undocumented Override sprite abilities
+
+- **Added** (`src/data/sprites.js`): real in-game abilities for the Override Sprites previously marked "not documented
+  here yet" — Sonic (sprint-speed boost), Bush Ranger (periodic Bush cover, triggers after an elim at max level),
+  8-Bit Blaster (8-Bit Shotgun with a score multiplier in your first Chest), Onigiri (Overdrive after a consumable,
+  scales per level), Mega Man (reduced slide/swim friction → farther travel), Overshield (bonus Overshield that scales
+  per level). Sourced from GameSpot / GameRant / ReadDork; Mega Man's matches our internal `ImprovedSlide` codename
+  (cross-check). Also refreshed the stale header comment that still said Sonic's ability was unrevealed. X-Ray was already
+  documented and left as-is.
+
+---
+
 ## October 3, 2026 — Fix advanced-filters (gear) popover clipping off-screen on mobile
 
 - **Fixed** (`src/components/Toolbar.jsx`): the ⚙ advanced-filters popover (Ownership / Rarity / Group by / Hide mastered /

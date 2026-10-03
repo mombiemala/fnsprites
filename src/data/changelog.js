@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 3, 2026',
+    title: 'Filled in the missing Override sprite abilities',
+    changes: [
+      { tag: 'Added', text: 'Documented the in-game ability for the Override Sprites that previously read “not documented yet”: Sonic (sprint speed), Bush Ranger (wraps you in a Bush for cover — and after an elim at max level), 8-Bit Blaster (an 8-Bit Shotgun with a score multiplier in your first Chest), Onigiri (Overdrive after a consumable, scaling per level), Mega Man (less friction sliding/swimming, so you go farther), and Overshield (bonus Overshield that scales each level).' },
+    ],
+    summary: 'Added the real in-game abilities for six Override Sprites that were previously marked “not documented.”',
+    why: 'These abilities were confirmed by multiple guides (GameSpot, GameRant and others) — and Mega Man’s matches our internal “ImprovedSlide” codename, a good cross-check. Players judge which Sprites to chase by their effect, so leaving six blank left real gaps on the sprite pages.',
+  },
+  {
+    date: 'October 3, 2026',
     title: 'Fixed the “more filters” menu getting cut off on phones',
     changes: [
       { tag: 'Fixed', text: 'The advanced-filters (⚙) menu on the collection — Ownership, Rarity, Group by, Hide mastered, Show unreleased — could open half-off the screen edge on mobile, cutting off its options. It now stays fully on-screen at every width.' },

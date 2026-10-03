@@ -136,18 +136,18 @@ export const SPRITE_TYPES = [
   //   `gen: 'c7s4'` files them under the new generation; all `rumored` until Epic
   //   ships them. The five Design-a-Sprite Sprites are Epic-revealed contest
   //   winners (abilities as their designers built them — Epic may tweak; rarity
-  //   TBC); Sonic is the confirmed "Gaming Legends" headliner (ability not yet
-  //   revealed). Deliberately NO `releaseDate` — exact per-Sprite dates aren't
+  //   TBC); Sonic is the confirmed "Gaming Legends" headliner (sprint-speed
+  //   boost). Deliberately NO `releaseDate` — exact per-Sprite dates aren't
   //   confirmed, so they stay Upcoming/Rumored until the Aug 20 staging flips
   //   them with real variants, rarities and abilities (don't auto-release guesses).
   { id: 'sonic', name: 'Sonic', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — the marquee Sonic collab (cube “backpack” redesign). Normal, Gold & Cheatmaster are all live (Cheatmaster unlocks via the GOTTAGOFAST lobby code; Gold since Gold Hours, Aug 22). Its exact in-game ability isn’t documented here yet.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the marquee Sonic collab (cube “backpack” redesign). Normal, Gold & Cheatmaster are all live (Cheatmaster unlocks via the GOTTAGOFAST lobby code; Gold since Gold Hours, Aug 22). Ability: increases your sprint speed.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'pond', name: 'Pond', icon: '🐸', rarity: 'Epic', dropRate: null, released: true, releaseDate: '2026-09-17', gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Pine & Kiri). Live since the v42.20 update (Sep 17) in Normal, Gold, Loot Hacker and Cheat Master finishes. Ability: Active — jump shortly after landing to trigger a Super Jump; charges regenerate over time, and Super Jump strength rises while its cooldown drops with each level up. (Its Bounty Hunter finish is leaked but not out yet — Epic ships that wave over the following weeks.)',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'onigiri', name: 'Onigiri', icon: '🍙', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside X-Ray. Exact in-game ability not yet detailed by Epic. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is live too (since Sep 10).',
+    ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside X-Ray. Ability: applies Overdrive after you eat or drink a consumable — the duration extends with each level. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is live too (since Sep 10).',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'honey', name: 'Honey', icon: '🍯', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4', releaseDate: '2026-10-15',
     ability: 'Design-a-Sprite winner (by Conejito_sam): spawns a beehive that swarms whoever damages you. Expected during Fortnitemares around Oct 15 — abilities as designed, Epic may tweak; rarity TBC.',
@@ -183,7 +183,7 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Klombo creature. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: grants a random item at each level — but levelling it up consumes items.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'bushranger', name: 'Bush Ranger', icon: '🌿', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — a woodland Bush Ranger. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — a woodland Bush Ranger. Normal & Cheatmaster are live; Gold is now live too (Gold Hours, Aug 22). Ability: periodically wraps you in a Bush for cover — and at max level it triggers one after an elimination.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'victorycrown', name: 'Crown', icon: '👑', rarity: 'Mythic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Crown. Normal, Gold, Cheat Master and Loot Hacker finishes are live, and the Bounty Hunter Crown is obtainable too (win a match with the Loot Hacker Crown equipped) — the first Bounty Hunter finish to go live ahead of the rest of that wave. Ability: grants bonus Crown Wins when you earn a Victory Royale.',
@@ -192,7 +192,7 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — Jonesy. Normal & Cheatmaster are live (Cheatmaster via the PLAY4ALL lobby code); Gold is live too (Gold Hours, Aug 22). Ability: restores some Health or Shield after you take damage.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'blaster', name: '8-Bit Blaster', icon: '🎮', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — a retro handheld “8-Bit Blaster”. Normal & Cheatmaster are live (Cheatmaster via the 8BITBLAST lobby code); Gold is now live too (Gold Hours, Aug 22). Exact in-game ability not documented here yet.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — a retro handheld “8-Bit Blaster”. Normal & Cheatmaster are live (Cheatmaster via the 8BITBLAST lobby code); Gold is now live too (Gold Hours, Aug 22). Ability: drops an 8-Bit Shotgun into your first Chest, with a score multiplier on it.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'killswitch', name: 'Killswitch', icon: '🎯', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — a tactical “Killswitch”. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: grants Hangtime — improved accuracy when aiming while jumping or falling.',
@@ -213,10 +213,10 @@ export const SPRITE_TYPES = [
     ability: 'Unreleased Season 4 “Override” Sprite — Meowscles. Spotted ahead of release (Krowe & FNBRIntel) but not yet obtainable; ability & rarity not revealed by Epic — TBC.',
     variants: { normal: U } },
   { id: 'overshield', name: 'Overshield', icon: '🛡️', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — Overshield. Live in all four finishes (Normal · Gold · Cheatmaster · Loot Hacker, the last live since Sep 10). Exact in-game ability not fully documented here yet.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Overshield. Live in all four finishes (Normal · Gold · Cheatmaster · Loot Hacker, the last live since Sep 10). Ability: grants bonus Overshield that scales up each level — extra damage you can soak before your health is touched.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'megaman', name: 'Mega Man', icon: '🔵', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — the Mega Man collab (Capcom), internal codename “ImprovedSlide” (his signature slide). Live now; exact in-game ability not fully documented here yet, and additional finishes may follow.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the Mega Man collab (Capcom), internal codename “ImprovedSlide” (his signature slide). Live now; additional finishes may follow. Ability: cuts your friction when sliding and swimming, so you slide/glide farther — the distance grows as it levels.',
     variants: { normal: R } },
   { id: 'squibbly', name: 'Squibbly', icon: '🫧', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Unreleased Season 4 “Override” Sprite — Squibbly, which appears to support multiple special variants. Leaked ability: fishes up a Fishing Hole when you dive into water. Still unreleased, not yet obtainable; ability details are leak-only and rarity is TBC. (Krowe & FNBRIntel · The Click)',
