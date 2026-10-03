@@ -174,7 +174,7 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — Tails (Sonic collab), cube redesign. Normal & Cheatmaster are live (Cheatmaster via the IWANNAFLYHIGH lobby code); Gold is live too (Gold Hours, Aug 22). Ability: lets you hover — a glide / slow descent.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'shadow', name: 'Shadow', icon: '🦔', rarity: 'Epic', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: automatically reloads your unequipped weapons over time.',
+    ability: 'Chapter 7 Season 4 “Override” Sprite — Shadow the Hedgehog (Sonic collab), cube redesign. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: automatically reloads your unequipped weapons over time (and your equipped weapon too at max level) — the reloads get faster as it levels.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: R } },
   { id: 'jazz', name: 'Jazz Jackrabbit', icon: '🐇', rarity: 'Legendary', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — Jazz Jackrabbit. All three finishes (Normal · Gold · Cheatmaster) are live. Ability: unlocks a double‑jump.',
