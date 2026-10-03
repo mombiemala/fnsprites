@@ -100,6 +100,7 @@ export const LOBBY_CODES = [
   { code: 'DustySprites', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-26', source: 'Vice / FNCS livestream (Sep 26)' },
   { code: 'runSystemOverride', unlocks: '5,000 Sprite Dust — after finishing the Geno story quests', type: 'reward', category: 'dust', status: 'working', added: '2026-10-01', source: 'Vice (Oct 1 update)' },
   { code: 'ImTheRealEdgelord', unlocks: '5,000 Sprite Dust — after finishing the Wrixel story quests', type: 'reward', category: 'dust', status: 'working', added: '2026-10-01', source: 'Vice (Oct 1 update)' },
+  { code: 'MagicIsReal', unlocks: '5,000 Sprite Dust — after finishing Bastian’s story quest', type: 'reward', category: 'dust', status: 'working', added: '2026-10-03', source: 'IGN / allthings.how' },
   { code: 'YOURTHOUGHTSAREMINE', unlocks: '5,000 Sprite Dust + Void Master Geno Outfit style — after finishing the Geno story quests, shoot Geno’s shield and let him eliminate you', type: 'reward', category: 'dust', status: 'working', source: 'community list', added: '2026-09-03' },
   { code: 'BLINKYINKYPINKYCLYDE', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-17', source: 'Vice (v42.20 codes)' },
   { code: 'PlayToLevelUp', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
