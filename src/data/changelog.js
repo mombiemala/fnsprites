@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 4, 2026',
+    title: 'Corrected six sprite rarities',
+    changes: [
+      { tag: 'Fixed', text: 'Fixed the rarity on six Override Sprites after cross-checking current guides: X-Ray, Blinky and Crash Bandicoot are Legendary (were marked Epic); Mega Man, Onigiri and Overshield are Rare (were marked Epic). Rarity drives the rarity badge, the Rarest-Sprites list and the implied chest drop rate, so these now read correctly.' },
+    ],
+    summary: 'Corrected six Override sprite rarities (X-Ray/Blinky/Crash → Legendary; Mega Man/Onigiri/Overshield → Rare).',
+    why: 'Rarity sets a Sprite’s chest drop-rate tier (Rare 8.73% · Epic 5.22% · Legendary 2.436%) and how it’s ranked, so a wrong tier misleads planning. Multiple reputable trackers (allthings.how, igeeksblog, Beebom, Insider Gaming) agree on these — e.g. X-Ray needs Gold cheat codes (Legendary), while Mega Man/Onigiri/Overshield come from blue codes (Rare).',
+  },
+  {
     date: 'October 3, 2026',
     title: 'Filled in the missing Override sprite abilities',
     changes: [

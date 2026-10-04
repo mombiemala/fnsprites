@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 4, 2026 — Correct six sprite rarities
+
+- **Fixed** (`src/data/sprites.js`): rarity-accuracy pass cross-checking current guides (allthings.how, igeeksblog, Beebom,
+  Insider Gaming). Corrected six Override Sprites that were all mis-marked `Epic`:
+  - **X-Ray → Legendary**, **Blinky → Legendary**, **Crash Bandicoot → Legendary**
+  - **Mega Man → Rare**, **Onigiri → Rare**, **Overshield → Rare**
+  Rarity drives the rarity badge, the `/rarest-sprites` ranking and the implied chest drop-rate tier (Rare 8.73% ·
+  Epic 5.22% · Legendary 2.436%), so these now read correctly. Corroboration incl. X-Ray needing Gold cheat codes
+  (Legendary) vs Mega Man/Onigiri/Overshield from blue codes (Rare). Base tier drop-rate figures themselves were already
+  correct. Vampire's rarity (currently Epic, "TBC") was left unchanged — sources don't yet confirm it.
+
+---
+
 ## October 3, 2026 — Document the six undocumented Override sprite abilities
 
 - **Added** (`src/data/sprites.js`): real in-game abilities for the Override Sprites previously marked "not documented
