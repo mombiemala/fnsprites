@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 4, 2026',
+    title: 'Refreshed FAQs & info for the current season',
+    changes: [
+      { tag: 'Fixed', text: 'Updated the Bounty Hunter FAQ — the finish is now live across the whole roster (since Sep 24), not “only the Crown, rest coming weeks.” Fixed the Fortnitemares pages to show the Trick-or-Treat finish as Crown-only for now with the rest arriving Oct 8 (they previously said it was live across all 24), added that Oct 8 drop to the “coming up” feed, and corrected Pond’s entry (its Bounty Hunter finish is live). Also reworded the “best Sprite” answer around the current Override meta instead of last season’s.' },
+      { tag: 'Changed', text: 'Past-season sprites no longer show a Sprite Dust re-summon cost — Dust is a per-season currency that resets, so last season’s Dust prices don’t apply to archived Sprites. The detail popup drops the dust badges and the info pages drop the dust stat/FAQ for them.' },
+    ],
+    summary: 'Brought the FAQs and info up to date for Season 4 (Bounty Hunter fully live, Trick-or-Treat Oct 8 timing), and stopped showing Dust costs on archived past-season Sprites.',
+    why: 'Stale answers (Bounty Hunter “still rolling out,” Trick-or-Treat “live across 24”) misstate what you can actually get right now, and showing a Dust re-summon price on Sprites you can’t obtain — with a currency that resets each season — is misleading. Keeping the current-season facts accurate is the whole point of the tracker.',
+  },
+  {
+    date: 'October 4, 2026',
     title: 'Archived (past-season) sprites now read as historical',
     changes: [
       { tag: 'Changed', text: 'Past-season Season 3 “Runners” Sprites are archived — kept in your collection & Sprite Garden but no longer obtainable in Battle Royale — so their drop rate and “where to find” no longer apply. The detail popup now hides the live drop-rate chip and swaps the location line for an “Archived” note on those Sprites, and their info pages phrase the old drop rate in the past tense (“originally dropped at ~X”) instead of as a current stat.' },

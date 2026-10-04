@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 4, 2026 — Refresh FAQs & info for the current season; drop Dust on archived Sprites
+
+- **Fixed** (`scripts/prerender.mjs`, `src/data/fortnitemares.js`, `src/data/incoming.js`, `src/data/sprites.js`): current-season
+  accuracy pass on the FAQs and info.
+  - **Bounty Hunter FAQ**: now states the finish went live roster-wide on Sep 24 (24 Sprites, elimination-based), replacing
+    the stale "only the Crown is obtainable, the rest arrive over the following weeks."
+  - **Trick-or-Treat**: the Fortnitemares page + farming-guide FAQs and the `fortnitemares.js` entry no longer claim it's
+    "live across 24 Sprites" — only the T-o-T Crown is out (Oct 1); the other 23 drop Oct 8. Added that Oct 8 rollout to the
+    `incoming.js` "coming up" feed, and corrected Pond's ability note (its Bounty Hunter finish is live, not "not out yet").
+  - **Best-Sprite FAQ**: reworded around the current Season 4 "Override" meta instead of "the settled Season 3 meta."
+- **Changed** (`src/components/SpriteDetailModal.jsx`, `scripts/prerender.mjs`): archived past-season Sprites no longer show a
+  Sprite Dust re-summon cost — Dust is a per-season currency that resets, so last season's prices don't apply. The detail
+  modal drops the per-variant dust badges + legend, and sprite pages drop the dust stat tiles, the "re-summon Dust" FAQ and
+  the dust mention in the meta description for archived Sprites. The "Avg chests" stat tile also becomes the Tier for them.
+
+---
+
 ## October 4, 2026 — Reframe archived past-season Sprites as historical (no live drop rate / location)
 
 - **Changed** (`src/components/SpriteDetailModal.jsx`, `scripts/prerender.mjs`): Season 3 “Runners” Sprites are archived

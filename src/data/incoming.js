@@ -52,6 +52,18 @@ export const INCOMING = [
     spriteIds: ['honey'],
   },
   {
+    id: 'trickortreat-rollout',
+    emoji: '🍬',
+    title: 'Trick-or-Treat finish — full roster drops Oct 8',
+    detail: 'The Halloween “Trick-or-Treat” recolour is rolling out in two steps. Only the Trick-or-Treat Crown is out so far (Oct 1, auto-granted to anyone who mastered the Bounty Hunter Crown); the other 23 of the 24-Sprite set are datamined for Oct 8. It’s a cosmetic finish that keeps each Sprite’s base ability — we flip them live automatically on the day.',
+    dropsOn: '2026-10-08',
+    confirmedDate: false,
+    source: 'Vice · Sprite Checklist · The Click',
+    sourceUrl: 'https://www.vice.com/en/article/all-42-new-fortnite-sprites-october-1-update/',
+    typeIds: [],
+    spriteIds: [],
+  },
+  {
     id: 'loot-hack-refresh',
     emoji: '🎯',
     title: 'Next Loot Hack rotation',

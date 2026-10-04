@@ -174,7 +174,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
             title={`Open the full ${type.name} Sprite page`}
             className="mt-2 flex items-center justify-center gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--bg-2)] px-3 py-2 text-sm font-bold text-[var(--brand)] transition-colors hover:border-[var(--brand)]"
           >
-            View the full {type.name} page — drop rate, dust &amp; FAQ →
+            View the full {type.name} page — {isCurrentGen ? 'drop rate, dust & FAQ' : 'ability, variants & FAQ'} →
           </a>
         )}
 
@@ -207,7 +207,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                     ) : v.isNew && (
                       <span title="Released recently" className="rounded bg-emerald-400/20 px-1 py-0.5 text-[9px] font-bold uppercase text-emerald-300">new</span>
                     )}
-                    {dust != null && (
+                    {dust != null && isCurrentGen && (
                       <span
                         title="Estimated Sprite Dust to (re)summon this variant. Indexing a trade avoids re-summoning."
                         className="rounded bg-amber-400/15 px-1.5 py-0.5 text-[9px] font-bold text-amber-300"
@@ -321,8 +321,9 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
 
         {!readOnly && (
           <p className="mt-3 text-[11px] leading-relaxed text-[var(--muted)]">
-            <b className="text-white">Owned</b> · <span className="text-amber-300">★</span> mastered.{' '}
-            <span className="text-amber-300">≈dust</span> = Sprite Dust to re-summon this variant.
+            <b className="text-white">Owned</b> · <span className="text-amber-300">★</span> mastered.{isCurrentGen ? (
+              <> <span className="text-amber-300">≈dust</span> = Sprite Dust to re-summon this variant.</>
+            ) : ''}
           </p>
         )}
       </div>
