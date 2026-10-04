@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 4, 2026',
+    title: 'Corrected the Zero Point base drop rate',
+    changes: [
+      { tag: 'Fixed', text: 'Zero Point’s base (Normal) Sprite-Chest drop rate now reads ~0.03% (about 1 in 3,317), matching the current community consensus — it was previously showing a much lower figure (0.00034%) that actually belongs to its ultra-rare variants. Grim Reaper (~0.000098%) is still the single rarest Sprite. The other drop-rate figures and the rarity-tier bases were verified correct.' },
+    ],
+    summary: 'Fixed Zero Point’s base drop rate to ~0.03% (was 0.00034%, a variant-tier figure).',
+    why: 'Drop rate feeds the Rarest-Sprites ranking and the chest-odds calculator, so a base rate off by ~88× distorts both. Current trackers (thespike, allthings.how, spritechecklist) consistently cite ~0.03% / “1 in 3,317” for the base Normal — the sub-0.0001% numbers are the Gem/Cube/Gummy/Gold variants.',
+  },
+  {
+    date: 'October 4, 2026',
     title: 'Corrected six sprite rarities',
     changes: [
       { tag: 'Fixed', text: 'Fixed the rarity on six Override Sprites after cross-checking current guides: X-Ray, Blinky and Crash Bandicoot are Legendary (were marked Epic); Mega Man, Onigiri and Overshield are Rare (were marked Epic). Rarity drives the rarity badge, the Rarest-Sprites list and the implied chest drop rate, so these now read correctly.' },

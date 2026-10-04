@@ -25,9 +25,10 @@ import { THEME_MAP } from './themes.js'
 // publish official rates — these are COMMUNITY ESTIMATES cross-referenced from
 // accountshark, fortnite.gg & community wikis, and they vary a bit by source.
 // Most follow the rarity-tier base (Rare 8.73% · Epic 5.22% · Legendary 2.436%);
-// the Mythics carry their own widely-cited figures (Zero Point 0.00034%, Grim
-// Reaper ~0.000098% as the rarest, Burnt Peanut ~2.97% — far higher than the
-// other Mythics because it has no variant slots). Treat all as approximate.
+// the Mythics carry their own widely-cited figures (Zero Point ~0.03% base /
+// "1 in 3,317" — its Gem/Cube/Gummy/Gold variants are far rarer still; Grim
+// Reaper ~0.000098% as the rarest overall; Burnt Peanut ~2.97% — far higher than
+// the other Mythics because it has no variant slots). Treat all as approximate.
 
 const R = true   // released
 const U = false  // unreleased
@@ -62,7 +63,7 @@ export const SPRITE_TYPES = [
     // King ships Normal/Gold/Gummy/Galaxy/Holofoil only — Fortnite.GG lists no
     // Gem/Cube/Quack King (the earlier Gem King leak never shipped publicly).
     variants: { normal: R, gold: R, gummy: R, galaxy: R, holofoil: R } },
-  { id: 'zeropoint', name: 'Zero Point', icon: '🔷', rarity: 'Mythic', dropRate: '0.00034%', released: true,
+  { id: 'zeropoint', name: 'Zero Point', icon: '🔷', rarity: 'Mythic', dropRate: '0.03%', released: true,
     ability: 'Spawns a Shield Bubble Jr. when you use a healing item on yourself (not splashes or grenades).',
     variants: { normal: R, gold: R, gummy: R, galaxy: R, gem: R, holofoil: R, cube: R, quack: R } },
   { id: 'peanut', name: 'Burnt Peanut', icon: '🥜', rarity: 'Mythic', dropRate: '2.97%', released: true,

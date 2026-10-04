@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 4, 2026 — Correct Zero Point base drop rate (0.00034% → ~0.03%)
+
+- **Fixed** (`src/data/sprites.js`, `src/data/news.js`): Zero Point's base (Normal) Sprite-Chest drop rate was
+  `0.00034%` — a figure that actually belongs to its ultra-rare variants. Current trackers (thespike, allthings.how,
+  spritechecklist) consistently cite **~0.03% / "1 in 3,317"** for the base Normal, so corrected it there, in the header
+  comment, and in the Jul 30 news entry's parenthetical (also softened "rarest base Sprite" since Grim Reaper ~0.000098%
+  is rarer). Drop rate feeds `/rarest-sprites` and the chest-odds calculator, so an ~88× error distorted both. Confirmed
+  via user decision against the source chart. Grim Reaper (~0.000098%) and Burnt Peanut (~2.97%) were verified correct.
+
+---
+
 ## October 4, 2026 — Correct six sprite rarities
 
 - **Fixed** (`src/data/sprites.js`): rarity-accuracy pass cross-checking current guides (allthings.how, igeeksblog, Beebom,

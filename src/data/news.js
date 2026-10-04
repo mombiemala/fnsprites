@@ -543,7 +543,7 @@ export const NEWS = [
     tag: 'sprites',
     title: 'Zero Point finishes: Cube & Holofoil are both obtainable 🔷',
     sprites: ['zeropoint'],
-    body: 'The two Zero Point Sprite finishes added in v41.30 (Jul 30) are now both obtainable in-game — Cube Zero Point and Holofoil Zero Point (confirmed in-game). Both hide in Vault / keycard Sprite Chests at brutal rates (Holofoil Zero Point is around 0.00028%), so you’ll want locked, high-security chests rather than ground loot. Both are now marked Available in the tracker, which completes every Zero Point finish. Zero Point remains the game’s rarest base Sprite (Mythic, ~0.00034%).',
+    body: 'The two Zero Point Sprite finishes added in v41.30 (Jul 30) are now both obtainable in-game — Cube Zero Point and Holofoil Zero Point (confirmed in-game). Both hide in Vault / keycard Sprite Chests at brutal rates (Holofoil Zero Point is around 0.00028%), so you’ll want locked, high-security chests rather than ground loot. Both are now marked Available in the tracker, which completes every Zero Point finish. Zero Point is still one of the rarest base Sprites going (Mythic, ~0.03% base — only Grim Reaper is rarer).',
     link: 'https://fortnite.gg/sprites/111-holofoil-zero-point-sprite',
     source: 'Fortnite.GG',
     official: false,

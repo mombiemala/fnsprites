@@ -3,7 +3,7 @@ import { SPRITE_TYPES, SPRITE_BY_ID, RARITY_COLORS, RARITY_ORDER } from '../data
 import { THEME_MAP, FINISH_ODDS_FACTOR } from '../data/themes'
 import Tooltip from './Tooltip'
 
-// Parse a base drop-rate string like "8.73%" or "0.00034%" → probability (0..1).
+// Parse a base drop-rate string like "8.73%" or "0.000098%" → probability (0..1).
 function parseRate(s) {
   if (!s) return null
   const n = parseFloat(String(s).replace(/[^\d.]/g, ''))
