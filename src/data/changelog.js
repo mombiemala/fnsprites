@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 4, 2026',
+    title: 'Archived (past-season) sprites now read as historical',
+    changes: [
+      { tag: 'Changed', text: 'Past-season Season 3 “Runners” Sprites are archived — kept in your collection & Sprite Garden but no longer obtainable in Battle Royale — so their drop rate and “where to find” no longer apply. The detail popup now hides the live drop-rate chip and swaps the location line for an “Archived” note on those Sprites, and their info pages phrase the old drop rate in the past tense (“originally dropped at ~X”) instead of as a current stat.' },
+    ],
+    summary: 'Reframed archived past-season Sprites as historical — no live drop rate / location, past-tense wording.',
+    why: 'Those Sprites can’t be chased anymore, so presenting a current drop rate and farm location was misleading. Keeping them collectible but clearly archived (with the rarity data shown as history) is accurate without hiding the roster.',
+  },
+  {
+    date: 'October 4, 2026',
     title: 'Trick-or-Treat: only the Crown is live yet (rest drop Oct 8)',
     changes: [
       { tag: 'Fixed', text: 'Corrected the Trick-or-Treat finish availability: only the Trick-or-Treat Crown is obtainable right now (it went live Oct 1, auto-granted to anyone who mastered the Bounty Hunter Crown). The other 23 Trick-or-Treat variants were showing as available too early — they’re datamined but don’t actually drop until Oct 8. They’re now gated to auto-release on that date.' },

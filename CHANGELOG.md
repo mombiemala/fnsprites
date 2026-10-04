@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 4, 2026 — Reframe archived past-season Sprites as historical (no live drop rate / location)
+
+- **Changed** (`src/components/SpriteDetailModal.jsx`, `scripts/prerender.mjs`): Season 3 “Runners” Sprites are archived
+  (kept in the collection & Sprite Garden, not obtainable in BR), so their drop rate & location no longer apply. The detail
+  modal now hides the "Drop rate X" chip and replaces "🗺️ Where to find" with a "🏡 Archived" note for non-current
+  generations. Sprite pages phrase the old rate in the past tense — overview ("it originally pulled at ~X … before its
+  generation was archived"), the "How rare" FAQ, the meta description, the stat label ("Original drop rate"), and the chest-
+  odds block (replaced with an "Archived — chest odds no longer apply" card, dropping the actionable "chests to get one"
+  table). The `/rarest-sprites` and `/drop-rate-calculator` pages already framed these as the archived Season 3 era, so
+  they were left as-is. Decision: keep the Sprites collectible/trackable, just present their rarity data as history.
+
+---
+
 ## October 4, 2026 — Gate Trick-or-Treat finish to real timing (only Crown live; rest Oct 8)
 
 - **Fixed** (`src/data/sprites.js`, `src/data/themes.js`): all 24 Trick-or-Treat variants were marked live since Oct 1, but

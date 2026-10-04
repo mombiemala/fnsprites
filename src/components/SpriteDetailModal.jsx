@@ -32,6 +32,11 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
   // Highest level among the variants you actually own — so we can show progress
   // against the ability's Lv-5 scaling.
   const bestLevel = variants.reduce((m, v) => (tracking[v.id]?.owned ? Math.max(m, tracking[v.id]?.level || 0) : m), 0)
+  // Current-generation Sprites are the only ones obtainable in BR this season;
+  // older generations are archived in the Sprite Garden. For archived Sprites the
+  // drop rate and "where to find" are historical, not actionable — so we don't
+  // surface them as if you can still chase the Sprite.
+  const isCurrentGen = !!GEN_MAP[type.gen || 'c7s3']?.current
   // Released Sprites have a static /sprite/<slug> page (see scripts/prerender.mjs);
   // link to it so the modal can hand off to the fuller, shareable page.
   const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
@@ -68,7 +73,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                     {tierMeta.label}
                   </span>
                 )}
-                {type.dropRate && <span className="text-xs text-[var(--muted)]">Drop rate {type.dropRate}</span>}
+                {type.dropRate && isCurrentGen && <span className="text-xs text-[var(--muted)]">Drop rate {type.dropRate}</span>}
                 {!type.released && (
                   <span className="rounded bg-black/50 px-1.5 py-0.5 text-[10px] font-bold uppercase text-white/70">
                     Unreleased
@@ -148,11 +153,19 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
           </div>
         )}
 
-        {/* Where to find — descriptive source hint */}
+        {/* Where to find — descriptive source hint. Only meaningful for the
+            current generation; archived Sprites can't be found in BR anymore, so
+            we show an archive note instead of a (now-irrelevant) location. */}
         <div className="mt-2 rounded-xl bg-[var(--bg-2)] px-3 py-2">
-          <p className="text-sm text-[var(--text)]/90">
-            <span className="font-bold text-[var(--brand)]">🗺️ Where to find:</span> {spriteSource(type.id)}
-          </p>
+          {isCurrentGen ? (
+            <p className="text-sm text-[var(--text)]/90">
+              <span className="font-bold text-[var(--brand)]">🗺️ Where to find:</span> {spriteSource(type.id)}
+            </p>
+          ) : (
+            <p className="text-sm text-[var(--muted)]">
+              <span className="font-bold text-[var(--brand)]">🏡 Archived:</span> this is a past-season Sprite — it’s kept in your collection &amp; the Sprite Garden, but can’t be found in Battle Royale this season, so its old drop rate &amp; locations no longer apply.
+            </p>
+          )}
         </div>
 
         {type.released && (

@@ -466,7 +466,9 @@ function spritePage(type, others) {
     ov.push(`${esc(name)} comes in ${variants.length} finish${variants.length === 1 ? '' : 'es'}${liveFinishes.length ? ` — ${liveFinishes.length} obtainable now (${liveFinishes.map(esc).join(', ')})` : ''}${soonFinishes.length ? `, with ${soonFinishes.map(esc).join(', ')} still to come` : ''}. Each finish shares the base ability and layers on its own bonus perk.`)
   }
   const ovTail = []
-  if (p) ovTail.push(`it pulls at roughly <b>${esc(type.dropRate)}</b> per Sprite Chest (about 1 in ${fmt(1 / p)})`)
+  if (p) ovTail.push(archived
+    ? `it originally pulled at roughly <b>${esc(type.dropRate)}</b> per Sprite Chest (about 1 in ${fmt(1 / p)}) before its generation was archived`
+    : `it pulls at roughly <b>${esc(type.dropRate)}</b> per Sprite Chest (about 1 in ${fmt(1 / p)})`)
   if (tier) ovTail.push(`community tier lists rank it <b>${tier}-Tier</b>`)
   if (own) ovTail.push(`about <b>${own.pct}%</b> of tracked collectors own it`)
   if (ovTail.length) ov.push(ovTail.join(', ').replace(/^./, (c) => c.toUpperCase()) + '.')
@@ -476,7 +478,7 @@ function spritePage(type, others) {
   // rank for the high-intent "Override" queries the whole field is chasing.
   const s4 = type.gen === 'c7s4'
   const seasonTitle = s4 ? ' (Season 4 Override)' : ''
-  const desc = `${name} is a ${type.rarity} Fortnite Sprite${s4 ? ' from Chapter 7 Season 4 “Override”' : ''}${p ? ` with about a ${type.dropRate} drop rate from Sprite Chests` : ''}. See its ${p ? 'drop rate, ' : ''}re-summon Dust cost, ability, variants${p ? ', and how many chests it takes to get one' : ''}.`
+  const desc = `${name} is a ${type.rarity} Fortnite Sprite${s4 ? ' from Chapter 7 Season 4 “Override”' : archived ? ' from the archived Chapter 7 Season 3 “Runners” generation' : ''}${p ? (archived ? ` that originally dropped at about ${type.dropRate} from Sprite Chests` : ` with about a ${type.dropRate} drop rate from Sprite Chests`) : ''}. See its ${p ? (archived ? 'original drop rate, ' : 'drop rate, ') : ''}re-summon Dust cost, ability${p && !archived ? ', variants, and how many chests it takes to get one' : ', and variants'}.`
   const title = `${name} Sprite${seasonTitle} — ${p ? 'Drop Rate, ' : ''}Dust Cost & How to Get | FN Sprite Tracker`
 
   // FAQ (drives rich results) — generation-aware: Season 4 Sprites use Cheat/
@@ -489,9 +491,11 @@ function spritePage(type, others) {
       `${spriteSource(type.id)}${codeForSprite ? ` Its Cheatmaster finish unlocks with the Hack the Lobby code “${codeForSprite.code}” — enter it in the lobby Admin Panel.` : ''}${sp?.pois?.length ? ` Players report the best luck around ${sp.pois.join(', ')}.` : ''}`])
   } else {
     faqs.push([`How rare is the ${name} Sprite?`, p
-      ? `${name} is a ${type.rarity} Sprite with about a ${type.dropRate} chance per Sprite Chest — roughly a 1-in-${fmt(1 / p)} pull.`
+      ? (archived
+        ? `${name} is a ${type.rarity} Sprite from the archived Season 3 “Runners” generation. It originally dropped at about ${type.dropRate} per Sprite Chest (~1 in ${fmt(1 / p)}), but it can no longer be pulled from chests in Battle Royale this season — it's kept in your collection & the Sprite Garden.`
+        : `${name} is a ${type.rarity} Sprite with about a ${type.dropRate} chance per Sprite Chest — roughly a 1-in-${fmt(1 / p)} pull.`)
       : `${name} is a ${type.rarity} Sprite. Its exact drop rate hasn't been documented by the community yet.`])
-    if (p) faqs.push([`How many chests to get a ${name} Sprite?`,
+    if (p && !archived) faqs.push([`How many chests to get a ${name} Sprite?`,
       `About ${fmt(chestsFor(p, 0.5))} Sprite Chests for a 50% chance, and around ${fmt(chestsFor(p, 0.9))} for a 90% chance.`])
     if (dustN != null) faqs.push([`How much Sprite Dust to re-summon ${name}?`,
       `${fmt(dustN)} Dust for the Normal form${dustV != null ? `, or ${fmt(dustV)} for a special variant` : ''}.`])
@@ -522,21 +526,22 @@ function spritePage(type, others) {
   }
 
   const stats = [
-    p ? [type.dropRate, 'Drop rate / chest'] : ['—', 'Drop rate'],
+    p ? [type.dropRate, archived ? 'Original drop rate' : 'Drop rate / chest'] : ['—', 'Drop rate'],
     p ? [`~${fmt(1 / p)}`, 'Avg chests'] : [tier ? `${tier}-Tier` : '—', 'Tier'],
     own ? [`${own.pct}%`, 'Collectors own it'] : null,
     dustN != null ? [fmt(dustN), 'Dust (Normal)'] : null,
     dustV != null ? [fmt(dustV), 'Dust (variant)'] : null,
   ].filter(Boolean)
 
-  const oddsTable = p ? `
+  const oddsTable = (p && !archived) ? `
   <h2>Chest odds — how many chests will it take?</h2>
   <div class="card"><table>
     <tr><th>Confidence</th><th style="text-align:right">Chests to open</th></tr>
     <tr><td>Coin-flip (50% chance)</td><td class="v">${fmt(chestsFor(p, 0.5))}</td></tr>
     <tr><td>Likely (90% chance)</td><td class="v">${fmt(chestsFor(p, 0.9))}</td></tr>
     <tr><td>Almost sure (99% chance)</td><td class="v">${fmt(chestsFor(p, 0.99))}</td></tr>
-  </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Modeled as independent draws at the base rate. Run your own numbers in the <a href="/drop-rate-calculator">Sprite drop-rate calculator →</a></p></div>` : ''
+  </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Modeled as independent draws at the base rate. Run your own numbers in the <a href="/drop-rate-calculator">Sprite drop-rate calculator →</a></p></div>` : (p && archived) ? `
+  <div class="card"><p style="margin:0;color:var(--muted);font-size:14px">🏡 <b style="color:var(--text)">Archived — chest odds no longer apply.</b> ${esc(name)} was a Season 3 “Runners” Sprite that originally dropped at about <b style="color:var(--text)">${esc(type.dropRate)}</b> per Sprite Chest (~1 in ${fmt(1 / p)}), but that generation is no longer in the Battle Royale chest pool. It stays in your collection &amp; the Sprite Garden. See the <a href="/season-transition">season-transition FAQ</a> on whether archived Sprites return.</p></div>` : ''
 
   // "Where to find it" — only for Sprites we have genuinely-sourced spawn intel on
   // (the Fortnitemares chest-droppable Sprites). Most Override Sprites aren't
