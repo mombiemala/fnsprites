@@ -1770,6 +1770,7 @@ function fortnitemaresSpritesPage() {
 // calls, the kind of take a player writes, not a table.
 function bestSpritesPage() {
   const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
+  const overrideCount = SPRITE_TYPES.filter((t) => t.released && t.gen === CURRENT_GEN).length
   const desc = `The best Fortnite Sprites in Chapter 7 Season 4 “Override”, ranked with reasoning — which abilities actually win games, the S/A/B tiers, and the best Sprite for mobility, sustain, info and easy wins.`
   const title = `Best Fortnite Sprites in Override (Season 4) — Ranked & Explained | FN Sprite Tracker`
   const rarityTag = (r) => `<span class="tag" style="background:${RARITY_TINT[r] || '#888'};color:#0a0606;border-color:transparent">${esc(r)}</span>`
@@ -1819,7 +1820,7 @@ function bestSpritesPage() {
 <div class="cols">
   <div class="main">
     <h1>🏅 Best Fortnite Sprites in Override — ranked &amp; explained</h1>
-    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:70ch">There are 25 Sprites live in Chapter 7 Season 4 “Override”, and they are not created equal. This is our opinionated take on which ones actually move the needle in Battle Royale — judged on how useful the ability is in a real match, not how rare the Sprite is. For the full sortable ranking of every Sprite, see the ${L('/tier-list', 'tier list')}; this is the “what should I chase?” version.</p>
+    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:70ch">There are ${overrideCount} Sprites live in Chapter 7 Season 4 “Override”, and they are not created equal. This is our opinionated take on which ones actually move the needle in Battle Royale — judged on how useful the ability is in a real match, not how rare the Sprite is. For the full sortable ranking of every Sprite, see the ${L('/tier-list', 'tier list')}; this is the “what should I chase?” version.</p>
     <p style="font-size:14px;line-height:1.7;margin:0 0 6px"><b style="color:#fff">How we rank:</b> mobility and free sustain top the list because they help in <i>every</i> game; information and clutch-survival tools come next; raw situational buffs and economy gimmicks sit lower. Rarity is a tiebreaker for collectors, not a power level.</p>
 
     <h2 style="font-size:18px;color:#fff;margin:20px 0 8px">S-Tier — chase these first</h2>
