@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 4, 2026',
+    title: 'Trick-or-Treat: only the Crown is live yet (rest drop Oct 8)',
+    changes: [
+      { tag: 'Fixed', text: 'Corrected the Trick-or-Treat finish availability: only the Trick-or-Treat Crown is obtainable right now (it went live Oct 1, auto-granted to anyone who mastered the Bounty Hunter Crown). The other 23 Trick-or-Treat variants were showing as available too early — they’re datamined but don’t actually drop until Oct 8. They’re now gated to auto-release on that date.' },
+    ],
+    summary: 'Gated the Trick-or-Treat finish to its real timing — only the Crown is live now; the rest auto-release Oct 8.',
+    why: 'Multiple trackers (Vice, Sprite Checklist, The Click) confirm only the T-o-T Crown dropped with Fortnitemares on Oct 1, and the full 24-variant roster lands Oct 8. Showing them all as obtainable now would send players chasing Sprites they can’t get yet, so they’re date-gated to flip automatically on the 8th.',
+  },
+  {
+    date: 'October 4, 2026',
     title: 'Corrected the Zero Point base drop rate',
     changes: [
       { tag: 'Fixed', text: 'Zero Point’s base (Normal) Sprite-Chest drop rate now reads ~0.03% (about 1 in 3,317), matching the current community consensus — it was previously showing a much lower figure (0.00034%) that actually belongs to its ultra-rare variants. Grim Reaper (~0.000098%) is still the single rarest Sprite. The other drop-rate figures and the rarity-tier bases were verified correct.' },

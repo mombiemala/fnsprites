@@ -45,7 +45,7 @@ export const THEMES = [
   // a spooky recolour that ships per-Sprite. Cosmetic (keeps the base ability).
   // `noSummon: true` keeps it out of "Dust to complete" math; variants are added
   // per-Sprite as their art/availability is confirmed.
-  { id: 'trickortreat', name: 'Trick-or-Treat', short: 'ToT', className: 'theme-trickortreat', accent: '#ff6a00', bonus: 'Fortnitemares (Halloween) finish, live with v42.30 (Oct 1) — a spooky Trick-or-Treat recolour. Cosmetic: it keeps the Sprite’s base ability.', noSummon: true },
+  { id: 'trickortreat', name: 'Trick-or-Treat', short: 'ToT', className: 'theme-trickortreat', accent: '#ff6a00', bonus: 'Fortnitemares (Halloween) finish — a spooky Trick-or-Treat recolour. The Crown went live first (Oct 1); the rest of the roster drops Oct 8. Cosmetic: it keeps the Sprite’s base ability.', noSummon: true },
 ]
 
 export const THEME_MAP = Object.fromEntries(THEMES.map((t) => [t.id, t]))

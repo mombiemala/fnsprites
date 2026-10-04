@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 4, 2026 — Gate Trick-or-Treat finish to real timing (only Crown live; rest Oct 8)
+
+- **Fixed** (`src/data/sprites.js`, `src/data/themes.js`): all 24 Trick-or-Treat variants were marked live since Oct 1, but
+  only the **Trick-or-Treat Crown** actually dropped then (auto-granted to Bounty Hunter Crown masters). The other 23 are
+  datamined but don't drop until **Oct 8**. Flipped those 23 `trickortreat: R`→`U`, kept the Crown `R`, and added
+  `trickortreat: '2026-10-08'` to `FORM_RELEASE` so they auto-flip on the 8th (same date-gate mechanism as Bounty Hunter).
+  Verified `buildSpriteList()` now reports exactly 1 live T-o-T variant (Crown). Sources: Vice, Sprite Checklist, The Click.
+
+---
+
 ## October 4, 2026 — Correct Zero Point base drop rate (0.00034% → ~0.03%)
 
 - **Fixed** (`src/data/sprites.js`, `src/data/news.js`): Zero Point's base (Normal) Sprite-Chest drop rate was
