@@ -26,6 +26,17 @@
 
 export const SPRITE_EVENTS = [
   {
+    id: 'mastery-monday-2026-10-05',
+    emoji: '⭐',
+    name: 'Mastery Monday',
+    perk: '2× Sprite XP & 2× Sprite Dust from extractions · boosted Legendary/Mythic spawns · extra Portable Extractors from Daily Quests — runs 24h. The fastest day to level and master Sprites.',
+    startsUtc: '2026-10-05T13:00:00Z', // 9 AM ET / 6 AM PT Mon Oct 5
+    endsUtc: '2026-10-06T13:00:00Z', // runs 24h, to 9 AM ET Tue Oct 6
+    confirmed: true,
+    source: 'Vice (Mastery Monday Oct 5 start times)',
+    sourceUrl: 'https://www.vice.com/en/article/fortnite-mastery-monday-october-5-start-time-schedule/',
+  },
+  {
     id: 'bountyhunter-hours-2026-10-03-r1',
     emoji: '🎯',
     name: 'Bounty Hunter Power Hours (Round 1)',

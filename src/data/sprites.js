@@ -188,7 +188,7 @@ export const SPRITE_TYPES = [
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: U } },
   { id: 'victorycrown', name: 'Crown', icon: '👑', rarity: 'Mythic', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — the Crown. Normal, Gold, Cheat Master and Loot Hacker finishes are live, and the Bounty Hunter Crown is obtainable too (win a match with the Loot Hacker Crown equipped) — the first Bounty Hunter finish to go live ahead of the rest of that wave. Ability: grants bonus Crown Wins when you earn a Victory Royale.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: U } },
   { id: 'jonesy', name: 'Jonesy', icon: '🕶️', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
     ability: 'Chapter 7 Season 4 “Override” Sprite — Jonesy. Normal & Cheatmaster are live (Cheatmaster via the PLAY4ALL lobby code); Gold is live too (Gold Hours, Aug 22). Ability: restores some Health or Shield after you take damage.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: U } },
@@ -316,11 +316,12 @@ export function spriteTier(typeId) {
 // form here: every RELEASED type that has a bountyhunter variant auto-releases it
 // from this date on. Unreleased types (e.g. Birthday, out Sep 26) keep it gated
 // until the type itself goes live — so the stagger is handled automatically.
-// Trick-or-Treat (Fortnitemares): only the CROWN variant is live now (Oct 1 —
-// auto-granted to anyone who mastered the Bounty Hunter Crown). The other ~23
-// T-o-T variants are datamined but don't drop until Oct 8, so we date-gate the
-// form to 2026-10-08 and keep every non-Crown `trickortreat: U` until then; the
-// Crown keeps `trickortreat: R` so it stays live. On Oct 8 the rest auto-flip.
+// Trick-or-Treat (Fortnitemares): the whole finish drops Oct 8, so we date-gate
+// the form to 2026-10-08 and keep every `trickortreat: U` until then — the whole
+// roster auto-flips live on the 8th. (The Crown's T-o-T is technically reachable
+// earlier via the Crown Victory-Royale chain — win with the Bounty Hunter Crown —
+// but that's a niche progression unlock, not the general drop, so we don't mark it
+// live ahead of the Oct 8 rollout.)
 export const FORM_RELEASE = { bountyhunter: '2026-09-24', trickortreat: '2026-10-08' }
 const _todayStr = (() => { try { return new Date().toISOString().slice(0, 10) } catch { return '9999-12-31' } })()
 const formLive = (themeId) => !!(FORM_RELEASE[themeId] && _todayStr >= FORM_RELEASE[themeId])

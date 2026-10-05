@@ -10,6 +10,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 5, 2026',
+    title: 'Mastery Monday is live · Trick-or-Treat now fully gated to Oct 8',
+    changes: [
+      { tag: 'Added', text: 'Mastery Monday (Mon Oct 5) is live — 2× Sprite XP & 2× Sprite Dust from extractions, boosted Legendary/Mythic spawns, and extra Portable Extractors, for 24 hours. It shows on the top card’s event countdown.' },
+      { tag: 'Fixed', text: 'The Trick-or-Treat Crown is no longer shown as released. The whole Trick-or-Treat finish (all 24 Sprites) now reads as dropping Oct 8. The Crown’s version is technically reachable earlier only through the Crown Victory-Royale chain (winning with the Bounty Hunter Crown) — a niche progression unlock, not the general drop — so it’s no longer flagged live ahead of the Oct 8 rollout.' },
+    ],
+    summary: 'Added today’s Mastery Monday to the events, and stopped showing the Trick-or-Treat Crown as released — the whole finish now reads as Oct 8.',
+    why: 'Marking the T-o-T Crown “live” overstated availability: it’s only reachable through the multi-win Crown chain, not the general drop, so players saw a finish that effectively isn’t out yet. Treating all 24 as the Oct 8 rollout is clearer and matches what’s actually obtainable.',
+  },
+  {
     date: 'October 4, 2026',
     title: 'Refreshed FAQs & info for the current season',
     changes: [

@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 5, 2026 — Mastery Monday live; Trick-or-Treat fully gated to Oct 8
+
+- **Added** (`src/data/events.js`): Mastery Monday (Mon Oct 5, 13:00Z → Tue Oct 6 13:00Z) — 2× Sprite XP & Dust from
+  extractions, boosted Legendary/Mythic spawns, extra Portable Extractors. Surfaces on the top-card event countdown.
+  Source: Vice.
+- **Fixed** (`src/data/sprites.js`, `src/data/themes.js`, `src/data/fortnitemares.js`, `src/data/incoming.js`,
+  `scripts/prerender.mjs`): stopped showing the **Trick-or-Treat Crown** as released. Per user report + re-check, the
+  T-o-T Crown is only reachable via the Crown Victory-Royale chain (win with the Bounty Hunter Crown equipped) — a niche
+  progression unlock, not a general drop. Flipped `victorycrown` `trickortreat: R`→`U` so all 24 T-o-T variants are now
+  date-gated to Oct 8 (`buildSpriteList()` reports 0 live T-o-T today), and updated every copy that said "Crown live Oct 1"
+  to "the finish drops Oct 8" (with the Crown-chain nuance noted). Supersedes the Oct 4 note that treated the Crown as live.
+
+---
+
 ## October 4, 2026 — Refresh FAQs & info for the current season; drop Dust on archived Sprites
 
 - **Fixed** (`scripts/prerender.mjs`, `src/data/fortnitemares.js`, `src/data/incoming.js`, `src/data/sprites.js`): current-season

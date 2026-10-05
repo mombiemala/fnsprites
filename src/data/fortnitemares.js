@@ -17,8 +17,8 @@ export const FORTNITEMARES = {
   sprites: [
     { title: 'Four new Sprites are live', status: 'live', source: 'Epic (v42.30) / Vice',
       detail: 'Vampire (heal when you damage enemies), Spooky Dash (Mythic — dash charges that phase through objects), The Deer (99 Nights in the Forest collab — stronger melee) and Dumpster Dive (foraged food heals more). Full powers, finishes and where to farm each are in the Fortnitemares Sprite farming guide.' },
-    { title: 'Trick-or-Treat finish — Crown live, full set Oct 8', status: 'live', source: 'Epic (v42.30) / Sprite Checklist',
-      detail: 'The Halloween “Trick-or-Treat” recolour is rolling out in two steps: only the Trick-or-Treat Crown is out so far (Oct 1, auto-granted to anyone who mastered the Bounty Hunter Crown). The other 23 of the 24-Sprite set drop Oct 8. It’s a cosmetic finish — it keeps each Sprite’s base ability.' },
+    { title: 'Trick-or-Treat finish — drops Oct 8', status: 'leak', source: 'Sprite Checklist / The Click',
+      detail: 'The Halloween “Trick-or-Treat” recolour (24 Sprites) is datamined for Oct 8 — not generally obtainable yet. (The Crown’s Trick-or-Treat is reachable earlier only via the Crown Victory-Royale chain, i.e. winning with the Bounty Hunter Crown — a niche progression unlock, not the general drop.) It’s a cosmetic finish that keeps each Sprite’s base ability.' },
     { title: 'Honey & Obsession Sprites', status: 'leak', source: 'Vice / The Click',
       detail: 'Two more Sprites are expected in a mid-event wave around Oct 15 — the Honey Sprite (a Design-a-Sprite winner) and a new Obsession Sprite. Not live yet.' },
   ],

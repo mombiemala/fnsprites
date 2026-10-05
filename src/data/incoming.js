@@ -54,8 +54,8 @@ export const INCOMING = [
   {
     id: 'trickortreat-rollout',
     emoji: '🍬',
-    title: 'Trick-or-Treat finish — full roster drops Oct 8',
-    detail: 'The Halloween “Trick-or-Treat” recolour is rolling out in two steps. Only the Trick-or-Treat Crown is out so far (Oct 1, auto-granted to anyone who mastered the Bounty Hunter Crown); the other 23 of the 24-Sprite set are datamined for Oct 8. It’s a cosmetic finish that keeps each Sprite’s base ability — we flip them live automatically on the day.',
+    title: 'Trick-or-Treat finish — 24 Sprites drop Oct 8',
+    detail: 'The Halloween “Trick-or-Treat” recolour (all 24 Sprites) is datamined for Oct 8 — a cosmetic finish that keeps each Sprite’s base ability. We flip them live automatically on the day. (The Crown’s Trick-or-Treat can be earned a bit earlier through the Crown Victory-Royale chain — win with the Bounty Hunter Crown — but that’s a niche progression unlock, not the general drop.)',
     dropsOn: '2026-10-08',
     confirmedDate: false,
     source: 'Vice · Sprite Checklist · The Click',
