@@ -10,6 +10,39 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-10-05',
+    when: 'Oct 5, 2026',
+    tag: 'event',
+    start: '2026-10-05',
+    end: '2026-10-06',
+    title: '⭐ Mastery Monday is live (Mon, Oct 5) — 2× Sprite XP & Dust',
+    body: 'Mastery Monday runs for 24 hours (9 AM ET Mon → 9 AM ET Tue): double Sprite XP, double Sprite Dust from extractions, boosted Legendary/Mythic Sprite spawns, and extra Portable Extractors from Daily Quests. It’s the fastest day to level and master your Sprites — pair it with the events countdown on the home card. (No new Admin Panel / Mastery Monday code has been confirmed for today yet; we’ll add it the moment one is verified.)',
+    link: 'https://www.vice.com/en/article/fortnite-mastery-monday-october-5-start-time-schedule/',
+    source: 'Vice',
+    official: true,
+  },
+  {
+    ts: '2026-10-05',
+    when: 'Oct 5, 2026',
+    tag: 'upcoming',
+    tentative: true,
+    title: '🍬 Heads-up — the Trick-or-Treat finish (24 Sprites) drops Oct 8',
+    body: 'The Halloween “Trick-or-Treat” recolour is datamined to go live Oct 8 across all 24 Sprites that carry it — a cosmetic finish that keeps each Sprite’s base ability. Once live you’ll get them by smashing Pumpkins, opening Vaults and entering Cheat Codes. (The Crown’s Trick-or-Treat is reachable a little earlier only through the Crown Victory-Royale chain — win a match with the Bounty Hunter Crown equipped — but that’s a niche progression unlock, not the general drop.) We’ll flip all 24 live automatically on the day.',
+    link: 'https://www.theclick.gg/fortnite-trick-or-treat-sprites/',
+    source: 'Sprite Checklist / The Click (datamine)',
+    official: false,
+  },
+  {
+    ts: '2026-10-03',
+    when: 'Oct 3, 2026',
+    tag: 'event',
+    title: '🎯 Bounty Hunter Power Hours ran Sat, Oct 3 — finish rate-boosted',
+    body: 'Two 2-hour Power Hours windows (2–4 PM & 9–11 PM ET) boosted the Bounty Hunter finish spawn rate — the best window to farm the Bounty Hunter Sprites you were missing. Everyone dropped with Dual Fiend Hunters (“aim once, hit twice”), and 1-Up Tokens & Portable Extractors could drop from chests. The Bounty Hunter finish itself has been live roster-wide since Sep 24 — these windows just boosted the odds.',
+    link: 'https://www.theclick.gg/fortnite-bounty-hunter-sprite-power-hour/',
+    source: 'The Click / FortniteFNLK',
+    official: false,
+  },
+  {
     ts: '2026-10-01',
     when: 'Oct 1, 2026',
     tag: 'sprites',
@@ -25,7 +58,7 @@ export const NEWS = [
   {
     ts: '2026-09-29',
     when: 'Sep 29, 2026',
-    tag: 'upcoming',
+    tag: 'sprites',
     tentative: true,
     title: '🎃 Leak — two Fortnitemares Sprites (Spooky Dash & Vampire) revealed for Oct 1',
     sprites: ['phasedash', 'vampire'],
@@ -37,7 +70,7 @@ export const NEWS = [
   {
     ts: '2026-09-27',
     when: 'Sep 27, 2026',
-    tag: 'upcoming',
+    tag: 'event',
     title: '🐻 Five Nights at Freddy’s × Fortnite is OFFICIAL for Fortnitemares (Oct 1)',
     body: 'Epic posted a Fortnite × Five Nights at Freddy’s trailer on Sep 27, confirming the long-rumored crossover for Fortnitemares 2026 (Oct 1). Freddy Fazbear’s Pizzeria arrives as a new map location and the four classic animatronics — Freddy, Bonnie, Chica and Foxy — are front and centre. That upgrades FNAF from leak to Epic-confirmed; the pizzeria POI (and any FNAF Sprite/variant) will flip live here the moment they’re obtainable on Oct 1.',
     link: 'https://accountshark.net/blog/fortnite-fnaf-fortnitemares-oct-1-guide',
@@ -60,7 +93,7 @@ export const NEWS = [
   {
     ts: '2026-09-25',
     when: 'Sep 25, 2026',
-    tag: 'upcoming',
+    tag: 'event',
     title: '🎃 Fortnitemares 2026 confirmed — “The Game Is Cursed” (Oct 1)',
     sprites: ['vampire'],
     body: 'Epic dropped a teaser confirming Fortnitemares 2026: it starts Thursday, Oct 1 with update v42.30 and runs through Oct 31, under the slogan “The Game Is Cursed.” Now Epic-confirmed: the Five Nights at Freddy’s collab (a Freddy Fazbear’s Pizzeria POI + the four animatronics, trailer Sep 27). Still leak-level until live: Black Clover and Chucky collabs; skins Bunnybone, Osric the Uninvited and Gold Punk (via gift cards Oct 2–31); the return of Horde Rush; a haunted Reload map; and Halloween map changes (Battlewoods → a spooky POI, Wonkeeland → an evil-clown park, purple water, a new Dash Medallion). It’s the likely home for the leaked Vampire Sprite. The date is Epic-confirmed; we’ll flip any new Sprites and map POIs live as they’re confirmed.',
@@ -97,7 +130,7 @@ export const NEWS = [
   {
     ts: '2026-09-18',
     when: 'Sep 18, 2026',
-    tag: 'upcoming',
+    tag: 'sprites',
     tentative: true,
     title: '🧛 Leak — a “Vampire” Sprite leaked (likely Fortnitemares)',
     sprites: ['vampire'],
@@ -134,7 +167,7 @@ export const NEWS = [
   {
     ts: '2026-09-16',
     when: 'Sep 16, 2026',
-    tag: 'upcoming',
+    tag: 'sprites',
     tentative: true,
     title: '🕵️ Leak — 42 new Sprites (incl. a Bounty Hunter finish) in the v42.20 update',
     sprites: ['morgana', 'birthday', 'crash', 'blinky', 'pond'],
@@ -158,7 +191,7 @@ export const NEWS = [
   {
     ts: '2026-09-13',
     when: 'Sep 13, 2026',
-    tag: 'upcoming',
+    tag: 'event',
     tentative: true,
     title: '🐻 Leak — Five Nights at Freddy’s × Fortnite for Fortnitemares 2026?',
     body: 'Leakers (SamLeakss) report a Five Nights at Freddy’s crossover this Halloween — FNAF files reportedly surfaced in a recent update, and there’s an under-construction building on the Chapter 7 Season 4 map that looks a lot like Freddy Fazbear’s Pizzeria. If real, it would headline Fortnitemares 2026 (expected ~Oct 1–31). Epic hasn’t named Fortnite directly yet, so treat it as a leak — and if the collab brings a FNAF Sprite variant, we’ll add it to the roster the moment it’s official.',
@@ -180,7 +213,7 @@ export const NEWS = [
   {
     ts: '2026-09-10',
     when: 'Sep 10, 2026',
-    tag: 'upcoming',
+    tag: 'sprites',
     tentative: true,
     title: '🎃 Leak — a Halloween “Trick or Treat” Sprite for Fortnitemares 2026?',
     body: 'Leaks point to a Halloween “Trick or Treat” Sprite variant (internal name “TrickTreat”) arriving with Fortnitemares 2026 — expected around Oct 1, and likely one of Season 4 “Override’s” final variant drops before the season ends Oct 31. Leak imagery so far points to an X-Ray Trick-or-Treat variant, though it’s unconfirmed which base Sprite gets it and its ability isn’t confirmed yet. Epic hasn’t announced it — treat this as a leak until confirmed, and we’ll add it to the roster the moment it’s official.',
@@ -307,7 +340,7 @@ export const NEWS = [
   {
     ts: '2026-08-29',
     when: 'Aug 29, 2026',
-    tag: 'upcoming',
+    tag: 'sprites',
     title: '🎨 Coming next: the remaining Design-a-Sprite winners',
     sprites: ['pond', 'honey'],
     body: 'The five community Design-a-Sprite contest winners arrive through Override. The first two — X-Ray and Onigiri — went live Sep 3. Still to come: Pond (egg → tadpole → frog, boosting movement/jump and cutting fall damage as it grows), Honey (spawns a beehive that swarms whoever damages you) and Dumpster Dive (a raccoon that finds you loot when you hide in dumpsters). All three are in the tracker as unreleased so you can see what’s coming — abilities are as-designed and Epic may tweak them. We flip each to live and drop in its art the day it lands.',
@@ -330,7 +363,7 @@ export const NEWS = [
   {
     ts: '2026-08-28',
     when: 'Aug 28, 2026',
-    tag: 'upcoming',
+    tag: 'sprites',
     title: '🔮 Leaked: 6 more unreleased Sprites + a Fortnitemares variant',
     sprites: ['meowscles', 'overshield', 'squibbly'],
     body: 'A fresh leak (leakers Krowe & FNBRIntel) turned up six more Override Sprites sitting in the Chapter 7 Season 4 files: Meowscles, Overshield, Squibbly, Cube, Headshot and a collab codenamed “BodySlam”. Overshield and Squibbly look to have extra variant support. None have release dates and Epic hasn’t shown their abilities or rarities yet, so we’ve added all six to the tracker as unreleased/rumored — you can see what’s coming without it counting toward your total. Looking further out, a “TrickTreat” Sprite variant is expected to land with Fortnitemares 2026 (starts Oct 1) — and leaks say the Gummy and Holofoil variants from Season 3 return with it — likely among the last Override variants before the season ends Oct 31. All of this is leak-only — treat it as tentative until Epic confirms.',
@@ -775,7 +808,7 @@ export const NEWS = [
   {
     ts: '2026-07-30',
     when: 'v41.30 (leaked)',
-    tag: 'upcoming',
+    tag: 'update',
     tentative: true,
     title: 'Lucky Locator — guaranteed new-Sprite item (leaked)',
     body: 'A leaked item called the Lucky Locator is expected with the v41.30 update (~Jul 30). It reportedly grants a guaranteed shot at a Sprite you don’t already own — a big help for finishing your collection. Leaked and unconfirmed.',
@@ -814,7 +847,7 @@ export const NEWS = [
   {
     ts: '2026-08-19',
     when: 'Aug 19, 2026',
-    tag: 'upcoming',
+    tag: 'update',
     title: 'Chapter 7 Season 3 ends Aug 19',
     body: 'Season "Runners" ends Aug 19, 2026 — wrap up your Battle Pass before Chapter 7 Season 4 “Override” launches the next day (Aug 20). Your Sprites are kept forever: your Runners Sprites live on in your Collection and the new Sprite Garden (and as Sprite Mastery Pod Back Bling styles + Guardian Outfit pilots). Two things change at the flip, though: a brand-new generation of Sprites takes over Battle Royale in Season 4, so your Runners Sprites are preserved and displayed but aren’t used in BR matches at launch (Epic says past generations “may return down the line”); and Sprite Dust & Gizmos reset (“seasonal housekeeping”) — the Sprites themselves don’t. Last call for the free Quack Zero Point too — it unlocks at 55 mastered Sprites before the season ends.',
     link: 'https://www.fortnite.com/news',
@@ -824,7 +857,7 @@ export const NEWS = [
   {
     ts: '2026-08-19',
     when: 'Aug 19–20, 2026',
-    tag: 'upcoming',
+    tag: 'sprites',
     tentative: true,
     title: 'Ch 7 S4 “Override” (Aug 20) — the new-generation Sprite roster (art leaked)',
     body: 'Override — tagline “Break the rules, change the game” — launches Thursday, Aug 20 (v42.00, ~2 AM ET downtime, servers back ~6 AM ET) with a “Gaming Legends” theme and a full new generation of Sprites, all in the blocky “cube backpack” redesign. The v42.00 files reveal 12 new Sprites (with official art now in the tracker): the Sonic collab — Sonic, Tails and Shadow (internal codename “NarrowFlea”) — plus Klombo, Jonesy, Victory Crown, 8-Bit Blaster, Storm Scout, Killswitch, Bush Ranger, Jazz Jackrabbit and Dwarf. Each comes in Normal, Gold and the new season finish, Cheatmaster (a glitch/pixel look). Their existence and art are leaked-confirmed, but Epic hasn’t revealed abilities or rarities yet, so those stay marked unconfirmed. Other trailer collabs (Mega Man, Pac-Man, Crash Bandicoot, Spyro, Mortal Kombat, Persona 5’s Joker, Tetris) have skins but no confirmed dedicated Sprite. Your Season 3 Sprites are preserved in the Sprite Garden and your Collection, but this new generation takes over Battle Royale — old-gen Sprites aren’t used in BR matches at launch.',
