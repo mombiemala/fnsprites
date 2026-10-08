@@ -4,16 +4,17 @@
 
 A fan-made Fortnite **sprite tracker** — track every sprite across all of its
 finishes (Normal, Gold, Gummy, Galaxy, **Gem**, **Holofoil**, **Cube**, **Quack**,
-and the Season 4 **Cheat Master** & **Loot Hacker**), see your collection
+and the Season 4 **Cheat Master**, **Loot Hacker**, **Bounty Hunter** & **Trick-or-Treat**), see your collection
 and mastery progress, save it to the cloud, **add friends and compare or trade-match**
 with them, browse the live **Item Shop**, and look up any player's **Battle Royale stats**. Current through
-**Chapter 7 Season 4 "Override"** (Sep 2026, New Sprite Day) — **179 released variants**
+**Chapter 7 Season 4 "Override"** — the **Trick-or-Treat (Fortnitemares)** finish went
+live **Oct 8, 2026** across the whole roster — **263 released variants**
 across two generations: the Season 3 **"Runners"** roster (kept forever in the **Sprite
 Garden**) and the live **Override** generation — Sonic, Tails, Shadow, Jazz Jackrabbit,
 Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch, Adventure, Storm Scout,
 Overshield, Mega Man, and the first two **Design-a-Sprite** winners **X-Ray & Onigiri** —
-in **Normal, Gold, Cheat Master & Loot Hacker** (the **Loot Hacker** finish went live
-Sep 10, 2026 — 15 variants). Epic confirmed **Sprites are
+in **Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter** (live roster-wide Sep 24) **&
+Trick-or-Treat** (live Oct 8). Epic confirmed **Sprites are
 kept forever**, but a new generation takes over **Battle Royale** each season: older
 -gen Sprites are **preserved and displayed** (Sprite Garden + Collection) rather than
 used in BR ("may return down the line"), and **Sprite Dust & Gizmos reset** at the
@@ -28,12 +29,13 @@ flagged **Rumored / Upcoming** until confirmed.
 ## Features
 
 - **Accurate roster** — every released sprite & variant, current through the
-  **Sep 3 New Sprite Day** (**41 sprites / 179 released variants**). The current
-  generation, **Chapter 7 Season 4 "Override,"** is **live**: Sonic, Tails, Shadow,
+  **Oct 8 Trick-or-Treat (Fortnitemares) finish** (**50 sprites / 263 released variants**).
+  The current generation, **Chapter 7 Season 4 "Override,"** is **live**: Sonic, Tails, Shadow,
   Jazz Jackrabbit, Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch,
   Adventure, Storm Scout, Overshield, Mega Man, plus the first two **Design-a-Sprite**
-  winners **X-Ray & Onigiri** — in Normal, Gold, Cheat Master & **Loot Hacker** (the
-  Loot Hacker finish went live Sep 10, 2026). The Season 3
+  winners **X-Ray & Onigiri** — in Normal, Gold, Cheat Master, **Loot Hacker**,
+  **Bounty Hunter** (live roster-wide Sep 24) & the **Trick-or-Treat** Fortnitemares
+  finish (live Oct 8). The Season 3
   **"Runners"** roster (the full Gem line, Cube, Holofoil & Quack, Ironmouse back from
   the vault, every Zero Point finish) is kept forever in the **Sprite Garden**.
   Still-datamined Sprites (Pond, Honey, Dumpster Dive, Meowscles, Squibbly, Cube,

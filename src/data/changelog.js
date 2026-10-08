@@ -10,6 +10,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 8, 2026',
+    title: 'Trick-or-Treat finish is live — all 24 Sprites',
+    changes: [
+      { tag: 'Added', text: 'The Trick-or-Treat (Fortnitemares) finish is now live across the whole roster — every Sprite has its spooky Trick-or-Treat variant, up from just the Crown. It unlocked with today’s (Oct 8) daily reset, so the finish now reads as released everywhere: the grid, the finish filter, the detail pages, the per-Sprite SEO pages and the released-variant count (now 263).' },
+      { tag: 'Changed', text: 'No stale “drops Oct 8 / upcoming” copy got left behind — the finish was date-gated to flip on its own today, so the news feed, the Fortnitemares pages and the “coming up” feed all treat Trick-or-Treat as out rather than incoming.' },
+    ],
+    summary: 'The Trick-or-Treat Halloween finish went live today (Oct 8) across all 24 Sprites — it now shows as released everywhere, and the released-variant count ticked up to 263.',
+    why: 'We date-gated Trick-or-Treat to auto-release on Oct 8 (rather than hand-flipping each variant) precisely so the site would be accurate the moment the finish dropped, with no scramble. Today it flipped on its own — this entry records that it’s now genuinely live, not a leak. No brand-new Sprite characters dropped today; the next new Sprites (Honey & Obsession) are tracked as ~Oct 15.',
+  },
+  {
     date: 'October 5, 2026',
     title: 'Mastery Monday is live · Trick-or-Treat now fully gated to Oct 8',
     changes: [

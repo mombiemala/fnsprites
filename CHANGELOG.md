@@ -11,6 +11,29 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 8, 2026 — Trick-or-Treat finish is live (all 24 Sprites)
+
+- **Added** (auto-flip via `src/data/sprites.js` `FORM_RELEASE.trickortreat = '2026-10-08'`): the **Trick-or-Treat**
+  (Fortnitemares) finish went live with today's daily reset. `buildSpriteList()` now reports the finish released across the
+  whole roster — the grid, finish filter, detail modal, per-Sprite SEO pages and the released-variant count (**263**) all
+  reflect it. No hand-editing per variant was needed; the date gate did it.
+- **Changed** (`src/data/news.js`, `src/data/fortnitemares.js`, `src/data/incoming.js`): with the finish out, nothing is
+  left reading "drops Oct 8 / upcoming" — the feeds treat Trick-or-Treat as released rather than incoming.
+- **Changed** (`src/App.jsx` footer, `README.md`): finish lists now name all four live Override finishes — **Normal, Gold,
+  Cheat Master, Loot Hacker, Bounty Hunter & Trick-or-Treat** — and the README roster counts are refreshed (263 released
+  variants).
+- **Changed** (`src/data/lootHacks.js`): bumped the expected `nextRefresh` to Oct 15 (the documented ~weekly cadence; the
+  in-game timer stays authoritative) now that the Oct 8 window passed, so the countdown card reads sanely. The Fortnitemares
+  rotation items are unchanged (no new sourced set surfaced).
+
+Note: **no brand-new Sprite characters** dropped today — today's release is the Trick-or-Treat *finish* across the existing
+roster. The next new Sprites (Honey & Obsession) are tracked as ~Oct 15.
+
+Why: we date-gated Trick-or-Treat to auto-release on Oct 8 so the tracker would be correct the instant the finish dropped,
+rather than racing to flip 24 variants by hand. This entry just records that it flipped on schedule and is genuinely live.
+
+---
+
 ## October 5, 2026 — Mastery Monday live; Trick-or-Treat fully gated to Oct 8
 
 - **Added** (`src/data/events.js`): Mastery Monday (Mon Oct 5, 13:00Z → Tue Oct 6 13:00Z) — 2× Sprite XP & Dust from

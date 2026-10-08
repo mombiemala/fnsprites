@@ -13,7 +13,7 @@
 export const LOOT_HACK_META = {
   patch: 'v42.30',
   rotationStart: '2026-10-01',
-  nextRefresh: '2026-10-08', // next rotation expected ~weekly; the in-game timer is authoritative
+  nextRefresh: '2026-10-15', // next rotation expected ~weekly; the in-game timer is authoritative
   maxLevel: 6, // each item unlocks at L1, then upgrades up to L6 for higher odds/rarity
   source: 'Epic (Fortnite v42.30 Fortnitemares) · FNAssist',
   sourceUrl: 'https://x.com/FN_Assist/status/2105577166163603735',
