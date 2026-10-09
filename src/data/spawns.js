@@ -22,9 +22,9 @@ export const SPRITE_SPAWNS = {
     extra: 'It’s a Mythic, so it’s rare — the Nightmare Neighborhood is the most-reported hotspot.',
   },
   dumpster: { // Dumpster Dive
-    chests: 'Sprite Chests & Cheat Codes',
-    pois: ['Wonkeeland', 'Heatwave Harbor'],
-    extra: 'Check spots with dumpsters around these POIs.',
+    chests: 'Pumpkin / rare chests & Cheat Codes',
+    pois: [],
+    extra: 'Despite the name, you can’t get it by diving into dumpsters — it’s not tied to a POI. It comes from chests (best odds from Pumpkin / blue rare chests), Cheat Codes, or eliminating opponents & bosses carrying it; the richest rare chests are in the Vaults (see below).',
   },
   deer: { // The Deer
     chests: 'Pumpkin Chests & Cheat Codes',

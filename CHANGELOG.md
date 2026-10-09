@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 9, 2026 — Fixed the Dumpster Dive "where to find" tip
+
+- **Fixed** (`src/data/spawns.js`): the Dumpster Dive Sprite's farming tip said to "check spots with dumpsters," but sources
+  (games.gg, Destructoid) confirm you **can't** get it by diving into dumpsters. Reworded: it's not POI-tied — it drops from
+  Pumpkin / rare chests, Cheat Codes, or eliminating opponents & bosses, with the richest rare chests in the Vaults (Stone
+  Sanctum & the Mega Maze landmark). Cleared its POI list (`pois: []`) since no POI is genuinely sourced.
+- **Verified** (no change): a community spawn map used alternate spellings — "Stoic Sanctum," "Wonikeeland," "Cluster" — but
+  reputable guides (games.gg, allthings.how, Beebom, The Click) confirm our names (Stone Sanctum, Wonkeeland, Cluster Coast)
+  are correct, and the Spooky Dash / Vampire / Deer spawn entries still match current intel. No rename needed.
+
+Why: the old tip sent players hunting dumpsters for a Sprite that doesn't drop that way. Verifying against text sources (not
+the icon-only fan map) kept us from "correcting" accurate POI names to a fan map's misspellings.
+
+---
+
 ## October 9, 2026 — Spooky Dash Power Hours added (Sat, Oct 10)
 
 - **Added** (`src/data/events.js`, `src/data/announcements.js`, `src/data/news.js`): Epic's Battle Royale page lists

@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 9, 2026',
+    title: 'Fixed the Dumpster Dive “where to find” tip',
+    changes: [
+      { tag: 'Fixed', text: 'Corrected the Dumpster Dive Sprite’s farming tip — it previously said to “check spots with dumpsters,” but you can’t actually get it by diving into dumpsters. It’s not tied to a POI: it comes from Pumpkin / rare chests, Cheat Codes, or eliminating opponents & bosses carrying it, with the richest rare chests in the Vaults (Stone Sanctum & the Mega Maze landmark). Also verified our current-season POI names (Stone Sanctum, Wonkeeland, Cluster Coast) are correct against the authoritative map sources.' },
+    ],
+    summary: 'Fixed misleading “dive into dumpsters” advice on the Dumpster Dive Sprite and confirmed our spawn-location POI names are accurate.',
+    why: 'The old tip sent players hunting dumpsters for a Sprite that doesn’t drop that way — a small but real time-waster. While verifying, a community map used different POI spellings (Stoic Sanctum / Wonikeeland / Cluster), but reputable guides confirm ours (Stone Sanctum / Wonkeeland / Cluster Coast) are the correct names, so no rename was needed.',
+  },
+  {
+    date: 'October 9, 2026',
     title: 'Spooky Dash Power Hours added (Sat, Oct 10)',
     changes: [
       { tag: 'Added', text: 'Epic confirmed Spooky Dash Power Hours for Saturday Oct 10 — the Island’s spookiest Sprites spawn in bigger numbers with extra Pumpkin Chests, in the usual two 2-hour windows (2–4 PM & 9–11 PM ET). Added both windows to the events so the home-card countdown and LIVE badge light up, plus a dated announcement bar and a news entry.' },
