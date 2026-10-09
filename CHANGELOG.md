@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 9, 2026 — Spooky Dash Power Hours added (Sat, Oct 10)
+
+- **Added** (`src/data/events.js`, `src/data/announcements.js`, `src/data/news.js`): Epic's Battle Royale page lists
+  **Power Hours: Spooky Dash Sprites** for Saturday Oct 10 — the Island's spookiest Sprites spawn in bigger numbers with
+  extra Pumpkin Chests. Added both standard windows to `SPRITE_EVENTS` (R1 2–4 PM ET = 18:00–20:00Z Oct 10; R2 9–11 PM ET =
+  01:00–03:00Z Oct 11, `confirmed: true`), a dated announcement bar (Oct 9–11), and a news entry.
+- **Note:** no `boostedThemes` set — this Power Hours boosts specific Fortnitemares *Sprites* (Spooky Dash, Vampire, The
+  Deer, Dumpster Dive), not a cosmetic *finish*, so the "Farm my missing <finish>" top-card shortcut doesn't apply.
+
+Why: Epic named the event itself, so it's a confirmed, dated Power Hours (not weekly-cadence guessing) and belongs in the
+countdown. Epic's page shows a single 6–8 PM slot with no time zone, which matches the 9–11 PM ET round in PT; Beebom lists
+the usual 2–4 PM & 9–11 PM ET pair, consistent with every Season 4 Power Hour, so both windows are encoded.
+
+---
+
 ## October 8, 2026 — Trick-or-Treat finish is live (all 24 Sprites)
 
 - **Added** (auto-flip via `src/data/sprites.js` `FORM_RELEASE.trickortreat = '2026-10-08'`): the **Trick-or-Treat**

@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 9, 2026',
+    title: 'Spooky Dash Power Hours added (Sat, Oct 10)',
+    changes: [
+      { tag: 'Added', text: 'Epic confirmed Spooky Dash Power Hours for Saturday Oct 10 — the Island’s spookiest Sprites spawn in bigger numbers with extra Pumpkin Chests, in the usual two 2-hour windows (2–4 PM & 9–11 PM ET). Added both windows to the events so the home-card countdown and LIVE badge light up, plus a dated announcement bar and a news entry.' },
+    ],
+    summary: 'Wired up Saturday’s Spooky Dash Power Hours (Oct 10) so the tracker counts down to it and flags it live during both windows — the best time to farm the Fortnitemares Sprites you’re missing.',
+    why: 'Epic’s own Battle Royale page lists the event, so it goes in as confirmed — the data-driven top card and announcement bar handle the rest automatically. No boosted-finish shortcut here: this Power Hours boosts specific Fortnitemares Sprites (Spooky Dash & co.), not a cosmetic finish, so there’s no “Farm my missing <finish>” filter to attach.',
+  },
+  {
     date: 'October 8, 2026',
     title: 'Trick-or-Treat finish is live — all 24 Sprites',
     changes: [

@@ -16,6 +16,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'spooky-dash-hours-2026-10-10',
+    emoji: '👻',
+    message: 'Spooky Dash Power Hours (Sat Oct 10) — the Island’s spookiest Sprites spawn in bigger numbers with extra Pumpkin Chests, in two 2-hour windows: 2–4 PM & 9–11 PM ET. The best time to grab the Fortnitemares Sprites (Spooky Dash, Vampire, The Deer, Dumpster Dive) you’re still missing.',
+    link: '/?view=news',
+    linkLabel: 'Event details',
+    start: '2026-10-09',
+    end: '2026-10-11',
+    source: 'Epic (Fortnite Battle Royale) / Beebom',
+    official: true,
+    tone: 'event',
+  },
+  {
     id: 'bountyhunter-hours-2026-10-03',
     emoji: '🎯',
     message: 'Bounty Hunter Power Hours (Sat Oct 3) — Bounty Hunter-finish Sprites are rate-boosted in two 2-hour windows: 2–4 PM & 9–11 PM ET. Everyone drops with Dual Fiend Hunters, and 1-Up Tokens & Portable Extractors can drop from chests. The best time to farm the Bounty Hunter finishes you’re missing.',

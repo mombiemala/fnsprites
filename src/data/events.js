@@ -26,6 +26,28 @@
 
 export const SPRITE_EVENTS = [
   {
+    id: 'spooky-dash-hours-2026-10-10-r1',
+    emoji: '👻',
+    name: 'Spooky Dash Power Hours (Round 1)',
+    perk: 'The Island’s spookiest Sprites — led by Spooky Dash (Mythic) — spawn in bigger numbers, with extra Pumpkin Chests popping up. The best window to grab the Fortnitemares Sprites (Spooky Dash, Vampire, The Deer, Dumpster Dive) you’re missing. 2-hour window.',
+    startsUtc: '2026-10-10T18:00:00Z', // 2 PM ET Sat Oct 10 (= 6 PM UTC)
+    endsUtc: '2026-10-10T20:00:00Z', // 4 PM ET (2-hour window)
+    confirmed: true, // Epic's Battle Royale page lists "Power Hours: Spooky Dash Sprites" for Oct 10
+    source: 'Epic (Fortnite Battle Royale) / Beebom',
+    sourceUrl: 'https://www.fortnite.com/@epic/battle-royale',
+  },
+  {
+    id: 'spooky-dash-hours-2026-10-10-r2',
+    emoji: '👻',
+    name: 'Spooky Dash Power Hours (Round 2)',
+    perk: 'The Island’s spookiest Sprites — led by Spooky Dash (Mythic) — spawn in bigger numbers, with extra Pumpkin Chests popping up. The best window to grab the Fortnitemares Sprites (Spooky Dash, Vampire, The Deer, Dumpster Dive) you’re missing. 2-hour window.',
+    startsUtc: '2026-10-11T01:00:00Z', // 9 PM ET Sat Oct 10 (= 1 AM UTC Sun)
+    endsUtc: '2026-10-11T03:00:00Z', // 11 PM ET (2-hour window)
+    confirmed: true, // Epic's Battle Royale page lists "Power Hours: Spooky Dash Sprites" for Oct 10
+    source: 'Epic (Fortnite Battle Royale) / Beebom',
+    sourceUrl: 'https://www.fortnite.com/@epic/battle-royale',
+  },
+  {
     id: 'mastery-monday-2026-10-05',
     emoji: '⭐',
     name: 'Mastery Monday',

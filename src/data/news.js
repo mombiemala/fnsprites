@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-10-10',
+    when: 'Oct 10, 2026',
+    tag: 'event',
+    start: '2026-10-10',
+    end: '2026-10-11',
+    title: '👻 Spooky Dash Power Hours (Sat, Oct 10) — spookiest Sprites rate-boosted',
+    body: 'Epic’s running Spooky Dash Power Hours this Saturday (Oct 10) in two 2-hour windows — 2–4 PM & 9–11 PM ET. The Island’s eeriest Sprites, led by Spooky Dash (Mythic), spawn in bigger numbers and extra Pumpkin Chests pop up across the map — the best window to fill in the Fortnitemares Sprites you’re missing (Spooky Dash, Vampire, The Deer, Dumpster Dive). Pair it with the events countdown on the home card.',
+    link: 'https://www.fortnite.com/@epic/battle-royale',
+    source: 'Epic (Fortnite Battle Royale) / Beebom',
+    official: true,
+  },
+  {
     ts: '2026-10-05',
     when: 'Oct 5, 2026',
     tag: 'event',
