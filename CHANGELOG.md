@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 10, 2026 — App auto-updates after a deploy (no hard refresh)
+
+- **Fixed** (`public/sw.js`, `scripts/prerender.mjs`, `src/main.jsx`): open tabs/installed PWA could keep serving a stale
+  version after a deploy, because `sw.js` was byte-identical every build, so the browser's SW update check found "no change"
+  and never activated a new worker.
+  - `public/sw.js` now derives `CACHE` from a `__BUILD_ID__` placeholder; `scripts/prerender.mjs` replaces it at build time
+    with a unique per-deploy id, so `sw.js` differs every deploy (verified: consecutive builds produce different ids).
+  - `src/main.jsx` registers the worker, then calls `reg.update()` on a 60s interval and on focus/visibility change, and
+    auto-reloads once on `controllerchange` (guarded so the first-visit claim and reload loops don't trigger it).
+
+Why: the worker shipped identical bytes each deploy, so browsers kept the cached app and fixes didn't appear without a manual
+hard refresh. A per-build id makes each deploy detectable; the auto-reload applies it within ~a minute on its own.
+
+---
+
 ## October 10, 2026 — Trimmed redundant UI (leaner top card & footer)
 
 - **Changed** (`src/components/TopStatus.jsx`): removed the "🔔 Coming up" chips row from the top card — it repeated the

@@ -7,7 +7,7 @@
 // Vercel serves directly, with real content + meta + JSON-LD in the markup so
 // search engines index them without executing any JavaScript.
 
-import { writeFileSync, mkdirSync } from 'node:fs'
+import { writeFileSync, mkdirSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 import {
@@ -2621,5 +2621,19 @@ mkdirSync(resolve(DIST, 'contact'), { recursive: true })
 writeFileSync(resolve(DIST, 'contact', 'index.html'), contactPage())
 writeFileSync(resolve(DIST, '404.html'), notFoundPage())
 writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap(types))
+
+// Stamp the service worker with a unique per-deploy build id so dist/sw.js is
+// byte-different every build. The browser then detects the new worker on its
+// update check, activates it (skipWaiting), and main.jsx auto-reloads open tabs
+// onto the fresh assets — no manual hard refresh needed after a deploy.
+const swPath = resolve(DIST, 'sw.js')
+try {
+  const buildId = Date.now().toString(36)
+  const swSrc = readFileSync(swPath, 'utf8')
+  writeFileSync(swPath, swSrc.replace(/__BUILD_ID__/g, buildId))
+  console.log(`service worker stamped: build ${buildId}`)
+} catch (e) {
+  console.warn('could not stamp sw.js build id:', e.message)
+}
 
 console.log(`prerender: ${n} sprite pages + /sprites + /tier-list + /rarest-sprites + /drop-rate-calculator + /cheat-master-sprites + /how-to-get-cheat-master-sprites + /gold-sprites + /codes + /guides + /faq + /sprite-garden + /sprite-dust + /loot-hacks + /how-to-trade-sprites + /events + /abilities + /season-transition + /news + /fortnitemares-sprites + /best-sprites + /sprite-leveling + /what-are-sprites + /cheat-codes + /sprite-finishes + /privacy + /terms + 404 + sitemap.xml → dist/`)

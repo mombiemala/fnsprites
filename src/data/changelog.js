@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 10, 2026',
+    title: 'The app now auto-updates after a deploy (no hard refresh)',
+    changes: [
+      { tag: 'Fixed', text: 'Open tabs/installed app could keep showing an old version after an update, because the offline service worker was byte-identical between deploys, so the browser never noticed a new one. Each build now stamps the service worker with a unique id (and a per-build cache name), the page checks for a new version every minute and whenever you refocus the tab, and it quietly reloads once the new version is ready — so changes show up on their own within a minute instead of needing a hard refresh.' },
+    ],
+    summary: 'Fixed stale-version caching: the app now detects a new deploy and refreshes itself, instead of serving an old cached copy until you hard-refresh.',
+    why: 'The service worker shipped the same bytes every deploy, so browsers saw “no change” and kept the cached app — which is why fixes sometimes didn’t appear without a manual hard refresh. A per-build id makes each deploy detectable, and an auto-reload on activation closes the loop.',
+  },
+  {
+    date: 'October 10, 2026',
     title: 'Trimmed redundant UI — leaner top card & footer',
     changes: [
       { tag: 'Changed', text: 'Removed the “🔔 Coming up” chips from the top-of-page card — they repeated the upcoming/dated drops already listed in the sidebar’s “What’s next → Upcoming” card. The top card now sticks to what’s live/next + new codes.' },

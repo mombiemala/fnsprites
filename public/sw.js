@@ -4,9 +4,16 @@
 // references the current, existing asset hashes — a stale cached index.html
 // pointing at chunk hashes from an old deploy is what causes "Unexpected token
 // '<'" (the server returns the SPA fallback HTML for a missing .js). Hashed
-// assets stay cache-first (they're immutable). Bump CACHE to invalidate old
-// caches for everyone on activate.
-const CACHE = 'fnsprites-v3'
+// assets stay cache-first (they're immutable).
+//
+// `__BUILD_ID__` is replaced at build time (scripts/prerender.mjs) with a unique
+// per-deploy id, so sw.js is byte-different on every deploy. That's what lets the
+// browser detect the new worker, activate it (skipWaiting below), and — via the
+// controllerchange listener in main.jsx — auto-reload open tabs onto the fresh
+// assets. The per-build CACHE name also drops the previous deploy's cache on
+// activate. (In dev the placeholder stays literal, which is fine.)
+const BUILD = '__BUILD_ID__'
+const CACHE = `fnsprites-${BUILD}`
 
 self.addEventListener('install', () => {
   self.skipWaiting()
