@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 10, 2026 — Fixed the duplicated event notice at the top of the page
+
+- **Fixed** (`src/components/TopStatus.jsx`, `src/data/announcements.js`): a live/upcoming Power Hours was shown twice in the
+  top card — once in the dismissible announcement banner, once in the live/next event row right below it. Added an optional
+  `eventId` to announcements that links a banner to its `SPRITE_EVENTS` entry; the top card now hides the banner while that
+  event is the one already shown live/next, so each event appears once (in the richer row with its LIVE badge + countdown).
+
+Why: the banner and the event row were both describing the same event, so the card read as duplicated. De-duping keeps it
+tight without dropping any information.
+
+---
+
 ## October 10, 2026 — Fixed cut-off variant descriptions in the Sprite detail popup
 
 - **Fixed** (`src/components/SpriteDetailModal.jsx`): each variant row's description (`theme.bonus`) used a single-line

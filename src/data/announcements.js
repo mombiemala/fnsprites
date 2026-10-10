@@ -4,6 +4,9 @@
 //
 // Fields:
 //   id       unique, stable string (dismissal is remembered per id)
+//   eventId  OPTIONAL — a SPRITE_EVENTS id (or its stem, e.g. without "-r1"/"-r2").
+//            When the linked event is live/next, the top card hides this banner so
+//            the same event isn't announced twice (the richer live event row wins).
 //   emoji    a leading glyph
 //   message  the short headline
 //   link     optional URL · linkLabel optional link text
@@ -17,6 +20,7 @@
 export const ANNOUNCEMENTS = [
   {
     id: 'spooky-dash-hours-2026-10-10',
+    eventId: 'spooky-dash-hours-2026-10-10', // matches SPRITE_EVENTS ids; the top card hides this banner while that event is live/next (no duplicate)
     emoji: '👻',
     message: 'Spooky Dash Power Hours (Sat Oct 10) — the Island’s spookiest Sprites spawn in bigger numbers with extra Pumpkin Chests, in two 2-hour windows: 2–4 PM & 9–11 PM ET. The best time to grab the Fortnitemares Sprites (Spooky Dash, Vampire, The Deer, Dumpster Dive) you’re still missing.',
     link: '/?view=news',
@@ -29,6 +33,7 @@ export const ANNOUNCEMENTS = [
   },
   {
     id: 'bountyhunter-hours-2026-10-03',
+    eventId: 'bountyhunter-hours-2026-10-03', // de-dupes against the matching SPRITE_EVENTS entry in the top card
     emoji: '🎯',
     message: 'Bounty Hunter Power Hours (Sat Oct 3) — Bounty Hunter-finish Sprites are rate-boosted in two 2-hour windows: 2–4 PM & 9–11 PM ET. Everyone drops with Dual Fiend Hunters, and 1-Up Tokens & Portable Extractors can drop from chests. The best time to farm the Bounty Hunter finishes you’re missing.',
     link: '/?view=news',

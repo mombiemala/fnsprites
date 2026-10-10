@@ -63,7 +63,6 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
     return () => clearInterval(id)
   }, [])
 
-  const note = ANNOUNCEMENTS.find((a) => isActiveNote(a) && !dismissed.has(a.id))
   const incoming = activeIncoming()
   const newCodes = useMemo(() => LOBBY_CODES.filter(isNewCode).length, [])
 
@@ -71,6 +70,15 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
   // in src/data/events.js — no assuming every Monday/Saturday has one.
   const liveEvent = liveSpriteEvent(new Date(now))
   const nextEvent = nextSpriteEvent(new Date(now))
+
+  // Avoid showing the same event twice: if the active announcement is about the
+  // event already shown live/next in the row below (linked via its `eventId`),
+  // skip the banner — the event row carries the same info, richer (LIVE badge +
+  // live countdown). Prevents the duplicated Power-Hours notice at the top.
+  const shownEvent = liveEvent || nextEvent
+  const note = ANNOUNCEMENTS.find(
+    (a) => isActiveNote(a) && !dismissed.has(a.id) && !(a.eventId && shownEvent && shownEvent.id.startsWith(a.eventId)),
+  )
 
   // Power Hours tie-in: if a boosted-finish event is live (or imminent), offer a
   // one-tap "farm my missing <finish>" that filters the grid to exactly those.

@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 10, 2026',
+    title: 'Fixed the duplicated event notice at the top of the page',
+    changes: [
+      { tag: 'Fixed', text: 'When a Power Hours (or similar) event was both announced in the banner and shown as the live/next event just below it, the top card repeated the same event name and description twice. Announcements now link to their event (via an `eventId`), and the banner is hidden while that event is the one already shown live/next — so each event appears once, in the richer live row (with its LIVE badge and countdown).' },
+    ],
+    summary: 'The top-of-page card no longer shows the same event twice (announcement banner + live-event row) — it keeps the one with the LIVE badge and countdown.',
+    why: 'The announcement bar and the live-event row were both describing the current Power Hours, so the card read as duplicated. Linking a banner to its event and suppressing the redundant copy keeps the card tight without losing any info.',
+  },
+  {
+    date: 'October 10, 2026',
     title: 'Fixed cut-off variant descriptions in the Sprite detail popup',
     changes: [
       { tag: 'Fixed', text: 'In a Sprite’s detail popup, each variant’s description (its in-game bonus/finish note) was clipped to one line with a “…”, hiding most of the text — e.g. the Cheat Master and Loot Hacker finish explanations. The description now wraps and shows in full.' },
