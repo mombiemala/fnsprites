@@ -820,21 +820,9 @@ export default function App() {
       {!isShareView && <AdSlot slot={AD_SLOTS.collectionBottom} />}
 
       <footer className="mt-12 border-t border-[var(--border)] pt-6 text-center text-xs text-[var(--muted)]">
-        {/* Sections — mirrors the primary top nav so every section is reachable
-            from the footer too. */}
-        <nav className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-semibold" aria-label="Sections">
-          {TABS.map((t, i) => (
-            <Fragment key={t.id}>
-              {i > 0 && <span className="opacity-30">·</span>}
-              {isShareView ? (
-                <a href={t.id === 'collection' ? window.location.pathname : `${window.location.pathname}?view=${t.id}`} className="hover:text-white">{t.label}</a>
-              ) : (
-                <button onClick={() => goToSection(t.id)} title={`Go to ${t.label.replace(/^[^\w]+\s*/, '')}`} className={`hover:text-white ${view === t.id ? 'text-white' : ''}`}>{t.label}</button>
-              )}
-            </Fragment>
-          ))}
-        </nav>
-        {/* Utility & support — same set as the header ⋯ More menu. */}
+        {/* Utility & support — same set as the header ⋯ More menu. (The section
+            nav row was dropped: on this single-page app it just repeated the top
+            nav the user already has.) */}
         <div className="mb-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-semibold">
           {utilityLinks.map((l, i) => (
             <Fragment key={l.id}>

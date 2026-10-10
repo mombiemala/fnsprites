@@ -1,16 +1,15 @@
 import { useState, useEffect, useMemo } from 'react'
 import { ANNOUNCEMENTS } from '../data/announcements'
-import { activeIncoming, daysUntil } from '../data/incoming'
 import { LOBBY_CODES } from '../data/codes'
 import { liveSpriteEvent, nextSpriteEvent } from '../data/events'
 import { ALL_SPRITES } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 
-// One compact top-of-page card that merges what used to be three stacked blocks:
-//  1. the dismissible event announcement bar,
-//  2. the "Today" glance (live/next weekly event + new codes), and
-//  3. the "Heads up — you heard it here first" upcoming feed.
-// Kept tight (one bordered card, thin rows) so it doesn't eat the screen.
+// One compact top-of-page card with two thin rows:
+//  1. the dismissible event announcement bar, and
+//  2. the "Today" glance (live/next event + new codes).
+// Upcoming/dated drops live in the sidebar's "What's next → Upcoming" card, so we
+// don't repeat a "Coming up" feed here. Kept tight so it doesn't eat the screen.
 
 const KEY = 'fnsprites.dismissedNotes'
 function loadDismissed() {
@@ -42,15 +41,6 @@ function fmtDur(ms) {
   if (h > 0) return `${h}h ${m}m ${sec}s`
   return `${m}m ${sec}s`
 }
-function countdownLabel(dropsOn, confirmedDate) {
-  const d = daysUntil(dropsOn)
-  const approx = confirmedDate ? '' : '~'
-  if (d > 1) return `${approx}${d}d`
-  if (d === 1) return `${approx}1d`
-  if (d === 0) return 'today'
-  return 'soon'
-}
-
 // A boosted-finish event (Power Hours) is worth surfacing a "farm my missing
 // ones" shortcut for — when it's LIVE, or starting within ~2 days.
 const FARM_LEAD_MS = 2 * 864e5
@@ -63,7 +53,6 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
     return () => clearInterval(id)
   }, [])
 
-  const incoming = activeIncoming()
   const newCodes = useMemo(() => LOBBY_CODES.filter(isNewCode).length, [])
 
   // Data-driven: "live" and the countdown come only from confirmed/sourced events
@@ -102,8 +91,7 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
   // all when there's no announcement, event, new code, or upcoming drop.
   const hasEvent = !!(liveEvent || nextEvent)
   const hasTodayRow = hasEvent || newCodes > 0
-  const hasAbove = !!note || hasTodayRow
-  if (!note && !hasTodayRow && incoming.length === 0) return null
+  if (!note && !hasTodayRow) return null
 
   return (
     <div className="mb-4 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--panel)]">
@@ -182,32 +170,6 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
           </button>
         )}
       </div>
-      )}
-
-      {/* 3 · Heads up — upcoming confirmed/dated drops, as compact chips */}
-      {incoming.length > 0 && (
-        <div className={`flex flex-wrap items-center gap-1.5 ${hasAbove ? 'border-t border-[var(--border)] ' : ''}px-3 py-2`}>
-          <span className="mr-0.5 shrink-0 text-[11px] font-bold text-white/80">🔔 Coming up</span>
-          {incoming.map((e) => {
-            const cd = countdownLabel(e.dropsOn, e.confirmedDate)
-            const when = new Date(e.dropsOn + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
-            const external = e.sourceUrl?.startsWith('http')
-            const tip = `${e.detail}\n\n${e.confirmedDate ? 'Drops' : 'Expected'} ${when} · ${e.source}`
-            return (
-              <a
-                key={e.id}
-                href={e.sourceUrl}
-                target={external ? '_blank' : undefined}
-                rel={external ? 'noreferrer' : undefined}
-                title={tip}
-                className="inline-flex max-w-full items-center gap-1.5 rounded-full bg-[var(--bg-2)] px-2 py-1 text-[11px] text-[var(--muted)] transition-colors hover:text-white"
-              >
-                <span className="truncate font-semibold text-white">{e.emoji} {e.title}</span>
-                <span className="shrink-0 rounded-full bg-[var(--brand)]/20 px-1.5 py-0.5 text-[10px] font-extrabold text-[var(--brand)]">{cd}</span>
-              </a>
-            )
-          })}
-        </div>
       )}
     </div>
   )

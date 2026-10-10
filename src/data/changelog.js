@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 10, 2026',
+    title: 'Trimmed redundant UI — leaner top card & footer',
+    changes: [
+      { tag: 'Changed', text: 'Removed the “🔔 Coming up” chips from the top-of-page card — they repeated the upcoming/dated drops already listed in the sidebar’s “What’s next → Upcoming” card. The top card now sticks to what’s live/next + new codes.' },
+      { tag: 'Changed', text: 'Dropped the footer’s section-nav row (it just mirrored the top navigation on this single-page app). The footer keeps its utility & support links (About, Changelog, Guides, Report a bug, Buy me a coffee) and the Creator Code.' },
+    ],
+    summary: 'Cut two bits of duplicated UI — the top card’s “Coming up” chips and the footer’s section-nav row — so each thing lives in one place.',
+    why: 'Both repeated content shown elsewhere (upcoming drops in the sidebar; section links in the top nav), adding visual noise without adding information. Removing them keeps the home view focused on the collection.',
+  },
+  {
+    date: 'October 10, 2026',
     title: 'Fixed the duplicated event notice at the top of the page',
     changes: [
       { tag: 'Fixed', text: 'When a Power Hours (or similar) event was both announced in the banner and shown as the live/next event just below it, the top card repeated the same event name and description twice. Announcements now link to their event (via an `eventId`), and the banner is hidden while that event is the one already shown live/next — so each event appears once, in the richer live row (with its LIVE badge and countdown).' },

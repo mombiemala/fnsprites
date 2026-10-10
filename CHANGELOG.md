@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 10, 2026 — Trimmed redundant UI (leaner top card & footer)
+
+- **Changed** (`src/components/TopStatus.jsx`): removed the "🔔 Coming up" chips row from the top card — it repeated the
+  upcoming/dated drops already shown in the sidebar's "What's next → Upcoming" card. Also dropped the now-unused
+  `countdownLabel` helper and the `activeIncoming`/`daysUntil` imports.
+- **Changed** (`src/App.jsx`): dropped the footer's section-nav row (it mirrored the top navigation on this single-page
+  app). The footer keeps its utility/support links (About, Changelog, Guides, Report a bug, Buy me a coffee) and Creator Code.
+
+Why: both repeated content shown elsewhere, adding visual noise without new information. Keeping each thing in one place
+keeps the home view focused on the collection.
+
+---
+
 ## October 10, 2026 — Fixed the duplicated event notice at the top of the page
 
 - **Fixed** (`src/components/TopStatus.jsx`, `src/data/announcements.js`): a live/upcoming Power Hours was shown twice in the
