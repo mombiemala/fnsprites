@@ -217,7 +217,7 @@ export default function SpriteDetailModal({ typeId, tracking, onClose, onToggleO
                     )}
                   </div>
                   <span
-                    className={`block truncate text-[11px] ${theme?.rumored ? 'text-amber-300/90' : 'text-[var(--muted)]'}`}
+                    className={`block text-[11px] leading-snug ${theme?.rumored ? 'text-amber-300/90' : 'text-[var(--muted)]'}`}
                     title={theme?.rumored ? 'Not yet confirmed by Epic' : undefined}
                   >
                     {theme?.bonus}

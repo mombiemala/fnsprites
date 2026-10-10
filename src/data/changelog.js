@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 10, 2026',
+    title: 'Fixed cut-off variant descriptions in the Sprite detail popup',
+    changes: [
+      { tag: 'Fixed', text: 'In a Sprite’s detail popup, each variant’s description (its in-game bonus/finish note) was clipped to one line with a “…”, hiding most of the text — e.g. the Cheat Master and Loot Hacker finish explanations. The description now wraps and shows in full.' },
+    ],
+    summary: 'Variant bonus descriptions in the detail popup no longer get cut off with “…” — they wrap and show the full text.',
+    why: 'The row used a single-line truncate, which made longer finish descriptions (how a finish is unlocked, what bonus it gives) unreadable. Letting them wrap is a tiny layout cost for information players actually need when deciding what to chase.',
+  },
+  {
     date: 'October 9, 2026',
     title: 'Fixed the Dumpster Dive “where to find” tip',
     changes: [

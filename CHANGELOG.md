@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 10, 2026 — Fixed cut-off variant descriptions in the Sprite detail popup
+
+- **Fixed** (`src/components/SpriteDetailModal.jsx`): each variant row's description (`theme.bonus`) used a single-line
+  `truncate`, so longer finish notes (Cheat Master, Loot Hacker, Bounty Hunter — how they're unlocked and what bonus they
+  give) were clipped to one line with a "…". Swapped `truncate` for normal wrapping (`leading-snug`) so the full text shows.
+
+Why: the truncated text hid information players use to decide what to chase. Wrapping costs a little row height but makes
+the descriptions readable.
+
+---
+
 ## October 9, 2026 — Fixed the Dumpster Dive "where to find" tip
 
 - **Fixed** (`src/data/spawns.js`): the Dumpster Dive Sprite's farming tip said to "check spots with dumpsters," but sources
