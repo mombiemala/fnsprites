@@ -26,6 +26,7 @@ import WelcomeModal from './components/WelcomeModal'
 import SaveStatusPill from './components/SaveStatusPill'
 import GuestSaveNudge from './components/GuestSaveNudge'
 import AdSlot from './components/AdSlot'
+import FreshnessBadge from './components/FreshnessBadge'
 import { AD_SLOTS } from './lib/ads'
 
 // Lazy-loaded: heavy tabs + on-demand modals are code-split so the initial
@@ -837,6 +838,7 @@ export default function App() {
           <span className="opacity-30">·</span>
           <span>Creator Code <span className="font-bold text-[var(--brand)]">MOMBIE</span></span>
         </div>
+        <div className="mb-2 flex justify-center"><FreshnessBadge /></div>
         <p className="opacity-80">Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
         {/* The long attribution/credits live in a collapsed disclosure so the footer
             stays short — all the © notices, AI-art disclosure and sources are one tap away. */}

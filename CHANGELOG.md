@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 11, 2026 — "Updated daily" freshness badge
+
+- **Added** (`src/lib/freshness.js`, `src/components/FreshnessBadge.jsx`, `src/App.jsx`, `scripts/prerender.mjs`): an
+  "Updated daily · current as of <date>" badge in the app footer and the prerendered SEO page headers. The date comes from a
+  shared helper that takes the newest of the latest changelog entry and the latest lobby-code `added` date, capped at today,
+  so it reflects real content changes (and can't show a future date). The prerendered header now uses this instead of the
+  build date, so SEO pages stop claiming they changed "today" on every rebuild.
+
+Why: freshness is the real edge over stale checklist competitors, so it's worth surfacing as a trust + recency signal.
+Deriving it from actual content dates keeps the claim honest.
+
+---
+
 ## October 10, 2026 — App auto-updates after a deploy (no hard refresh)
 
 - **Fixed** (`public/sw.js`, `scripts/prerender.mjs`, `src/main.jsx`): open tabs/installed PWA could keep serving a stale

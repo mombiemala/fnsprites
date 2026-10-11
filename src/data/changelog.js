@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 11, 2026',
+    title: 'Added an “Updated daily” freshness badge',
+    changes: [
+      { tag: 'Added', text: 'A small “Updated daily · current as of <date>” badge now shows in the footer (and in the header of the SEO pages), so you can see at a glance that the tracker is kept current — codes, drops and events are checked every day. The date is derived from real content changes (newest changelog entry + newest lobby code), capped at today, so it never claims a date that hasn’t happened.' },
+    ],
+    summary: 'Added an “Updated daily · current as of <date>” freshness badge (footer + SEO page headers), driven by real content dates.',
+    why: 'Freshness is our edge over the stale checklist sites, and it’s worth showing — both as a trust signal for players and an honest recency cue. Deriving the date from actual content changes (not the build date) keeps it truthful and also stopped the SEO pages from claiming they changed “today” on every rebuild.',
+  },
+  {
     date: 'October 10, 2026',
     title: 'The app now auto-updates after a deploy (no hard refresh)',
     changes: [

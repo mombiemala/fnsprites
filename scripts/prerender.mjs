@@ -24,8 +24,13 @@ import { SEASON } from '../src/data/season.js'
 import { TRADE_STEPS, TRADE_SAFETY, SPRITE_SWAP_ISLANDS, ISLAND_HOWTO } from '../src/data/tradeHubs.js'
 import { FORTNITEMARES } from '../src/data/fortnitemares.js'
 import { SPRITE_SPAWNS, SPAWN_GENERAL, SPAWN_SOURCE, spawnFor } from '../src/data/spawns.js'
+import { lastUpdatedLabel } from '../src/lib/freshness.js'
 
 const SITE = 'https://fnsprites.app'
+// Same data-derived "last updated" date the in-app FreshnessBadge shows, so the
+// prerendered page headers and the app agree (and we stop claiming every page
+// changed "today" just because it was rebuilt today).
+const LAST_UPDATED_LABEL = lastUpdatedLabel()
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '../dist')
 
 // Google AdSense loader — kept identical to the one in index.html so every
@@ -114,6 +119,7 @@ a{color:var(--brand);text-decoration:none}
 .main>h2:first-of-type{margin-top:4px}
 header.site{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:8px 0 20px}
 .hgroup{min-width:0}.tagline{margin:4px 0 0;font-size:12px;color:var(--muted);line-height:1.5}
+.fresh{color:#34d399;font-weight:600;white-space:nowrap}.fresh::before{content:"●";margin-right:5px;font-size:9px;vertical-align:middle}
 .logo{display:inline-flex;align-items:center;gap:8px;color:var(--text)}.logo .mark-sm{width:32px;height:32px;flex:0 0 auto}
 .logo .wm{font-family:'Luckiest Guy','Inter',sans-serif;font-weight:400;font-size:30px;line-height:1;letter-spacing:.02em}.logo .wm b{color:var(--brand);font-weight:400}
 .cta{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#000;font-weight:800;padding:9px 16px;border-radius:12px;font-size:13px;white-space:nowrap}
@@ -331,7 +337,7 @@ ${ADSENSE}
 <meta name="twitter:description" content="${esc(desc)}"><meta name="twitter:image" content="${esc(img)}">
 ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script>` : ''}
 <style>${CSS}</style></head><body><div class="wrap">
-<header class="site"><div class="hgroup"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><p class="tagline">${RELEASED_COUNT} released variants · Season 4 “Override” · updated ${new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}</p></div><a class="cta" href="/">Log in to save</a></header>
+<header class="site"><div class="hgroup"><a class="logo" href="/">${MARK}<span class="wm">FN <b>Sprite</b> Tracker</span></a><p class="tagline">${RELEASED_COUNT} released variants · Season 4 “Override” · <span class="fresh">Updated daily · current as of ${LAST_UPDATED_LABEL}</span></p></div><a class="cta" href="/">Log in to save</a></header>
 <nav class="nav" aria-label="Sections">
   ${NAV_LINKS.map((l) => `<a href="${l.href}"${l.key === active ? ' class="on" aria-current="page"' : ''}>${l.label}</a>`).join('\n  ')}
   <details class="more"><summary>⋯ More <span class="mcaret">▾</span></summary><div class="moremenu">
