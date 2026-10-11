@@ -769,6 +769,12 @@ function indexPage() {
 // curated feed, which is what search engines should index anyway.
 const TAG_ICON = { sprites: '🧩', update: '🛠️', event: '🎉', upcoming: '🔮', bug: '🐛' }
 const NEWS_TODAY = new Date().toISOString().slice(0, 10)
+// Stable-content revision date for the sitemap. Daily data-only redeploys should
+// NOT claim every page changed "today" (Google learns to distrust lastmod when
+// it's always fresh). Only genuinely daily pages (home, codes, news, events,
+// fortnitemares) use NEWS_TODAY; everything else uses this date, bumped by hand
+// when the page templates / evergreen content actually change.
+const SITE_REV = '2026-10-11'
 const newsLive = (n) => {
   if (!n.start && !n.end) return false
   if (n.start && NEWS_TODAY < n.start) return false
@@ -2504,7 +2510,7 @@ function notFoundPage() {
 // ---------- sitemap ----------
 function sitemap(types) {
   const urls = [
-    { loc: SITE + '/', changefreq: 'daily', priority: '1.0' },
+    { loc: SITE + '/', changefreq: 'daily', priority: '1.0', lastmod: NEWS_TODAY },
     { loc: SITE + '/sprites', changefreq: 'weekly', priority: '0.9' },
     { loc: SITE + '/guides', changefreq: 'weekly', priority: '0.7' },
     { loc: SITE + '/faq', changefreq: 'weekly', priority: '0.8' },
@@ -2517,7 +2523,7 @@ function sitemap(types) {
     { loc: SITE + '/rarest-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/drop-rate-calculator', changefreq: 'monthly', priority: '0.7' },
     { loc: SITE + '/abilities', changefreq: 'weekly', priority: '0.7' },
-    { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9' },
+    { loc: SITE + '/codes', changefreq: 'daily', priority: '0.9', lastmod: NEWS_TODAY },
     { loc: SITE + '/cheat-master-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/how-to-get-cheat-master-sprites', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/gold-sprites', changefreq: 'weekly', priority: '0.7' },
@@ -2525,11 +2531,11 @@ function sitemap(types) {
     { loc: SITE + '/sprite-dust', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/loot-hacks', changefreq: 'weekly', priority: '0.8' },
     { loc: SITE + '/how-to-trade-sprites', changefreq: 'monthly', priority: '0.7' },
-    { loc: SITE + '/events', changefreq: 'daily', priority: '0.8' },
+    { loc: SITE + '/events', changefreq: 'daily', priority: '0.8', lastmod: NEWS_TODAY },
     { loc: SITE + '/season-transition', changefreq: 'monthly', priority: '0.7' },
-    { loc: SITE + '/news', changefreq: 'daily', priority: '0.8' },
-    { loc: SITE + '/fortnitemares', changefreq: 'daily', priority: '0.8' },
-    { loc: SITE + '/fortnitemares-sprites', changefreq: 'daily', priority: '0.8' },
+    { loc: SITE + '/news', changefreq: 'daily', priority: '0.8', lastmod: NEWS_TODAY },
+    { loc: SITE + '/fortnitemares', changefreq: 'daily', priority: '0.8', lastmod: NEWS_TODAY },
+    { loc: SITE + '/fortnitemares-sprites', changefreq: 'daily', priority: '0.8', lastmod: NEWS_TODAY },
     { loc: SITE + '/about', changefreq: 'monthly', priority: '0.5' },
     { loc: SITE + '/contact', changefreq: 'yearly', priority: '0.4' },
     { loc: SITE + '/privacy', changefreq: 'yearly', priority: '0.3' },
@@ -2544,7 +2550,7 @@ function sitemap(types) {
     // until they go live (thin until there's a real drop rate / ability / finishes).
     ...types.filter((t) => t.released).map((t) => ({ loc: `${SITE}/sprite/${slug(t.name)}`, changefreq: 'weekly', priority: '0.8' })),
   ]
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${u.lastmod || NEWS_TODAY}</lastmod><changefreq>${u.changefreq}</changefreq><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>\n`
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${u.loc}</loc><lastmod>${u.lastmod || SITE_REV}</lastmod><changefreq>${u.changefreq}</changefreq><priority>${u.priority}</priority></url>`).join('\n')}\n</urlset>\n`
 }
 
 // ---------- write ----------
