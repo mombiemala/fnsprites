@@ -72,7 +72,6 @@ export const LOBBY_CODES = [
   { code: 'CrowsAreAfraid', unlocks: 'Turns everyone in the lobby into a Scarecrow (Fortnitemares)', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-10-01', source: 'Vice / The Click (Oct 1 update)' },
   { code: 'PumpkinSpiceLife', unlocks: 'Turns everyone in the lobby into a Pumpkin (Fortnitemares)', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-10-01', source: 'Vice / The Click (Oct 1 update)' },
   { code: 'VeryScaryPumpkin', unlocks: '3× Snack-O’-Lantern Gizmos (drop Halloween candy when used)', type: 'reward', category: 'gizmos', status: 'working', added: '2026-10-05', source: 'Vice (Mastery Monday Oct 5 code) / esports.gg / Beebom' },
-  { code: 'Door2Door4Candy', unlocks: 'Fortnitemares “trick-or-treat” candy reward — confirmed working in-game (exact contents to be confirmed)', type: 'reward', category: 'gizmos', status: 'working', added: '2026-10-12', source: 'User-reported & confirmed live in-game (Oct 12, 2026)' },
   { code: 's7h-50p-r03', unlocks: 'Geno glitches out your lobby screen (an effect, not an item). Unlocks only after the “There is Hope” / Geno story quests — gather the graffitied code pieces across WonkeeLand, Sunken Shores and Nightmare Neighborhood, then enter it to sever the mind-link. Type it exactly: those are zeros, not the letter “O”.', type: 'effect', category: 'gizmos', status: 'working', added: '2026-10-01', source: 'Vice / community (Oct 1 update)' },
   { code: 'InsertCoinToContinue', unlocks: 'Arcade Machine lobby transformation', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-09-08', source: 'GamesRadar / community list' },
   { code: 'BRB', unlocks: 'Toilet lobby transformation', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-09-08', source: 'GamesRadar / community list' },
@@ -80,6 +79,7 @@ export const LOBBY_CODES = [
   // Fortnite.GG's Lobby Hacks board, so the earlier "expired Sep 14" window was wrong.
 
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
+  { code: 'Door2Door4Candy', unlocks: '2× Extraction Accelerators (starts a nearby extraction silently and summons the box immediately)', type: 'reward', category: 'boosts', status: 'working', added: '2026-10-12', source: 'User-confirmed in-game (Mastery Monday code, Oct 12 — “LOBBY HACK ACTIVATED!” screen)' },
   { code: 'IThinkTheKeyFoundMeChat', unlocks: '1× Extraction Accelerator', type: 'reward', category: 'boosts', status: 'working', added: '2026-10-01', source: 'Vice (Oct 1 update)' },
   { code: 'WhoCrackedTheCode', unlocks: '40,000 XP', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-26', source: 'Vice / FNCS livestream (Sep 26)' },
   { code: 'ALMOSTSCARINGSEASON', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-21', source: 'Vice (Mastery Monday code, Sep 21)' },

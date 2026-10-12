@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 12, 2026 — Mastery Monday code: Door2Door4Candy (2× Extraction Accelerators)
+
+- **Added** (`src/data/codes.js`, `src/data/news.js`): this week's Mastery Monday Admin Panel code **Door2Door4Candy** →
+  **2× Extraction Accelerators** ("starts a nearby extraction silently and summons the box immediately"). Confirmed live
+  in-game (owner's "LOBBY HACK ACTIVATED!" screenshot), so added under Boosts & XP with `added: '2026-10-12'`. Same reward
+  type as the Sep 14 Mastery Monday code (BeamMeUp), on a Monday — i.e. this week's Mastery Monday code. The news entry for
+  today's Mastery Monday event was updated to name the code.
+
+---
+
 ## October 11, 2026 — "Updated daily" freshness badge
 
 - **Added** (`src/lib/freshness.js`, `src/components/FreshnessBadge.jsx`, `src/App.jsx`, `scripts/prerender.mjs`): an

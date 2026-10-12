@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 12, 2026',
+    title: 'Mastery Monday code added — Door2Door4Candy (2× Extraction Accelerators)',
+    changes: [
+      { tag: 'Added', text: 'This week’s Mastery Monday Admin Panel code, Door2Door4Candy, grants 2× Extraction Accelerators (start a nearby extraction silently and summon the box immediately). Confirmed live in-game (the “LOBBY HACK ACTIVATED!” screen). Added to the Lobby Hacks tab under Boosts & XP. Today’s Mastery Monday event (2× Sprite XP & Dust) is also on the home card.' },
+    ],
+    summary: 'Added Door2Door4Candy — this week’s Mastery Monday code — for 2× Extraction Accelerators, confirmed live in-game.',
+    why: 'Mastery Monday codes are the most time-sensitive thing players come here for, so getting the real, in-game-verified code up fast (with the exact reward) is the point of the daily watch.',
+  },
+  {
     date: 'October 11, 2026',
     title: 'Added an “Updated daily” freshness badge',
     changes: [
