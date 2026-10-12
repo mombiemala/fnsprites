@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-10-12',
+    when: 'Oct 12, 2026',
+    tag: 'event',
+    start: '2026-10-12',
+    end: '2026-10-13',
+    title: '⭐ Mastery Monday is live (Mon, Oct 12) — 2× Sprite XP & Dust',
+    body: 'Mastery Monday runs for 24 hours (9 AM ET Mon → 9 AM ET Tue): double Sprite XP, double Sprite Dust from extractions, boosted Legendary/Mythic Sprite spawns, and extra Portable Extractors from Daily Quests — the fastest day to level and master your Sprites. (No new Admin Panel / Mastery Monday code has been confirmed for today yet; we’ll add it the moment one is verified.)',
+    link: 'https://www.vice.com/en/article/fortnite-mastery-monday-october-12-start-times-bonuses/',
+    source: 'Vice',
+    official: true,
+  },
+  {
     ts: '2026-10-10',
     when: 'Oct 10, 2026',
     tag: 'event',

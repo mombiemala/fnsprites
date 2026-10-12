@@ -26,6 +26,17 @@
 
 export const SPRITE_EVENTS = [
   {
+    id: 'mastery-monday-2026-10-12',
+    emoji: '⭐',
+    name: 'Mastery Monday',
+    perk: '2× Sprite XP & 2× Sprite Dust from extractions · boosted Legendary/Mythic spawns · extra Portable Extractors from Daily Quests — runs 24h. The fastest day to level and master Sprites.',
+    startsUtc: '2026-10-12T13:00:00Z', // 9 AM ET / 6 AM PT Mon Oct 12
+    endsUtc: '2026-10-13T13:00:00Z', // runs 24h, to 9 AM ET Tue Oct 13
+    confirmed: true,
+    source: 'Vice (Mastery Monday Oct 12 start times)',
+    sourceUrl: 'https://www.vice.com/en/article/fortnite-mastery-monday-october-12-start-times-bonuses/',
+  },
+  {
     id: 'spooky-dash-hours-2026-10-10-r1',
     emoji: '👻',
     name: 'Spooky Dash Power Hours (Round 1)',
