@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 12, 2026 — Obsession Sprite added as upcoming (Thu Oct 15, v42.40)
+
+- **Added** (`src/data/sprites.js`, `src/components/SpriteArt.jsx`, `src/data/incoming.js`): Thursday's Fortnitemares wave 2
+  (v42.40, Oct 15) is firmed up — Honey (already tracked) + **Obsession**. Added Obsession as a rumored/upcoming roster entry
+  (`released: false`, `rumored: true`, `releaseDate: '2026-10-15'`) — a Fortnitemares crossover whose "One Wish Willow" helps
+  you find & collect missing Sprites (ability/finishes/rarity TBC until Epic confirms). Added its `TYPES` palette + a `Features`
+  placeholder motif (an abstract watching-eye + wish-spark, not IP art). The date gate flips both live automatically on Oct 15.
+- **Changed** (`src/data/incoming.js`): the wave-2 heads-up now names both Sprites with their abilities and notes the
+  widely-expected (unconfirmed) Hazbin Hotel collab.
+
+---
+
 ## October 12, 2026 — Mastery Monday code: Door2Door4Candy (2× Extraction Accelerators)
 
 - **Added** (`src/data/codes.js`, `src/data/news.js`): this week's Mastery Monday Admin Panel code **Door2Door4Candy** →

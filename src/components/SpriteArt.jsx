@@ -51,6 +51,7 @@ const TYPES = {
   onigiri: { c: ['#ffffff', '#eef1f6', '#c2c8d4'], feat: '#2a2f3a' },
   megaman: { c: ['#bfe4ff', '#2a7cff', '#123a9e'], feat: '#eaf4ff' },
   honey: { c: ['#ffe6a0', '#f5b81f', '#b8801c'], feat: '#7a5220' },
+  obsession: { c: ['#e9c7ff', '#9b4dff', '#5a1e8a'], feat: '#ff5fa2' },
   dumpster: { c: ['#cfd6e0', '#8b93a7', '#4a5265'], feat: '#1a2138' },
   deer: { c: ['#e8c49a', '#b5793f', '#6e4420'], feat: '#f4ead8' },
   xray: { c: ['#d0faff', '#46d0e0', '#1f8fae'], feat: '#ffffff' },
@@ -272,6 +273,10 @@ function Features({ id, fc, gid }) {
     case 'honey':
       // A honeycomb cluster.
       return <g fill="none" stroke={fc} strokeWidth="2" opacity="0.6"><path d="M46 40 l6 0 3 5 -3 5 -6 0 -3-5 Z" /><path d="M55 45 l6 0 3 5 -3 5 -6 0 -3-5 Z" /><path d="M46 50 l6 0 3 5 -3 5 -6 0 -3-5 Z" /></g>
+    case 'obsession':
+      // A fixed "watching" eye + a wish-spark (horror crossover / the One Wish
+      // Willow). Original abstract motif, never the real IP art.
+      return <><ellipse cx="50" cy="50" rx="17" ry="10" fill="#fff" opacity="0.9" /><circle cx="50" cy="50" r="5.5" fill={fc} /><path d="M72 28 l2.5 5.5 5.5 2.5 -5.5 2.5 -2.5 5.5 -2.5 -5.5 -5.5 -2.5 5.5 -2.5 Z" fill={fc} opacity="0.85" /></>
     case 'dumpster':
       // Raccoon eye-mask band + rounded ears.
       return <><path d="M32 20 L30 8 L42 16 Z" {...st} /><path d="M68 20 L70 8 L58 16 Z" {...st} /><path d="M31 52 q19 -7 38 0 l0 6 q-19 -6 -38 0 Z" fill={INK} opacity="0.55" /></>

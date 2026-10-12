@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 12, 2026',
+    title: 'Added the Obsession Sprite as upcoming (Thu Oct 15)',
+    changes: [
+      { tag: 'Added', text: 'Thursday’s Fortnitemares wave 2 (update v42.40, Oct 15) is now firmed up: the Honey and Obsession Sprites. Honey was already tracked; added Obsession to the roster as upcoming — a Fortnitemares crossover whose “One Wish Willow” helps you find & collect missing Sprites — with its own placeholder art. Both are date-gated to flip live automatically on Oct 15. The “coming up” heads-up now names both (and notes the widely-expected, unconfirmed Hazbin Hotel collab).' },
+    ],
+    summary: 'Added the Obsession Sprite as an upcoming (Oct 15) roster entry with placeholder art, and firmed up Thursday’s v42.40 wave-2 details.',
+    why: 'Obsession now has a sourced ability and a dated drop, so it belongs in the roster as a heads-up (released:false) rather than appearing out of nowhere on Thursday — the date gate flips it live on the day, and the official art/finishes get finalised then.',
+  },
+  {
+    date: 'October 12, 2026',
     title: 'Mastery Monday code added — Door2Door4Candy (2× Extraction Accelerators)',
     changes: [
       { tag: 'Added', text: 'This week’s Mastery Monday Admin Panel code, Door2Door4Candy, grants 2× Extraction Accelerators (start a nearby extraction silently and summon the box immediately). Confirmed live in-game (the “LOBBY HACK ACTIVATED!” screen). Added to the Lobby Hacks tab under Boosts & XP. Today’s Mastery Monday event (2× Sprite XP & Dust) is also on the home card.' },
