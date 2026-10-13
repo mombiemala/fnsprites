@@ -51,7 +51,7 @@ const TYPES = {
   onigiri: { c: ['#ffffff', '#eef1f6', '#c2c8d4'], feat: '#2a2f3a' },
   megaman: { c: ['#bfe4ff', '#2a7cff', '#123a9e'], feat: '#eaf4ff' },
   honey: { c: ['#ffe6a0', '#f5b81f', '#b8801c'], feat: '#7a5220' },
-  obsession: { c: ['#e9c7ff', '#9b4dff', '#5a1e8a'], feat: '#ff5fa2' },
+  obsession: { c: ['#eebf62', '#b5602f', '#6e2e24'], feat: '#ffd873' },
   dumpster: { c: ['#cfd6e0', '#8b93a7', '#4a5265'], feat: '#1a2138' },
   deer: { c: ['#e8c49a', '#b5793f', '#6e4420'], feat: '#f4ead8' },
   xray: { c: ['#d0faff', '#46d0e0', '#1f8fae'], feat: '#ffffff' },
@@ -271,12 +271,12 @@ function Features({ id, fc, gid }) {
       // salmon-pink umeboshi dot. Reads as onigiri while keeping the kawaii face.
       return <><path d="M26 72 q24 9 48 0 l0 4 q-4 12 -24 12 q-20 0 -24 -12 Z" fill={fc} /><ellipse cx="50" cy="30" rx="3.4" ry="3" fill="#ff8080" opacity="0.85" /></>
     case 'honey':
-      // A honeycomb cluster.
-      return <g fill="none" stroke={fc} strokeWidth="2" opacity="0.6"><path d="M46 40 l6 0 3 5 -3 5 -6 0 -3-5 Z" /><path d="M55 45 l6 0 3 5 -3 5 -6 0 -3-5 Z" /><path d="M46 50 l6 0 3 5 -3 5 -6 0 -3-5 Z" /></g>
+      // A little flower tuft on the head + honeycomb spots (the honey blob).
+      return <><g fill="#fff3b0" stroke={fc} strokeWidth="0.8" opacity="0.95"><circle cx="40" cy="18" r="3" /><circle cx="46" cy="15" r="3" /><circle cx="52" cy="18" r="3" /><circle cx="46" cy="22" r="3" /><circle cx="46" cy="18" r="1.8" fill={fc} stroke="none" /></g><g fill="none" stroke={fc} strokeWidth="2" opacity="0.5"><path d="M58 46 l5 0 2.5 4 -2.5 4 -5 0 -2.5-4 Z" /><path d="M40 58 l5 0 2.5 4 -2.5 4 -5 0 -2.5-4 Z" /></g></>
     case 'obsession':
-      // A fixed "watching" eye + a wish-spark (horror crossover / the One Wish
-      // Willow). Original abstract motif, never the real IP art.
-      return <><ellipse cx="50" cy="50" rx="17" ry="10" fill="#fff" opacity="0.9" /><circle cx="50" cy="50" r="5.5" fill={fc} /><path d="M72 28 l2.5 5.5 5.5 2.5 -5.5 2.5 -2.5 5.5 -2.5 -5.5 -5.5 -2.5 5.5 -2.5 Z" fill={fc} opacity="0.85" /></>
+      // Gold "mystic" doodles — stars, a swirl and a crescent (the Obsession /
+      // One Wish Willow look). Original stylised motif, never the real IP art.
+      return <g stroke={fc} strokeWidth="1.6" opacity="0.85" strokeLinecap="round" strokeLinejoin="round"><path d="M31 40 l1.4 2.8 2.8 1.4 -2.8 1.4 -1.4 2.8 -1.4 -2.8 -2.8 -1.4 2.8 -1.4 Z" fill={fc} stroke="none" /><path d="M69 58 l1.2 2.4 2.4 1.2 -2.4 1.2 -1.2 2.4 -1.2 -2.4 -2.4 -1.2 2.4 -1.2 Z" fill={fc} stroke="none" /><path d="M34 62 q4 -2 2 -6 q-2 -4 -6 -2" fill="none" /><path d="M64 36 a4.5 4.5 0 1 1 -3.2 -4.2" fill="none" /></g>
     case 'dumpster':
       // Raccoon eye-mask band + rounded ears.
       return <><path d="M32 20 L30 8 L42 16 Z" {...st} /><path d="M68 20 L70 8 L58 16 Z" {...st} /><path d="M31 52 q19 -7 38 0 l0 6 q-19 -6 -38 0 Z" fill={INK} opacity="0.55" /></>
