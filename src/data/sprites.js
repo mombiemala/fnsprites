@@ -151,10 +151,14 @@ export const SPRITE_TYPES = [
     ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside X-Ray. Ability: applies Overdrive after you eat or drink a consumable — the duration extends with each level. Normal, Gold & Cheat Master are all live now; the Loot Hacker finish is live too (since Sep 10).',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: U } },
   { id: 'honey', name: 'Honey', icon: '🍯', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4', releaseDate: '2026-10-15',
-    ability: 'Design-a-Sprite winner (by Conejito_sam): spawns a beehive that swarms whoever damages you. Expected during Fortnitemares around Oct 15 — abilities as designed, Epic may tweak; rarity TBC.',
-    variants: { normal: U } },
+    ability: 'Design-a-Sprite winner (by Conejito_sam): when an enemy damages you, bees are sent after them. Drops Oct 15 (v42.40, Fortnitemares wave 2). Confirmed to have all six finishes; rarity TBC until it’s live.',
+    // All six finishes confirmed. Marked R so they all flip live together when the
+    // Oct 15 date gate releases the type (they stay gated behind `released` until
+    // then). R — not U — because the date-gate auto-release skips the Cheat Master
+    // theme (it carries rumored:true), which would otherwise leave it at 5/6.
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
   { id: 'obsession', name: 'Obsession', icon: '🔮', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4', releaseDate: '2026-10-15',
-    ability: 'A Fortnitemares 2026 crossover Sprite, dated for Oct 15 (v42.40). Reported ability: its “One Wish Willow” helps you find and collect the Sprites you’re still missing. Finishes, exact ability and rarity aren’t confirmed by Epic yet — we’ll finalise them when it drops; rarity TBC.',
+    ability: 'A Fortnitemares 2026 horror-movie crossover, dropping Oct 15 (v42.40). Rumored ability: its “One Wish Willow” lets you wish for a Sprite in the overworld (to help finish your collection) — Epic hasn’t fully detailed the power yet, so it may change at launch. Only the base Sprite is confirmed; the five finishes (Gold, Cheat Master, Loot Hacker, Bounty Hunter, Trick-or-Treat) are expected but UNCONFIRMED — we’ll add them if/when they drop. Rarity TBC.',
     variants: { normal: U } },
   { id: 'bullet', name: 'Bullet', icon: '🔫', rarity: 'Rare', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Enorull): Ammo Boxes grant slightly more ammunition. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',

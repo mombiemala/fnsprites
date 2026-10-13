@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 13, 2026',
+    title: 'Firmed up Thursday’s Oct 15 drop (Honey all-6 finishes, Obsession details)',
+    changes: [
+      { tag: 'Changed', text: 'Updated the Oct 15 (v42.40) wave-2 details from the latest reports: Honey is confirmed with all six finishes (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter, Trick-or-Treat) — its roster entry now carries all six so they flip live together on drop day. Obsession keeps just its confirmed base Sprite; its five finishes are expected but unconfirmed (we’ll add them if they drop). Obsession’s rumored power — “One Wish Willow” lets you wish for a Sprite in the overworld. Added the confirmed downtime (~4 AM ET → back ~6 AM ET), noted these are likely the season’s last Sprites (Override ends Oct 31), and that all-six-each would take the Season 4 collection to 157. Also added a News entry and refreshed the “coming up” heads-up (incl. the undated Hazbin Hotel skin collab).' },
+    ],
+    summary: 'Refreshed Thursday’s Oct 15 drop: Honey confirmed with all six finishes, Obsession base-only (finishes unconfirmed), confirmed downtime, and “last Sprites of the season” context.',
+    why: 'Honey’s finishes are now confirmed, so its entry should carry all six (they auto-flip together on Oct 15); Obsession’s finishes aren’t, so we show only its confirmed base rather than over-asserting. Keeping the heads-up precise — confirmed vs expected — is the point of the tracker.',
+  },
+  {
     date: 'October 12, 2026',
     title: 'Added the Obsession Sprite as upcoming (Thu Oct 15)',
     changes: [

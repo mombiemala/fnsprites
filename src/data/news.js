@@ -10,6 +10,17 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-10-15',
+    when: 'Oct 15, 2026',
+    tag: 'upcoming',
+    tentative: true,
+    title: '🍯 New Sprite Day Thu Oct 15 (v42.40) — Honey & Obsession',
+    body: 'Fortnitemares wave 2 drops Thursday Oct 15 with update v42.40 — likely the season’s last new Sprites (Override ends Oct 31, so ~2 weeks to collect). Downtime ~4 AM ET, back ~6 AM ET. Honey (launches a swarm of bees at enemies when you take damage) is confirmed in all six finishes; Obsession (a horror-movie crossover whose rumored “One Wish Willow” lets you wish for a Sprite in the overworld) has its base confirmed with five finishes expected-but-unconfirmed. If both get all six, the Season 4 collection reaches 157. A Hazbin Hotel skin collab (Charlie, Vaggie, Alastor) is widely expected around the same time but isn’t dated. We’ll flip them live on drop day and finalise abilities/rarities/finishes then.',
+    link: 'https://www.vice.com/en/article/new-fortnite-sprites-coming-in-the-october-15-update-full-list/',
+    source: 'Vice / fortnitenews (v42.40) / @FN_Assist',
+    official: false,
+  },
+  {
     ts: '2026-10-12',
     when: 'Oct 12, 2026',
     tag: 'event',

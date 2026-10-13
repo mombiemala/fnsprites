@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 13, 2026 — Firmed up Thursday's Oct 15 drop (Honey all-6 finishes, Obsession details)
+
+- **Changed** (`src/data/sprites.js`): Honey confirmed with all six finishes — its `variants` now lists Normal, Gold, Cheat
+  Master, Loot Hacker, Bounty Hunter & Trick-or-Treat (all `U`), so the date gate flips all six live together on Oct 15.
+  Obsession keeps `{ normal: U }` only — its five finishes are expected but **unconfirmed**, so we don't auto-assert them
+  (the drop-day watch adds any that actually appear). Obsession's rumored power noted: "One Wish Willow" → wish for a Sprite
+  in the overworld.
+- **Changed** (`src/data/incoming.js`, `src/data/news.js`): refreshed the heads-up + added a News entry — confirmed downtime
+  (~4 AM ET → back ~6 AM ET), these are likely the season's last Sprites (Override ends Oct 31, ~2 weeks to collect),
+  all-six-each would take Season 4 to 157, and the undated Hazbin Hotel skin collab (Charlie, Vaggie, Alastor).
+
+---
+
 ## October 12, 2026 — Obsession Sprite added as upcoming (Thu Oct 15, v42.40)
 
 - **Added** (`src/data/sprites.js`, `src/components/SpriteArt.jsx`, `src/data/incoming.js`): Thursday's Fortnitemares wave 2

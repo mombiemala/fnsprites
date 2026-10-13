@@ -43,7 +43,7 @@ export const INCOMING = [
     id: 'fortnitemares-wave2',
     emoji: '🎃',
     title: 'Fortnitemares wave 2 — Honey & Obsession Sprites (Oct 15)',
-    detail: 'Wave 2 of Fortnitemares drops Thursday Oct 15 with update v42.40: the Honey Sprite (a Design-a-Sprite winner — spawns a beehive that swarms whoever damages you) and the Obsession Sprite (a horror-movie crossover whose “One Wish Willow” helps you find & collect the Sprites you’re missing). A Hazbin Hotel collab is widely expected around the same time but isn’t confirmed. Epic hasn’t posted the full patch notes or downtime yet; we’ll flip both live the day they drop.',
+    detail: 'Wave 2 of Fortnitemares drops Thursday Oct 15 with update v42.40 (the last major update of the season — Override ends Oct 31, so ~2 weeks to collect). Downtime is ~4 AM ET, back ~6 AM ET. Two Sprites: Honey (a Design-a-Sprite winner — launches a swarm of bees at enemies when you take damage) confirmed in all six finishes, and Obsession (a horror-movie crossover whose “One Wish Willow” is rumored to let you wish for a Sprite in the overworld) — its base is confirmed, its five finishes expected but unconfirmed. If both get all six, the Season 4 collection hits 157. A Hazbin Hotel skin collab (Charlie, Vaggie, Alastor) is widely expected around the same time but isn’t dated. We’ll flip them live the day they drop.',
     dropsOn: '2026-10-15',
     confirmedDate: false,
     source: 'Vice · fortnitenews (v42.40) · The Click',
