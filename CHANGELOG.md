@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 14, 2026 — Fortnitemares hub: refreshed the leaked collab list
+
+- **Added** (`src/data/fortnitemares.js`): refreshed the collab list for the Oct 15 wave — Hazbin Hotel & Beetlejuice
+  (Epic-confirmed), Slender Man & Predator: Badlands (datamined), The Purge & a Halloween Horror Nights (HamiKuma) tie-in
+  (teased), plus the speculative "(?)" leaks (League of Legends, Metal Sonic, The Exorcist). Badged live/leak/rumor, each
+  noting it's a cosmetic skin — not a Sprite. Bumped the hub's `updated` date. (Only the Obsession Sprite is a Sprite this
+  wave; it's already in the roster.)
+
+---
+
 ## October 14, 2026 — Accuracy pass on Sprite finishes & descriptions
 
 - **Fixed** (`src/data/sprites.js`): Mega Man carried only `{ normal: R }` — it now has all six finishes (Normal, Gold, Cheat

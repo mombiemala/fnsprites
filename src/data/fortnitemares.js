@@ -10,8 +10,8 @@ export const FORTNITEMARES = {
   endEstimate: '2026-10-31',
   confirmed: true,
   live: true,
-  updated: '2026-10-01',
-  sourceUrl: 'https://www.vice.com/en/article/fortnitemares-2026-collabs-weapons-map-changes-sprites/',
+  updated: '2026-10-14',
+  sourceUrl: 'https://www.vice.com/en/article/fortnitemares-2026-collabs-october-15-update/',
 
   // Sprite-relevant first (this is a Sprite tracker), then collabs, then the wider event.
   sprites: [
@@ -22,13 +22,29 @@ export const FORTNITEMARES = {
     { title: 'Honey & Obsession Sprites', status: 'leak', source: 'Vice / The Click',
       detail: 'Two more Sprites are expected in a mid-event wave around Oct 15 — the Honey Sprite (a Design-a-Sprite winner) and a new Obsession Sprite. Not live yet.' },
   ],
+  // NOTE: these are cosmetic/skin crossovers, NOT Sprites (this app tracks Sprites —
+  // the only Sprite collab this wave is Obsession, in the roster). Kept here as a
+  // Fortnitemares heads-up. Status: live (in-game now) · leak (datamined/Epic-named,
+  // not in shop yet) · rumor (teased or single-source, unconfirmed).
   collabs: [
     { title: 'Five Nights at Freddy’s (FNAF)', status: 'live', source: 'Epic (trailer Sep 27)',
       detail: 'Live: Freddy Fazbear’s Pizzeria is a new POI, and the four animatronics (Freddy, Bonnie, Chica, Foxy) appear as bosses — beating them is one way to get the Vampire Sprite.' },
     { title: 'Ghostface (Scream)', status: 'live', source: 'The Click / Dexerto',
       detail: 'Ghostface content is in the event, including a Ghostface knife item in the Fortnitemares loot.' },
-    { title: 'Universal Halloween Horror Nights', status: 'rumor', source: 'Dexerto',
-      detail: 'A Halloween Horror Nights tie-in was among the rumored crossovers; unconfirmed.' },
+    { title: 'Hazbin Hotel', status: 'leak', source: 'Epic (event post) / Vice',
+      detail: 'Epic-confirmed for the event — Charlie, Vaggie & Alastor outfits expected in the Item Shop around/after the Oct 15 update. Skins, not a Sprite.' },
+    { title: 'Beetlejuice', status: 'leak', source: 'Epic (event post) / Vice',
+      detail: 'Epic-confirmed among the month’s Fortnitemares crossovers. A cosmetic skin collab, not a Sprite.' },
+    { title: 'Slender Man', status: 'leak', source: 'ShiinaBR / Vice (datamine)',
+      detail: 'Datamined and expected after the Oct 15 update; no Item Shop date confirmed yet. A skin collab, not a Sprite.' },
+    { title: 'Predator: Badlands', status: 'leak', source: 'ShiinaBR / Insider Gaming',
+      detail: 'Listed among the month’s Fortnitemares crossovers. Cosmetic collab, not a Sprite.' },
+    { title: 'The Purge', status: 'rumor', source: 'ShiinaBR / community',
+      detail: 'Teased/reported for the event; timing unconfirmed. Cosmetic collab.' },
+    { title: 'Halloween Horror Nights (HamiKuma)', status: 'rumor', source: 'ShiinaBR / Dexerto',
+      detail: 'A Universal Halloween Horror Nights tie-in (HamiKuma) is among the leaked crossovers; unconfirmed.' },
+    { title: 'More leaked, unconfirmed', status: 'rumor', source: 'ShiinaBR',
+      detail: 'Also floated by leakers with a “(?)” — League of Legends, Metal Sonic and The Exorcist, plus “more.” Treat as rumors until Epic confirms. (All skins; only the Obsession Sprite is a Sprite this wave.)' },
   ],
   content: [
     { title: 'Halloween Loot Hacks', status: 'live', source: 'Epic (v42.30)',

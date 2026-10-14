@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 14, 2026',
+    title: 'Fortnitemares hub: refreshed the leaked collab list',
+    changes: [
+      { tag: 'Added', text: 'Updated the Fortnitemares hub with the latest leaked/confirmed collabs reported for the Oct 15 wave: Hazbin Hotel & Beetlejuice (Epic-confirmed), Slender Man & Predator: Badlands (datamined), The Purge & a Halloween Horror Nights (HamiKuma) tie-in (teased), plus the speculative “(?)” ones (League of Legends, Metal Sonic, The Exorcist). Each is clearly badged live / leak / rumor. Heads-up: these are cosmetic skin crossovers — the only Sprite in this wave is Obsession (already in the roster).' },
+    ],
+    summary: 'Refreshed the Fortnitemares hub’s collab list with the latest Oct 15 leaks/confirmations (Hazbin Hotel, Beetlejuice, Slender Man, Predator, etc.) — noting these are skins, not Sprites.',
+    why: 'The hub is the right place for event/collab heads-up, and it was a couple weeks stale. Flagging that they’re skins (not Sprites) keeps the Sprite tracker’s scope clear while still surfacing the Fortnitemares news players are asking about.',
+  },
+  {
+    date: 'October 14, 2026',
     title: 'Accuracy pass on Sprite finishes & descriptions',
     changes: [
       { tag: 'Fixed', text: 'Mega Man was only showing its Normal finish — it now has all six finishes (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter, Trick-or-Treat) like the rest of the Override roster.' },
