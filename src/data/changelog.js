@@ -10,6 +10,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 14, 2026',
+    title: 'Accuracy pass on Sprite finishes & descriptions',
+    changes: [
+      { tag: 'Fixed', text: 'Mega Man was only showing its Normal finish — it now has all six finishes (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter, Trick-or-Treat) like the rest of the Override roster.' },
+      { tag: 'Changed', text: 'Cleaned up the ability descriptions across the current-season Sprites: they no longer hard-code “which finishes are live” (many said “all three/four finishes” or listed only Normal/Gold/Cheat Master/Loot Hacker, which went stale once Bounty Hunter and Trick-or-Treat rolled out roster-wide). The descriptions now cover the ability and release date; the finish grid on each Sprite is the single source of truth for which finishes exist.' },
+    ],
+    summary: 'Fixed Mega Man’s missing finishes and removed stale “which finishes are live” claims from Sprite descriptions, so finishes are consistent across the roster.',
+    why: 'Finish availability belongs in the variant grid, not baked into each ability’s text — hard-coding it made some Sprites read as having fewer finishes than they do (and contradicted the live Bounty Hunter / Trick-or-Treat finishes). Centralising it fixes the inconsistency and keeps it from going stale next rollout.',
+  },
+  {
     date: 'October 13, 2026',
     title: 'Firmed up Thursday’s Oct 15 drop (Honey all-6 finishes, Obsession details)',
     changes: [
