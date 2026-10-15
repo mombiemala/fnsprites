@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 15, 2026 — Added this season's Quack Sprites (with real art)
+
+- **Added** (`src/data/sprites.js`, `public/sprites/`): enabled the Override-season Quack finish on its five Sprites —
+  Jonesy, Adventure, Bush Ranger, Klombo and Spooky Dash (`quack: R` added to each) — with their real in-game art
+  (`jonesy_quack.webp`, `adventure_quack.webp`, `bushranger_quack.webp`, `klombo_quack.webp`, `phasedash_quack.webp`). The
+  roster previously only carried Quack on the four legacy elemental Sprites (Water/Earth/Fire/Zero Point), so these were
+  missing. Identified via the in-game collection (Fortnite.GG) and the official art the site owner provided.
+- **Changed** (`scripts/prerender.mjs`): reworked `quackPage()` to derive the Quack list straight from the roster and split
+  it into "this season's Quacks (Override)" and the earlier elemental mastery-milestone set, instead of hard-coding the four.
+  Updated the title/description/FAQ/ItemList and the Guides blurb. Nine Quack finishes total now.
+- **Why**: Quack isn't a one-season, four-Sprite finish — Override has its own five Quacks. Deriving the guide from the data
+  keeps it correct as more Quacks ship rather than freezing at an outdated count.
+
+---
+
 ## October 15, 2026 — Fix: Mega Man is base-only (reverted an over-eager finish fix)
 
 - **Fixed** (`src/data/sprites.js`): Mega Man's variant grid is back to `{ normal: R }`. The Oct 14 "accuracy pass" had

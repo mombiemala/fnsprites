@@ -1515,44 +1515,56 @@ function goldPage() {
 function quackPage() {
   const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
   const perk = THEME_MAP.quack?.bonus || ''
-  // Mastery-milestone thresholds (community-confirmed, cross-referenced across guides).
-  const QUACK = [
-    { id: 'water', count: 35 },
-    { id: 'earth', count: 40 },
-    { id: 'fire', count: 45 },
-    { id: 'zeropoint', count: 55 },
-  ].map((q) => ({ ...q, t: SPRITE_TYPES.find((t) => t.id === q.id) })).filter((q) => q.t)
-  const row = ({ t, count }) => `<a class="card" href="/sprite/${slug(t.name)}" title="Open ${esc(t.name)}" style="display:flex;align-items:center;gap:10px;padding:11px 14px;margin:0 0 8px;text-decoration:none">
+  // Documented C7 S3 "Runners" mastery milestones (community-confirmed). Newer
+  // (Override) Quacks are mastery/collection unlocks without a public threshold number.
+  const MILESTONES = { water: 35, earth: 40, fire: 45, zeropoint: 55 }
+  // Derive the Quack roster straight from the data so this never drifts as finishes
+  // are added. Current-season (Override) Quacks first, then the earlier elemental set.
+  const quackTypes = SPRITE_TYPES.filter((t) => 'quack' in t.variants)
+  const current = quackTypes.filter((t) => (t.gen || 'c7s3') === CURRENT_GEN).sort((a, b) => a.name.localeCompare(b.name))
+  const legacy = quackTypes.filter((t) => (t.gen || 'c7s3') !== CURRENT_GEN)
+    .map((t) => ({ t, count: MILESTONES[t.id] })).sort((a, b) => (a.count ?? 99) - (b.count ?? 99))
+  const total = quackTypes.length
+  const curNames = current.map((t) => t.name)
+  const nameList = (arr) => arr.length <= 1 ? (arr[0] || '') : `${arr.slice(0, -1).join(', ')} and ${arr[arr.length - 1]}`
+  const badge = (txt) => `<span style="color:#ffcf4d;background:#ffcf4d22;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;flex-shrink:0">${txt}</span>`
+  const row = (t, right) => `<a class="card" href="/sprite/${slug(t.name)}" title="Open ${esc(t.name)}" style="display:flex;align-items:center;gap:10px;padding:11px 14px;margin:0 0 8px;text-decoration:none">
       <span style="font-size:22px;flex-shrink:0">${esc(t.icon || '🦆')}</span>
       <span style="flex:1;min-width:0"><b style="color:#fff">Quack ${esc(t.name)}</b><span style="display:block;font-size:12px;color:var(--muted)">${esc(t.rarity)} · shares 50% XP with your other Sprites</span></span>
-      <span style="color:#ffcf4d;background:#ffcf4d22;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;flex-shrink:0">Master ${count}</span></a>`
+      ${right}</a>`
   const faqs = [
-    ['What are Quack Sprites in Fortnite?', `Quack is a special Sprite finish earned through Sprite Mastery — not pulled from chests. A Quack Sprite keeps its base ability and adds a bonus: ${perk} There are four, on Water, Earth, Fire and Zero Point.`],
-    ['How do you get the Quack Sprites?', `They’re mastery-milestone rewards. Master 35 Sprites for Quack Water, 40 for Quack Earth, 45 for Quack Fire, and 55 for Quack Zero Point — all free via the mastery track. “Mastering” a Sprite means leveling it to Lv 5 and extracting it. Full walkthrough in the ${L('/sprite-leveling', 'leveling & mastery guide')}.`],
-    ['Can you get Quack Sprites from chests?', `No. Unlike Gold or the older Gummy/Galaxy finishes, Quack can’t drop from a Sprite Chest, a Locator or a boss — the only way is reaching the mastery milestone. See how all finishes compare on the ${L('/sprite-finishes', 'finishes page')}.`],
-    ['What does the Quack finish do?', `Each Quack ${perk ? perk.charAt(0).toLowerCase() + perk.slice(1) : 'shares 50% of the XP it earns with every other Sprite in your match'} — so equipping one snowballs the rest of your collection and speeds up every future mastery milestone.`],
-    ['How many Quack Sprites are there?', `Four — Quack Water, Quack Earth, Quack Fire and Quack Zero Point. Track which ones you’ve mastered on the ${L('/', 'collection tracker')}.`],
+    ['What are Quack Sprites in Fortnite?', `Quack is a special Sprite finish earned through Sprite Mastery — not pulled from chests. A Quack Sprite keeps its base ability and adds a bonus: ${perk} There are ${total} in total: ${current.length} in the current Override season (${nameList(curNames)}) plus the four earlier elemental mastery-milestone Quacks (Water, Earth, Fire and Zero Point).`],
+    ['How do you get the Quack Sprites?', `Every Quack is a Sprite Mastery reward — you can’t pull them from chests. “Mastering” a Sprite means leveling it to Lv 5 and extracting it; reach enough masteries and the Quack unlocks for free. The earlier elemental Quacks had set milestones — master 35 Sprites for Quack Water, 40 for Earth, 45 for Fire and 55 for Zero Point. Full walkthrough in the ${L('/sprite-leveling', 'leveling & mastery guide')}.`],
+    ['Can you get Quack Sprites from chests?', `No. Unlike Gold or the older Gummy/Galaxy finishes, Quack can’t drop from a Sprite Chest, a Locator or a boss — the only way is through Sprite Mastery. See how all finishes compare on the ${L('/sprite-finishes', 'finishes page')}.`],
+    ['What does the Quack finish do?', `Each Quack ${perk ? perk.charAt(0).toLowerCase() + perk.slice(1) : 'shares 50% of the XP it earns with every other Sprite in your match'} — so equipping one snowballs the rest of your collection and speeds up every future mastery.`],
+    ['How many Quack Sprites are there?', `${total} so far — ${current.length} this season (Override) and four earlier elemental ones. Track which you’ve mastered on the ${L('/', 'collection tracker')}.`],
   ]
-  const desc = `How to get the Fortnite Quack Sprites — the four Mastery-milestone finishes (Water, Earth, Fire, Zero Point). Master 35/40/45/55 Sprites to unlock each; every Quack shares 50% of its XP with your other Sprites. Free & fan-made.`
+  const desc = `How to get the Fortnite Quack Sprites — the Sprite Mastery finishes. ${current.length} this season (${nameList(curNames)}) plus the four elemental mastery milestones (Water, Earth, Fire, Zero Point). Every Quack shares 50% of its XP with your other Sprites. Free & fan-made.`
+  const allItems = [...current.map((t) => t), ...legacy.map((x) => x.t)]
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', name: 'Quack Sprites (Fortnite)', url: SITE + '/quack-sprites', description: desc, dateModified: NEWS_TODAY },
-    { '@type': 'ItemList', name: 'Fortnite Quack Sprites', numberOfItems: QUACK.length,
-      itemListElement: QUACK.map(({ t }, i) => ({ '@type': 'ListItem', position: i + 1, name: `Quack ${t.name}`, url: SITE + `/sprite/${slug(t.name)}` })) },
+    { '@type': 'ItemList', name: 'Fortnite Quack Sprites', numberOfItems: allItems.length,
+      itemListElement: allItems.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: `Quack ${t.name}`, url: SITE + `/sprite/${slug(t.name)}` })) },
     { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a.replace(/<[^>]*>/g, '') } })) },
   ] }
-  return head({ title: `Quack Sprites (Fortnite) — How to Get All Four & Mastery Levels | FN Sprite Tracker`, desc, canonical: SITE + '/quack-sprites', jsonld, active: 'sprites', ogImage: `${SITE}/api/og?title=${encodeURIComponent('Quack Sprites')}&sub=${encodeURIComponent('All four & how to unlock them')}` }) + `
+  return head({ title: `Quack Sprites (Fortnite) — Every Quack & How to Get Them | FN Sprite Tracker`, desc, canonical: SITE + '/quack-sprites', jsonld, active: 'sprites', ogImage: `${SITE}/api/og?title=${encodeURIComponent('Quack Sprites')}&sub=${encodeURIComponent('Every Quack & how to unlock them')}` }) + `
 <div class="cols">
   <div class="main">
-    <h1>🦆 Fortnite Quack Sprites — how to get all four</h1>
-    <p class="lede" style="color:var(--muted);margin:6px 0 12px;font-size:14px;max-width:70ch">The <b style="color:#fff">Quack</b> finishes are the smartest Sprites to chase — free <b style="color:#fff">Mastery-milestone rewards</b> that each share <b style="color:#fff">50% of their XP with every other Sprite in your match</b>, snowballing the rest of your collection. You can’t pull them from chests; you earn them by mastering Sprites. Here are all four and exactly how to unlock each.</p>
+    <h1>🦆 Fortnite Quack Sprites — how to get every one</h1>
+    <p class="lede" style="color:var(--muted);margin:6px 0 12px;font-size:14px;max-width:70ch">The <b style="color:#fff">Quack</b> finishes are the smartest Sprites to chase — free <b style="color:#fff">Sprite Mastery rewards</b> that each share <b style="color:#fff">50% of their XP with every other Sprite in your match</b>, snowballing the rest of your collection. You can’t pull them from chests; you earn them by mastering Sprites. There are <b style="color:#fff">${total}</b> in all — ${current.length} this season and four earlier elemental ones.</p>
 
     <div class="card" style="padding:12px 14px;margin:0 0 14px"><p style="margin:0;font-size:12.5px;color:var(--muted);line-height:1.6">${perk ? `Quack perk: ${esc(perk)} ` : ''}New to mastery? Start with the ${L('/sprite-leveling', 'leveling &amp; mastery guide')} or the ${L('/sprite-finishes', 'finishes explainer')}.</p></div>
 
-    <h2 style="font-size:18px;color:#fff;margin:4px 0 8px">The four Quack Sprites &amp; their mastery levels</h2>
-    ${QUACK.map(row).join('')}
+    <h2 style="font-size:18px;color:#fff;margin:4px 0 8px">This season’s Quack Sprites (Override)</h2>
+    <p style="font-size:13.5px;line-height:1.6;margin:0 0 8px;color:var(--muted)">The current Chapter 7 Season 4 Quacks — unlocked through Sprite Mastery this season. Tap one to open its page.</p>
+    ${current.map((t) => row(t, badge('This season'))).join('')}
+
+    <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Earlier Quack Sprites &amp; their mastery milestones</h2>
+    <p style="font-size:13.5px;line-height:1.6;margin:0 0 8px;color:var(--muted)">The original elemental Quacks, earned at set mastery totals. Archived with the Runners generation — kept in your ${L('/sprite-garden', 'Sprite Garden')} if you unlocked them.</p>
+    ${legacy.map(({ t, count }) => row(t, badge(count ? `Master ${count}` : 'Mastery reward'))).join('')}
     <div class="card"><table>
       <tr><th>Master this many Sprites</th><th style="text-align:right">Reward</th></tr>
-      ${QUACK.map(({ t, count }) => `<tr><td>${count}</td><td class="v">Quack ${esc(t.name)}</td></tr>`).join('')}
+      ${legacy.map(({ t, count }) => `<tr><td>${count ?? '—'}</td><td class="v">Quack ${esc(t.name)}</td></tr>`).join('')}
     </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">It’s a running total of <i>mastered</i> Sprites across your whole collection — not one Sprite’s level.</p></div>
 
     <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">How to master a Sprite (the only way to earn Quack)</h2>
@@ -1564,13 +1576,13 @@ function quackPage() {
     <p style="font-size:14px;line-height:1.7;margin:0 0 10px">Grind on ${L('/events', 'Mastery Monday')} (every Monday, 9 AM ET, 24h) for <b>2× Sprite XP &amp; Dust</b> — the fastest way to rack up the masteries you need. Full detail in the ${L('/sprite-leveling', 'leveling &amp; mastery guide')}.</p>
 
     <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Why Quack is worth chasing</h2>
-    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">Because the reward compounds. The moment you equip your first Quack (Water, at 35 masteries), every match feeds <b>50% of its XP into your other Sprites too</b> — so the grind toward 40, 45 and 55 gets faster with each Quack you unlock. It’s the one finish that pays you back for chasing it.</p>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">Because the reward compounds. The moment you equip your first Quack, every match feeds <b>50% of its XP into your other Sprites too</b> — so every mastery you chase after that comes faster. It’s the one finish that pays you back for chasing it.</p>
 
     <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Quack Sprites — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
 
     <div class="card" style="padding:14px 16px;margin:16px 0 0"><p style="margin:0;font-size:13px;color:var(--muted);line-height:1.6">Track every Quack you’ve mastered on the ${L('/', 'collection tracker')}, compare every finish on the ${L('/sprite-finishes', 'finishes page')}, and see the full grind in the ${L('/sprite-leveling', 'leveling &amp; mastery guide')}.</p></div>
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Mastery thresholds are community-confirmed — Epic doesn’t publish them. Updated ${new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Mastery details are community-confirmed — Epic doesn’t publish them. Updated ${new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}.</p>
     <a class="bigcta" href="/">Track your Quack Sprites — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -2217,7 +2229,7 @@ const GUIDES = [
   ['/cheat-master-sprites', '😎', 'Cheat Master Sprites', 'Every Cheat Master finish — which are live, which are datamined, and the code that unlocks each.'],
   ['/how-to-get-cheat-master-sprites', '🧭', 'How to get Cheat Master Sprites', 'Step-by-step: redeem lobby codes, find Cheat Codes, and use Power Hours to unlock Cheat Master finishes.'],
   ['/gold-sprites', '🥇', 'Gold Sprites', 'Every Gold finish — which are obtainable now vs archived, by generation, with a link to each Sprite.'],
-  ['/quack-sprites', '🦆', 'Quack Sprites', 'How to get all four Quack finishes — the free Mastery-milestone rewards (35/40/45/55) that share 50% of their XP with your other Sprites.'],
+  ['/quack-sprites', '🦆', 'Quack Sprites', 'Every Quack finish and how to unlock it — this season’s Override Quacks plus the earlier elemental mastery milestones, all sharing 50% of their XP with your other Sprites.'],
   ['/sprite-garden', '🌱', 'Sprite Garden', 'What the Garden is, how to get in (island code), how it works, and what to expect.'],
   ['/sprite-dust', '🔷', 'Sprite Dust & Loot Hacks', 'How to earn Dust, how Loot Hacks customise your chest loot, costs, and a spend strategy.'],
   ['/events', '📅', 'Events schedule', 'Power Hours, New Sprite Day, Mastery Monday & finish hours — what they are and the usual times.'],

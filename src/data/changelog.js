@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 15, 2026',
+    title: 'Added this season’s Quack Sprites (with real art)',
+    changes: [
+      { tag: 'Added', text: 'Enabled the current Override-season Quack finish on its five Sprites — Jonesy, Adventure, Bush Ranger, Klombo and Spooky Dash — each with its real in-game art. The roster previously only had Quack on the four legacy elemental Sprites (Water, Earth, Fire, Zero Point), so these were missing entirely.' },
+      { tag: 'Changed', text: 'Reworked the /quack-sprites guide to cover every Quack: it now derives the list straight from the roster and splits it into “this season’s Quacks (Override)” and the earlier elemental mastery-milestone set (35/40/45/55), instead of hard-coding just the four. Nine Quack finishes total now.' },
+    ],
+    summary: 'Added the five current-season Quack Sprites (Jonesy, Adventure, Bush Ranger, Klombo, Spooky Dash) with real art, and reworked the Quack guide to cover all nine Quacks across both seasons.',
+    why: 'Quack isn’t a one-season, four-Sprite finish — Override has its own five Quacks, confirmed by the in-game collection (and the official art the site owner provided). Deriving the guide from the roster means it stays correct as more Quacks ship, rather than freezing at an outdated count.',
+  },
+  {
+    date: 'October 15, 2026',
     title: 'Fix: Mega Man is base-only (reverted an over-eager finish fix)',
     changes: [
       { tag: 'Fixed', text: 'Mega Man is back to just its Normal finish. An Oct 14 pass had given it all six Override finishes on the assumption that every Override Sprite carries the full set — but as a licensed Capcom collab, Mega Man shipped base-only (community guides note it has no alternate variants, and that a Loot Hacker finish exists for every Override Sprite except Mega Man). Removed the Gold/Cheat Master/Loot Hacker/Bounty Hunter it shouldn’t have shown.' },
