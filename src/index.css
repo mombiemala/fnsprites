@@ -249,12 +249,20 @@
     line-height: 1;
   }
 
-  /* Owned/unowned visual states are applied on the card wrapper */
+  /* Owned/unowned visual states are applied on the card wrapper.
+     Unowned art is gently muted (still colourful and recognisable) rather than
+     heavily greyed out, and lights up fully on hover/focus so people can enjoy
+     the art before they own it. */
   .sprite-locked .sprite-art {
-    filter: grayscale(0.82) brightness(0.62);
+    filter: grayscale(0.3) brightness(0.9);
+    transition: filter 0.18s ease;
+  }
+  .sprite-locked:hover .sprite-art,
+  .sprite-locked:focus-within .sprite-art {
+    filter: none;
   }
   .sprite-locked .glyph {
-    opacity: 0.6;
+    opacity: 0.82;
   }
 }
 

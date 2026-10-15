@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 15, 2026',
+    title: 'Unowned art is easier to see + correct name for the Obsession Sprite',
+    changes: [
+      { tag: 'Changed', text: 'Unowned Sprites are no longer heavily greyed out. The dimming is now a gentle mute (and the full-colour art lights up on hover/focus), so you can actually see and enjoy every Sprite’s art before you’ve collected it — while owned vs unowned stays clearly distinct.' },
+      { tag: 'Fixed', text: 'Renamed the “Obsession” Sprite to its real in-game name, One Wish Willow (the willow creature from the horror film “Obsession,” which is the crossover). Its ability wording now matches: call on the One Wish Willow to help you collect other Sprites. The movie name is kept in the description so it’s still easy to find.' },
+    ],
+    summary: 'Softened the heavy grey-out on unowned Sprites (with a hover-to-reveal) so the art is visible before you own it, and renamed the Obsession Sprite to its correct in-game name, One Wish Willow.',
+    why: 'The art is a big part of the collection’s appeal, and the old 82% grayscale buried it — a lighter mute keeps the owned/unowned signal without hiding what you’re chasing. And a tracker’s first job is correct names: the Sprite is called One Wish Willow in-game; “Obsession” is the film it crosses over with.',
+  },
+  {
+    date: 'October 15, 2026',
     title: 'Added this season’s Quack Sprites (with real art)',
     changes: [
       { tag: 'Added', text: 'Enabled the current Override-season Quack finish on its five Sprites — Jonesy, Adventure, Bush Ranger, Klombo and Spooky Dash — each with its real in-game art. The roster previously only had Quack on the four legacy elemental Sprites (Water, Earth, Fire, Zero Point), so these were missing entirely.' },

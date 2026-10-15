@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 15, 2026 — Unowned art easier to see + correct name for the Obsession Sprite
+
+- **Changed** (`src/index.css`): softened the unowned-Sprite treatment from `grayscale(0.82) brightness(0.62)` to
+  `grayscale(0.3) brightness(0.9)`, and added a hover/focus `filter: none` so the full-colour art reveals on interaction.
+  Owned vs unowned stays clearly distinct, but the art is visible (and enjoyable) before you collect it.
+- **Fixed** (`src/data/sprites.js` + `news.js`, `announcements.js`, `fortnitemares.js`): renamed the Sprite from "Obsession"
+  to its real in-game name **One Wish Willow** (the willow creature from the horror film "Obsession," which is the
+  crossover). Internal id stays `obsession` so the art files (`obsession_*.webp`) and data keep working; the sprite page
+  slug becomes `/sprite/one-wish-willow`. Ability wording updated to match, and "Obsession" is kept in the description for
+  search/clarity.
+- **Why**: the art is a big part of the appeal and the heavy grey-out buried it; a lighter mute keeps the owned/unowned
+  signal without hiding what you're chasing. And correct names are a tracker's first job — the Sprite is One Wish Willow;
+  "Obsession" is the film.
+
+---
+
 ## October 15, 2026 — Added this season's Quack Sprites (with real art)
 
 - **Added** (`src/data/sprites.js`, `public/sprites/`): enabled the Override-season Quack finish on its five Sprites —

@@ -12,7 +12,7 @@ import { THEME_MAP } from './themes.js'
 // `releaseDate` are effectively released at runtime.
 // The v42.20 update (Sep 17) went live with 3 new Sprites — Pond, Crash Bandicoot
 // and Blinky — each in Normal/Gold/Loot Hacker/Cheat Master (flipped released
-// here). Honey & Obsession went live Oct 15 (v42.40, Fortnitemares wave 2),
+// here). Honey & One Wish Willow (the “Obsession” crossover) went live Oct 15 (v42.40, Fortnitemares wave 2),
 // each with all six finishes. Still genuinely-unreleased/leaked: Meowscles,
 // Squibbly, Cube, Head Shot, the rest of the v42.20 wave (Morgana, Birthday,
 // Phase Dash), all `rumored` until Epic ships each. ("BodySlam" turned
@@ -157,8 +157,12 @@ export const SPRITE_TYPES = [
     // because the date-gate auto-release skips the Cheat Master theme (it carries
     // rumored:true), which would otherwise leave it at 5/6.
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
-  { id: 'obsession', name: 'Obsession', icon: '🔮', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4', releaseDate: '2026-10-15',
-    ability: 'Live since Oct 15 (v42.40). A Fortnitemares 2026 horror crossover (with the film “Obsession,” Blumhouse × Focus Features). Its “One Wish Willow” power lets you wish for a Sprite you’re missing in the overworld, to help finish your collection — Epic hasn’t published the exact trigger/cooldown values yet. Ships with all six finishes.',
+  // The in-game Sprite is named "One Wish Willow" (the willow creature from the
+  // horror film "Obsession"); "Obsession" is the crossover/movie, kept in the
+  // description for search + clarity. Internal id stays `obsession` so the art
+  // files (obsession_*.webp) and existing data keep working.
+  { id: 'obsession', name: 'One Wish Willow', icon: '🌳', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4', releaseDate: '2026-10-15',
+    ability: 'Live since Oct 15 (v42.40). The One Wish Willow Sprite — a Fortnitemares 2026 crossover with the horror film “Obsession” (Blumhouse × Focus Features). Its power: call on the One Wish Willow to help you collect other Sprites and fill out your collection (Epic hasn’t published the exact trigger/cooldown values yet). Ships with all six finishes.',
     // All six finishes confirmed by the Oct 15 datamine art drop. Marked R (same
     // reasoning as Honey above) so Cheat Master flips live with the rest.
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
