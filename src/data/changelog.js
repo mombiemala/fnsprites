@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 15, 2026',
+    title: 'New guide: a dedicated Quack Sprites explainer',
+    changes: [
+      { tag: 'Added', text: 'A new SEO page, /quack-sprites — “How to get the Quack Sprites.” It covers all four Quack finishes (Water, Earth, Fire, Zero Point), their exact Mastery milestones (master 35 / 40 / 45 / 55 Sprites), the two-step mastery loop (level to Lv 5, then extract), and why Quack is the smartest finish to chase (each shares 50% of its XP with your other Sprites). Links each Quack to its Sprite page, and is cross-linked from the Leveling & Mastery guide, the Finishes explainer, the What-are-Sprites intro, the Guides index, and the sitemap.' },
+    ],
+    summary: 'Added a dedicated /quack-sprites explainer — all four Quack finishes, their mastery milestones, and how to unlock them — fully cross-linked and in the sitemap.',
+    why: 'Quack is the one finish you can’t pull from a chest, so “how to get Quack Sprites” is a recurring question with its own search intent. A focused page answers it directly (and captures the query) better than the mastery section buried in the leveling guide — while linking back to that guide for the full grind.',
+  },
+  {
+    date: 'October 15, 2026',
     title: 'New Sprite Day is live — Honey & Obsession (with real in-game art)',
     changes: [
       { tag: 'Added', text: 'Honey and Obsession went live with update v42.40 (Fortnitemares wave 2) — both now flipped released in the tracker, each in all six finishes (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter, Trick-or-Treat). Obsession upgraded from base-only to all six: the Oct 15 datamine art confirmed the full finish set.' },

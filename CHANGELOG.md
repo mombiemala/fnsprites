@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 15, 2026 — New guide: a dedicated Quack Sprites explainer
+
+- **Added** (`scripts/prerender.mjs`): a new prerendered SEO page, `/quack-sprites` ("How to get the Quack Sprites").
+  `quackPage()` builder mirrors the existing finish-page pattern — Article + ItemList + FAQPage JSON-LD, `ctaCard()`/
+  `supportCard()` sidebar. Content: all four Quack finishes (Water, Earth, Fire, Zero Point), their Mastery milestones
+  (master 35 / 40 / 45 / 55 Sprites), the two-step mastery loop (level to Lv 5, then **extract**), and why Quack is the
+  smartest chase (each shares 50% of its XP with your other Sprites). Each Quack links to its Sprite page.
+- **Changed** (`scripts/prerender.mjs`): wired it in fully — `writeFileSync` in the prerender write block, a `sitemap()`
+  entry, a `GUIDES` tuple (so it appears on `/guides` and in that page's ItemList), and inbound cross-links from
+  `sprite-leveling`, `sprite-finishes`, and `what-are-sprites`.
+- **Why**: Quack is the one finish you can't pull from a chest, so "how to get Quack Sprites" is a recurring query with its
+  own search intent — a focused page serves it (and ranks for it) better than the mastery note buried in the leveling guide,
+  while still linking back to that guide for the full grind. No new images were needed: the `*_quack.png` art already ships.
+
+---
+
 ## October 15, 2026 — New Sprite Day is live: Honey & Obsession (with real in-game art)
 
 - **Added** (`src/data/sprites.js`): Honey and Obsession went live with update v42.40 (Fortnitemares wave 2), the season's
