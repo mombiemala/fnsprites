@@ -226,8 +226,12 @@ export const SPRITE_TYPES = [
     ability: 'Chapter 7 Season 4 “Override” Sprite — Overshield. Ability: grants bonus Overshield that scales up each level — extra damage you can soak before your health is touched.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: U } },
   { id: 'megaman', name: 'Mega Man', icon: '🔵', rarity: 'Rare', dropRate: null, released: true, gen: 'c7s4',
-    ability: 'Chapter 7 Season 4 “Override” Sprite — the Mega Man collab (Capcom), internal codename “ImprovedSlide” (his signature slide). Ability: cuts your friction when sliding and swimming, so you slide/glide farther — the distance grows as it levels.',
-    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: U } },
+    ability: 'Chapter 7 Season 4 “Override” Sprite — the Mega Man collab (Capcom), internal codename “ImprovedSlide” (his signature slide). Ability: cuts your friction when sliding and swimming, so you slide/glide farther — the distance grows as it levels. Base-only: as a licensed collab it shipped without the extra finishes (no Gold/Cheat Master/Loot Hacker/Bounty Hunter/Trick-or-Treat) that most Override Sprites have.',
+    // Mega Man is BASE-ONLY — a licensed Capcom collab that shipped without the
+    // Override finishes (community guides: "no alternate variants", and a Loot
+    // Hacker exists for every Override Sprite EXCEPT Mega Man). Do not give it the
+    // full finish set; add a finish only if Epic actually ships one for it.
+    variants: { normal: R } },
   { id: 'squibbly', name: 'Squibbly', icon: '🫧', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Unreleased Season 4 “Override” Sprite — Squibbly, which appears to support multiple special variants. Leaked ability: fishes up a Fishing Hole when you dive into water. Still unreleased, not yet obtainable; ability details are leak-only and rarity is TBC. (Krowe & FNBRIntel · The Click)',
     variants: { normal: U } },

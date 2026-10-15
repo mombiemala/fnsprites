@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 15, 2026',
+    title: 'Fix: Mega Man is base-only (reverted an over-eager finish fix)',
+    changes: [
+      { tag: 'Fixed', text: 'Mega Man is back to just its Normal finish. An Oct 14 pass had given it all six Override finishes on the assumption that every Override Sprite carries the full set — but as a licensed Capcom collab, Mega Man shipped base-only (community guides note it has no alternate variants, and that a Loot Hacker finish exists for every Override Sprite except Mega Man). Removed the Gold/Cheat Master/Loot Hacker/Bounty Hunter it shouldn’t have shown.' },
+    ],
+    summary: 'Reverted Mega Man to its Normal finish only — as a licensed collab it shipped base-only, not with the full Override finish set an earlier pass had assumed.',
+    why: 'Accuracy over consistency: “every Override Sprite has all six finishes” is a good default but not a rule — licensed crossovers like Mega Man can ship base-only. Showing finishes that don’t exist is worse than an incomplete grid, so the roster should reflect what’s actually obtainable and only add a finish if Epic ships one.',
+  },
+  {
+    date: 'October 15, 2026',
     title: 'New guide: a dedicated Quack Sprites explainer',
     changes: [
       { tag: 'Added', text: 'A new SEO page, /quack-sprites — “How to get the Quack Sprites.” It covers all four Quack finishes (Water, Earth, Fire, Zero Point), their exact Mastery milestones (master 35 / 40 / 45 / 55 Sprites), the two-step mastery loop (level to Lv 5, then extract), and why Quack is the smartest finish to chase (each shares 50% of its XP with your other Sprites). Links each Quack to its Sprite page, and is cross-linked from the Leveling & Mastery guide, the Finishes explainer, the What-are-Sprites intro, the Guides index, and the sitemap.' },

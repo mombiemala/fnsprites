@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 15, 2026 — Fix: Mega Man is base-only (reverted an over-eager finish fix)
+
+- **Fixed** (`src/data/sprites.js`): Mega Man's variant grid is back to `{ normal: R }`. The Oct 14 "accuracy pass" had
+  expanded it to all six Override finishes on the assumption that every Override Sprite carries the full set — but Mega Man,
+  a licensed Capcom collab, shipped base-only. Community Override guides state it has no alternate variants, and that a Loot
+  Hacker finish exists for every Override Sprite *except* Mega Man. Removed the Gold/Cheat Master/Loot Hacker/Bounty Hunter it
+  shouldn't have had; RELEASED_COUNT: 280 → 275.
+- **Why**: "Every Override Sprite has all six finishes" is a reasonable default, not a rule — licensed crossovers can ship
+  base-only. Showing finishes that don't exist is worse than an incomplete grid, so the roster reflects what's actually
+  obtainable and we add a finish only if Epic ships one.
+
+---
+
 ## October 15, 2026 — New guide: a dedicated Quack Sprites explainer
 
 - **Added** (`scripts/prerender.mjs`): a new prerendered SEO page, `/quack-sprites` ("How to get the Quack Sprites").
