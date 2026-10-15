@@ -22,6 +22,17 @@ export const NEWS = [
     official: false,
   },
   {
+    ts: '2026-10-15',
+    when: 'Oct 15, 2026',
+    tag: 'update',
+    title: '🎵 Free Yeat Jam Track — the “HeliMAn” quest',
+    body: 'A free Yeat × Fortnite Jam Track is up for grabs via a quick in-game quest (separate from the Yeat lobby codes). Head to the Yeat NPC at the Power Pylon just north of Reality’s Reign, accept the “Unreleased Music” quest, collect the 5 bells nearby, then return to Yeat to claim the “HeliMAn” Jam Track — it lands in your Locker, where you can equip it as Lobby Music. Not a Sprite, but a free unlock worth grabbing while it’s live. (Datamine/leak source — not an official Epic post.)',
+    link: 'https://x.com/FN_Assist',
+    source: '@FN_Assist (datamine)',
+    official: false,
+    tentative: true,
+  },
+  {
     ts: '2026-10-12',
     when: 'Oct 12, 2026',
     tag: 'event',
