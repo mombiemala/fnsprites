@@ -12,10 +12,10 @@ import { THEME_MAP } from './themes.js'
 // `releaseDate` are effectively released at runtime.
 // The v42.20 update (Sep 17) went live with 3 new Sprites — Pond, Crash Bandicoot
 // and Blinky — each in Normal/Gold/Loot Hacker/Cheat Master (flipped released
-// here). Still genuinely-unreleased/leaked: Honey, Dumpster, Meowscles,
+// here). Honey & Obsession went live Oct 15 (v42.40, Fortnitemares wave 2),
+// each with all six finishes. Still genuinely-unreleased/leaked: Meowscles,
 // Squibbly, Cube, Head Shot, the rest of the v42.20 wave (Morgana, Birthday,
-// Phase Dash) and the newly-leaked Vampire (a likely Fortnitemares Sprite),
-// all `rumored` until Epic ships each. ("BodySlam" turned
+// Phase Dash), all `rumored` until Epic ships each. ("BodySlam" turned
 // out to be the internal codename for Crash Bandicoot, not a separate Sprite —
 // its art/entry are folded into `crash`.) v42.20 also added a
 // third "Override" finish, Bounty Hunter, per-Sprite as `bountyhunter: U` and
@@ -151,15 +151,17 @@ export const SPRITE_TYPES = [
     ability: 'Design-a-Sprite winner (by Enorull) — Epic swapped Enorull’s original “Bullet” concept for their Onigiri Sprite. Live since Sep 3 (New Sprite Day, v42.10) as one of the first two contest winners, alongside X-Ray. Ability: applies Overdrive after you eat or drink a consumable — the duration extends with each level.',
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: U, trickortreat: U } },
   { id: 'honey', name: 'Honey', icon: '🍯', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4', releaseDate: '2026-10-15',
-    ability: 'Design-a-Sprite winner (by Conejito_sam): when an enemy damages you, bees are sent after them. Drops Oct 15 (v42.40, Fortnitemares wave 2). Confirmed to have all six finishes; rarity TBC until it’s live.',
-    // All six finishes confirmed. Marked R so they all flip live together when the
-    // Oct 15 date gate releases the type (they stay gated behind `released` until
-    // then). R — not U — because the date-gate auto-release skips the Cheat Master
-    // theme (it carries rumored:true), which would otherwise leave it at 5/6.
+    ability: 'Live since Oct 15 (v42.40, Fortnitemares wave 2). Design-a-Sprite winner (by Conejito_sam): when an enemy damages you, bees are sent after them — the effect grows stronger as it levels up. Ships with all six finishes.',
+    // All six finishes confirmed (official art shipped Oct 15). Marked R so they all
+    // flip live together when the Oct 15 date gate releases the type. R — not U —
+    // because the date-gate auto-release skips the Cheat Master theme (it carries
+    // rumored:true), which would otherwise leave it at 5/6.
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
   { id: 'obsession', name: 'Obsession', icon: '🔮', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4', releaseDate: '2026-10-15',
-    ability: 'A Fortnitemares 2026 horror-movie crossover, dropping Oct 15 (v42.40). Rumored ability: its “One Wish Willow” lets you wish for a Sprite in the overworld (to help finish your collection) — Epic hasn’t fully detailed the power yet, so it may change at launch. Only the base Sprite is confirmed; the five finishes (Gold, Cheat Master, Loot Hacker, Bounty Hunter, Trick-or-Treat) are expected but UNCONFIRMED — we’ll add them if/when they drop. Rarity TBC.',
-    variants: { normal: U } },
+    ability: 'Live since Oct 15 (v42.40). A Fortnitemares 2026 horror crossover (with the film “Obsession,” Blumhouse × Focus Features). Its “One Wish Willow” power lets you wish for a Sprite you’re missing in the overworld, to help finish your collection — Epic hasn’t published the exact trigger/cooldown values yet. Ships with all six finishes.',
+    // All six finishes confirmed by the Oct 15 datamine art drop. Marked R (same
+    // reasoning as Honey above) so Cheat Master flips live with the rest.
+    variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },
   { id: 'bullet', name: 'Bullet', icon: '🔫', rarity: 'Rare', dropRate: null, released: false, rumored: true, gen: 'c7s4',
     ability: 'Design-a-Sprite winner (by Enorull): Ammo Boxes grant slightly more ammunition. Abilities as designed — Epic may tweak; rarity TBC. Arrives in a mid-season Override update.',
     variants: { normal: U } },

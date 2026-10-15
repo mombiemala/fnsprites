@@ -780,7 +780,7 @@ const NEWS_TODAY = new Date().toISOString().slice(0, 10)
 // it's always fresh). Only genuinely daily pages (home, codes, news, events,
 // fortnitemares) use NEWS_TODAY; everything else uses this date, bumped by hand
 // when the page templates / evergreen content actually change.
-const SITE_REV = '2026-10-11'
+const SITE_REV = '2026-10-15'
 const newsLive = (n) => {
   if (!n.start && !n.end) return false
   if (n.start && NEWS_TODAY < n.start) return false

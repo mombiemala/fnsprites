@@ -11,6 +11,28 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 15, 2026 — New Sprite Day is live: Honey & Obsession (with real in-game art)
+
+- **Added** (`src/data/sprites.js`): Honey and Obsession went live with update v42.40 (Fortnitemares wave 2), the season's
+  last new Sprites. Both are now released, each in all six finishes (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter,
+  Trick-or-Treat). Obsession was upgraded from `{ normal: U }` to all six finishes (marked `R`, same reasoning as Honey — the
+  date-gate auto-release skips `rumored` themes like Cheat Master, so the finishes are set explicitly). RELEASED_COUNT: 280.
+- **Added** (`public/sprites/`): shipped the real official in-game art for all 12 new tiles — `honey_<finish>.webp` and
+  `obsession_<finish>.webp` — replacing the vector placeholders (WinnerE datamine codename = Honey, CargoLying = Obsession).
+- **Changed** (`src/data/sprites.js`): finalised abilities. Honey (Design-a-Sprite winner by Conejito_sam) sends a swarm of
+  bees after any enemy who damages you, growing stronger as it levels. Obsession is a Fortnitemares horror crossover (the
+  film "Obsession," Blumhouse × Focus Features); its "One Wish Willow" power lets you wish for a Sprite you're missing in the
+  overworld (Epic hasn't published exact trigger/cooldown values).
+- **Changed** (`src/data/news.js`, `src/data/announcements.js`, `src/data/fortnitemares.js`, `src/data/incoming.js`): flipped
+  the site to the live drop — News "New Sprite Day is LIVE" entry (tag `sprites`), a dismissible announcement banner, moved the
+  Fortnitemares hub's Honey/Obsession item to `live`, removed the now-redundant Oct 15 heads-up from the "coming up" feed, and
+  re-pointed the next Loot Hack rotation to ~Oct 22.
+- **Why**: Drop day is when the tracker has to be exactly right. The official art and the datamine's full finish set resolved
+  the two things we'd hedged on in the run-up — real art vs placeholder, and whether Obsession got all six finishes — so both
+  could ship as confirmed rather than "expected."
+
+---
+
 ## October 14, 2026 — Fortnitemares hub: refreshed the leaked collab list
 
 - **Added** (`src/data/fortnitemares.js`): refreshed the collab list for the Oct 15 wave — Hazbin Hotel & Beetlejuice

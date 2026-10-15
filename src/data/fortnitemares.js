@@ -10,7 +10,7 @@ export const FORTNITEMARES = {
   endEstimate: '2026-10-31',
   confirmed: true,
   live: true,
-  updated: '2026-10-14',
+  updated: '2026-10-15',
   sourceUrl: 'https://www.vice.com/en/article/fortnitemares-2026-collabs-october-15-update/',
 
   // Sprite-relevant first (this is a Sprite tracker), then collabs, then the wider event.
@@ -19,8 +19,8 @@ export const FORTNITEMARES = {
       detail: 'Vampire (heal when you damage enemies), Spooky Dash (Mythic — dash charges that phase through objects), The Deer (99 Nights in the Forest collab — stronger melee) and Dumpster Dive (foraged food heals more). Full powers, finishes and where to farm each are in the Fortnitemares Sprite farming guide.' },
     { title: 'Trick-or-Treat finish — drops Oct 8', status: 'leak', source: 'Sprite Checklist / The Click',
       detail: 'The Halloween “Trick-or-Treat” recolour (24 Sprites) is datamined for Oct 8 — not generally obtainable yet. (The Crown’s Trick-or-Treat is reachable earlier only via the Crown Victory-Royale chain, i.e. winning with the Bounty Hunter Crown — a niche progression unlock, not the general drop.) It’s a cosmetic finish that keeps each Sprite’s base ability.' },
-    { title: 'Honey & Obsession Sprites', status: 'leak', source: 'Vice / The Click',
-      detail: 'Two more Sprites are expected in a mid-event wave around Oct 15 — the Honey Sprite (a Design-a-Sprite winner) and a new Obsession Sprite. Not live yet.' },
+    { title: 'Honey & Obsession Sprites — live Oct 15', status: 'live', source: 'Epic (v42.40) / Vice',
+      detail: 'The mid-event wave landed Oct 15 (v42.40): Honey (Design-a-Sprite winner — sends bees after enemies who damage you) and Obsession (a horror-movie crossover whose “One Wish Willow” lets you wish for a Sprite you’re missing). Both shipped with all six finishes. These are the season’s last new Sprites.' },
   ],
   // NOTE: these are cosmetic/skin crossovers, NOT Sprites (this app tracks Sprites —
   // the only Sprite collab this wave is Obsession, in the roster). Kept here as a

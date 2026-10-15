@@ -19,6 +19,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'new-sprite-day-honey-obsession-2026-10-15',
+    emoji: '🍯',
+    message: 'New Sprite Day is LIVE (v42.40, Oct 15) — Honey & Obsession dropped, each in all six finishes (real in-game art now on their cards). Honey sends a swarm of bees after any enemy who damages you; Obsession is a Fortnitemares horror crossover whose “One Wish Willow” lets you wish for a Sprite you’re missing. These are the season’s last new Sprites — Override ends Oct 31, so ~2 weeks to collect them.',
+    link: '/?view=news',
+    linkLabel: 'What dropped',
+    start: '2026-10-15',
+    end: '2026-10-18',
+    source: 'Epic (v42.40) / Vice',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'mastery-monday-2026-10-12',
     eventId: 'mastery-monday-2026-10-12', // de-dupes against the matching SPRITE_EVENTS entry in the top card
     emoji: '⭐',

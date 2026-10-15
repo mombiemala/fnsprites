@@ -10,6 +10,18 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 15, 2026',
+    title: 'New Sprite Day is live — Honey & Obsession (with real in-game art)',
+    changes: [
+      { tag: 'Added', text: 'Honey and Obsession went live with update v42.40 (Fortnitemares wave 2) — both now flipped released in the tracker, each in all six finishes (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter, Trick-or-Treat). Obsession upgraded from base-only to all six: the Oct 15 datamine art confirmed the full finish set.' },
+      { tag: 'Added', text: 'Shipped the real official in-game art for all 12 new tiles (Honey ×6, Obsession ×6), replacing the vector placeholders.' },
+      { tag: 'Changed', text: 'Finalised abilities: Honey (Design-a-Sprite winner) sends a swarm of bees after any enemy who damages you, growing stronger as it levels; Obsession is a Fortnitemares horror crossover (the film “Obsession,” Blumhouse × Focus Features) whose “One Wish Willow” lets you wish for a Sprite you’re missing in the overworld (Epic hasn’t published exact trigger/cooldown values). These are the season’s last new Sprites.' },
+      { tag: 'Changed', text: 'Flipped the site to match the live drop: News “New Sprite Day is LIVE” entry, a dismissible announcement banner, the Fortnitemares hub Honey/Obsession item moved to live, and the now-redundant Oct 15 heads-up removed from the “coming up” feed (next Loot Hack rotation re-pointed to ~Oct 22).' },
+    ],
+    summary: 'Honey & Obsession are live (v42.40) — both in all six finishes with their real in-game art, finalised abilities, and the News/banner/hub all flipped to the live drop.',
+    why: 'Drop day is the moment the tracker has to be exactly right. The official art and the datamine’s full finish set resolved the two things we’d been hedging on (real art vs placeholder, and whether Obsession got all six finishes), so we could ship both as confirmed rather than “expected.”',
+  },
+  {
     date: 'October 14, 2026',
     title: 'Fortnitemares hub: refreshed the leaked collab list',
     changes: [
