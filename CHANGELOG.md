@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 15, 2026 — New Jam Track (lobby music) codes + a category for them
+
+- **Added** (`src/data/codes.js`): three Yeat Jam Track lobby codes — `B1GBODYSW3RVE`, `LUHLEAKYZ`, `PR1VAT3J3T` — confirmed
+  working in-game by the site owner. They activate ("LOBBY HACK ACTIVATED!") but nothing appears on screen: the reward is a
+  Jam Track that lands in your Locker, equipped as Lobby Music.
+- **Added** (`src/data/codes.js`): a new `music` reward category ("Jam Tracks (lobby music)") in `CODE_CATEGORIES`, so music
+  codes group apart from Sprites/Dust/Gizmos/screens on both the Lobby Hacks tab and the `/codes` page (both iterate
+  `CODE_CATEGORIES`, so the new group renders automatically). Its blurb explains the "nothing pops on redeem" behaviour.
+- **Why**: music codes look like they failed because the reward is a Locker Jam Track, not an on-screen item — a dedicated
+  category plus that note prevents confusion. Added on the owner's in-game confirmation (no outlet has corroborated them yet),
+  which our rules accept in place of a second source.
+
+---
+
 ## October 15, 2026 — Unowned art easier to see + correct name for the Obsession Sprite
 
 - **Changed** (`src/index.css`): softened the unowned-Sprite treatment from `grayscale(0.82) brightness(0.62)` to

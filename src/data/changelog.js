@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 15, 2026',
+    title: 'New Jam Track (lobby music) codes + a category for them',
+    changes: [
+      { tag: 'Added', text: 'Three Yeat Jam Track lobby codes — B1GBODYSW3RVE, LUHLEAKYZ and PR1VAT3J3T — confirmed working in-game. Heads-up: these activate (“LOBBY HACK ACTIVATED!”) but nothing pops on screen — the reward is a Jam Track that lands in your Locker, which you equip as Lobby Music.' },
+      { tag: 'Added', text: 'A new “Jam Tracks (lobby music)” reward category on the Lobby Hacks tab and /codes page, so music codes are grouped apart from Sprites, Dust, Gizmos and screens — with a note explaining why nothing appears when you redeem one.' },
+    ],
+    summary: 'Added three Yeat Jam Track lobby-music codes (confirmed in-game) and a dedicated “Jam Tracks” category, with a note that these unlock lobby music in your Locker rather than popping on screen.',
+    why: 'Music codes behave differently from the rest — they look like they did nothing because the reward is a Locker Jam Track, not an on-screen item. A dedicated category plus that explanation stops people thinking the code failed. Added on the owner’s in-game confirmation since no outlet has corroborated them yet.',
+  },
+  {
+    date: 'October 15, 2026',
     title: 'Unowned art is easier to see + correct name for the Obsession Sprite',
     changes: [
       { tag: 'Changed', text: 'Unowned Sprites are no longer heavily greyed out. The dimming is now a gentle mute (and the full-colour art lights up on hover/focus), so you can actually see and enjoy every Sprite’s art before you’ve collected it — while owned vs unowned stays clearly distinct.' },

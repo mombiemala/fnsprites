@@ -30,6 +30,7 @@ export const CODE_CATEGORIES = [
   { key: 'boosts', icon: '⚡', label: 'Boosts & XP', blurb: 'Consumables, extractors and XP.' },
   { key: 'dust', icon: '🔷', label: 'Sprite Dust', blurb: 'Instant Sprite Dust — summon Sprites and fuel Loot Hacks.' },
   { key: 'screens', icon: '🖼️', label: 'Loading screens', blurb: 'Cosmetic lobby unlocks.' },
+  { key: 'music', icon: '🎵', label: 'Jam Tracks (lobby music)', blurb: 'Music unlocks — the code activates, but nothing pops on screen: the Jam Track lands in your Locker, equip it under Lobby Music.' },
 ]
 
 export const CODES_INTRO = {
@@ -125,4 +126,13 @@ export const LOBBY_CODES = [
   { code: 'REACHYOURIMPOSSIBLE', unlocks: 'Block Party loading screen', type: 'cosmetic', category: 'screens', status: 'working', source: 'community list', added: '2026-08-21' },
   { code: 'SAYH12WR1X3L', unlocks: 'Wrixel’s Hero Portrait Spray', type: 'cosmetic', category: 'screens', status: 'working', source: 'Fortnite.GG', added: '2026-09-17' },
   { code: 'BEMOREALIEN', unlocks: '“Override Ready” loading screen', type: 'cosmetic', category: 'screens', status: 'regional', region: 'Alienware', source: 'GamesRadar' },
+
+  // --- 🎵 Jam Tracks (lobby music) ---
+  // A Yeat Jam Track promo. These activate ("LOBBY HACK ACTIVATED!") but nothing
+  // appears on screen — the reward is a Jam Track that lands in your Locker, equip
+  // it under Lobby Music. Confirmed working in-game by the site owner (reward type
+  // inferred from the Yeat promo + the track names the codes spell out).
+  { code: 'B1GBODYSW3RVE', unlocks: 'Yeat Jam Track — lobby music (equips in your Locker; nothing loads on redeem). Appears to unlock “Big Body Swerve.”', type: 'cosmetic', category: 'music', status: 'working', added: '2026-10-15', source: 'User-confirmed in-game (“LOBBY HACK ACTIVATED!”) · @FORTLYFE' },
+  { code: 'LUHLEAKYZ', unlocks: 'Yeat Jam Track — lobby music (equips in your Locker; nothing loads on redeem).', type: 'cosmetic', category: 'music', status: 'working', added: '2026-10-15', source: 'User-confirmed in-game (“LOBBY HACK ACTIVATED!”) · @FORTLYFE' },
+  { code: 'PR1VAT3J3T', unlocks: 'Yeat Jam Track — lobby music (equips in your Locker; nothing loads on redeem). Appears to unlock “Private Jet.”', type: 'cosmetic', category: 'music', status: 'working', added: '2026-10-15', source: 'User-confirmed in-game (“LOBBY HACK ACTIVATED!”) · @FORTLYFE' },
 ]
