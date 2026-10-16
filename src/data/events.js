@@ -26,6 +26,30 @@
 
 export const SPRITE_EVENTS = [
   {
+    id: 'trickortreat-hours-2026-10-17-r1',
+    emoji: '🎃',
+    name: 'Trick-or-Treat Power Hours (Round 1)',
+    perk: 'Trick-or-Treat-finish Sprites are rate-boosted — the best window to farm the spooky recolours you’re missing. Everyone drops in with an (enhanced) Freddy’s Nightmare, and 1-Up Tokens & Portable Extractors can drop from chests. 2-hour window (end time estimated).',
+    startsUtc: '2026-10-17T18:00:00Z', // 2 PM ET Sat Oct 17 (= 6 PM UTC)
+    endsUtc: '2026-10-17T20:00:00Z', // 4 PM ET (2-hour window)
+    confirmed: true,
+    boostedThemes: ['trickortreat'],
+    source: 'The Click / fortnitenews (Oct 17 Power Hours)',
+    sourceUrl: 'https://www.theclick.gg/fortnite-power-hour-october-17-2026/',
+  },
+  {
+    id: 'trickortreat-hours-2026-10-17-r2',
+    emoji: '🎃',
+    name: 'Trick-or-Treat Power Hours (Round 2)',
+    perk: 'Trick-or-Treat-finish Sprites are rate-boosted — the best window to farm the spooky recolours you’re missing. Everyone drops in with an (enhanced) Freddy’s Nightmare, and 1-Up Tokens & Portable Extractors can drop from chests. 2-hour window (end time estimated).',
+    startsUtc: '2026-10-18T01:00:00Z', // 9 PM ET Sat Oct 17 (= 1 AM UTC Sun Oct 18)
+    endsUtc: '2026-10-18T03:00:00Z', // 11 PM ET (2-hour window)
+    confirmed: true,
+    boostedThemes: ['trickortreat'],
+    source: 'The Click / fortnitenews (Oct 17 Power Hours)',
+    sourceUrl: 'https://www.theclick.gg/fortnite-power-hour-october-17-2026/',
+  },
+  {
     id: 'mastery-monday-2026-10-12',
     emoji: '⭐',
     name: 'Mastery Monday',

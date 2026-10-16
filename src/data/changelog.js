@@ -11,12 +11,14 @@
 export const CHANGELOG = [
   {
     date: 'October 16, 2026',
-    title: 'Added the Thrills & Chills Fortnitemares event',
+    title: 'Saturday Power Hours, Thrills & Chills, and the Treasure Chest teaser',
     changes: [
-      { tag: 'Added', text: 'A News entry and a Fortnitemares hub item for Epic’s official “Thrills & Chills” promo — squad up and earn free rewards for every horror Island you survive together (a teddy-bear outfit, ghostly hands, a crowbar pickaxe, a spray and a loading screen). Flagged as cosmetics, not Sprites, and the undetailed unlock thresholds noted.' },
+      { tag: 'Added', text: 'Saturday’s Trick-or-Treat Power Hours (Oct 17) — two 2-hour windows (2–4 PM & 9–11 PM ET) that boost Trick-or-Treat-finish Sprite spawns, with an enhanced Freddy’s Nightmare for everyone. Added to the events schedule (so the home card counts it down and the “Farm my missing Trick-or-Treat Sprites” shortcut appears), with a News entry and a dismissible banner. End times are estimates — Epic didn’t publish durations.' },
+      { tag: 'Added', text: 'A News entry and a Fortnitemares hub item for Epic’s official “Thrills & Chills” promo — squad up and earn free rewards for every horror Island you survive together (a teddy-bear outfit, ghostly hands, a crowbar pickaxe, a spray and a loading screen). Flagged as cosmetics, not Sprites.' },
+      { tag: 'Added', text: 'A News heads-up (tagged Upcoming, Tentative) for a datamined giant Treasure Chest teaser that “hacks” your in-match UI — minimap, Health/Shield bars, the Players/Storm/Elims widget and vehicle health — like the Unstable mini-event. No date; flagged as a leak (@FN_Assist), likely tied to the season finale/next reveal, not a Sprite.' },
     ],
-    summary: 'Added Epic’s official Thrills & Chills party event (free Fortnitemares cosmetics for surviving horror Islands) to the News feed and the Fortnitemares hub, clearly marked as cosmetics rather than Sprites.',
-    why: 'It’s an official, current Fortnitemares reward event players are asking about, so it belongs in the Fortnitemares hub we maintain — while keeping the “cosmetics, not Sprites” line clear so the tracker’s scope stays obvious.',
+    summary: 'Added Saturday’s Trick-or-Treat Power Hours (events card + News + banner, with the finish-farm shortcut), Epic’s official Thrills & Chills party event, and a tentative heads-up for the datamined Treasure Chest UI teaser.',
+    why: 'A dated, sourced Power Hours is core Sprite-farming info — it belongs in the events engine so the countdown and finish-farm shortcut light up automatically. The official Fortnitemares event and the credible datamine teaser earn flagged heads-ups too, kept clearly scoped (cosmetics / leak, not Sprites).',
   },
   {
     date: 'October 15, 2026',

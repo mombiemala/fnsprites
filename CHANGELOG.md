@@ -11,13 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## October 16, 2026 — Added the Thrills & Chills Fortnitemares event
+## October 16, 2026 — Saturday Power Hours, Thrills & Chills, and the Treasure Chest teaser
 
+- **Added** (`src/data/events.js`, `src/data/news.js`, `src/data/announcements.js`): Saturday's **Trick-or-Treat Power Hours**
+  (Oct 17) — two 2-hour rounds (18:00–20:00Z and 01:00–03:00Z Sun) with `boostedThemes: ['trickortreat']` so the home card's
+  "Farm my missing Trick-or-Treat Sprites" shortcut appears, plus a News entry and a dismissible banner. `confirmed: true`
+  (The Click / fortnitenews); end times estimated (Epic didn't publish durations).
 - **Added** (`src/data/news.js`, `src/data/fortnitemares.js`): a News entry (tag `event`, official) and a Fortnitemares hub
   `content` item for Epic's official "Thrills & Chills" promo — squad up and earn free rewards for every horror Island you
   survive together (teddy-bear outfit, ghostly hands, crowbar pickaxe, spray, loading screen). Bumped the hub's `updated`
   date. Flagged as cosmetics (not Sprites); per-Island unlock thresholds weren't detailed in the announcement.
-- **Why**: an official, current Fortnitemares reward event belongs in the hub we maintain, kept clearly scoped as cosmetics.
+- **Added** (`src/data/news.js`): a News heads-up (tag `upcoming`, `tentative`) for a datamined giant Treasure Chest teaser
+  that "hacks" the in-match UI — minimap, Health/Shield bars & icons, the Players/Storm/Elims widget and vehicle health —
+  like the Unstable mini-event. No date; flagged as a leak (`@FN_Assist`), likely tied to the season finale/next reveal, not
+  a Sprite. (It carries no confirmed date, so it goes in News rather than the dated "coming up" feed.)
+- **Why**: official Fortnitemares reward events belong in the hub we maintain, and a credible datamine teaser earns a flagged
+  heads-up — both kept clearly scoped (cosmetics / leak, not Sprites).
 
 ---
 

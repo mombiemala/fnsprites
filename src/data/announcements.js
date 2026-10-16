@@ -19,6 +19,19 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'trickortreat-hours-2026-10-17',
+    eventId: 'trickortreat-hours-2026-10-17', // de-dupes against the matching SPRITE_EVENTS rounds in the top card
+    emoji: '🎃',
+    message: 'Trick-or-Treat Power Hours (Sat Oct 17) — Trick-or-Treat-finish Sprites are rate-boosted in two 2-hour windows: 2–4 PM & 9–11 PM ET. Everyone drops in with an enhanced Freddy’s Nightmare, with 1-Up Tokens & Portable Extractors in chests. The best time to farm the spooky recolours you’re missing.',
+    link: '/?view=news',
+    linkLabel: 'Event details',
+    start: '2026-10-16',
+    end: '2026-10-18',
+    source: 'The Click / fortnitenews',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'new-sprite-day-honey-obsession-2026-10-15',
     emoji: '🍯',
     message: 'New Sprite Day is LIVE (v42.40, Oct 15) — Honey & One Wish Willow dropped, each in all six finishes (real in-game art now on their cards). Honey sends a swarm of bees after any enemy who damages you; One Wish Willow (the Fortnitemares crossover from the film “Obsession”) helps you collect other Sprites. These are the season’s last new Sprites — Override ends Oct 31, so ~2 weeks to collect them.',
