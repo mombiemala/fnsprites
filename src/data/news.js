@@ -22,6 +22,16 @@ export const NEWS = [
     official: false,
   },
   {
+    ts: '2026-10-16',
+    when: 'Oct 16, 2026',
+    tag: 'event',
+    title: '🧸 Thrills & Chills — free rewards for surviving horror Islands',
+    body: 'Epic’s running a Fortnitemares “Thrills & Chills” promo: squad up with friends in a party and earn free rewards for every horror Island you survive together. The cosmetics shown in the announcement include a stitched teddy-bear outfit, ghostly reaching hands, a crowbar pickaxe, and a spooky spray + loading screen. These are cosmetics (not Sprites), but a free grab for playing the event with a squad. Official Epic post — exact per-Island unlock thresholds weren’t detailed.',
+    link: 'https://www.fortnite.com/news',
+    source: 'Epic (Fortnite social)',
+    official: true,
+  },
+  {
     ts: '2026-10-15',
     when: 'Oct 15, 2026',
     tag: 'update',

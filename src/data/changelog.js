@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 16, 2026',
+    title: 'Added the Thrills & Chills Fortnitemares event',
+    changes: [
+      { tag: 'Added', text: 'A News entry and a Fortnitemares hub item for Epic’s official “Thrills & Chills” promo — squad up and earn free rewards for every horror Island you survive together (a teddy-bear outfit, ghostly hands, a crowbar pickaxe, a spray and a loading screen). Flagged as cosmetics, not Sprites, and the undetailed unlock thresholds noted.' },
+    ],
+    summary: 'Added Epic’s official Thrills & Chills party event (free Fortnitemares cosmetics for surviving horror Islands) to the News feed and the Fortnitemares hub, clearly marked as cosmetics rather than Sprites.',
+    why: 'It’s an official, current Fortnitemares reward event players are asking about, so it belongs in the Fortnitemares hub we maintain — while keeping the “cosmetics, not Sprites” line clear so the tracker’s scope stays obvious.',
+  },
+  {
     date: 'October 15, 2026',
     title: 'New Jam Track (lobby music) codes + a category for them',
     changes: [

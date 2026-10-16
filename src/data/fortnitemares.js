@@ -10,7 +10,7 @@ export const FORTNITEMARES = {
   endEstimate: '2026-10-31',
   confirmed: true,
   live: true,
-  updated: '2026-10-15',
+  updated: '2026-10-16',
   sourceUrl: 'https://www.vice.com/en/article/fortnitemares-2026-collabs-october-15-update/',
 
   // Sprite-relevant first (this is a Sprite tracker), then collabs, then the wider event.
@@ -47,6 +47,8 @@ export const FORTNITEMARES = {
       detail: 'Also floated by leakers with a “(?)” — League of Legends, Metal Sonic and The Exorcist, plus “more.” Treat as rumors until Epic confirms. (All skins; only One Wish Willow — the “Obsession” crossover — is a Sprite this wave.)' },
   ],
   content: [
+    { title: 'Thrills & Chills — free party rewards', status: 'live', source: 'Epic (Fortnite social)',
+      detail: 'Squad up with friends and survive themed horror Islands together to earn free “Thrills & Chills” Fortnitemares cosmetics — the announcement shows a stitched teddy-bear outfit, ghostly reaching hands, a crowbar pickaxe, plus a spray and loading screen. Cosmetics, not Sprites, but free for playing the event with a squad.' },
     { title: 'Halloween Loot Hacks', status: 'live', source: 'Epic (v42.30)',
       detail: 'The Loot Hacks pool refreshed with Fortnitemares items — the Pumpkin Launcher and Slap Candy Corn joined the Infantry Rifle, LMG and Last Call.' },
     { title: 'Map shake-up', status: 'live', source: 'Epic (v42.30)',

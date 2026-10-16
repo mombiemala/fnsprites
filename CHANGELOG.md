@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 16, 2026 — Added the Thrills & Chills Fortnitemares event
+
+- **Added** (`src/data/news.js`, `src/data/fortnitemares.js`): a News entry (tag `event`, official) and a Fortnitemares hub
+  `content` item for Epic's official "Thrills & Chills" promo — squad up and earn free rewards for every horror Island you
+  survive together (teddy-bear outfit, ghostly hands, crowbar pickaxe, spray, loading screen). Bumped the hub's `updated`
+  date. Flagged as cosmetics (not Sprites); per-Island unlock thresholds weren't detailed in the announcement.
+- **Why**: an official, current Fortnitemares reward event belongs in the hub we maintain, kept clearly scoped as cosmetics.
+
+---
+
 ## October 15, 2026 — New Jam Track (lobby music) codes + a category for them
 
 - **Added** (`src/data/codes.js`): three Yeat Jam Track lobby codes — `B1GBODYSW3RVE`, `LUHLEAKYZ`, `PR1VAT3J3T` — confirmed
