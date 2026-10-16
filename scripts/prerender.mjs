@@ -303,7 +303,6 @@ const NAV_LINKS = [
   { key: 'sprites', href: '/sprites', label: '🧩 Sprites' },
   { key: 'codes', href: '/codes', label: '🔓 Lobby Hacks' },
   { key: 'leaderboard', href: '/?view=leaderboard', label: '🏆 Leaderboard & Friends' },
-  { key: 'garden', href: '/?view=garden', label: '🌱 Garden' },
   { key: 'news', href: '/news', label: '📰 News' },
   { key: 'stats', href: '/?view=stats', label: '📊 Stats' },
   { key: 'shop', href: '/?view=shop', label: '🛒 Item Shop' },
@@ -388,7 +387,7 @@ const HEADER_SCRIPT = `<script>(function(){try{var k=Object.keys(localStorage).f
 // the same sections row, the utility/support row (modal links deep-link into
 // the app via ?about=1 etc.), the #EpicPartner line and the attribution notes.
 const FOOT = `<footer class="foot">
-<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard &amp; Friends</a><span class="sep">·</span><a href="/?view=garden">🌱 Garden</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
+<nav class="row" aria-label="Sections"><a href="/">Collection</a><span class="sep">·</span><a href="/sprites">🧩 Sprites</a><span class="sep">·</span><a href="/codes">🔓 Lobby Hacks</a><span class="sep">·</span><a href="/?view=leaderboard">🏆 Leaderboard &amp; Friends</a><span class="sep">·</span><a href="/news">📰 News</a><span class="sep">·</span><a href="/?view=stats">📊 Stats</a><span class="sep">·</span><a href="/?view=shop">🛒 Item Shop</a></nav>
 <div class="row"><a href="/about">About</a><span class="sep">·</span><a href="/contact">Contact</a><span class="sep">·</span><a href="/?changelog=1">Changelog</a><span class="sep">·</span><a href="/?backup=1">Backup</a><span class="sep">·</span><a href="/?bug=1">Report a bug</a><span class="sep">·</span><a href="/guides">📖 Guides</a><span class="sep">·</span><a href="/privacy">Privacy</a><span class="sep">·</span><a href="/terms">Terms</a><span class="sep">·</span><a href="https://buymeacoffee.com/kamalathedesigner" target="_blank" rel="noreferrer">☕ Buy me a coffee</a><span class="sep">·</span><span class="cc">Creator Code <b>MOMBIE</b></span></div>
 <p>Fan-made sprite tracker · not affiliated with Epic Games. #EpicPartner</p>
 <details><summary>Credits, sources &amp; disclaimers <span class="fcaret">›</span></summary>
@@ -969,7 +968,7 @@ function spriteGardenPage() {
     ${card('How it works', 'Every Sprite you’ve collected is added automatically — Season 3 “Runners,” Season 4 “Override,” and future generations can all live in your Garden at once. Display them on pedestals and in buildings, watch them wander, pick one up to have it follow you, or send it back to your inventory. Interaction is the same as in Battle Royale: walk up and press the prompt. A Sprite that goes down in a match is never erased from your Garden.')}
     ${card('What to expect at launch', 'It’s mostly a showcase-and-hangout space to begin with — not a lot of objectives yet. Epic has said they plan to expand the Sprite Garden with future updates (new mechanics and bigger islands), so expect it to grow over the season.')}
     ${card('Season 3 vs Season 4 — what carries', 'The “kept forever” promise is made literal here: your Season 3 Sprites stay displayable in the Garden and your Collection even though the Override generation has taken over Battle Royale. Older-gen Sprites aren’t used in BR this season (Epic says they “may return down the line”). Use the <a href="/sprites" style="color:var(--brand)">Generation filter on our Sprites checklist</a> to see what’s current vs archived.')}
-    ${card('Show off your garden', 'Built something you’re proud of? Share a screenshot in our <a href="/?view=garden" style="color:var(--brand)">Community Garden Gallery</a> and browse everyone else’s — or generate a shareable “My Sprite Garden” poster of your whole collection from the app’s Share &amp; export bar.')}
+    ${card('Show off your collection', 'Built something you’re proud of? Generate a shareable “My Sprite Garden” poster of your whole collection from the app’s Share &amp; export bar — a lush circular showcase of every Sprite you’ve caught, perfect for Discord or socials.')}
     <h2 style="font-size:16px;margin:22px 0 8px">Sprite Garden — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
     <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Details are compiled from Epic’s Season 4 “Override” announcements and community guides; the Sprite Garden is evolving, so features may change. Not affiliated with Epic Games.</p>
@@ -2443,14 +2442,14 @@ function termsPage() {
     <h2 style="font-size:16px;margin:18px 0 6px">Acceptable use</h2>
     <ul style="margin:6px 0 0;padding-left:18px;line-height:1.75;font-size:14px">
       <li>Don't abuse, scrape, overload, or try to break the site or its API, or probe its security.</li>
-      <li>Don't post content that's illegal, hateful, harassing, deceptive, or that impersonates others in community features (display name, trade posts, tier votes, Garden).</li>
+      <li>Don't post content that's illegal, hateful, harassing, deceptive, or that impersonates others in community features (display name, trade posts, tier votes).</li>
       <li>Don't use the site to scam other players — trades happen in-game and at your own risk (see the ${L('/how-to-trade-sprites', 'trading guide')} for safety tips).</li>
       <li>Don't misrepresent the site as official or affiliated with Epic Games.</li>
     </ul>
     <p style="margin-top:8px">We may remove content or restrict access that breaks these rules.</p>
 
     <h2 style="font-size:16px;margin:18px 0 6px">Content &amp; intellectual property</h2>
-    <p>The site's original text, guides, layout and generated artwork belong to FN Sprite Tracker. Fortnite-related names and imagery belong to Epic Games. Anything you submit (display name, tier votes, trade posts, Garden layout) stays yours, but you grant us permission to display it within the site's features (e.g. the leaderboard, public profiles and community vote counts) as you opt into them.</p>
+    <p>The site's original text, guides, layout and generated artwork belong to FN Sprite Tracker. Fortnite-related names and imagery belong to Epic Games. Anything you submit (display name, tier votes, trade posts) stays yours, but you grant us permission to display it within the site's features (e.g. the leaderboard, public profiles and community vote counts) as you opt into them.</p>
 
     <h2 style="font-size:16px;margin:18px 0 6px">Third-party services &amp; links</h2>
     <p>The site uses third parties — Supabase (accounts), Vercel (hosting &amp; privacy-friendly analytics), Google AdSense (ads), and a third-party Fortnite stats API — and links out to other sites. We're not responsible for third-party content or practices; their terms and the ${L('/privacy', 'Privacy Policy')} apply.</p>

@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 16, 2026',
+    title: 'Removed the unused in-app Garden feature',
+    changes: [
+      { tag: 'Changed', text: 'Retired the in-app 🌱 Garden tab — the community screenshot gallery, the layout planner, the screenshot uploads and the Trainer-Card garden banner are gone. The feature had zero usage (not a single garden was ever posted), and dropping it also removes an image-upload/moderation surface we no longer need.' },
+      { tag: 'Changed', text: 'Kept the things worth keeping: the Sprite Garden guide page (it explains the in-game Sprite Garden and its island code) and the one-tap “My Sprite Garden” collection poster in Share & export — both stay.' },
+    ],
+    summary: 'Removed the unused in-app Garden feature (gallery, planner, uploads, Trainer-Card banner) — it had zero usage — while keeping the Sprite Garden guide page and the shareable collection-poster export.',
+    why: 'The interactive Garden was a backend- and moderation-heavy feature with no uptake (0 posts ever), so it was pure liability. Removing just the dead feature — while keeping the guide page that serves search and the no-backend image export — trims scope without losing anything players actually use.',
+  },
+  {
+    date: 'October 16, 2026',
     title: 'Saturday Power Hours, Thrills & Chills, and the Treasure Chest teaser',
     changes: [
       { tag: 'Added', text: 'Saturday’s Trick-or-Treat Power Hours (Oct 17) — two 2-hour windows (2–4 PM & 9–11 PM ET) that boost Trick-or-Treat-finish Sprite spawns, with an enhanced Freddy’s Nightmare for everyone. Added to the events schedule (so the home card counts it down and the “Farm my missing Trick-or-Treat Sprites” shortcut appears), with a News entry and a dismissible banner. End times are estimates — Epic didn’t publish durations.' },

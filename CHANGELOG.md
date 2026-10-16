@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 16, 2026 — Removed the unused in-app Garden feature
+
+- **Changed**: retired the interactive in-app Garden. Deleted `GardenHub`, `GardenGallery`, `GardenPlanner`, `lib/gardenApi.js`
+  and `lib/imageModeration.js`; removed the `🌱 Garden` nav tab + `?view=garden` route from `App.jsx` and the prerender nav
+  (`NAV_LINKS` + footer), the Trainer-Card garden banner, and the ProfileModal garden-screenshot upload. Confirmed unused via
+  the database: `garden_showcases` had 0 rows (0 posts, 0 likes, 0 reports ever).
+- **Kept**: the `/sprite-garden` guide page (it documents Epic's in-game Sprite Garden + island code and serves search — only
+  its one in-app "Community Garden Gallery" card was repointed to the collection-poster export), and the client-side
+  "My Sprite Garden" collection image in Share & export (`generateGardenImage`, no backend).
+- **Left in place**: the now-empty Supabase tables (`garden_showcases`, `garden_likes`, `garden_reports`) and storage bucket —
+  non-destructive; they can be dropped later if desired. Trimmed stale "Garden" mentions from the Terms community-features list.
+- **Why**: the interactive Garden was backend- and moderation-heavy with zero uptake, so it was pure liability. Removing only
+  the dead feature keeps scope tight without losing the SEO page or the image export players can actually use.
+
 ## October 16, 2026 — Saturday Power Hours, Thrills & Chills, and the Treasure Chest teaser
 
 - **Added** (`src/data/events.js`, `src/data/news.js`, `src/data/announcements.js`): Saturday's **Trick-or-Treat Power Hours**

@@ -8,7 +8,6 @@ import { generateCollectionImage, generateGardenImage, downloadDataUrl } from '.
 import CollectionSwitcher from './components/CollectionSwitcher'
 import SpriteCard from './components/SpriteCard'
 import TrainerCard from './components/TrainerCard'
-import { gardenImageUrl as resolveGardenUrl } from './lib/gardenApi'
 import { SpriteMark } from './components/Logo'
 import Toolbar from './components/Toolbar'
 import ShareBar from './components/ShareBar'
@@ -42,7 +41,6 @@ const BugReportModal = lazy(() => import('./components/BugReportModal'))
 const AboutModal = lazy(() => import('./components/AboutModal'))
 const ChangelogModal = lazy(() => import('./components/ChangelogModal'))
 const CodesView = lazy(() => import('./components/CodesView'))
-const GardenHub = lazy(() => import('./components/GardenHub'))
 const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
@@ -58,7 +56,6 @@ const TABS = [
   { id: 'sprites', label: '🧩 Sprites' },
   { id: 'codes', label: '🔓 Lobby Hacks' },
   { id: 'leaderboard', label: '🏆 Leaderboard & Friends' },
-  { id: 'garden', label: '🌱 Garden' },
   { id: 'news', label: '📰 News' },
   { id: 'stats', label: '📊 Stats' },
   { id: 'shop', label: '🛒 Item Shop' },
@@ -543,11 +540,10 @@ export default function App() {
         ariaLabel="Sections"
       />
 
-      {(effectiveView === 'leaderboard' || effectiveView === 'codes' || effectiveView === 'garden' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
+      {(effectiveView === 'leaderboard' || effectiveView === 'codes' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
           {effectiveView === 'leaderboard' && <div className="mb-5"><Leaderboard onSignIn={() => setShowAuth(true)} /></div>}
           {effectiveView === 'codes' && <div className="mb-5"><CodesView /></div>}
-          {effectiveView === 'garden' && <div className="mb-5"><GardenHub onRequireLogin={() => setShowAuth(true)} /></div>}
           {effectiveView === 'stats' && <div className="mb-5"><StatsTab /></div>}
           {effectiveView === 'news' && <div className="mb-5"><NewsFeed /></div>}
           {effectiveView === 'shop' && <div className="mb-5"><ShopTab /></div>}
@@ -590,7 +586,6 @@ export default function App() {
                 showcaseIds={shared.profile.showcase_sprite_ids}
                 epicUsername={shared.profile.epic_username}
                 epicPlatform={shared.profile.epic_platform}
-                gardenImageUrl={shared.profile.garden_image_path ? resolveGardenUrl(shared.profile.garden_image_path) : null}
               />
               <div className="mt-2 flex flex-wrap items-center gap-2 px-1">
                 {user && shareTarget !== user.id && (
