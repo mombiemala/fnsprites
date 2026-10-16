@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 16, 2026',
+    title: 'Leak heads-up: a One Piece mini-season may follow Override',
+    changes: [
+      { tag: 'Added', text: 'A clearly-labeled leak (News + the “coming up” heads-up): a short One Piece crossover mini-season may follow Season 4 “Override” (~Oct 31/Nov 1) before Chapter 8 — One Piece files were datamined from a recent Rocket League update, and multiple leakers (SamLeakss and others, ~90% confidence) back it. Epic hasn’t confirmed anything. The “season flip” heads-up now reflects the rumored One Piece theme.' },
+    ],
+    summary: 'Added a strong-but-unconfirmed leak that a One Piece mini-season may bridge Override into Chapter 8, as a tentative News item and an update to the season-flip heads-up.',
+    why: 'The season flip is squarely on-topic (it decides what happens to the roster), and this leak is credible and multi-source — but unconfirmed, so it’s labeled a leak in News and the heads-up, not asserted as fact. No new Sprites are added until art/names are actually datamined.',
+  },
+  {
+    date: 'October 16, 2026',
     title: 'Removed the unused in-app Garden feature',
     changes: [
       { tag: 'Changed', text: 'Retired the in-app 🌱 Garden tab — the community screenshot gallery, the layout planner, the screenshot uploads and the Trainer-Card garden banner are gone. The feature had zero usage (not a single garden was ever posted), and dropping it also removes an image-upload/moderation surface we no longer need.' },

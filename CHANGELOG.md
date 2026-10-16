@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 16, 2026 — Leak heads-up: a One Piece mini-season may follow Override
+
+- **Added** (`src/data/news.js`, `src/data/incoming.js`): a clearly-labeled leak that a short One Piece crossover mini-season
+  may follow Season 4 "Override" (~Oct 31/Nov 1) before Chapter 8 — One Piece files datamined from a recent Rocket League
+  update, backed by multiple leakers (SamLeakss and others, ~90% confidence); Epic unconfirmed. Added a tentative News item
+  (`tag: upcoming`, `official: false`) and reworked the `season-5` heads-up to note the rumored One Piece theme. Season dates
+  are unchanged (Nov 1 end confirmed; Chapter 8 ~Nov 28 still unconfirmed).
+- **Why**: the season flip is on-topic (it decides the roster's fate) and this leak is credible and multi-source, but
+  unconfirmed — so it's labeled a leak, not asserted. No new Sprites added until art/names are datamined.
+
 ## October 16, 2026 — Removed the unused in-app Garden feature
 
 - **Changed**: retired the interactive in-app Garden. Deleted `GardenHub`, `GardenGallery`, `GardenPlanner`, `lib/gardenApi.js`
