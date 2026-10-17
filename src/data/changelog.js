@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 17, 2026',
+    title: 'Loot Hacks rotated (v42.40)',
+    changes: [
+      { tag: 'Changed', text: 'Refreshed the Loot Hack pool to the v42.40 rotation (live Oct 15): Thorne’s Vampiric Blade, Finger Guns, Gatekeeper Shotgun, Hunting Rifle and Slap Splash — replacing the v42.30 Fortnitemares set (Infantry Rifle, LMG, Pumpkin Launcher, Last Call, Slap Candy Corn). The update also vaulted the Super Shot / Big Boom / Action Hero / Healing Overdrive Match Overrides. Spent Dust is refunded when the pool rotates, so re-spend it on the new set.' },
+    ],
+    summary: 'Updated the Loot Hacks tab to the current v42.40 rotation (Thorne’s Vampiric Blade, Finger Guns, Gatekeeper Shotgun, Hunting Rifle, Slap Splash).',
+    why: 'The Loot Hack pool rotated with v42.40 and our data was still showing the previous Fortnitemares set — keeping the current weapons accurate is the point of the tab, since players spend Sprite Dust against it.',
+  },
+  {
     date: 'October 16, 2026',
     title: 'Leak heads-up: a One Piece mini-season may follow Override',
     changes: [

@@ -43,7 +43,7 @@ export const INCOMING = [
     id: 'loot-hack-refresh',
     emoji: '🎯',
     title: 'Next Loot Hack rotation',
-    detail: 'A fresh set of Loot Hack weapons to buy with Sprite Dust rotates into the pool. The v42.30 Fortnitemares rotation (Infantry Rifle, LMG, Pumpkin Launcher, Last Call, Slap Candy Corn) is current — the next weekly refresh is expected around Oct 22 (the in-game timer is authoritative).',
+    detail: 'A fresh set of Loot Hack weapons to buy with Sprite Dust rotates into the pool. The v42.40 rotation (Thorne’s Vampiric Blade, Finger Guns, Gatekeeper Shotgun, Hunting Rifle, Slap Splash) is current — the next weekly refresh is expected around Oct 22 (the in-game timer is authoritative).',
     dropsOn: '2026-10-22',
     confirmedDate: false,
     source: 'in-game Loot Hack timer',

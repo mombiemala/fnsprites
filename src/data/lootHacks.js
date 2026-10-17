@@ -11,25 +11,26 @@
 // rather than invent figures. Verified/sourced only — same rule as codes & news.
 
 export const LOOT_HACK_META = {
-  patch: 'v42.30',
-  rotationStart: '2026-10-01',
-  nextRefresh: '2026-10-15', // next rotation expected ~weekly; the in-game timer is authoritative
+  patch: 'v42.40',
+  rotationStart: '2026-10-15',
+  nextRefresh: '2026-10-22', // next rotation expected ~weekly; the in-game timer is authoritative
   maxLevel: 6, // each item unlocks at L1, then upgrades up to L6 for higher odds/rarity
-  source: 'Epic (Fortnite v42.30 Fortnitemares) · FNAssist',
-  sourceUrl: 'https://x.com/FN_Assist/status/2105577166163603735',
+  source: 'Epic (Fortnite v42.40) · FRVR · fortnitenews · The Click',
+  sourceUrl: 'https://fortnitenews.com/fortnite-v42-40-is-live-bee-swarms-sprite-thieves-and-a-freddy-powered-power-hours/',
 }
 
-// Current rotation (Oct 1, v42.30 — Fortnitemares). `role` describes what the item
-// is; we don't assert an exact rarity/cost we can't source. (The Sep 17 pool —
-// Rocket Ram, Reaper Sniper Rifle, Mammoth Pistol, Hyperburst Pistol, Deadeye DMR,
-// Flowberry Fizz — rotated out.) Note: v42.30 also added the Loot Hacker Sprite
-// finish to the Loot Hack menu (a Sprite variant, not a weapon in this pool).
+// Current rotation (Oct 15, v42.40). `role` describes what the item is; we don't
+// assert an exact rarity/cost we can't source. (The Oct 1 v42.30 pool — Infantry
+// Rifle, LMG, Pumpkin Launcher, Last Call, Slap Candy Corn — rotated out.) This
+// update also vaulted Super Shot, Big Boom, Action Hero & Healing Overdrive from
+// the Match Overrides. Note: the Loot Hacker Sprite finish is also in the Loot
+// Hack menu (a Sprite variant, not a weapon in this pool).
 export const LOOT_HACK_ROTATION = [
-  { name: 'Infantry Rifle', role: 'Assault rifle', note: 'Steady semi-auto rifle for controlled mid-range fire.' },
-  { name: 'Light Machine Gun (LMG)', role: 'LMG', note: 'High-capacity suppressive fire — great for shredding builds.' },
-  { name: 'Pumpkin Launcher', role: 'Explosive', note: 'Fortnitemares explosive launcher — the Halloween standout.' },
-  { name: 'Last Call', role: 'Weapon', note: 'New to the Loot Hack pool this Fortnitemares rotation.' },
-  { name: 'Slap Candy Corn', role: 'Consumable', note: 'Halloween Slap consumable — a candy-corn energy/mobility boost.' },
+  { name: 'Thorne’s Vampiric Blade', role: 'Melee', note: 'A lifesteal blade — heal as you deal melee damage.' },
+  { name: 'Finger Guns', role: 'Weapon', note: 'New to the Loot Hack pool this rotation.' },
+  { name: 'Gatekeeper Shotgun', role: 'Shotgun', note: 'Hard-hitting shotgun (vaulted from Reload, still on Nitemare Island).' },
+  { name: 'Hunting Rifle', role: 'Marksman rifle', note: 'No-scope precision rifle for mid/long range.' },
+  { name: 'Slap Splash', role: 'Consumable', note: 'Throw near you or teammates for Health/Shields plus a temporary stamina-free sprint (Slap effect).' },
 ]
 
 // How the system works — short, factual bullets reused by the app card + SEO page.

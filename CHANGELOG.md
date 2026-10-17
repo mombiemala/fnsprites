@@ -11,6 +11,16 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 17, 2026 — Loot Hacks rotated (v42.40)
+
+- **Changed** (`src/data/lootHacks.js`, `src/data/incoming.js`): refreshed the Loot Hack pool to the v42.40 rotation (live
+  Oct 15) — Thorne's Vampiric Blade, Finger Guns, Gatekeeper Shotgun, Hunting Rifle, Slap Splash — replacing the v42.30
+  Fortnitemares set (Infantry Rifle, LMG, Pumpkin Launcher, Last Call, Slap Candy Corn). Bumped `LOOT_HACK_META` (patch
+  v42.40, rotationStart 2026-10-15, nextRefresh ~2026-10-22, source). The update also vaulted the Super Shot / Big Boom /
+  Action Hero / Healing Overdrive Match Overrides. Corroborated by FRVR, fortnitenews, fragster and The Click.
+- **Why**: the pool rotated with v42.40 and our data was still on the previous set — accuracy is the point of the tab, since
+  players spend Sprite Dust against it.
+
 ## October 16, 2026 — Leak heads-up: a One Piece mini-season may follow Override
 
 - **Added** (`src/data/news.js`, `src/data/incoming.js`): a clearly-labeled leak that a short One Piece crossover mini-season
