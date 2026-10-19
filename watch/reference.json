@@ -1,0 +1,11 @@
+{
+  "_note": "Expected roster totals — keep in sync with Fortnite.GG (the authoritative tracker). After each New Sprite Day / finish rollout, update `expected` to match Fortnite.GG's C7 S3 / C7 S4 counts. `baseFinishExceptions` lists Sprites that INTENTIONALLY ship with fewer than the full 6-finish Override set (e.g. licensed collabs), so the consistency check doesn't false-flag them.",
+  "expected": {
+    "releasedRowsTotal": 280,
+    "byGen": { "c7s4": 162, "c7s3": 118 }
+  },
+  "standardOverrideFinishKeys": 6,
+  "baseFinishExceptions": {
+    "megaman": "Licensed Capcom collab — shipped base-only (Normal finish only)."
+  }
+}

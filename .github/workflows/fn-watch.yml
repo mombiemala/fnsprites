@@ -1,0 +1,40 @@
+name: FN watch
+
+# Refreshes watch/digest.md — a flag-only change-detection digest the Claude
+# daily-watch routine reads first. Runs shortly before that routine each day.
+# It NEVER edits src/data/*; it only updates the watch/ folder. All data changes
+# still go through the human/LLM watch and our 2-source / in-game rule.
+
+on:
+  schedule:
+    - cron: '30 15 * * *'   # 15:30 UTC daily, ahead of the ~16:06 UTC Claude watch
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fn-watch
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate digest
+        run: node scripts/watch/fetch-signals.mjs
+      - name: Commit digest if changed
+        run: |
+          git config user.name "fn-watch-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add watch/digest.md watch/last-seen.json
+          if git diff --cached --quiet; then
+            echo "No digest changes."
+          else
+            git commit -m "chore(watch): refresh digest [skip ci]"
+            git push
+          fi

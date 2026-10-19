@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "fetch:art": "node scripts/fetch-sprite-art.mjs",
     "art:missing": "node scripts/fetch-sprite-art.mjs --list-missing",
-    "verify-roster": "node scripts/verify-roster.mjs"
+    "verify-roster": "node scripts/verify-roster.mjs",
+    "audit": "node scripts/audit-roster.mjs",
+    "watch": "node scripts/watch/fetch-signals.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
