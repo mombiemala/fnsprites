@@ -11,6 +11,12 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 19, 2026 — Mastery Monday code: SuppliesForTheHunt (2× Snack-o'-Lantern Gizmos)
+
+- **Added** (`src/data/codes.js`): this week's Mastery Monday Admin Panel code, `SuppliesForTheHunt`, grants 2× Snack-o'-Lantern
+  Gizmos (drop Halloween candy when used). Confirmed live in-game ("LOBBY HACK ACTIVATED!"); added under Gizmos & effects.
+  Named it in the Oct 19 News entry too. (The Mastery Monday event itself was added to the events card/banner/news earlier.)
+
 ## October 17, 2026 — Loot Hacks rotated (v42.40)
 
 - **Changed** (`src/data/lootHacks.js`, `src/data/incoming.js`): refreshed the Loot Hack pool to the v42.40 rotation (live

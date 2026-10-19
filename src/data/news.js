@@ -16,7 +16,7 @@ export const NEWS = [
     start: '2026-10-19',
     end: '2026-10-20',
     title: '⭐ Mastery Monday is live (Mon, Oct 19) — 2× Sprite XP & Dust',
-    body: 'Mastery Monday runs for 24 hours (9 AM ET Mon → 9 AM ET Tue): double Sprite XP, double Sprite Dust from extractions, boosted Legendary/Mythic Sprite spawns, and extra Portable Extractors from Daily Quests — the fastest day to level and master your Sprites. This week’s Admin Panel code hasn’t been confirmed yet — we’ll add it to the Lobby Hacks tab the moment it’s verified.',
+    body: 'Mastery Monday runs for 24 hours (9 AM ET Mon → 9 AM ET Tue): double Sprite XP, double Sprite Dust from extractions, boosted Legendary/Mythic Sprite spawns, and extra Portable Extractors from Daily Quests — the fastest day to level and master your Sprites. This week’s Admin Panel code is SuppliesForTheHunt — enter it in the lobby’s Admin Panel for 2× Snack-o’-Lantern Gizmos (it’s in the Lobby Hacks tab).',
     link: 'https://www.vice.com/en/article/fortnite-mastery-monday-october-19-start-times-sprite-bonuses/',
     source: 'Vice',
     official: true,

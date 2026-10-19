@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 19, 2026',
+    title: 'Mastery Monday code — SuppliesForTheHunt (2× Snack-o’-Lantern Gizmos)',
+    changes: [
+      { tag: 'Added', text: 'This week’s Mastery Monday Admin Panel code, SuppliesForTheHunt, grants 2× Snack-o’-Lantern Gizmos (they drop Halloween candy when used). Confirmed live in-game (the “LOBBY HACK ACTIVATED!” screen). Added to the Lobby Hacks tab under Gizmos & effects. Today’s Mastery Monday event (2× Sprite XP & Dust) is also on the home card.' },
+    ],
+    summary: 'Added SuppliesForTheHunt — this week’s Mastery Monday code — for 2× Snack-o’-Lantern Gizmos, confirmed live in-game.',
+    why: 'Mastery Monday codes are the most time-sensitive thing players come here for, so getting the real, in-game-verified code up fast (with the exact reward) is the point of the daily watch.',
+  },
+  {
     date: 'October 17, 2026',
     title: 'Loot Hacks rotated (v42.40)',
     changes: [
