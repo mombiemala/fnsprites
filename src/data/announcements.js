@@ -19,6 +19,19 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'mastery-monday-2026-10-19',
+    eventId: 'mastery-monday-2026-10-19', // de-dupes against the matching SPRITE_EVENTS entry in the top card
+    emoji: '⭐',
+    message: 'Mastery Monday is live (Mon Oct 19) — 2× Sprite XP & 2× Sprite Dust from extractions, boosted Legendary/Mythic spawns, and extra Portable Extractors, for 24 hours. The fastest day to level & master your Sprites.',
+    link: '/?view=news',
+    linkLabel: 'Event details',
+    start: '2026-10-19',
+    end: '2026-10-20',
+    source: 'Vice',
+    official: true,
+    tone: 'event',
+  },
+  {
     id: 'trickortreat-hours-2026-10-17',
     eventId: 'trickortreat-hours-2026-10-17', // de-dupes against the matching SPRITE_EVENTS rounds in the top card
     emoji: '🎃',
