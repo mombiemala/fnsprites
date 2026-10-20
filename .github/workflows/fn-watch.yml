@@ -4,6 +4,7 @@ name: FN watch
 # daily-watch routine reads first. Runs shortly before that routine each day.
 # It NEVER edits src/data/*; it only updates the watch/ folder. All data changes
 # still go through the human/LLM watch and our 2-source / in-game rule.
+# (Schedule re-registered 2026-10-20 to nudge GitHub's cron scheduler.)
 
 on:
   schedule:
