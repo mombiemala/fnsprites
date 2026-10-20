@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 20, 2026',
+    title: 'Beefed up the homepage landing content',
+    changes: [
+      { tag: 'Changed', text: 'Expanded the homepage’s first-paint / no-JS landing content — it now leads with a short original “how Fortnite Sprites work” primer, a fuller index of the guides, a “kept accurate, updated daily” methodology note, and a clear fan-made / unofficial disclaimer. The homepage was by far the thinnest page on the site (a mostly-interactive app shell); it now reads as an authored resource. Also added a “last reviewed” freshness line to the About page.' },
+    ],
+    summary: 'Expanded the homepage landing content (original Sprite primer, guide index, methodology, disclaimer) so the site’s most-visited page leads with substantial authored content instead of a thin app shell.',
+    why: 'Google AdSense flagged the site for “low value content.” The site is otherwise content-rich (88 pages, in-depth guides and per-sprite pages), but the homepage itself was thin — the one page a reviewer and crawler judge first. Leading with real, original content there addresses the thin-homepage signal and strengthens the site’s overall quality read.',
+  },
+  {
     date: 'October 19, 2026',
     title: 'Mastery Monday code — SuppliesForTheHunt (2× Snack-o’-Lantern Gizmos)',
     changes: [

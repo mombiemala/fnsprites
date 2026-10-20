@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 20, 2026 — Beefed up the homepage landing content (AdSense "low value content")
+
+- **Changed** (`index.html`): expanded the homepage first-paint / no-JS `#boot-about` landing section (crawlers + no-JS
+  readers see it; React replaces it on mount). It now leads with an original "how Fortnite Sprites work" primer, a fuller
+  guide index, a "kept accurate, updated daily" methodology note, and a fan-made/unofficial disclaimer. Homepage crawlable
+  text went from ~1,484 to ~3,570 chars — it was the single thinnest indexed page on the site.
+- **Changed** (`scripts/prerender.mjs`): added a "last reviewed <date>" freshness line to the About page.
+- **Why**: AdSense flagged "low value content." Diagnosis showed the site is otherwise content-rich (88 pages, substantial
+  guides and 6–8k-char per-sprite pages, strong About/trust pages, correct robots.txt/ads.txt) — the homepage was the one
+  genuinely thin page, and it's what a reviewer/crawler judges first. No thin-page-at-scale problem existed, so nothing was
+  noindexed. Approval still isn't guaranteed (the niche + traffic matter), but this removes the clearest on-site weakness.
+
 ## October 19, 2026 — Mastery Monday code: SuppliesForTheHunt (2× Snack-o'-Lantern Gizmos)
 
 - **Added** (`src/data/codes.js`): this week's Mastery Monday Admin Panel code, `SuppliesForTheHunt`, grants 2× Snack-o'-Lantern

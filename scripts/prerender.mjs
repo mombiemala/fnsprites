@@ -2488,7 +2488,8 @@ function aboutPage() {
 <div class="cols">
   <div class="main">
     <h1>About FN Sprite Tracker</h1>
-    <p class="lede" style="color:var(--muted);margin:6px 0 16px;font-size:14px;max-width:72ch"><b style="color:#fff">FN Sprite Tracker</b> (fnsprites.app) is a free, independent, fan-made tool for tracking your Fortnite Sprite collection — every Sprite, every finish, across every season — plus the codes, drop rates, events and guides that go with the hunt. It’s built and maintained by a collector, for collectors.</p>
+    <p class="lede" style="color:var(--muted);margin:6px 0 10px;font-size:14px;max-width:72ch"><b style="color:#fff">FN Sprite Tracker</b> (fnsprites.app) is a free, independent, fan-made tool for tracking your Fortnite Sprite collection — every Sprite, every finish, across every season — plus the codes, drop rates, events and guides that go with the hunt. It’s built and maintained by a collector, for collectors.</p>
+    <p style="margin:0 0 16px;font-size:12.5px;color:var(--muted)">Actively maintained — new Sprites, finishes, codes and events are tracked the day they drop, and every change is recorded in the public ${L('/guides', 'changelog')}. Last reviewed ${new Date(NEWS_TODAY + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}.</p>
 
     <h2 style="font-size:16px;margin:18px 0 6px">What you can do here</h2>
     <ul style="margin:6px 0 0;padding-left:18px;line-height:1.75;font-size:14px">
