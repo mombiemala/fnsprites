@@ -21,7 +21,7 @@ export default function SupportBanner() {
     <div className="overflow-hidden rounded-2xl border border-[var(--border)] bg-gradient-to-br from-[var(--brand-2)]/25 to-[var(--brand)]/15 p-5">
       <h3 className="font-display text-xl text-white">Support the maker 💜</h3>
       <p className="mt-1 text-sm text-[var(--text)]/85">
-        This tracker is a free, fan-made labour of love. Two easy ways to help keep it going:
+        This tracker is free and fan-made. Two ways to help keep it going:
       </p>
 
       <div className="mt-4 flex flex-col gap-3">
@@ -44,7 +44,7 @@ export default function SupportBanner() {
         {/* Buy me a coffee — blurb paired with its button */}
         <div className="rounded-xl bg-black/20 p-3">
           <p className="text-sm leading-relaxed text-[var(--text)]/90">
-            Prefer a one-off tip? Buy me a coffee to help cover hosting and keep the seasonal updates coming.
+            Prefer a one-off tip? Buy me a coffee to help cover hosting.
           </p>
           <a
             href={LINKS.buyMeACoffee}

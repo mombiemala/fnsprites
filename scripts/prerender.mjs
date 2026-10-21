@@ -847,7 +847,7 @@ function newsBoard() {
 </div></div>
 <div class="list">${items.map(newsCard).join('')}</div>
 <p class="empty" id="nempty">No news matches this filter.</p>
-<p class="fine">Curated Fortnite update feed — sprites, events &amp; known issues, each with its source shown. The in-app version also auto-pulls the current live build. Not affiliated with Epic Games.</p>
+<p class="fine">Curated Fortnite update feed — sprites, events &amp; known issues, each with its source shown. The in-app version also auto-pulls the current live build.</p>
 </section>`
 }
 
@@ -986,7 +986,7 @@ function spriteGardenPage() {
     ${card('Show off your collection', 'Built something you’re proud of? Generate a shareable “My Sprite Garden” poster of your whole collection from the app’s Share &amp; export bar — a lush circular showcase of every Sprite you’ve caught, perfect for Discord or socials.')}
     <h2 style="font-size:16px;margin:22px 0 8px">Sprite Garden — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Details are compiled from Epic’s Season 4 “Override” announcements and community guides; the Sprite Garden is evolving, so features may change. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Details are compiled from Epic’s Season 4 “Override” announcements and community guides; the Sprite Garden is evolving, so features may change.</p>
     <a class="bigcta" href="/">Track your Sprite collection — free →</a>
   </div>
   <aside class="side">
@@ -1056,7 +1056,7 @@ function spriteDustPage() {
     ${card('Heads-up: Dust resets each season', 'Sprite Dust, Portable Extractors and Lucky Locators all reset when the season changes. The Sprites you’ve collected are kept forever (and live on in your <a href="/sprite-garden" style="color:var(--brand)">Sprite Garden</a>), but the Dust economy starts fresh — so don’t hoard across a season flip.')}
     <h2 style="font-size:16px;margin:22px 0 8px">Sprite Dust — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Compiled from Epic’s Season 4 “Override” notes and community guides; costs/mechanics can change as Epic tunes the system. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Compiled from Epic’s Season 4 “Override” notes and community guides; costs/mechanics can change as Epic tunes the system.</p>
     <a class="bigcta" href="/">Track your Sprite collection — free →</a>
   </div>
   <aside class="side">
@@ -1118,7 +1118,7 @@ function spriteEventsPage() {
     ${eventRows}
     <h2 style="font-size:16px;margin:22px 0 8px">Sprite events — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Event times are community/Epic-sourced and shift week to week — always confirm the day’s schedule in-game or via the app’s live banner. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Event times are community/Epic-sourced and shift week to week — always confirm the day’s schedule in-game or via the app’s live banner.</p>
     <a class="bigcta" href="/">Track the Sprites you catch — free →</a>
   </div>
   <aside class="side">
@@ -1192,7 +1192,7 @@ function spriteAbilitiesPage() {
     ${table('Season 3 — Runners (Sprite Garden)', 'Kept forever in the Sprite Garden & your Collection, but not used in Battle Royale this season.', runners)}
     <h2 style="font-size:16px;margin:22px 0 8px">Sprite abilities — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Abilities are from Epic’s notes and community testing; some newer Sprites are still being confirmed and are marked as such. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Abilities are from Epic’s notes and community testing; some newer Sprites are still being confirmed and are marked as such.</p>
     <a class="bigcta" href="/">Track which Sprites you own — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -1233,7 +1233,7 @@ function seasonTransitionPage() {
     <div class="card" style="padding:14px 16px;margin:16px 0 0">
       <p style="margin:0;font-size:13px;color:var(--muted)">More detail: the <a href="/sprite-dust" style="color:var(--brand)">Sprite Dust &amp; Loot Hacks guide</a>, the <a href="/sprite-garden" style="color:var(--brand)">Sprite Garden guide</a>, and filter your <a href="/sprites" style="color:var(--brand)">checklist</a> by generation to see what’s current vs archived.</p>
     </div>
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Based on Epic’s Season 4 “Override” announcements + patch notes. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Based on Epic’s Season 4 “Override” announcements + patch notes.</p>
     <a class="bigcta" href="/">Track your collection across every generation — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -1269,7 +1269,7 @@ function faqPage() {
     ['What is the best Sprite in Fortnite?', `“Best” depends on the ability. Our ${L('/tier-list', 'tier list')} ranks every Sprite S–C by how useful its ability is in the current Season 4 “Override” meta, and logged-in players vote on the Override Sprites so you can watch the community consensus form.`],
     ['How do you level up and master a Sprite?', `Use a Sprite in matches to level it up; its ability gets stronger at each level, up to Level 5. The ${L('/abilities', 'abilities guide')} shows exactly what every Sprite does and how it scales.`],
     ['What is Sprite Dust and how do you get it?', `Sprite Dust is the currency behind finishes and Loot Hacks. You earn it through play and from certain lobby codes, and redeeming a code for a Sprite you already own converts to Dust instead. The ${L('/sprite-dust', 'Dust and Loot Hacks guide')} covers earning and spending it.`],
-    ['Are Fortnite Sprites free?', `Yes — every Sprite is obtainable through normal gameplay and free lobby codes, with no paywall to collect them (${workingCodes} codes are working right now). FN Sprite Tracker is free and fan-made too.`],
+    ['Are Fortnite Sprites free?', `Yes — every Sprite is obtainable through normal gameplay and free lobby codes, with no paywall to collect them (${workingCodes} codes are working right now).`],
     ['Do Sprites work in Ranked?', `Sprites appear in Ranked, but their abilities are disabled there — so in Ranked they are purely cosmetic, and only give gameplay effects in regular modes.`],
     ['Can you still get the Season 3 Sprites?', `No — the Season 3 “Runners” Sprites are archived and can no longer be obtained in Battle Royale. Any you already collected are kept forever in your ${L('/sprite-garden', 'Sprite Garden')}. The ${L('/season-transition', 'season-transition FAQ')} explains the switch.`],
     ['What is the Sprite Garden?', `The Sprite Garden is a personal island where your whole collection lives and stays displayable forever, even after a Sprite’s generation rotates out of Battle Royale. The ${L('/sprite-garden', 'Garden guide')} has the island code and how it works.`],
@@ -1292,7 +1292,7 @@ function faqPage() {
     <div class="card" style="padding:14px 16px;margin:16px 0 0">
       <p style="margin:0;font-size:13px;color:var(--muted)">More: ${L('/guides', 'all guides')} · ${L('/sprites', 'the checklist')} · ${L('/codes', 'Lobby Hacks')} · ${L('/tier-list', 'tier list')} · ${L('/sprite-dust', 'Dust & Loot Hacks')}</p>
     </div>
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Fan-made · not affiliated with Epic Games. Counts and rates are community-cross-referenced.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Counts and rates are community-cross-referenced.</p>
     <a class="bigcta" href="/">Track every Sprite you own — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -1350,7 +1350,7 @@ function rarestPage() {
     ${rows}
     <h2 style="font-size:16px;margin:22px 0 8px">Rarest Fortnite Sprites — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Drop rates are community estimates cross-referenced from player-tracking projects — Epic hasn’t published official Sprite rates. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Drop rates are community estimates cross-referenced from player-tracking projects — Epic hasn’t published official Sprite rates.</p>
     <a class="bigcta" href="/">Track which rare Sprites you own — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -1383,7 +1383,7 @@ function cheatMasterPage() {
     ['What are Cheat Master Sprites in Fortnite?', `Cheat Master is the special Season 4 “Override” finish — a flashier, rarer version of an Override Sprite. Each one keeps its base Sprite’s ability and adds the finish’s own upgraded look.`],
     ['How do you get Cheat Master Sprites?', `Most unlock with a specific Hack the Lobby code entered in the Battle Royale lobby Admin Panel (see the ${L('/codes', 'full code list')}), and their spawns are boosted during ${L('/events', 'Power Hours')} events. Enter the code — spelling matters, capitalisation doesn’t — and hit Submit.`],
     ['Which Cheat Master Sprites are out now?', `As of ${monthLabel}, ${liveCount} Cheat Master Sprites are live${cm.length > liveCount ? `, with ${cm.length - liveCount} more datamined and on the way` : ''}. The full list is above, each linking to its Sprite page.`],
-    ['Do Cheat Master Sprites cost money?', `No — like every Sprite, they’re free to unlock through gameplay and lobby codes. FN Sprite Tracker is free and fan-made too.`],
+    ['Do Cheat Master Sprites cost money?', `No — like every Sprite, they’re free to unlock through gameplay and lobby codes.`],
   ]
   const desc = `Every Fortnite Cheat Master Sprite (Season 4 “Override”) in one list — which are live, which are datamined, and the Hack the Lobby code that unlocks each. ${liveCount} live as of ${monthLabel}. Free & fan-made.`
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -1401,7 +1401,7 @@ function cheatMasterPage() {
     ${cm.map(row).join('')}
     <h2 style="font-size:16px;margin:22px 0 8px">Cheat Master Sprites — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Datamined finishes are labelled and flip to Live when Epic releases them. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Datamined finishes are labelled and flip to Live when Epic releases them.</p>
     <a class="bigcta" href="/">Track your Cheat Master Sprites — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -1463,7 +1463,7 @@ function howToCheatMasterPage() {
 
     <h2 style="font-size:16px;margin:22px 0 8px">How to get Cheat Master Sprites — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Codes are community-sourced and change through the season — verify in-game. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Codes are community-sourced and change through the season — verify in-game.</p>
     <a class="bigcta" href="/">Track the Cheat Master Sprites you unlock — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -1497,7 +1497,7 @@ function goldPage() {
     ['What are Gold Sprites in Fortnite?', `Gold is a premium finish — a shinier, rarer version of a Sprite that keeps the base ability${perk ? ` and adds a bonus: ${perk}` : ''}. Almost every Sprite has a Gold finish.`],
     ['How do you get a Gold Sprite?', `On current Season 4 “Override” Sprites, Gold is a rarer roll you can still earn through play and in-world Cheat Codes. Season 3 “Runners” Gold finishes are archived — kept in your ${L('/sprite-garden', 'Sprite Garden')} if you unlocked them, but no longer obtainable in Battle Royale.`],
     ['How many Gold Sprites are there?', `There are ${gold.length} Sprites with a Gold finish in total, ${liveNow} of them obtainable right now this season. The full list is above.`],
-    ['Are Gold Sprites free?', `Yes — Gold finishes are earned through gameplay, no purchase required. FN Sprite Tracker is free and fan-made too.`],
+    ['Are Gold Sprites free?', `Yes — Gold finishes are earned through gameplay, no purchase required.`],
   ]
   const desc = `Every Fortnite Gold Sprite in one list — which Gold finishes are obtainable now vs archived, by generation, each linking to its Sprite. ${gold.length} Gold finishes, ${liveNow} obtainable this season. Free & fan-made.`
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -1636,7 +1636,7 @@ function dropRateCalcPage() {
     <p style="font-size:14px;line-height:1.6">Want the numbers side by side? See every Sprite ranked by drop rate on the ${L('/rarest-sprites', 'rarest Sprites')} page, or browse the full ${L('/sprites', 'checklist')}.</p>
     <h2 style="font-size:16px;margin:22px 0 8px">Drop rate calculator — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${a}</p></details>`).join('')}
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Drop rates are community estimates — Epic doesn’t publish official Sprite odds. Special-finish odds multiply the base rate by a rough rarity estimate. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Drop rates are community estimates — Epic doesn’t publish official Sprite odds. Special-finish odds multiply the base rate by a rough rarity estimate.</p>
     <a class="bigcta" href="/">Track the Sprites you pull — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -1690,7 +1690,7 @@ function lootHacksPage() {
     <div class="card" style="padding:14px 16px;margin:16px 0 0">
       <p style="margin:0;font-size:13px;color:var(--muted)">Related: the <a href="/sprite-dust" style="color:var(--brand)">Sprite Dust &amp; spend-strategy guide</a>, <a href="/codes" style="color:var(--brand)">Lobby Hack codes</a> (some grant free Dust), and the <a href="/events" style="color:var(--brand)">events schedule</a> (Dust-boost days).</p>
     </div>
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Rotation tracked from ${esc(LOOT_HACK_META.source)}. Costs vary per weapon/tier and aren’t published by Epic; the in-game menu shows exact figures. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Rotation tracked from ${esc(LOOT_HACK_META.source)}. Costs vary per weapon/tier and aren’t published by Epic; the in-game menu shows exact figures.</p>
     <a class="bigcta" href="/">Track your Sprite collection — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -1740,7 +1740,7 @@ function tradeGuidePage() {
     <div class="card" style="padding:14px 16px;margin:16px 0 0">
       <p style="margin:0;font-size:13px;color:var(--muted)">Line up a trade first: sign in and use <a href="/?view=leaderboard&amp;tab=trades" style="color:var(--brand)">Friends → Trade matches</a> to see who has the Sprites you want (and wants your spares), then meet on an island to swap.</p>
     </div>
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Method per Epic’s Fortnite support + community trackers. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Method per Epic’s Fortnite support + community trackers.</p>
     <a class="bigcta" href="/">Track & match your Sprite trades — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -1787,7 +1787,7 @@ function fortnitemaresPage() {
     <div class="card" style="padding:14px 16px;margin:16px 0 0">
       <p style="margin:0;font-size:13px;color:var(--muted)">Get ready: fill in your <a href="/sprites" style="color:var(--brand)">Sprite checklist</a>, grab free Sprite Dust from <a href="/codes" style="color:var(--brand)">Lobby Hack codes</a>, watch the <a href="/loot-hacks" style="color:var(--brand)">Loot Hacks</a> rotation, and see what carries over at the <a href="/season-transition" style="color:var(--brand)">season transition</a>.</p>
     </div>
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Compiled from ${esc(FORTNITEMARES.sourceUrl.replace(/^https?:\/\//, '').replace(/\/.*$/, ''))} and other community leak reports; updated ${fmtLong(FORTNITEMARES.updated)}. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Compiled from ${esc(FORTNITEMARES.sourceUrl.replace(/^https?:\/\//, '').replace(/\/.*$/, ''))} and other community leak reports; updated ${fmtLong(FORTNITEMARES.updated)}.</p>
     <a class="bigcta" href="/">Track your Sprite collection — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -2349,7 +2349,7 @@ function codesPage() {
     ${CODE_CATEGORIES.map(section).join('')}
     <h2 style="font-size:16px;margin:22px 0 8px">Fortnite lobby codes — FAQ</h2>
     ${faqs.map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}
-    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Community-sourced and moving fast — Epic drops new codes all season and promo codes expire. Verify each code in-game before relying on it; unverified ones are labelled. Not affiliated with Epic Games.</p>
+    <p class="fine" style="margin-top:12px;font-size:11px;color:var(--muted)">Community-sourced and moving fast — Epic drops new codes all season and promo codes expire. Verify each code in-game before relying on it; unverified ones are labelled.</p>
     <a class="bigcta" href="/">Track the Sprites you unlock — free →</a>
   </div>
   <aside class="side">${ctaCard()}${supportCard()}</aside>
@@ -2516,7 +2516,7 @@ function aboutPage() {
     </ul>
 
     <h2 style="font-size:16px;margin:18px 0 6px">Who makes it</h2>
-    <p>Hi — I’m <b>mombie</b>, a Fortnite player who got a little too into collecting Sprites: chasing every Gold, Gummy, Galaxy and Mythic until I needed a spreadsheet, then decided to build something better than a spreadsheet. FN Sprite Tracker is that project. It’s a solo, fan-made labour of love that I keep updated each season — not a company, and not affiliated with Epic Games.</p>
+    <p>Hi — I’m <b>mombie</b>, a Fortnite player who got deep enough into collecting Sprites to outgrow a spreadsheet, so I built something better. FN Sprite Tracker is that project: a solo, fan-made tracker I keep updated each season — not a company, and not affiliated with Epic Games.</p>
 
     <h2 style="font-size:16px;margin:18px 0 6px">How we source &amp; verify our data</h2>
     <p>Accuracy is the whole point of a tracker, so here’s exactly how the information here is put together and kept current:</p>

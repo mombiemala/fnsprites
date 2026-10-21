@@ -5,8 +5,8 @@ import { useEscClose } from '../lib/useEscClose'
 // one paragraph; keep each on a single line so it wraps naturally on screen.
 const BIO = [
   "Hey, I'm mombie 👋",
-  "I'm a Fortnite player who got way too into collecting sprites — chasing every Gold, Gummy, Galaxy and Mythic — so I built this tracker to help the community keep tabs on their collection, find trades, and flex their score.",
-  "It's a free, fan-made labour of love that I keep updated each season. If it helps you complete your set, supporting with Creator Code MOMBIE or a coffee keeps it free for everyone. Thanks for being here! 🎮💜",
+  "I'm a Fortnite player who got way too into collecting sprites, so I built this tracker to help the community keep tabs on their collection, find trades, and flex their score.",
+  "It's free and fan-made, and I keep it updated each season. If it helps you complete your set, supporting with Creator Code MOMBIE or a coffee keeps it free for everyone. Thanks for being here! 🎮💜",
 ]
 
 export default function AboutModal({ onClose }) {

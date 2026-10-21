@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 21, 2026 — Content cleanup (less boilerplate, tighter copy)
+
+- **Changed** (`scripts/prerender.mjs`): removed the trailing "Not affiliated with Epic Games." from ~15 per-page fine-print
+  lines — it's already in the shared footer on every page, and kept in full on `/privacy` and `/terms`. Each page keeps its
+  own unique sourcing note. Also trimmed the News-page sourcing line.
+- **Changed** (`src/components/NewsFeed.jsx`): removed the redundant "Live build auto-detected… Not affiliated with Epic
+  Games." line from the in-app feed footer (footer already carries the disclaimer).
+- **Changed** (`scripts/prerender.mjs`, `src/components/AboutModal.jsx`, `src/components/SupportBanner.jsx`): cut marketing
+  fluff — "labour of love" (3×), the overlong spreadsheet origin story, a wordy coffee blurb, and the self-promo tag
+  "FN Sprite Tracker is free and fan-made too." that was appended to three gameplay FAQ answers (Are Sprites free? / Do
+  Cheat Master Sprites cost money? / Are Gold Sprites free?).
+- **Fixed** (`src/data/spriteGuide.js`): the Variants guide said Season 4 "adds two finishes of its own" (Cheat Master,
+  Loot Hacker) — it now lists all of them, adding **Bounty Hunter** and the seasonal **Trick-or-Treat** finish.
+- **Why**: the audience is players who want concrete info fast. Repeating the affiliation disclaimer on every page (on top of
+  the footer) and bolting "we're free and fan-made" onto gameplay answers is noise. Keep the disclaimer where it belongs
+  (footer + legal pages), cut the filler, and fix the incomplete finish list so the copy reads for the player.
+
 ## October 21, 2026 — Corrected the Sprite Dust re-summon costs
 
 - **Fixed** (`src/data/sprites.js`): the `DUST_BASE` table was still the pre-hotfix values. The July 24, 2026 hotfix cut

@@ -229,10 +229,6 @@ export default function NewsFeed() {
           {showOlder ? 'Show fewer' : `Show ${olderCount} older update${olderCount === 1 ? '' : 's'} (Season 3 & launch)`}
         </button>
       )}
-
-      <p className="mt-3 text-[10px] text-[var(--muted)]">
-        Live build auto-detected from fortnite-api.com; news &amp; events are curated, each with its source shown. Not affiliated with Epic Games.
-      </p>
     </div>
   )
 }

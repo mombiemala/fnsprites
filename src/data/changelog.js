@@ -11,6 +11,17 @@
 export const CHANGELOG = [
   {
     date: 'October 21, 2026',
+    title: 'Content cleanup — less boilerplate, tighter copy',
+    changes: [
+      { tag: 'Changed', text: 'Trimmed repeated boilerplate and filler across the site. The “Not affiliated with Epic Games” disclaimer was being repeated in the fine-print of ~15 pages on top of the footer that already carries it — removed from the per-page notes (kept once in the footer, and in full on the Privacy/Terms pages), while each page keeps its own useful sourcing line. Also dropped the stray sourcing line from the News feed footer.' },
+      { tag: 'Changed', text: 'Tightened marketing fluff: removed “labour of love” phrasing, shortened the About bio and support blurbs, and cut the self-promo tag (“FN Sprite Tracker is free and fan-made too”) that was bolted onto three gameplay FAQ answers about Sprites being free.' },
+      { tag: 'Fixed', text: 'The Variants guide listed only two Season 4 finishes (Cheat Master, Loot Hacker); it now includes all of them — Bounty Hunter and the seasonal Trick-or-Treat finish too.' },
+    ],
+    summary: 'Content pass: removed repeated disclaimers/boilerplate (kept the affiliation note once in the footer + legal pages), tightened promotional filler, and completed the Season 4 finish list in the Variants guide.',
+    why: 'The audience is players who want fast, concrete info — not marketing copy or the same disclaimer on every page. Repeating “Not affiliated with Epic Games” in each page’s fine-print (already in the footer) and bolting “we’re free and fan-made” onto gameplay answers is noise that buries the useful content. Keeping the disclaimer where it legally belongs (footer + Terms/Privacy) and cutting the rest makes the pages read for the player.',
+  },
+  {
+    date: 'October 21, 2026',
     title: 'Corrected the Sprite Dust re-summon costs',
     changes: [
       { tag: 'Fixed', text: 'Updated the Dust re-summon estimates to the current (post-July-24-hotfix) numbers. Our base-cost table was still showing the pre-hotfix prices — base costs actually dropped ~10% (Epic 3,000→2,700, Legendary 5,000→4,500, Mythic 7,500→6,750; Rare stays 100), confirmed across multiple outlets (Vice, allthings.how, beebom, talkesport). Also nudged the Legendary variant cost from 6,700 to the cited 6,750. Variant costs (Rare 2,700 · Epic 4,000 · Legendary 6,750 · Mythic 10,000) were already correct.' },
