@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 21, 2026 — Fixed the One Wish Willow Sprite (Mythic, and it steals Sprites)
+
+- **Fixed** (`src/data/sprites.js`): corrected the One Wish Willow (Obsession) Sprite. Ability changed from the pre-release
+  "helps you collect other Sprites" placeholder to the real v42.40 effect — on an elimination it extracts the Sprite the
+  enemy had equipped for you to grab, it shoves nearby enemies back when you take damage, and removing it pings your
+  location on the map. Rarity changed from Epic to **Mythic**.
+- **Fixed** (`src/data/news.js`, `src/data/announcements.js`, `src/data/fortnitemares.js`): updated the One Wish Willow
+  ability/rarity wording everywhere it appears (New Sprite Day news, top-of-app announcement, Fortnitemares tracker) to
+  match. Historical changelog entries that quoted the old framing were left as-is (they're a record).
+- **Why**: we'd shipped a placeholder ability from pre-release framing, and Epic's own v42.40 notes turned out to describe a
+  completely different, combat/steal Sprite — and Mythic, not Epic. A wrong ability + rarity on a brand-new Mythic is the
+  kind of error players notice immediately, so correcting it across every surface (confirmed against Epic's notes plus
+  FortniteNews/esports.gg/Beebom/games.gg) took priority over being first.
+
 ## October 20, 2026 — Beefed up the homepage landing content (AdSense "low value content")
 
 - **Changed** (`index.html`): expanded the homepage first-paint / no-JS `#boot-about` landing section (crawlers + no-JS

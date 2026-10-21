@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 21, 2026',
+    title: 'Fixed the One Wish Willow Sprite — Mythic, and it steals Sprites',
+    changes: [
+      { tag: 'Fixed', text: 'Corrected the One Wish Willow (Obsession) Sprite. Its ability is NOT “helps you collect other Sprites” (that was our pre-release framing) — per Epic’s v42.40 patch notes it’s a combat Sprite: eliminate an enemy and it extracts the Sprite they had equipped for you to grab, it shoves nearby enemies back when you take damage, and removing it pings your location on the map. Also fixed its rarity from Epic to Mythic. Updated everywhere it appears (the Sprite card, the New Sprite Day news item, the top-of-app announcement, and the Fortnitemares tracker).' },
+    ],
+    summary: 'Fixed the One Wish Willow Sprite: it’s a Mythic, and its real ability steals an eliminated enemy’s equipped Sprite (plus a damage-triggered knockback) — not the “helps you collect Sprites” effect we’d guessed before it went live.',
+    why: 'We’d published a placeholder ability from pre-release framing, and the real v42.40 notes turned out to be completely different — a steal/combat Sprite, and Mythic rather than Epic. A wrong ability and rarity on a brand-new Mythic is exactly the kind of error players notice, so correcting it across every surface (and leaning on Epic’s own notes plus multiple outlets) matters more than being first.',
+  },
+  {
     date: 'October 20, 2026',
     title: 'Beefed up the homepage landing content',
     changes: [

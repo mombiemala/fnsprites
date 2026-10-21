@@ -161,8 +161,8 @@ export const SPRITE_TYPES = [
   // horror film "Obsession"); "Obsession" is the crossover/movie, kept in the
   // description for search + clarity. Internal id stays `obsession` so the art
   // files (obsession_*.webp) and existing data keep working.
-  { id: 'obsession', name: 'One Wish Willow', icon: '🌳', rarity: 'Epic', dropRate: null, released: false, rumored: true, gen: 'c7s4', releaseDate: '2026-10-15',
-    ability: 'Live since Oct 15 (v42.40). The One Wish Willow Sprite — a Fortnitemares 2026 crossover with the horror film “Obsession” (Blumhouse × Focus Features). Its power: call on the One Wish Willow to help you collect other Sprites and fill out your collection (Epic hasn’t published the exact trigger/cooldown values yet). Ships with all six finishes.',
+  { id: 'obsession', name: 'One Wish Willow', icon: '🌳', rarity: 'Mythic', dropRate: null, released: false, rumored: true, gen: 'c7s4', releaseDate: '2026-10-15',
+    ability: 'Live since Oct 15 (v42.40). The One Wish Willow Sprite — a Fortnitemares 2026 crossover with the horror film “Obsession” (Blumhouse × Focus Features). Its power: when you eliminate an enemy it extracts the Sprite they had equipped for you to grab, and it shoves nearby enemies back when you take damage — but removing it pings your location on the map. Mythic rarity; ships with all six finishes.',
     // All six finishes confirmed by the Oct 15 datamine art drop. Marked R (same
     // reasoning as Honey above) so Cheat Master flips live with the rest.
     variants: { normal: R, gold: R, cheatmaster: R, loothacker: R, bountyhunter: R, trickortreat: R } },

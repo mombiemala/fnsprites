@@ -47,7 +47,7 @@ export const ANNOUNCEMENTS = [
   {
     id: 'new-sprite-day-honey-obsession-2026-10-15',
     emoji: '🍯',
-    message: 'New Sprite Day is LIVE (v42.40, Oct 15) — Honey & One Wish Willow dropped, each in all six finishes (real in-game art now on their cards). Honey sends a swarm of bees after any enemy who damages you; One Wish Willow (the Fortnitemares crossover from the film “Obsession”) helps you collect other Sprites. These are the season’s last new Sprites — Override ends Oct 31, so ~2 weeks to collect them.',
+    message: 'New Sprite Day is LIVE (v42.40, Oct 15) — Honey & One Wish Willow dropped, each in all six finishes (real in-game art now on their cards). Honey sends a swarm of bees after any enemy who damages you; One Wish Willow (the Mythic Fortnitemares crossover from the film “Obsession”) steals the Sprite an enemy had equipped when you eliminate them, and shoves nearby enemies back when you’re hit. These are the season’s last new Sprites — Override ends Oct 31, so ~2 weeks to collect them.',
     link: '/?view=news',
     linkLabel: 'What dropped',
     start: '2026-10-15',

@@ -20,7 +20,7 @@ export const FORTNITEMARES = {
     { title: 'Trick-or-Treat finish — drops Oct 8', status: 'leak', source: 'Sprite Checklist / The Click',
       detail: 'The Halloween “Trick-or-Treat” recolour (24 Sprites) is datamined for Oct 8 — not generally obtainable yet. (The Crown’s Trick-or-Treat is reachable earlier only via the Crown Victory-Royale chain, i.e. winning with the Bounty Hunter Crown — a niche progression unlock, not the general drop.) It’s a cosmetic finish that keeps each Sprite’s base ability.' },
     { title: 'Honey & One Wish Willow Sprites — live Oct 15', status: 'live', source: 'Epic (v42.40) / Vice',
-      detail: 'The mid-event wave landed Oct 15 (v42.40): Honey (Design-a-Sprite winner — sends bees after enemies who damage you) and One Wish Willow (the crossover Sprite from the horror film “Obsession” — it helps you collect other Sprites). Both shipped with all six finishes. These are the season’s last new Sprites.' },
+      detail: 'The mid-event wave landed Oct 15 (v42.40): Honey (Design-a-Sprite winner — sends bees after enemies who damage you) and One Wish Willow (the Mythic crossover Sprite from the horror film “Obsession” — eliminate an enemy and it extracts the Sprite they had equipped for you to grab, and it shoves nearby enemies back when you take damage; removing it pings your location). Both shipped with all six finishes. These are the season’s last new Sprites.' },
   ],
   // NOTE: these are cosmetic/skin crossovers, NOT Sprites (this app tracks Sprites —
   // the only Sprite collab this wave is One Wish Willow, in the roster). Kept here as a
