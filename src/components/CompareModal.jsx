@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useAuth } from '../context/authStore'
 import { fetchSharedCollection } from '../lib/sharedCollection'
-import { ALL_SPRITES, RARITY_COLORS } from '../data/sprites'
+import { ALL_SPRITES, RARITY_COLORS, RARITY_ORDER } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
 import SpriteArt from './SpriteArt'
 import { useEscClose } from '../lib/useEscClose'
@@ -11,12 +11,33 @@ import { useEscClose } from '../lib/useEscClose'
 // so the list stays a single clean view you pivot through.
 const RELEASED = ALL_SPRITES.filter((s) => !s.unreleased)
 
+// Rarest first (Mythic → Rare), then A–Z — so the most valuable trade targets
+// sit at the top of each bucket instead of being buried in roster order.
+const rarityRank = (s) => RARITY_ORDER.indexOf(s.rarity)
+const byRarity = (a, b) => rarityRank(b) - rarityRank(a) || a.typeName.localeCompare(b.typeName)
+
 const TABS = [
   { id: 'youNeed', label: 'You need', hint: 'They own it, you don’t — your trade targets' },
   { id: 'shared', label: 'Shared', hint: 'You both own it' },
   { id: 'theyNeed', label: 'They need', hint: 'You own it, they don’t — you could trade it away' },
   { id: 'neither', label: 'Neither', hint: 'Still on both your wishlists' },
 ]
+
+// A small sprite thumbnail used in the fair-swap suggestion row.
+function SwapChip({ sprite, dim }) {
+  return (
+    <div
+      className={`relative h-9 w-9 shrink-0 ${dim ? 'opacity-80' : ''}`}
+      title={`${sprite.typeName} · ${THEME_MAP[sprite.themeId]?.name || ''} · ${sprite.rarity}`}
+    >
+      <SpriteArt sprite={sprite} className="h-full w-full" />
+      <span
+        className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full ring-2 ring-emerald-400/10"
+        style={{ background: RARITY_COLORS[sprite.rarity] || '#888' }}
+      />
+    </div>
+  )
+}
 
 export default function CompareModal({ userId, gamertag, onClose }) {
   useEscClose(onClose)
@@ -55,11 +76,17 @@ export default function CompareModal({ userId, gamertag, onClose }) {
       else if (mine && !theirs) b.theyNeed.push(s)
       else b.neither.push(s)
     }
+    for (const k of Object.keys(b)) b[k].sort(byRarity)
     return b
   }, [their, tracking])
 
   const name = gamertag || 'This player'
   const list = buckets[tab]
+  // A concrete, rarity-matched swap to open with: the rarest Sprite you need that
+  // they have, paired with the rarest one they need that you have.
+  const swap = buckets.youNeed.length && buckets.theyNeed.length
+    ? { get: buckets.youNeed[0], give: buckets.theyNeed[0] }
+    : null
 
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-black/70 p-4 backdrop-blur-sm" onClick={onClose}>
@@ -92,6 +119,22 @@ export default function CompareModal({ userId, gamertag, onClose }) {
               <span className="font-bold text-[var(--brand)]">{buckets.youNeed.length}</span> · they need{' '}
               <span className="font-bold text-amber-300">{buckets.theyNeed.length}</span>
             </p>
+
+            {swap && (
+              <div className="mb-4 flex items-center gap-3 rounded-xl border border-emerald-400/25 bg-emerald-400/10 p-3">
+                <span className="shrink-0 text-lg" aria-hidden>💡</span>
+                <div className="flex min-w-0 flex-1 items-center gap-2">
+                  <SwapChip sprite={swap.give} dim />
+                  <span className="shrink-0 text-xs font-bold text-[var(--muted)]">↔</span>
+                  <SwapChip sprite={swap.get} />
+                  <p className="ml-1 min-w-0 text-[11px] leading-tight text-[var(--text)]/85">
+                    <span className="font-bold text-white">Fair swap:</span> offer your spare{' '}
+                    <b className="text-amber-300">{swap.give.typeName}</b> for their{' '}
+                    <b className="text-[var(--brand)]">{swap.get.typeName}</b> — both {swap.get.rarity === swap.give.rarity ? swap.get.rarity : `${swap.give.rarity}/${swap.get.rarity}`}.
+                  </p>
+                </div>
+              </div>
+            )}
 
             <div className="mb-4 flex flex-wrap gap-1.5">
               {TABS.map((t) => (

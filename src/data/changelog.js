@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 21, 2026',
+    title: 'Smarter Compare — ranked trade targets + a fair-swap idea',
+    changes: [
+      { tag: 'Changed', text: 'The “Compare” view (Leaderboard → Friends → ⚖ Compare) now ranks each bucket rarest-first, so the most valuable trade targets — the Mythics and Legendaries you need, or that they need — sit at the top instead of being buried in roster order.' },
+      { tag: 'Added', text: 'A one-line “fair swap” suggestion at the top of Compare: it pairs the rarest Sprite you need from them with the rarest one they need from you (“offer your spare X for their Y”), so there’s a concrete, balanced trade to open the conversation with.' },
+    ],
+    summary: 'Made the friend Compare view actually actionable — trade-target buckets are now ranked rarest-first, with a suggested rarity-matched “fair swap” to kick off a trade.',
+    why: 'The friend diff already showed what each of you is missing, but in roster order the best trades were buried, and it stopped at “here’s the list” without suggesting a move. Ranking by rarity surfaces the trades worth making, and a concrete fair-swap pairing turns the comparison into an actual trade proposal.',
+  },
+  {
+    date: 'October 21, 2026',
     title: '“Next to chase” is now a live action plan',
     changes: [
       { tag: 'Changed', text: 'The sidebar’s “Next to chase” card now leads with what to actually do right now, not just what’s rarest. It cross-references live data: when a Power Hours is boosting a finish you’re missing, it shows a “farm it now” shortcut; it surfaces the free Cheat Master Sprites you haven’t claimed whose lobby codes are live (a zero-effort grab, since those finishes are code-locked, not summoned); and it flags live Dust codes for re-summoning. The rarest-missing / finish-a-set / easiest-to-grab picks still show underneath.' },

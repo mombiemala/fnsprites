@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 21, 2026 — Smarter Compare (ranked trade targets + fair-swap idea)
+
+- **Changed** (`src/components/CompareModal.jsx`): the friend Compare view now sorts every bucket (You need / They need /
+  Shared / Neither) rarest-first (Mythic → Rare, then A–Z), so the highest-value trade targets lead instead of sitting in
+  roster order.
+- **Added** (`src/components/CompareModal.jsx`): a "fair swap" suggestion card above the tabs — it pairs the rarest Sprite
+  you need from them (`youNeed[0]`) with the rarest one they need from you (`theyNeed[0]`) and spells out "offer your spare
+  X for their Y," noting when the rarities match. Shown only when a two-way opportunity exists.
+- **Note**: the trade-finder itself already existed (Friends → ⚖ Compare for the diff, Friends → 🔄 Trade matches for the
+  automated two-way for-trade/wanted matcher). This makes the Compare diff actionable rather than a raw list.
+- **Why**: the diff showed what each side is missing but buried the good trades and stopped short of suggesting a move.
+  Ranking by rarity surfaces the trades worth making; a concrete rarity-matched pairing turns it into a trade proposal.
+
 ## October 21, 2026 — "Next to chase" is now a live action plan
 
 - **Changed** (`src/components/NextToChase.jsx`, `src/components/WhatsNext.jsx`, `src/App.jsx`): the "Next to chase" sidebar
