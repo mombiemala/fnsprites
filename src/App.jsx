@@ -47,6 +47,7 @@ const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
 const ShareExportModal = lazy(() => import('./components/ShareExportModal'))
 const PrintableChecklist = lazy(() => import('./components/PrintableChecklist'))
+const DustPlanner = lazy(() => import('./components/DustPlanner'))
 import { LINKS } from './lib/supabase'
 
 // Primary sections, in first-glance order: the collection, the sprite database,
@@ -212,6 +213,7 @@ export default function App() {
   const [showImport, setShowImport] = useState(false)
   const [showShare, setShowShare] = useState(false)
   const [showChecklist, setShowChecklist] = useState(false)
+  const [showDust, setShowDust] = useState(false)
 
   useEffect(() => {
     if (!shareTarget) return
@@ -803,13 +805,22 @@ export default function App() {
             ))}
 
           {!isShareView && (
-            <button
-              onClick={() => setShowChecklist(true)}
-              title="Open a printable one-page checklist of your collection (print or save as PDF)"
-              className="w-full rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
-            >
-              🖨 Print / save a checklist
-            </button>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setShowChecklist(true)}
+                title="Open a printable one-page checklist of your collection (print or save as PDF)"
+                className="flex-1 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
+              >
+                🖨 Checklist
+              </button>
+              <button
+                onClick={() => setShowDust(true)}
+                title="Plan your Sprite Dust — what you can afford to (re)summon"
+                className="flex-1 rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
+              >
+                🔷 Dust planner
+              </button>
+            </div>
           )}
 
           {/* What's next — Next-to-chase, Upcoming, Season countdown & Loot Hacks
@@ -887,6 +898,7 @@ export default function App() {
         {showImport && <ScreenshotImportModal onClose={() => setShowImport(false)} />}
         {showShare && <ShareExportModal onClose={() => setShowShare(false)} />}
         {showChecklist && <PrintableChecklist tracking={activeTracking} onClose={() => setShowChecklist(false)} />}
+        {showDust && <DustPlanner tracking={activeTracking} onClose={() => setShowDust(false)} />}
         {detailType && (
           <SpriteDetailModal
             typeId={detailType}

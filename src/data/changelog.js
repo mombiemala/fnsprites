@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 21, 2026',
+    title: 'Dust planner — what your Sprite Dust can (re)summon',
+    changes: [
+      { tag: 'Added', text: 'A “🔷 Dust planner” in the collection sidebar. Type how much Sprite Dust you have and it shows, against the current summon-cost estimates, which rarities you can afford to (re)summon — base Sprites and special finishes — with a plain-language summary. If you’re signed in, it also tells you how many of the variants you already own are within budget to re-summon, the priciest one, and how much more Dust you need to reach the next. Your balance is remembered in your browser.' },
+    ],
+    summary: 'Added a Dust budget planner: enter your Sprite Dust and see exactly which rarities and finishes you can afford to (re)summon, plus how many of your owned variants are within budget.',
+    why: 'We just corrected the Dust cost table, but the numbers only mattered if you did the math yourself. The planner turns them into a direct answer to the question players actually have — “I’ve got X Dust, what can I bring back?” — and ties it to your own collection.',
+  },
+  {
+    date: 'October 21, 2026',
     title: 'Smarter Compare — ranked trade targets + a fair-swap idea',
     changes: [
       { tag: 'Changed', text: 'The “Compare” view (Leaderboard → Friends → ⚖ Compare) now ranks each bucket rarest-first, so the most valuable trade targets — the Mythics and Legendaries you need, or that they need — sit at the top instead of being buried in roster order.' },

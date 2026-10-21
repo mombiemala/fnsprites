@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 21, 2026 — Dust planner (what your Sprite Dust can (re)summon)
+
+- **Added** (`src/components/DustPlanner.jsx`, `src/App.jsx`): a "🔷 Dust planner" button in the collection sidebar opens a
+  modal where you enter your Sprite Dust balance (persisted to `localStorage`). It renders a per-rarity affordability table
+  (base + special-finish cost from `dustCost`, with affordable tiers checked) and a plain-language summary of what you can
+  (re)summon. When signed in, it also reports how many of your owned variants are within budget to re-summon, the priciest
+  one, and the gap to the next. The checklist and planner buttons now share a row.
+- **Why**: we'd just corrected the Dust cost table, but the numbers only paid off if players did the arithmetic themselves.
+  The planner answers the real question — "I've got X Dust, what can I bring back?" — and ties it to the player's own
+  collection. Costs stay labelled as community estimates.
+
 ## October 21, 2026 — Smarter Compare (ranked trade targets + fair-swap idea)
 
 - **Changed** (`src/components/CompareModal.jsx`): the friend Compare view now sorts every bucket (You need / They need /
