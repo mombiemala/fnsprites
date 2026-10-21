@@ -469,14 +469,16 @@ export const RELEASED_COUNT = ALL_SPRITES.filter((s) => s.released).length
 export const SPRITE_BY_ID = Object.fromEntries(ALL_SPRITES.map((s) => [s.id, s]))
 
 // Estimated Sprite Dust to (re)summon a variant, by rarity. Normal = base cost;
-// special variants (Gold/Gummy/Galaxy…) cost more. Community-sourced estimates.
-// The July 24, 2026 hotfix cut VARIANT summon costs by ~33% ("up to 33% off",
-// ahead of Shinier Hours) — community-cited endpoints: variant Rare 4000→2700
-// and variant Mythic 15000→10000. Epic/Legendary weren't published exactly, so
-// they're set by the same ~33% cut for a consistent table. Base costs were not
-// reported as changed and are left as-is. All figures remain estimates.
-const DUST_BASE = { Rare: 100, Epic: 3000, Legendary: 5000, Mythic: 7500 }
-const DUST_VARIANT = { Rare: 2700, Epic: 4000, Legendary: 6700, Mythic: 10000 }
+// special variants (Gold/Gummy/Galaxy…) cost more. Community-sourced estimates
+// (Epic doesn't publish exact numbers). The July 24, 2026 hotfix cut summon costs
+// across the board, confirmed by multiple outlets (Vice, allthings.how, beebom,
+// talkesport): BASE costs dropped ~10% (Epic 3000→2700, Legendary 5000→4500,
+// Mythic 7500→6750; Rare base stayed 100), and VARIANT costs dropped ~33%
+// (Rare 4000→2700, Epic 6000→4000, Legendary 10000→6750, Mythic 15000→10000).
+// Season 4 "Override" is reported to have reduced costs further for some Sprites,
+// but Epic published no figures, so the post-hotfix table below stands. Estimates.
+const DUST_BASE = { Rare: 100, Epic: 2700, Legendary: 4500, Mythic: 6750 }
+const DUST_VARIANT = { Rare: 2700, Epic: 4000, Legendary: 6750, Mythic: 10000 }
 export function dustCost(rarity, themeId) {
   const table = themeId === 'normal' ? DUST_BASE : DUST_VARIANT
   return table[rarity] ?? null

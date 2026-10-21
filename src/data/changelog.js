@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 21, 2026',
+    title: 'Corrected the Sprite Dust re-summon costs',
+    changes: [
+      { tag: 'Fixed', text: 'Updated the Dust re-summon estimates to the current (post-July-24-hotfix) numbers. Our base-cost table was still showing the pre-hotfix prices — base costs actually dropped ~10% (Epic 3,000→2,700, Legendary 5,000→4,500, Mythic 7,500→6,750; Rare stays 100), confirmed across multiple outlets (Vice, allthings.how, beebom, talkesport). Also nudged the Legendary variant cost from 6,700 to the cited 6,750. Variant costs (Rare 2,700 · Epic 4,000 · Legendary 6,750 · Mythic 10,000) were already correct.' },
+    ],
+    summary: 'Fixed the Sprite Dust re-summon cost estimates — the base-Sprite table was pre-hotfix (too high); base costs are now the correct post-hotfix values (Epic 2,700 · Legendary 4,500 · Mythic 6,750), with a small Legendary-variant tweak (6,700→6,750).',
+    why: 'These Dust figures show as the ≈dust badge on every Sprite variant, so a stale table means every Epic/Legendary/Mythic base cost read ~10% high. The July 24 hotfix cut base costs too (not just variants, as our note had assumed), and several reputable outlets agree on the exact numbers — so the table is now corrected to match. They stay labelled estimates since Epic doesn’t publish official figures.',
+  },
+  {
+    date: 'October 21, 2026',
     title: 'Cleaner loading screen + News feed back in order',
     changes: [
       { tag: 'Fixed', text: 'The loading screen no longer dumps the full homepage write-up on screen while the app boots — it’s back to a clean splash (logo, tagline, spinner). That landing copy is still in the page’s HTML for search engines and no-JS readers; it’s just hidden from the visual loading paint.' },

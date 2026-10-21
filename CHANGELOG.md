@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 21, 2026 — Corrected the Sprite Dust re-summon costs
+
+- **Fixed** (`src/data/sprites.js`): the `DUST_BASE` table was still the pre-hotfix values. The July 24, 2026 hotfix cut
+  base summon costs ~10% as well (not just variants, as the old note assumed): Epic 3,000→2,700, Legendary 5,000→4,500,
+  Mythic 7,500→6,750 (Rare base stays 100). Also corrected the Legendary **variant** from 6,700 to the cited 6,750. The
+  rest of `DUST_VARIANT` (Rare 2,700 · Epic 4,000 · Mythic 10,000) already matched.
+- **Why**: these figures render as the `≈dust` badge on every Sprite variant in the detail modal and the sprite guide, so a
+  stale base table overstated every Epic/Legendary/Mythic base re-summon by ~10%. Multiple reputable outlets (Vice,
+  allthings.how, beebom, talkesport) agree on the post-hotfix numbers, so the table now matches them. Season 4 reportedly
+  reduced some costs further but Epic published no figures, so the post-hotfix table stands. Still labelled estimates.
+
 ## October 21, 2026 — Cleaner loading screen + News feed back in order
 
 - **Fixed** (`index.html`): the pre-React boot screen no longer paints the full `#boot-about` landing copy while the app
