@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 21, 2026',
+    title: 'Cleaner loading screen + News feed back in order',
+    changes: [
+      { tag: 'Fixed', text: 'The loading screen no longer dumps the full homepage write-up on screen while the app boots — it’s back to a clean splash (logo, tagline, spinner). That landing copy is still in the page’s HTML for search engines and no-JS readers; it’s just hidden from the visual loading paint.' },
+      { tag: 'Fixed', text: 'The News feed now reads strictly newest-first. Evergreen items (the weekly-events summary and known-issue notes) were defaulting to “today” and jumping above the latest news; they now sort to the end of the current list, and former “upcoming” teasers sit in their real date spot instead of being pinned above fresh news.' },
+    ],
+    summary: 'Fixed the loading screen (clean splash again, the long landing copy stays in the HTML for crawlers) and the News feed order (strictly newest-first; evergreen/known-issue cards no longer leapfrog the latest news).',
+    why: 'Two things that read as broken: the AdSense homepage-copy expansion was being painted on the loading screen (a wall of text before the app appeared), and undated evergreen news items were sorting as “today,” so they sat above genuinely newer entries. Both are presentation bugs with simple, correct fixes — hide the boot copy visually (keep it for crawlers), and give undated items a real place in the sort order.',
+  },
+  {
+    date: 'October 21, 2026',
     title: 'A slim support bar up top (Creator Code + coffee)',
     changes: [
       { tag: 'Added', text: 'A compact “support the maker” bar now sits just under the nav on every main view, leading with Creator Code MOMBIE (one-tap copy) and a ☕ Buy me a coffee button. It’s dismissible with the ✕ and stays hidden after that (remembered per browser), so it’s visible by default without nagging. The fuller support card in the sidebar stays as-is.' },

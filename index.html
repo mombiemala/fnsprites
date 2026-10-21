@@ -94,7 +94,14 @@
       #boot .spin { margin-top: 20px; width: 26px; height: 26px; border: 3px solid #2a2436; border-top-color: #ffc93c; border-radius: 50%; animation: bs .8s linear infinite; }
       @keyframes bs { to { transform: rotate(360deg); } }
       #boot .btn { border: 0; border-radius: 12px; padding: 10px 16px; font-weight: 700; cursor: pointer; font-size: 14px; }
+      /* The landing copy below is kept in the HTML for no-JS readers and crawlers
+         that don't execute scripts, but hidden from the visual loading paint so
+         JS visitors see a clean splash (title + tagline + spinner), not a wall of
+         text flashing before React mounts. Re-shown for no-JS via the <noscript>
+         override right after this block. */
+      #boot-about { display: none; }
     </style>
+    <noscript><style>#boot-about { display: block; }</style></noscript>
   </head>
   <body>
     <div id="root">
@@ -111,10 +118,11 @@
             </div>
           </div>
           <noscript><p style="margin-top:16px;color:#f4efe9">This app needs JavaScript enabled to track your collection.</p></noscript>
-          <!-- First-paint landing content: real, crawlable description + internal
-               links to the main tools. React replaces #root on mount, so live
-               visitors never see this — it's for the first paint, no-JS readers,
-               and search crawlers that read the raw HTML. -->
+          <!-- Crawlable landing content: real description + internal links to the
+               main tools. Hidden from the visual loading paint (see #boot-about in
+               the <style> above) so JS visitors get a clean splash; it stays in the
+               HTML source for no-JS readers and crawlers that read raw HTML. React
+               replaces #root with the full app on mount. -->
           <section id="boot-about" style="max-width:52rem;margin:28px auto 0;text-align:left;font-size:.95rem;line-height:1.65;color:#cfc6d6">
             <h2 style="font-size:1.15rem;color:#f4efe9;margin:0 0 8px">What FN Sprite Tracker does</h2>
             <p style="margin:0 0 12px">FN Sprite Tracker is a free, fan-made companion for Fortnite Sprites. Tick off the ones you own, see how far you are from a complete set, and keep your collection synced across devices. It covers the Chapter 7 Season 4 &ldquo;Override&rdquo; generation and the archived Season 3 &ldquo;Runners&rdquo; Sprites, every finish (Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter and seasonal recolours), their abilities, drop rates and re-summon Dust costs. It&rsquo;s built and updated every day by a Fortnite player &mdash; it is not made by or affiliated with Epic Games.</p>

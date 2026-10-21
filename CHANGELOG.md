@@ -11,6 +11,22 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 21, 2026 — Cleaner loading screen + News feed back in order
+
+- **Fixed** (`index.html`): the pre-React boot screen no longer paints the full `#boot-about` landing copy while the app
+  loads. That section (added for the AdSense "low value content" fix) is now `display:none` by default, with a `<noscript>`
+  override that re-shows it when JS is off — so crawlers and no-JS readers still get the content in the raw HTML, but JS
+  visitors see a clean splash (logo + tagline + spinner) instead of a wall of text.
+- **Fixed** (`src/components/NewsFeed.jsx`): the feed now sorts into one strict reverse-chronological stream (live-now
+  pinned → auto-pulled live news → everything by date, newest-first). Evergreen items (`weekly-sprite-events`, the `ki-*`
+  known-issues) use a non-date string as their `ts`, which the old `dateNum` fallback treated as "today," so they ranked
+  above the newest real news; a separate `orderKey` (null for non-dates) now sorts them to the end of the visible block.
+  Former `upcoming`-tagged teasers are no longer pinned above history — they slot into their real date position. The
+  collapse (`dateNum < CUTOFF`) still keeps evergreen items visible.
+- **Why**: both were presentation bugs. The homepage copy belongs in the HTML (for crawlers) but not painted on the loading
+  screen; and undated news items defaulting to "today" is what made the feed look out of order. Hiding the boot copy
+  visually and giving undated items a real sort position fixes both without losing the SEO content.
+
 ## October 21, 2026 — A slim support bar up top (Creator Code + coffee)
 
 - **Added** (`src/components/SupportStrip.jsx`, `src/App.jsx`): a compact, dismissible "support the maker" bar now renders

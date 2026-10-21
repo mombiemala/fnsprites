@@ -47,15 +47,35 @@ export default function NewsFeed() {
       if (n.start && /^\d{4}-\d{2}-\d{2}$/.test(n.start)) return Number(n.start.replace(/-/g, ''))
       return todayNum
     }
-    // Order: live-now (pinned) → upcoming (soonest first) → auto/live → history
-    // (newest first). Each group is sorted by real date so the feed reads
-    // chronologically within it. Dedupe by normalized title so a live item can't
-    // double a curated one.
-    const liveNow = NEWS.filter((n) => isLiveNow(n, today)).sort((a, b) => dateNum(b) - dateNum(a))
-    const upcoming = NEWS.filter((n) => n.tag === 'upcoming' && !isLiveNow(n, today)).sort((a, b) => dateNum(a) - dateNum(b))
-    const history = NEWS.filter((n) => n.tag !== 'upcoming' && !isLiveNow(n, today)).sort((a, b) => dateNum(b) - dateNum(a))
+    // Real calendar date if the item has one, else null — used only for ORDERING.
+    // Evergreen items (weekly events, known issues) use a stable string key as
+    // their `ts`, not a date, so they have no spot on the timeline: they must sort
+    // to the end of the stream, not default to "today" and leapfrog the newest news
+    // (which is exactly what made the feed look out of order).
+    const orderKey = (n) => {
+      const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(n.ts || '')
+      if (m) return Number(m[1] + m[2] + m[3])
+      if (n.start && /^\d{4}-\d{2}-\d{2}$/.test(n.start)) return Number(n.start.replace(/-/g, ''))
+      return null
+    }
+    const byNewest = (a, b) => {
+      const da = orderKey(a)
+      const db = orderKey(b)
+      if (da === null && db === null) return 0
+      if (da === null) return 1 // undated → after any dated item
+      if (db === null) return -1
+      return db - da // both dated → newest first
+    }
+    // Order: currently-live events (pinned) → auto-pulled live news (current) →
+    // everything else as ONE reverse-chronological stream, so curated news, the
+    // former "upcoming" teasers and the history all read newest-first by date
+    // instead of sitting in separate groups that leapfrogged each other. Undated
+    // evergreen items (weekly events, known issues) fall to the end of the visible
+    // block. Dedupe by normalized title/key so a live item can't double a curated one.
+    const liveNow = NEWS.filter((n) => isLiveNow(n, today)).sort(byNewest)
+    const rest = NEWS.filter((n) => !isLiveNow(n, today)).sort(byNewest)
     const seen = new Set()
-    let merged = [...liveNow, ...upcoming, ...live, ...history].filter((n) => {
+    let merged = [...liveNow, ...live, ...rest].filter((n) => {
       const k = (n._key || n.title).toLowerCase().trim()
       if (seen.has(k)) return false
       seen.add(k)
