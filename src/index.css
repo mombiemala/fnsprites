@@ -495,3 +495,30 @@
   color: var(--text);
   opacity: 0.85;
 }
+
+/* ── Printable checklist (PrintableChecklist.jsx) ─────────────────────────────
+   The sheet is portalled straight onto <body> (sibling to #root) and the body
+   gets `.has-print-sheet` while it's open. In print we hide every other body
+   child entirely (display:none, so nothing reserves layout and there are no
+   blank trailing pages) and print only the white sheet. */
+@media print {
+  body.has-print-sheet > *:not(.print-overlay) { display: none !important; }
+  .print-overlay {
+    position: static !important;
+    inset: auto !important;
+    background: #fff !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    backdrop-filter: none !important;
+  }
+  .print-sheet {
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 12px !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  .no-print { display: none !important; }
+  .checklist-gen, .checklist-row { break-inside: avoid; page-break-inside: avoid; }
+}

@@ -18,14 +18,13 @@ function shouldShow() {
 }
 
 const POINTS = [
-  { icon: '✅', text: 'Tap any sprite, then mark each variant Have · ★ Mastered · ⇄ Trade · ♥ Want.' },
-  { icon: '☁️', text: 'Log in to save to the cloud and get a shareable link with your gamertag.' },
-  { icon: '🏆', text: 'Climb the Flex Score leaderboard and compare collections with other players.' },
-  { icon: '🔁', text: 'Post and find trades on the Trade board — full trades or indexing.' },
-  { icon: '🗺️', text: 'Check the Farming guide for the best sprite-chest hotspots and map links.' },
+  { icon: '✅', text: 'Tap any sprite to mark each variant Have · ★ Mastered · ⇄ Trade · ♥ Want — it saves in this browser as you go.' },
+  { icon: '📷', text: 'Already have some? Import a sprite-locker screenshot to fill your collection in one go.' },
+  { icon: '☁️', text: 'Optional: log in to sync across devices, join the leaderboard, and get a shareable link.' },
+  { icon: '🔁', text: 'Find trades, farm the finishes you’re missing, and flex your Collection score.' },
 ]
 
-export default function WelcomeModal() {
+export default function WelcomeModal({ onImport }) {
   const [open, setOpen] = useState(shouldShow)
 
   const close = () => {
@@ -36,6 +35,10 @@ export default function WelcomeModal() {
       /* ignore */
     }
     setOpen(false)
+  }
+  const importAndClose = () => {
+    close()
+    onImport?.()
   }
   useEscClose(close, open)
 
@@ -54,7 +57,7 @@ export default function WelcomeModal() {
           Welcome to FN <span className="text-[var(--brand)]">Sprite</span> Tracker 👋
         </h2>
         <p className="mt-1 text-sm text-[var(--text)]/85">
-          Track every Fortnite sprite and variant — free and fan-made. Here’s the gist:
+          Track every Fortnite sprite and variant — <b className="text-white">no account needed</b>. Start right now:
         </p>
 
         <ul className="mt-4 flex flex-col gap-2.5">
@@ -66,15 +69,26 @@ export default function WelcomeModal() {
           ))}
         </ul>
 
-        <button
-          onClick={close}
-          title="Start using the tracker"
-          className="mt-5 w-full rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] py-2.5 text-sm font-extrabold text-black"
-        >
-          Let’s go →
-        </button>
+        <div className="mt-5 flex flex-col gap-2">
+          <button
+            onClick={close}
+            title="Start marking sprites — no account needed"
+            className="w-full rounded-xl bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] py-2.5 text-sm font-extrabold text-black"
+          >
+            Start tracking →
+          </button>
+          {onImport && (
+            <button
+              onClick={importAndClose}
+              title="Import your sprite locker from a screenshot — read on your device"
+              className="w-full rounded-xl border border-[var(--border)] bg-[var(--panel-2)] py-2.5 text-sm font-bold text-white hover:bg-[var(--border)]"
+            >
+              📷 Import a locker screenshot
+            </button>
+          )}
+        </div>
         <p className="mt-3 text-center text-[11px] text-[var(--muted)]">
-          Works instantly as a guest · your progress saves in this browser until you log in.
+          Works instantly as a guest · progress saves in this browser until you log in.
         </p>
       </div>
     </div>

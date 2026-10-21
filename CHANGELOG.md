@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 21, 2026 — Printable checklist + a friendlier first run
+
+- **Added** (`src/components/PrintableChecklist.jsx`, `src/App.jsx`, `src/index.css`): a printable / save-as-PDF collection
+  checklist. A "🖨 Print / save a checklist" button in the collection sidebar opens a white, ink-friendly one-page sheet of
+  every released Sprite grouped by generation, with each finish as a checkbox and the player's owned (✓) / mastered (★)
+  progress baked in. The sheet is portalled onto `<body>`; a `@media print` block (`.has-print-sheet`) hides `#root` so only
+  the sheet prints, with no blank trailing pages. Matches the one feature static checklist sites had that we didn't.
+- **Changed** (`src/components/WelcomeModal.jsx`, `src/App.jsx`): reworked the first-run welcome to lead with "no account
+  needed — start right now," surface the screenshot import as a first-class path (a dedicated "📷 Import a locker
+  screenshot" button wired via a new `onImport` prop), and reframe login as the optional sync/share/leaderboard step rather
+  than point #2 of a five-item wall.
+- **Why**: a printable/PDF checklist and a no-signup on-ramp are two of the most-wanted things for a collection tracker —
+  the latter is exactly what competing trackers lead with. The screenshot import is our fastest way to fill a collection, so
+  it belongs on the welcome screen instead of buried in the UI.
+
 ## October 21, 2026 — Content cleanup (less boilerplate, tighter copy)
 
 - **Changed** (`scripts/prerender.mjs`): removed the trailing "Not affiliated with Epic Games." from ~15 per-page fine-print

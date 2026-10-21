@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 21, 2026',
+    title: 'Printable checklist + a friendlier first run',
+    changes: [
+      { tag: 'Added', text: 'A printable / save-as-PDF checklist. Hit “🖨 Print / save a checklist” in the sidebar to get a clean, one-page list of every released Sprite and the finishes it comes in, with your owned (✓) and mastered (★) progress filled in and empty boxes (☐) for what’s left — ink-friendly for printing or saving as a PDF.' },
+      { tag: 'Changed', text: 'Reworked the first-run welcome to lead with “no account needed — start right now,” and to offer the screenshot import up front (a dedicated “📷 Import a locker screenshot” button) so you can fill your collection in one go. Logging in is now clearly framed as the optional step for syncing, the leaderboard and sharing.' },
+    ],
+    summary: 'Added a printable/PDF collection checklist (your progress baked in), and made the first-run welcome lead with “no account needed” and the one-tap screenshot import instead of pushing login first.',
+    why: 'Two of the things players want most: a checklist they can print or save, and the ability to start instantly without a sign-up wall (the thing competing trackers lead with). The screenshot import is our fastest on-ramp, so it belongs on the welcome screen, not buried.',
+  },
+  {
+    date: 'October 21, 2026',
     title: 'Content cleanup — less boilerplate, tighter copy',
     changes: [
       { tag: 'Changed', text: 'Trimmed repeated boilerplate and filler across the site. The “Not affiliated with Epic Games” disclaimer was being repeated in the fine-print of ~15 pages on top of the footer that already carries it — removed from the per-page notes (kept once in the footer, and in full on the Privacy/Terms pages), while each page keeps its own useful sourcing line. Also dropped the stray sourcing line from the News feed footer.' },

@@ -46,6 +46,7 @@ const BackupModal = lazy(() => import('./components/BackupModal'))
 const ProfileModal = lazy(() => import('./components/ProfileModal'))
 const ScreenshotImportModal = lazy(() => import('./components/ScreenshotImportModal'))
 const ShareExportModal = lazy(() => import('./components/ShareExportModal'))
+const PrintableChecklist = lazy(() => import('./components/PrintableChecklist'))
 import { LINKS } from './lib/supabase'
 
 // Primary sections, in first-glance order: the collection, the sprite database,
@@ -210,6 +211,7 @@ export default function App() {
   const [showProfile, setShowProfile] = useState(false)
   const [showImport, setShowImport] = useState(false)
   const [showShare, setShowShare] = useState(false)
+  const [showChecklist, setShowChecklist] = useState(false)
 
   useEffect(() => {
     if (!shareTarget) return
@@ -480,7 +482,7 @@ export default function App() {
 
   return (
     <div className="mx-auto min-h-screen max-w-6xl px-4 pb-24 pt-6 sm:px-6">
-      <WelcomeModal />
+      <WelcomeModal onImport={() => setShowImport(true)} />
       <header className="mb-4 flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h1 className="font-display text-3xl leading-none sm:text-4xl">
@@ -800,6 +802,16 @@ export default function App() {
               </div>
             ))}
 
+          {!isShareView && (
+            <button
+              onClick={() => setShowChecklist(true)}
+              title="Open a printable one-page checklist of your collection (print or save as PDF)"
+              className="w-full rounded-xl border border-[var(--border)] bg-[var(--panel)] px-3 py-2 text-xs font-bold text-[var(--muted)] transition-colors hover:text-white"
+            >
+              🖨 Print / save a checklist
+            </button>
+          )}
+
           {/* What's next — Next-to-chase, Upcoming, Season countdown & Loot Hacks
               folded into one tabbed card so the sidebar leads with progress instead
               of a ten-card stack. */}
@@ -874,6 +886,7 @@ export default function App() {
         {showProfile && <ProfileModal onClose={() => setShowProfile(false)} />}
         {showImport && <ScreenshotImportModal onClose={() => setShowImport(false)} />}
         {showShare && <ShareExportModal onClose={() => setShowShare(false)} />}
+        {showChecklist && <PrintableChecklist tracking={activeTracking} onClose={() => setShowChecklist(false)} />}
         {detailType && (
           <SpriteDetailModal
             typeId={detailType}
