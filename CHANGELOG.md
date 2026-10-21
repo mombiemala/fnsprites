@@ -11,6 +11,19 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 21, 2026 — "Next to chase" is now a live action plan
+
+- **Changed** (`src/components/NextToChase.jsx`, `src/components/WhatsNext.jsx`, `src/App.jsx`): the "Next to chase" sidebar
+  card now leads with time-sensitive, zero-cost actions before the evergreen rarity picks. It cross-references live data:
+  (1) if a finish-boosting Power Hours is live now and you're missing that finish, a fuchsia "Live now" row farms it
+  (reuses `farmFinish`); (2) a "Do now" row lists the free Cheat Master Sprites you haven't claimed whose lobby codes are
+  live (matched from `LOBBY_CODES` → `${spriteId}_cheatmaster`), linking to the Codes tab; (3) a row for live Dust codes.
+  The rarest-missing / finish-a-set / easiest-to-grab picks still render underneath (trimmed as action rows take slots).
+  `onFarmFinish` and `onGo` are plumbed App → WhatsNext → NextToChase (the same handlers TopStatus already uses).
+- **Why**: the card had the ingredients (missing list, live events, working codes, drop rates) but only answered "what's
+  rarest." "What should I do right now" is more useful — and the best answer is often free (a code-locked Cheat Master
+  Sprite you can unlock this second, or a finish that's boosted while an event runs), so those lead.
+
 ## October 21, 2026 — Printable checklist + a friendlier first run
 
 - **Added** (`src/components/PrintableChecklist.jsx`, `src/App.jsx`, `src/index.css`): a printable / save-as-PDF collection

@@ -15,7 +15,7 @@ const TABS = [
   ['loot', '🧰', 'Loot'],
 ]
 
-export default function WhatsNext({ tracking, onOpen }) {
+export default function WhatsNext({ tracking, onOpen, onFarmFinish, onGo }) {
   const [tab, setTab] = useState('chase')
   return (
     <div className="flex flex-col gap-2">
@@ -34,7 +34,7 @@ export default function WhatsNext({ tracking, onOpen }) {
         ))}
       </div>
       {tab === 'chase' && (
-        <NextToChase tracking={tracking} onOpen={onOpen} />
+        <NextToChase tracking={tracking} onOpen={onOpen} onFarmFinish={onFarmFinish} onGo={onGo} />
       )}
       {tab === 'soon' && <UpcomingSprites onOpen={onOpen} />}
       {tab === 'season' && <SeasonCountdown />}

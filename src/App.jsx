@@ -815,7 +815,7 @@ export default function App() {
           {/* What's next — Next-to-chase, Upcoming, Season countdown & Loot Hacks
               folded into one tabbed card so the sidebar leads with progress instead
               of a ten-card stack. */}
-          {!isShareView && <WhatsNext tracking={activeTracking} onOpen={setDetailType} />}
+          {!isShareView && <WhatsNext tracking={activeTracking} onOpen={setDetailType} onFarmFinish={farmFinish} onGo={goToSection} />}
 
           {!isShareView && <SupportBanner />}
 

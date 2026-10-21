@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 21, 2026',
+    title: '“Next to chase” is now a live action plan',
+    changes: [
+      { tag: 'Changed', text: 'The sidebar’s “Next to chase” card now leads with what to actually do right now, not just what’s rarest. It cross-references live data: when a Power Hours is boosting a finish you’re missing, it shows a “farm it now” shortcut; it surfaces the free Cheat Master Sprites you haven’t claimed whose lobby codes are live (a zero-effort grab, since those finishes are code-locked, not summoned); and it flags live Dust codes for re-summoning. The rarest-missing / finish-a-set / easiest-to-grab picks still show underneath.' },
+    ],
+    summary: 'Turned “Next to chase” into an action plan — it now leads with time-sensitive, zero-cost moves (farm a boosted finish that’s live, claim free Cheat Master unlocks whose codes are live, grab live Dust codes) before the evergreen rarity picks.',
+    why: 'The card had all the raw ingredients (your missing list, live events, working codes, drop rates) but only answered “what’s rarest.” The more useful question is “what should I do right now” — and the highest-value answer is often free: a Cheat Master Sprite you can unlock this second with a live code, or a finish that’s rate-boosted while an event is running. Leading with those makes the card worth checking every session.',
+  },
+  {
+    date: 'October 21, 2026',
     title: 'Printable checklist + a friendlier first run',
     changes: [
       { tag: 'Added', text: 'A printable / save-as-PDF checklist. Hit “🖨 Print / save a checklist” in the sidebar to get a clean, one-page list of every released Sprite and the finishes it comes in, with your owned (✓) and mastered (★) progress filled in and empty boxes (☐) for what’s left — ink-friendly for printing or saving as a PDF.' },
