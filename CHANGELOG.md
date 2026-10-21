@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 21, 2026 — A slim support bar up top (Creator Code + coffee)
+
+- **Added** (`src/components/SupportStrip.jsx`, `src/App.jsx`): a compact, dismissible "support the maker" bar now renders
+  just under the primary nav on every main view (gated out of the read-only share view). It leads with Creator Code
+  `MOMBIE` (one-tap copy, with toast) and a ☕ Buy-me-a-coffee button. Dismissal (`✕`) is persisted to `localStorage`
+  (`fnsprites:supportStripDismissed`, try/catch-guarded), so it shows by default but never re-nags after a dismiss. The
+  existing fuller `SupportBanner` in the sidebar is unchanged.
+- **Why**: for a niche fan tool, Epic's Support-A-Creator code is the best-fit monetization (pays the maker ~5% of players'
+  in-shop spend at no cost to them, and the whole audience already shops in Fortnite), but the support links only lived low
+  in the sidebar — below the fold on mobile. Surfacing the Creator Code above the fold, one tap to dismiss, is a cleaner and
+  more honest way to fund the site than chasing display ads after the AdSense "low value content" flag.
+
 ## October 21, 2026 — Fixed the One Wish Willow Sprite (Mythic, and it steals Sprites)
 
 - **Fixed** (`src/data/sprites.js`): corrected the One Wish Willow (Obsession) Sprite. Ability changed from the pre-release

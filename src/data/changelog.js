@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 21, 2026',
+    title: 'A slim support bar up top (Creator Code + coffee)',
+    changes: [
+      { tag: 'Added', text: 'A compact “support the maker” bar now sits just under the nav on every main view, leading with Creator Code MOMBIE (one-tap copy) and a ☕ Buy me a coffee button. It’s dismissible with the ✕ and stays hidden after that (remembered per browser), so it’s visible by default without nagging. The fuller support card in the sidebar stays as-is.' },
+    ],
+    summary: 'Added a slim, dismissible support bar at the top of the app so the Creator Code and Buy Me a Coffee are visible above the fold on every view, not just buried low in the sidebar.',
+    why: 'For a niche fan tool, Epic’s Support-A-Creator code is the best-fit monetization — it pays the maker a cut of in-shop spend at no cost to players, and the whole audience already shops in Fortnite — but the support links only lived low in the sidebar, below the fold on mobile. Surfacing the Creator Code prominently (while keeping it one tap to dismiss) is a cleaner, more honest way to fund the site than display ads.',
+  },
+  {
+    date: 'October 21, 2026',
     title: 'Fixed the One Wish Willow Sprite — Mythic, and it steals Sprites',
     changes: [
       { tag: 'Fixed', text: 'Corrected the One Wish Willow (Obsession) Sprite. Its ability is NOT “helps you collect other Sprites” (that was our pre-release framing) — per Epic’s v42.40 patch notes it’s a combat Sprite: eliminate an enemy and it extracts the Sprite they had equipped for you to grab, it shoves nearby enemies back when you take damage, and removing it pings your location on the map. Also fixed its rarity from Epic to Mythic. Updated everywhere it appears (the Sprite card, the New Sprite Day news item, the top-of-app announcement, and the Fortnitemares tracker).' },

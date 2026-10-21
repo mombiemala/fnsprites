@@ -12,6 +12,7 @@ import { SpriteMark } from './components/Logo'
 import Toolbar from './components/Toolbar'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
+import SupportStrip from './components/SupportStrip'
 import StatsBreakdown from './components/StatsBreakdown'
 import TopStatus from './components/TopStatus'
 import QuickCheckList from './components/QuickCheckList'
@@ -539,6 +540,8 @@ export default function App() {
         extras={utilityLinks}
         ariaLabel="Sections"
       />
+
+      {!isShareView && <SupportStrip />}
 
       {(effectiveView === 'leaderboard' || effectiveView === 'codes' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
         <Suspense fallback={<TabLoading />}>
