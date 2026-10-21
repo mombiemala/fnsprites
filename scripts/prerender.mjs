@@ -786,17 +786,32 @@ const newsLive = (n) => {
   if (n.end && NEWS_TODAY > n.end) return false
   return true
 }
-const newsDateNum = (n) => {
+// Real calendar date for ordering, or null for evergreen items (weekly events,
+// known issues) whose `ts` is a stable key, not a date. Null-dated items sort to
+// the END of the stream instead of defaulting to "today" and leapfrogging the
+// newest news. Mirrors src/components/NewsFeed.jsx so the static /news page and
+// the in-app feed order identically (both strictly newest-first).
+const newsOrderKey = (n) => {
   const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(n.ts || '')
   if (m) return Number(m[1] + m[2] + m[3])
   if (n.start && /^\d{4}-\d{2}-\d{2}$/.test(n.start)) return Number(n.start.replace(/-/g, ''))
-  return Number(NEWS_TODAY.replace(/-/g, ''))
+  return null
+}
+const newsByNewest = (a, b) => {
+  const da = newsOrderKey(a)
+  const db = newsOrderKey(b)
+  if (da === null && db === null) return 0
+  if (da === null) return 1 // undated → after any dated item
+  if (db === null) return -1
+  return db - da // both dated → newest first
 }
 function orderedNews() {
-  const liveNow = NEWS.filter(newsLive).sort((a, b) => newsDateNum(b) - newsDateNum(a))
-  const upcoming = NEWS.filter((n) => n.tag === 'upcoming' && !newsLive(n)).sort((a, b) => newsDateNum(a) - newsDateNum(b))
-  const history = NEWS.filter((n) => n.tag !== 'upcoming' && !newsLive(n)).sort((a, b) => newsDateNum(b) - newsDateNum(a))
-  return [...liveNow, ...upcoming, ...history]
+  // Currently-live events pinned on top, then everything else in one strict
+  // reverse-chronological stream (former "upcoming" teasers slot into their real
+  // date; evergreen items fall to the end).
+  const liveNow = NEWS.filter(newsLive).sort(newsByNewest)
+  const rest = NEWS.filter((n) => !newsLive(n)).sort(newsByNewest)
+  return [...liveNow, ...rest]
 }
 
 function newsCard(n) {

@@ -28,12 +28,13 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   loads. That section (added for the AdSense "low value content" fix) is now `display:none` by default, with a `<noscript>`
   override that re-shows it when JS is off — so crawlers and no-JS readers still get the content in the raw HTML, but JS
   visitors see a clean splash (logo + tagline + spinner) instead of a wall of text.
-- **Fixed** (`src/components/NewsFeed.jsx`): the feed now sorts into one strict reverse-chronological stream (live-now
-  pinned → auto-pulled live news → everything by date, newest-first). Evergreen items (`weekly-sprite-events`, the `ki-*`
+- **Fixed** (`src/components/NewsFeed.jsx`, `scripts/prerender.mjs`): the feed now sorts into one strict reverse-chronological
+  stream (live-now pinned → auto-pulled live news → everything by date, newest-first), in BOTH the in-app feed and the
+  prerendered `/news` page, which carried an identical copy of the bug. Evergreen items (`weekly-sprite-events`, the `ki-*`
   known-issues) use a non-date string as their `ts`, which the old `dateNum` fallback treated as "today," so they ranked
-  above the newest real news; a separate `orderKey` (null for non-dates) now sorts them to the end of the visible block.
-  Former `upcoming`-tagged teasers are no longer pinned above history — they slot into their real date position. The
-  collapse (`dateNum < CUTOFF`) still keeps evergreen items visible.
+  above the newest real news; a separate `orderKey`/`newsOrderKey` (null for non-dates) now sorts them to the end. Former
+  `upcoming`-tagged teasers are no longer pinned above history — they slot into their real date position. The app's collapse
+  (`dateNum < CUTOFF`) still keeps evergreen items visible.
 - **Why**: both were presentation bugs. The homepage copy belongs in the HTML (for crawlers) but not painted on the loading
   screen; and undated news items defaulting to "today" is what made the feed look out of order. Hiding the boot copy
   visually and giving undated items a real sort position fixes both without losing the SEO content.
