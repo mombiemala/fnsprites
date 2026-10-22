@@ -3,7 +3,8 @@
 // is a different system from the "Loot Hacker" Sprite finish — here you're
 // spending Dust to bias what your own chests drop.
 //
-// The set ROTATES roughly weekly (the in-game Loot Hack screen shows a refresh
+// The set ROTATES with major updates (not strictly weekly — the Oct 22 window
+// passed with no change; the in-game Loot Hack screen shows the real refresh
 // timer). Keep this file current when a new rotation lands — update the items,
 // `rotationStart` and `nextRefresh`, and add a source. Costs are deliberately
 // qualitative: Epic doesn't publish exact per-tier Dust numbers and they differ
@@ -13,7 +14,7 @@
 export const LOOT_HACK_META = {
   patch: 'v42.40',
   rotationStart: '2026-10-15',
-  nextRefresh: '2026-10-22', // next rotation expected ~weekly; the in-game timer is authoritative
+  nextRefresh: '2026-10-29', // no rotation landed Oct 22; the pool holds until the next major update (v42.50, est. Oct 29) — the in-game timer is authoritative
   maxLevel: 6, // each item unlocks at L1, then upgrades up to L6 for higher odds/rarity
   source: 'Epic (Fortnite v42.40) · FRVR · fortnitenews · The Click',
   sourceUrl: 'https://fortnitenews.com/fortnite-v42-40-is-live-bee-swarms-sprite-thieves-and-a-freddy-powered-power-hours/',
