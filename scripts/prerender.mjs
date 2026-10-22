@@ -1529,13 +1529,15 @@ function goldPage() {
 function quackPage() {
   const L = (href, text) => `<a href="${href}" style="color:var(--brand)">${text}</a>`
   const perk = THEME_MAP.quack?.bonus || ''
-  // Documented C7 S3 "Runners" mastery milestones (community-confirmed). Newer
-  // (Override) Quacks are mastery/collection unlocks without a public threshold number.
+  // Sprite Mastery Reward track unlock levels. Season 4 "Override" Quacks are
+  // community-confirmed across multiple outlets (Vice, allthings.how, Beebom,
+  // Gamerant, iGeeksBlog); the C7 S3 "Runners" elemental set is the archived one.
+  const CURRENT_MS = { jonesy: 40, bushranger: 45, adventure: 50, phasedash: 55, klombo: 60 }
   const MILESTONES = { water: 35, earth: 40, fire: 45, zeropoint: 55 }
   // Derive the Quack roster straight from the data so this never drifts as finishes
   // are added. Current-season (Override) Quacks first, then the earlier elemental set.
   const quackTypes = SPRITE_TYPES.filter((t) => 'quack' in t.variants)
-  const current = quackTypes.filter((t) => (t.gen || 'c7s3') === CURRENT_GEN).sort((a, b) => a.name.localeCompare(b.name))
+  const current = quackTypes.filter((t) => (t.gen || 'c7s3') === CURRENT_GEN).sort((a, b) => (CURRENT_MS[a.id] ?? 99) - (CURRENT_MS[b.id] ?? 99))
   const legacy = quackTypes.filter((t) => (t.gen || 'c7s3') !== CURRENT_GEN)
     .map((t) => ({ t, count: MILESTONES[t.id] })).sort((a, b) => (a.count ?? 99) - (b.count ?? 99))
   const total = quackTypes.length
@@ -1548,12 +1550,12 @@ function quackPage() {
       ${right}</a>`
   const faqs = [
     ['What are Quack Sprites in Fortnite?', `Quack is a special Sprite finish earned through Sprite Mastery — not pulled from chests. A Quack Sprite keeps its base ability and adds a bonus: ${perk} There are ${total} in total: ${current.length} in the current Override season (${nameList(curNames)}) plus the four earlier elemental mastery-milestone Quacks (Water, Earth, Fire and Zero Point).`],
-    ['How do you get the Quack Sprites?', `Every Quack is a Sprite Mastery reward — you can’t pull them from chests. “Mastering” a Sprite means leveling it to Lv 5 and extracting it; reach enough masteries and the Quack unlocks for free. The earlier elemental Quacks had set milestones — master 35 Sprites for Quack Water, 40 for Earth, 45 for Fire and 55 for Zero Point. Full walkthrough in the ${L('/sprite-leveling', 'leveling & mastery guide')}.`],
+    ['How do you get the Quack Sprites?', `Every Quack is a Sprite Mastery reward — you can’t pull them from chests. “Mastering” a Sprite means leveling it to Lv 5 and extracting it; climb the Mastery Reward track and each Quack unlocks for free. This season (Override) the five unlock at Reward Level 40 (Quack Jonesy), 45 (Quack Bush Ranger), 50 (Quack Adventure), 55 (Quack Spooky Dash) and 60 (Quack Klombo) — reach Level 60 for all of them. (The archived elemental Quacks used 35/40/45/55 for Water/Earth/Fire/Zero Point.) Full walkthrough in the ${L('/sprite-leveling', 'leveling & mastery guide')}.`],
     ['Can you get Quack Sprites from chests?', `No. Unlike Gold or the older Gummy/Galaxy finishes, Quack can’t drop from a Sprite Chest, a Locator or a boss — the only way is through Sprite Mastery. See how all finishes compare on the ${L('/sprite-finishes', 'finishes page')}.`],
     ['What does the Quack finish do?', `Each Quack ${perk ? perk.charAt(0).toLowerCase() + perk.slice(1) : 'shares 50% of the XP it earns with every other Sprite in your match'} — so equipping one snowballs the rest of your collection and speeds up every future mastery.`],
     ['How many Quack Sprites are there?', `${total} so far — ${current.length} this season (Override) and four earlier elemental ones. Track which you’ve mastered on the ${L('/', 'collection tracker')}.`],
   ]
-  const desc = `How to get the Fortnite Quack Sprites — the Sprite Mastery finishes. ${current.length} this season (${nameList(curNames)}) plus the four elemental mastery milestones (Water, Earth, Fire, Zero Point). Every Quack shares 50% of its XP with your other Sprites. Free & fan-made.`
+  const desc = `How to get the Fortnite Quack Sprites — free Sprite Mastery finishes that each share 50% of their XP. This season's Override Quacks unlock at Mastery Reward Levels 40–60 (${nameList(curNames)}), plus the four archived elemental Quacks (Water, Earth, Fire, Zero Point). Free & fan-made.`
   const allItems = [...current.map((t) => t), ...legacy.map((x) => x.t)]
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', name: 'Quack Sprites (Fortnite)', url: SITE + '/quack-sprites', description: desc, dateModified: NEWS_TODAY },
@@ -1570,8 +1572,12 @@ function quackPage() {
     <div class="card" style="padding:12px 14px;margin:0 0 14px"><p style="margin:0;font-size:12.5px;color:var(--muted);line-height:1.6">${perk ? `Quack perk: ${esc(perk)} ` : ''}New to mastery? Start with the ${L('/sprite-leveling', 'leveling &amp; mastery guide')} or the ${L('/sprite-finishes', 'finishes explainer')}.</p></div>
 
     <h2 style="font-size:18px;color:#fff;margin:4px 0 8px">This season’s Quack Sprites (Override)</h2>
-    <p style="font-size:13.5px;line-height:1.6;margin:0 0 8px;color:var(--muted)">The current Chapter 7 Season 4 Quacks — unlocked through Sprite Mastery this season. Tap one to open its page.</p>
-    ${current.map((t) => row(t, badge('This season'))).join('')}
+    <p style="font-size:13.5px;line-height:1.6;margin:0 0 8px;color:var(--muted)">The current Chapter 7 Season 4 Quacks, unlocked as you climb the Sprite Mastery Reward track — reach <b style="color:#fff">Level 60</b> for all five. You claim them from the Mastery Reward tab; you don’t have to find or extract the Quack itself. Tap one to open its page.</p>
+    ${current.map((t) => row(t, badge(CURRENT_MS[t.id] ? `Level ${CURRENT_MS[t.id]}` : 'This season'))).join('')}
+    <div class="card"><table>
+      <tr><th>Sprite Mastery Reward Level</th><th style="text-align:right">Reward</th></tr>
+      ${current.map((t) => `<tr><td>${CURRENT_MS[t.id] ?? '—'}</td><td class="v">Quack ${esc(t.name)}</td></tr>`).join('')}
+    </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Your Mastery Reward Level climbs as you master Sprites across your whole collection — it’s a running total, not one Sprite’s level.</p></div>
 
     <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Earlier Quack Sprites &amp; their mastery milestones</h2>
     <p style="font-size:13.5px;line-height:1.6;margin:0 0 8px;color:var(--muted)">The original elemental Quacks, earned at set mastery totals. Archived with the Runners generation — kept in your ${L('/sprite-garden', 'Sprite Garden')} if you unlocked them.</p>
@@ -1966,7 +1972,7 @@ function spriteLevelingPage() {
     ['How do you level up a Sprite in Fortnite?', 'Keep the Sprite equipped and earn level points in-match: roughly 75 points per container you open, ~200 per elimination, and ~200 for extracting a duplicate of a Sprite. Points carry the Sprite from Level 1 up to Level 5, and its ability gets stronger at each level.'],
     ['How do you master a Sprite?', 'Reaching Level 5 isn’t enough on its own — you have to extract the Sprite while it’s at Level 5. That “Mastered” state unlocks rewards in the Sprites menu (Portable Extractors, Sprite Dust, XP and cosmetics). In this tracker, marking a variant ★ Mastered means you’ve extracted it at Lv 5.'],
     ['What is Mastery Monday?', 'Every Monday (9 AM ET, for 24 hours) Sprites earn 2× XP and Dust. It’s the fastest time to level — a common tactic is to get a Sprite to Lv 3 in one game and finish it to Lv 5 in the next.'],
-    ['How do you get the Quack Sprites?', 'The Quack finishes are mastery-milestone rewards — you can’t pull them from chests. Master 35 Sprites for Quack Water, 40 for Quack Earth, 45 for Quack Fire, and 55 for Quack Zero Point (free via the mastery track). Each Quack shares 50% of the XP it earns with every other Sprite in your match, so it fast-tracks the rest of your collection.'],
+    ['How do you get the Quack Sprites?', 'The Quack finishes are Sprite Mastery Reward track rewards — you claim them from the Mastery Reward tab, not from chests. This season (Override) they unlock at Reward Level 40 (Quack Jonesy), 45 (Quack Bush Ranger), 50 (Quack Adventure), 55 (Quack Spooky Dash) and 60 (Quack Klombo) — reach Level 60 for all five. Each Quack shares 50% of the XP it earns with every other Sprite in your match, so it fast-tracks the rest of your collection. (Season 3’s elemental Quacks used 35/40/45/55.)'],
     ['Why didn’t my leveled Sprite count?', 'A Sprite only counts once you extract it — equip it to your back before the match ends, walk up to the Extraction crate and press Extract (don’t throw or drop it in). If you’re eliminated first, it’s lost. Genuine extraction misfires do happen; file an in-game bug report and Epic usually grants it back.'],
   ]
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -1992,14 +1998,15 @@ function spriteLevelingPage() {
     <p style="font-size:14px;line-height:1.7;margin:0 0 8px">Hitting Level 5 doesn’t master a Sprite — you have to <b>extract it while it’s at Level 5</b>. Do that and it’s Mastered, which unlocks rewards in the Sprites menu: <b>Portable Extractors</b> (extract anywhere — huge for safe collecting), <b>Sprite Dust</b>, XP, and cosmetics. In this tracker, marking a variant <b>★ Mastered</b> means exactly that: extracted at Lv 5.</p>
 
     <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">The free Quack finishes (mastery milestones)</h2>
-    <p style="font-size:14px;line-height:1.7;margin:0 0 8px">The <b>Quack</b> finishes can’t be pulled from chests — they’re milestone rewards for mastering a set number of Sprites, and they’re the smartest thing to chase because each one <b>shares 50% of its earned XP with every other Sprite in your match</b>:</p>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 8px">The <b>Quack</b> finishes can’t be pulled from chests — they’re Sprite Mastery Reward track rewards (claimed from the Mastery Reward tab), and they’re the smartest thing to chase because each one <b>shares 50% of its earned XP with every other Sprite in your match</b>. This season’s (Override) unlock levels:</p>
     <div class="card"><table>
-      <tr><th>Master this many Sprites</th><th style="text-align:right">Reward</th></tr>
-      <tr><td>35</td><td class="v">Quack Water</td></tr>
-      <tr><td>40</td><td class="v">Quack Earth</td></tr>
-      <tr><td>45</td><td class="v">Quack Fire</td></tr>
-      <tr><td>55</td><td class="v">Quack Zero Point (free)</td></tr>
-    </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Equip a Quack once you have one — it snowballs the rest of your mastery grind. See all four on the ${L('/quack-sprites', 'Quack Sprites page')}.</p></div>
+      <tr><th>Sprite Mastery Reward Level</th><th style="text-align:right">Reward</th></tr>
+      <tr><td>40</td><td class="v">Quack Jonesy</td></tr>
+      <tr><td>45</td><td class="v">Quack Bush Ranger</td></tr>
+      <tr><td>50</td><td class="v">Quack Adventure</td></tr>
+      <tr><td>55</td><td class="v">Quack Spooky Dash</td></tr>
+      <tr><td>60</td><td class="v">Quack Klombo</td></tr>
+    </table><p style="margin:12px 0 0;color:var(--muted);font-size:13px">Reach Reward Level 60 for all five. Equip a Quack once you have one — it snowballs the rest of your mastery grind. See them all on the ${L('/quack-sprites', 'Quack Sprites page')}.</p></div>
 
     <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">The fastest way to grind</h2>
     <ul style="margin:0 0 12px;padding-left:18px;line-height:1.8;font-size:14px">
@@ -2072,7 +2079,7 @@ function whatAreSpritesPage() {
     <p style="font-size:14px;line-height:1.7;margin:0 0 10px">Each Sprite comes in several <b>finishes</b> — Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter and seasonal recolours like Trick-or-Treat. A finish is mostly cosmetic (it keeps the base ability), though some add a small bonus. Cheat Master is the green “code” finish unlocked by a lobby code; Loot Hacker (blue circuit) boosts your chance of Loot Hack items from chests.</p>
 
     <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Leveling &amp; mastery (the long game)</h2>
-    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">Keep a Sprite equipped and it earns level points as you loot and fight. Extract it at <b>Level 5</b> to “master” it, which unlocks rewards — including the free <b>Quack</b> finishes that speed up your whole collection (${L('/quack-sprites', 'how to get all four')}). Full details in the ${L('/sprite-leveling', 'leveling &amp; mastery guide')}.</p>
+    <p style="font-size:14px;line-height:1.7;margin:0 0 10px">Keep a Sprite equipped and it earns level points as you loot and fight. Extract it at <b>Level 5</b> to “master” it, which unlocks rewards — including the free <b>Quack</b> finishes that speed up your whole collection (${L('/quack-sprites', 'how to get them all')}). Full details in the ${L('/sprite-leveling', 'leveling &amp; mastery guide')}.</p>
 
     <h2 style="font-size:18px;color:#fff;margin:22px 0 8px">Generations: Override vs the archived Runners</h2>
     <p style="font-size:14px;line-height:1.7;margin:0 0 10px">The Sprites you collect and use right now are the <b>Chapter 7 Season 4 “Override”</b> generation. The older <b>Season 3 “Runners”</b> Sprites are archived in your in-game <b>Sprite Garden</b> — kept forever, but not used in Battle Royale this season. Each new season adds a generation; your past ones stay with you.</p>
@@ -2195,7 +2202,7 @@ function finishesPage() {
     ['Do finishes change a Sprite’s ability?', 'Mostly no — a finish is primarily a cosmetic look, and the Sprite keeps its base ability. Several finishes add a small bonus on top (e.g. Gold grants bonus elimination XP, Loot Hacker boosts Loot Hack item chance), but they don’t replace the ability.'],
     ['What’s the Cheat Master finish?', `It’s the Season 4 “Override” premium finish (the green code look), unlocked per-Sprite with a specific ${L('/codes', 'Hack the Lobby code')} in the Admin Panel — not summoned with Dust. See the ${L('/cheat-master-sprites', 'full Cheat Master list')}.`],
     ['How do I get Gold Sprites?', `Gold finishes come from Gold Hours (a Power Hours window) and from eliminations at higher levels. See the ${L('/gold-sprites', 'Gold Sprites page')} and the ${L('/events', 'events schedule')}.`],
-    ['What are the Quack finishes?', `Quack is a mastery-milestone reward — not from chests. Master a set number of Sprites to earn each one; they share XP with your other Sprites. See all four on the ${L('/quack-sprites', 'Quack Sprites page')}, or the full grind in the ${L('/sprite-leveling', 'leveling & mastery guide')}.`],
+    ['What are the Quack finishes?', `Quack is a Sprite Mastery Reward track reward — not from chests. Climb the Mastery Reward track to earn each one (this season: Levels 40–60); they share 50% of their XP with your other Sprites. See them all on the ${L('/quack-sprites', 'Quack Sprites page')}, or the full grind in the ${L('/sprite-leveling', 'leveling & mastery guide')}.`],
   ]
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'Article', headline: 'Fortnite Sprite Finishes Explained — Every Variant & Bonus', description: desc, url: SITE + '/sprite-finishes', dateModified: NEWS_TODAY, author: { '@type': 'Organization', name: 'FN Sprite Tracker' } },

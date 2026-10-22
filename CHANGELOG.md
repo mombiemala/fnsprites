@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 22, 2026 — Fixed the Quack mastery levels for Season 4
+
+- **Fixed** (`src/data/spriteGuide.js`, `scripts/prerender.mjs`): the mastery guides showed the Season 3 Quack track
+  (Master 35/40/45/55 → Water/Earth/Fire/Zero Point). Updated to the current Season 4 "Override" Sprite Mastery Reward
+  track: **Level 40 → Quack Jonesy, 45 → Quack Bush Ranger, 50 → Quack Adventure, 55 → Quack Spooky Dash, 60 → Quack
+  Klombo** (reach Level 60 for all five). Added a `CURRENT_MS` map to the `/quack-sprites` builder so the current Quacks now
+  show their unlock level (badge + table), fixed the `/sprite-leveling` Quack table and FAQ, and the in-app Variants guide.
+  The elemental set is now labelled as the archived Season 3 track rather than presented as current.
+- **Why**: we were quoting the wrong numbers for the core mastery goal. The Season 4 track is a different set at different
+  levels, confirmed across multiple outlets (Vice, allthings.how, Beebom, Gamerant, iGeeksBlog). Keeping the archived
+  Season 3 set for reference, but leading with the live numbers.
+
 ## October 21, 2026 — Dust planner (what your Sprite Dust can (re)summon)
 
 - **Added** (`src/components/DustPlanner.jsx`, `src/App.jsx`): a "🔷 Dust planner" button in the collection sidebar opens a

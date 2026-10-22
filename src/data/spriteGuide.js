@@ -25,7 +25,7 @@ export const SPRITE_GUIDE = [
   ] },
   { h: '⭐ Mastery', body: [
     'Reaching Lv 5 **isn’t enough on its own** — you must **Extract a Sprite while it’s at Lv 5** to Master it. Each Mastery unlocks rewards in the Sprites menu: **Portable Extractors, Sprite Dust, XP and cosmetics.**',
-    'The **Quack finishes are Mastery milestone rewards** — you can’t pull them from chests. Master **35** Sprites for Quack Water, **40** for Quack Earth, **45** for Quack Fire, and **55** for **Quack Zero Point** (a **free** reward via the mastery track). Each one shares **50%** of the XP it earns with every other Sprite in your match, so it fast-tracks the rest of your collection.',
+    'The **Quack finishes are Sprite Mastery Reward track rewards** — you claim them from the Mastery Reward tab, not from chests (you don’t even need to find or extract the Quack itself). This season (Override) the five Quacks unlock at mastery **Level 40 → Quack Jonesy**, **45 → Quack Bush Ranger**, **50 → Quack Adventure**, **55 → Quack Spooky Dash**, and **60 → Quack Klombo** — reach **Level 60** for all five. Each shares **50%** of the XP it earns with every other Sprite in your match, so it fast-tracks the rest of your collection. (Season 3’s elemental Quacks — Water, Earth, Fire, Zero Point at 35/40/45/55 — are archived.)',
     'In this tracker, marking a variant **★ Mastered** = you’ve extracted it at Lv 5.',
   ] },
   { h: '🎨 Variants & forms', body: [

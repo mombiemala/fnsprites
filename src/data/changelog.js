@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 22, 2026',
+    title: 'Fixed the Quack mastery levels for Season 4',
+    changes: [
+      { tag: 'Fixed', text: 'Our mastery guides were still showing the Season 3 Quack track (Master 35/40/45/55 for Water/Earth/Fire/Zero Point). This season (Override) the Quacks unlock on the Sprite Mastery Reward track at Level 40 → Quack Jonesy, 45 → Quack Bush Ranger, 50 → Quack Adventure, 55 → Quack Spooky Dash, and 60 → Quack Klombo (reach Level 60 for all five). Corrected across the Variants guide, the /quack-sprites page and the /sprite-leveling guide; the old elemental set is now clearly labelled as the archived Season 3 track.' },
+    ],
+    summary: 'Corrected the Quack mastery-unlock levels to the current Season 4 “Override” track (Jonesy 40 · Bush Ranger 45 · Adventure 50 · Spooky Dash 55 · Klombo 60), across the in-app guide and the Quack/leveling pages. The old 35/40/45/55 elemental set is now marked archived.',
+    why: 'We were telling players the wrong numbers for the thing the mastery grind is all about. The Season 4 track is a different set at different levels, and it’s confirmed across multiple reputable outlets (Vice, allthings.how, Beebom, Gamerant, iGeeksBlog) — so getting the live numbers right, while keeping the archived Season 3 set for reference, matters more than it looking tidy.',
+  },
+  {
     date: 'October 21, 2026',
     title: 'Dust planner — what your Sprite Dust can (re)summon',
     changes: [
