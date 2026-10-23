@@ -19,7 +19,7 @@ export const INCOMING = [
     id: 'season-5',
     emoji: '🏴‍☠️',
     title: 'Season flip — bridge mini-season (One Piece?)',
-    detail: 'Season 4 “Override” wraps up around Nov 1 (the Battle Pass end date). Leakers widely report a short bridge mini-season next — rumored to be a One Piece crossover (datamined from a Rocket League update), a ~4–5 week cycle with its own Battle Pass, before Chapter 8. Not Epic-confirmed. New seasons bring a fresh generation of Sprites to Battle Royale — we’ll flip them live here the moment they drop.',
+    detail: 'Season 4 “Override” wraps up around Nov 1 (the Battle Pass end date), when update v43.00 kicks off the next cycle — per Epic’s dev forums (v42.50, ~Oct 29, is the final Season 4 patch). Leakers widely report a short bridge mini-season next — rumored to be a One Piece crossover (datamined from a Rocket League update), a ~4–5 week cycle with its own Battle Pass, before Chapter 8. Not Epic-confirmed. New seasons bring a fresh generation of Sprites to Battle Royale — we’ll flip them live here the moment they drop.',
     dropsOn: '2026-11-01',
     confirmedDate: false,
     source: 'Epic (Battle Pass end date) · One Piece mini-season leak (SamLeakss / games.gg / Insider Gaming)',
