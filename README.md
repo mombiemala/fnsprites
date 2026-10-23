@@ -7,13 +7,13 @@ finishes (Normal, Gold, Gummy, Galaxy, **Gem**, **Holofoil**, **Cube**, **Quack*
 and the Season 4 **Cheat Master**, **Loot Hacker**, **Bounty Hunter** & **Trick-or-Treat**), see your collection
 and mastery progress, save it to the cloud, **add friends and compare or trade-match**
 with them, browse the live **Item Shop**, and look up any player's **Battle Royale stats**. Current through
-**Chapter 7 Season 4 "Override"** — the **Trick-or-Treat (Fortnitemares)** finish went
-live **Oct 8, 2026** across the whole roster — **263 released variants**
-across two generations: the Season 3 **"Runners"** roster (kept forever in the **Sprite
-Garden**) and the live **Override** generation — Sonic, Tails, Shadow, Jazz Jackrabbit,
-Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch, Adventure, Storm Scout,
-Overshield, Mega Man, and the first two **Design-a-Sprite** winners **X-Ray & Onigiri** —
-in **Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter** (live roster-wide Sep 24) **&
+**Chapter 7 Season 4 "Override"** (update **v42.40**, Oct 15 — the **Honey** & **One Wish
+Willow** Sprites) — **280 released variants** across two generations: the Season 3
+**"Runners"** roster (kept forever in the **Sprite Garden**) and the live **Override**
+generation (**27 Sprites** — Sonic, Shadow, Jonesy, Klombo, the Fortnitemares set
+**Vampire / Spooky Dash / The Deer / Dumpster Dive**, **Morgana** & **Birthday**, the
+**Honey** & **One Wish Willow** wave-2 pair, Crash Bandicoot, Blinky, Pond and more) — in
+**Normal, Gold, Cheat Master, Loot Hacker, Bounty Hunter** (live roster-wide Sep 24) **&
 Trick-or-Treat** (live Oct 8). Epic confirmed **Sprites are
 kept forever**, but a new generation takes over **Battle Royale** each season: older
 -gen Sprites are **preserved and displayed** (Sprite Garden + Collection) rather than
@@ -29,23 +29,25 @@ flagged **Rumored / Upcoming** until confirmed.
 ## Features
 
 - **Accurate roster** — every released sprite & variant, current through the
-  **Oct 8 Trick-or-Treat (Fortnitemares) finish** (**50 sprites / 263 released variants**).
-  The current generation, **Chapter 7 Season 4 "Override,"** is **live**: Sonic, Tails, Shadow,
-  Jazz Jackrabbit, Klombo, Bush Ranger, Crown, Jonesy, 8-Bit Blaster, Killswitch,
-  Adventure, Storm Scout, Overshield, Mega Man, plus the first two **Design-a-Sprite**
-  winners **X-Ray & Onigiri** — in Normal, Gold, Cheat Master, **Loot Hacker**,
-  **Bounty Hunter** (live roster-wide Sep 24) & the **Trick-or-Treat** Fortnitemares
-  finish (live Oct 8). The Season 3
+  **v42.40 (Oct 15) Honey & One Wish Willow drop** (**52 sprites / 280 released variants**).
+  The current generation, **Chapter 7 Season 4 "Override,"** is **live** (27 Sprites):
+  Sonic, Tails, Shadow, Jazz Jackrabbit, Klombo, Bush Ranger, Crown, Jonesy, 8-Bit
+  Blaster, Killswitch, Adventure, Storm Scout, Overshield, Mega Man, the Design-a-Sprite
+  winners **X-Ray & Onigiri**, the Fortnitemares set **Vampire / Spooky Dash / The Deer /
+  Dumpster Dive**, **Morgana** & **Birthday**, Crash Bandicoot, Blinky, Pond, and the
+  wave-2 **Honey** & **One Wish Willow** (Mythic) — in Normal, Gold, Cheat Master,
+  **Loot Hacker**, **Bounty Hunter** (live roster-wide Sep 24) & the **Trick-or-Treat**
+  Fortnitemares finish (live Oct 8). The Season 3
   **"Runners"** roster (the full Gem line, Cube, Holofoil & Quack, Ironmouse back from
   the vault, every Zero Point finish) is kept forever in the **Sprite Garden**.
-  Still-datamined Sprites (Pond, Honey, Dumpster Dive, Meowscles, Squibbly, Cube,
-  Headshot, BodySlam) are previewed as **Upcoming/Rumored** so leaks never read as
-  fact — each news item shows its source and whether it's official.
-- **🌱 Sprite Garden hub** — a **Community Gallery** where players upload screenshots
-  of their in-game garden, browse a feed and like favourites (moderated: pre-upload
-  check → report/auto-hide → owner/maker delete), plus a **Layout Planner** that turns
-  your owned Sprites into a numbered **blueprint** to recreate in-game. A shareable
-  **"My Sprite Garden" poster** export lives in Share & export.
+  Still-datamined Sprites (Meowscles, Squibbly, Cube, Head Shot, Bullet) are previewed
+  as **Upcoming/Rumored** so leaks never read as fact — each news item shows its source
+  and whether it's official.
+- **🌱 Sprite Garden** — the in-game social island where every Sprite you've collected
+  lives on, even past-generation ones retired from Battle Royale. Covered by a dedicated
+  SEO explainer at **`/sprite-garden`**. (The earlier in-app Community Gallery / Layout
+  Planner were retired — they saw no real use — leaving the Garden as an in-game feature
+  the tracker documents rather than reimplements.)
 - **🔓 Lobby Hacks** — the season's **Hack the Lobby / Admin Panel codes** as a
   first-class tab and a canonical `/codes` page: grouped by reward, per-code copy,
   redeemed-tracking, a **"new this week"** highlight + verified dates, and `upcoming`
@@ -78,9 +80,17 @@ flagged **Rumored / Upcoming** until confirmed.
   OCR (Tesseract.js, running entirely in your browser) pre-checks what it
   recognizes; review and mark them owned in one go. The image never leaves your
   device.
-- **Next to chase** — a guide that reads your own collection and points you at
-  your **rarest missing** sprite, the set you're **closest to finishing**, and an
-  **easy one to grab** — each a tap away.
+- **Next to chase (action plan)** — reads your own collection **and live data** to
+  surface what to do *right now*: farm a finish while a **Power Hours** is boosting it,
+  claim the free **Cheat Master** Sprites whose lobby codes are live, grab live **Dust
+  codes** — then your **rarest missing** sprite, the set you're **closest to finishing**,
+  and an **easy one to grab**.
+- **Printable checklist** — a one-tap, ink-friendly one-page checklist of every released
+  Sprite and the finishes it comes in, with your **owned ✓ / mastered ★** progress filled
+  in, to print or save as a PDF.
+- **Dust planner** — type your **Sprite Dust** balance and see which rarities and finishes
+  you can afford to **(re)summon** against the current cost table, plus how many of your
+  owned variants are within budget.
 - **Drop rates** per sprite (community-datamined estimates; Epic publishes none).
 - **Chest luck calculator** — turns a drop rate into real expectations: average
   chests to find a sprite, chests for a 50/90/99% chance, and a live "open N
