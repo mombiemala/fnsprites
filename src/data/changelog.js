@@ -11,6 +11,15 @@
 export const CHANGELOG = [
   {
     date: 'October 23, 2026',
+    title: 'Corrected a few code rewards (Yeat tracks, O2)',
+    changes: [
+      { tag: 'Fixed', text: 'Corrected the three Yeat Jam Track codes to their real track names — B1GBODYSW3RVE is “Lil Krazy”, PR1VAT3J3T is “Marching”, and LUHLEAKYZ is “Timë Passed” (we’d had placeholder guesses). Also fixed the O2OVERRIDE reward from “Llama supply + 5 Portable Extractors” to the correct 1× Llama Supply Drop + 1× Portable Extractor. Checked our full codes list against the current in-game Admin Panel — every live code is tracked.' },
+    ],
+    summary: 'Fixed a few code reward details against the current in-game Admin Panel — the real Yeat Jam Track names (Lil Krazy / Marching / Timë Passed) and the correct O2OVERRIDE reward.',
+    why: 'The Yeat track names were placeholder guesses from the code strings, and O2OVERRIDE’s extractor count was off — redeemers would notice. Reconciling against the in-game panel confirmed our list is otherwise complete.',
+  },
+  {
+    date: 'October 23, 2026',
     title: 'Community Sprites Power Hours (Sat Oct 24) + deep-link to any Sprite',
     changes: [
       { tag: 'Added', text: 'Saturday’s Community Sprites Power Hours (Oct 24) — two 2-hour windows (2–4 PM & 9–11 PM ET) that boost the five community-made Design-a-Sprite winner Sprites (everyone transforms into Freddy’s Animatronics). Added to the events schedule (home-card countdown + live badge), with a News entry and a dismissible banner. One of the last events before the ~Nov 1 flip.' },

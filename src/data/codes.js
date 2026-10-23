@@ -96,7 +96,7 @@ export const LOBBY_CODES = [
   { code: 'INVALIDCHEAT', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', source: 'community list', added: '2026-09-03' },
   { code: 'CHATWHEREDOYOUFINDTHEKEY', unlocks: '2× Extraction Accelerators', type: 'reward', category: 'boosts', status: 'working', source: 'community list', added: '2026-09-03' },
   { code: 'OVERRIDEXP', unlocks: '40,000 XP', type: 'reward', category: 'boosts', status: 'working', source: 'community list' },
-  { code: 'O2OVERRIDE', unlocks: 'Llama supply + 5 portable extractors', type: 'reward', category: 'boosts', status: 'regional', region: 'O2 promo', source: 'GamesRadar' },
+  { code: 'O2OVERRIDE', unlocks: '1× Llama Supply Drop + 1× Portable Extractor', type: 'reward', category: 'boosts', status: 'regional', region: 'O2 promo', source: 'GamesRadar · in-game Admin Panel' },
 
   // --- 🔷 Sprite Dust ---
   // The bigger Geno code also grants an Outfit style, and is gated behind the Geno
@@ -133,7 +133,7 @@ export const LOBBY_CODES = [
   // appears on screen — the reward is a Jam Track that lands in your Locker, equip
   // it under Lobby Music. Confirmed working in-game by the site owner (reward type
   // inferred from the Yeat promo + the track names the codes spell out).
-  { code: 'B1GBODYSW3RVE', unlocks: 'Yeat Jam Track — lobby music (equips in your Locker; nothing loads on redeem). Appears to unlock “Big Body Swerve.”', type: 'cosmetic', category: 'music', status: 'working', added: '2026-10-15', source: 'User-confirmed in-game (“LOBBY HACK ACTIVATED!”) · @FORTLYFE' },
-  { code: 'LUHLEAKYZ', unlocks: 'Yeat Jam Track — lobby music (equips in your Locker; nothing loads on redeem).', type: 'cosmetic', category: 'music', status: 'working', added: '2026-10-15', source: 'User-confirmed in-game (“LOBBY HACK ACTIVATED!”) · @FORTLYFE' },
-  { code: 'PR1VAT3J3T', unlocks: 'Yeat Jam Track — lobby music (equips in your Locker; nothing loads on redeem). Appears to unlock “Private Jet.”', type: 'cosmetic', category: 'music', status: 'working', added: '2026-10-15', source: 'User-confirmed in-game (“LOBBY HACK ACTIVATED!”) · @FORTLYFE' },
+  { code: 'B1GBODYSW3RVE', unlocks: 'Yeat Jam Track “Lil Krazy” — lobby music (equips in your Locker; nothing loads on redeem).', type: 'cosmetic', category: 'music', status: 'working', added: '2026-10-15', source: 'User-confirmed in-game (“LOBBY HACK ACTIVATED!”) · in-game Admin Panel' },
+  { code: 'LUHLEAKYZ', unlocks: 'Yeat Jam Track “Timë Passed” — lobby music (equips in your Locker; nothing loads on redeem).', type: 'cosmetic', category: 'music', status: 'working', added: '2026-10-15', source: 'User-confirmed in-game (“LOBBY HACK ACTIVATED!”) · in-game Admin Panel' },
+  { code: 'PR1VAT3J3T', unlocks: 'Yeat Jam Track “Marching” — lobby music (equips in your Locker; nothing loads on redeem).', type: 'cosmetic', category: 'music', status: 'working', added: '2026-10-15', source: 'User-confirmed in-game (“LOBBY HACK ACTIVATED!”) · in-game Admin Panel' },
 ]

@@ -11,6 +11,18 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 23, 2026 — Corrected a few code rewards (Yeat tracks, O2)
+
+- **Fixed** (`src/data/codes.js`): reconciled the full `LOBBY_CODES` list against the current in-game Admin Panel. Every
+  live code is tracked (no additions needed). Corrected the three Yeat Jam Track rewards to their real track names —
+  `B1GBODYSW3RVE` → "Lil Krazy", `PR1VAT3J3T` → "Marching", `LUHLEAKYZ` → "Timë Passed" (previously placeholder guesses
+  derived from the code strings) — and fixed `O2OVERRIDE` from "Llama supply + 5 Portable Extractors" to the correct
+  **1× Llama Supply Drop + 1× Portable Extractor**.
+- **Why**: the Yeat track names were guesses and O2OVERRIDE's extractor count was wrong — anyone redeeming them would
+  notice. (Five codes we track — the Oct 12/19 Mastery Monday codes and the Geno/Wrixel/Bastian quest-Dust codes — weren't
+  on the reconciled list; left in place pending confirmation they've rotated off the in-game panel rather than deleting
+  working codes.)
+
 ## October 23, 2026 — Community Sprites Power Hours (Oct 24) + deep-link to any Sprite
 
 - **Added** (`src/data/events.js`, `src/data/announcements.js`, `src/data/news.js`): Saturday's **Community Sprites Power
