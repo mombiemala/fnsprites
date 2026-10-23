@@ -235,7 +235,9 @@ footer.foot{margin-top:48px;border-top:1px solid var(--border);padding-top:24px;
 .ghead{display:none}
 @media(min-width:640px){.ghead{display:grid;grid-template-columns:1.6fr .7fr .9fr .7fr 2fr;gap:8px;padding:0 10px 4px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}.ghead .r{text-align:right}}
 .grows{display:flex;flex-direction:column;gap:4px}
-.grow{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;align-items:center;background:var(--bg2);border:1px solid transparent;border-radius:12px;padding:9px 10px;color:inherit;transition:background .15s,border-color .15s}
+.grow{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px;align-items:center;background:var(--bg2);border:1px solid transparent;border-radius:12px;padding:9px 10px;color:inherit;transition:background .15s,border-color .15s;scroll-margin-top:84px}
+.grow:target{border-color:var(--brand);box-shadow:0 0 0 2px var(--brand) inset;animation:growflash 1.6s ease}
+@keyframes growflash{0%,60%{background:color-mix(in srgb,var(--brand) 20%,var(--bg2))}100%{background:var(--bg2)}}
 .grow:hover{background:var(--panel2);border-color:var(--brand)}
 @media(min-width:640px){.grow{grid-template-columns:1.6fr .7fr .9fr .7fr 2fr}}
 .grow .nm{display:flex;align-items:center;gap:8px;min-width:0}
@@ -702,7 +704,7 @@ function guideRow(r) {
   const st = STATUS_META[r.status]
   const tm = r.tier ? TIER_META[r.tier] : null
   const href = r.hasPage ? `/sprite/${slug(r.name)}` : `/?sprite=${encodeURIComponent(r.id)}`
-  return `<a class="grow" href="${href}" title="Open ${esc(r.name)}"`
+  return `<a class="grow" id="${slug(r.name)}" href="${href}" title="Open ${esc(r.name)}"`
     + ` data-status="${r.status}" data-p="${r.p ?? ''}" data-rank="${RARITY_RANK[r.rarity] ?? 0}" data-gen="${r.genRank}"`
     + ` data-dust="${r.dust ?? ''}" data-released="${r.releaseDate}" data-name="${esc(r.name.toLowerCase())}" data-search="${esc(`${r.name} ${r.rarity}`.toLowerCase())}">`
     + `<span class="nm"><span class="ic">${esc(r.icon)}</span><span class="nt"><b>${esc(r.name)}</b>`

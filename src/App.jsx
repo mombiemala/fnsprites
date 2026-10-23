@@ -3,7 +3,7 @@ import { useAuth } from './context/authStore'
 import { useToast } from './context/toastStore'
 import { fetchSharedCollection } from './lib/sharedCollection'
 import { getCollection, ACTIVE_COLLECTION_ID } from './data/collections'
-import { GENERATIONS } from './data/sprites'
+import { GENERATIONS, ALL_SPRITES } from './data/sprites'
 import { generateCollectionImage, generateGardenImage, downloadDataUrl } from './lib/exportImage'
 import CollectionSwitcher from './components/CollectionSwitcher'
 import SpriteCard from './components/SpriteCard'
@@ -56,6 +56,33 @@ import { LINKS } from './lib/supabase'
 // the timely Override codes, then social (leaderboard/trade) and reference
 // (news/stats/shop). On desktop they all show inline; only narrow screens fold
 // the overflow into a "⋯ More" menu (see OverflowNav).
+// Resolve a deep-link token — a name slug like "one-wish-willow" or a raw typeId
+// like "obsession" — to a Sprite typeId, so #hash and ?sprite= both open the
+// right Sprite's detail. Unknown tokens resolve to null (harmless).
+const SPRITE_SLUGS = (() => {
+  const m = {}
+  const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+  for (const s of ALL_SPRITES) {
+    m[s.typeId] = s.typeId
+    m[slug(s.typeName)] = s.typeId
+  }
+  return m
+})()
+const resolveSprite = (token) => {
+  try {
+    return SPRITE_SLUGS[decodeURIComponent(String(token || '')).toLowerCase()] || null
+  } catch {
+    return null
+  }
+}
+const hashSprite = () => {
+  try {
+    return resolveSprite((window.location.hash || '').replace(/^#/, ''))
+  } catch {
+    return null
+  }
+}
+
 const TABS = [
   { id: 'collection', label: 'Collection' },
   { id: 'sprites', label: '🧩 Sprites' },
@@ -164,8 +191,21 @@ export default function App() {
   // /?sprite=<id> so they open the same detail modal the app uses. An unknown id
   // is harmless — SpriteDetailModal renders nothing when the type isn't found.
   const [detailType, setDetailType] = useState(
-    () => (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('sprite')) || null,
+    () =>
+      (typeof window !== 'undefined' &&
+        (resolveSprite(new URLSearchParams(window.location.search).get('sprite')) || hashSprite())) ||
+      null,
   )
+  // Open a Sprite's detail when the URL hash points at one (e.g. /#honey or
+  // /sprites#honey served into the app), and follow in-app #hash link changes.
+  useEffect(() => {
+    const onHash = () => {
+      const id = hashSprite()
+      if (id) setDetailType(id)
+    }
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
   const [view, setView] = useState(useInitialView())
   const [showBug, setShowBug] = useState(() => openParam('bug'))
   const [showAbout, setShowAbout] = useState(() => openParam('about'))
@@ -921,7 +961,16 @@ export default function App() {
           <SpriteDetailModal
             typeId={detailType}
             tracking={activeTracking}
-            onClose={() => setDetailType(null)}
+            onClose={() => {
+              setDetailType(null)
+              // Clear a #sprite hash so closing leaves a clean URL and the same
+              // Sprite can be re-opened from a link later.
+              try {
+                if (window.location.hash && hashSprite()) {
+                  history.replaceState(null, '', window.location.pathname + window.location.search)
+                }
+              } catch { /* ignore */ }
+            }}
             onToggleOwned={setOwned}
             onToggleMastered={setMastered}
             onSetLevel={setLevel}

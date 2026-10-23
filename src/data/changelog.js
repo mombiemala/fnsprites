@@ -11,6 +11,16 @@
 export const CHANGELOG = [
   {
     date: 'October 23, 2026',
+    title: 'Community Sprites Power Hours (Sat Oct 24) + deep-link to any Sprite',
+    changes: [
+      { tag: 'Added', text: 'Saturday’s Community Sprites Power Hours (Oct 24) — two 2-hour windows (2–4 PM & 9–11 PM ET) that boost the five community-made Design-a-Sprite winner Sprites (everyone transforms into Freddy’s Animatronics). Added to the events schedule (home-card countdown + live badge), with a News entry and a dismissible banner. One of the last events before the ~Nov 1 flip.' },
+      { tag: 'Added', text: 'Deep-links straight to a Sprite. A #hash like /#honey (or /sprites#honey) now opens that Sprite — it jumps to the card on the /sprites board (with a highlight) and opens the Sprite’s detail in the app. Works with the name slug (one-wish-willow) or its id, so News and guide links can point right at a Sprite.' },
+    ],
+    summary: 'Added Saturday’s Community Sprites Power Hours (Oct 24, Design-a-Sprite winners boosted) across the events card, news and banner; and #hash deep-links that jump straight to a specific Sprite (its board card and in-app detail).',
+    why: 'The Power Hours is a confirmed, dated event (Epic + Vice + Beebom) and one of the last before the season flips, so players want it surfaced now. The deep-link closes a gap — News and guide mentions of a Sprite can finally jump straight to it instead of making people search the board.',
+  },
+  {
+    date: 'October 23, 2026',
     title: 'Season-flip reminder + “new since your last visit” badges',
     changes: [
       { tag: 'Added', text: 'A season-flip banner that appears in the final ~2 weeks of the season: it leads with the countdown (“Override ends in ~9 days, Nov 1”) and reminds you that Sprite Dust, Extractors & Locators reset at the flip (your Sprites are kept) — with a one-tap “Plan my Dust” into the Dust planner. Dismissible, and it comes back for the next season.' },

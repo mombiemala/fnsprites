@@ -26,6 +26,28 @@
 
 export const SPRITE_EVENTS = [
   {
+    id: 'community-sprites-hours-2026-10-24-r1',
+    emoji: '🎨',
+    name: 'Community Sprites Power Hours (Round 1)',
+    perk: 'The five community-made “Design-a-Sprite” winner Sprites spawn in bigger numbers, and everyone drops in transformed into one of Freddy’s Animatronics — a good window to grab any Design-a-Sprite winner you’re still missing. 2-hour window.',
+    startsUtc: '2026-10-24T18:00:00Z', // 2 PM ET Sat Oct 24 (= 6 PM UTC)
+    endsUtc: '2026-10-24T20:00:00Z', // 4 PM ET (2-hour window)
+    confirmed: true,
+    source: 'Epic (Battle Royale page) · Vice · Beebom (Oct 24 Power Hours)',
+    sourceUrl: 'https://www.vice.com/en/article/fnaf-fortnite-power-hour-start-times-featured-sprites/',
+  },
+  {
+    id: 'community-sprites-hours-2026-10-24-r2',
+    emoji: '🎨',
+    name: 'Community Sprites Power Hours (Round 2)',
+    perk: 'The five community-made “Design-a-Sprite” winner Sprites spawn in bigger numbers, and everyone drops in transformed into one of Freddy’s Animatronics — a good window to grab any Design-a-Sprite winner you’re still missing. 2-hour window.',
+    startsUtc: '2026-10-25T01:00:00Z', // 9 PM ET Sat Oct 24 (= 1 AM UTC Sun Oct 25)
+    endsUtc: '2026-10-25T03:00:00Z', // 11 PM ET (2-hour window)
+    confirmed: true,
+    source: 'Epic (Battle Royale page) · Vice · Beebom (Oct 24 Power Hours)',
+    sourceUrl: 'https://www.vice.com/en/article/fnaf-fortnite-power-hour-start-times-featured-sprites/',
+  },
+  {
     id: 'mastery-monday-2026-10-19',
     emoji: '⭐',
     name: 'Mastery Monday',

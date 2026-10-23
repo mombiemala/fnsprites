@@ -19,6 +19,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'community-sprites-hours-2026-10-24',
+    eventId: 'community-sprites-hours-2026-10-24', // de-dupes against the SPRITE_EVENTS rounds in the top card
+    emoji: '🎨',
+    message: 'Community Sprites Power Hours — Sat Oct 24, two windows (2–4 PM & 9–11 PM ET): the five Design-a-Sprite winner Sprites spawn in bigger numbers (everyone transforms into Freddy’s Animatronics). A good window to grab any you’re missing.',
+    link: '/?view=news',
+    linkLabel: 'Event details',
+    start: '2026-10-24',
+    end: '2026-10-25',
+    tone: 'event',
+    source: 'Epic · Vice · Beebom',
+  },
+  {
     id: 'mastery-monday-2026-10-19',
     eventId: 'mastery-monday-2026-10-19', // de-dupes against the matching SPRITE_EVENTS entry in the top card
     emoji: '⭐',

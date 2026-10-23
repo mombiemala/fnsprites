@@ -11,6 +11,8 @@ function shouldShow() {
     // with the generic welcome — show the content the link points to instead.
     const q = new URLSearchParams(window.location.search)
     if (['sprite', 'cosmetics', 'about', 'changelog', 'backup', 'bug', 'view', 'u'].some((k) => q.has(k))) return false
+    // A #hash deep link (e.g. /#honey) is intentional navigation — don't cover it.
+    if ((window.location.hash || '').length > 1) return false
     return localStorage.getItem(KEY) !== '1' && localStorage.getItem('fnsprites.onboarded') !== '1'
   } catch {
     return false

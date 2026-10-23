@@ -11,6 +11,21 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 23, 2026 — Community Sprites Power Hours (Oct 24) + deep-link to any Sprite
+
+- **Added** (`src/data/events.js`, `src/data/announcements.js`, `src/data/news.js`): Saturday's **Community Sprites Power
+  Hours** (Oct 24) — two 2-hour windows (2–4 PM & 9–11 PM ET, i.e. `18:00–20:00Z` and `01:00–03:00Z` Oct 25) boosting the
+  five Design-a-Sprite winner Sprites (everyone transforms into Freddy's Animatronics). Added as two `SPRITE_EVENTS` rounds
+  (no `boostedThemes` — it boosts specific Sprites, not a finish, so no "farm my finish" shortcut), a dismissible banner, and
+  a News item. Confirmed by Epic's Battle Royale page + Vice + Beebom.
+- **Added** (`src/App.jsx`, `scripts/prerender.mjs`, `src/components/WelcomeModal.jsx`): **#hash deep-links to a Sprite**.
+  Each `/sprites` board row now has an `id` (the name slug), so `/sprites#honey` scrolls to the card with a `:target`
+  highlight (`scroll-margin-top` clears the sticky header). In the app, a `#honey` hash opens that Sprite's detail modal
+  (resolved via a slug/typeId map; `hashchange` is followed; closing clears the hash), and the welcome modal no longer covers
+  a hash deep-link. `?sprite=` now also accepts the name slug.
+- **Why**: the Power Hours is confirmed, dated, and one of the last before the ~Nov 1 flip, so it belongs on the card now.
+  The deep-link closes a real gap — News/guide mentions of a Sprite can finally jump straight to it.
+
 ## October 23, 2026 — Season-flip reminder + "new since your last visit" badges
 
 - **Added** (`src/components/SeasonFlipBanner.jsx`, `src/App.jsx`): a season-flip banner shown within ~2 weeks of the end

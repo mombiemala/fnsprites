@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-10-24',
+    when: 'Oct 24, 2026',
+    tag: 'event',
+    start: '2026-10-24',
+    end: '2026-10-25',
+    title: '🎨 Community Sprites Power Hours (Sat, Oct 24) — Design-a-Sprite winners boosted',
+    body: 'Epic’s running a “Community Sprites” Power Hours this Saturday (Oct 24) in two 2-hour windows — 2–4 PM & 9–11 PM ET. The five community-made Design-a-Sprite winner Sprites spawn in bigger numbers, and everyone drops in transformed into one of Freddy’s Animatronics — a good window to grab any of those winners you’re still missing. One of the last events before the season flips (~Nov 1). Pair it with the events countdown on the home card.',
+    link: 'https://www.vice.com/en/article/fnaf-fortnite-power-hour-start-times-featured-sprites/',
+    source: 'Epic · Vice · Beebom',
+    official: true,
+  },
+  {
     ts: '2026-10-19',
     when: 'Oct 19, 2026',
     tag: 'event',
