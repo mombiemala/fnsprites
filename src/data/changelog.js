@@ -11,12 +11,13 @@
 export const CHANGELOG = [
   {
     date: 'October 23, 2026',
-    title: 'Corrected a few code rewards (Yeat tracks, O2)',
+    title: 'Codes synced to the in-game panel — reward fixes + 5 expired removed',
     changes: [
-      { tag: 'Fixed', text: 'Corrected the three Yeat Jam Track codes to their real track names — B1GBODYSW3RVE is “Lil Krazy”, PR1VAT3J3T is “Marching”, and LUHLEAKYZ is “Timë Passed” (we’d had placeholder guesses). Also fixed the O2OVERRIDE reward from “Llama supply + 5 Portable Extractors” to the correct 1× Llama Supply Drop + 1× Portable Extractor. Checked our full codes list against the current in-game Admin Panel — every live code is tracked.' },
+      { tag: 'Fixed', text: 'Corrected the three Yeat Jam Track codes to their real track names — B1GBODYSW3RVE is “Lil Krazy”, PR1VAT3J3T is “Marching”, and LUHLEAKYZ is “Timë Passed” (we’d had placeholder guesses). Also fixed the O2OVERRIDE reward from “Llama supply + 5 Portable Extractors” to the correct 1× Llama Supply Drop + 1× Portable Extractor.' },
+      { tag: 'Removed', text: 'Retired five codes that have rotated off the in-game Admin Panel (confirmed gone): the Oct 12 & Oct 19 Mastery Monday codes (Door2Door4Candy, SuppliesForTheHunt) and the Geno / Wrixel / Bastian story-quest Dust codes (runSystemOverride, ImTheRealEdgelord, MagicIsReal). The list now matches the live panel exactly.' },
     ],
-    summary: 'Fixed a few code reward details against the current in-game Admin Panel — the real Yeat Jam Track names (Lil Krazy / Marching / Timë Passed) and the correct O2OVERRIDE reward.',
-    why: 'The Yeat track names were placeholder guesses from the code strings, and O2OVERRIDE’s extractor count was off — redeemers would notice. Reconciling against the in-game panel confirmed our list is otherwise complete.',
+    summary: 'Synced the Lobby Hacks list to the current in-game Admin Panel: fixed the Yeat Jam Track names and the O2OVERRIDE reward, and removed five codes (two Mastery Mondays + three story-quest Dust codes) that have rotated off.',
+    why: 'The Yeat names were placeholder guesses and O2OVERRIDE’s extractor count was off — redeemers would notice. And a code list is only useful if it matches what actually works in-game, so codes confirmed gone from the panel are removed rather than left to mislead.',
   },
   {
     date: 'October 23, 2026',

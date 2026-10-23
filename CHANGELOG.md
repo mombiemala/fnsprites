@@ -11,17 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## October 23, 2026 — Corrected a few code rewards (Yeat tracks, O2)
+## October 23, 2026 — Codes synced to the in-game panel (reward fixes + 5 expired removed)
 
-- **Fixed** (`src/data/codes.js`): reconciled the full `LOBBY_CODES` list against the current in-game Admin Panel. Every
-  live code is tracked (no additions needed). Corrected the three Yeat Jam Track rewards to their real track names —
-  `B1GBODYSW3RVE` → "Lil Krazy", `PR1VAT3J3T` → "Marching", `LUHLEAKYZ` → "Timë Passed" (previously placeholder guesses
-  derived from the code strings) — and fixed `O2OVERRIDE` from "Llama supply + 5 Portable Extractors" to the correct
-  **1× Llama Supply Drop + 1× Portable Extractor**.
-- **Why**: the Yeat track names were guesses and O2OVERRIDE's extractor count was wrong — anyone redeeming them would
-  notice. (Five codes we track — the Oct 12/19 Mastery Monday codes and the Geno/Wrixel/Bastian quest-Dust codes — weren't
-  on the reconciled list; left in place pending confirmation they've rotated off the in-game panel rather than deleting
-  working codes.)
+- **Fixed** (`src/data/codes.js`): reconciled the full `LOBBY_CODES` list against the current in-game Admin Panel. Corrected
+  the three Yeat Jam Track rewards to their real track names — `B1GBODYSW3RVE` → "Lil Krazy", `PR1VAT3J3T` → "Marching",
+  `LUHLEAKYZ` → "Timë Passed" (previously placeholder guesses derived from the code strings) — and fixed `O2OVERRIDE` from
+  "Llama supply + 5 Portable Extractors" to the correct **1× Llama Supply Drop + 1× Portable Extractor**.
+- **Removed** (`src/data/codes.js`): retired five codes confirmed gone from the panel — the Oct 12 & Oct 19 Mastery Monday
+  codes (`Door2Door4Candy`, `SuppliesForTheHunt`) and the Geno/Wrixel/Bastian story-quest Dust codes (`runSystemOverride`,
+  `ImTheRealEdgelord`, `MagicIsReal`). The tracked list (now 52 codes) matches the live panel exactly.
+- **Why**: the Yeat names were guesses and O2OVERRIDE's count was wrong — redeemers would notice; and a code list only helps
+  if it matches what actually works in-game, so codes confirmed rotated off are removed rather than left to mislead.
 
 ## October 23, 2026 — Community Sprites Power Hours (Oct 24) + deep-link to any Sprite
 

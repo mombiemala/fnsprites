@@ -72,7 +72,6 @@ export const LOBBY_CODES = [
   { code: 'PowerOut', unlocks: 'Screen-blackout + FNAF jumpscare effect (Fortnitemares tie-in)', type: 'effect', category: 'gizmos', status: 'working', added: '2026-09-29', source: 'Nintendo Life / community list' },
   { code: 'CrowsAreAfraid', unlocks: 'Turns everyone in the lobby into a Scarecrow (Fortnitemares)', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-10-01', source: 'Vice / The Click (Oct 1 update)' },
   { code: 'PumpkinSpiceLife', unlocks: 'Turns everyone in the lobby into a Pumpkin (Fortnitemares)', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-10-01', source: 'Vice / The Click (Oct 1 update)' },
-  { code: 'SuppliesForTheHunt', unlocks: '2× Snack-O’-Lantern Gizmos (drop Halloween candy when used)', type: 'reward', category: 'gizmos', status: 'working', added: '2026-10-19', source: 'User-confirmed in-game (“LOBBY HACK ACTIVATED!”) — Mastery Monday code (Oct 19)' },
   { code: 'VeryScaryPumpkin', unlocks: '3× Snack-O’-Lantern Gizmos (drop Halloween candy when used)', type: 'reward', category: 'gizmos', status: 'working', added: '2026-10-05', source: 'Vice (Mastery Monday Oct 5 code) / esports.gg / Beebom' },
   { code: 's7h-50p-r03', unlocks: 'Geno glitches out your lobby screen (an effect, not an item). Unlocks only after the “There is Hope” / Geno story quests — gather the graffitied code pieces across WonkeeLand, Sunken Shores and Nightmare Neighborhood, then enter it to sever the mind-link. Type it exactly: those are zeros, not the letter “O”.', type: 'effect', category: 'gizmos', status: 'working', added: '2026-10-01', source: 'Vice / community (Oct 1 update)' },
   { code: 'InsertCoinToContinue', unlocks: 'Arcade Machine lobby transformation', type: 'effect', category: 'gizmos', status: 'working', repeatable: true, added: '2026-09-08', source: 'GamesRadar / community list' },
@@ -81,7 +80,6 @@ export const LOBBY_CODES = [
   // Fortnite.GG's Lobby Hacks board, so the earlier "expired Sep 14" window was wrong.
 
   // --- ⚡ Boosts & XP (consumables, extractors, XP) ---
-  { code: 'Door2Door4Candy', unlocks: '2× Extraction Accelerators (starts a nearby extraction silently and summons the box immediately)', type: 'reward', category: 'boosts', status: 'working', added: '2026-10-12', source: 'User-confirmed in-game (Mastery Monday code, Oct 12 — “LOBBY HACK ACTIVATED!” screen)' },
   { code: 'IThinkTheKeyFoundMeChat', unlocks: '1× Extraction Accelerator', type: 'reward', category: 'boosts', status: 'working', added: '2026-10-01', source: 'Vice (Oct 1 update)' },
   { code: 'WhoCrackedTheCode', unlocks: '40,000 XP', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-26', source: 'Vice / FNCS livestream (Sep 26)' },
   { code: 'ALMOSTSCARINGSEASON', unlocks: '2× Cheat Code Locators', type: 'reward', category: 'boosts', status: 'working', added: '2026-09-21', source: 'Vice (Mastery Monday code, Sep 21)' },
@@ -102,9 +100,6 @@ export const LOBBY_CODES = [
   // The bigger Geno code also grants an Outfit style, and is gated behind the Geno
   // quests + a specific "let Geno eliminate you" step, so we note the condition.
   { code: 'DustySprites', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-26', source: 'Vice / FNCS livestream (Sep 26)' },
-  { code: 'runSystemOverride', unlocks: '5,000 Sprite Dust — after finishing the Geno story quests', type: 'reward', category: 'dust', status: 'working', added: '2026-10-01', source: 'Vice (Oct 1 update)' },
-  { code: 'ImTheRealEdgelord', unlocks: '5,000 Sprite Dust — after finishing the Wrixel story quests', type: 'reward', category: 'dust', status: 'working', added: '2026-10-01', source: 'Vice (Oct 1 update)' },
-  { code: 'MagicIsReal', unlocks: '5,000 Sprite Dust — after finishing Bastian’s story quest', type: 'reward', category: 'dust', status: 'working', added: '2026-10-03', source: 'IGN / allthings.how' },
   { code: 'YOURTHOUGHTSAREMINE', unlocks: '5,000 Sprite Dust + Void Master Geno Outfit style + Void Conduits of Power Back Bling style — after finishing the Geno story quests (shoot Geno’s shield and let him eliminate you)', type: 'reward', category: 'dust', status: 'working', source: 'community list · IGN', added: '2026-09-03' },
   { code: 'BLINKYINKYPINKYCLYDE', unlocks: '5,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-17', source: 'Vice (v42.20 codes)' },
   { code: 'PlayToLevelUp', unlocks: '2,000 Sprite Dust', type: 'reward', category: 'dust', status: 'working', added: '2026-09-17', source: 'Fortnite.GG' },
