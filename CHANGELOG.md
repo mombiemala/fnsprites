@@ -11,6 +11,20 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 23, 2026 — Season-flip reminder + "new since your last visit" badges
+
+- **Added** (`src/components/SeasonFlipBanner.jsx`, `src/App.jsx`): a season-flip banner shown within ~2 weeks of the end
+  (`daysUntilSeasonEnd` ≤ 14). It leads with the countdown ("Override ends in ~9 days, Nov 1") and the Dust/Extractors/
+  Locators-reset reminder, with a "🔷 Plan my Dust" button into the Dust planner. Dismissible per-season
+  (`fnsprites:seasonFlipDismissed:<seasonId>`), so it returns for the next flip.
+- **Added** (`src/lib/newSince.js`, `src/components/OverflowNav.jsx`, `src/App.jsx`): "new since your last visit" badges on
+  the News and Lobby Hacks tabs. A per-tab last-seen date is stored in `localStorage`; the badge counts items dated after it
+  (news `ts`, codes `added`), capped "9+". A brand-new visitor's marks initialise to today (no meaningless "60 new"), and a
+  tab's badge clears when opened. `OverflowNav` renders an optional `badge` on each pill/menu row.
+- **Why**: two timely retention nudges — the banner makes the Nov 1 deadline and the Dust reset impossible to miss (paired
+  with the new Dust planner), and for a daily-updated site, surfacing exactly what's new since a player last looked is the
+  cheapest high-value reason to return.
+
 ## October 22, 2026 — Fixed the Quack mastery levels for Season 4
 
 - **Fixed** (`src/data/spriteGuide.js`, `scripts/prerender.mjs`): the mastery guides showed the Season 3 Quack track

@@ -13,6 +13,8 @@ import Toolbar from './components/Toolbar'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
 import SupportStrip from './components/SupportStrip'
+import SeasonFlipBanner from './components/SeasonFlipBanner'
+import { newCounts, markSeen } from './lib/newSince'
 import StatsBreakdown from './components/StatsBreakdown'
 import TopStatus from './components/TopStatus'
 import QuickCheckList from './components/QuickCheckList'
@@ -214,6 +216,20 @@ export default function App() {
   const [showShare, setShowShare] = useState(false)
   const [showChecklist, setShowChecklist] = useState(false)
   const [showDust, setShowDust] = useState(false)
+  // "New since your last visit" badges on the News / Lobby Hacks tabs.
+  const [newBadges, setNewBadges] = useState(() => {
+    const c = newCounts()
+    // Landing directly on News/Lobby Hacks (deep link) counts as seeing it.
+    if (view === 'news' || view === 'codes') { markSeen(view); c[view] = 0 }
+    return c
+  })
+  // Opening a tab marks it seen (persists the last-seen date and clears the badge).
+  const markViewSeen = (id) => {
+    if (id === 'news' || id === 'codes') {
+      markSeen(id)
+      setNewBadges((b) => (b[id] ? { ...b, [id]: 0 } : b))
+    }
+  }
 
   useEffect(() => {
     if (!shareTarget) return
@@ -537,13 +553,15 @@ export default function App() {
           doesn't fit (and the utility links, incl. the Guide) flowing into the
           ⋯ More overflow menu. Adapts to the width, tidy on desktop and mobile. */}
       <OverflowNav
-        views={TABS}
+        views={TABS.map((t) => ({ ...t, badge: t.id === view ? 0 : newBadges[t.id] }))}
         view={view}
         isShareView={isShareView}
-        onSelectView={setView}
+        onSelectView={(id) => { setView(id); markViewSeen(id) }}
         extras={utilityLinks}
         ariaLabel="Sections"
       />
+
+      {!isShareView && <SeasonFlipBanner onPlanDust={() => setShowDust(true)} />}
 
       {!isShareView && <SupportStrip />}
 

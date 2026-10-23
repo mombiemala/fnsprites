@@ -16,21 +16,34 @@ const pillCls = (active) =>
 const menuCls =
   'block w-full whitespace-nowrap px-3 py-2 text-left text-xs font-bold text-[var(--muted)] hover:bg-[var(--panel-2)] hover:text-white'
 
+// A small count pill for "N new since your last visit" on a tab.
+function Badge({ n }) {
+  if (!n) return null
+  return (
+    <span
+      aria-label={`${n} new`}
+      className="ml-1.5 inline-flex min-w-[1.1rem] items-center justify-center rounded-full bg-[var(--brand)] px-1 text-[10px] font-extrabold leading-[1.1rem] text-black"
+    >
+      {n > 9 ? '9+' : n}
+    </span>
+  )
+}
+
 function Pill({ d }) {
   const cls = pillCls(d.active)
-  if (d.href) return <a href={d.href} title={d.title} className={cls}>{d.label}</a>
+  if (d.href) return <a href={d.href} title={d.title} className={cls}>{d.label}<Badge n={d.badge} /></a>
   return (
     <button aria-current={d.active ? 'page' : undefined} onClick={d.onClick} title={d.title} className={cls}>
-      {d.label}
+      {d.label}<Badge n={d.badge} />
     </button>
   )
 }
 
 function MenuRow({ d, onPick }) {
-  if (d.href) return <a href={d.href} target={d.external ? '_blank' : undefined} rel={d.external ? 'noreferrer' : undefined} role="menuitem" title={d.title} onClick={onPick} className={menuCls}>{d.label}</a>
+  if (d.href) return <a href={d.href} target={d.external ? '_blank' : undefined} rel={d.external ? 'noreferrer' : undefined} role="menuitem" title={d.title} onClick={onPick} className={menuCls}>{d.label}<Badge n={d.badge} /></a>
   return (
     <button role="menuitem" title={d.title} onClick={() => { d.onClick?.(); onPick() }} className={menuCls}>
-      {d.label}
+      {d.label}<Badge n={d.badge} />
     </button>
   )
 }
@@ -43,6 +56,7 @@ export default function OverflowNav({ views = [], view, isShareView, onSelectVie
     ...views.map((t) => ({
       key: t.id,
       label: t.label,
+      badge: t.badge,
       active: !isShareView && view === t.id,
       onClick: isShareView ? undefined : () => onSelectView?.(t.id),
       href: isShareView ? (t.id === 'collection' ? base : `${base}?view=${t.id}`) : undefined,

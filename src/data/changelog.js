@@ -10,6 +10,16 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 23, 2026',
+    title: 'Season-flip reminder + “new since your last visit” badges',
+    changes: [
+      { tag: 'Added', text: 'A season-flip banner that appears in the final ~2 weeks of the season: it leads with the countdown (“Override ends in ~9 days, Nov 1”) and reminds you that Sprite Dust, Extractors & Locators reset at the flip (your Sprites are kept) — with a one-tap “Plan my Dust” into the Dust planner. Dismissible, and it comes back for the next season.' },
+      { tag: 'Added', text: 'A “new since your last visit” count on the News and Lobby Hacks tabs — a small badge shows how many items dropped since you last opened each, so a daily visitor can see at a glance what changed. It only counts what’s new since you actually last looked (a brand-new visitor sees no badge), and clears when you open the tab.' },
+    ],
+    summary: 'Added a season-end countdown + “spend your Dust before the flip” banner (one-tap into the Dust planner), and “N new” badges on the News and Lobby Hacks tabs that track what dropped since your last visit.',
+    why: 'Two timely retention nudges: with the Nov 1 flip close, the banner makes the deadline (and the Dust reset) impossible to miss; and for a site that updates daily, telling returning players exactly what’s new since they last looked is the cheapest, highest-value reason to come back.',
+  },
+  {
     date: 'October 22, 2026',
     title: 'Fixed the Quack mastery levels for Season 4',
     changes: [
