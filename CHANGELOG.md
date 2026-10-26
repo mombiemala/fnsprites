@@ -11,6 +11,23 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 26, 2026 — The Final Spritemare (Oct 27–31), Override's 5-day Sprite send-off
+
+- **Added** (`src/data/events.js`, `src/data/announcements.js`, `src/data/news.js`): the **Final Spritemare** — a 5-day
+  Sprite event (Oct 27–31) closing out Override, with a different finish rate-boosted each day. Added as five daily
+  `SPRITE_EVENTS` (24h windows from 9 AM ET / `13:00Z`), each with `boostedThemes` so the home card's one-tap "Farm my
+  missing <finish>" shortcut matches the day: **Tue Oct 27** Gold & Cheat Master (`['gold','cheatmaster']`, Overclocked
+  8-Bit Shotgun), **Wed Oct 28** Loot Hacker (`['loothacker']`, Overpowered Shotgun), **Thu Oct 29** Bounty Hunter
+  (`['bountyhunter']`, Balloon Popper AR), **Fri Oct 30** Trick-or-Treat (`['trickortreat']`, free Calaverita cosmetics),
+  and the **Sat Oct 31 finale** (all Sprite variants boosted, guaranteed Override-Console Sprites, Marker Bonerattler SMG —
+  no `boostedThemes`, since it boosts every finish). Plus a News item and a dismissible banner (Oct 26 → Nov 1). Every day
+  also has 2× Sprite XP & 2× Sprite Dust and login Lucky Locators.
+- **Why**: it's the season's last and biggest Sprite-farming window before the ~Nov 1 flip (Dust resets then), and each day
+  targets one finish — so wiring each day to the farm shortcut turns "X is boosted today" into a one-tap filtered to-do.
+  Bounty Hunter and Trick-or-Treat are already live in our model (Sep 24 / Oct 8 form gates), so Thu/Fri need no roster
+  change — only the events. Corroborated across GameRant, TechWiser and Techtroduce, with several daily bonuses confirmed on
+  Epic's in-app event listing.
+
 ## October 23, 2026 — Codes synced to the in-game panel (reward fixes + 5 expired removed)
 
 - **Fixed** (`src/data/codes.js`): reconciled the full `LOBBY_CODES` list against the current in-game Admin Panel. Corrected

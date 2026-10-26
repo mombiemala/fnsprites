@@ -19,6 +19,18 @@
 
 export const ANNOUNCEMENTS = [
   {
+    id: 'final-spritemare-2026-10-27',
+    emoji: '🎃',
+    message: 'The Final Spritemare — Override’s 5-day Sprite send-off (Oct 27–31)! Every day: 2× Sprite XP & 2× Sprite Dust + login Lucky Locators, with a different finish boosted — Tue Gold & Cheat Master · Wed Loot Hacker · Thu Bounty Hunter · Fri Trick-or-Treat · Sat finale (ALL Sprites boosted + guaranteed Override-Console Sprites). Your last big chance to fill gaps before the ~Nov 1 flip.',
+    link: '/?view=news',
+    linkLabel: 'Daily schedule',
+    start: '2026-10-26',
+    end: '2026-11-01',
+    source: 'Epic · GameRant · TechWiser',
+    official: false,
+    tone: 'event',
+  },
+  {
     id: 'community-sprites-hours-2026-10-24',
     eventId: 'community-sprites-hours-2026-10-24', // de-dupes against the SPRITE_EVENTS rounds in the top card
     emoji: '🎨',

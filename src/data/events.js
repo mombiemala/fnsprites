@@ -25,6 +25,72 @@
 // Leave it off for events that don't boost a specific finish (Mastery Monday, etc.).
 
 export const SPRITE_EVENTS = [
+  // ── The Final Spritemare — Override's 5-day Sprite send-off (Oct 27–31), one
+  //    boosted finish per day before the season flips ~Nov 1. Day boundary is
+  //    9 AM ET (13:00Z); every day has 2× Sprite XP & 2× Sprite Dust and login
+  //    Lucky Locators. Each day's boostedThemes wires the top card's one-tap
+  //    "Farm my missing <finish>" shortcut to whatever Epic is boosting that day.
+  {
+    id: 'final-spritemare-2026-10-27',
+    emoji: '🎃',
+    name: 'Final Spritemare — Day 1 (Gold & Cheat Master)',
+    perk: 'Day 1 of Override’s 5-day Sprite send-off. Gold & Cheat Master Sprites spawn more often — the best window to fill in those premium finishes. 2× Sprite XP & 2× Sprite Dust all day, Lucky Locators from daily-login Quests, and the Overclocked 8-Bit Shotgun returns to the loot pool. Sprite-awarding quests are also expected to go live today.',
+    startsUtc: '2026-10-27T13:00:00Z', // 9 AM ET Tue Oct 27
+    endsUtc: '2026-10-28T13:00:00Z', // to 9 AM ET Wed Oct 28 (the daily "day change")
+    confirmed: true,
+    boostedThemes: ['gold', 'cheatmaster'],
+    source: 'Epic (in-app event listing) · GameRant · TechWiser · Techtroduce',
+    sourceUrl: 'https://gamerant.com/fortnite-spritemare-week-power-hour-start-times-sprite-rates-up-lucky-locators/',
+  },
+  {
+    id: 'final-spritemare-2026-10-28',
+    emoji: '🔵',
+    name: 'Final Spritemare — Day 2 (Loot Hacker)',
+    perk: 'Day 2 of the send-off. Loot Hacker (“Hacker”) Sprites spawn more often — fill in the Loot Hacker finishes you’re missing. 2× Sprite XP & Dust all day, login Lucky Locators, and the Overpowered Shotgun enters the loot pool.',
+    startsUtc: '2026-10-28T13:00:00Z', // 9 AM ET Wed Oct 28
+    endsUtc: '2026-10-29T13:00:00Z', // to 9 AM ET Thu Oct 29
+    confirmed: true,
+    boostedThemes: ['loothacker'],
+    source: 'Epic (in-app event listing) · GameRant · TechWiser · Techtroduce',
+    sourceUrl: 'https://gamerant.com/fortnite-spritemare-week-power-hour-start-times-sprite-rates-up-lucky-locators/',
+  },
+  {
+    id: 'final-spritemare-2026-10-29',
+    emoji: '🎯',
+    name: 'Final Spritemare — Day 3 (Bounty Hunter)',
+    perk: 'Day 3. Bounty Hunter Sprites spawn more often — the fighting finish (farmed from eliminations), boosted all day. 2× Sprite XP & Dust, login Lucky Locators, and the Balloon Popper Assault Rifle enters the loot pool.',
+    startsUtc: '2026-10-29T13:00:00Z', // 9 AM ET Thu Oct 29
+    endsUtc: '2026-10-30T13:00:00Z', // to 9 AM ET Fri Oct 30
+    confirmed: true,
+    boostedThemes: ['bountyhunter'],
+    source: 'Epic (in-app event listing) · GameRant · TechWiser · Techtroduce',
+    sourceUrl: 'https://gamerant.com/fortnite-spritemare-week-power-hour-start-times-sprite-rates-up-lucky-locators/',
+  },
+  {
+    id: 'final-spritemare-2026-10-30',
+    emoji: '🍬',
+    name: 'Final Spritemare — Day 4 (Trick-or-Treat)',
+    perk: 'Day 4. Trick-or-Treat Sprites spawn more often — the spooky Halloween recolours, boosted all day. 2× Sprite XP & Dust, free Calaverita Sprays & an Emoticon from login, and Frantic Rebecca’s guns enter the loot pool.',
+    startsUtc: '2026-10-30T13:00:00Z', // 9 AM ET Fri Oct 30
+    endsUtc: '2026-10-31T13:00:00Z', // to 9 AM ET Sat Oct 31
+    confirmed: true,
+    boostedThemes: ['trickortreat'],
+    source: 'Epic (in-app event listing) · GameRant · TechWiser · Techtroduce',
+    sourceUrl: 'https://gamerant.com/fortnite-spritemare-week-power-hour-start-times-sprite-rates-up-lucky-locators/',
+  },
+  {
+    id: 'final-spritemare-2026-10-31',
+    emoji: '🏁',
+    name: 'Final Spritemare — The Finale (all Sprites boosted)',
+    perk: 'The season finale (Sat Oct 31) — Override’s last day. ALL Sprite variants spawn more often, so it’s your last chance to grab anything you’re missing before the flip. Hunter Scavenger, Spooky Sprinter & Prop Hunt are guaranteed in Override Consoles, extra Pumpkin Chests appear across the Island, and the Marker Bonerattler SMG enters the loot pool. 2× Sprite XP & Dust all day.',
+    startsUtc: '2026-10-31T13:00:00Z', // 9 AM ET Sat Oct 31
+    endsUtc: '2026-11-01T13:00:00Z', // to ~9 AM ET Sun Nov 1 (season flip)
+    confirmed: true,
+    // No boostedThemes: the finale boosts EVERY finish, not one — so no single
+    // "farm my finish" shortcut (the card shows it as a general boosted window).
+    source: 'Epic (in-app event listing) · GameRant · TechWiser · Techtroduce',
+    sourceUrl: 'https://gamerant.com/fortnite-spritemare-week-power-hour-start-times-sprite-rates-up-lucky-locators/',
+  },
   {
     id: 'community-sprites-hours-2026-10-24-r1',
     emoji: '🎨',

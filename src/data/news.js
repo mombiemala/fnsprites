@@ -10,6 +10,18 @@
 //   `tentative`  true renders a "Tentative" badge (date/details not confirmed).
 export const NEWS = [
   {
+    ts: '2026-10-26',
+    when: 'Oct 26, 2026',
+    tag: 'event',
+    start: '2026-10-26',
+    end: '2026-11-01',
+    title: '🎃 The Final Spritemare (Oct 27–31) — a 5-day Sprite send-off before the flip',
+    body: 'Override goes out with a 5-day Sprite event starting Tuesday Oct 27 (right after Mastery Monday) and running through the season’s last day, Oct 31. Every day: 2× Sprite XP & 2× Sprite Dust, and Lucky Locators from daily-login Quests, with 1-Up Tokens & Portable Extractors dropping from chests. Each day a different finish is rate-boosted — Tue Oct 27: Gold & Cheat Master (+ the Overclocked 8-Bit Shotgun, and sprite-awarding quests are expected to go live); Wed Oct 28: Loot Hacker (+ the Overpowered Shotgun); Thu Oct 29: Bounty Hunter (+ the Balloon Popper AR); Fri Oct 30: Trick-or-Treat (+ free Calaverita Sprays & an Emoticon, and Frantic Rebecca’s guns); and the Sat Oct 31 finale: ALL Sprite variants boosted, with Hunter Scavenger, Spooky Sprinter & Prop Hunt guaranteed in Override Consoles, extra Pumpkin Chests, and the Marker Bonerattler SMG. The day boundary is 9 AM ET. It’s the last big window to fill in missing finishes before the mini-season starts ~Nov 1 — use the “Next to chase” card’s one-tap farm shortcut each day to filter to that day’s boosted finish. (Reported across multiple outlets; several daily bonuses are confirmed on Epic’s in-app event listing — a few finer details may still shift.)',
+    link: 'https://gamerant.com/fortnite-spritemare-week-power-hour-start-times-sprite-rates-up-lucky-locators/',
+    source: 'GameRant · TechWiser · Techtroduce · Epic (event listing)',
+    official: false,
+  },
+  {
     ts: '2026-10-24',
     when: 'Oct 24, 2026',
     tag: 'event',
