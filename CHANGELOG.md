@@ -31,7 +31,9 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   season-flip reminder into the top status card as a single row instead of a separate banner stacked above it. With the
   Final Spritemare now on the card, the two were reading as two competing bars. The reminder keeps its per-season dismiss and
   its "🔷 Plan my Dust" button; the Final Spritemare announcement now carries `eventId: 'final-spritemare-2026'` so it
-  de-dupes against its own live/next event row (the event isn't shown twice in the card).
+  de-dupes against its own live/next event row (the event isn't shown twice in the card). Also removed the now-redundant
+  `season4-ending-2026-10` announcement (duplicated the reminder row, and its "Chapter 8 ~Dec 5" copy was stale — it's
+  ~Nov 28 now), leaving the card as two clean rows: the live/next event, and the Dust-reset reminder.
 
 ## October 23, 2026 — Codes synced to the in-game panel (reward fixes + 5 expired removed)
 

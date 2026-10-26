@@ -204,18 +204,10 @@ export const ANNOUNCEMENTS = [
     official: false,
     tone: 'event',
   },
-  {
-    id: 'season4-ending-2026-10',
-    emoji: '⏳',
-    message: 'Season 4 “Override” is wrapping up (est. ~Nov 1) — a short bridge mini-season is next, with Chapter 8 following ~Dec 5 (per leaks). Don’t worry — every Sprite you’ve collected is kept forever in your Collection & Sprite Garden. Only Sprite Dust, Extractors & Locators reset, so spend your Dust before the flip.',
-    link: '/season-transition',
-    linkLabel: 'What carries over',
-    start: '2026-10-24',
-    end: '2026-11-02',
-    source: 'Community + Epic pattern',
-    official: false,
-    tone: 'alert',
-  },
+  // (The old 'season4-ending-2026-10' banner lived here — removed Oct 26: the
+  //  season-flip reminder row now folded into the TopStatus card covers the same
+  //  "Override ending ~Nov 1, spend your Dust" message, so this was a duplicate
+  //  bar (and its "Chapter 8 ~Dec 5" copy was stale — it's ~Nov 28 now).)
   {
     id: 'new-sprite-day-loot-hacker-2026-09-10',
     emoji: '🔵',
