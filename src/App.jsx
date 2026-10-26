@@ -13,7 +13,6 @@ import Toolbar from './components/Toolbar'
 import ShareBar from './components/ShareBar'
 import SupportBanner from './components/SupportBanner'
 import SupportStrip from './components/SupportStrip'
-import SeasonFlipBanner from './components/SeasonFlipBanner'
 import { newCounts, markSeen } from './lib/newSince'
 import StatsBreakdown from './components/StatsBreakdown'
 import TopStatus from './components/TopStatus'
@@ -601,8 +600,6 @@ export default function App() {
         ariaLabel="Sections"
       />
 
-      {!isShareView && <SeasonFlipBanner onPlanDust={() => setShowDust(true)} />}
-
       {!isShareView && <SupportStrip />}
 
       {(effectiveView === 'leaderboard' || effectiveView === 'codes' || effectiveView === 'stats' || effectiveView === 'news' || effectiveView === 'shop') && (
@@ -688,7 +685,7 @@ export default function App() {
 
       {/* One compact top card: active announcement + today's event + upcoming
           heads-up (was three separate stacked blocks). */}
-      {!isShareView && <TopStatus onGo={goToSection} tracking={activeTracking} onFarmFinish={farmFinish} />}
+      {!isShareView && <TopStatus onGo={goToSection} tracking={activeTracking} onFarmFinish={farmFinish} onPlanDust={() => setShowDust(true)} />}
 
       {/* Guests with progress: nudge to sign in so their device-local collection
           gets backed up + synced (their progress merges on first sign-in). */}

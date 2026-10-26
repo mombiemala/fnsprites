@@ -20,6 +20,7 @@
 export const ANNOUNCEMENTS = [
   {
     id: 'final-spritemare-2026-10-27',
+    eventId: 'final-spritemare-2026', // de-dupes against the 5 daily SPRITE_EVENTS (their ids all start with this) so the top card shows the richer live/next event row, not a duplicate banner
     emoji: '🎃',
     message: 'The Final Spritemare — Override’s 5-day Sprite send-off (Oct 27–31)! Every day: 2× Sprite XP & 2× Sprite Dust + login Lucky Locators, with a different finish boosted — Tue Gold & Cheat Master · Wed Loot Hacker · Thu Bounty Hunter · Fri Trick-or-Treat · Sat finale (ALL Sprites boosted + guaranteed Override-Console Sprites). Your last big chance to fill gaps before the ~Nov 1 flip.',
     link: '/?view=news',

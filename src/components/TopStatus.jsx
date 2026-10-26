@@ -4,6 +4,7 @@ import { LOBBY_CODES } from '../data/codes'
 import { liveSpriteEvent, nextSpriteEvent } from '../data/events'
 import { ALL_SPRITES } from '../data/sprites'
 import { THEME_MAP } from '../data/themes'
+import { SEASON, daysUntilSeasonEnd } from '../data/season'
 
 // One compact top-of-page card with two thin rows:
 //  1. the dismissible event announcement bar, and
@@ -45,7 +46,20 @@ function fmtDur(ms) {
 // ones" shortcut for — when it's LIVE, or starting within ~2 days.
 const FARM_LEAD_MS = 2 * 864e5
 
-export default function TopStatus({ onGo, tracking, onFarmFinish }) {
+// Season-flip reminder, folded into this card (bottom row) so it isn't a second
+// bar competing with the event announcement. Shows within ~2 weeks of the end,
+// dismissible per-season (same key the old standalone banner used).
+const SHOW_FLIP_WITHIN_DAYS = 14
+const FLIP_DISMISS_KEY = `fnsprites:seasonFlipDismissed:${SEASON.current.id}`
+const seasonEndLabel = () => {
+  try {
+    return new Date(SEASON.endEstimate + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })
+  } catch {
+    return SEASON.endEstimate
+  }
+}
+
+export default function TopStatus({ onGo, tracking, onFarmFinish, onPlanDust }) {
   const [dismissed, setDismissed] = useState(loadDismissed)
   const [now, setNow] = useState(() => Date.now()) // ticks every second for the countdown
   useEffect(() => {
@@ -54,6 +68,18 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
   }, [])
 
   const newCodes = useMemo(() => LOBBY_CODES.filter(isNewCode).length, [])
+
+  // Season-flip reminder state (the amber row at the bottom of this card).
+  const [flipDismissed, setFlipDismissed] = useState(() => {
+    try { return localStorage.getItem(FLIP_DISMISS_KEY) === '1' } catch { return false }
+  })
+  const seasonDays = daysUntilSeasonEnd(new Date(now))
+  const showFlip = !flipDismissed && seasonDays <= SHOW_FLIP_WITHIN_DAYS && seasonDays >= -1
+  const flipWhen = seasonDays > 1 ? `in ~${seasonDays} days` : seasonDays === 1 ? 'tomorrow' : seasonDays === 0 ? 'today' : 'any moment now'
+  const dismissFlip = () => {
+    setFlipDismissed(true)
+    try { localStorage.setItem(FLIP_DISMISS_KEY, '1') } catch { /* ignore */ }
+  }
 
   // Data-driven: "live" and the countdown come only from confirmed/sourced events
   // in src/data/events.js — no assuming every Monday/Saturday has one.
@@ -91,7 +117,7 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
   // all when there's no announcement, event, new code, or upcoming drop.
   const hasEvent = !!(liveEvent || nextEvent)
   const hasTodayRow = hasEvent || newCodes > 0
-  if (!note && !hasTodayRow) return null
+  if (!note && !hasTodayRow && !showFlip) return null
 
   return (
     <div className="mb-4 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--panel)]">
@@ -170,6 +196,35 @@ export default function TopStatus({ onGo, tracking, onFarmFinish }) {
           </button>
         )}
       </div>
+      )}
+
+      {/* 3 · Season-flip reminder — folded in here (one card) instead of a
+          separate banner stacked above. Amber, dismissible per-season. */}
+      {showFlip && (
+        <div className={`flex flex-wrap items-center gap-x-3 gap-y-1.5 border-l-4 border-l-amber-400 bg-amber-400/10 px-3 py-2 ${(note || hasTodayRow) ? 'border-t border-[var(--border)]' : ''}`}>
+          <span className="text-base leading-none" aria-hidden>⏳</span>
+          <p className="min-w-0 flex-1 text-[12px] font-semibold leading-snug text-white">
+            {SEASON.current.name} ends {flipWhen} ({seasonEndLabel()}).{' '}
+            <span className="text-amber-300">Sprite Dust, Extractors &amp; Locators reset at the flip</span> — spend your Dust first (your Sprites are kept).
+          </p>
+          {onPlanDust && (
+            <button
+              onClick={onPlanDust}
+              title="Open the Dust planner — see what you can afford to (re)summon"
+              className="shrink-0 rounded-lg bg-amber-400 px-2.5 py-1 text-[11px] font-extrabold text-black hover:brightness-110"
+            >
+              🔷 Plan my Dust
+            </button>
+          )}
+          <button
+            onClick={dismissFlip}
+            aria-label="Hide the season-flip reminder"
+            title="Hide this"
+            className="shrink-0 rounded-md px-1.5 py-0.5 text-white/60 hover:bg-white/10 hover:text-white"
+          >
+            ✕
+          </button>
+        </div>
       )}
     </div>
   )

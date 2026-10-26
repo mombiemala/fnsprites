@@ -11,11 +11,12 @@
 export const CHANGELOG = [
   {
     date: 'October 26, 2026',
-    title: 'The Final Spritemare (Oct 27–31) — 5-day send-off on the events card',
+    title: 'The Final Spritemare (Oct 27–31) + one unified top bar',
     changes: [
       { tag: 'Added', text: 'Override’s Final Spritemare — a 5-day Sprite event (Oct 27–31) with a different finish boosted each day — is now on the home events card, with a News entry and a dismissible banner. Added as five daily events (24h windows from 9 AM ET), each wiring the “Next to chase” card’s one-tap “Farm my missing <finish>” shortcut to that day’s boosted finish: Tue Oct 27 Gold & Cheat Master, Wed Oct 28 Loot Hacker, Thu Oct 29 Bounty Hunter, Fri Oct 30 Trick-or-Treat, and the Sat Oct 31 finale (all Sprites boosted). Every day also has 2× Sprite XP & 2× Sprite Dust and login Lucky Locators.' },
+      { tag: 'Changed', text: 'Unified the top of the page into a single card. The season-flip reminder (season-end countdown + “Sprite Dust resets — Plan my Dust”) used to be its own banner stacked above the status card; with the Final Spritemare now on that card, the two read as two competing bars. The reminder is now a row inside the one card (its own dismiss + “Plan my Dust” button kept), and the Final Spritemare banner de-dupes against its live/next event row so the event isn’t shown twice.' },
     ],
-    summary: 'Added the Final Spritemare (Oct 27–31), Override’s 5-day Sprite send-off, across the events countdown, news and a banner — five daily entries, each lining the home card’s one-tap finish-farm shortcut up with that day’s boosted finish (Gold & Cheat Master → Loot Hacker → Bounty Hunter → Trick-or-Treat → all).',
+    summary: 'Added the Final Spritemare (Oct 27–31), Override’s 5-day Sprite send-off, across the events countdown, news and a banner — five daily entries, each lining the home card’s one-tap finish-farm shortcut up with that day’s boosted finish (Gold & Cheat Master → Loot Hacker → Bounty Hunter → Trick-or-Treat → all). Also merged the separate season-flip banner into the top status card so it’s one bar, not two.',
     why: 'This is the season’s last and biggest Sprite-farming window before the ~Nov 1 flip (when Dust resets), and each day targets a specific finish — exactly what the tracker exists to help people complete. Wiring each day to the farm shortcut turns “a finish is boosted today” into a one-tap filtered to-do. Bounty Hunter and Trick-or-Treat are already live in our model (Sep 24 / Oct 8 form gates), so Thu/Fri needed no roster change — only the events.',
   },
   {

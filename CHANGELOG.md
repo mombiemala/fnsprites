@@ -11,7 +11,7 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
-## October 26, 2026 — The Final Spritemare (Oct 27–31), Override's 5-day Sprite send-off
+## October 26, 2026 — The Final Spritemare (Oct 27–31) + one unified top bar
 
 - **Added** (`src/data/events.js`, `src/data/announcements.js`, `src/data/news.js`): the **Final Spritemare** — a 5-day
   Sprite event (Oct 27–31) closing out Override, with a different finish rate-boosted each day. Added as five daily
@@ -27,6 +27,11 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
   Bounty Hunter and Trick-or-Treat are already live in our model (Sep 24 / Oct 8 form gates), so Thu/Fri need no roster
   change — only the events. Corroborated across GameRant, TechWiser and Techtroduce, with several daily bonuses confirmed on
   Epic's in-app event listing.
+- **Changed** (`src/components/TopStatus.jsx`, `src/App.jsx`; removed `src/components/SeasonFlipBanner.jsx`): folded the
+  season-flip reminder into the top status card as a single row instead of a separate banner stacked above it. With the
+  Final Spritemare now on the card, the two were reading as two competing bars. The reminder keeps its per-season dismiss and
+  its "🔷 Plan my Dust" button; the Final Spritemare announcement now carries `eventId: 'final-spritemare-2026'` so it
+  de-dupes against its own live/next event row (the event isn't shown twice in the card).
 
 ## October 23, 2026 — Codes synced to the in-game panel (reward fixes + 5 expired removed)
 
