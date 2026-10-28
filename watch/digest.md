@@ -1,6 +1,6 @@
 # FN watch digest
 
-_Generated 2026-10-27T20:12:09.547Z. **Flag-only** — candidates to review, not confirmed changes. Verify every one against our 2-source / in-game rule before editing data._
+_Generated 2026-10-28T20:29:05.593Z. **Flag-only** — candidates to review, not confirmed changes. Verify every one against our 2-source / in-game rule before editing data._
 
 **Live build:** v42.40 · **our Loot Hacks patch:** v42.40 · **tracked codes:** 52
 
