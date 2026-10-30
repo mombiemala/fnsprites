@@ -14,7 +14,7 @@
 export const LOOT_HACK_META = {
   patch: 'v42.40',
   rotationStart: '2026-10-15',
-  nextRefresh: '2026-10-29', // no rotation landed Oct 22; the pool holds until the next major update (v42.50, est. Oct 29) — the in-game timer is authoritative
+  nextRefresh: '2026-11-01', // the Oct 22 & Oct 29 windows passed with no rotation; this pool now holds through the Oct 31 Override finale, and the next refresh comes with the season flip / v43.00 bridge mini-season (~Nov 1) — the in-game timer is authoritative
   maxLevel: 6, // each item unlocks at L1, then upgrades up to L6 for higher odds/rarity
   source: 'Epic (Fortnite v42.40) · FRVR · fortnitenews · The Click',
   sourceUrl: 'https://fortnitenews.com/fortnite-v42-40-is-live-bee-swarms-sprite-thieves-and-a-freddy-powered-power-hours/',
