@@ -10,6 +10,15 @@
 
 export const CHANGELOG = [
   {
+    date: 'October 30, 2026',
+    title: '“Treasure Hunters” mini-season named for Nov 1',
+    changes: [
+      { tag: 'Changed', text: 'Epic has now officially named the next season: “Treasure Hunters,” a short bridge mini-season starting Nov 1 (v43.00), revealed in a teaser trailer. Updated the season-transition copy, the Heads-Up/Incoming feed and added a News item to name it (was tracked as a rumored “One Piece bridge”). The One Piece crossover stays flagged as a rumor; Chapter 8 (v44.00) is still unconfirmed between ~Nov 28 and ~Dec 5. Also repointed the next Loot Hack rotation in the Incoming feed from the passed Oct 22 date to the Nov 1 flip.' },
+    ],
+    summary: 'Named the Epic-announced “Treasure Hunters” bridge mini-season (starts Nov 1, v43.00) across the season-transition copy, Incoming feed and News — upgrading it from a rumored One Piece bridge — and fixed the stale Loot Hack rotation date to the Nov 1 flip.',
+    why: 'Epic went from teasing to naming the mini-season, so our “what’s next” should say the real name instead of a rumor. Keeping the One Piece crossover and the Chapter 8 date labelled as unconfirmed keeps the feed trustworthy, which is the whole point of the Incoming feed.',
+  },
+  {
     date: 'October 26, 2026',
     title: 'The Final Spritemare (Oct 27–31) + one unified top bar',
     changes: [

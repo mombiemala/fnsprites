@@ -16,15 +16,17 @@ export const SEASON = {
   endEstimate: '2026-11-01',
   endConfirmed: true,
   next: {
-    // Nov 1 starts a short "bridge" mini-season (not a full Season 5), shipping
-    // with update v43.00 (per Epic's dev forums; v42.50 ~Oct 29 is the last S4
-    // patch). Chapter 8 Season 1 (v44.00) follows ~Nov 28 per Epic's public Trello
-    // roadmap — firmer than the earlier ~Dec 5 leak, though roadmap dates can shift.
-    label: 'a short bridge mini-season (update v43.00; Chapter 8 follows ~Nov 28)',
+    // Nov 1 starts "Treasure Hunters" — a short bridge mini-season (not a full
+    // Season 5), now Epic-announced with a teaser trailer, shipping with update
+    // v43.00. A pirate/treasure theme (crews, music, crossover characters; a One
+    // Piece crossover is rumored but not Epic-confirmed). Chapter 8 Season 1
+    // (v44.00) follows after it — leaks split between ~Nov 28 and ~Dec 5, Epic
+    // hasn't confirmed either.
+    label: 'the “Treasure Hunters” bridge mini-season (Epic-announced, update v43.00; Chapter 8 follows ~late Nov)',
     startEstimate: '2026-11-01',
   },
-  source: 'Epic (Battle Pass end date · v43.00 dev-forum listing · Trello roadmap for Ch.8) · Vice',
-  sourceUrl: 'https://www.vice.com/en/article/fortnite-update-schedule-2026-fortnitemares-chapter-8-dates/',
+  source: 'Epic (Battle Pass end date · Treasure Hunters teaser, v43.00) · Vice',
+  sourceUrl: 'https://www.vice.com/en/article/fortnite-treasure-hunters-release-date-start-times/',
 }
 
 // What players keep vs. what resets at a season flip (the established pattern).

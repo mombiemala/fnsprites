@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 30, 2026 — "Treasure Hunters" mini-season named for Nov 1
+
+- **Changed** (`src/data/season.js`, `src/data/incoming.js`, `src/data/news.js`): Epic has officially named the next season —
+  **"Treasure Hunters,"** a short bridge mini-season starting **Nov 1** with update **v43.00** (revealed in a teaser trailer).
+  Updated the season-transition copy (`SEASON.next.label` + source), renamed/updated the `season-5` Incoming card (now
+  `confirmedDate: true`, Epic-named, was a rumored "One Piece bridge"), and added a News item. The One Piece crossover stays
+  flagged as a rumor, and Chapter 8 (v44.00) is still unconfirmed between ~Nov 28 and ~Dec 5. Also repointed the
+  `loot-hack-refresh` Incoming card from the passed Oct 22 date to the Nov 1 flip.
+- **Why**: Epic moved from teasing to naming the mini-season, so "what's next" should carry the real name, not a rumor —
+  while keeping the still-unconfirmed bits (One Piece, the Chapter 8 date) labelled as such to keep the Incoming feed trustworthy.
+
 ## October 26, 2026 — The Final Spritemare (Oct 27–31) + one unified top bar
 
 - **Added** (`src/data/events.js`, `src/data/announcements.js`, `src/data/news.js`): the **Final Spritemare** — a 5-day
