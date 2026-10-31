@@ -19,7 +19,7 @@ export const INCOMING = [
     id: 'season-5',
     emoji: '🏴‍☠️',
     title: 'Treasure Hunters — bridge mini-season (Nov 1)',
-    detail: 'Season 4 “Override” ends Oct 31, and on Nov 1 Epic kicks off “Treasure Hunters” — a short bridge mini-season (update v43.00), now Epic-announced with a teaser trailer. It’s a pirate/treasure theme (crews, music and crossover characters; a One Piece crossover is widely rumored but not Epic-confirmed), a ~4–5 week cycle with its own Battle Pass before Chapter 8. New seasons bring a fresh generation of Sprites to Battle Royale — we’ll flip them live here the moment they drop.',
+    detail: 'Season 4 “Override” ends Oct 31, and on Nov 1 Epic kicks off “Treasure Hunters” — a short bridge mini-season (update v43.00), Epic-announced with a reveal trailer + Battle Pass key art (Oct 28). It’s a pirate/treasure theme on a new “Crossbones Isle” map, with a confirmed One Piece crossover (Ace & Nico Robin headline the Battle Pass; more One Piece skins expected in the Shop), running ~4–5 weeks with its own Battle Pass before Chapter 8. Key art also teased a new Treasure Hunters Sprite — we’ll add it (and any others) here the moment the names/abilities/art drop.',
     dropsOn: '2026-11-01',
     confirmedDate: true,
     source: 'Epic (Treasure Hunters teaser · Battle Pass end date) · Vice',

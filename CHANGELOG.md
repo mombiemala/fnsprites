@@ -11,6 +11,17 @@ Tags: **Added** (new), **Changed** (behaviour/looks), **Fixed** (bugs),
 
 ---
 
+## October 31, 2026 — Treasure Hunters: One Piece crossover now confirmed
+
+- **Changed** (`src/data/season.js`, `src/data/incoming.js`, `src/data/news.js`): Epic's Oct 28 reveal (trailer + Battle Pass
+  key art) confirmed the Treasure Hunters details, so our "what's next" copy now treats the **One Piece crossover as
+  confirmed** (Ace & Nico Robin headline the Battle Pass) rather than rumored, and notes the new pirate map **"Crossbones
+  Isle"** replacing the Override island. At least one new Treasure Hunters Sprite was teased in the key art, but its
+  name/ability/art aren't solid yet, so it's not added to the roster — we'll flip it on launch. Chapter 8 (v44.00) stays
+  unconfirmed (~Nov 28 vs ~Dec 5).
+- **Why**: Epic moved from teasing to confirming One Piece, so the feed should reflect that, while the new Sprite stays out of
+  the roster until sourced — accurate over speculative.
+
 ## October 30, 2026 — "Treasure Hunters" mini-season named for Nov 1
 
 - **Changed** (`src/data/season.js`, `src/data/incoming.js`, `src/data/news.js`): Epic has officially named the next season —

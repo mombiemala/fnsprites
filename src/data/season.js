@@ -17,12 +17,12 @@ export const SEASON = {
   endConfirmed: true,
   next: {
     // Nov 1 starts "Treasure Hunters" — a short bridge mini-season (not a full
-    // Season 5), now Epic-announced with a teaser trailer, shipping with update
-    // v43.00. A pirate/treasure theme (crews, music, crossover characters; a One
-    // Piece crossover is rumored but not Epic-confirmed). Chapter 8 Season 1
-    // (v44.00) follows after it — leaks split between ~Nov 28 and ~Dec 5, Epic
-    // hasn't confirmed either.
-    label: 'the “Treasure Hunters” bridge mini-season (Epic-announced, update v43.00; Chapter 8 follows ~late Nov)',
+    // Season 5), Epic-announced with a reveal trailer + Battle Pass key art
+    // (Oct 28), shipping with update v43.00. A pirate/treasure theme on a new
+    // "Crossbones Isle" map, with a confirmed One Piece crossover (Ace & Nico
+    // Robin headline the Battle Pass). Chapter 8 Season 1 (v44.00) follows after
+    // it — leaks split between ~Nov 28 and ~Dec 5; Epic hasn't confirmed either.
+    label: 'the “Treasure Hunters” bridge mini-season (Epic-announced, One Piece crossover, update v43.00; Chapter 8 follows ~late Nov/early Dec)',
     startEstimate: '2026-11-01',
   },
   source: 'Epic (Battle Pass end date · Treasure Hunters teaser, v43.00) · Vice',
